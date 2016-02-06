@@ -14,6 +14,7 @@ tags:
   - npm
 ---
 
+
 아마존 클라우드 서비스에는 다양한 IaaS를 제공한다. 서버 컴퓨터를 제공하는 EC2, 데이터베이스 서버 RDS, 파일서버 S3 등 계속해서 그 종류가 늘어나고 있고 
 EB([Elastic Beanstalk](http://aws.amazon.com/ko/elasticbeanstalk/))도 이러한 제품 중 하나다. 
 EC2, RDS, S3 등을 간단하게 연결하고 오토 스케일 설정, 플랫폼 설치 등을 한 번에 진행해 주는 것이 장점이다. 

@@ -1,0 +1,111 @@
+---
+id: 493
+title: '이미지 업로드 &#8211; 1. multer 모듈로 파일 업로드'
+date: 2015-07-27T17:09:22+00:00
+author: Chris
+layout: post
+guid: http://whatilearn.com/?p=493
+permalink: /%ec%9d%b4%eb%af%b8%ec%a7%80-%ec%97%85%eb%a1%9c%eb%93%9c-1-multer-%eb%aa%a8%eb%93%88%eb%a1%9c-%ed%8c%8c%ec%9d%bc-%ec%97%85%eb%a1%9c%eb%93%9c/
+dsq_thread_id:
+  - 4553998258
+categories:
+  - Express.js
+  - Node.js
+tags:
+  - expressjs
+  - image-upload
+  - multer
+  - 이미지 업로드
+---
+이미지 리사이징을 할 때 두 가지 방법을 고려할 수 있다. 1) 브라우져에서 크롭하여 다양한 이미지 크기를 생성한 뒤 서버에 보내는 방법. 2) 원본 이미지만 서버로 보내고 서버에서 리사이징을 처리하는 방법이 있다. 전자의 경우 후자에 비에 데이터 전송량이 많아지면서 프로토콜 응답이 느려질 수 있는 성능 상의 이슈가 있다. 본 글에서는 서버로 이미지 데이터를 전송하고,  다음 글에서  이미지 리사이징 처리를 할수 있는 후자의 방법에 대해 알아보자.
+
+# 이미지 업로드
+
+웹에서 파일 업로드는 두 가지 방식이 있다.
+<ol>
+	<li>applecation/x-www-urlencoded</li>
+	<li>multipart/form-data</li>
+</ol>
+전자의 경우 인코딩으로 인한 성능 이슈가 발생할수 있으니 후자의 방법으로 전송하는 것이 좋다고 한다.(<a href="http://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data">참고</a>)
+
+# 설치
+
+익스프레스 모듈을 설치하고 필요한 노드 모듈을 설치한다.
+
+`express`
+
+`npm install`
+
+# 업로드 API
+
+이미지 업로드를 위한 프로토콜을 만들어 보자. `POST /images` 프로토콜을 이용해 이미지를 만들 것이다. 파라메터는 `file`로 하여 이미지 파일을 업로드 한다. 프로토콜 라우팅을 아래와 같이 구현한다.
+<pre class="lang:js decode:true " title="routes/images.js">var express = require('express');
+var router = express.Router();
+
+/* Create new image */
+router.post('/', function(req, res, next) {
+  res.send('test');
+});
+
+module.exports = router;
+</pre>
+# multer 설치
+
+이미지 등 바이너리 파일 전송을 위해 익스프레스에서는 <a href="https://github.com/expressjs/multer">multer</a>라는 모듈을 제공한다. Multer는 위에서 설명한 웹 파일 전송방식 중 multipart/form-data 방식을 지원해 주는 익스프레스 미들웨어다. 모듈을 설치하고 프로젝트에 추가하자.
+
+`npm install multer --save`
+
+# 업로드 구현
+
+가이드 문서에 보면 간단하게 multer를 해당 라우팅에 삽입하여 사용할 수 있다. 여기서는 몇가지 조건을 추가하자. 1) 파일명 파라매터를 추가해서 업로드 경로를 설정할수 있도록 한다. 2) 업로드 결과 파일명과 확장자를 리턴받는다.
+
+1) 구현을 위해서는 파일 데이터 뿐만 아니라 서버에 저장될 파일 이름도 클라이언트로 부터 받아야 한다. `filename`이라는 파라매터를 추가하자.
+<pre class="lang:js decode:true " title="routes/images.js">router.post('/:filename', function(req, res, next) {
+  // ...
+});</pre>
+다음으로 multer 모듈을 래핑한 `upload()` 함수를 구현하자.
+<pre class="lang:js decode:true" title="routes/images.js">var upload = function (req, res) {
+  var deferred = Q.defer();
+  var storage = multer.diskStorage({
+    // 서버에 저장할 폴더 
+    destination: function (req, file, cb) {
+      cb(null, imagePath);
+    },
+
+    // 서버에 저장할 파일 명
+    filename: function (req, file, cb) {
+      file.uploadedFile = {
+        name: req.params.filename,
+        ext: file.mimetype.split('/')[1]
+      };
+      cb(null, file.uploadedFile.name + '.' + file.uploadedFile.ext);
+    }
+  });
+
+  var upload = multer({ storage: storage }).single('file');
+  upload(req, res, function (err) {
+    if (err) deferred.reject();
+    else deferred.resolve(req.file.uploadedFile);
+  });
+  return deferred.promise;
+};</pre>
+라우팅 본문에서 위 업로드 함수를 호출하여 성공하면 파일명과 확장자를 포함한 `file`객체를 응답한다. 실패시 500 에러와 메세지를 보낸다.
+<pre class="lang:js decode:true" title="routes/images.js">/* Create new image */
+router.post('/:filename', function(req, res, next) {
+  upload(req, res).then(function (file) {
+    res.json(file);
+  }, function (err) {
+    res.send(500, err);
+  });
+});</pre>
+# 테스트
+
+포스트맨으로 테스트한 결과다. `POST /images/badge1`프로토콜을 호출하고 저장 경로는 badge1으로 한다. form-data 에 file 필드에 선택한 파일(배지1.png)을 로등하여 호출한다. 그 결과 `{name: "badge1", ext: "png"}` 객체를 응답받을 수 있다.
+
+<a href="http://whatilearn.com/wp-content/uploads/2015/07/스크린샷-2015-07-27-오후-4.54.18.png"><img class="  wp-image-501 aligncenter" src="http://whatilearn.com/wp-content/uploads/2015/07/스크린샷-2015-07-27-오후-4.54.18.png" alt="스크린샷 2015-07-27 오후 4.54.18" width="636" height="488" /></a>
+
+<img class=" size-full wp-image-502 aligncenter" src="http://whatilearn.com/wp-content/uploads/2015/07/스크린샷-2015-07-27-오후-4.54.34.png" alt="스크린샷 2015-07-27 오후 4.54.34" width="303" height="276" />
+
+다음 글에서는 업로드한 이미지를 서버에서 다양한 크기로 리사이징하는 모듈을 소개한다.
+
+&nbsp;

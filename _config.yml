@@ -18,7 +18,5 @@ description: '#web #backend #angularjs #nodejs #fullstack'
 # Build settings
 markdown: kramdown
 kramdown:
-  input: GFM # Enable GitHub Flavored Markdown (fenced code blocks)
-#highlighter: rouge
-
-
+ input: GFM
+ hard_wrap: false
