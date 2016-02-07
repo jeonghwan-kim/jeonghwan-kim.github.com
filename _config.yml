@@ -10,13 +10,12 @@ name: What I Learn
 title: What I Learn
 email: ej88ej@gmail.com
 description: '#web #backend #angularjs #nodejs #fullstack'
-#url: http://whatilearn.com/
-#baseurl: "" # the subpath of your site, e.g. /blog
-#twitter_username: jekyllrb
-#github_username:  jeonghwan-kim
+url: http://whatilearn.com/
+twitter_username: JeonghwanKim4
+github_username:  jeonghwan-kim
 
 # Build settings
 markdown: kramdown
 kramdown:
- input: GFM
- hard_wrap: false
+  input: GFM
+  hard_wrap: false
