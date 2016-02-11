@@ -24,7 +24,7 @@ layout: post
 Disqus 설치는 매우 간단하다. 구글 애널리스틱처럼 대쉬보드에서 코드만 복사해서 붙여넣으면 
 된다. 
 
-![disqus admin](imgs/disqus-admin.png)
+![disqus admin]({{ site.url }}assets/imgs/2016/disqus-admin.png)
 
 "Universal Code"를 선택해서 코드를 복사하고 `_includes/comments.html` 파일을 만들어 이 코드를 붙여 넣는다.
 
