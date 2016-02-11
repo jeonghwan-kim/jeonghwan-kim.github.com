@@ -123,33 +123,4 @@ gems:
 [jekyll 페이지](http://jekyllrb.com/docs/pagination/)에 나온 샘플코드는 좀 이상하다. 
 1번 링크가 제대로 만들어지지 않았다. 이 부분만 수정한 코드다. 
 
-```html
-<!-- Pagination Links -->
-  {% if paginator.total_pages > 1 %}
-    <div class="pagination">
-      {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
-      {% else %}
-        <span>&laquo; Prev</span>
-      {% endif %}
-
-      {% for page in (1..paginator.total_pages) %}
-        {% if page == paginator.page %}
-          <em>{{ page }}</em>
-
-        <!-- 1번 링크는 루트 링크로 설정 -->
-        {% elsif page == 1 %} 
-          <a href="/">{{ page }}</a>
-        {% else %}
-          <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-        {% endif %}
-      {% endfor %}
-
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
-      {% else %}
-        <span>Next &raquo;</span>
-      {% endif %}
-    </div>
-  {% endif %}
-```
+<script src="https://gist.github.com/jeonghwan-kim/113be09ca20860d67b8c.js"></script>
