@@ -113,17 +113,9 @@ gems:
 
 ### paginated list 출력 
 
-모든 페이지를 출력하는 for 루프에 사용하는 `site` 변수 대신 
+모든 페이지를 출력하는 for 루프에 사용하는 `site` 변수 대신 `paginator` 변수를 사용하여 페이지네이션된 리스트를 출력한다. 
 
-```html
-{% for post in site.posts %}
-```
-
-`paginator` 변수를 사용하여 페이지네이션된 리스트를 출력한다
- 
-```html
-{% for post in paginator.posts %}
-```
+`site.posts` ->  `paginator.posts`
 
 
 ### pagination links 출력 
