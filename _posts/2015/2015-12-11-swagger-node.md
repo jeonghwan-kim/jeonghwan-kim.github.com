@@ -68,7 +68,7 @@ $ swagger project edit
 
 명령어를 실행하면 브라우져가 열리고 swagger-edit 툴을 사용할 수 있다. 이를 이용하여 초기 API를 디자인할 수 있다.
 
-<img src="http://whatilearn.com/wp-content/uploads/2015/12/____________-2015-12-11-______-11-08-27-1024x653.png" alt="스크린샷-2015-12-11-오전-11.08.27-1024x653" width="640" height="408" class="alignnone size-full wp-image-1033" />
+<img src="http://whatilearn.com/wp-content/uploads/2015/12/swagger-2015-12-11-11-08-27-1024x653.png" alt="스크린샷-2015-12-11-오전-11.08.27-1024x653" width="640" height="408" class="alignnone size-full wp-image-1033" />
 
 스웨거 문서를 모두 만들었으면 /api/controllers 폴더에서 API 로직을 구현한다. 스웨거 문서와 컨트롤러는 다음과 같이 연결된다. 
 
