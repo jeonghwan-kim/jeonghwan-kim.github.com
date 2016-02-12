@@ -121,7 +121,7 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
 
 브라우져로 /docs 경로에 접근하면 swagger-ui를 확인할 수 있다.
 
-<img src="http://whatilearn.com/wp-content/uploads/2015/12/____________-2015-12-11-______-11-19-23-1024x653.png" alt="스크린샷-2015-12-11-오전-11.19.23-1024x653" width="640" height="408" class="alignnone size-full wp-image-1034" />
+<img src="http://whatilearn.com/wp-content/uploads/2015/12/swagger-2015-12-11-11-19-23-1024x653.png" alt="스크린샷-2015-12-11-오전-11.19.23-1024x653" width="640" height="408" class="alignnone size-full wp-image-1034" />
 
 ## api_key 설정
 
@@ -164,7 +164,7 @@ security:
 
 api_key 없이 호출한 경우 에러를 응답한다.
 
-<img src="http://whatilearn.com/wp-content/uploads/2015/12/____________-2015-12-11-______-11-32-05-1024x191.png" alt="스크린샷-2015-12-11-오전-11.32.05-1024x191" width="640" height="119" class="alignnone size-full wp-image-1035" />
+<img src="http://whatilearn.com/wp-content/uploads/2015/12/swagger-2015-12-11-11-32-05-1024x191.png" alt="스크린샷-2015-12-11-오전-11.32.05-1024x191" width="640" height="119" class="alignnone size-full wp-image-1035" />
 
 ## Dynamic host
 
