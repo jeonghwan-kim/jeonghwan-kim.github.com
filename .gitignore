@@ -1,4 +1,9 @@
+.idea
+node_modules
+bower_components
+dist
+publish
+.DS_Store
 _site
-.sass-cache
-.jekyll-metadata
-Gemfile*
+Gemfile
+Gemfile.lock
