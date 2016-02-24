@@ -11,8 +11,6 @@ dsq_thread_id:
 categories:
   - Sequelize
 tags:
-  - migration
-  - seed
   - sequelize
 ---
 API 서버를 만들다 보면 테스트가 필요하다. 코드단에서 유닛테스트 따위를 말하는게 아니다. 

@@ -6,3 +6,41 @@
 
 - slug: elastic-beanstalk
   name: elastic-beanstalk
+
+- slug: boot2docker
+  name: boot2docker
+
+- slug: docker
+  name: docker
+
+- slug: mocha
+  name: mocha
+
+- slug: nodejs
+  name: nodejs
+
+- slug: unit-test
+  name: unit-test
+
+- slug: wordpress
+  name: wordpress
+
+- slug: sequelize
+  name: sequelize
+
+- slug: lodash
+  name: lodash
+
+- slug: morgan
+  name: morgan
+
+- slug: logging
+  name: logging
+
+- slug: express
+  name: express
+
+- slug: jekyll
+  name: jekyll
+
+
