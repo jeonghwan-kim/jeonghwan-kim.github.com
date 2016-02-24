@@ -72,4 +72,7 @@ gems:
 [jekyll 페이지](http://jekyllrb.com/docs/pagination/)에 나온 샘플코드는 좀 이상하다. 
 1번 링크가 제대로 만들어지지 않았다. 이 부분만 수정한 코드다. 
 
+[Gist 링크](https://gist.github.com/jeonghwan-kim/113be09ca20860d67b8c.js)
+
 <script src="https://gist.github.com/jeonghwan-kim/113be09ca20860d67b8c.js"></script>
+
