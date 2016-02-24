@@ -1,0 +1,8 @@
+- slug: npm
+  name: npm
+
+- slug: aws
+  name: aws
+
+- slug: elastic-beanstalk
+  name: elastic-beanstalk

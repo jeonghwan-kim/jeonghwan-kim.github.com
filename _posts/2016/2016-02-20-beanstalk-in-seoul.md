@@ -3,7 +3,7 @@ title: '서울에서 Elastic Beanstalk 사용하기'
 layout: post
 tags:
  - aws
- - elastic beanstalk
+ - elastic-beanstalk
 ---
 
 AWS 한국 리젼이 추가되면서 빈스톡도 서울에 설치해봤다. 프로젝트를 새로 만들고 깃 커밋을 작성한 뒤에 
