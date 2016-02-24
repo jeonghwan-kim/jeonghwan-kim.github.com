@@ -9,7 +9,7 @@ permalink: /resource%ec%99%80-service/
 categories:
   - Angular.js
 tags:
-  - $resource
+  - ngResource
   - angularjs
   - javascript
 ---

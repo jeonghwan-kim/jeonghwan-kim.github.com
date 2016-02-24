@@ -9,9 +9,8 @@ permalink: /javascript-decorator-pattern/
 categories:
   - Javascript
 tags:
-  - coffee
-  - decorator
-  - decorator_pattern
+  - coffeescript
+  - decorator-pattern
   - ghost
 ---
 Ghost 소스를 보면서 데코레이터 패턴을 처음 보았다. 이전 포스트에 보면 http() 메쏘드 주석에 이것은 데코레이터 패턴이라고 되어있다.

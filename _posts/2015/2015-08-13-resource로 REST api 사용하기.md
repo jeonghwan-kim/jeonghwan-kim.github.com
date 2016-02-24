@@ -11,9 +11,9 @@ AGLBIsDisabled:
 categories:
   - Angular.js
 tags:
-  - $resource
-  - angular
-  - rest api
+  - ngResource
+  - angularjs
+  - rest-api
 ---
 # REST API와 $resource
 

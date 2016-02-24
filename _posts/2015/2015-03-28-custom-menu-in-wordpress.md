@@ -9,7 +9,6 @@ permalink: /custom-menu-in-wordpress/
 categories:
   - Wordpress
 tags:
-  - custom menu
   - wordpress
 ---
 워드프레스는 여러개의 메뉴를 배치할 수 있다. 테마에서 제공해주는 것은 보통 상단과 우측 혹은 좌측에 메뉴를 둘수 있다. 우리는 블로그 하단에 메뉴를 추가해 보자.

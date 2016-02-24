@@ -10,7 +10,7 @@ categories:
   - Hapi.js
   - Node.js
 tags:
-  - hapi
+  - hapijs
   - javascript
   - nodejs
 ---
