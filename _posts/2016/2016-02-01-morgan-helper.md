@@ -9,7 +9,7 @@ permalink: /morgan-helper/
 categories:
   - Express.js
 tags:
-  - express
+  - expressjs
   - logging
   - morgan
 ---

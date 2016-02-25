@@ -37,9 +37,6 @@
 - slug: logging
   name: logging
 
-- slug: express
-  name: express
-
 - slug: jekyll
   name: jekyll
 
