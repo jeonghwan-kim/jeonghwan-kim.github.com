@@ -8,3 +8,4 @@ _site
 Gemfile
 Gemfile.lock
 .jekyll-metadata
+.sass-cache
