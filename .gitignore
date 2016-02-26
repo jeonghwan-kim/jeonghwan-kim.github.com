@@ -7,3 +7,4 @@ publish
 _site
 Gemfile
 Gemfile.lock
+.jekyll-metadata
