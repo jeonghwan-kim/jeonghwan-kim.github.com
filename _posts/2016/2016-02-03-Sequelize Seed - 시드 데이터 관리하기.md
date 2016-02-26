@@ -8,10 +8,8 @@ guid: http://whatilearn.com/?p=972
 permalink: /sequelize-seed-%ec%8b%9c%eb%93%9c-%eb%8d%b0%ec%9d%b4%ed%84%b0-%ea%b4%80%eb%a6%ac%ed%95%98%ea%b8%b0/
 dsq_thread_id:
   - 4553996042
-categories:
-  - Sequelize
-tags:
-  - sequelize
+categories: Sequelize
+tags: sequelize
 ---
 API 서버를 만들다 보면 테스트가 필요하다. 코드단에서 유닛테스트 따위를 말하는게 아니다. 
 서버 개발자가 만든 코드를 개발 서버에 배포한뒤 모바일 개발자가 API 서버를 사용할 때를 말한다. 

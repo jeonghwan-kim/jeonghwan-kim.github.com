@@ -2,9 +2,8 @@
 title: '워드프레스에서 지킬로 블로그 이동'
 author: Chris
 layout: post
-tags: 
-  - wordpress 
-  - jekyll
+tags: [wordpress, jekyll]
+summary: '이번 설 연휴에 뭘해 볼까하다가 블로그를 옮기기로 작심했다. 워드프레서스에 지킬로 옮기고 싶었다.'
 ---
 
 이번 설 연휴에 뭘해 볼까하다가 블로그를 옮기기로 작심했다. 워드프레서스에 지킬([Jekyll](http://jekyllrb.com/))로 옮기고 싶었다. 

@@ -1,9 +1,8 @@
 ---
 title: '서울에서 Elastic Beanstalk 사용하기'
 layout: post
-tags:
- - aws
- - elastic-beanstalk
+tags: aws elastic-beanstalk
+summary: 'AWS 한국 리젼이 추가되면서 빈스톡도 서울에 설치해봤다. 프로젝트를 새로 만들고 깃 커밋을 작성한 뒤에 AWS 커맨드라인 명령어로 빈스톡을 초기화 했다.'
 ---
 
 AWS 한국 리젼이 추가되면서 빈스톡도 서울에 설치해봤다. 프로젝트를 새로 만들고 깃 커밋을 작성한 뒤에 

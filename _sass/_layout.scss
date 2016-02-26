@@ -181,6 +181,14 @@
 
     > li {
         margin-bottom: $spacing-unit;
+
+        h2.post-title {
+            margin-bottom: 5px;
+        }
+        .summary {
+            font-size: $small-font-size;
+            color: $grey-color;
+        }
     }
 }
 
