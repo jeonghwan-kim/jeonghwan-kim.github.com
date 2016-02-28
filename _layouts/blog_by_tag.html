@@ -7,7 +7,7 @@ title: Tags
   {% if site.tags[page.tag] %}
     <ul class="tags">
     {% for post in site.tags[page.tag] %}
-      <li class="tag"><a class="tag-link" href="{{ post.url }}/">{{ post.title }}</a></li>
+      <li class="tag"><a class="tag-link" href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
     </ul>
   {% else %}
