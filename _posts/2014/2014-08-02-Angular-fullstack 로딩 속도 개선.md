@@ -11,9 +11,6 @@ categories:
 tags:
   - angular-fullstack
   - angularjs
-  - gzip
-  - laze load
-  - pagging
 ---
 
 서비스 개발시 프론트앤드와 백앤드를 구분하여 작업한다.

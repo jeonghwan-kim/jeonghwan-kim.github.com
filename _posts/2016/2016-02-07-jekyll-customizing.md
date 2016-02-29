@@ -2,6 +2,8 @@
 title: 'Jekyll 커스터마이징 1 - 코멘트와 페이지네이션'
 author: Chris
 layout: post
+tags: jekyll
+summary: '지킬(Jekyll) 기본 템플릿에는 글목록과 글만 있다. 워드프레스로 작성한 블로그를 지킬로 가져오는데 이것만으로는 부족한 점이 많다. 각 글에는 댓글 시스템을 추가하고 글 목록은 페이지네이션으로 처리하자'
 ---
 
 지킬(Jekyll) 기본 템플릿에는 글목록과 글만 있다. 워드프레스로 작성한 블로그를 지킬로 가져오는데 이것만으로는
@@ -24,64 +26,11 @@ layout: post
 Disqus 설치는 매우 간단하다. 구글 애널리스틱처럼 대쉬보드에서 코드만 복사해서 붙여넣으면 
 된다. 
 
-![disqus admin]({{ site.url }}assets/imgs/2016/disqus-admin.png)
+![disqus admin](/assets/imgs/2016/disqus-admin.png)
 
 "Universal Code"를 선택해서 코드를 복사하고 `_includes/comments.html` 파일을 만들어 이 코드를 붙여 넣는다.
 
-```html
-<!-- _includes/comments.html -->
-
-<div id="disqus_thread"></div>
-<script>
-  /**
-   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-   */
-  /*
-   var disqus_config = function () {
-   this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-   this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-   };
-   */
-  (function() {  // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-
-    s.src = '//your-service-name.disqus.com/embed.js';
-
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-```
-
 그리고 커멘트를 보여줄 `_layouts/post.html` 파일에 comments.html을 불러온다. 
-
-```html
----
-layout: default
----
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta"><time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%b %-d, %Y" }}</time>{% if page.author %} • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>{% endif %}</p>
-  </header>
-
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
-
-  <!-- Disqus를 로딩한다 -->
-  <div class="post-comments disqus">
-    {% include comments.html %}
-  </div>
-
-</article>
- 
-```
-
 
 
 ## 페이지네이션 
@@ -123,4 +72,7 @@ gems:
 [jekyll 페이지](http://jekyllrb.com/docs/pagination/)에 나온 샘플코드는 좀 이상하다. 
 1번 링크가 제대로 만들어지지 않았다. 이 부분만 수정한 코드다. 
 
+[Gist 링크](https://gist.github.com/jeonghwan-kim/113be09ca20860d67b8c.js)
+
 <script src="https://gist.github.com/jeonghwan-kim/113be09ca20860d67b8c.js"></script>
+

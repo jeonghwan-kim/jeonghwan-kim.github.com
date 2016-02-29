@@ -4,26 +4,13 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
-
   <!-- Paginated Posts -->
   <ul class="post-list">
     {% for post in paginator.posts %}
-      <li>
-        <h2 class="post-link post-title">
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-        <span class="post-meta">
-          <time>{{ post.date | date: "%b %-d, %Y" }}</time>
-          <ul class="tags">
-            {% for tag in post.tags %}
-            <li class="tag"><a class="tag-link" href="/tags/{{ tag | slugify }}">{{ tag }}</a></li>
-            {% endfor %}
-          </ul>
-        </span>
-      </li>
+      <li>{% include post-list.html %}</li>
     {% endfor %}
   </ul>
+
 
   <!-- Pagination Links -->
   {% if paginator.total_pages > 1 %}
@@ -37,9 +24,11 @@ layout: default
       {% for page in (1..paginator.total_pages) %}
         {% if page == paginator.page %}
           <em>{{ page }}</em>
+
+        <!-- 1번 링크는 루트 링크로 설정 -->
         {% elsif page == 1 %}
           <a href="/">{{ page }}</a>
-      {% else %}
+        {% else %}
           <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
         {% endif %}
       {% endfor %}
@@ -52,6 +41,7 @@ layout: default
     </div>
   {% endif %}
 
+  <!-- rss -->
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
 </div>

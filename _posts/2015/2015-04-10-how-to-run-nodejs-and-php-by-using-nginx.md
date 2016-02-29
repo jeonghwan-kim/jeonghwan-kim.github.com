@@ -11,8 +11,7 @@ categories:
 tags:
   - apache2
   - nginx
-  - reverse proxy
-  - virtual host
+  - reverse-proxy
 ---
 기존에는 아파치 가상호스트 설정을 이용해 한 서버에서 여러개의 php 어플리케이션을 구동하였다. 그러나 Nodjs 어플리케이션을 함께 구동한다면 어떻게 해야할까? 우선 기존의 가상호스트 환경을 살펴보자.
 

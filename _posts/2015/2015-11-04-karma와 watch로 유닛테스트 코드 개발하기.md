@@ -11,8 +11,7 @@ categories:
 tags:
   - grunt
   - karma
-  - unit test
-  - watch
+  - unit-test
 ---
 [Karma](https://github.com/karma-runner/karma)는 프로론트엔드 유닛테스를 위한 라이브러리다. Grunt와 함께 사용하는 방법에 대해 살펴보자.
 

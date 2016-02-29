@@ -9,7 +9,7 @@ permalink: /docker-usage/
 categories:
   - Docker
 tags:
-  - Docker
+  - docker
   - forever
 ---
 도커를 활용한 예제입니다.

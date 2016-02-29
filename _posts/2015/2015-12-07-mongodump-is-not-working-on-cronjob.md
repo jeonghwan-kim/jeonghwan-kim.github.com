@@ -9,9 +9,9 @@ permalink: /mongodump-is-not-working-on-cronjob/
 categories:
   - Linux
 tags:
-  - crontab
-  - Docker
-  - mongodump
+  - cron
+  - docker
+  - mongodb
 ---
 서비스 중인 몽고디비 백업을 위해 크론잡에 등록해 놓았다. `mongodump`로 덤프 뜨고 압축해서 S3로 매일 한번씩 백업하는 스크립트다. 스크립트 파일을 꼼꼼히 작성하고 커맨트창에서 실행해 보니 잘 동작한다. 약 1기가 되는 파일이 생성되었고 수 분내에 S3에 업로드 되는 것도 확인했다. 
 

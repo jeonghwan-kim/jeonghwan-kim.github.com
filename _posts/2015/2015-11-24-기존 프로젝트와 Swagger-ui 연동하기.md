@@ -10,8 +10,6 @@ categories:
   - Swagger
 tags:
   - swagger
-  - swagger-spec
-  - swagger-ui
 ---
 모바일 API를 개발하면서 클라이언트 개발자와 협업하기 위해 API 문서를 작성한다. 보통은 깃헙 위키를 사용하는데 쉽게 편집하고 공개할수 있는게 장점이 다. 한 때는 [APIDOC](http://apidocjs.com/)을 사용하기도 했다. 코드에 주석으로 문서를 작성하면 html 파일로 문서를 생성한다. 이를 서버에 올려 호스팅하는 방식으로 사용했다. 모바일 개발자 입장에서는 문서를 보면서 포스트맨(Postman)으로 API를 테스트했다.
 

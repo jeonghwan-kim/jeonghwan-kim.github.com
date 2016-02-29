@@ -11,8 +11,7 @@ AGLBIsDisabled:
 categories:
   - Express.js
 tags:
-  - google
-  - google api
+  - google-api
   - passport
   - passport-google-oauth
 ---

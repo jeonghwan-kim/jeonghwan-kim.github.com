@@ -11,8 +11,8 @@ AGLBIsDisabled:
 categories:
   - Docker
 tags:
-  - Docker
-  - Git
+  - docker
+  - git
 ---
 도커랑 깃이랑 연동해서 사용해 보자. 그전에 빈스톡에서 개발한 경험을 되새겨 보자.
 
