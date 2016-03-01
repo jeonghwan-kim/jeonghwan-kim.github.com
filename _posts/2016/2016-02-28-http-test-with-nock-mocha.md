@@ -1,7 +1,11 @@
 ---
 title: 'Nock, Mocha로 HTTP 테스트하기'
 layout: post
-tags: nock, mocha, nodejs
+tags: 
+  - nock 
+  - mocha 
+  - nodejs
+  - unit-test
 summary: '서비스 내에서 처리하는 로직은 테스트 하기가 쉽다. 모든 환경을 내가 제어할 수 있기 때문이다. 그러나 만약 외부 API 사용하는 경우에는 어떨까?' 
 ---
 

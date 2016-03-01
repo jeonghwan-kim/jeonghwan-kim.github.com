@@ -331,3 +331,5 @@
 - slug: redis
   name: redis
 
+- slug: nock
+  name: nock
