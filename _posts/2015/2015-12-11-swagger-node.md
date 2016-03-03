@@ -9,11 +9,8 @@ permalink: /swagger-node/
 categories:
   - Swagger
 tags:
-  - express
+  - expressjs
   - swagger
-  - swagger-edit
-  - swagger-node
-  - swagger-ui
 ---
 스웨거 개념을 잡느라 상당한 시간을 소요하고 있다. 이전 포스트에서는 기존프로젝트에 스웨거를 적용하는 방법에 대해 정리하였다. 이번에는 노드 익스프레스(Express.js)로 프로젝트를 시작할때 스웨거 툴을 이용해서 개발하는 방법에 대해 알아보겠다. 
 
@@ -68,7 +65,7 @@ $ swagger project edit
 
 명령어를 실행하면 브라우져가 열리고 swagger-edit 툴을 사용할 수 있다. 이를 이용하여 초기 API를 디자인할 수 있다.
 
-<img src="http://whatilearn.com/wp-content/uploads/2015/12/____________-2015-12-11-______-11-08-27-1024x653.png" alt="스크린샷-2015-12-11-오전-11.08.27-1024x653" width="640" height="408" class="alignnone size-full wp-image-1033" />
+<img src="http://whatilearn.com/wp-content/uploads/2015/12/swagger-2015-12-11-11-08-27-1024x653.png" alt="스크린샷-2015-12-11-오전-11.08.27-1024x653" width="640" height="408" class="alignnone size-full wp-image-1033" />
 
 스웨거 문서를 모두 만들었으면 /api/controllers 폴더에서 API 로직을 구현한다. 스웨거 문서와 컨트롤러는 다음과 같이 연결된다. 
 
@@ -121,7 +118,7 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
 
 브라우져로 /docs 경로에 접근하면 swagger-ui를 확인할 수 있다.
 
-<img src="http://whatilearn.com/wp-content/uploads/2015/12/____________-2015-12-11-______-11-19-23-1024x653.png" alt="스크린샷-2015-12-11-오전-11.19.23-1024x653" width="640" height="408" class="alignnone size-full wp-image-1034" />
+<img src="http://whatilearn.com/wp-content/uploads/2015/12/swagger-2015-12-11-11-19-23-1024x653.png" alt="스크린샷-2015-12-11-오전-11.19.23-1024x653" width="640" height="408" class="alignnone size-full wp-image-1034" />
 
 ## api_key 설정
 
@@ -164,7 +161,7 @@ security:
 
 api_key 없이 호출한 경우 에러를 응답한다.
 
-<img src="http://whatilearn.com/wp-content/uploads/2015/12/____________-2015-12-11-______-11-32-05-1024x191.png" alt="스크린샷-2015-12-11-오전-11.32.05-1024x191" width="640" height="119" class="alignnone size-full wp-image-1035" />
+<img src="http://whatilearn.com/wp-content/uploads/2015/12/swagger-2015-12-11-11-32-05-1024x191.png" alt="스크린샷-2015-12-11-오전-11.32.05-1024x191" width="640" height="119" class="alignnone size-full wp-image-1035" />
 
 ## Dynamic host
 

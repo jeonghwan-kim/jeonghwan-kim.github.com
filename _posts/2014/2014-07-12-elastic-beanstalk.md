@@ -9,7 +9,7 @@ permalink: /elastic-beanstalk/
 categories:
   - AmazonWebService
 tags:
-  - elastic beanstalk
+  - elastic-beanstalk
   - nodejs
   - npm
 ---

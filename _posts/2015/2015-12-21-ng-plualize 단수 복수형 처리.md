@@ -9,10 +9,8 @@ permalink: /ng-plualize-%eb%8b%a8%ec%88%98-%eb%b3%b5%ec%88%98%ed%98%95-%ec%b2%98
 categories:
   - Angular.js
 tags:
-  - angular
-  - angular-directive
+  - angularjs
   - gist
-  - ng-plualize
   - ngPlualize
 ---
 제목 정하기가 쉽지 않다. 영어에는 단수, 복수에 대한 문법이 확연하게 드러난다. "an apple"과 "two apples". 그러나 한국어로는 사과가 몇개이든 그냥 뒤에 사과를 붙인다. 사과 2개라고 하지 사과들 2개라고 하지 않는다.

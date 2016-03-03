@@ -10,8 +10,6 @@ categories:
   - Atom
 tags:
   - atom
-  - atom-plugin
-  - atom-sync
 ---
 가끔은 리모트 서버에 접속해서 PHP 코드를 수정해야 하는 경우가 있다. 간단한 경우야 리눅스 서버에 설치된 VIM 에디터로 작업할수 있지만 파일간 이동이 잦거나하면 솔직히 답답하다. EditPlus, Coda 처럼 Atom에도 리모트 서버에 접속하여 코드를 수정할 수 있는 플러그인이 있다.
 

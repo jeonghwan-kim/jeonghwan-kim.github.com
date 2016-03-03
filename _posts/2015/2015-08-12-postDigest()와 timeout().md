@@ -11,9 +11,7 @@ AGLBIsDisabled:
 categories:
   - Angular.js
 tags:
-  - $$postDigest
-  - angular
-  - timeout
+  - angularjs
 ---
 # 배경
 

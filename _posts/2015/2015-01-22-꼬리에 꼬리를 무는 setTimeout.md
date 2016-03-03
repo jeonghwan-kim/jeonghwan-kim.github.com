@@ -10,7 +10,6 @@ categories:
   - Javascript
 tags:
   - javascript
-  - setTimeout()
 ---
 자바스크립트에서 타이머 설정은  <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers.setTimeout">setTimeout()</a>과 <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers.setInterval">setInterval()</a> 두 가지 함수로 구현할 수 있다. 전자는 시간 경과후 동작하게 하는 것이고 후자는 동일 시간마다 동작을 반복하는 것이다.
 

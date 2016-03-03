@@ -9,7 +9,7 @@ permalink: /how-to-build-wordpress-child-theme/
 categories:
   - Wordpress
 tags:
-  - child theme
+  - wordpress
 ---
 워드프레스에는 무료로 제공하는 멋진 테마들이 많다. 이러한 테마를 그대로 가져다 사용하면서 몇가지 수정하고 싶은 경우에는 자식 테마(Child Theme)를 만들어 사용하면 간편하다. 기존 테마의 기능과 디자인을 모두 가져오면서 추가 기능과 디자인 변경만 코드 수정하면 되기 때문이다. 마치 OOP의 상속과 비슷한 개념이라 보면 될 것 같다.
 

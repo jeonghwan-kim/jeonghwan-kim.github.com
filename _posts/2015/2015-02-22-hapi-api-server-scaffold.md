@@ -13,9 +13,8 @@ categories:
   - Node.js
 tags:
   - dao
-  - hapi
+  - hapijs
   - node-mysql
-  - scaffold
 ---
 Hapi 프레임웍을 이용해 Api 서버를 구현할 때 필요한 최소한의 기능은 이렇다.
 

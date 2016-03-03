@@ -9,9 +9,8 @@ permalink: /javascript-decorator-pattern/
 categories:
   - Javascript
 tags:
-  - coffee
-  - decorator
-  - decorator_pattern
+  - coffeescript
+  - decorator-pattern
   - ghost
 ---
 Ghost 소스를 보면서 데코레이터 패턴을 처음 보았다. 이전 포스트에 보면 http() 메쏘드 주석에 이것은 데코레이터 패턴이라고 되어있다.
@@ -29,7 +28,7 @@ Ghost 소스를 보면서 데코레이터 패턴을 처음 보았다. 이전 포
 
 데코레이터에 앞서 자바스크립트로 클래스 사용하여 상속하는 패턴을 먼저 보자. 자바스크립트에서는 모든게 함수이듯이 클래스도 함수로 표현할 수 있다.
 
-```
+```javascript
 function Espresso() {
   this.cost = 2500;
 }
@@ -37,7 +36,7 @@ function Espresso() {
 
 대부분의 커피는 에스프레소부터 시작하니깐, Espresso 클래스를 슈퍼 클래스로 만들자. 속성은 간단히 가격(cost)만 가지고 있다. 이제 이를 부모클래스로 갖는 서브 클래스를 만들어 아메리카노(Americano)와 카페라떼(CafeLatte)를 만들어 보자.
 
-```
+```javascript
 function Americano() {
   Espresso.call(this);
   this.cost = (new Espresso()).cost + 500;
@@ -53,7 +52,7 @@ function CafeLatte() {
 
 아메리카노는 에스프레소에 생수 250ml를 넣고 500원 추가해서 판매한다. 카페라떼는 여기에 우유 100ml를 추가하여 500원 더 추가된 가격으로 판매한다. 각 인스턴스를 확인해 보면 알 수 있다.
 
-```
+```javascript
 console.log(new Espresso());
 // { cost: 2500 }
 console.log(new Americano());
@@ -71,7 +70,7 @@ console.log(new CafeLatte());
 
 이렇게 상황에 따라 어떠한 특성 혹은 행동을 덧붙이는 패턴을 데코레이터 패턴이라고 한다. Espresso 클래스에 데코레이터 패턴을 이용해서 커피를 만들어 보자.
 
-```
+```javascript
 function Water (espresso) {
   espresso.cost = espresso.cost + 500;
   espresso.water = 250;
@@ -81,7 +80,7 @@ function Water (espresso) {
 
 에스프레소에 물을 추가하는 Water() 함수다. 에스프레소 인스턴스를 파라매터로 넘겨받아 가격을 500원 추가한다. 그리고 물을 250ml 붙는다. 마지막에는 에스프레소 객체를 넘겨주는데 이것은 함수 체이닝 때문이다. 우유를 첨가하는 Milk() 함수도 만들어 보자.
 
-```
+```javascript
 function Milk (espresso) {
   espresso.cost = espresso.cost + 500;
   espresso.milk = 100;
@@ -91,7 +90,7 @@ function Milk (espresso) {
 
 역시 에스프레소 인스턴스를 받아 500원 추가하고 우유 100ml를 넣는다. 역시 함수 체이닝을 위해 받은 인스턴스를 돌려준다. 재료는 모두 준비 되었다. 커피를 제조해 보자.
 
-```
+```javascript
 var espresso = new Espresso();
 // { cost: 2500 }
 var americano = Water(new Espresso());
@@ -102,7 +101,7 @@ var cafeLatte = Milk(Water(new Espresso()));
 
 위에서 클래스 상속으로 만들었던 에스프레소, 아메리카노, 카페라떼를 만들었다. 에스프레소에 우유를 탄 Antoccino도 만들수 있다.
 
-```
+```javascript
 var antoccino = Milk(new Espresso());
 // { cost: 3000, milk: 100 }
 ```
@@ -114,7 +113,7 @@ var antoccino = Milk(new Espresso());
 
 <a href="http://whatilearn.com/ghost-%eb%9d%bc%ec%9a%b0%ed%8c%85-%eb%a1%9c%ec%a7%81-%eb%b6%84%ec%84%9d/">이전 포스트</a>에서 잠깐 언급한 고스트(Ghost) 코드를 다시 살펴 보자. 라우트 핸들러 코드를 보면 http() 함수로 감싸고 있다. 이것이 데코레이터 패턴이라고 하는데 어떻게 그런가 확인해 보자. 코드의 주석을 참고하라.
 
-```
+```javascript
 // 파라매터로 받은 apiMethod 함수를 받는다.
 http = function http(apiMethod) {
 

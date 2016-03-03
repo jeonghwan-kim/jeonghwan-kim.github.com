@@ -10,18 +10,21 @@ name: What I Learn
 title: What I Learn
 email: ej88ej@gmail.com
 description: '#web #backend #angularjs #nodejs #fullstack'
-url: http://whatilearn.com/
+url: http://whatilearn.com
 twitter_username: JeonghwanKim4
 github_username:  jeonghwan-kim
 
-# Build settings
+# Handling Reading
+#exclude: ['node_modules', '_posts/2014', '_posts/2015'] # Remove comment at local eevelopment mode
 markdown: kramdown
 kramdown:
   input: GFM
   hard_wrap: false
 
+# Plugins
 gems:
   - jekyll-paginate
 
+# Pagination
 paginate: 10
 

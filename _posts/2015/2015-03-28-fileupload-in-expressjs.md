@@ -9,7 +9,7 @@ permalink: /fileupload-in-expressjs/
 categories:
   - Express.js
 tags:
-  - elastic beanstalk
+  - elastic-beanstalk
   - expressjs
   - nginx
   - nodejs

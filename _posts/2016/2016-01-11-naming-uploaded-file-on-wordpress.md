@@ -9,7 +9,6 @@ permalink: /naming-uploaded-file-on-wordpress/
 categories:
   - Wordpress
 tags:
-  - image-upload
   - wordpress
 ---
 이번해 블로그 방향은 사진을 함께 첨부하는 것이다. Feedly 같은 곳에 썸네일과 함게 RSS 피드 목록이 보이니 그럴듯해 보인다. 그런데... 가끔 이미지 링크가 깨지는 것을 발견했다. 크롬, 파이폭스, 그리고 오페라 브라우져에서도 잘 보이는 이미지 파일이 유독 사파리 브라우저에서만 보이지 않는다. 

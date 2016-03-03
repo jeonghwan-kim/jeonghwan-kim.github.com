@@ -9,7 +9,7 @@ permalink: /forever-and-docker/
 categories:
   - Docker
 tags:
-  - Docker
+  - docker
   - forever
 ---
 포에버(Forever)는 노드를 구동해주는 모듈이다.
