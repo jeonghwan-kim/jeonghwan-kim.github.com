@@ -56,7 +56,7 @@ sequelize seed:create
 
 이 파일 구조를 살펴보자. 많이 보던 구조다. up, down 함수로 구성된 것이 마이그레이션 파일과 똑같은 형식이다. Users 테이블에 데이터를 추가해 보자.
 
-```
+```javascript
 module.exports = {
   up: function (queryInterface, Sequelize) {
 
@@ -100,7 +100,7 @@ Finished 'db:seed' after 71 ms
 마이그레이션을 실행했을 때와 비슷한 결과를 보여준다. 데이터베이스 테이블에는 `SequelizeData` 테이블이 생성되고 방금 실행한 seed 파일명이 기록된다. 입력을 취소할 때는 `db:seed:undo`나 `db:seed:undo:all` 명령어를 사용한다.
 
 
-# 좀 더 생각할 점
+## 좀 더 생각할 점
 
 자 이제 서버 코드에서 직접 샘플 데이터 입력해야하는, 서버 본연의 기능과는 좀 거리가 있는 코드를 제거할 수 있게 되었다. Sequelize-cli의 seed 명령으로 데이터를 관리할 수 있기 때문이다. 그러나 디비 마이그레이션과 관련해서 생각해 볼 필요가 있다.
 
