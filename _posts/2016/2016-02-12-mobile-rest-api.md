@@ -1,7 +1,7 @@
 ---
 title: 'Mobile REST API 개발에 대한 생각'
-author: Chris
 layout: post
+summary: '...'
 ---
 
 참고
