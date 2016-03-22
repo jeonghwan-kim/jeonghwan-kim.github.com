@@ -1,3 +1,9 @@
+- slug: promise
+  name: promise
+
+- slug: error
+  name: error
+
 - slug: npm
   name: npm
 
