@@ -84,7 +84,7 @@ $resource 서비스에 자원의 URI 문자열을 파라매터로 넘겨주면 �
 서버 자원이 저장될 things 스코프 변수를 사용한다. ng-repeat으로 루프를 돌면서 객체 정보를 보여줄 것이다. 그리고 각 정보에 삭제, 변경 버튼을 위치한다. 하단에는 새로운 thing을 추가하기 위한 폼을 만들었다.<a href="http://whatilearn.com/wp-content/uploads/2015/08/스크린샷-2015-08-14-오전-10.10.31.png">
 </a>
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/08/스크린샷-2015-08-14-오전-10.13.01.png"><img class=" size-full wp-image-634 aligncenter" src="http://whatilearn.com/wp-content/uploads/2015/08/스크린샷-2015-08-14-오전-10.13.01.png" alt="스크린샷 2015-08-14 오전 10.13.01" width="616" height="589" /></a>
+![](/assets/imgs/2015/ngResource1.png)
 
 Thing 서비스를 이용해 백엔드 자원을 가져올 컨트롤러를 보자.
 <pre class="lang:default decode:true ">'use strict';
@@ -122,6 +122,6 @@ angular.module('resourceAndRestApiApp')
 
 뷰 하단의 폼 필드를 채워넣고 추가 버튼을 클릭하면 컨트롤러의$scope.create() 함수가 동작한다. 예상대로 POST /api/things 가 호출될 것이다. new Thing({name: $scope.name})으로 생성자 함수를 사용하는 것 처럼 코드를 작성한다. 그리고 객체의 $save() 함수로 실제 프로토콜을 호출하여 서버로 요청한다.
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/08/스크린샷-2015-08-14-오전-10.13.21.png"><img class=" size-full wp-image-635 aligncenter" src="http://whatilearn.com/wp-content/uploads/2015/08/스크린샷-2015-08-14-오전-10.13.21.png" alt="스크린샷 2015-08-14 오전 10.13.21" width="616" height="487" /></a>
+![](/assets/imgs/2015/ngResource2.png)
 
 샘플코드: <a href="https://github.com/jeonghwan-kim/resource-and-rest-api">https://github.com/jeonghwan-kim/resource-and-rest-api</a>

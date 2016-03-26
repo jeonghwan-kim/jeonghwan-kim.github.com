@@ -116,19 +116,15 @@ exports.setup = setup;
 </pre>
 인증페이지인 <code>/login</code>에 접속하면 사용자는 로그인 링크를 클릭한다.
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/07/스크린샷-2015-07-23-오후-9.31.02.png"><img class="alignnone wp-image-469 " src="http://whatilearn.com/wp-content/uploads/2015/07/스크린샷-2015-07-23-오후-9.31.02.png" alt="스크린샷 2015-07-23 오후 9.31.02" width="482" height="280" /></a>
-
-&nbsp;
+![login](/assets/imgs/2015/login2.png)
 
 그럼 <code>/auth/google</code>로 이동하여 <code>passport.authenticate()</code>함수를 실행하는데 이때 구글 인증 페이지로 이동한다.
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/07/스크린샷-2015-07-23-오후-9.32.46.png"><img class="alignnone  wp-image-470" src="http://whatilearn.com/wp-content/uploads/2015/07/스크린샷-2015-07-23-오후-9.32.46.png" alt="스크린샷 2015-07-23 오후 9.32.46" width="481" height="315" /></a>
+![google auth](/assets/imgs/2015/google-auth.png)
 
 사용자가 승인 하게되면 구글 웹콘솔에서 등록한 콜백URL인 <code>/auth/google/callback</code>으로 리다이렉팅 한다. 패스포트 모듈을 이를 확인하여 인증정보를 <code>req.user</code>에 객체형태로 저장한다. 그리고 <code>/</code>리다이렉트 한다.
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/07/스크린샷-2015-07-23-오후-9.33.25.png"><img class="alignnone  wp-image-471" src="http://whatilearn.com/wp-content/uploads/2015/07/스크린샷-2015-07-23-오후-9.33.25.png" alt="스크린샷 2015-07-23 오후 9.33.25" width="491" height="321" /></a>
-
-&nbsp;
+![](/assets/imgs/2015/login3.png)
 
 /account에는 인증된 사용자만 접근하도록 설정해보자. <code>/auth/index.js</code> 모듈을 호출해서 라우팅 중간에 미들웨어로 끼어 넣으면 된다.
 <pre class="lang:js decode:true " title="routes/index.js">var auth = require('../auth'); 
@@ -142,7 +138,7 @@ router.get('/account', auth.ensureAuthenticated, function(req, res, next) {
 });</pre>
 이렇게 설정하면 인증된 요청만 <code>/account</code> 페이지에 접근할수 있게된다.
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/07/스크린샷-2015-07-23-오후-9.39.50.png"><img class="alignnone  wp-image-473" src="http://whatilearn.com/wp-content/uploads/2015/07/스크린샷-2015-07-23-오후-9.39.50.png" alt="스크린샷 2015-07-23 오후 9.39.50" width="509" height="341" /></a>
+![](/assets/imgs/2015/login4.png)
 
 <code>ensureAuthenicated()</code> 를 구현해 보자.
 <pre class="lang:js decode:true " title="auth/index.js">var ensureAuthenticated = function (req, res, next) {

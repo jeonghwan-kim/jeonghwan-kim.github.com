@@ -13,7 +13,7 @@ tags:
 ---
 글 순서가 반대로 되었다. 이왕 Sequelize ORM에 대해 정리할 것이라면 개발 순서에 따라 모델링부터 작성했으면 보기 좋았을 것 같다. 이번 글은 Sequelize로 테이블을 정의하는 방법(모델링)에 대해 알아보자
 
-<img src="http://whatilearn.com/wp-content/uploads/2016/01/sequelize-logo-2016-01-26-1024x412.png" alt="sequelize-logo-2016-01-26" width="640" height="258" class="alignnone size-large wp-image-1082" />.
+![](/assets/imgs/2016/sequelize-model-1.png)
 
 
 # Definition

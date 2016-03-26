@@ -27,7 +27,7 @@ add_action( 'after_setup_theme', 'twentyfifteen_child_setup' );
 
 관리자 페이지에 접속하면 Bottom Menu 라는 새로운 메뉴 위치가 추가 되었다.
 
-<img class="alignnone wp-image-320 size-large" src="http://whatilearn.com/wp-content/uploads/2015/03/스크린샷-2015-03-28-오후-3.17.411-1024x471.png" alt="스크린샷 2015-03-28 오후 3.17.41" width="640" height="294" />
+![wordpress menu](/assets/imgs/2015/wordpress-menu.png)
 
 이젠 블로그 화면에 Bottom Menu를 직접 출력해 보자. 이름처럼 footer.php에 출력하는게 좋겠다.
 <pre class="lang:php decode:true" title="footer.php">/* 생략 */

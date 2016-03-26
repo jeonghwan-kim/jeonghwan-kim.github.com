@@ -15,7 +15,7 @@ tags:
 ---
 기존에는 아파치 가상호스트 설정을 이용해 한 서버에서 여러개의 php 어플리케이션을 구동하였다. 그러나 Nodjs 어플리케이션을 함께 구동한다면 어떻게 해야할까? 우선 기존의 가상호스트 환경을 살펴보자.
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/04/스크린샷-2015-04-10-오전-9.37.53.png"><img class="alignnone size-large wp-image-351" src="http://whatilearn.com/wp-content/uploads/2015/04/스크린샷-2015-04-10-오전-9.37.53-1024x243.png" alt="스크린샷 2015-04-10 오전 9.37.53" width="640" height="152" /></a>
+![](/assets/imgs/2015/virtualhost.png)
 
 PHP와 아파치가 연동되어 있고 가상 호스트마다 사이트 경로를 설정하였다. <span style="line-height: 1.5;">그러나 노드 어플리케이션은 단독으로 서버를 구성하기 때문에 특정 폴더를 지정하는 방식과는 맞지 않다. 내부의 특정 포트만 설정하는 형식이다. </span>
 
@@ -25,7 +25,7 @@ nginx 설정을 보니 아래와 같은 문구가 눈에 띈다.
 
 노드 어플리케이션을 이런식으로 돌리면 되겠다는 생각이든다. 그럼 nginx를 이용해 가상호스트 설정하는 것으로 변경하자.
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/04/스크린샷-2015-04-10-오전-9.38.16.png"><img class="alignnone size-large wp-image-353" src="http://whatilearn.com/wp-content/uploads/2015/04/스크린샷-2015-04-10-오전-9.38.16-1024x657.png" alt="스크린샷 2015-04-10 오전 9.38.16" width="640" height="411" /></a>
+![](/assets/imgs/2015/virtualhost2.png)
 
 우선 웹서버 역할을 하게될 엔진엑스를 설치하자.
 

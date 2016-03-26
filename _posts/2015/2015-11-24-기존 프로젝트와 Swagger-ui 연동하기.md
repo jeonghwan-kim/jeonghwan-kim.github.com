@@ -37,7 +37,7 @@ app.use('/swagger-ui', express.static(path.join(__dirname, './node_modules/swagg
 
 웹 브라우져를 열고 http://localhost:3000/swagger-ui에 접속해보자.
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/11/스크린샷-2015-11-24-오후-7.49.29.png"><img class="alignnone size-large wp-image-875" src="http://whatilearn.com/wp-content/uploads/2015/11/스크린샷-2015-11-24-오후-7.49.29-1024x670.png" alt="스크린샷 2015-11-24 오후 7.49.29" width="640" height="419" /></a>
+![](/assets/imgs/2015/swagger-ui1.png)
 
 아직 swagger-spec 문서를 만들지 않았지만 기본적으로 설정된 url를  ajax로 호출해서 보여준다. 상단 인풋 텍스트 필드 값을 확인하면 아래와 같은 json 데이터를 볼 수 있다.
 
@@ -69,7 +69,7 @@ app.use('/v1/swagger.json', function(req, res) {
 
 `/v1/swagger.json`으로 접속하면 Swaager 데이터를 Json으로 응답한다. 이제 `http://localhost:3000/swagger-ui?url=/v1/swaager.json/`으로 접속해 보자. 우리가 정의한 데이터가 Swagger-ui에서 보일 것이다.
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/11/스크린샷-2015-11-24-오후-8.08.01.png"><img class="alignnone size-large wp-image-876" src="http://whatilearn.com/wp-content/uploads/2015/11/스크린샷-2015-11-24-오후-8.08.01-1024x670.png" alt="스크린샷 2015-11-24 오후 8.08.01" width="640" height="419" /></a>
+![](/assets/imgs/2015/swagger-ui2.png)
 
 마지막으로 리다이렉션를 설정하여 `http://localhost:3000/swagger`로 접속하도록 하자.
 

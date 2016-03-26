@@ -30,7 +30,7 @@ tags:
 <h1>Materialize</h1>
 이제 스타일시트와 자바스크립트로 이것을 구현만 하면 웹 개발이 엄청 재미있을 것 같습니다. 그러나 역시 벌써 <a href="http://materializecss.com/">Matrialize</a>라는 이름으로 프로젝트를 시작하고 있습니다. 약 2,000개 커밋, 별 10,000개, 1,000회 이상 의 포크 수를 보면 드는 생각. '난 이런걸 왜 이제서야 찾은거지?'
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/06/materialize.jpg"><img class="alignnone size-full wp-image-389" src="http://whatilearn.com/wp-content/uploads/2015/06/materialize.jpg" alt="materialize" width="777" height="459" /></a>
+![materialize](/assets/imgs/2015/materialize.jpg)
 
 개발중인 이 프로젝트는 사이트를 둘러보는 것 만으로도 무척 재밌습니다. 색상, 폰트, 애니메이션등 가이드라인에서 제시한 수준으로 구현되어 있습니다. 트위터 부트스트랩도 훌륭하지만, 좀 더 새로운 환경헤서 개발하고 싶다면 바꿔도 좋을 것 같습니다. 사용법도 비슷합니다. 장점이라고 생각하는 것은 색상 선택방법입니다. 컬러 클래스를 설정하고 이를 기준으로 옅은 색은 `.lighten-n`, 어두운 색은 `.darken-n`, 강조색은 `.accent-n`으로 설정할수 있습니다. 부트스트랩에서 css만 사용할때 아쉬운 점이죠.
 

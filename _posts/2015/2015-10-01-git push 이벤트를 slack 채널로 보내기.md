@@ -16,15 +16,15 @@ tags:
 
 슬랙 그룹 페이지 좌측 상단에 Menu를 클릭. Integrations 페이지로 이동한다. All Services 에서 incoming webhooks 를 검색하여 페이지로 이동한다. 
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/10/스크린샷-2015-10-01-오후-7.46.33.png"><img src="http://whatilearn.com/wp-content/uploads/2015/10/스크린샷-2015-10-01-오후-7.46.33-1024x543.png" alt="스크린샷 2015-10-01 오후 7.46.33" width="640" height="339" class="alignnone size-large wp-image-781" /></a>
+![](/assets/imgs/2015/git-slack1.png)
 
 메세지를 보내려는 채널을 선택하고 Add Incomking WebHooks Integration 버튼을 클릭한다. 
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/10/스크린샷-2015-10-01-오후-7.47.18.png"><img src="http://whatilearn.com/wp-content/uploads/2015/10/스크린샷-2015-10-01-오후-7.47.18-1024x543.png" alt="스크린샷 2015-10-01 오후 7.47.18" width="640" height="339" class="alignnone size-large wp-image-783" /></a>
+![](/assets/imgs/2015/git-slack3.png)
 
 그러면 해당 채널과 연결된 Incoming Webhooks 페이지로 이동한다.
 
-<a href="http://whatilearn.com/wp-content/uploads/2015/10/스크린샷-2015-10-01-오후-7.43.39.png"><img src="http://whatilearn.com/wp-content/uploads/2015/10/스크린샷-2015-10-01-오후-7.43.39-1024x810.png" alt="스크린샷 2015-10-01 오후 7.43.39" width="640" height="506" class="alignnone size-large wp-image-779" /></a>
+![](/assets/imgs/2015/git-slack2.png)
 
 인커밍 웹훅은 curl를 이용해 특정 url를 호출하는 방식이다. git 후커를 사용할 것이므로 깃 후커에 curl을 호출하는 스크립트를 작성하면 보낼 수 있다.
 

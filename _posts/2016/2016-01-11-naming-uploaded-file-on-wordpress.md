@@ -17,16 +17,26 @@ tags:
 
 워드프레스 훅을 이용해서 업로드할 파일명을 안전하게 변경하면 해결할수 있을 것 같다. 파일명에 알파벳, 숫자, 그리고 몇 가지 특수 기호를 제외한 문자가 들어오면 `_`로 치환하는 로직을 추가한다. `functions.php` 에 다음 코드를 추가해 보자.
 
-<script src="https://gist.github.com/jeonghwan-kim/d05212a80d300a21b481.js"></script>
+```php
+<?php
+function sanitize_filename_on_upload($filename) {
+	$ext = end(explode('.', $filename));
+	// Replace all weird characters
+	$sanitized = preg_replace('/[^a-zA-Z0-9-_.]/', '_', substr($filename, 0, -(strlen($ext)+1)));
+	// Replace dots inside filename
+	$sanitized = str_replace('.', '-', $sanitized);
+	return strtolower($sanitized . '.' . $ext);
+}
+add_filter('sanitize_file_name', 'sanitize_filename_on_upload', 10);
+?>
+```
 
 이제 `캡처001.png`를 업로드 해보자.
 
-<img src="http://whatilearn.com/wp-content/uploads/2016/01/_______________001.png" alt="캡쳐001" width="589" height="587" class="alignnone size-full wp-image-1042" />
+![](/assets/imgs/2016/naming-uploaded-file-on-wordpress-1.png)
 
 이미지 파일명이 `_______________001.png`로 변경되었다. 
 
 슬랙(Slack)에 첨부한 이미지도 이와 같은 형식으로 파일명으로 변경되는데 같은 이유일 것 같다.
 
-<img src="http://whatilearn.com/wp-content/uploads/2016/01/______________________________-2016-01-11-____________-9-01-27-1024x384.png" alt="스크린샷 2016-01-11 오후 9.01.27" width="640" height="240" class="alignnone size-large wp-image-1044" />
-
-
+![](/assets/imgs/2016/naming-uploaded-file-on-wordpress-2.png)
