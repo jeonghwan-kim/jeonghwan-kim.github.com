@@ -4,7 +4,8 @@ layout: post
 tags: ['dev-in-shanghai']
 ---
 
-버스를 타고 출근했다. 
+버스로 출근. 
+
 沪青平公路， 航东路， 航中路， 吴中路， 紫藤路
 
 버스안 풍경.
@@ -21,8 +22,10 @@ tags: ['dev-in-shanghai']
 
 엘지폰은 수입이나 하는지 모르겠다.
 
+---
 
 [이전글](/2016/02/12/dev-in-shanghai-002.html)
+
 [다음글](/2016/02/14/dev-in-shanghai-004.html)
 
 
