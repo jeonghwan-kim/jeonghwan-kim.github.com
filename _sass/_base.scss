@@ -100,7 +100,6 @@ a {
 
     &:hover {
         color: $text-color;
-        text-decoration: underline;
     }
 }
 
@@ -129,7 +128,7 @@ blockquote {
  */
 pre,
 code {
-    font-size: 15px;
+    //font-size: 15px;
     border: 1px solid $grey-color-light;
     border-radius: 3px;
     background-color: #eee;
@@ -203,4 +202,12 @@ pre {
             fill: $grey-color;
         }
     }
+}
+
+/**
+ * Bold
+ */
+
+bold, strong {
+    font-weight: 200;
 }

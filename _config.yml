@@ -6,11 +6,11 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-name: What I Learn
-title: What I Learn
-email: ej88ej@gmail.com
+name: blog.jeonghwan.net
+title: 김정환 블로그
 description: '#web #backend #angularjs #nodejs #fullstack'
-url: http://whatilearn.com
+url: http://blog.jeonghwan.net
+email: ej88ej@gmail.com
 twitter_username: JeonghwanKim4
 github_username:  jeonghwan-kim
 
