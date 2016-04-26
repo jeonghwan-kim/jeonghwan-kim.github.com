@@ -3,14 +3,17 @@
   <div class="wrapper">
 
       <ul>
+        {% if site.github_username %}
+          <li>Github: <a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a></li>
+        {% endif %}
+        {% if site.facebook_username %}
+        <li>Facebook: <a href="https://facebook.com/{{ site.facebook_username  }}">{{ site.facebook_username  }}</a></li>
+        {% endif %}
         {% if site.email%}
           <li>Email: <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
         {% endif %}
-        {% if site.github_username %}
-          <li>{% include icon-github.html username=site.github_username %}</li>
-        {% endif %}
         {% if site.twitter_username %}
-          <li>{% include icon-twitter.html username=site.twitter_username %}</li>
+          <li>Twitter: <a href="https://twitter.com/{{ site.twitter_username }}">{{ site.twitter_username }}</a></li>
         {% endif %}
       </ul>
 
