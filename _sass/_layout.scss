@@ -2,7 +2,6 @@
  * Site header
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
     border-bottom: 1px solid $grey-color-light;
     min-height: 56px;
 
@@ -11,8 +10,8 @@
 }
 
 .site-title {
-    font-size: 26px;
-    font-weight: 300;
+    font-size: 28px;
+    font-weight: 100;
     line-height: 56px;
     letter-spacing: -1px;
     margin-bottom: 0;
@@ -100,6 +99,7 @@
 .site-footer {
     border-top: 1px solid $grey-color-light;
     padding: $spacing-unit 0;
+    background-color: $grey-color-light;
 }
 
 .footer-heading {
@@ -199,7 +199,6 @@
 
 .post-link {
     display: block;
-    font-size: 32px;
 }
 
 
@@ -212,37 +211,28 @@
 }
 
 .post-title {
-    font-size: 42px;
+    font-size: 150%;
+    font-weight: $bold-font-weight;
     letter-spacing: -1px;
     line-height: 1;
-
-    @include media-query($on-laptop) {
-        font-size: 36px;
-    }
 }
 
 .post-content {
     margin-bottom: $spacing-unit;
 
-    h2 {
-        @include media-query($on-laptop) {
-            font-size: 28px;
-        }
-    }
+    h2, h3, h4 {  font-weight: $bold-font-weight;  }
+    h2 {  font-size: 130%;  }
+    h3 {  font-size: 120%;  }
+    h4 {  font-size: 110%;  }
+}
 
-    h3 {
-        @include media-query($on-laptop) {
-            font-size: 22px;
-        }
-    }
+/**
+ * Pagination
+ */
 
-    h4 {
-        @include media-query($on-laptop) {
-            font-size: 18px;
-        }
-    }
-
-    blockquote, code {
-        font-size: 90%;
-    }
+.pagination {
+  //a {
+  //  display: inline-block;
+  //  margin: 5px 10px;
+  //}
 }
