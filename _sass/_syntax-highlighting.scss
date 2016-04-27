@@ -7,7 +7,7 @@
 
     .highlighter-rouge & {
       background: #eee;
-      font-size: 18px;
+      font-size: $code-font-size;
     }
 
     .c     { color: #998; font-style: italic } // Comment
