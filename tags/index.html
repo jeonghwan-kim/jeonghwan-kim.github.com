@@ -14,7 +14,7 @@ permalink: /tags/
   {% if post.tags contains t %}
   <li>
     <a href="{{ post.url }}">{{ post.title }}</a>
-    <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+    <span class="post-meta">{{ post.date | date: "%Y년 %m월 %d일" }}</span>
   </li>
   {% endif %}
   {% endfor %}

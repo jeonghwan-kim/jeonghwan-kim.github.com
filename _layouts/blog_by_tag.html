@@ -7,7 +7,10 @@ title: Tags
   {% if site.tags[page.tag] %}
     <ul class="tags">
     {% for post in site.tags[page.tag] %}
-      <li class="tag"><a class="tag-link" href="{{ post.url }}">{{ post.title }}</a></li>
+      <li class="tag">
+        <a class="tag-link" href="{{ post.url }}">{{ post.title }}</a>
+        <span class="post-meta">{{ post.date | date: "%Y년 %m월 %d일" }}</span>
+      </li>
     {% endfor %}
     </ul>
   {% else %}
