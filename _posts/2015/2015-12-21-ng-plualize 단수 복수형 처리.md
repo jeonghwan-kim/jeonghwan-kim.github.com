@@ -17,6 +17,11 @@ tags:
 
 [ng-plualize](https://docs.angularjs.org/api/ng/directive/ngPluralize)는 영어 문법에서 드러나는 단수, 복수 문자 표현을 위한 앵귤러 디렉티브다. 하나의 변수에 대해 그 변수가 0이거나 값이 없을 때, 1일 때, 그 이상일 때에 따라 문자열을 다르게 표현할 수 있다. 
 
-<script src="https://gist.github.com/jeonghwan-kim/96cb75b6b11183a96ec7.js"></script> 
-
+```html
+<ng-pluralize 
+  count="remainingCount" 
+  when="{ 0: 'No item', one: 'a item', other: '{} items' }">
+</ng-pluralize>
+```
+ 
 `count` 속성에 연결된 `remainingCount`의 값에 따라 문자열은 다르게 출력되는데 그것은 `when` 속성에서 객체로 정의한다. `other`에 설정된 `{}`는 `remainingCount`의 값을 출력함으로서 remaingCount=5일 경우 "5 itmes"로 출력된다.
