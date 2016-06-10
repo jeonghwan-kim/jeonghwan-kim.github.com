@@ -25,7 +25,7 @@ tags: [aws, lambda, s3, nodejs]
 
 람다에서 지원하는 랭기지는 자바, 파이썬, 그리고 노드.
 며칠전부터는 노드 v4.3도 지원하기 시작했다.
-즉 ES6(ECMAScript 6)로 코드 작성이 가능하다는 얘기다.
+즉 ES6(ECMAScript 2015)로 코드 작성이 가능하다는 얘기다.
 
 AWS 콘솔의 람다 서비스 페이지에서 시작하자.
 "Create a Lambda function"를 클릭하면 블루프린트(blueprint) 선택화면으로 넘어간다.
