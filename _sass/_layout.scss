@@ -39,6 +39,11 @@
     &:not(:last-child) {
       margin-right: 20px;
     }
+
+    &:hover,
+    &:focus, {
+      border-bottom: solid 1px $text-color;
+    }
   }
 
   @include media-query($on-palm) {
@@ -172,6 +177,7 @@
 /**
  * Page content
  */
+
 .page-content {
   padding: $spacing-unit 0;
 }
@@ -185,14 +191,50 @@
   list-style: none;
 
   > li {
-    margin-bottom: $spacing-unit;
+    $post-list-featured-image-width: 100px;
+    $post-list-featured-image-height: $post-list-featured-image-width;
+    $post-list-item-height: $post-list-featured-image-height + $spacing-unit;
 
-    h2.post-title {
-      margin-bottom: 5px;
+    margin-bottom: $spacing-unit;
+    border-bottom: 1px solid $grey-color-light;
+
+    height: $post-list-item-height;
+
+    .post-feature-image {
+      float: right;
+      width: 100px;
+      max-height: $post-list-featured-image-width;
+      overflow-y: hidden;
     }
-    .summary {
+    .post-text {
+      overflow-x: hidden;
+    }
+    .post-title {
+      margin-bottom: 5px;
+
+      a.post-link {
+        display: inline-block;
+        color: $text-color;
+        font-weight: $light-font-weight;
+
+        &:visited {
+          color: $text-color;
+        }
+
+        &:focus,
+        &:hover {
+          border-bottom: solid 1px $text-color;
+          margin-bottom: -1px;
+        }
+      }
+    }
+    .post-summary {
       font-size: $small-font-size;
       color: $grey-color;
+      margin-bottom: 0px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
@@ -200,15 +242,14 @@
 .post-meta {
   font-size: $small-font-size;
   color: $grey-color;
-}
-
-.post-link {
   display: block;
 }
+
 
 /**
  * Posts
  */
+
 .post-header {
   margin-bottom: $spacing-unit;
 }
@@ -235,15 +276,4 @@
   h4 {
     font-size: 110%;
   }
-}
-
-/**
- * Pagination
- */
-
-.pagination {
-  //a {
-  //  display: inline-block;
-  //  margin: 5px 10px;
-  //}
 }

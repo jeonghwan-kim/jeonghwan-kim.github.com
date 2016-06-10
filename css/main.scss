@@ -7,18 +7,23 @@
 
 // Our variables
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 $base-font-size:   18px;
-$base-font-weight: 200;
-$bold-font-weight: 600;
-$small-font-size:  $base-font-size * 0.875;
-$code-font-size:  14px;
-$base-line-height: 1.5;
+$small-font-size:  14px;
+$code-font-size:   14px;
+
+$light-font-weight: 100;
+$base-font-weight:  200;
+$bold-font-weight:  600;
+
+$base-line-height:  1.5;
 $code-line-height:  1.1;
+
 $spacing-unit:     30px;
+
 $text-color:       #111;
 $background-color: rgb(251, 251, 251);
 $brand-color:      #2a7ae2;
-
 $grey-color:       #828282;
 $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark:  darken($grey-color, 25%);

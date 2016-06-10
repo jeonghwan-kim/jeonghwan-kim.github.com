@@ -11,6 +11,7 @@ categories:
 tags:
   - boot2docker
   - docker
+summary: 도커 업데이트
 ---
 Boot2docker를 OSX 환경에서 사용중이다. 도커 이미지를 빌드하기 위해 `docker build` 명령어를 실행해 보지만 이따금 재대로 실행되지 않은 경우가 있다. 실행하면 커맨드라인에 아무 결과도 출력되지 않는다. 수분이 지나서야 도커데몬으로 데이터를 보낸다는 메세지가 나오고 빌드가 완료된다. 사용하는 도커 버전은 boot2docker v1.8.3이다. [깃헙 릴리즈](https://github.com/boot2docker/boot2docker/releases)에 확인해 보니 v1.9.1 최신 버전이 출시되었다. 버전 이슈로 의심되어 업데이트 후 해결했다.
 

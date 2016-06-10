@@ -12,6 +12,7 @@ tags:
   - expressjs
   - logging
   - morgan
+summary: Express.JS에서 로깅 기능을 하는 morgan 사용법에 대해 알아본다.
 ---
 Morgan으로 로깅하는데 POST Body도 함께 나오도록 했다.
 

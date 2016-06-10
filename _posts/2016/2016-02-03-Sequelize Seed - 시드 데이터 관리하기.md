@@ -10,6 +10,7 @@ dsq_thread_id:
   - 4553996042
 categories: Sequelize
 tags: sequelize
+summary: 개발 초기에 Sequelize로 데이터에이스에 샘플 데이터를 넣는 방법 대해 알아본다.
 ---
 API 서버를 만들다 보면 테스트가 필요하다. 코드단에서 유닛테스트 따위를 말하는게 아니다. 
 서버 개발자가 만든 코드를 개발 서버에 배포한뒤 모바일 개발자가 API 서버를 사용할 때를 말한다. 
