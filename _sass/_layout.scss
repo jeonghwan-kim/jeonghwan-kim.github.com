@@ -95,9 +95,10 @@
  * Site footer
  */
 .site-footer {
-  border-top: 1px solid $grey-color-light;
+  border-top: 1px solid $grey-color-dark;
   padding: $spacing-unit 0;
-  background-color: $grey-color-light;
+  background-color: $grey-color-dark;
+  font-size: 14px;
 }
 
 .footer-heading {
@@ -105,10 +106,18 @@
   margin-bottom: $spacing-unit / 2;
 }
 
-.contact-list,
-.social-media-list {
+.site-footer-links {
   list-style: none;
   margin-left: 0;
+}
+
+.site-footer-link {
+  a {
+    color: white;
+  }
+  a:hover, a:focus {
+    border-bottom: solid 1px white;
+  }
 }
 
 .footer-col-wrapper {

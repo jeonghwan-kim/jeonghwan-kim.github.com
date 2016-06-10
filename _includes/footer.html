@@ -2,18 +2,29 @@
 
   <div class="wrapper">
 
-      <ul>
+      <ul class="site-footer-links list-inline">
+        <li class="site-footer-link">
+          <a href="{{ "/feed.xml" | prepend: site.baseurl }}">Rss</a>
+        </li>
         {% if site.github_username %}
-          <li>Github: <a href="https://github.com/{{ site.github_username }}">{{ site.github_username }}</a></li>
+          <li class="site-footer-link">
+            <a href="https://github.com/{{ site.github_username }}">Github</a>
+          </li>
         {% endif %}
         {% if site.facebook_username %}
-        <li>Facebook: <a href="https://facebook.com/{{ site.facebook_username  }}">{{ site.facebook_username  }}</a></li>
+          <li class="site-footer-link">
+            <a href="https://facebook.com/{{ site.facebook_username }}">Facebook</a>
+          </li>
         {% endif %}
         {% if site.email%}
-          <li>Email: <a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          <li class="site-footer-link">
+            <a href="mailto:{{ site.email }}">Email</a>
+          </li>
         {% endif %}
         {% if site.twitter_username %}
-          <li>Twitter: <a href="https://twitter.com/{{ site.twitter_username }}">{{ site.twitter_username }}</a></li>
+          <li class="site-footer-link">
+            <a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a>
+          </li>
         {% endif %}
       </ul>
 
