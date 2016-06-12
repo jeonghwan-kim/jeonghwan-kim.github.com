@@ -193,12 +193,10 @@
   > li {
     $post-list-featured-image-width: 90px;
     $post-list-featured-image-height: $post-list-featured-image-width;
-    $post-list-item-height: $post-list-featured-image-height + $spacing-unit;
 
-    margin-bottom: $spacing-unit;
+    padding-top: $spacing-unit;
+    padding-bottom: $spacing-unit;
     border-bottom: 1px solid $grey-color-light;
-
-    // height: $post-list-item-height;
 
     .post-feature-image {
       float: right;
@@ -235,6 +233,9 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+    .post-meta {
+      margin-bottom: 0;
     }
   }
 }
