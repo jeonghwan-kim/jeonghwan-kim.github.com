@@ -191,7 +191,7 @@
   list-style: none;
 
   > li {
-    $post-list-featured-image-width: 100px;
+    $post-list-featured-image-width: 90px;
     $post-list-featured-image-height: $post-list-featured-image-width;
     $post-list-item-height: $post-list-featured-image-height + $spacing-unit;
 
@@ -202,15 +202,15 @@
 
     .post-feature-image {
       float: right;
-      width: 100px;
+      width: $post-list-featured-image-width;
       max-height: $post-list-featured-image-width;
       overflow-y: hidden;
     }
     .post-text {
-      overflow-x: hidden;
     }
     .post-title {
       margin-bottom: 5px;
+      overflow-x: hidden;
 
       a.post-link {
         display: inline-block;

@@ -12,6 +12,7 @@ categories:
   - Sequelize
 tags:
   - sequelize
+featured_image: /assets/imgs/2016/sequelize-icon.png
 ---
 ORM을 써보기 시작했다. <a href="http://sequelize.readthedocs.org/en/latest/">Sequeilize</a>.
 
@@ -94,7 +95,7 @@ models.sequelize.query(query, {replacements: values})
       // 쿼리 실행 성공
 
     }, function (err) {
-      // 쿼리 실행 에러 
+      // 쿼리 실행 에러
 
     });</pre>
 직접 쿼리를 돌려야 할때는 `models.sequelize.query()` 함수를 사용한다. 쿼리문에 `:name`으로 설정한뒤 replacements에 해당 name 키가 있는 객체를 넘겨주면 쿼리의 `:name`을 replacements에 있는 값으로 치환하여 쿼리를 실행한다.
@@ -104,7 +105,7 @@ models.sequelize.query(query, {replacements: values})
     where: {id: req.user.id}
   }).spread(function (user, created) {
     if (created) {
-      // create 실행됨 
+      // create 실행됨
     }
 
     // user 객체

@@ -11,6 +11,7 @@ categories:
 tags:
   - sequelize
 summary: Sequelize로 모델링하는 방법
+featured_image: /assets/imgs/2016/sequelize-icon.png
 ---
 글 순서가 반대로 되었다. 이왕 Sequelize ORM에 대해 정리할 것이라면 개발 순서에 따라 모델링부터 작성했으면 보기 좋았을 것 같다. 이번 글은 Sequelize로 테이블을 정의하는 방법(모델링)에 대해 알아보자
 
@@ -24,7 +25,7 @@ summary: Sequelize로 모델링하는 방법
 ```javascript
 module.exports = function(sequelize, DataTypes) {
 
-  // define() 함수로 테이블을 정의한다 
+  // define() 함수로 테이블을 정의한다
   var User = sequelize.define('User', {
     name: DataTypes.String,
     birthday: type: DataTypes.DATEONLY,
@@ -48,12 +49,12 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       DataTypes.STRING
 
-      // 데이터 입력시 전처리 
+      // 데이터 입력시 전처리
       set: function (val) {
         this.setDataValue('password', require('crypto').createHash('md5').update(val).digest('hex'))
       },
 
-      // 데이터 조회시 후처리 
+      // 데이터 조회시 후처리
       get: function () {
         return null;
       },
@@ -64,19 +65,19 @@ module.exports = function(sequelize, DataTypes) {
 비밀번호를 받아 저장할 경우 Setter를 통해 암호화 하여 저장하고 비밀번호를 조회할 때는 Getter 함수에서 null을 반환하여 숨김처리를 할 수 있다.
 
 
-## Validator 
+## Validator
 
-REST API를 구현한다면 POST Body에 대한 검증시 Sequelize의 도움을 받을 수 있다. 이메일 주소를 입력받아 User 테이블에 넣는 상황을 생각해 보자. req.body.email로 요청값을 얻을 수 있다. RegExp 객체로 입력 문자열을 검증한 뒤 그 결과에 따라 작업을 진행할 수 있을 것이다. 
+REST API를 구현한다면 POST Body에 대한 검증시 Sequelize의 도움을 받을 수 있다. 이메일 주소를 입력받아 User 테이블에 넣는 상황을 생각해 보자. req.body.email로 요청값을 얻을 수 있다. RegExp 객체로 입력 문자열을 검증한 뒤 그 결과에 따라 작업을 진행할 수 있을 것이다.
 
 ```javascript
 function(req, res) {
 
-   // 이메일 문자열 체크. 아래 정규표현식은 테스트용 임. 
+   // 이메일 문자열 체크. 아래 정규표현식은 테스트용 임.
    if (!/^account@email.com$/.test(req.body.email)) {
      return res.status(400).json({warn: 'check the email pattern'});
    }
 
-   // 다음 작업: 데이터베이스 저장 
+   // 다음 작업: 데이터베이스 저장
    // ...
 }
 ```
@@ -89,7 +90,7 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       DataTypes.STRING
       validate: {
-        isEmail: true // 이메일 주소 형식을 검증한다 
+        isEmail: true // 이메일 주소 형식을 검증한다
       }
     }
 };
@@ -100,21 +101,21 @@ email 컬럼의 validate 키를 추가하고 `{isEmail: true}` 객체를 추가�
 ```javascript
 function(req, res) {
 
-   // 정의한 User 모델로 데이터를 추가한다 
+   // 정의한 User 모델로 데이터를 추가한다
    models.User.create({
      email: req.body.email
    }).then(function (result) {
 
-     // 입력에 성공함 
+     // 입력에 성공함
      res.status(201).json(result);
    }).catch(function (err) {
 
-     // 이메일 검증 실패인 경우 
+     // 이메일 검증 실패인 경우
      if (err.name === 'SequelizeValidationError') {
        return res.status(400).json({warn: 'check the email pattern'});
      }
 
-     // 그 외의 서버측 에러 경우 
+     // 그 외의 서버측 에러 경우
      res.status(500).json({error: err});
     });
 }
@@ -130,7 +131,7 @@ module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define('User', {
     birth: {
       type: DataTypes.DATEONLY,
-      unique: true // birth 컬럼값이 유일해야 한다 
+      unique: true // birth 컬럼값이 유일해야 한다
     }
   }
 };

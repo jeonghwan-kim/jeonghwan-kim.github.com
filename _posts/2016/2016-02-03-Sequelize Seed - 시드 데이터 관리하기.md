@@ -11,10 +11,11 @@ dsq_thread_id:
 categories: Sequelize
 tags: sequelize
 summary: 개발 초기에 Sequelize로 데이터에이스에 샘플 데이터를 넣는 방법 대해 알아본다.
+featured_image: /assets/imgs/2016/sequelize-icon.png
 ---
-API 서버를 만들다 보면 테스트가 필요하다. 코드단에서 유닛테스트 따위를 말하는게 아니다. 
-서버 개발자가 만든 코드를 개발 서버에 배포한뒤 모바일 개발자가 API 서버를 사용할 때를 말한다. 
-서버를 업데이트 할 때마다 데이터베이스가 텅텅 비어있기 때문에, (개발초기에 디비 스키마가 확정되지 않은 상태라면 매번 디비 스키마를 갱신한다) 뭔가 샘플 데이터를 입력해야만 모바일 개발자가 편하다. 
+API 서버를 만들다 보면 테스트가 필요하다. 코드단에서 유닛테스트 따위를 말하는게 아니다.
+서버 개발자가 만든 코드를 개발 서버에 배포한뒤 모바일 개발자가 API 서버를 사용할 때를 말한다.
+서버를 업데이트 할 때마다 데이터베이스가 텅텅 비어있기 때문에, (개발초기에 디비 스키마가 확정되지 않은 상태라면 매번 디비 스키마를 갱신한다) 뭔가 샘플 데이터를 입력해야만 모바일 개발자가 편하다.
 
 그 동안은 seed 모듈을 만들어서 서버 구동시에 데이터베이스 싱크가 종료된 직후 seed 데이터를 입력하도록 코딩했다. [Sequelize](https://github.com/sequelize/sequelize)에서 [seed 기능](https://github.com/sequelize/cli#seed)을 지원하는지 알기 전까지는...
 
@@ -73,7 +74,7 @@ module.exports = {
 
   down: function (queryInterface, Sequelize) {
 
-    // 추가했던 데이터를 삭제한다. 
+    // 추가했던 데이터를 삭제한다.
     return queryInterface.bulkDelete('Users', {
       email: {
         $in: ['user1@mail.net', 'user2@mail.net']
@@ -85,9 +86,9 @@ module.exports = {
 ```
 
 
-## 시더 실행 
+## 시더 실행
 
-`sequelize db:seed` 명령으로 시더를 입력한다. 
+`sequelize db:seed` 명령으로 시더를 입력한다.
 
 ```
 sequelize db:seed
@@ -124,5 +125,3 @@ Finished 'db:seed' after 71 ms
 1. 시드 실행.
 
 처음과 반대로 seed를 먼저 실행하면 바로 오류가 난다. Users 테이블의 nickname 컬럼이 아직 없기 때문이다.
-
-
