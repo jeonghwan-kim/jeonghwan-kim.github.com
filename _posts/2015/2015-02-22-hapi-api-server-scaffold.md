@@ -179,4 +179,6 @@ exports.remove = function (userId, callback) {
 
 전체코드: <a href="https://github.com/jeonghwan-kim/hapi_study/tree/10_add-dao">https://github.com/jeonghwan-kim/hapi_study/tree/10_add-dao</a>
 
-&nbsp;
+관련글:
+
+{% include lecture-hapi-startup-index.html %}

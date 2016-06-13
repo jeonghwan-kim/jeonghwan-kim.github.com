@@ -206,8 +206,7 @@ module.exports = function (server) {
 
 전체 코드: <a href="https://github.com/jeonghwan-kim/hapi_study/tree/05_routeHelper" target="_blank">https://github.com/jeonghwan-kim/hapi_study/tree/05_routeHelper</a>
 
-&nbsp;
 
-&nbsp;
+관련글:
 
-&nbsp;
+{% include lecture-hapi-startup-index.html %}
