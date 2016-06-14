@@ -4,6 +4,7 @@ layout: post
 tags:
   angularjs
 permalink: /lectures/todomvc-angular/8/
+date: 2016-06-13 08:00:00
 ---
 
 여기서 잠깐.

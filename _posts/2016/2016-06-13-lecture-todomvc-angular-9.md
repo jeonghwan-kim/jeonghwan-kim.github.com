@@ -4,6 +4,7 @@ layout: post
 tags:
   angularjs
 permalink: /lectures/todomvc-angular/9/
+date: 2016-06-13 09:00:00
 ---
 
 우리가 ngRepeat 디렉티브를 이용해 todos 배열 데이터를 출력해 봤다.

@@ -4,6 +4,7 @@ layout: post
 tags:
   angularjs
 permalink: /lectures/todomvc-angular/10/
+date: 2016-06-13 10:00:00
 ---
 
 거의 다왔다. 화면구성 마지막 단계다.
