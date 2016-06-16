@@ -5,6 +5,8 @@ tags:
   angularjs
 permalink: /lectures/todomvc-angular/13/
 date: 2016-06-16 01:50:00
+featured_image: /assets/imgs/2016/todomvc-logo.png
+summary: Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자
 ---
 
 이번엔는 서버와 통신하는 앵귤러 서비스 `todoStorage`를 수정할 차례다.

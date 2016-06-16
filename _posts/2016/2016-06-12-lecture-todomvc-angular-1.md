@@ -5,6 +5,8 @@ tags:
   angularjs
   nodejs
 permalink: /lectures/todomvc-angular/1/
+featured_image: /assets/imgs/2016/todomvc-logo.png
+summary: Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자
 ---
 
 지금부터 Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자.

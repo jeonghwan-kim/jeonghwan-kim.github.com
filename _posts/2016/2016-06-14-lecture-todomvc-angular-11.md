@@ -5,6 +5,8 @@ tags:
   expressjs
 permalink: /lectures/todomvc-angular/11/
 date: 2016-06-14 19:23:00
+featured_image: /assets/imgs/2016/todomvc-logo.png
+summary: Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자
 ---
 
 사실 우리 싸이트의 홈페이지로 접속하면 angular로 만들었던 index.html 페이지가 로딩되는 것이 자연스럽니다.

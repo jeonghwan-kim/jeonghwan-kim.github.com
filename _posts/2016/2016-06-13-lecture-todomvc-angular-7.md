@@ -5,6 +5,8 @@ tags:
   angularjs
 permalink: /lectures/todomvc-angular/7/
 date: 2016-06-13 09:00:00
+featured_image: /assets/imgs/2016/todomvc-logo.png
+summary: Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자
 ---
 
 우리가 ngRepeat 디렉티브를 이용해 todos 배열 데이터를 출력해 봤다.

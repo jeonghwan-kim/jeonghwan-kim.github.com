@@ -4,6 +4,8 @@ layout: post
 tags:
   angularjs
 permalink: /lectures/todomvc-angular/5/
+featured_image: /assets/imgs/2016/todomvc-logo.png
+summary: Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자
 ---
 
 이번에는 `ngSubmit` 디렉티브를 이용해 투두를 추가하는 방법에 대해 알아보자.

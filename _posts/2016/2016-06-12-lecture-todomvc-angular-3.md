@@ -4,6 +4,8 @@ layout: post
 tags:
   angularjs
 permalink: /lectures/todomvc-angular/3/
+featured_image: /assets/imgs/2016/todomvc-logo.png
+summary: Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자
 ---
 
 사실 앵귤러 로딩을 했다고 해서 우리의 코드가 그리고 웹문서에서 달라진 점은 거의 없다.
@@ -72,7 +74,7 @@ index.html:
 {% raw %}`{{ message }}`{% endraw %}는 루비에서도 사용되는 문법인데 인터폴레이션(interpolation) 이라고 부른다.
 템플릿 코드에서 스코프변수를 인터폴레이션 함으로서 컨트롤러 데이터를 출력할 수 있다.
 반대로 템플릿에 연결된 스코프변수는 사용자 입력에 따라 컨트롤러로 데이터를 보내줄 수도 있다.
-나중에 설명할테지만 `ngModel`을 이용해 그러한 기능을 구현할 것이다. 
+나중에 설명할테지만 `ngModel`을 이용해 그러한 기능을 구현할 것이다.
 
 우리는 여기까지 해서 템플릿과 컨트롤러에 대해 알아봤다.
 앵귤러에서 제공하는 다양한 기능중 템플릿, 컨트롤러만으로도 기본적인 동작을 하는 todo 앱을 만들수 있다.

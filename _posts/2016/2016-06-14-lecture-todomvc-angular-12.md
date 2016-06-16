@@ -5,6 +5,8 @@ tags:
   expressjs
 permalink: /lectures/todomvc-angular/12/
 date: 2016-06-14 19:43:00
+featured_image: /assets/imgs/2016/todomvc-logo.png
+summary: Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자
 ---
 
 이번엔 서버의 두 번째 기능 API를 만들어 보자.
