@@ -167,6 +167,13 @@ angular.module('todomvc')
 노드 위에 익스프레스 엔진을 얹고 우리가 만든 앵귤러 앱을 호스팅할 것이다.
 그리고 프론트에서 관리했던 데이터를 백엔드로 가져올 것이다.
 
+폴더 구조를 변경하자.
+client 폴더에 우리가 작성한 앵귤러 코드를 옮겨놓고,
+server 폴더에는 앞으로 작성할 노드 코드를 추가할 예정이다.
+
+![](/assets/imgs/2016/lecture-todomvc-angular-12-result1.png)
+
+
 
 관련글:
 
