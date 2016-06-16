@@ -1,72 +1,141 @@
 ---
-title: '앵귤러로 Todo앱 만들기 4 - 컨트롤러'
+title: '앵귤러로 Todo앱 만들기 4 - 투두 목록 출력하기'
 layout: post
 tags:
   angularjs
 permalink: /lectures/todomvc-angular/4/
 ---
 
-사실 앵귤러 로딩을 했다고 해서 우리의 코드가 그리고 웹문서에서 달라진 점은 거의 없다.
-자바스크립트 파일 두 개가 더 다운로드 될뿐이다.
-앵귤러를 사용하려면 ngController라고 하는 앵귤러 컨트롤러 함수를 사용해야 한다.
 
-참, 한가지 알아둘 것.
-앵귤러에서 ngController는 ng-controller와 동일하다.
-ngModel이 ng-model과 같은것도 그렇다.
+## 컨트롤러에 배열 데이터 만들기
 
+우선 데이터가 있다고 가정하자.
+우리 프로젝트에서 데이터는 투두 목록이다.
+하나의 두투는 아이디(id), 타이틀(title), 그리고 완료여부(completed)를 데이터로 가질 수 있고
+컨트롤러에서 아래와 같이 표현할 수 있다.
 
-## 컨트롤러 정의
-
-그럼 컨트롤러 함수를 만들어보자.
-js/controllers/TodomvcController에 파일을 하나 더 만들자.
+js/controllers/TodomvcCtrl.js:
 
 ```javascript
 angular.module('todomvc')
     .controller('TodomvcCtrl', function ($scope) {
-      $scope.message = 'Hello world!';
+
+      $scope.todos = [{
+        id: 1,
+        title: '요가 수행하기',
+        completed: false
+      }, {
+        id: 2,
+        title: '어머니 용돈 드리기',
+        completed: true
+      }];
+
     });
 ```
 
-컨트롤러는 앵귤러에서 제공하는 controller() 함수로 정의할 수 있다.
-위 코드는 "TodomvcCtrl" 컨트롤러를 생성한 것이다.
-그런데 코드 앞부분에 `angular.module('todomvc')` 을 추가한 것이 눈에 뜨인다.
-이것도 설명하자면 앵귤러는 angular.module() 함수로 앵귤러 모듈을 관리한다.
-모듈이라고 하는 것은 앵귤러에서 제공하는 컨트롤러, 서비스, 디렉티브 등의 개념을 묶은 것이다.
-우리는 todomvc 하나의 모듈만 정의하고 사용할 것이다.
-한번 정의한 모듈을 `angular.module('todomvc)`로 호출할 수 있는데
-이 함수의 반환값은 컨트롤러를 정의할 수 있는 controller() 함수를 제공한다.
-즉 todomvc 모듈안에 TodomvcCtrl 컨트롤러를 정의하는 것이다.
-이렇게 사용하는 이유는 자바스크립트 전역 공간을 사용하지 않기 위함이다.
+스코프변수에 할당된 todos 배열을 템플릿에 어떻게 출력할 수 있을까?
+그냥 한번 출력해 보자.
+자바스크립트의 `console.log()` 함수처럼 앵귤러에서 {% raw %}`{{json}}`{% endraw %}으로 출력하면 데이터 내용을 직접 화면에서 볼 수 있다.
+개인적으로 디버깅용으로 많이 사용한다. (물론 앵귤러를 위한 크롬 개발자 툴이 있긴하다.)
 
-자 그럼 TodomvcCtrl 컨트롤러는 뭣에 쓰는 것인가?
-컨트롤러에서 하나 더 살펴 볼 것이 `$scope` 변수다.
-컨트롤러를 하나 생성하면 `$scope` 변수는 자동으로 생성된다.
-이것도 앵귤러에서 제공하는 함수이다.
-`$scope` 변수를 통해 컨트롤러는 템플릿 (여기서는 index.html)과 데이터 교환을 한다.
-
-
-## 컨트롤러-템플린 간 연결
-
-index.html에 컨트롤러를 주입해 보자.
+index.html:
 
 {% raw %}
 ```html
-<body ng-app="todomvc">
 <div ng-controller="TodomvcCtrl">
-  <h1>{{ message }}</h1> <!-- "Hello world!" -->
+      <h1>Todos</h1>
+      <pre>{{todos | json}}</pre>
 </div>
-</body>
 ```
 {% endraw %}
 
-![](/assets/imgs/2016/lecture-todomvc-angular-2-result3.png)
-
-컨트롤러의 $scope의 message를 우리는 템플릿에서 바로 가져다 사용할수 있다.
-{% raw %}`{{ message }}`{% endraw %}는 루비에서도 사용되는 문법인데 인터폴레이션 이라고 부른다.
+![](/assets/imgs/2016/lecture-todomvc-angular-2-result4.png)
 
 
-템플릿과 컨트롤러 만으로도 기본적인 동작을 하는 todo앱을 만들수 있다.
-다음 포스트부터는 컨트롤러의 $scope 변수를 이용해 기본적인 todo 앱을 만들어 보자.
+## ngRepeat으로 배열 출력하기
+
+`ngRepeat`은 자바스크립트 배열을 출력하기 좋은 앵귤러 디렉티브이다.
+스코프변수에 할당된 todos 배열을 `ngRepeat`으로 출력해 보자.
+
+index.html:
+
+```html
+<ul ng-repeat="todo in todos track by $index">
+  <li>
+      <input type="checkbox" ng-model="todo.completed">
+      <input type="text" ng-model="todo.title">
+      <button type="button">Remove</button>
+  </li>
+</ul>
+```
+
+문법이 조금 복잡하게 보일지 모르겠으나 이렇게 사용하는 것이 맞다.
+
+`ng-repeat="todo in todos"`는 자바스크립트의 for/in 문법과 비슷하다.
+그리고 그 반복문 안에서 todo는 배열안의 하나의 todo 데이터와 동일하다.
+루프에서는 checkbox, text, button 세 개의 입력 필드를 만들었다.
+
+체크박스는 완료 여부를 표현하는 `todo.completed`와 연결시켰다.
+`ng-model` 디렉티브를 사용한 것이 보이는가?
+이것은 앵귤러에서 양방향 데이터 바인딩을 가능하게 하는 기능이다.
+즉 템플릿에서 사용자가 데이터를 변경하면 컨트롤러 데이터가 변경되고, 반대로 컨트롤러 데이터가 변경되면 템플릿에도 그대로 반영된다.
+참고롤 단방향 바인딩은 `ng-bind`를 사용한다.
+
+다음 텍스트 인풋 필드에서는 todo 타이들인 `todo.title` 데이터와 연결되어 있다.
+체크박스와 동일하게 `ng-model`로 양방향 바인딩 되어 인풋필드를 수정하면 컨트롤러의 스코프 변수에 바로 반영된다.
+
+마지막에는 투두를 삭제할수 있는 버튼을 만들었다.
+실제 동작하지는 않지만 나중에 `ng-click` 이라는 디렉티브를 사용하여 이벤트 처리를 구현할 것이다.
+
+결과를 확인해 보자.
+
+![](/assets/imgs/2016/lecture-todomvc-angular-2-result5.png)
+
+## ngClick으로 삭제기능 만들기
+
+각 투두에 삭제 버튼을 추가해 보자.
+기억하는가?
+우리는 버튼 클릭 이벤트를 받기위해 `ng-click` 디렉티브를 사용할 수 있다.
+
+```html
+<ul ng-repeat="todo in todos">
+  <li>
+      <input type="checkbox" ng-model="todo.completed">
+      <input type="text" ng-model="todo.title">
+
+      <!-- ng-click 디렉티브로 컨트롤러의 remove() 함수와 연결했다. -->
+      <button type="button" ng-click="remove(todo.id)">Remove</button>
+  </li>
+</ul>
+```
+`ng-click` 디렉티브로 컨트롤러의 `remove()` 함수와 연결했다.
+그리고 삭제할 투두의 `id`를 파라메터로 넘겨 줬다.
+여기서 `todo.id`에 접근할 수 있는 것은 `ng-repeat` 반복문 안에 있기 때문이다.
+
+이제 컨트롤러에서 `remove()` 함수를 만들어 만들면 삭제 기능을 구현할 수 있다.
+그리고 템플릿에서 사용할 수 있으려면 todos 배열과 마찬가지고 스코프 변수에 추가해야 한다.
+
+```javascript
+angular.module('todomvc')
+    .controller('TodomvcCtrl', function ($scope) {
+
+      $scope.remove = function (id) {
+        if (!id) return;
+
+        // 배열에서 제거할 인덱스를 검색
+        var deleltedTodoIdx = $scope.todos.findIndex(function (todo) {
+          return todo.id === id;
+        });
+
+        if (deleltedTodoIdx === -1) return;
+
+        // 배열에서 제거
+        $scope.todos.splice(deleltedTodoIdx, 1);
+      }
+
+    });
+
+```
 
 
 관련글:

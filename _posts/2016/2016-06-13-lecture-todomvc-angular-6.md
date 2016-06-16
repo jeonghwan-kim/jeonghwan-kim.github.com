@@ -1,24 +1,25 @@
 ---
-title: '앵귤러로 Todo앱 만들기 8 - Twitter Bootstrap'
+title: '앵귤러로 Todo앱 만들기 6 - Bootstrap으로 꾸미기'
 layout: post
 tags:
   angularjs
-permalink: /lectures/todomvc-angular/8/
+permalink: /lectures/todomvc-angular/6/
 date: 2016-06-13 08:00:00
 ---
 
 여기서 잠깐.
 이왕이면 좀더 이쁘게 만들어 보자.
-가장 많이 사용하는 스타일시트 중 트위터 부트스트랩을 이용할 작성이다.
+가장 많이 사용하는 스타일시트 중 [트위터 부트스트랩](http://getbootstrap.com)을 이용할 작성이다.
 이전 포스트에서 앵귤러 라이브러리를 추가했던 과정이 기억나는가?
-그렇다. 우리는 NPM을 이용해서 라이브러리를 추가 했다.
-이번에도 우리는 NPM을 사용할 것이다.
+그렇다. NPM을 이용해서 라이브러리를 추가 했다.
 
 ```bash
 $ npm instsall bootstrap --save
 ```
 
 부스스트랩을 우리가 만든 index.html에 추가한다.
+
+index.html:
 
 ```html
 <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">

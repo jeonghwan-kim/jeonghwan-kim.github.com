@@ -1,88 +1,76 @@
 ---
-title: '앵귤러로 Todo앱 만들기 5 - ngRepeat'
+title: '앵귤러로 Todo앱 만들기 5 - 새로운 투두 추가하기'
 layout: post
 tags:
   angularjs
 permalink: /lectures/todomvc-angular/5/
 ---
 
+이번에는 `ngSubmit` 디렉티브를 이용해 투두를 추가하는 방법에 대해 알아보자.
 
-## 컨트롤러에 데이터 만들기
 
-우선 데이터가 있다고 가정하자.
-우리 프로젝트에서 데이터는 투두 목록이다.
-하나의 두투는 식벽자 아이디, 타이틀, 그리고 완료여부를 데이터로 가질수 있고 아래와 같이 표현할 수 있다.
+## 템플릿 작성
 
-js/controllers/TodomvcCtrl.js:
+입력을 위해 텍스트 입력 필드와 추가 버튼을 만들자.
+입력필드는 마찬가지로 `ngModel` 디렉티브로 양방향 데이터 바인딩을 설정했다.
+`<input type="text" ng-model="newTodo">`
+컨트롤러에서는 `newTodo`를 통해 데이터를 확인할수 있다.
+
+버튼이 좀 눈여겨 볼만한다.
+`<button type="submit">Add</button>`
+이전에 사용했던 `ngClick`을 이용해 이벤트 핸들러를 걸어야 할것 같지만 그러지 않았다.
+간다하게 `submit` 타입으로 지정했다.
+대신 두 입력필드를 감싸는 `form` 태그에 `ng-submit`으로 이벤트 핸들러를 설정할 수 있다.
+
+```html
+<form ng-submit="addTodo(newTodo)">
+  <input type="text" ng-model="newTodo" placeholder="Type todos" autofocus>
+  <button type="submit">Add</button>
+</form>
+```
+
+이렇게 사용하는 이유는 폼 데이터를 입력하고 엔터를 입력했을 경우
+브라우져에서는 submit 이벤트가 발생하고 앵귤러는 `ng-submit`에 바인딩된 함수를 구동하는 것이다.
+간단히 말하면 입력하고 엔터키를 치면 바로 동작하도록 하기 위해 `ng-submit` 디렉티브를 사용한 것이다.
+
+화면을 확인해 보자.
+
+![](/assets/imgs/2016/lecture-todomvc-angular-2-result6.png)
+
+
+## 컨트롤러 작성
+
+컨트롤러에서 투두를 추가하는 함수를 만들어 보자.
+템플릿에서 컨트롤러에 있는 함수를 사용하기 위해서는 역시 스코프 변수에 함수를 정의해야 한다.
+`$scope.addTodo` 함수를 정의해보자.
 
 ```javascript
 angular.module('todomvc')
     .controller('TodomvcCtrl', function ($scope) {
-      $scope.todos = [{
-        id: 1,
-        title: '요가 수행하기',
-        completed: false
-      }, {
-        id: 2,
-        title: '어머니 용돈 드리기',
-        completed: true
-      }]
-    });
+
+        $scope.addTodo = function (todoTitle) {
+          todoTitle = todoTitle.trim();
+          if (!todoTitle) return;
+
+          var newId = !$scope.todos.length ?
+              1 : $scope.todos[$scope.todos.length - 1].id + 1;
+
+          var newTodo = {
+            id: newId,
+            title: todoTitle,
+            completed: false
+          };
+
+          $scope.todos.push(newTodo);
+        };
+      });
 ```
 
-스코프변수에 할당된 todos 배열을 템플릿에서 어떻게 출력할수 있을까?
-그냥 한번 출력해 보자.
-자바스크립트의 console.log() 함수처럼 앵귤러에서 {% raw %}`{{json}}`{% endraw %}으로 출력하면 데이터 내용을 화면에서 볼수 있다.
-개인적으로 개발할때 디버깅용으로 사용했다. (물론 크롬 개발자 툴이 많이 있긴하다)
-
-{% raw %}
-```html
-<div ng-controller="TodomvcCtrl">
-      <h1>Todos</h1>
-      <pre>{{todos | json}}</pre>
-</div>
-```
-{% endraw %}
-
-![](/assets/imgs/2016/lecture-todomvc-angular-2-result4.png)
+기존 투두목록에서 새로운 식별자 `newId`를 만들어 투두를 추가하는 간단한 로직이다.
+결과를 확인해 보자!
 
 
-## ngRepeat으로 html 만들기
-
-ngRepeat은 자바스크립트 배열을 출력하기 좋은 앵귤러 디렉티브이다.
-스코프변수에 할당된 todos 배열을 ngRepeat으로 출력해 보자.
-
-```html
-<ul ng-repeat="todo in todos">
-  <li>
-      <input type="checkbox" ng-model="todo.completed">
-      <input type="text" ng-model="todo.title">
-      <button type="button">Remove</button>
-  </li>
-</ul>
-```
-
-문법이 조금 복잡하게 보일지 모르겠으나 이렇게 사용하는 것이 맞다.
-
-`ng-repeat="todo in todos"`는 자바스크립트의 for/in 문법과 비슷하다.
-그리고 그 반복문 안에서 todo는 배열안의 하나의 todo 데이터와 동일하다.
-루프에서는 세 개의 입풋 필드를 만들었다.
-
-체크박스는 완료 여부를 표현하는 todo.completed와 연결시켰다.
-ng-model 디렉티브를 사용한 것이 보이는가?
-이것은 앵귤러에서 양방향 데이터 바인딩을 가능하게 하는 기능이다.
-즉 템플릿에서 사용자가 데이터를 변경하면 컨트롤러 데이터가 변경되고 반대로 컨트롤러 데이터가 변경되면 템플릿에도 그대로 반영된다.
-참고롤 단방향 바인딩은 ng-bind를 사용한다.
-
-다음 텍스트 인풋 필드에서는 todo 타이들인 todo.title 데이터와 연결되어 있다.
-체크박스오 동일하게 ng-model로 양방향 바인딩 되어 인풋필드를 수정하면 컨트롤러의 스코프데이터에도 바로 반영된다.
-
-마지막에슨 투두를 삭제할수 있는 버튼을 만들었다.
-실제 동작하지는 않지만 나중에 ng-click 이라는 디렉티브를 사용하여 이벤트 처리를 구현할 것이다.
-
-결과를 확인해 보자.
-
-![](/assets/imgs/2016/lecture-todomvc-angular-2-result5.png)
+![](/assets/imgs/2016/lecture-todomvc-angular-2-result7.png)
 
 
 관련글:

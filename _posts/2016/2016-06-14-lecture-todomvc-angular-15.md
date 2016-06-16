@@ -169,6 +169,8 @@ app.post('/api/todos', function (req, res) {
 
 Delete와 PUT은 직접 작성해보자!
 
+이것으로 서버의 두가지 기능을 모두 구현했다.
+
 
 관련글:
 

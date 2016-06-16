@@ -1,67 +1,82 @@
 ---
-title: '앵귤러로 Todo앱 만들기 3 - 앵귤러 로딩'
+title: '앵귤러로 Todo앱 만들기 3 - 컨트롤러'
 layout: post
 tags:
   angularjs
 permalink: /lectures/todomvc-angular/3/
 ---
 
-앵귤러를 로딩한다는 것은 뭘까?
-제이쿼리 스크립트를 html 페이지에서 `<script>` 태그로 삽입하듯이 앵귤러도 마찬가지다.
-그럼 앵귤러는 어디서 다운받아야할까? 물론 제이쿼리처럼 CDN을 제공하기는 하나 우리는 NPM을 통해 직접 프로젝트 폴더에 다운받아 볼 셈이다.
+사실 앵귤러 로딩을 했다고 해서 우리의 코드가 그리고 웹문서에서 달라진 점은 거의 없다.
+자바스크립트 파일 두 개가 더 다운로드 될 뿐이다.
+앵귤러를 사용하려면 `ngController`라고 하는 앵귤러 디렉티브를 사용해야 한다.
+
+참, 한가지 알아둘 것.
+앵귤러에서 `ngController`는 `ng-controller`와 동일하다.
+`ngModel`이 `ng-model`과 같은 것도 동일한 규칙이다.
 
 
-## 앵귤러 설치
+## 컨트롤러 정의
 
-```bash
-$ npm install angular --save
-```
+그럼 컨트롤러 함수를 만들어보자.
+js/controllers/TodomvcController.js 파일을 만들자.
 
-npm 명령어를 이렇게 사용하면 1) 앵귤러 라이브러리가 node_modules 폴더 아래에 다운로드 되고, 2) package.json 파일에 관련 정보가 추가된다.
-1에서 다운받은 앵귤러는 index.html에 추가하면 될것인데 package.json 파일에 추가한 이유는 뭘까?
-
-만약 이 프로젝트 소스를 다른사람이 함께 개발한다고 가정해 보자.
-보통 소스코드에는 추가한 라이브러리를 한꺼번에 넣지 않는다.
-첫째는 인터넷 어딘가에 라이브러리 코드를 저장한 저장소가 있기때문에 굳이 내 저장소 용량을 추가하지 않는 것이고,
-둘째는 사용하는 라이브러리의 버그가 수정된 최신버전 라이브러리를 사용할 수 있기 때문이다.
-
-내 코드를 클론한 다른 개발자는 프로젝트에서 사용한 외부 라이브러리 설치를 해야하는데 이때 package.json이 설치한 라이브러리 정보를 제공한다.
-다른 개발자는 npm 명령어 한줄로 해당 프로젝트에서 사용한 외부 모듈을 한번에 설치할 수 있다.
-그것도 버그 수정된 최신 버전의 소스로 말이다.
-
-```bash
-$ npm install
-```
-
-## 앵귤러 로딩
-
-다운받은 앵귤러 라이브러리는 html 파일에서 로딩한다.
-
-```html
-<!-- ng-app으로 todomvc 앵귤러 모듈 사용을 브라우저에게 알린다 -->
-<body ng-app="todomvc">
-
-<!-- 앵귤러 로딩 -->
-<script src="node_modules/angular/angular.js"></script>
-
-<script src="js/app.js"></script>
-</body>
-
-```
-
-앵귤러는 라이브러리를 로딩한뒤 `ng-app` 디렉티브를 설정함으로써 앵귤러 사용을 브라우져에게 알린다.
-우리가 사용할 앵귤러 모듈은 "todomvc" 모듈이다.
-그럼 이 모듈은 어디에 정의 되어 있고 누가 정의할까?
-바로 우리가 만들 js/app.js에 정의 되어 있다.
+js/controllers/TodomvcController:
 
 ```javascript
-angular.module('todoapp', []);
+angular.module('todomvc')
+    .controller('TodomvcCtrl', function ($scope) {
+
+      $scope.message = 'Hello world!';
+
+    });
 ```
 
-브라우져에서 index.html 파일을 띄우면 angular.js와 app.js 파일이 함께 다운로드되는 것을 확인할 수 있다.
+컨트롤러는 앵귤러에서 제공하는 `controller()` 함수로 정의한다.
+위 코드는 `TodomvcCtrl` 컨트롤러를 생성한 것이다.
 
-![](/assets/imgs/2016/lecture-todomvc-angular-2-result2.png)e
+그런데 코드 앞부분에 `angular.module('todomvc')` 을 추가한 것이 눈에 뜨인다.
+이것도 설명하자면 앵귤러는 `angular.module()` 함수로 앵귤러 모듈을 관리한다.
+**모듈** 이라고 하는 것은 앵귤러에서 제공하는 컨트롤러, 서비스, 디렉티브 등의 개념을 묶은 하나의 패키지라고 생각하면 된다.
+우리는 `todomvc` 하나의 모듈만 정의하고 사용할 것이다.
 
+한번 정의한 모듈은 `angular.module('todomvc)`로 호출할 수 있는데 이 함수의 반환값은 컨트롤러를 정의할 수 있는 `controller()` 함수를 제공해 준다.
+즉 `todomvc` 모듈안에 `TodomvcCtrl` 컨트롤러를 정의하는 것이다.
+이렇게 사용하는 이유는 자바스크립트 전역 공간을 사용하지 않기 위해서다.
+
+자 그럼 `TodomvcCtrl` 컨트롤러는 무엇에 쓰는 것인가?
+컨트롤러에서 하나 더 살펴 볼 것이 `$scope` 변수다.
+컨트롤러를 하나 생성하면 그 안에 `$scope` 변수가 자동으로 생성된다.
+이것도 앵귤러에서 제공하는 함수이다.
+**컨트롤러** 는 자신의 `$scope` 변수를 템플릿(여기서는 index.html)과 데이터를 교환할 수 있다.
+
+
+## 컨트롤러어 템플릿 연결
+
+index.html에 컨트롤러를 주입해 보자.
+
+index.html:
+
+{% raw %}
+```html
+<body ng-app="todomvc">
+<div ng-controller="TodomvcCtrl">
+  <h1>{{ message }}</h1> <!-- "Hello world!" -->
+</div>
+</body>
+```
+{% endraw %}
+
+![](/assets/imgs/2016/lecture-todomvc-angular-2-result3.png)
+
+컨트롤러의 `$scope.message` 변수를 우리는 템플릿에서 바로 가져다 사용할 수 있다.
+{% raw %}`{{ message }}`{% endraw %}는 루비에서도 사용되는 문법인데 인터폴레이션(interpolation) 이라고 부른다.
+템플릿 코드에서 스코프변수를 인터폴레이션 함으로서 컨트롤러 데이터를 출력할 수 있다.
+반대로 템플릿에 연결된 스코프변수는 사용자 입력에 따라 컨트롤러로 데이터를 보내줄 수도 있다.
+나중에 설명할테지만 `ngModel`을 이용해 그러한 기능을 구현할 것이다. 
+
+우리는 여기까지 해서 템플릿과 컨트롤러에 대해 알아봤다.
+앵귤러에서 제공하는 다양한 기능중 템플릿, 컨트롤러만으로도 기본적인 동작을 하는 todo 앱을 만들수 있다.
+다음 포스트부터는 컨트롤러의 `$scope` 변수를 이용해 기본적인 todo 앱을 만들어 보자.
 
 
 관련글:
