@@ -1,37 +1,36 @@
 ---
-title: '앵귤러로 Todo앱 만들기 12 - Service'
+title: '앵귤러로 Todo앱 만들기 12 - APIs'
 layout: post
 tags:
-  angularjs
+  expressjs
 permalink: /lectures/todomvc-angular/12/
-date: 2016-06-14 14:47:00
+date: 2016-06-14 19:43:00
 ---
 
-다른 것도 디렉티브로 만들어 봤는지 모르겠다.
-웬만하면 직접 해보는 것이 유익하다.
+이번엔 서버의 두 번째 기능 API를 만들어 보자.
 
-이번에는 컨트롤러를 쪼개 보자.
-컨트롤러 스코프 함수중에 todos 변수가 있는데 이것은 투두 목롤을 담고 있는 것이다.
-그리고 remove, add 같은 것들은 투두 목록을 삭제하거나 사용자가 입력한 데이터를 투두 목록에 추가할수 있다.
-자세히 보면 컨트롤러에는 두 종류의 기능이 섞여있다.
-1) 사용자 이벤트를 감지하고 템플릿에 데이터를 보내주는 역할, 즉 템플릿과 직접 연결되는 부분
-2) 그리고 todos 배열에서 투두를 제거하거나 추가하는 역할, 즉 데이터를 핸들링 하는 부분.
-우리는 1)번 로직은 컨트롤러에 남겨두고 2)번 로직을 서비스라는 개념으로 분리할 것이다.
+API는 왜 만들어야할까?
+클라이언트와 통신하기 위해서다.
+그럼 무슨 목적으로 클라이언트와 서버는 통신을 하는가?
+데이터다.
+일반적으로 데이터는 서버에서 관리한다.
+서버에 데이터베이스를 운영한다던지 써드파티 API를 이용해 데이터를 서버로 가져온다던지...
+결국은 클라이언트 입장에서 데이터 관리는 서버에게 **요청** 해야 한다.
 
-## 컨트롤러에서 서비스를 분리하자
+우리가 만들었던 앵귤러 프로그램이 데이터를 어떻게 처리했는지 잠깐 생각해보자.
 
-앵귤러는 서비스라는 개념이 있는데 데이터 저장소, 그러니깐 여기서는 todoStorage를 만들때 사용할 수 있다.
-우리는 angular.factory() 함수를 이용해 서비스를 만들 것이다.
-사실 이 외에도 서비스를 만들수 있는 함수는 세가지나 더 있지만 사용할대마다 헷갈린다.
-팩토리만 사용해도 웬만한 기능은 구현할 수 있다.
+* 템플릿에서는 데이터를 보여줬다.
+* 컨트롤러에서는 데이터를 가져와서 보여줬다.
+* 서비스에는 컨트롤러로 데이터를 보내주는데 서비스 내에 특정 변수에 배열 형태로 저장되어 있었다. 이것이 `todos` 변수다.
 
 js/services/todoStorage.js:
 
 ```javascript
 angular.module('todomvc')
     .factory('todomvcStorage', function () {
+
       var storage = {
-        todos: [{
+        todos: [{ // <-- 바로 요 변수가 데이터다
           id: 1,
           title: '요가 수행하기',
           completed: false
@@ -41,138 +40,149 @@ angular.module('todomvc')
           completed: true
         }],
 
-        get: function () {
-          return storage.todos;
-        },
-
-      return storage;
+      }
     });
 ```
 
-factory() 함수로 todomvcStorage 라는 앵귤러 서비스를 정의한다.
-서비스는 싱글톤이라 todomvc 모듈내에서는 하나의 객체만 생성된다.
-todos가 실제로 데이터베이스 역할을 하고 데이터 접근은 get() 함수를 통해 이뤄진다.
-그럼 이 서비스를 사용할 컨트롤러 코드를 살펴보자.
+사실 앵귤러 서비스는 데이터를 가지고 있으면 안된다.
+사용자의 브라우져에 있는 것이기 때문에 민감한 정보라면 서버에서 관리해야 한다.
+이전에는 서버 개발 전이기 때문에 그냥 그렇게 진행했지만 이번에는 서버로 이 데이터를 가져올 것이다.
+그럼 기존의 앵귤러 서비스는 어떤 역할을 하게 될까?
+백엔드 서버 API를 이용해 데이터를 요청하는 기능을 하게될 것이다.
+이젠 앵귤러 서비스의 데이터 관리를 백엔드로 위임한다고 보면 된다.
+
+
+## REST APIS
+
+많이 들어봤음직한 용어다.
+REST API란 서버 자원 단위로 설계되어진 API를 의미하는데 과거 규칙없는 API 네이밍에 비교하여 이해하면 쉽다.
+예를 들어 사용자 정보를 조회하는 API를 어떻게 이름지어야 할까?
+getUsers 라고 할수 있을 것이다. 메쏘드도 POST, GET을 혼용해서 사용하기도 했다.
+그러나 REST API라고 불리려면 `GET /users` 라고 해야한다.
+사용자를 조회하기 때문에 GET 메소드를 사용하고 URL에는 명사만 와야한다.
+왜냐하면 리소스는 명사이기 때문이다.
+
+좀더 자세한 사항은 [서버 개발자 입장에서 바라본 모바일 API 디자인](/2016/03/29/mobile-rest-api.html)을 참고하시라.
+
+같은 원칙으로 우리가 만들 API 목록은 다음과 같다.
+
+method | url | function
+-------|-----|---------
+POST   | /api/todos | todo 생성
+GET    | /api/todos | todo 목록 조회
+PUT    | /api/todos/:id | todo 갱신
+DELETE | /api/todos/:id | todo 삭제
+
+
+## GET /api/todos 만들기
+
+server/app.js:
 
 ```javascript
-angular.module('todomvc')
-    .controller('TodomvcCtrl', function ($scope, todomvcStorage) {
-      $scope.todos = todomvcStorage.get();
 
-      // ...
-    });
+// 앵귤러 서비스쪽에 있던 배열을 노드 코드로 옮겼다.
+var todos = [{
+  id: 1,
+  title: 'todo 1',
+  completed: false
+}, {
+  id: 2,
+  title: 'todo 2',
+  completed: false
+}, {
+  id: 3,
+  title: 'todo 3',
+  completed: true
+}];
+
+// GET /api/todos 라우팅 설정
+app.get('/api/todos', function (req, res) {
+  res.json(todos);
+});
 ```
-todomvcStorage 서비스를 주입하고 기존 $scope.todos에 설정했던 배열을 제거했다.
-대신 서비스에서 정의한 get() 함수를 통해 투두목록 데이터를 가져왔다.
 
-데이터 조회 기능을 만들었으니 추가, 삭제 기능도 만들어 보자.
+서비스에 있던 todos 배열을 서버 코드로 옮겨왔다.
+그리고 app.get으로 라우팅 설정했다.
+app.get() 함수는 get 메쏘드 요청에 대한 라우팅을 설정할수 있다.
+첫번째 파라메터로 url 경로를 문자열로 설정한다.
+두번째 파라메터는 해당 요청이 왔을 경우 실행되는 콜백 함수이다.
+콜백함수는 다시 두 개 파라매터를 가지고 온다.
+`req`는 클라이언트의 요청(Request) 정보를 담는 객체로서 쿼리스트링, 경로의 파라메터, 바디데이터에 접근할 수 있다.
+`res`는 서버의 응답(Response) 정보를 담고있는 객체로서 문자열이나 파일 그리고 json으로 응답할 수 있다.
+우리는 todos 를 json으로 응답하는 코드를 작성했다.
 
-먼저 서비스 코드다.
+
+## Postman
+
+백엔드 개발할때 api를 테스트하는 경우가 많은데 postman은 이때 사용하는 툴이다.
+[여기](https://www.getpostman.com)에서 다운로드 받아 설치해 두자.
+서버 주소를 입력하고 요청 url과 메쏘드를 입력한뒤 send 버튼을 누르면 서버의 응답결과를 바로 확인할 수 있다.
+앞으로 백엔드 개발시 자주 사용할 것이기 때문에 반드시 사용법을 알아두자!
+
+![](/assets/imgs/2016/lecture-todomvc-angular-15-result1.png)
+
+
+## BodyParser
+
+`POST /api/todos`를 만들어 보자.
+post 메쏘드는 데이터를 보낼때 http 바디에 그 정보를 저장한다.
+하지만 express에서는 이 바디 데이터에 접근할 방법이 없다.
+[body-parser](https://github.com/expressjs/body-parser)는 익스프레스에서 http 요청 바디에 접근할 수 있도록하는 미들웨다.
+원래는 express 자체 모듈에 있었지만 v4 부터는 별도의 모듈로 떨어져 나왔다.
+좀더 express를 가볍게 가져가기 위함이고 개발자 필요에 따라 추가하도록 한 것 같다.
+
+body-parser를 추가한다.
+
+```bash
+$ npm isntall bady-parser --save
+```
+
+서버 코드에 설치한 모듈을 추가하고 익스프레스에 미들웨어로 추가한다.
 
 ```javascript
-angular.module('todomvc')
-    .factory('todomvcStorage', function () {
-      var storage = {
-        todos: [{
-          id: 1,
-          title: '요가 수행하기',
-          completed: false
-        }, {
-          id: 2,
-          title: '어머니 용돈 드리기',
-          completed: true
-        }],
+var bodyParser = require('body-parser');
 
-        get: function () {
-          return storage.todos;
-        },
-
-        post: function (todoTitle) {
-          var newId = !storage.todos.length ?
-              1 : storage.todos[storage.todos.length - 1].id + 1;
-          var newTodo = {
-            id: newId,
-            title: todoTitle,
-            completed: false
-          };
-          storage.todos.push(newTodo);
-        },
-
-        delete: function (id) {
-          var deleltedTodoIdx = storage.todos.findIndex(function (todo) {
-            return todo.id === id;
-          });
-          if (deleltedTodoIdx === -1) return;
-          storage.todos.splice(deleltedTodoIdx, 1);
-        },
-
-        deleteCompleted: function () {
-          var incompleteTodos = storage.todos.filter(function (todo) {
-  					return !todo.completed;
-  				});
-  				angular.copy(incompleteTodos, storage.todos);
-        }
-      }
-
-      return storage;
-    })
-
+// body parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 ```
 
-post() 함수는 새로운 투두를 추가하고 delete()는 기존 투두목록에서 삭제하는 함수다.
-이 서비스 함수를 이용해서 컨트롤러 함수를 다시 작성해 보자.
+라우트 핸들러 함수에서 req.body를 통해 바디 데이터에 접근할 수 있다.
 
+
+## POST /api/todos
+
+todo를 추가하는 api를 만들어 보자.
+기본 로직은 서비스 로직과 동일하다.
+서비스와는 다르게 1) 타이틀이 없는 경우 400 에러를 반환하는 부분이 추가되었고 2) 새로 생성된 todo를 json으로 응답한다.
 
 ```javascript
-angular.module('todomvc')
-    .controller('TodomvcCtrl', function ($scope, todomvcStorage) {
-      $scope.todos = todomvcStorage.get();
+app.post('/api/todos', function (req, res) {
+  if (!req.body.title) {
+    return res.status(400).send();
+  }
 
-      $scope.addTodo = function (todoTitle) {
-        todoTitle = todoTitle.trim();
-        if (!todoTitle) return;
-        todomvcStorage.post(todoTitle)
-      };
+  var newId = !todos.length ?
+      1 : todos[todos.length - 1].id + 1;
 
-      $scope.remove = function (id) {
-        if (!id) return;
-        todomvcStorage.delete(id);
-      }
+  var newTodo = {
+    id: newId,
+    title: req.body.title,
+    completed: false
+  };
 
-      $scope.$watch('status', function () {
-        if ($scope.status === 'completed') {
-          $scope.statusFilter = {completed: true}
-        } else if ($scope.status === 'active') {
-          $scope.statusFilter = {completed: false}
-        } else {
-          $scope.statusFilter = {}
-        }
-      });
+  todos.push(newTodo);
 
-      $scope.clearCompleted = function () {
-        todomvcStorage.deleteCompleted();
-      }
-
-    });
+  res.json(newTodo);
+});
 ```
 
-데이터 변수와 이를 조작하는 함수는 모두 todomvcStorage 서비스로 위임했다.
-컨트롤러는 템플릿과 연결된 기능만 기록되어 있다.
-이렇게 기능에 다라 코드를 모듈화 하는 것이 코드 읽기에 편할 뿐만 아니라 유지보수 하는데도 훨씬 편리한다.
+Delete와 PUT은 직접 작성해보자!
 
-## 중간 정리
+이것으로 서버의 두 가지 기능을 모두 구현했다.
 
-여기까지 프론트 작업의 거의 마무리 되었다.
-다음 시간부터는 백엔드 작업을 진행할 예정이다.
-노드 위에 익스프레스 엔진을 얹고 우리가 만든 앵귤러 앱을 호스팅할 것이다.
-그리고 프론트에서 관리했던 데이터를 백엔드로 가져올 것이다.
-
-폴더 구조를 변경하자.
-client 폴더에 우리가 작성한 앵귤러 코드를 옮겨놓고,
-server 폴더에는 앞으로 작성할 노드 코드를 추가할 예정이다.
-
-![](/assets/imgs/2016/lecture-todomvc-angular-12-result1.png)
-
+1. Static File
+1. APIs
 
 
 관련글:
