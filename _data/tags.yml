@@ -1,3 +1,6 @@
+- slug: request
+  name: request
+
 - slug: lambda
   name: lambda
 
