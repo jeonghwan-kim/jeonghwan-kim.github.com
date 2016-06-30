@@ -10,9 +10,9 @@ layout: page
 - 자바스크립트 성능 최적화 / 니콜라스 자카스 / 2014. 8. 13.
 - 읽기 좋은 자바스크립트 코딩 기법 / 니콜라스 자카스 / 2014. 12. 5.
 - Javascript Cookbook / 2015. 3. 23.
-- ECMAScript 6 길들이기 / 2016. 5. 18.
-- Javascript Promise / 2016. 2. 17.
 - 스코프와 클로져 / 카일 심슨 / ebook / 2015.
+- Javascript Promise / 2016. 2. 17.
+- ECMAScript 6 길들이기 / 2016. 5. 18.
 
 
 ## Node.js
