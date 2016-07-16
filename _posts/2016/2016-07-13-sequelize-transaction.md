@@ -1,81 +1,62 @@
 ---
-title: 'Sequelize Transaction'
+title: 'Sequelize Transaction 사용할때 주의할 점'
 layout: post
 tags:
   sequelize
-summary: Sequelize로 디비 트랜잭선 사용하는 방법에 대한 정리
+summary: Sequelize Transaction 사용할때 주의할 점
 ---
 
-
-하나 이상의 쿼리를 한번에 실행할 때 데이터베이스의 트랜잭션(transaction) 기능을 이용한다.
-데이터베이스에 사용자 계정을 지운다고 생각해 보자.
-
-1. UserId가 외래키(foreign key)로 지정된 테이블의 데이터를 모두 제거한 뒤
-2. User 테이블의 데이터를 삭제한다.
-
-만약 1번 작업 도중에 에러나는 상황을 생각해 보자.
-1번 작업이 완료되지 않고 데이터가 덜 삭제 된 상태에서 2번 작업을 진행할 수 없다.
-따라서 지금까지 했던 모든 작업을 취소하고 원래대로 복원시켜야하는데 이것을 롤백(rollback)이라고 한다.
-
-디비에서는 이러한 구조의 쿼리 로직을 트랜젝션이고 하고 대표적인 ORM 라이브러리인 Sequelize에서도 이 기능을 제공한다.
-이번 포스트에서는 Sequelize를 이용해 트랜젝션 처리하는 방법에 대해 알아보자.
-
-## sequelize.transaction()
-
-`transaction()` 함수로 트랜젹션 변수 `t`를 얻을 수 있다.
-t는 하나의 트랜젝션을 의미하는데 시작하는 쿼리부터 마지막 쿼리까지 이 트랜젝션 변수를 쿼리 함수의 파라매터로 넘겨줘야 한다.
-각 함수별로 트랜제션 파라매터 인터페이스는 다음과 같다.
-
-* `create(options, {transaction: t})`
-* `update(options, {transaction: t})`
-* `find({transaction: t})`
-* `delete({transaction: t})`
-
-
-sequelzie의 transaction() 함수로 사용
-
+노드에서 데이터베이스 ORM으로 [Sequelize](http://docs.sequelizejs.com/en/latest/)를 사용한다.
+성능상의 단점이 있지만 개발 속도와 가독성을 생각해 대부분 프로젝트에서 사용하는 편이다.
+사실 그동안 트랜젝션 처리해야할 부분을 많이 놓쳐서 이번엔 제대로 트랜젝션을 걸어서 사용해 보기로 했다.
+예를 들어 회원가입 API를 만든다고 생각해 보자.
+1) 사용자 정보를 테이블에 추가하고 2) 추가된 사용자 정보와 몇가지 관련된 테이블의 데이터까지 조회하여 응답하는 로직을 만들 것이다.
+그래서 아래와 같은 코드를 작성했다.
 
 ```javascript
-function deleteUser(userId, t) {
-  return models.User.destroy({
-    where: {id: userId}
-  }, {transaction: t});
-}
+exports.register = (req, res) => {
+  let userData = userDataForm(req.body);
 
-function deletePostsByUserId(userId, t) {
-  return models.Post.destroy({
-    where: {UserId: userId}
-  }, {transaction: t});
-}
+  models.sequelize.transaction(t => {
 
-function clearUser(userId) {
-  return models.sequelize.transaction(function (t) {
-    return Promise.resolve()
-        .then(() => deletePostsByUserId(userId, t))
-        .then(() => deleteUser(userId, t))
-        .then(() => true)
-        .catch((err) => {
-          console.error(err);
-          t.rollback();
-          return Promise.reject(err);  
-        });
+      // User 추가
+      return models.User.create(userData, {transaction: t}))
+          .then(user => {
+
+            // 추가된 User가 속한 Group 정보 조회
+            modles.Group.findOne({id: user.GroupId}))
+                .then(group => {
+
+                  // 응답
+                  return res.json({
+                    user: user,
+                    group: group
+                  });
+                });
+          });
   });
 }
 ```
 
-## create() 하고 findOne() 하는 경우 주의할 점
+코드가 돌아가는 것 같지만 가끔 Group 조회 결과 빈값이 나오는 경우가 있었다.
+원인은 트렌젝션 처리를 잘못한 것인데 디비에 데이터를 추가/변경하는 경우만 트랜젝션을 걸어야한다고 착각했기 때문이다.
+그래서 트랜젝션 걸려있는 부분 즉 User 추가하는 로직과 Group를 조회하는 로직이 따로 따로 실행된다.
+조회하는 쿼리에도 같은 트랜젝션으로 묶어 줘야 하는 것이다.
 
 ```javascript
-models.sequelzie.transaction(t => {
-  return models.User.create(userData, {transaction: t}).then(user => {
-    t.commit();
-
-    models.User.findOne({
-      where: {
-        id: user.id
-      }
-    }).then(user => user); // null!
-  })
-})
-
+// modles.Group.findOne({id: user.GroupId}))
+modles.Group.findOne({id: user.GroupId}, {transaction: t}))
 ```
+
+findOne()  함수의 두번째 파라매터로 트랜젝션 변수를 넘겨줬다.
+여전히 문제를 해결하지 못했다.
+Sequelize의 데이터 조회/삭제 함수에 트랜젝션을 넘겨줄땐 첫번째 파라매터로 넘겨줘야 하는데 문제를 제대로 읽지 않은 탓이다.
+
+```javascript
+modles.Group.findOne({
+  id: user.GroupId,
+  transaction: t
+}))
+```
+
+이제보니 참 사소한 내용이다.
