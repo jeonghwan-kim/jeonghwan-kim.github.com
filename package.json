@@ -1,0 +1,20 @@
+{
+  "name": "jeonghwan-kim.github.com",
+  "version": "1.0.0",
+  "description": "jeonghwan-kim.github.com ========================",
+  "main": "index.js",
+  "scripts": {
+    "build": "bundle exec jekyll build",
+    "serve": "bundle exec jekyll serve --increment"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeonghwan-kim/jeonghwan-kim.github.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/issues"
+  },
+  "homepage": "https://github.com/jeonghwan-kim/jeonghwan-kim.github.com#readme"
+}
