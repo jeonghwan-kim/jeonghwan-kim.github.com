@@ -1,3 +1,9 @@
+- slug: istanbul
+  name: istanbul
+
+- slug: code-coverage
+  name: code-coverage
+
 - slug: babel
   name: babel
 
