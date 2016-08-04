@@ -130,6 +130,6 @@ $ ionic upload
 
 업로드가 완료되면 아이오닉 뷰를 통해 helloWorld를 다운로드 한다.
 
-![ionic hello world ionic view1](/assets/imgs/2016/ionic-hello-world-ionic-view1.png)
+![ionic hello world ionic view1](/assets/imgs/2016/ionic-hello-world-ionic-view1.PNG)
 
-![ionic hello world ionic view2](/assets/imgs/2016/ionic-hello-world-ionic-view2.png)
+![ionic hello world ionic view2](/assets/imgs/2016/ionic-hello-world-ionic-view2.PNG)
