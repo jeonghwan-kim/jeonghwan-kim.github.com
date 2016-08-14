@@ -184,3 +184,10 @@ pre {
   padding-right: 5px;
   padding-left: 5px;
 }
+
+
+a.tag-title-link,
+a.tag-title-link:hover,
+a.tag-title-link:focus {
+  color: $text-color;
+}
