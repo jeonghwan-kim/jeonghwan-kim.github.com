@@ -13,10 +13,8 @@
     <p class="post-summary">{{ post.summary }}</p>
 
     <p class="post-meta">
+      {% include post-date.html %}
       {% include post-tags.html %}
-      {% if post.date %}
-      <span>{{ post.date | date : "%Y.%m.%d." }}</span>
-      {% endif %}
     </p>
   </div>
 </div>

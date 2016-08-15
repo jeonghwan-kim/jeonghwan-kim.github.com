@@ -3,6 +3,7 @@ title: '앵귤러로 Todo앱 만들기 13 - $http로 앵귤러 서비스 개선�
 layout: post
 tags:
   angularjs
+  lecture
 permalink: /lectures/todomvc-angular/13/
 date: 2016-06-16 01:50:00
 featured_image: /assets/imgs/2016/todomvc-logo.png

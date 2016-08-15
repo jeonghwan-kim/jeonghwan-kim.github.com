@@ -1,0 +1,7 @@
+{% if post.date %}
+  <span>{{ post.date | date : "%Y.%m.%d." }}</span>
+{% endif %}
+
+{% if page.date %}
+<span>{{ page.date | date : "%Y.%m.%d." }}</span>
+{% endif %}

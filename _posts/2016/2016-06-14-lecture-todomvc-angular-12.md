@@ -3,6 +3,7 @@ title: '앵귤러로 Todo앱 만들기 12 - APIs'
 layout: post
 tags:
   expressjs
+  lecture
 permalink: /lectures/todomvc-angular/12/
 date: 2016-06-14 19:43:00
 featured_image: /assets/imgs/2016/todomvc-logo.png
