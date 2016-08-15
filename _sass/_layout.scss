@@ -102,9 +102,12 @@
  * Google Search bar
  */
 .gsc-control-cse.gsc-control-cse-ko {
-  background-color: $background-color;
+  background-color: transparent;
   border: none;
   margin-bottom: $spacing-unit;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /**
@@ -188,7 +191,7 @@
  */
 
 .page-content {
-  padding: $spacing-unit 0;
+  padding: 0;
 }
 
 .page-heading {
@@ -197,15 +200,14 @@
 
 .post-list {
   margin-left: 0;
+  margin-bottom: $spacing-unit;
   list-style: none;
 
   > li {
-    $post-list-featured-image-width: 90px;
-    $post-list-featured-image-height: $post-list-featured-image-width;
-
-    padding-top: $spacing-unit;
-    padding-bottom: $spacing-unit;
-    border-bottom: 1px solid $grey-color-light;
+    .post-list-item {
+      padding-top: $spacing-unit;
+      padding-bottom: $spacing-unit;
+    }
 
     .post-feature-image {
       float: right;
@@ -213,11 +215,10 @@
       max-height: $post-list-featured-image-width;
       overflow-y: hidden;
     }
-    .post-text {
-    }
     .post-title {
       margin-bottom: 5px;
       overflow-x: hidden;
+      font-size: 150%;
 
       a.post-link {
         color: $text-color;
@@ -243,15 +244,18 @@
       text-overflow: ellipsis;
     }
     .post-meta {
+      font-size: $small-font-size;
       margin-bottom: 0;
+      color: $grey-color;
+      a {
+        color: $brand-color;
+        &:hover,
+        &:focus {
+          border-bottom: solid 1px $brand-color;
+        }
+      }
     }
   }
-}
-
-.post-meta {
-  font-size: $small-font-size;
-  color: $grey-color;
-  display: block;
 }
 
 
@@ -261,11 +265,28 @@
 
 .post-header {
   margin-bottom: $spacing-unit;
+  background-color: $brand-color;
+  padding: 100px 0;
 }
 
 .post-title {
-  font-size: 150%;
+  font-size: 250%;
   font-weight: $bold-font-weight;
+  color: $white-color;
+}
+
+.post-meta {
+  font-size: $base-font-size;
+  color: $grey-color-light;
+  display: block;
+
+  a {
+    color: $grey-color-light;
+    &:hover,
+    &:focus {
+      border-bottom: solid 1px $grey-color-light;
+    }
+  }
 }
 
 .post-content {
@@ -283,4 +304,8 @@
   h4 {
     font-size: 110%;
   }
+}
+
+.pagination {
+  margin-bottom: $spacing-unit;
 }

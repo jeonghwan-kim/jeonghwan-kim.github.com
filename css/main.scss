@@ -35,6 +35,9 @@ $on-palm:          600px;
 
 $profile-image-width: 150px;
 
+$post-list-featured-image-width: 90px;
+$post-list-featured-image-height: $post-list-featured-image-width;
+
 // Use media queries like this:
 // @include media-query($on-palm) {
 //     .wrapper {
