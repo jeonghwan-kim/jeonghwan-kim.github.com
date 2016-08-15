@@ -10,7 +10,7 @@ categories:
   - Php
 tags:
   - php
-  - SimpleTest
+  - simpleTest
   - unit-test
 ---
 Php 유닛 테스트 라이브러 중 하나이다. [PHPUnit](https://phpunit.de)과 [SimpleTest](http://www.simpletest.org) 중 후자가 바로 사용하기 간단해 보임.
@@ -20,7 +20,7 @@ Php 유닛 테스트 라이브러 중 하나이다. [PHPUnit](https://phpunit.de
 ```sh
 wget -O simpletest.tar.gz http://downloads.sourceforge.net/project/simpletest/simpletest/simpletest_1.1/simpletest_1.1.0.tar.gzö?rö=ö&tsö=1444720494ö&use_mirrorö=jaist
 tar zcvf simpletest.tar.gz
-ls 
+ls
 simpletest
 ```
 
@@ -64,7 +64,7 @@ make: *** [math] Error 1
 
 테스트 실패로 떨어짐.
 
-## 함수 본체 작성 
+## 함수 본체 작성
 
 ```php
 function add($a, $b) {
@@ -84,5 +84,3 @@ Test cases run: 1/1, Passes: 1, Failures: 0, Exceptions: 0
 ```
 
 예제 코드: [https://github.com/jeonghwan-kim/SimpleTest-sample](https://github.com/jeonghwan-kim/SimpleTest-sample)
-
-

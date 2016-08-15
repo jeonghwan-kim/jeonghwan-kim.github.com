@@ -4,7 +4,8 @@
   "description": "jeonghwan-kim.github.com ========================",
   "main": "index.js",
   "scripts": {
-    "build": "bundle exec jekyll build",
+    "clean": "rm -rf _site",
+    "build": "npm run clean && bundle exec jekyll build",
     "serve": "bundle exec jekyll serve --increment"
   },
   "repository": {

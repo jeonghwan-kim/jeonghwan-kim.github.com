@@ -21,19 +21,22 @@ $code-line-height:  1.1;
 
 $spacing-unit:     30px;
 
-$text-color:       #111;
-$background-color: rgb(251, 251, 251);
-$brand-color:      #2a7ae2;
-$grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
-$grey-color-dark:  darken($grey-color, 25%);
+$text-color:        #111;
+$background-color:  rgb(251, 251, 251);
+$brand-color:       #2a7ae2;
+$grey-color:        #828282;
+$grey-color-light:  lighten($grey-color, 40%);
+$grey-color-dark:   darken($grey-color, 25%);
+$white-color:       rgb(254,254, 254);
 
 // Width of the content area
 $content-width:    800px;
 $on-palm:          600px;
-$on-laptop:        800px;
 
+$profile-image-width: 150px;
 
+$post-list-featured-image-width: 90px;
+$post-list-featured-image-height: $post-list-featured-image-width;
 
 // Use media queries like this:
 // @include media-query($on-palm) {
@@ -52,6 +55,7 @@ $on-laptop:        800px;
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
+        "../node_modules/font-awesome/css/font-awesome.min.css",
         "base",
         "layout",
         "syntax-highlighting"

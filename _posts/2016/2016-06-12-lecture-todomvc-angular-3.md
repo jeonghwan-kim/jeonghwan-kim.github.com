@@ -3,6 +3,7 @@ title: '앵귤러로 Todo앱 만들기 3 - 컨트롤러'
 layout: post
 tags:
   angularjs
+  lecture
 permalink: /lectures/todomvc-angular/3/
 featured_image: /assets/imgs/2016/todomvc-logo.png
 summary: Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자

@@ -34,6 +34,7 @@
   .page-link {
     color: $text-color;
     line-height: $base-line-height;
+    font-weight: $light-font-weight;
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
@@ -41,7 +42,7 @@
     }
 
     &:hover,
-    &:focus, {
+    &:focus {
       border-bottom: solid 1px $text-color;
     }
   }
@@ -96,6 +97,19 @@
   }
 }
 
+
+/**
+ * Google Search bar
+ */
+.gsc-control-cse.gsc-control-cse-ko {
+  background-color: transparent;
+  border: none;
+  margin-bottom: $spacing-unit;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /**
  * Site footer
  */
@@ -103,12 +117,30 @@
   border-top: 1px solid $grey-color-dark;
   padding: $spacing-unit 0;
   background-color: $grey-color-dark;
-  font-size: 14px;
-}
+  color: $white-color;
 
-.footer-heading {
-  font-size: 18px;
-  margin-bottom: $spacing-unit / 2;
+  .profile-img {
+    width: $profile-image-width;
+    margin: 0 auto $spacing-unit auto;
+    border-radius: 50%;
+    background-color: $grey-color;
+
+    img {
+      width: $profile-image-width;
+    }
+  }
+
+  .footer-heading {
+    font-weight: $light-font-weight;
+    a {
+      color: $grey-color;
+    }
+    a:hover,
+    a:focus {
+      color: $grey-color-light;
+    }
+
+  }
 }
 
 .site-footer-links {
@@ -118,18 +150,11 @@
 
 .site-footer-link {
   a {
-    color: white;
+    color: $grey-color;
   }
   a:hover, a:focus {
-    border-bottom: solid 1px white;
+    color: $grey-color-light;
   }
-}
-
-.footer-col-wrapper {
-  font-size: 15px;
-  color: $grey-color;
-  margin-left: -$spacing-unit / 2;
-  @extend %clearfix;
 }
 
 .footer-col {
@@ -139,31 +164,18 @@
 }
 
 .footer-col-1 {
-  width: -webkit-calc(35% - (#{$spacing-unit} / 2));
-  width: calc(35% - (#{$spacing-unit} / 2));
+  width: -webkit-calc(15% - (#{$spacing-unit} / 2));
+  width: calc(15% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-2 {
-  width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-  width: calc(20% - (#{$spacing-unit} / 2));
+  width: -webkit-calc(40% - (#{$spacing-unit} / 2));
+  width: calc(40% - (#{$spacing-unit} / 2));
 }
 
 .footer-col-3 {
-  width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-  width: calc(45% - (#{$spacing-unit} / 2));
-}
-
-@include media-query($on-laptop) {
-  .footer-col-1,
-  .footer-col-2 {
-    width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-    width: calc(50% - (#{$spacing-unit} / 2));
-  }
-
-  .footer-col-3 {
-    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-    width: calc(100% - (#{$spacing-unit} / 2));
-  }
+  width: -webkit-calc(40% - (#{$spacing-unit} / 2));
+  width: calc(40% - (#{$spacing-unit} / 2));
 }
 
 @include media-query($on-palm) {
@@ -179,7 +191,7 @@
  */
 
 .page-content {
-  padding: $spacing-unit 0;
+  padding: 0;
 }
 
 .page-heading {
@@ -188,15 +200,14 @@
 
 .post-list {
   margin-left: 0;
+  margin-bottom: $spacing-unit;
   list-style: none;
 
   > li {
-    $post-list-featured-image-width: 90px;
-    $post-list-featured-image-height: $post-list-featured-image-width;
-
-    padding-top: $spacing-unit;
-    padding-bottom: $spacing-unit;
-    border-bottom: 1px solid $grey-color-light;
+    .post-list-item {
+      padding-top: $spacing-unit;
+      padding-bottom: $spacing-unit;
+    }
 
     .post-feature-image {
       float: right;
@@ -204,14 +215,12 @@
       max-height: $post-list-featured-image-width;
       overflow-y: hidden;
     }
-    .post-text {
-    }
     .post-title {
       margin-bottom: 5px;
       overflow-x: hidden;
+      font-size: 150%;
 
       a.post-link {
-        display: inline-block;
         color: $text-color;
         font-weight: $light-font-weight;
 
@@ -235,15 +244,18 @@
       text-overflow: ellipsis;
     }
     .post-meta {
+      font-size: $small-font-size;
       margin-bottom: 0;
+      color: $grey-color;
+      a {
+        color: $brand-color;
+        &:hover,
+        &:focus {
+          border-bottom: solid 1px $brand-color;
+        }
+      }
     }
   }
-}
-
-.post-meta {
-  font-size: $small-font-size;
-  color: $grey-color;
-  display: block;
 }
 
 
@@ -253,13 +265,28 @@
 
 .post-header {
   margin-bottom: $spacing-unit;
+  background-color: $brand-color;
+  padding: 100px 0;
 }
 
 .post-title {
-  font-size: 150%;
+  font-size: 250%;
   font-weight: $bold-font-weight;
-  letter-spacing: -1px;
-  line-height: 1;
+  color: $white-color;
+}
+
+.post-meta {
+  font-size: $base-font-size;
+  color: $grey-color-light;
+  display: block;
+
+  a {
+    color: $grey-color-light;
+    &:hover,
+    &:focus {
+      border-bottom: solid 1px $grey-color-light;
+    }
+  }
 }
 
 .post-content {
@@ -277,4 +304,8 @@
   h4 {
     font-size: 110%;
   }
+}
+
+.pagination {
+  margin-bottom: $spacing-unit;
 }

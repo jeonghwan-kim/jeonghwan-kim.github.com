@@ -3,6 +3,7 @@ title: '앵귤러로 Todo앱 만들기 11 - Static Files'
 layout: post
 tags:
   expressjs
+  lecture
 permalink: /lectures/todomvc-angular/11/
 date: 2016-06-14 19:23:00
 featured_image: /assets/imgs/2016/todomvc-logo.png

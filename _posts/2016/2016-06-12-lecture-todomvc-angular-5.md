@@ -3,6 +3,7 @@ title: '앵귤러로 Todo앱 만들기 5 - 새로운 투두 추가하기'
 layout: post
 tags:
   angularjs
+  lecture
 permalink: /lectures/todomvc-angular/5/
 featured_image: /assets/imgs/2016/todomvc-logo.png
 summary: Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자

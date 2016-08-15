@@ -3,6 +3,7 @@ title: '앵귤러로 Todo앱 만들기 8 - Directive'
 layout: post
 tags:
   angularjs
+  lecture
 permalink: /lectures/todomvc-angular/8/
 date: 2016-06-14 14:46:00
 featured_image: /assets/imgs/2016/todomvc-logo.png

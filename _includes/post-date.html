@@ -1,0 +1,7 @@
+{% if page %}
+  {% assign post = page %}
+{% endif %}
+
+{% if post.date %}
+  <span>{{ post.date | date : "%Y년 %m월 %d일" }}</span>
+{% endif %}

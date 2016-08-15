@@ -1,22 +1,24 @@
-<div>
-  <div class="post-feature-image">
-    <img src="{{ post.featured_image | prepend: site.baseurl }}" alt="">
+<div class="wrapper">
+  <div class="post-list-item">
+    <div class="post-feature-image">
+      <img src="{{ post.featured_image | prepend: site.baseurl }}" alt="">
+    </div>
+
+    <div class="post-text">
+      <h2 class="post-title">
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+          {{ post.title }}
+        </a>
+      </h2>
+
+      <p class="post-summary">{{ post.summary }}</p>
+
+      <p class="post-meta">
+        {% include post-date.html %}
+        {% include post-tags.html %}
+      </p>
+    </div>
   </div>
 
-  <div class="post-text">
-    <h2 class="post-title">
-      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
-        {{ post.title }}
-      </a>
-    </h2>
-
-    <p class="post-summary">{{ post.summary }}</p>
-
-    <p class="post-meta">
-      {% include post-tags.html %}
-      {% if post.date %}
-      <span>{{ post.date | date : "%Y.%m.%d." }}</span>
-      {% endif %}
-    </p>
-  </div>
+  <div class="seperator"></div>
 </div>
