@@ -1,34 +1,53 @@
 <footer class="site-footer">
   <div class="wrapper">
-
+    <div class="center">
+      <div class="profile-img">
+        <img src="/assets/imgs/me.png" alt="Me">
+      </div>
       <ul class="site-footer-links list-inline">
         <li class="site-footer-link">
-          <a href="{{ "/feed.xml" | prepend: site.baseurl }}">Rss</a>
+          <a href="{{ '/feed.xml' | prepend: site.baseurl }}">
+            <i class="fa fa-rss-square fa-2x" aria-hidden="true"></i>
+          </a>
         </li>
+        {% if site.email%}
+        <li class="site-footer-link">
+          <a href="mailto:{{ site.email }}">
+            <i class="fa fa-inbox fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+        {% endif %}
         {% if site.github_username %}
-          <li class="site-footer-link">
-            <a href="https://github.com/{{ site.github_username }}">Github</a>
-          </li>
+        <li class="site-footer-link">
+          <a href="https://github.com/{{ site.github_username }}">
+            <i class="fa fa-github-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
         {% endif %}
         {% if site.facebook_username %}
-          <li class="site-footer-link">
-            <a href="https://facebook.com/{{ site.facebook_username }}">Facebook</a>
-          </li>
-        {% endif %}
-        {% if site.email%}
-          <li class="site-footer-link">
-            <a href="mailto:{{ site.email }}">Email</a>
-          </li>
+        <li class="site-footer-link">
+          <a href="https://facebook.com/{{ site.facebook_username }}">
+            <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
         {% endif %}
         {% if site.twitter_username %}
-          <li class="site-footer-link">
-            <a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a>
-          </li>
+        <li class="site-footer-link">
+          <a href="https://twitter.com/{{ site.twitter_username }}">
+            <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+        {% endif %}
+        {% if site.linkedin_username %}
+        <li class="site-footer-link">
+          <a href="https://kr.linkedin.com/in/{{ site.linkedin_username }}">
+            <i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
         {% endif %}
       </ul>
-
+      <h1 class="footer-heading"><a href="#">김정환 블로그</a></h1>
     </div>
-
   </div>
 
   <!-- Google Analytics -->
