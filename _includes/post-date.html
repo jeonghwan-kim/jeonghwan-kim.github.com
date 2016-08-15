@@ -1,7 +1,7 @@
-{% if post.date %}
-  <span>{{ post.date | date : "%Y.%m.%d." }}</span>
+{% if page %}
+  {% assign post = page %}
 {% endif %}
 
-{% if page.date %}
-<span>{{ page.date | date : "%Y.%m.%d." }}</span>
+{% if post.date %}
+  <span>{{ post.date | date : "%Y년 %m월 %d일" }}</span>
 {% endif %}
