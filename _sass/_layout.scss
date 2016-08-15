@@ -211,7 +211,6 @@
       overflow-x: hidden;
 
       a.post-link {
-        display: inline-block;
         color: $text-color;
         font-weight: $light-font-weight;
 
@@ -258,8 +257,6 @@
 .post-title {
   font-size: 150%;
   font-weight: $bold-font-weight;
-  letter-spacing: -1px;
-  line-height: 1;
 }
 
 .post-content {
