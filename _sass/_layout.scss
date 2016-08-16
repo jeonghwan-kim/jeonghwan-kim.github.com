@@ -211,7 +211,7 @@
 
     .post-feature-image {
       float: right;
-      width: $post-list-featured-image-width;
+      max-width: $post-list-featured-image-width;
       max-height: $post-list-featured-image-width;
       overflow-y: hidden;
     }
