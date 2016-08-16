@@ -44,7 +44,7 @@ The purpose of this snippet is to list all your posts posted with a certain tag.
 {% endcomment %}
 {% for tag in tags %}
 	<h2 id="{{ tag | slugify }}">
-	  <a href="/tags/#{{ tag }}" class="tag-title-link">#{{ tag }}</a>
+	  <a href="/tags#{{ tag }}" class="tag-title-link">#{{ tag }}</a>
 	</h2>
 	<ul>
 	 {% for post in site.posts %}
