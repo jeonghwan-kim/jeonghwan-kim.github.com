@@ -79,7 +79,45 @@ summary:
 
 ## Dependency Injection할 때 주의할 사항
 
-컴파일할때는 배열로 주입하라
+앵귤러에서 강조하는 것중 하나가 의존성 주입, Dependency Indection이다. 말도 너무 어렵고 여전히 이게 어떻게 구동하는지 명확히 파악하지는 못하지만 이 개념때문에 앵귤러에서 각 컴포넌트들을 독립적으로 모듈화할 수 있고 테스트하기도 쉽다는 것을 실감한다. 앵귤러에서 인젝션 할수 있는 것은 서비스다. 어떤 서비스인지 그 구현은 모르더라도 아래처럼 서비스를 주입할 수 있다.
+
+```javascript
+angular.module('myapp')
+    .controller('MyCtrl', function ($scope, myService) {
+      // myService를 사용할 수 있다.
+    });
+```
+
+myService를 myapp 모듈 범위내 어디선가 정의해 놓고 MyCtrl 이란 컨트롤러에서 이 서비스를 사용할 수 있는데 컨트롤러 정의할때 controller() 함수 두번째 파라매터의 함수의 파라매터로 넣는 방식이다. 이렇게 의존성 주입을 설정할 수 있지만 문제는 다음과 같은 상황에서 발생한다.
+
+프론트엔드에서 사용하는 자바스크립트 코드는 서버에서 브라우져로 다운로드 되어 실행되는 방식이다. 따라서 다운로드할 자비스크립트 코드의 용량이 적을수록 웹페이지를 접하는 사용자에게는 빠른 웹사이트가 된다. 따라서 현대의 자바스크립트는 코드를 용량을 줄이기 위해 변수명을 짦게 바꾸는 등 용량을 최소하려고 노력한다. 또한 상용화된 서비스의 코드가 다른 개발자에 의해 쉽게 읽혀지지 않도록 하기위해 난독화 작업을 수행한다. 위 코드를 압축하고 난독화 하면 아마 이런 코드로 변경될 것이다.
+
+```javascript
+angular.module('myapp')
+    .controller('MyCtrl', function (a, b) {
+    });
+```
+
+반드시 그런것은 아니지만 변수만큼은 a, b처럼 짧게 변경된다. 왜냐하면 변수명은 개발자가 식별할수 있어야 하기 때문에 $scope, myService 이지만 브라우져가 볼때는 a, b로 해도 상관없기 때문이다. 그러나 여기서 문제가 발생한다. 브라우져는 a가 $scope이고 b가 mySerivce라는 것을 알지못한다. 따라서 그러한 단서를 제공해야 하는데 [Inline Array Annotaion](https://docs.angularjs.org/guide/di#inline-array-annotation)으로 코드를 작성하면 된다.
+
+```javascript
+angular.module('myapp')
+    .controller('MyCtrl', ['$scope', 'myService', function ($scope, myService) {
+    }]);
+```
+
+이것을 압축하면 아래와 같이 변경될 것이다.
+
+```javascript
+angular.module('myapp')
+    .controller('MyCtrl', ['$scope', 'myService', function (a, b) {
+    }]);
+```
+
+문자열은 압축 대상이 아니기 때문에 배열에 넣은 '$scope', 'myService'는 그대로 남아있고 배열의 세 번째로 넣은 함수의 파라매터 변수만 a, b로 변경되었다. 앵귤러는 이 단서를 가지고 a 는 $scope 이고 b는 myService라는 서비스라고 판단할 수 있는 것이다.
+
+처음엔 코드를 압축하고 나서 실행하면 가끔 브라우져 콘솔에 에러가 발생하는데 이것이 원인이었던 경우가 많았었다. 뭐가 없다라고 하는데 잘 못찼겠고 그 땐 앵귤러가 너무 멀게만 느겨졌었다. 이런 앵귤러만의 특성을 파악하고 나면 좀더 가까워지지 않을까 생각한다.
+
 
 ## compile과 link의 차이점
 
