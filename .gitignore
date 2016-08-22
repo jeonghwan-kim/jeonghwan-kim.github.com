@@ -4,4 +4,4 @@ Gemfile
 Gemfile.lock
 .jekyll-metadata
 .sass-cache
-!node_modules
+node_modules
