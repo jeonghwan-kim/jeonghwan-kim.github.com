@@ -18,7 +18,7 @@ summary:
 가끔 누군가에게 앵귤러로 헬로월드를 가르치다 보면 인터폴레이션 문자열이 순간적으로 나오는데 왜 그러냐고 질문 받는다. 그리고 대안이 없는지 궁금해 한다. 인터폴레이션 문법을 사용한 것은 쉽게 타이핑할 수 있어서다. 사실은 인터폴레이션을 사용한 곳의 코드를 모두 `ngBind` 디렉티브로 변경해서 사용한다. 그러면 스콥 변수에 데이터가 할당될 때까지는 빈 문자열이 출력 된다.
 
 ```html
-<p>Hello {{name}}</p>
+<p>Hello {% raw %}{{name}}{% endraw %}</p>
 <p>Hello <span ng-bind="name"></span></p>
 ```
 
@@ -30,8 +30,8 @@ summary:
 한편 원타임 바인딩을 사용하게 되면 스콥변수에 할당된 초기값만 뷰에 출력된다. 이후 그 변수의 값이 변경되더라도 뷰는 업데이트되지 않는다. 이것은 스콥 변수가 바인딩된 변수를 감시하지 않기 때문이며 그만큼 메모리를 절약할 수 있다.
 
 ```html
-<p>Normal binding:   <b>Hello {{name}}</b></p>
-<p>One time binding: <b>Hello {{::name}}</b></p>
+<p>Normal binding:   <b>Hello {% raw %}{{name}}{% endraw %}</b></p>
+<p>One time binding: <b>Hello {% raw %}{{::name}}{% endraw %}</b></p>
 ```
 
 [plunker](https://embed.plnkr.co/7d38Z16K9z80cyvUsC4S/)
