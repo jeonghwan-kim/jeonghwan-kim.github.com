@@ -5,6 +5,7 @@ tags:
   yeoman
   yeoman-generator
 summary: ExpressJS, Sequelize, MySQL 기반의 요맨 제너레이터를 만들어봤다.
+featured_image: /assets/imgs/2016/yeoman-logo.png
 ---
 
 라이브러리 -> 스캐폴딩 -> 제너레이터 -> 요맨
@@ -319,11 +320,15 @@ npm link
 yo weplajs
 ```
 
+![](/assets/imgs/2016/generator-weplajs-1.png)
+
 서브 제너레이터도를 이용해 api를 추가할수 있다.
 
 ```
 yo weplajs:api
 ```
+
+![](/assets/imgs/2016/generator-weplajs-2.png)
 
 ## 배포하기
 
