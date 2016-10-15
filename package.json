@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/jeonghwan-kim/jeonghwan-kim.github.com#readme",
   "dependencies": {
-    "heading-link": "^0.1.0"
+    "heading-link": "^0.1.2"
+  },
+  "devDependencies": {
+    "heading-link": "^0.1.3"
   }
 }
