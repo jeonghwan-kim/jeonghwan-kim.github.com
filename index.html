@@ -4,16 +4,25 @@ layout: default
 
 <div class="home">
 
-  <!-- Paginated Posts -->
-  <ul class="post-list">
-    {% for post in paginator.posts %}
-      <li>{% include post-list.html %}</li>
-    {% endfor %}
-  </ul>
-
-  <!-- Pagination Links -->
   <div class="wrapper">
-    {% include pagination-links.html %}
+    <div>
+      <!-- Paginated Posts -->
+      <ul class="post-list col col-8">
+        {% for post in paginator.posts %}
+          <li>{% include post-list.html %}</li>
+        {% endfor %}
+      </ul>
+
+      <!-- Category -->
+      <div class="sidebar col col-2">
+        {% include sidebar.html %}
+      </div>
+    </div>
+
+    <!-- Pagination Links -->
+    <div class="clearfix">
+      {% include pagination-links.html %}
+    </div>
   </div>
 
 </div>

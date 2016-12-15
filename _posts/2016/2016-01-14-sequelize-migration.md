@@ -2,6 +2,7 @@
 id: 1049
 title: Sequelize 마이그레이션
 date: 2016-01-14T09:21:17+00:00
+category: NodeJS
 author: Chris
 layout: post
 guid: http://whatilearn.com/?p=1049

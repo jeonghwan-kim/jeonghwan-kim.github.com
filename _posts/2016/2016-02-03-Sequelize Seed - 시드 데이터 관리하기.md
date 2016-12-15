@@ -2,6 +2,7 @@
 id: 972
 title: 'Sequelize Seed &#8211; 시드 데이터 관리하기'
 date: 2016-02-03T12:02:53+00:00
+category: NodeJS
 author: Chris
 layout: post
 guid: http://whatilearn.com/?p=972

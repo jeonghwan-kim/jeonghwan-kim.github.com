@@ -193,3 +193,19 @@ a.tag-title-link:focus {
   width: 100%;
   border-bottom: 1px solid $grey-color-light;
 }
+
+/**
+ * Grid
+ */
+.col {
+  float: left;
+}
+.col-8 {
+  width: 80%;
+}
+.col-2 {
+  width: 20%;
+}
+.clearfix {
+  clear: both;
+}

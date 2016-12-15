@@ -1,6 +1,7 @@
 ---
 id: 1041
 title: 워드프레스 파일 업로드 시 파일명 처리
+category: Wordpress
 date: 2016-01-11T21:15:30+00:00
 author: Chris
 layout: post

@@ -1,0 +1,37 @@
+{% comment %}
+=======================
+The following part extracts all the categories from your posts and sort category, so that you do not need to manually collect your categories to a place.
+=======================
+{% endcomment %}
+{% assign rawCategory = "" %}
+{% for post in site.posts %}
+	{% assign ccategory = post.category | join:'|' | append:'|' %}
+	{% assign rawCategory = rawCategory | append:ccategory %}
+{% endfor %}
+{% assign rawCategory = rawCategory | split:'|' | sort %}
+
+{% comment %}
+=======================
+The following part removes dulpicated categories and invalid categories like blank category.
+=======================
+{% endcomment %}
+{% assign categories = "" %}
+{% for category in rawCategory %}
+	{% if category != "" %}
+		{% if categories == "" %}
+			{% assign categories = category | split:'|' %}
+		{% endif %}
+		{% unless categories contains category %}
+			{% assign categories = categories | join:'|' | append:'|' | append:category | split:'|' %}
+		{% endunless %}
+	{% endif %}
+{% endfor %}
+
+<aside>
+  <h2>Category</h2>
+  <ul>
+    {% for category in categories %}
+    <li><a href="#{{ tag | slugify}}" class="">{{ category }}</a></li>
+    {% endfor %}
+  </ul>
+</aside>

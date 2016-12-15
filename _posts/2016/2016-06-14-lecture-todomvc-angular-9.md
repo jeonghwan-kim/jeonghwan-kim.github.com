@@ -1,6 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 9 - Service'
 layout: post
+category: AngularJS
 tags:
   angularjs
   lecture

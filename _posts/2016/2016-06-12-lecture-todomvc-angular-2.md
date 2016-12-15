@@ -1,6 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 2 - 앵귤러 로딩'
 layout: post
+category: AngularJS
 tags:
   angularjs
   lecture

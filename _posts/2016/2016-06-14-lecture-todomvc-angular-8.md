@@ -1,6 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 8 - Directive'
 layout: post
+category: AngularJS
 tags:
   angularjs
   lecture

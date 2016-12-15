@@ -1,6 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 1 - 노드설치'
 layout: post
+category: AngularJS
 tags:
   angularjs
   nodejs

@@ -2,6 +2,7 @@
 id: 955
 title: Sequelize Modeling
 date: 2016-01-26T23:27:50+00:00
+category: NodeJS
 author: Chris
 layout: post
 guid: http://whatilearn.com/?p=955
