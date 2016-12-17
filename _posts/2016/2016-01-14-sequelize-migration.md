@@ -2,12 +2,12 @@
 id: 1049
 title: Sequelize 마이그레이션
 date: 2016-01-14T09:21:17+00:00
+category: node
 author: Chris
 layout: post
 guid: http://whatilearn.com/?p=1049
 permalink: /sequelize-migration/
-categories:
-  - Sequelize
+category: node
 tags:
   - sequelize
 summary: 데이터베이스 마이크레이션 방법에 대해 알아본다.

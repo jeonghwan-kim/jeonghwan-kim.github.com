@@ -6,13 +6,9 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=205
 permalink: /wordpress-and-grunt/
-categories:
-  - Grunt.js
-  - Php
-  - Wordpress
+category: php
 tags:
   - grunt
-  - php
   - wordpress
 ---
 자바스크립트를 이용한 프로젝트에서는 <a href="http://gruntjs.com/">Grunt</a>를 이용해 프로젝트를 관리한다. 코드 검사, 압축, 배포 등 grunt의 자동화 기술은 과거 수작업이 많았던 웹 개발을 비교적 편리하게 해주는 유용한 툴이다. 자바스크립트 뿐만 아니라 php 프로젝트에서도 grunt를 이용한 프로젝트 관리 자동화를 구현할 수 있다. php의 대표 오픈소즈 중 하나인 <a href="https://wordpress.org/">워드프레스(wordpress)</a> 개발시 grunt를 적용하는 방법을 알아보자.

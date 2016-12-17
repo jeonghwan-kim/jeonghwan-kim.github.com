@@ -2,8 +2,8 @@
 layout: default
 ---
 
-<div class="home">
 
+<div class="wrapper">
   <!-- Paginated Posts -->
   <ul class="post-list">
     {% for post in paginator.posts %}
@@ -12,8 +12,8 @@ layout: default
   </ul>
 
   <!-- Pagination Links -->
-  <div class="wrapper">
+  <div>
     {% include pagination-links.html %}
   </div>
-
 </div>
+

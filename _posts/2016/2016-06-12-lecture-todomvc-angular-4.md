@@ -1,6 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 4 - 투두 목록 출력하기'
 layout: post
+category: angular
 tags:
   angularjs
   lecture

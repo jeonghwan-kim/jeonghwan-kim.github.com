@@ -2,12 +2,12 @@
 id: 955
 title: Sequelize Modeling
 date: 2016-01-26T23:27:50+00:00
+category: node
 author: Chris
 layout: post
 guid: http://whatilearn.com/?p=955
 permalink: /sequelize-model/
-categories:
-  - Sequelize
+category: node
 tags:
   - sequelize
 summary: Sequelize로 모델링하는 방법

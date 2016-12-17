@@ -6,8 +6,8 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=139
 permalink: /resource%ec%99%80-service/
-categories:
-  - Angular.js
+category:
+  - angular
 tags:
   - ngResource
   - angularjs

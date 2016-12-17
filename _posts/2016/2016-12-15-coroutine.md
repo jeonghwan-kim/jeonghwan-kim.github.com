@@ -1,6 +1,7 @@
 ---
 title: 제너레이터와 프라미스를 이용한 비동기 처리
 layout: post
+category: js
 tags:
   generator
   promise

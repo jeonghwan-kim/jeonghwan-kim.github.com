@@ -1,6 +1,7 @@
 ---
 title: '노드에서는 쿼리스트링 인코딩을 어떻게 처리할까?'
 layout: post
+category: node
 tags:
   expressjs
   nodejs

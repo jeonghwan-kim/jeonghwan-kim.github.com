@@ -1,6 +1,7 @@
 ---
 title: '스웨거 문서 문법 체크하기'
 layout: post
+category: etc
 summary: 'swagger-parser로 스웨거 문법을 체크하는 방법'
 tags: [swagger]
 featured_image: /assets/imgs/2016/swagger-logo.png

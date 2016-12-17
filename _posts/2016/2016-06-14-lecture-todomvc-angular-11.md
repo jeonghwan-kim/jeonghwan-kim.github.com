@@ -1,6 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 11 - Static Files'
 layout: post
+category: angular
 tags:
   expressjs
   lecture

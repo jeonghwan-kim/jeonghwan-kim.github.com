@@ -1,6 +1,7 @@
 ---
 title: 'Yeoman 제너레이터 만들기'
 layout: post
+category: tool
 tags:
   yeoman
   yeoman-generator

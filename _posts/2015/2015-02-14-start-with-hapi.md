@@ -6,9 +6,8 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=143
 permalink: /start-with-hapi/
-categories:
-  - Hapi.js
-  - Node.js
+category:
+  - node
 tags:
   - hapijs
   - javascript

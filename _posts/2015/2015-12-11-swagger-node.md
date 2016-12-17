@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=564
 permalink: /swagger-node/
-categories:
-  - Swagger
+category: node
 tags:
   - expressjs
   - swagger

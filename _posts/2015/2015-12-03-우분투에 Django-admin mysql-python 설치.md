@@ -6,9 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=923
 permalink: /%ec%9a%b0%eb%b6%84%ed%88%ac%ec%97%90-django-admin-mysql-python-%ec%84%a4%ec%b9%98/
-categories:
-  - Django
-  - Linux
+category: linux
 tags:
   - django
   - mysql

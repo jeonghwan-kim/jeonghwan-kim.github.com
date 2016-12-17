@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=868
 permalink: /%ea%b8%b0%ec%a1%b4-%ed%94%84%eb%a1%9c%ec%a0%9d%ed%8a%b8%ec%99%80-swagger-ui-%ec%97%b0%eb%8f%99%ed%95%98%ea%b8%b0/
-categories:
-  - Swagger
+category: etc
 tags:
   - swagger
 ---

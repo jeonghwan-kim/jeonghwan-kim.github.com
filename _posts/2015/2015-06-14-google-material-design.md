@@ -6,8 +6,8 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=384
 permalink: /google-material-design/
-categories:
-  - 미분류
+category:
+  - etc
 tags:
   - css
   - materialize

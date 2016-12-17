@@ -8,8 +8,8 @@ guid: http://whatilearn.com/?p=440
 permalink: /passport-google-oauth-%ea%b5%ac%ea%b8%80-%ec%9d%b8%ec%a6%9d-%eb%aa%a8%eb%93%88/
 AGLBIsDisabled:
   - 0
-categories:
-  - Express.js
+category:
+  - node
 tags:
   - google-api
   - passport

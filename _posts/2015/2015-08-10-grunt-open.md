@@ -8,9 +8,7 @@ guid: http://whatilearn.com/?p=580
 permalink: /grunt-open/
 AGLBIsDisabled:
   - 0
-categories:
-  - Grunt.js
-  - Node.js
+category: node
 tags:
   - grunt
   - grunt-open

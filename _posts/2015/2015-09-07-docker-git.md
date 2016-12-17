@@ -8,8 +8,7 @@ guid: http://whatilearn.com/?p=680
 permalink: /docker-git/
 AGLBIsDisabled:
   - 0
-categories:
-  - Docker
+category: tool
 tags:
   - docker
   - git

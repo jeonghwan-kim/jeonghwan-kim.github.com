@@ -8,9 +8,8 @@ guid: http://whatilearn.com/?p=216
 permalink: /hapi-api-server-scaffold/
 Layout:
   - default
-categories:
-  - Hapi.js
-  - Node.js
+category:
+  - node
 tags:
   - dao
   - hapijs
