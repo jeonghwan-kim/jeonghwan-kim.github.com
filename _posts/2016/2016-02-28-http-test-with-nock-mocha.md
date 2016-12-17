@@ -8,6 +8,7 @@ tags:
   - nodejs
   - unit-test
 summary: '서비스 내에서 처리하는 로직은 테스트 하기가 쉽다. 모든 환경을 내가 제어할 수 있기 때문이다. 그러나 만약 외부 API 사용하는 경우에는 어떨까?'
+permalink: /2016/02/28/http-test-with-nock-mocha.html
 ---
 
 API 서버를 개발할 때 유닛테스트를 꼼꼼히 작성하는 편이다. 반복적인 작업임은 물론이고 '이럴 경우도

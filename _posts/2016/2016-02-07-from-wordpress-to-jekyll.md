@@ -6,6 +6,7 @@ category: php
 date: '2016-02-07'
 tags: [wordpress, jekyll]
 summary: '이번 설 연휴에 뭘해 볼까하다가 블로그를 옮기기로 작심했다. 워드프레서스에 지킬로 옮기고 싶었다.'
+permalink: /2016/02/07/from-wordpress-to-jekyll.html
 ---
 
 이번 설 연휴에 뭘해 볼까하다가 블로그를 옮기기로 작심했다. 워드프레서스에 지킬([Jekyll](http://jekyllrb.com/))로 옮기고 싶었다.

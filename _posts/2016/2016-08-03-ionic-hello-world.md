@@ -6,6 +6,7 @@ tags:
   ionic
 featured_image: /assets/imgs/2016/ionic.png
 summary: 앵귤러 기반의 모바일 개발 프레임웤 아이오닉을 시작해 본다
+permalink: /2016/08/03/ionic-hello-world.html
 ---
 
 앵귤러를 사용한지 만 이년이 되었지만 아이오닉(ionic)이 앵귤러 기반의 프레임웍이라는 사실은 최근에 알게되었다.

@@ -5,6 +5,7 @@ category: etc
 tags: jekyll
 summary: 'Jekyll에서 태그 시스템을 만들어보자!'
 featured_image: /assets/imgs/2016/jekyll_logo.png
+permalink: /2016/02/29/jekyll-tag.html
 ---
 
 블로그를 깃헙 페이지로 옮기면서 두번째 해야할 일은 태그 시스템을 만드는 것이다.

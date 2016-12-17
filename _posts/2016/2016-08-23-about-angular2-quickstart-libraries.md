@@ -5,6 +5,7 @@ category: angular
 tags:
   angular2
 summary:
+permalink: /2016/08/23/about-angular2-quickstart-libraries.html
 ---
 
 앵귤러2 공식 문서를 보기 시작했다. [퀵스타트](https://angular.io/docs/ts/latest/quickstart.html#!#index)를 하나씩 따라하고 있는데 아무래도 [index.html](https://angular.io/docs/ts/latest/quickstart.html#!#index)에서 로딩하는 외부 라이브러리의 쓰임새를 모르고서는 학습을 진행하기가 여간 껄끄럽지 않다. 대충 각 라이브러리가 어떤 역할을 하는지 그 사용 목적을 파악해야 겠다는 생각에 좀 조사해 보았다.

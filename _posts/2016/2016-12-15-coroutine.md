@@ -7,6 +7,7 @@ tags:
   promise
   coroutine
 summary:
+permalink: /2016/12/15/coroutine.html
 ---
 
 자바스크립트 개발에 있어 프론트엔드도 마찬가지겠지만 백엔드에도 비동기 로직이 많다. 어쩌면 대부분 비동기 작업일 수 있다. 디비를 읽고, 파일을 읽는 행위 자체가 서버의 기능인데 모두 논블락(non-block) 비동기로 처리되니깐 말이다. 이를 구현하는 방법 중 가장 기본적인 것이 콜백(callback) 스타일 코딩 기법이고, 이를 개선한 프라미스(Promise)의 사용 그리고 제너레이터(Generator)와 연동한 코루틴(coroutine)등의 방법을 소개하고자 한다.

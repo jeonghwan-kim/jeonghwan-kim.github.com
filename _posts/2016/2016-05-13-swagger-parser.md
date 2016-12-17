@@ -5,6 +5,7 @@ category: etc
 summary: 'swagger-parser로 스웨거 문법을 체크하는 방법'
 tags: [swagger]
 featured_image: /assets/imgs/2016/swagger-logo.png
+permalink: /2016/05/13/swagger-parser.html
 ---
 
 팀에 스웨거(swagger)를 도입한 이후 개발 패턴이 많이 변했다.

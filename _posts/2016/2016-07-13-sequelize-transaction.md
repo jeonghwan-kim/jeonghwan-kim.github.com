@@ -5,6 +5,7 @@ category: node
 tags:
   sequelize
 summary: Sequelize Transaction 사용할때 주의할 점
+permalink: /2016/07/13/sequelize-transaction.html
 ---
 
 노드에서 데이터베이스 ORM으로 [Sequelize](http://docs.sequelizejs.com/en/latest/)를 사용한다.

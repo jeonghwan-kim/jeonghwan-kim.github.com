@@ -7,6 +7,7 @@ tags:
   - elastic-beanstalk
 summary: 'AWS 한국 리젼이 추가되면서 빈스톡도 서울에 설치해봤다. 프로젝트를 새로 만들고 깃 커밋을 작성한 뒤에 AWS 커맨드라인 명령어로 빈스톡을 초기화 했다.'
 featured_image: /assets/imgs/2016/elastic_beanstalk_logo.png
+permalink: /2016/02/20/beanstalk-in-seoul.html
 ---
 
 AWS 한국 리젼이 추가되면서 빈스톡도 서울에 설치해봤다. 프로젝트를 새로 만들고 깃 커밋을 작성한 뒤에

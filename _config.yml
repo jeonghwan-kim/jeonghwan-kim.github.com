@@ -16,6 +16,7 @@ github_username:  jeonghwan-kim
 facebook_username: jeonghwan.kim1
 linkedin_username: jeonghwan-kim-07706488
 
+
 # Handling Reading
 exclude: ['node_modules', 'vendor'] # Remove comment at local eevelopment mode
 

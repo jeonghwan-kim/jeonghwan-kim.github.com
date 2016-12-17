@@ -5,6 +5,7 @@ category: aws
 summary: 'AWS 람다(Lambda)와 S3를 이용해 이미지 리사이징 서버를 만들어 보자'
 tags: [aws, lambda, s3, nodejs]
 featured_image: /assets/imgs/2016/lambda-002.png
+permalink: /2016/05/13/image-resizing-with-lambda.html
 ---
 
 ![](/assets/imgs/2016/lambda-002.png)

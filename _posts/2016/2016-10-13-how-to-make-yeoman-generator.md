@@ -7,6 +7,7 @@ tags:
   yeoman-generator
 summary: ExpressJS, Sequelize, MySQL 기반의 요맨 제너레이터를 만들어봤다.
 featured_image: /assets/imgs/2016/yeoman-logo.png
+permalink: /2016/10/13/how-to-make-yeoman-generator.html
 ---
 
 작년까지만 하더라도 리엑트보다는 앵귤러가 더 인기였던것 같았다. 그래서 Angular, Nodejs, Express, MongoDB 조합의 MEAN 스택에 대한 인기가 상당했고 이를 구현하는 방법도 다양했다. 이러한 프레임웍과 라이브러리를 조합하여 프로젝트를 시작할 수 있게 구성된 코드를 스캐폴딩이라고 한다. 요맨([Yeoman](http://yeoman.io))은 스캐폴딩을 자동으로 만들어주는 툴을 제공하는데 이것을 제너레이터라고 한다.
