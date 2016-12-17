@@ -1,7 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 10 - Express.js로 웹서버 만들기'
 layout: post
-category: AngularJS
+category: angular
 tags:
   angularjs
   lecture

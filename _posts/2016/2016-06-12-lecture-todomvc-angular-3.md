@@ -1,7 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 3 - 컨트롤러'
 layout: post
-category: AngularJS
+category: angular
 tags:
   angularjs
   lecture

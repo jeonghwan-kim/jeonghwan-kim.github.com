@@ -1,0 +1,15 @@
+---
+layout: default
+type: archive
+---
+
+<div class="archive-description">
+  <h1 class="archive-title">{{ page.category }} Archive</h1>
+  {{ content }}
+</div>
+
+<div class="wrap">
+  {% for post in paginator.posts %}
+    <li>{% include post-list.html %}</li>
+  {% endfor %}
+</div>

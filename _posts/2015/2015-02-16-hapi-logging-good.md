@@ -6,9 +6,8 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=192
 permalink: /hapi-logging-good/
-categories:
-  - Hapi.js
-  - Node.js
+category:
+  - node
 tags:
   - good
   - hapijs

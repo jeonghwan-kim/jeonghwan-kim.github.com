@@ -2,13 +2,12 @@
 id: 1046
 title: Sequelize로 마이그레이션 시 외래키 추가하기
 date: 2016-01-12T22:17:40+00:00
-category: NodeJS
+category: node
 author: Chris
 layout: post
 guid: http://whatilearn.com/?p=1046
 permalink: /add-fk-on-sequelize-migration/
-categories:
-  - Sequelize
+category: node
 tags:
   - sequelize
 summary: 데이터베이스 마이크레이션 방법에 대해 알아본다.

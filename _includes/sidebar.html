@@ -31,7 +31,7 @@ The following part removes dulpicated categories and invalid categories like bla
   <h2>Category</h2>
   <ul>
     {% for category in categories %}
-    <li><a href="#{{ tag | slugify}}" class="">{{ category }}</a></li>
+    <li><a href="category/{{ category | slugify}}" class="">{{ category }}</a></li>
     {% endfor %}
   </ul>
 </aside>

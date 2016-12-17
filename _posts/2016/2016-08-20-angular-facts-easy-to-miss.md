@@ -1,7 +1,7 @@
 ---
 title: '앵귤러 개발자가 놓치기 쉬운 10가지 사실들'
 layout: post
-category: AngularJS
+category: angular
 tags:
   angularjs
 summary:

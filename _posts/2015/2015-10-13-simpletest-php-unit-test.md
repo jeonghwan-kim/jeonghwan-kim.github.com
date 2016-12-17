@@ -6,10 +6,8 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=786
 permalink: /simpletest-php-unit-test/
-categories:
-  - Php
+category: php
 tags:
-  - php
   - simpleTest
   - unit-test
 ---

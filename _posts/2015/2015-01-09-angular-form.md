@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://www.whatilearn.com/?p=80
 permalink: /angular-form/
-categories:
-  - Angular.js
+category: angular
 tags:
   - angularjs
   - ngForm

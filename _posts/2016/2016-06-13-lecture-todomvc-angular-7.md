@@ -1,7 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 7 - 투두 목록 필터링'
 layout: post
-category: AngularJS
+category: angular
 tags:
   angularjs
   lecture

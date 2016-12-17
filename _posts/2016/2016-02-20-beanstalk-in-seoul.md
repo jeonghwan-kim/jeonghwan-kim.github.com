@@ -1,7 +1,7 @@
 ---
 title: '서울에서 Elastic Beanstalk 사용하기'
 layout: post
-category: Aws
+category: aws
 tags:
   - aws
   - elastic-beanstalk

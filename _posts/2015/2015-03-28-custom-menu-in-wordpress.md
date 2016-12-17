@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=311
 permalink: /custom-menu-in-wordpress/
-categories:
-  - Wordpress
+category: php
 tags:
   - wordpress
 ---

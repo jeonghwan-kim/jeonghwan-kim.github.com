@@ -1,14 +1,13 @@
 ---
 id: 962
 title: boot2docker 업데이트 (v1.9)
-category: Docker
+category: etc
 date: 2016-01-03T18:26:20+00:00
 author: Chris
 layout: post
 guid: http://whatilearn.com/?p=962
 permalink: /boot2docker-%ec%97%85%eb%8d%b0%ec%9d%b4%ed%8a%b8-v1-9/
-categories:
-  - Docker
+category: linux
 tags:
   - boot2docker
   - docker

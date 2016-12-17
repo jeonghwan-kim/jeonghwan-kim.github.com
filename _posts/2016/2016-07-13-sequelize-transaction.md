@@ -1,7 +1,7 @@
 ---
 title: 'Sequelize Transaction 사용할때 주의할 점'
 layout: post
-category: NodeJS
+category: node
 tags:
   sequelize
 summary: Sequelize Transaction 사용할때 주의할 점

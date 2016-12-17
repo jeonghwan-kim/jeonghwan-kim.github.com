@@ -1,7 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 13 - $http로 앵귤러 서비스 개선하기'
 layout: post
-category: AngularJS
+category: angular
 tags:
   angularjs
   lecture

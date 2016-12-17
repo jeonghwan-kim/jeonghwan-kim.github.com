@@ -1,7 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 6 - Bootstrap으로 꾸미기'
 layout: post
-category: AngularJS
+category: angular
 tags:
   angularjs
   lecture

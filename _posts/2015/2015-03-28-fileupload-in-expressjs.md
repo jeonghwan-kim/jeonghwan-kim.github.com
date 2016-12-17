@@ -6,8 +6,8 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=307
 permalink: /fileupload-in-expressjs/
-categories:
-  - Express.js
+category:
+  - node
 tags:
   - elastic-beanstalk
   - expressjs

@@ -6,8 +6,8 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=413
 permalink: /mi-band-moves-rocket-pocket/
-categories:
-  - 미분류
+category:
+  - etc
 tags:
   - mi-band
 ---

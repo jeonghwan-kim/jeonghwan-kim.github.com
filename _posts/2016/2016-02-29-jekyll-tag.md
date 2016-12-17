@@ -1,7 +1,7 @@
 ---
 title: 'Jekyll 커스터마이징 2 - 태그'
 layout: post
-category: Jekyll
+category: etc
 tags: jekyll
 summary: 'Jekyll에서 태그 시스템을 만들어보자!'
 featured_image: /assets/imgs/2016/jekyll_logo.png

@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=350
 permalink: /how-to-run-nodejs-and-php-by-using-nginx/
-categories:
-  - 미분류
+category: linux
 tags:
   - apache2
   - nginx

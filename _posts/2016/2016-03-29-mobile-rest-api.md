@@ -1,7 +1,7 @@
 ---
 title: '서버 개발자 입장에서 바라본 모바일 API 디자인'
 layout: post
-category: Http
+category: etc
 summary: '이 글은 지극히 서버 개발자 입장에서 생각한 모바일 API 디자인 방법이다. 모바일 앱과의 효과적인 인터페이스를 설계함에 있어서 그 동안의 경험을 공유하고자 한다.'
 tags: [rest-api, http]
 ---

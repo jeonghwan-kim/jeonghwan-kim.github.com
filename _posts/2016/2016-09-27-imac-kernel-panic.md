@@ -1,7 +1,7 @@
 ---
 title: '아이맥, 커널 패닉에 빠지다'
 layout: post
-category: Osx
+category: tool
 tags:
   osx
 summary: 시에라 업데이트 후 커널패닉으로 부팅할수 없는 아이맥을 퓨전드라이브 재설정으로 복구했다.

@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=740
 permalink: /docker-usage/
-categories:
-  - Docker
+category: linux
 tags:
   - docker
   - forever

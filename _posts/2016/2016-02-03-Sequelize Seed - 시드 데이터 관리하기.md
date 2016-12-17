@@ -2,14 +2,14 @@
 id: 972
 title: 'Sequelize Seed &#8211; 시드 데이터 관리하기'
 date: 2016-02-03T12:02:53+00:00
-category: NodeJS
+category: node
 author: Chris
 layout: post
 guid: http://whatilearn.com/?p=972
 permalink: /sequelize-seed-%ec%8b%9c%eb%93%9c-%eb%8d%b0%ec%9d%b4%ed%84%b0-%ea%b4%80%eb%a6%ac%ed%95%98%ea%b8%b0/
 dsq_thread_id:
   - 4553996042
-categories: Sequelize
+category: node
 tags: sequelize
 summary: 개발 초기에 Sequelize로 데이터에이스에 샘플 데이터를 넣는 방법 대해 알아본다.
 featured_image: /assets/imgs/2016/sequelize-icon.png

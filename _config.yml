@@ -8,7 +8,7 @@
 # Site settings
 name: blog.jeonghwan.net
 title: 김정환 블로그
-description: '#web #backend #angularjs #nodejs #fullstack'
+description: '#web #backend #frontend #developer #javascript'
 url: http://blog.jeonghwan.net
 email: ej88ej@gmail.com
 twitter_username: JeonghwanKim4
@@ -18,6 +18,7 @@ linkedin_username: jeonghwan-kim-07706488
 
 # Handling Reading
 exclude: ['node_modules', 'vendor'] # Remove comment at local eevelopment mode
+
 # markdown: kramdown
 kramdown:
   input: GFM
