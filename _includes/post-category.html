@@ -1,0 +1,7 @@
+{% if page %}
+  {% assign post = page %}
+{% endif %}
+
+{% if post.category %}
+  <span>in <a href="/category/{{post.category}}.html">{{ post.category | upcase }}</a></span>
+{% endif %}
