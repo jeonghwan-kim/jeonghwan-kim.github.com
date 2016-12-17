@@ -274,7 +274,15 @@
   background-color: $brand-color;
   padding: 100px 0;
 }
-
+.post-header-category {
+  background-color: $brand-color;
+  padding: 10px 0;
+  .title {
+    margin-bottom: 0;
+    font-size: $base-font-size;
+    color: $white-color
+  }
+}
 .post-title {
   font-size: 250%;
   font-weight: $bold-font-weight;

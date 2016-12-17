@@ -3,16 +3,17 @@ layout: default
 ---
 
 
-<div>
+<div class="wrapper">
   <!-- Paginated Posts -->
   <ul class="post-list">
     {% for post in paginator.posts %}
       <li>{% include post-list.html %}</li>
     {% endfor %}
   </ul>
+
+  <!-- Pagination Links -->
+  <div>
+    {% include pagination-links.html %}
+  </div>
 </div>
 
-<!-- Pagination Links -->
-<div>
-  {% include pagination-links.html %}
-</div>
