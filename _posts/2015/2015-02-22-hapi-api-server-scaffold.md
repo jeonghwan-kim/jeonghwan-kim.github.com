@@ -8,8 +8,7 @@ guid: http://whatilearn.com/?p=216
 permalink: /hapi-api-server-scaffold/
 Layout:
   - default
-category:
-  - node
+category: node
 tags:
   - dao
   - hapijs
@@ -52,7 +51,7 @@ Hapi 프레임웍을 이용해 Api 서버를 구현할 때 필요한 최소한�
 
   ⌊ routeHelper/index.js: server.route() 함수로 라우팅 설정시 하위 폴더에 대한 라우팅을 위해 server 객체를 넘겨주는 모듈
 
-  ⌊ session/index.js: 세션 인증을 위해 hapi-auth-cookie 모듈을 이용한 인증 모듈 
+  ⌊ session/index.js: 세션 인증을 위해 hapi-auth-cookie 모듈을 이용한 인증 모듈
 </pre>
 
 <h2>DAO</h2>
@@ -73,7 +72,7 @@ Hapi 프레임웍을 이용해 Api 서버를 구현할 때 필요한 최소한�
 
 우선 DAO를 사용한 users.ctrl.js 모듈을 살펴보자. user DAO 모듈을 불러와 각 프로토콜 핸들러 로직에 추가한다.
 
-<pre class="lang:js decode:true" title="routes/users/users.ctrl.js">// userDao 모듈을 로딩한다. 
+<pre class="lang:js decode:true" title="routes/users/users.ctrl.js">// userDao 모듈을 로딩한다.
 // 데이터베이스에 유저 관련 데이터에대해 CRUD 작업을 수행한다.
 var userDao = require('../../dao/user');
 
@@ -85,7 +84,7 @@ exports.find = function (req, reply) {
       req.error(err);
       return reply(err).code(400);
     }
-    
+
     reply({users: users});
   })
 };
@@ -111,7 +110,7 @@ exports.insert = function (req, reply) {
       req.error(err);
       return reply(err).code(400);
     }
-    
+
     req.log('info', req.payload.name + ' is inserted.');
     reply({users: users}).code(201);
   });

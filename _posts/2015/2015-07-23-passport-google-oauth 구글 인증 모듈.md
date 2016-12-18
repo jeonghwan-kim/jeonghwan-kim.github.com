@@ -8,8 +8,7 @@ guid: http://whatilearn.com/?p=440
 permalink: /passport-google-oauth-%ea%b5%ac%ea%b8%80-%ec%9d%b8%ec%a6%9d-%eb%aa%a8%eb%93%88/
 AGLBIsDisabled:
   - 0
-category:
-  - node
+category: node
 tags:
   - google-api
   - passport
@@ -127,7 +126,7 @@ exports.setup = setup;
 ![](/assets/imgs/2015/login3.png)
 
 /account에는 인증된 사용자만 접근하도록 설정해보자. <code>/auth/index.js</code> 모듈을 호출해서 라우팅 중간에 미들웨어로 끼어 넣으면 된다.
-<pre class="lang:js decode:true " title="routes/index.js">var auth = require('../auth'); 
+<pre class="lang:js decode:true " title="routes/index.js">var auth = require('../auth');
 
 router.get('/account', auth.ensureAuthenticated, function(req, res, next) {
   res.render('account', {

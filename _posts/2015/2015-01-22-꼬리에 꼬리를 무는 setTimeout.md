@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=133
 permalink: /%ea%bc%ac%eb%a6%ac%ec%97%90-%ea%bc%ac%eb%a6%ac%eb%a5%bc-%eb%ac%b4%eb%8a%94-timeout/
-category:
-  - js
+category: js
 tags:
   - javascript
 ---
@@ -53,7 +52,7 @@ tags:
     (function playLoop() {
         setTimeout(function() {
             playVideo(videos[nextIdx].url);
-            
+
             idx = nextIdx;
             nextIdx = getNextIdx(idx, videos.length);
 

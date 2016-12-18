@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=156
 permalink: /bit-operation/
-category:
-  - etc
+category: etc
 tags:
   - bit-operation
 ---

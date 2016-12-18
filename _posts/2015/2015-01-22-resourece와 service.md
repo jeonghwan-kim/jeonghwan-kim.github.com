@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=139
 permalink: /resource%ec%99%80-service/
-category:
-  - angular
+category: angular
 tags:
   - ngResource
   - angularjs
@@ -46,14 +45,14 @@ $resource 객체를 서비스로 감싸면 $resource 객체 생성시 추가 설
       {
         get: {
           isArray: false,
-          cache: true, // 캐쉬 설정 
+          cache: true, // 캐쉬 설정
 
           // get 메소드 응답 데이터를 수정할 한다.
           transformResponse: function(data) {
 
             data = angular.fromJson(data); // 문자열 데이터를 객체화 한다.
-            
-            // 프론트앤드에서 사용하기 적합한 형태로 data 객체를 수정한다. 
+
+            // 프론트앤드에서 사용하기 적합한 형태로 data 객체를 수정한다.
 
             return data; // 수정한 data 객체를 반환한다.
           }
@@ -66,7 +65,7 @@ $resource 객체를 서비스로 감싸면 $resource 객체 생성시 추가 설
 
             data = angular.fromJson(data);
 
-            // 프론트앤드에서 사용하기 적합한 형태로 data 객체를 수정한다. 
+            // 프론트앤드에서 사용하기 적합한 형태로 data 객체를 수정한다.
 
             return data;
           }

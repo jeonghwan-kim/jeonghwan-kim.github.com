@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=363
 permalink: /server-side-loggin-in-angular/
-category:
-  - angular
+category: angular
 tags:
   - angularjs
   - exception
@@ -26,7 +25,7 @@ tags:
     .provider("$exceptionHandler", {
 
       // 앵귤러 providoer는 $get 속성에 정의해야 한다.
-      $get: function (ExceptionLogToServer) { 
+      $get: function (ExceptionLogToServer) {
 
         // 익셉션이 발생하면 ExceptionLogToServer 서비스를 호출한다.
         return ExceptionLogToServer;
@@ -47,13 +46,13 @@ ExceptionLogToServer 서비스를 정의한다.
           // $http 앵귤러 서비스를 사용하지 않는다. Circular call 관련 이슈
           $.ajax({
             type: 'POST',
-            url: '/api/logs', // 서전 정의한 백엔드 프로토콜: 로그 기록용 
+            url: '/api/logs', // 서전 정의한 백엔드 프로토콜: 로그 기록용
             data: {
               log: angular.toJson({
                 url: $window.location.href, // 예외 발생시 url
-                message: exception.toString, // 예외 메세지 
+                message: exception.toString, // 예외 메세지
                 type: 'EXCEPTION',
-                stackTrace: printStackTrace({ // 스택 정보, 미리 stacktract.js를 로딩해야한다. 
+                stackTrace: printStackTrace({ // 스택 정보, 미리 stacktract.js를 로딩해야한다.
                   e: exception
                 }),
                 cause: cause || ''

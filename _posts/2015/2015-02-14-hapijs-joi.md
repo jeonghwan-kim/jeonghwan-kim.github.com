@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=187
 permalink: /hapijs-joi/
-category:
-  - node
+category: node
 tags:
   - hapijs
   - joi
@@ -27,14 +26,14 @@ server.route({
     path:'/users/{id}',
     handler: function (req, reply) {
 
-      // 파라메터 검증 
+      // 파라메터 검증
       if (req.params.id &lt; users.length) {
 
         // 검증을 통과하면 로직 수행
         reply({user: users[req.params.id]});
       } else {
 
-        // 검증 미통과시 404 에러코드 반환 
+        // 검증 미통과시 404 에러코드 반환
         reply('No user').code(404);
       }
     }
@@ -51,7 +50,7 @@ server.route({
       reply({user: users[req.params.id]});
     },
 
-    // config.validate 속성에 검증 로직을 추가한다. 일종의 스키마 형태 
+    // config.validate 속성에 검증 로직을 추가한다. 일종의 스키마 형태
     config: {
       validate: {
         params: {

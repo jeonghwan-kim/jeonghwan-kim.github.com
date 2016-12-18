@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=379
 permalink: /oauth2-0-in-rest-api/
-category:
-  - node
+category: node
 tags:
   - express-jwt
   - jwt
@@ -51,7 +50,7 @@ exports.setup = function () {
         // 인증 정보 체크 로직
         if (email === 'test@test.com' &amp;&amp; password === 'test') {
           // 로그인 성공시 유저 아이디를 넘겨준다.
-          var user = {id: 'user_1'}; 
+          var user = {id: 'user_1'};
           return done(null, user);
         } else {
           return done(null, false, { message: 'Fail to login.' });
@@ -72,7 +71,7 @@ var express = require('express');
 var passport = require('passport');
 var auth = require('./auth');
 
-// 패스포트 세팅 
+// 패스포트 세팅
 require('./passport').setup();
 
 var router = express.Router();
@@ -80,7 +79,7 @@ var router = express.Router();
 // 로그인 라우팅 POST /login
 router.post('/', function(req, res, next) {
 
-  //  패스포트 모듈로 인증 시도 
+  //  패스포트 모듈로 인증 시도
   passport.authenticate('local', function (err, user, info) {
     var error = err || info;
     if (error) return res.json(401, error);
@@ -196,8 +195,8 @@ function isAuthenticated() {
         if(req.query &amp;&amp; req.query.hasOwnProperty('access_token')) {
           req.headers.authorization = 'Bearer ' + req.query.access_token;
         }
-   
-        // 토큰 인증 로직 
+
+        // 토큰 인증 로직
         validateJwt(req, res, next);
       })
       // Attach user to request

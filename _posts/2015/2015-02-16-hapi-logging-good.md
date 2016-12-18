@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=192
 permalink: /hapi-logging-good/
-category:
-  - node
+category: node
 tags:
   - good
   - hapijs
@@ -92,7 +91,7 @@ console.log()로 출력하면 로그 메세지가 제대로 출력되지 않는�
 <pre class="lang:js decode:true " title="로깅 예제 ">exports.insert = function (req, reply) {
   users.push(req.payload.name);
 
-  // 로깅 예제 
+  // 로깅 예제
   req.log('info', req.payload.name + ' is inserted.');
 
   reply({users: users});
@@ -102,7 +101,7 @@ console.log()로 출력하면 로그 메세지가 제대로 출력되지 않는�
 /users (post) 라우팅 로직 안에 위와 같이 로그를 뿌리도록 설정한다. 아래는 콘솔에선 보는 로그 화면이다. 파일도 동일하게 동작한다.
 
 <pre class="lang:sh decode:true " title="로깅 출력 ">150216/011404.736, [request,info], data: asdf is inserted.
-150216/011404.732, [response], http://localhost:8000: post /users {} 200 (7ms) 
+150216/011404.732, [response], http://localhost:8000: post /users {} 200 (7ms)
 </pre>
 
 전체 코드: <a href="https://github.com/jeonghwan-kim/hapi_study/tree/07_good">https://github.com/jeonghwan-kim/hapi_study/tree/07_good</a>

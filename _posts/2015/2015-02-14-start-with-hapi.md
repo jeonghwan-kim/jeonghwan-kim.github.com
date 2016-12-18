@@ -6,8 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=143
 permalink: /start-with-hapi/
-category:
-  - node
+category: node
 tags:
   - hapijs
   - javascript
@@ -139,11 +138,11 @@ module.exports = function (server) {
 
     // 라우팅 설정 ...
 
-    // 하위 라우팅을 위해 하위 폴더에 server 객체를 넘김 
+    // 하위 라우팅을 위해 하위 폴더에 server 객체를 넘김
     require('users 하위폴더1')(server);
     require('users 하위폴더2')(server);
     // ...
-    
+
 };&lt;br&gt;</pre>
 
 &nbsp;
@@ -190,7 +189,7 @@ module.exports = function (server) {
 
     // 라우팅 설정
 
-    // 하위 라우팅을 위해 하위 폴더에 server 객체를 넘김 
+    // 하위 라우팅을 위해 하위 폴더에 server 객체를 넘김
     routeHelper.route(server, __dirname);
 };
 
