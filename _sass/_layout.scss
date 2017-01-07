@@ -26,73 +26,57 @@
 .site-nav {
   float: right;
   line-height: 56px;
+  position: absolute;
+  top: 9px;
+  right: $spacing-unit / 2;
+  background-color: $background-color;
+  border: 1px solid $grey-color-light;
+  border-radius: 5px;
+  text-align: right;
+  z-index: 999;
 
   .menu-icon {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+
+    > svg {
+      width: 18px;
+      height: 15px;
+
+      path {
+        fill: $grey-color-dark;
+      }
+    }
+  }
+  .trigger {
+    clear: both;
     display: none;
   }
 
+  &:hover .trigger {
+    display: block;
+    padding-bottom: 5px;
+  }
+
   .page-link {
+    display: block;
+    padding: 5px 10px;
+
+    margin-left: 20px;
+
     color: $text-color;
     line-height: $base-line-height;
     font-weight: $light-font-weight;
 
-    // Gaps between nav items, but not on the last one
-    &:not(:last-child) {
-      margin-right: 20px;
-    }
-
+    border-bottom: solid 1px $no-color;
     &:hover,
     &:focus {
       border-bottom: solid 1px $text-color;
-    }
-  }
-
-  @include media-query($on-palm) {
-    position: absolute;
-    top: 9px;
-    right: $spacing-unit / 2;
-    background-color: $background-color;
-    border: 1px solid $grey-color-light;
-    border-radius: 5px;
-    text-align: right;
-
-    .menu-icon {
-      display: block;
-      float: right;
-      width: 36px;
-      height: 26px;
-      line-height: 0;
-      padding-top: 10px;
-      text-align: center;
-
-      > svg {
-        width: 18px;
-        height: 15px;
-
-        path {
-          fill: $grey-color-dark;
-        }
-      }
-    }
-
-    .trigger {
-      clear: both;
-      display: none;
-    }
-
-    &:hover .trigger {
-      display: block;
-      padding-bottom: 5px;
-    }
-
-    .page-link {
-      display: block;
-      padding: 5px 10px;
-
-      &:not(:last-child) {
-        margin-right: 0;
-      }
-      margin-left: 20px;
     }
   }
 }

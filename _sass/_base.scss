@@ -140,6 +140,7 @@ pre {
   margin-left: auto;
   padding-right: $spacing-unit;
   padding-left: $spacing-unit;
+  position: relative;
   @extend %clearfix;
 }
 
