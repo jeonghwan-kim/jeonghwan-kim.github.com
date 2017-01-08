@@ -73,10 +73,9 @@
     line-height: $base-line-height;
     font-weight: $light-font-weight;
 
-    border-bottom: solid 1px $no-color;
     &:hover,
     &:focus {
-      border-bottom: solid 1px $text-color;
+      text-decoration: underline;
     }
   }
 }
