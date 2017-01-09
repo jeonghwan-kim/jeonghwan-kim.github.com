@@ -1,7 +1,7 @@
 ---
 title: 토이프로젝트_독서노트
 layout: post
-category: toy project
+category: toy_project
 tags: 
     wordpress
     php
