@@ -35,10 +35,10 @@ di.register('main', ['dep1', 'dep2'], function(dep1, dep2) {
 });
 ```
 
-main이라는 함수를 네임스페이스에 등록하는 과정인데 main 함수는 내부적으로 dep1, dep2를 사용한다.
-main함수는 dep1, dep2에 의존성을 갖고 있기 때문에 이를 함수 등록시 선언해 준다.
+main이라는 함수를 네임스페이스에 등록하는 과정인데 내부적으로 dep1, dep2를 사용한다.
+main 함수는 dep1, dep2에 의존성을 갖고 있기 때문에 이를 함수 등록시 선언한다.
 의존성 주입이 완료되면 세번째 파라매터인 함수 본체가 실행되고 dep1과 dep2가 함수 파라매터로 전달된다.
-결국 main 함수는 dep1, dep2 의존 객체 선언만으로 이 객체들을 주입받아 함수 본체에서 사용 가능하게 된 것이다.
+결국 main 함수는 dep1, dep2 의존 객체 선언만으로 이 객체들을 주입받아 함수 본체에서 사용수 있다.
 
 ## 의존성 주입 구현
 
@@ -69,9 +69,9 @@ class DI {
 이 객체는 두 개의 키를 가지고 있는데 (1) 의존성 목록을 저장하는 deps 배열과 (2) 함수 본체인 func이다.
 좀더 엄밀히 말하면 함수 본체를 반환하는 함수다.
 이를 [성크(thunk)](https://en.wikipedia.org/wiki/Thunk)라고 부른다.
-성크를 사용한 이유는 등록한 함수를 불러올 때 함수본문과 의존 객체를 파라매터로 넘겨줘야하기 때문이다.
-성크를 사용하지 않으면 등록한 함수 본문을 불러올 때 의존 객체 파라매터를 넘겨줄 방법이 없다.
-이후 DI.get 메소드를 보면 이해할 수 있을 것이다.
+성크를 사용한 이유는 등록한 함수를 불러올 때 함수 본문과 여기에 의존 객체를 매개변수로 넘겨줘야하기 때문이다.
+성크를 사용하지 않으면 등록한 함수 본문을 불러올 때 의존객체를 매개변수로 넘겨줄 방법이 없다.
+나중에 구현할 DI.get 메소드를 보면 이해하게 될 것이다.
 
 여기까지 구현하면 아래와 같은 의존성 주입을 이용한 함수 정의가 가능하다.
 
@@ -95,19 +95,19 @@ di.register('dep2', [], function() {
 di.register('main', ['dep1', 'dep2'], function(dep1, dep2) {
   return function() {
     /* main 함수 본문 */
-    return dep1() + dep2();  // 3
+    return dep1() + dep2();  
   }
 });
 ```
 
-dep1, dep2는 의존성이 없고 main은 이미 등록한 dep1, dep2에 의존성이 있는 함수다.
+dep1, dep2는 의존성이 없고 main은 이미 등록한 dep1, dep2에 의존하는 함수다.
 
 ## Di.prototype.get()
 
 그럼 등록한 main 함수는 어떻게 사용할 수 있을까?
 
 ```js
-const main = di.get(‘main’);
+const main = di.get('main');
 main();
 ```
 
@@ -125,7 +125,7 @@ class Di {
 
 name은 등록 배열에서 가져올 함수 이름이다.
 이미 등록된 함수를 저장하고 있는 registrations 배열에서 name 변수 값으로 들어온 객체를 찾는다.
-이 경우 registrations[‘main']을 찾는 것이다.
+이 경우 registrations['main']을 찾는 것이다.
 
 그리고 main 함수의 의존성 목록을 저장할 deps를 빈 배열로 초기화한다.
 
@@ -170,22 +170,23 @@ registration['dep1']에 저장된 값을 불러오는데 아래와 같은 객체
 }
 ```
 
-main 함수와는 다르게 의존성 배열이 비어있기 때문에 의존성 객체를 찾는 forEach 구문은 건너 뛰게 된다.
+main 함수와는 다르게 의존성 배열이 비어있기 때문에 의존성 객체를 찾는 forEach 구문은 건너뛴다.
 그리고 아래 함수를 실행한다.
 
 ```js
-return registration.func.apply(undefined, []); // function() { return 1; }
+return registration.func.apply(undefined, []);
+  // function() { return 1; }
 ```
 
-그럼 다시 get('main') 으로 돌아와서…
+그럼 다시 get('main') 으로 돌아와서 ...
 아직 main의 의존성 객체를 찾는 forEach 반복문에 있다는 것을 기억하자.
 main 함수의 의존성 객체를 담는 deps 배열에 get('dep1')의 결과인 function() {return 1;} 함수 본체를 추가한다.
 마찬가지로 get('dept2')의 결과도 deps 배열에 추가되어 결국 dept 배열은 아래 값으로 채워진다.
 
 ```js
 [
-  {function {return 1;},
-  {function {return 2;}
+  function() { return 1; },
+  function() { return 2; }
 ]
 ```
 
@@ -196,7 +197,7 @@ return registration.func.apply(undefined, deps);
 ```
 
 registration.func에는 main 함수의 본체를 담은 성크가 있고 apply 함수로 deps를 매개변수로 넘겨준다.
-main 함수 본체에서는 의존성 객체 목록을 파라매터로 받아서 사용할 수 있는 것이다.
+main 함수 본체에서는 의존성 객체 목록을 매개변수로 받아서 사용할 수 있는 것이다.
 
 ```js
 function(dep1, dep2) {
