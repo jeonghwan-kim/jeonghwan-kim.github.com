@@ -76,17 +76,11 @@ h1, h2, h3, h4, h5, h6 {
 /**
  * Links
  */
-a {
-  color: $brand-color;
+a,
+a:visited,
+a:hover {
   text-decoration: none;
-
-  &:visited {
-    color: darken($brand-color, 15%);
-  }
-
-  &:hover {
-    color: $text-color;
-  }
+  color: $brand-color;
 }
 
 /**
@@ -110,7 +104,7 @@ pre,
 code {
   border: 1px solid $grey-color-light;
   border-radius: 3px;
-  background-color: #eee;
+  background-color: #fff;
   font-weight: 100;
   font-size: $code-font-size;
 }
