@@ -3,5 +3,7 @@
 {% endif %}
 
 {% if post.category %}
-  <span>in <a href="/category/{{post.category}}.html">{{ post.category | upcase }}</a></span>
+  <span class="category">
+    <i class="fa fa-archive" aria-hidden="true"></i> <a href="/category/{{post.category}}.html">{{ post.category | upcase }}</a>
+</span>
 {% endif %}

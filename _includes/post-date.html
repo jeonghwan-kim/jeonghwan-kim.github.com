@@ -3,5 +3,7 @@
 {% endif %}
 
 {% if post.date %}
-  <span>{{ post.date | date : "%Y년 %m월 %d일" }}</span>
+  <span class="date">
+    <i class="fa fa-clock-o" aria-hidden="true"></i> {{ post.date | date : "%Y년 %m월 %d일" }}
+</span>
 {% endif %}

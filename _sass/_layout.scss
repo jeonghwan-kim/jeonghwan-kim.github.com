@@ -2,202 +2,92 @@
  * Site header
  */
 .site-header {
-  border-bottom: 1px solid $grey-color-light;
-  min-height: 56px;
-
-  // Positioning context for the mobile navigation icon
-  position: relative;
-}
-
-.site-title {
-  font-size: 28px;
-  font-weight: 100;
-  line-height: 56px;
-  letter-spacing: -1px;
-  margin-bottom: 0;
-  float: left;
-
-  &,
-  &:visited {
-    color: $grey-color-dark;
+  border-bottom: none;
+  height: $site-header-height;
+  background-color: $site-header-background-color;
+  text-align: center;
+  .site-title {
+    font-size: 24px;
+    font-weight: 100;
+    line-height: $site-header-height;
+    letter-spacing: -2px;
+    color: $site-header-color;
+    &,
+    &:visited {
+      color: $site-header-color;
+    }
   }
-}
-
-.site-nav {
-  float: right;
-  line-height: 56px;
-  position: absolute;
-  top: 9px;
-  right: $spacing-unit / 2;
-  background-color: $background-color;
-  border: 1px solid $grey-color-light;
-  border-radius: 5px;
-  text-align: right;
-  z-index: 999;
-
-  .menu-icon {
-    display: block;
+  .site-nav {
     float: right;
-    width: 36px;
-    height: 26px;
-    line-height: 0;
-    padding-top: 10px;
-    text-align: center;
-
-    > svg {
-      width: 18px;
-      height: 15px;
-
-      path {
-        fill: $grey-color-dark;
+    line-height: $site-header-height;
+    position: absolute;
+    top: 5px;
+    right: $spacing-unit / 2;
+    z-index: 999;
+    .menu-icon {
+      display: block;
+      float: right;
+      padding-top: 10px;
+      width: 36px;
+      height: 26px;
+      line-height: 0;
+      color: $site-header-color;
+      a,
+      a:visited {
+        color: $site-header-color;
       }
     }
-  }
-  .trigger {
-    clear: both;
-    display: none;
-  }
-
-  &:hover .trigger {
-    display: block;
-    padding-bottom: 5px;
-  }
-
-  .page-link {
-    display: block;
-    padding: 5px 10px;
-
-    margin-left: 20px;
-
-    color: $text-color;
-    line-height: $base-line-height;
-    font-weight: $light-font-weight;
-
-    &:hover,
-    &:focus {
-      text-decoration: underline;
+    .clear-both {
+      clear:both;
+    }
+    .trigger {
+      display: none;
+      border: 1px solid $grey-color-light;
+      background-color: white;
+      position: relative;
+      width: 200px;
+      padding: 20px 10px;
+      .category-title {
+        display: block;
+        padding: 0 10px 20px;
+        text-align: center;
+        font-size: 16px;
+        color: $grey-color;
+      }
+      .page-link {
+        display: block;
+        padding: 10px 10px;
+        border-top: 1px solid $grey-color-light;
+        line-height: $base-line-height;
+        font-weight: $base-font-weight;
+        font-size: 14px;
+        text-align: left;
+      }
+    }
+    &:hover .trigger {
+      display: block;
+      padding-bottom: 5px;
     }
   }
 }
-
-.sidebar {
-  h2 {
-    margin-top: 30px;
-    font-size: 100%;
-  }
-}
-
-/**
- * Google Search bar
- */
-.gsc-control-cse.gsc-control-cse-ko {
-  background-color: transparent;
-  border: none;
-  margin-bottom: $spacing-unit;
-  max-width: 350px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/**
- * Site footer
- */
-.site-footer {
-  border-top: 1px solid $grey-color-dark;
-  padding: $spacing-unit 0;
-  background-color: $grey-color-dark;
-  color: $white-color;
-
-  .profile-img {
-    width: $profile-image-width;
-    margin: 0 auto $spacing-unit auto;
-    border-radius: 50%;
-    background-color: $grey-color;
-
-    img {
-      width: $profile-image-width;
-    }
-  }
-
-  .footer-heading {
-    font-weight: $light-font-weight;
-    a {
-      color: $grey-color;
-    }
-    a:hover,
-    a:focus {
-      color: $grey-color-light;
-    }
-
-  }
-}
-
-.site-footer-links {
-  list-style: none;
-  margin-left: 0;
-}
-
-.site-footer-link {
-  a {
-    color: $grey-color;
-  }
-  a:hover, a:focus {
-    color: $grey-color-light;
-  }
-}
-
-.footer-col {
-  float: left;
-  margin-bottom: $spacing-unit / 2;
-  padding-left: $spacing-unit / 2;
-}
-
-.footer-col-1 {
-  width: -webkit-calc(15% - (#{$spacing-unit} / 2));
-  width: calc(15% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-2 {
-  width: -webkit-calc(40% - (#{$spacing-unit} / 2));
-  width: calc(40% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-3 {
-  width: -webkit-calc(40% - (#{$spacing-unit} / 2));
-  width: calc(40% - (#{$spacing-unit} / 2));
-}
-
-@include media-query($on-palm) {
-  .footer-col {
-    float: none;
-    width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-    width: calc(100% - (#{$spacing-unit} / 2));
-  }
-}
-
 /**
  * Page content
  */
-
 .page-content {
   padding: 0;
 }
-
 .page-heading {
   font-size: 20px;
 }
-
 .post-list {
   margin-left: 0;
   margin-bottom: $spacing-unit;
   list-style: none;
-
   > li {
     .post-list-item {
-      padding-top: $spacing-unit;
-      padding-bottom: $spacing-unit;
+      padding-top: 0;
+      padding-bottom: 10px;
     }
-
     .post-feature-image {
       float: right;
       max-width: $post-list-featured-image-width;
@@ -208,15 +98,11 @@
       margin-bottom: 5px;
       overflow-x: hidden;
       font-size: 150%;
-
       a.post-link {
         color: $text-color;
-        font-weight: $light-font-weight;
-
         &:visited {
           color: $text-color;
         }
-
         &:focus,
         &:hover {
           border-bottom: solid 1px $text-color;
@@ -232,30 +118,30 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .post-meta {
-      font-size: $small-font-size;
-      margin-bottom: 0;
-      color: $grey-color;
-      a {
-        color: $brand-color;
-        &:hover,
-        &:focus {
-          border-bottom: solid 1px $brand-color;
-        }
-      }
-    }
+    // .post-meta {
+    //   font-size: $small-font-size;
+    //   margin-bottom: 0;
+    //   color: $grey-color;
+    //   a {
+    //     color: $grey-color;
+    //     &:hover,
+    //     &:focus {
+    //       border-bottom: solid 1px $grey-color;
+    //     }
+    //   }
+    //   .category {
+    //     margin-right: 15px;
+    //   }
+    // }
   }
 }
-
-
 /**
  * Posts
  */
-
 .post-header {
   margin-bottom: $spacing-unit;
-  background-color: $brand-color;
-  padding: 100px 0;
+  background-color: $background-color;
+  padding: 13px 0;
 }
 .post-header-category {
   background-color: $brand-color;
@@ -267,28 +153,32 @@
   }
 }
 .post-title {
-  font-size: 250%;
-  font-weight: $bold-font-weight;
-  color: $white-color;
+  font-size: 300%;
+  font-weight: $light-font-weight;
+  color: $text-color;
+  margin-top: 25px;
+  margin-bottom: 0;
 }
-
 .post-meta {
-  font-size: $base-font-size;
-  color: $grey-color-light;
+  font-size: $small-font-size;
+  color: $grey-color;
   display: block;
-
+  font-weight: normal;
   a {
-    color: $grey-color-light;
+    color: $grey-color;
     &:hover,
     &:focus {
-      border-bottom: solid 1px $grey-color-light;
+      border-bottom: solid 1px $grey-color;
     }
   }
+  .date,
+  .category {
+    margin-right: 10px;
+  }
 }
-
 .post-content {
   margin-bottom: $spacing-unit;
-
+  font-weight: 200;
   h2, h3, h4 {
     font-weight: $bold-font-weight;
   }
@@ -301,8 +191,54 @@
   h4 {
     font-size: 110%;
   }
+  code {
+    font-weight: $base-font-weight;
+  }
 }
-
 .pagination {
   margin-bottom: $spacing-unit;
+}
+
+/**
+ * Site footer
+ */
+.site-footer {
+  border-top: 1px solid $grey-color-light;
+  padding: $spacing-unit 0;
+  background-color: $grey-color-light;
+  color: $white-color;
+  /**
+   * Google Search bar
+   */
+  .gsc-control-cse.gsc-control-cse-ko {
+    background-color: transparent;
+    border: none;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    input.gsc-search-button,
+    input.gsc-search-button:hover,
+    input.gsc-search-button:focus {
+      border-color: $grey-color !important;
+    }
+  }
+  .footer-heading {
+    font-weight: $light-font-weight;
+    a {
+      color: $grey-color;
+    }
+  }
+  .site-footer-links {
+    list-style: none;
+    margin-left: 0;
+  }
+  .site-footer-link {
+    a {
+      &,
+      &:hover,
+      a:focus {
+        color: $grey-color;
+      }
+    }
+  }
 }
