@@ -49,7 +49,6 @@ $post-list-featured-image-height: $post-list-featured-image-width;
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-  "../node_modules/font-awesome/css/font-awesome.min.css",
   "base",
   "layout",
   "syntax-highlighting"

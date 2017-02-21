@@ -54,6 +54,11 @@
         font-size: 16px;
         color: $grey-color;
       }
+      .close {
+        position: absolute;
+        top: -7px;
+        right: 7px;
+      }
       .page-link {
         display: block;
         padding: 10px 10px;
@@ -114,21 +119,6 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    // .post-meta {
-    //   font-size: $small-font-size;
-    //   margin-bottom: 0;
-    //   color: $grey-color;
-    //   a {
-    //     color: $grey-color;
-    //     &:hover,
-    //     &:focus {
-    //       border-bottom: solid 1px $grey-color;
-    //     }
-    //   }
-    //   .category {
-    //     margin-right: 15px;
-    //   }
-    // }
   }
 }
 /**
