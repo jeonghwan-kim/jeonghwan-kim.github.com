@@ -5,22 +5,22 @@
       <a href="/tags" class="menu-icon tags-menu-icon">
         <i class="fa fa-tags" aria-hidden="true"></i>
       </a>
-      <a href="#" class="menu-icon category-menu-icon">
+      <a href="#" class="menu-icon category-menu-icon" id="category-pupup-btn">
         <i class="fa fa-archive" aria-hidden="true"></i>
       </a>
       <div class="clear-both"></div>
-      <div class="trigger">
+      <div id="category-popup" class="trigger">
         <div class="category-title">분류</div>
+        <span class="close"><a href="#" id="category-popup-close" ><i class="fa fa-times-circle" aria-hidden="true"></i></a></span>
         <div>
           {% for page in site.pages %}
-          {% if page.title %}
-          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title | upcase }}</a>
-          {% endif %}
+            {% if page.title %}
+              <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title | upcase }}</a>
+            {% endif %}
           {% endfor %}
           <a class="page-link" href="https://github.com/jeonghwan-kim/resume">소개</a>
         </div>
       </div>
-
     </nav>
   </div>
 </header>
