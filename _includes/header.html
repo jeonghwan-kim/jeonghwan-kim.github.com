@@ -13,14 +13,13 @@
         <div class="category-title">분류</div>
         <div>
           {% for page in site.pages %}
-          {% if page.title %}
-          <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title | upcase }}</a>
-          {% endif %}
+            {% if page.title %}
+            <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title | upcase }}</a>
+            {% endif %}
           {% endfor %}
           <a class="page-link" href="https://github.com/jeonghwan-kim/resume">소개</a>
         </div>
       </div>
-
     </nav>
   </div>
 </header>
