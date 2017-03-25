@@ -63,8 +63,8 @@
         display: block;
         padding: 10px 10px;
         border-top: 1px solid $grey-color-light;
-        line-height: $base-line-height;
-        font-weight: $base-font-weight;
+        line-height: $line-height-default;
+        font-weight: $font-weight-default;
         font-size: 14px;
         text-align: left;
       }
@@ -100,19 +100,19 @@
       overflow-x: hidden;
       font-size: 150%;
       a.post-link {
-        color: $text-color;
+        color: $color-text;
         &:visited {
-          color: $text-color;
+          color: $color-text;
         }
         &:focus,
         &:hover {
-          border-bottom: solid 1px $text-color;
+          border-bottom: solid 1px $color-text;
           margin-bottom: -1px;
         }
       }
     }
     .post-summary {
-      font-size: $small-font-size;
+      font-size: $font-size-small;
       color: $grey-color;
       margin-bottom: 0px;
       white-space: nowrap;
@@ -126,27 +126,27 @@
  */
 .post-header {
   margin-bottom: $spacing-unit;
-  background-color: $background-color;
+  background-color: $color-background;
   padding: 13px 0;
 }
 .post-header-category {
-  background-color: $brand-color;
+  background-color: $color-brand;
   padding: 10px 0;
   .title {
     margin-bottom: 0;
-    font-size: $base-font-size;
+    font-size: $font-size-default;
     color: $white-color
   }
 }
 .post-title {
   font-size: 300%;
-  font-weight: $light-font-weight;
-  color: $text-color;
+  font-weight: $font-weight-light;
+  color: $color-text;
   margin-top: 25px;
   margin-bottom: 0;
 }
 .post-meta {
-  font-size: $small-font-size;
+  font-size: $font-size-small;
   color: $grey-color;
   display: block;
   font-weight: normal;
@@ -166,7 +166,7 @@
   margin-bottom: $spacing-unit;
   font-weight: 200;
   h2, h3, h4 {
-    font-weight: $bold-font-weight;
+    font-weight: $font-weight-heavy;
   }
   h2 {
     font-size: 130%;
@@ -178,7 +178,7 @@
     font-size: 110%;
   }
   code {
-    font-weight: $base-font-weight;
+    font-weight: $font-weight-default;
   }
 }
 .pagination {
@@ -209,7 +209,7 @@
     }
   }
   .footer-heading {
-    font-weight: $light-font-weight;
+    font-weight: $font-weight-light;
     a {
       color: $grey-color;
     }
