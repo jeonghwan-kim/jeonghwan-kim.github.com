@@ -31,10 +31,6 @@ The following part removes dulpicated tags and invalid tags like blank tag.
 	{% endif %}
 {% endfor %}
 
-{% for tag in tags %}
-	<span><a href="#{{ tag | slugify}}" class=""><code>#{{ tag }}</code></a></span>
-{% endfor %}
-
 
 {% comment %}
 =======================
