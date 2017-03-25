@@ -77,6 +77,13 @@ var NotPopupAreaDOM = (function() {
         notPopupArea.hide();
         popupMng.hide();
       };
+
+      document.onkeydown = function(e) {
+        if (e.key === 'Escape') {
+          notPopupArea.hide();
+          popupMng.hide();
+        }
+      }
     }
   });
 })(document);
