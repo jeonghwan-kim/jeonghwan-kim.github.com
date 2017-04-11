@@ -38,8 +38,8 @@ function invoker(name, method) {
 ```js
 const string = invoker('toString', String.prototype.toString);
 
-str('abc'); // 'abc'
-str([1,2,3]); // undefined
+string('abc'); // 'abc'
+string([1,2,3]); // undefined
 ```
 
 인보커로 만들어진 스트링 함수(string())는 문자열 'abc'를 받아 문자열 객체의 toString 메소드를 실행하고 그 결과를 반환한다. 만약 전달 인자가 문자열이 아닌 경우, 예를 들어 배열일 경우, undefined 값을 반환할 것이다.
@@ -93,7 +93,7 @@ string([1,2,3]); // '1,2,3'
 - 타입이 greeting이라면 인사말 문자열을 반환한다
 - 타입이 log라면 로그 메세지를 기록한다
 
-정리하면 어떤함수로 전달된 객체가 있는데 이 객체에는 모두 타입(type)키가 있다. 타입에 따라 행동을 달라지는데 조건문으로 작성하기 마련이다.
+정리하면 어떤함수로 전달된 객체가 있는데 이 객체에는 모두 타입(type)키가 있다. 타입에 따라 행동이 달라지는데 조건문으로 작성하기 마련이다.
 
 ```js
 const runCommand = cmd => {
