@@ -19,14 +19,12 @@ tags:
 
 각 자료형별로 문자열을 생성하는 메소드 toString()을 가지고 있는데 이것을 포괄하는 하나의 함수를 만들어 보겠다. 스트링 함수 string()는 들어오는 어떤 인자라도 그 인자의 고유 메소드 중 toString()을 호출하는 함수다. 
 
-스트링 함수를 만들기 전에 우선 인보커(invoker) 라는 함수를 준비하자.
+스트링 함수를 만들기 전에 우선 인보커(invoker) 라는 함수를 만들어 보겠다. 인보커는 특정 프로토타입의 메소드만 실행해주는 녀석이다. 메소드 이름이 같더라도 객체의 프로토타입에 그 메소드가 없으면 실행하지 않는 일종의 메소드 실행기라고 생가하면 되겠다.
 
 ```javascript
-function invoker(name, method) {
-  return target => {
-    if (target[name] && target[name] === method) {
-      return method.apply(target);
-    }
+const invoker = (name, method) =>  target => {
+  if (target[name] && target[name] === method) {
+    return method.apply(target);
   }
 }
 ```
@@ -57,14 +55,10 @@ string([1,2,3]); // undefined
 디스패치는 인보커로 만든 함수 목록을 인자로 받는다. 그리고 타켓을 받는 함수를 반환한다. 반환된 이 함수는 타켓의 특정 메소드를 실행하여 undefined 값이 아닌 기대하는 값이 나올때 까지 인보커로 만든 함수를 타켓과 함께 호출한다.
 
 ```js
-function dispatch(...funs) {
-  return target => {
-    for (let fun of funs) {
-      const ret = fun.call(null, target);
-      if (ret !== undefined) return ret;
-    }
-  };
-}
+const dispatch = (...funs) => target => funs.reduce(
+  (ret, fun) => ret === undefined ? fun(null, target) : ret,
+  undefined
+);
 ```
 
 디스패치는 인포커가 만들어 낸 함수를 인자로 받아 다른 함수를 반환한다. 함수를 전달받아 새로운 함수를 만들어 내는 고차함수의 전형적인 예다.
@@ -93,7 +87,7 @@ string([1,2,3]); // '1,2,3'
 - 타입이 greeting이라면 인사말 문자열을 반환한다
 - 타입이 log라면 로그 메세지를 기록한다
 
-정리하면 어떤함수로 전달된 객체가 있는데 이 객체에는 모두 타입(type)키가 있다. 타입에 따라 행동이 달라지는데 조건문으로 작성하기 마련이다.
+정리하면 어떤함수로 전달된 객체가 있는데 이 객체에는 모두 타입(type)키가 있다. 타입에 따라 행동을 달라지는데 조건문으로 작성하기 마련이다.
 
 ```js
 const runCommand = cmd => {
@@ -111,12 +105,8 @@ if/else 문은 프로그래밍 언어에서 자주 사용하는 구문이지만 
 디스패치는 함수를 인자로 받는데  인보커로 만든 함수였다. 인보커로 만든 함수는 타겟을 인자로 받는데 이와 동일한 구조인 isa 함수를 만들어 보겠다.  isa는 함수명에서 유추할 수 있듯이 타입이 맞으면(is a type) 어떤 동작을 하고 그 결과를 반환하는 녀석이다.
 
 ```js
-const isa = (type, action) => {
-  return cmd => {
-    if (cmd.type === type) {
-      return action(cmd);
-    }
-  }
+const isa = (type, action) => cmd => {
+  if (cmd.type === type) return action(cmd);
 }
 ```
 
