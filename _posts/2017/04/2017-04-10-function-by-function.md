@@ -5,7 +5,10 @@ category: js
 tags:
   javascript
   functional-programming
+featured_image: /assets/imgs/2017/04/17/functional-javascript-thumbnail.png
 ---
+
+![ploymophism](/assets/imgs/2017/04/10/ploymophism.png)
 
 [지난 글](/js/2017/04/03/high-order-function-in-javascript.html)에서 고차함수를 다뤘다. 함수를 받고 다른 함수를 반환하는 고차함수를 이용하면 자바스크립트에서 다형성(polymorphism)을 구현할 수 있다. 다형성이란 타입이 다른 자료형이 하나의 상위 자료형으로 속하게 되는 개념인데 OOP를 지원하는 언어에서 많이 사용한다.
 

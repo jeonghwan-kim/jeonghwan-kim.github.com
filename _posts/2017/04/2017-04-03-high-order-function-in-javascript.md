@@ -5,7 +5,10 @@ category: js
 tags:
   javascript
   functional-programming
+featured_image: /assets/imgs/2017/04/17/functional-javascript-thumbnail.png
 ---
+
+![high-order-function](/assets/imgs/2017/04/03/high-order-function.png)
 
 함수형 프로그래밍을 설명하기에 앞서 프로그래밍에서는 일급 객체(First-class citizens)라는 개념이 있다. 일급 객체는 다음 아래와 같은 특성을 가지고 있다. (참고: [일급 객체 - 위키백과, 우리 모두의 백과사전](https://ko.wikipedia.org/wiki/%EC%9D%BC%EA%B8%89_%EA%B0%9D%EC%B2%B4))
 
