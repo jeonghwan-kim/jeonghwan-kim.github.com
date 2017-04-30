@@ -194,7 +194,7 @@ const sumRec = (arr, seed) => {
 
 ```js
 var a = [1, 2, 3];
-Objct.freeze(a);
+Object.freeze(a);
 a[1] = 42;
 a; // [1, 2, 3]
 ```
