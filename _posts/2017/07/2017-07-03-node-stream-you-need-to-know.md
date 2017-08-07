@@ -1,5 +1,5 @@
 ---
-title: Node.js Stream 당신이 알아야할 모든 것 1편
+title: (번역)Node.js Stream 당신이 알아야할 모든 것 1편
 layout: post
 category: node
 tags:
@@ -129,3 +129,5 @@ _뭐가 어떻게 된거죠?_
 만약 `fs.readFile`로 파일을 제공한다면, 한계치를 변경하지 않고서는 파일을 제공할 수 없을 것입니다. 하지만 `fs.createReadStream`을 사용하면 요청자에게 2GB 데이터를 스트리밍할 수 있습니다. 게다가 프로세스의 메모리 사용량은 거의 차이가 없을 것이고요.
 
 자 이제 스트림을 배울 준비가 되었나요?
+
+다음글: [(번역)Node.js Stream 당신이 알아야할 모든 것 2편](/node/2017/08/07/node-stream-you-need-to-know-2.html)
