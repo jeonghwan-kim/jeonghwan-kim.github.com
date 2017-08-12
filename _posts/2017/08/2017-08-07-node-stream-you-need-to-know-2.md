@@ -115,3 +115,4 @@ readable.on('end', () => {
 
 `pipe` 메소드로 읽기 가능한 스트림을 사용할 때는 두 모드를 신경쓰지 않아도 됩니다. `pipe` 가 자동으로 관리하기 때문이죠.
 
+다음글: [(번역)Node.js Stream 당신이 알아야할 모든 것 3편](/node/2017/08/12/node-stream-you-need-to-know-3.html)
