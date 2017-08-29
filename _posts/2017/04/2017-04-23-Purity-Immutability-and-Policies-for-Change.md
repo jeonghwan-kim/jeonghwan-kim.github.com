@@ -12,6 +12,8 @@ tags:
 featured_image: /assets/imgs/2017/04/17/functional-javascript-thumbnail.png
 ---
 
+> 이전글: [(함수형JS) 함수로 함수 만들기3 부분적용](/js/2017/04/21/partial-application.html)
+
 앞서 함수로 함수를 조립할 수 있는 방법을 살펴보았다. 함수 조합 기법 뿐만 아니라 프로그램 개발의 복잡성을 줄이는 것이 함수형 프로그래밍이 추구하는 바다. 이번 글에서는 상태변화를 최소화할 수 있는 기법에 대해 알아보겠다.
 
 ![Purity-Immutability-and-Policies-for-Change-logo](/assets/imgs/2017/04/23/Purity-Immutability-and-Policies-for-Change-logo.png)
@@ -263,3 +265,5 @@ num.update(checkedOddSqr); // throw error
 불변성은 프로그램을 단순하게 만들수 있는 방법이다. 재귀 호출과 객체 얼리기, 그리고 객체 복제를 통해 상태의 불변성을 유지할 수 있었다.
 
 상태 변화가 필요하다면 변화를 제어할 수 있는 모델을 구현할 수 있다. 상태의 변이를 Container로 고립시켜 여기서만 변이를 일으키도록 하면 프로그램 전체에서 코드 변이 구간을 한정할 수 있다.
+
+> 다음글: [(함수형JS) 흐름기반 프로그래밍](/js/2017/05/11/pipeline.html)
