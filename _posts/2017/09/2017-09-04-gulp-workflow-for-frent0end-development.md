@@ -35,9 +35,36 @@ tags:
 
 모던 웹사이트는 얼마 전에 그러한 복잡도 수준에 도달하였습니다. [Frontend Dev Best Practices for 2017](https://nystudio107.com/blog/frontend-dev-best-practices-for-2017)  글에서 처럼 "온전한 정신을 유지하고 싶으면 프론트엔드 워크플로우 자동화가 필요합니다"
 
-## WHAT DOES OUR GULPFILE DO?
+## 우리의 Gulp는 무엇을 할수 있나요? 
 
-## SO WHY GULP?
+자 그래서 Gulp 프론트엔드 워크플로우 자동화는 우리를 위해서 정확히 무엇을 할 수 있을까요? 여기 적어 보겠습니다.
+
+* CSS 처리
+  * 모든 SCSS를 CSS로 컴파일 합니다. 캐쉬를 이용해 더 빠르게 처리합니다.
+  * 브라우저 지원을 위해 자동 접두사(auto-prefies)를 추가합니다.
+  * 편리한 디버깅을 위한 목적으로 CSS [소스맵](https://medium.com/@toolmantim/getting-started-with-css-sourcemaps-and-in-browser-sass-editing-b4daab987fb0)을 생성합니다.
+  * 우리가 사용하는 써드파티 모듈/패키지로부터 CSS를 가져옵니다.
+  * CSS를 하나로 합치고 최소화 합니다.
+* 자바스크립트 처리 
+  * ES6로 작성한 모든 자바스크립트를 브라우져 지원을 위해 트래스파일 합니다.
+  * 우리가 사용하는 써드파티 모듈/패키지로부터 자바스크립트를 가져옵니다.
+  * 자바스크립트를 난독화 합니다.
+  * HTML별로 인라인해야할 자바스크립트를 가져옵니다.
+* 라이브 리로딩 처리
+  * CSS/SCSS가 변경되면 곧장 브라우져는 페이지 로드 없이 화면을 다시 그립니다.
+  * 자바스크립트가 변경되면 브라우져가 페이지를 다시 로딩합니다.
+  * Twig/HTML 템플릿이 변경되면 브라우져는 페이지를 다시 로딩합니다.
+* 웹사이트를 위해 [CriticalCSS](https://nystudio107.com/blog/implementing-critical-css)를 생성합니다. 
+* 웹사이트에 [accessibility audit](https://nystudio107.com/blog/making-websites-accessible-americans-with-disabilities-act-ada)를 실행합니다. 
+* [Fontello](http://fontello.com/)를 통해 사용하는 glyphs만을 통해 커스텀 아이콘 글꼴을 생성합니다.  
+* 하나의 소스 이미지로부터 웹사이트를 위한 다양한 파비콘(그리고 HTML 코드)을 생성합니다. 
+* `imagemin`을 통해 웹사이트에서 사용하는 이미지를 무손실압축으로 최소화 합니다. 
+
+... 그리고 조금 더! 이것 당신을 위해 워크플로우 자동화가 할수있는 간단한 오버뷰 입니다. 그리고 이것은 프로젝트 간에 이식 가능합니다. `package.json` 파일로 데이터를 옮기는 방법으로 관심사를 분리했기 때문이죠. 
+
+## 그래서 왜 Gulp 인가요?
+
+
 
 ## GENERAL PHILOSOPHY OF BUILDING WEBSITES
 
