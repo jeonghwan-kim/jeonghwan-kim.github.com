@@ -1,0 +1,39 @@
+.post2 {
+  font-weight: normal;
+
+  .post-title {
+    font-weight: normal;
+    margin: 0 0 0 0;
+    line-height: 2em;
+  }
+  
+  .post-meta {
+    color: $color-text;
+    a {
+      color: $color-text;
+    }
+    
+  }
+
+  .post-content {
+    h2 {
+      font-size: 200%;
+    }
+    h3 {
+      font-size: 150%;
+    }
+    h4 {
+      font-size: 130%;
+    }
+    h5 {
+      font-size: 120%;
+    }
+    h6 {
+      font-size: 110%;
+    }
+    p, ul, ol, blockquote {
+      line-height: 1.8em;
+      font-weight: normal;
+    }
+  }
+}
