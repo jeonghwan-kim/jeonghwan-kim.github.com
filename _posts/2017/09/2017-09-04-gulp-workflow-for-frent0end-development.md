@@ -64,7 +64,31 @@ tags:
 
 ## 그래서 왜 Gulp 인가요?
 
+프론트엔드 워크플로우를 자동화하기 위해 여러분이 사용할수 있는 도구는 부족하지 않습니다. 다부분 [Node.js](https://nodejs.org/en/) & [NPM](https://www.npmjs.com/) 에코시스템에 의존하고 있지요. 중요한것은 작업에 적합한 도구를 사용하는 것입니다. 
 
+![작업에 적합한 도구](https://nystudio107-ems2qegf7x6qiqq.netdna-ssl.com/imager/img/blog/1522/the-right-tool-for-the-job_23d8cc12ae5e4645eb127377b86289ae.webp)
+
+[JAMstack](https://jamstack.org/) 스타일을 위한 [React](https://facebook.github.io/react/)나 [Vue](https://vuejs.org/)를 이용한 자바스크립트 중심의 프로젝트를 위해 [webpack](https://webpack.github.io/)을 사용하겠죠. 스캐폴딩과 코드 스플리팅(code splitting)이나 핫 모듈 리로딩 같은 고급 기능들 때문에 말이죠. 하지만 웹팩을 효과적으로 사용하기 위해서는 사용하려면 모듈러 번들로만 사용하지 말고 모듈 로더로 사용할 필요가 있습니다. 
+
+이미 [Grunt](https://gruntjs.com/)라는 프론트엔드 워크플로우 자동화 도구가 있고 잘 작동하지만, 설정이 다소 장황합니다. 게다가 Gulp보다 대체적으로 느린편인데 파일 기반의 접근법 때문입니다.
+
+[Laravel Mix](https://laravel.com/docs/5.4/mix)라는 것도 있는데 웹팩의 최 상단 레이어에 추가하는 것입니다. 프로젝트트 부트스트래핑에는 환상적이지만 프로젝트가 어느 규모로 커지면 빌드 프로세스에 추가적인 제어가 필요합니다.
+
+[Viget](https://www.viget.com/)은 [Blendid](https://github.com/vigetlabs/blendid)라고하는 툴을 내장합니다. Gulp와 웹팩 모두를 사용하는 하이브라는 방식을 사용하고 꽤 잘 동작합니다. 하지만 Laravel Mix와 비슷하게 필요하면 빌드에 좀 더 제어를 선호합니다.
+
+어떤 점에서 레이어의 레이어는 좀 어리석을 상태로 끝납니다 (?)
+
+결국, Gulp를 포함한 모든 도구는 간단히 커맨드 라인에서 Node.js 자바스크립트 패키지를 실행합니다. Gulp는 상단에 API와 스트리밍 레이어를 추가해서 일반적인 프론트엔드 빌드를 쉽게 만듭니다. 
+
+또한 [npm 스크립트](https://dgrigg.com/blog/stop-grunting-and-gulping-and-just-use-npm)를 이용해서 다양한 Node.js 모듈을 직접 실행할수 있지만, 다른 수준의 의존성의 트레이드 오프할 가치를 Gulp가 제공하는 편리한 레이어를 찾았습니다. 
+
+[CodeKit](https://codekitapp.com/)이라고 하는 GUI 도구도 있는데 다소 나이스한 기능을 제공합니다. 하지만 최종적으로 이것은 프론트엔드 자동화 도구 세상의 드림위버로 끝날것이라 생각합니다. 어떤 것들은 GUI로 효과적으로 간단히 표현할수 없고 Node.js 에코시스템을 따라잡을 기회가 없을 것입니다. 
+
+> 진정한 "최고"의 빌드 시스템 도구는 없습니다. 독단적이지 마세요. 작업에 가장 적합한 도구를 무엇이든지 선택하세요 
+
+대부분의 프론트엔드 개발 프로젝트에서 Gulp가 유연성과 자동화가 잘 어울립니다. 저는 제 `gulpfile.js`와 `package.json`을 저의 모든 프로젝트에 바로 재사용할 수 있습니다.  그리고 필요하면 커스터마이징 할수 있고 매우 쉬워요.
+
+Tangent(?): 왜 모든 프론트엔드 자동화 도구는 Node.js를 사용할까요? 확실히 그걸 필요학 없어요. PHP, 펄, 루비, Go, 쉡스크립트(마조히스트라면), 정말로 어떤 언어로도 쓰여질수 있어요. 이유는 굉장이 단순해요. 프론트엔드 개발자는 이미 자바스크립트에 친숙하기 때문이죠. Node를 통해 실행되는 자바스크립트에서 그들이 필요한 프로트엔드 자동화 도구가 쓰여진것은 자연스러운 일이었습니다. 
 
 ## GENERAL PHILOSOPHY OF BUILDING WEBSITES
 
