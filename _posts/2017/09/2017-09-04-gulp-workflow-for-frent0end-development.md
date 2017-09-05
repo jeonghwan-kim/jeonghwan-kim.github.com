@@ -114,7 +114,68 @@ Tangent(?): 왜 모든 프론트엔드 자동화 도구는 Node.js를 사용할�
 
 이러한 것들음 모두 "손으로"하는 것은 좀 불가능합니다. 그럼에도 불구하고 현대적이고, 성능좋은 웹페이지가 구축되는 방식입니다.
 
-## PROJECT TREE
+## 프로젝트 트리
+
+프로젝트가 어떻게 보이는지 살펴보는 것은 유익합니다. 다양한 디렉토리가 사용되는 것과 전체 조직 측면에서 말이죠. 
+
+![나무](https://nystudio107-ems2qegf7x6qiqq.netdna-ssl.com/imager/img/blog/1568/bonsai-project-tree_0af0ea3af77cbee594480709c6c6b3e4.webp)
+
+제 프로젝트 디렉토리의 루트는 다음과 같아요 
+
+```bash
+vagrant@homestead:~/sites/nystudio107$ tree -a -L 2 -I "node_modules|.git|scripts|.DS_Store|.idea" .
+.
+├── .babelrc
+├── browserslist
+├── build
+│   ├── fonts
+│   ├── html
+│   └── js
+├── craft
+├── .csslintrc
+├── .env.php
+├── example.env.php
+├── .git
+├── .gitignore
+├── .gitmodules
+├── gulpfile.js
+├── node_modules
+├── package.json
+├── public
+│   ├── css
+│   ├── favicon.ico
+│   ├── favicon.png
+│   ├── fonts
+│   ├── htaccess
+│   ├── imager
+│   ├── img
+│   ├── index.php
+│   ├── js
+│   ├── webappmanifest.json
+│   └── web.config
+├── readme.txt
+├── scripts
+├── src
+│   ├── conf
+│   ├── css
+│   ├── fontello
+│   ├── fonts
+│   ├── img
+│   ├── js
+│   └── json
+├── templates -> craft/templates/
+└── yarn.lock
+
+27 directories, 20 files
+```
+
+몇 개의 디렉토리들을 언급할 필요가 있습니다 (이 경로는 모두 `package.json`에 정의되어 있습니다):
+
+* `src/` - 작성한 모든것이 있는 곳입니다. 당신이 소유하고 있습니다. 개발하기 위해 필요한 소스입니다. 여기서 디렉토리 구조는 `public/`을 mirror 합니다
+* `build/` - 빌드 시스템에 의해 임시 파일을 빌드를 위한 중간단계 디렉토리입니다 
+* `public/js/` - 빌드 시스템에 의해 놓여진  공개 배포용 자바스크립트를 가져오는 위치
+* `public/css/` - 빌드 시스템에 의해 놓여진  공개 배포용 CSS를 가져오는 위치
+* `node_modules/` - `npm`/`yarn`으로 `package.json`에 나열된 NPM 패키지들을 다운로드됩니다. 빌드 시스템 자체를 위해 사용되는 NPM 패키지 뿐만아니라 프론트엔드에서 사용되는 써드파트 CSS/JS를 포함합니다.
 
 ## TAKING A GULP
 
