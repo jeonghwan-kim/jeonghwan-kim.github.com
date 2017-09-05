@@ -90,7 +90,29 @@ tags:
 
 Tangent(?): 왜 모든 프론트엔드 자동화 도구는 Node.js를 사용할까요? 확실히 그걸 필요학 없어요. PHP, 펄, 루비, Go, 쉡스크립트(마조히스트라면), 정말로 어떤 언어로도 쓰여질수 있어요. 이유는 굉장이 단순해요. 프론트엔드 개발자는 이미 자바스크립트에 친숙하기 때문이죠. Node를 통해 실행되는 자바스크립트에서 그들이 필요한 프로트엔드 자동화 도구가 쓰여진것은 자연스러운 일이었습니다. 
 
-## GENERAL PHILOSOPHY OF BUILDING WEBSITES
+## 웹사이트 구축의 일반 철학 
+
+실제 `gulpfile.js`의 핵심에 들어가기 전에 웹사이트 구축에 대한 일반 철학을 이해하는 것이 중요합니다. `gulpfile.js`는 이러한 웹사이트를 구축하는데 도움을 주는 것이므로 저의 전반적인 접근을 이해하는 것이 유익합니다.
+
+![General Philosophy](https://nystudio107-ems2qegf7x6qiqq.netdna-ssl.com/imager/img/blog/1542/general-philosophy_23d8cc12ae5e4645eb127377b86289ae.webp)
+
+일반적으로, 내가 일하는 웹사이트는 [PRPL 패턴](https://developers.google.com/web/fundamentals/performance/prpl-pattern/)을 따릅니다. 초기에 런데링이 필요한 부분만 로딩하고 필요한 리소스를 프리패치해서 모든것을 비동기적으로 게으른 로딩 처리합니다. 
+
+이것의ㅏ 의미에 대해 자세한 것을 [Implementing Critical CSS on your website](https://nystudio107.com/blog/implementing-critical-css) & [SerivceWorkers and Offline Browsing](https://nystudio107.com/blog/service-workers-and-offline-browsing) 글에서 읽을 수 있습니다. 그리고 더 넓게는 [A Pretty Website Isn't Enough](https://nystudio107.com/blog/a-pretty-website-isnt-enough) & [Creating Optimized Images in Craft CMS](https://nystudio107.com/blog/creating-optimized-images-in-craft-cms) 글에서 웹사이트 성능에 대한 주제를 읽을 수 있습니다.
+
+실용적인 수준에서 우리 사이트에 모든 CSS를  하나의 `site.combined.min.css` 파일로 합쳐서 비동기적으로 로딩하는 것을 의미합니다.  그리고 초기 페이지 스타일링을 [Critical CSS](https://nystudio107.com/blog/implementing-critical-css)로 제공합니다. 
+
+제가 작성한 사이트 측에 SCSS로 작성한 CSS는 CSS로 빌드 되고 써드파티 패키지에서 가져오 CSS와 통합됩니다. 그리고 자동으로 전처리와 최소화를 합니다.
+
+각 페이지에 자바스크립트 코어 셋을 인라인해서 다른 것들(CSS, 자바스크립트 등)을 비동기로 로딩합니다.
+
+자바스크립트는 [ES6 신택스](https://medium.com/javascript-scene/how-to-learn-es6-47d9a1ac2620)로 작성하고 [바벨](https://babeljs.io/)을 통해 웹 브랑우져가 이해할수 있도록 트랜스 파일 합니다.
+
+제가 사용하는 모든 써드파티 패키지들(CSS, 자바스크립트)은 `package.json`의 `dependencies`에 선었도고 `npm`이나 `yarn`을 이용해 [sember](https://semver.npmjs.com/)에 의해 설치/업데이트 됩니다. 한번 더, [A Better package.json for the Frontend](https://nystudio107.com/blog/a-better-package-json-for-the-frontend) 글에서 자세한 것을 찾을 수 있을 겁니다. 
+
+마지막으로, 우리가 사용하는 자바스크립트는 개별로 난독화 되고 의존성 관리를 통해 필요한 페이지에 비동기적으로 로딩됩니다. [LoadJS as a Lightweight JavaScript Loader](https://nystudio107.com/blog/loadjs-as-a-lightweight-javascript-loader) 글에서 자세한 내용을 살펴 보세요. 
+
+이러한 것들음 모두 "손으로"하는 것은 좀 불가능합니다. 그럼에도 불구하고 현대적이고, 성능좋은 웹페이지가 구축되는 방식입니다.
 
 ## PROJECT TREE
 
