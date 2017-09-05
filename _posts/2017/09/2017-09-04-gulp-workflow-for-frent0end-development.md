@@ -177,8 +177,17 @@ vagrant@homestead:~/sites/nystudio107$ tree -a -L 2 -I "node_modules|.git|script
 * `public/css/` - 빌드 시스템에 의해 놓여진  공개 배포용 CSS를 가져오는 위치
 * `node_modules/` - `npm`/`yarn`으로 `package.json`에 나열된 NPM 패키지들을 다운로드됩니다. 빌드 시스템 자체를 위해 사용되는 NPM 패키지 뿐만아니라 프론트엔드에서 사용되는 써드파트 CSS/JS를 포함합니다.
 
-## TAKING A GULP
+## Gulp 이용하기 
 
+자 이제 Gulp가 어떻게 우리 삶을 더 쉽게 만들어 주는지 볼까요? 이번 글은 정말로 [A Better package.json for the Frontend](https://nystudio107.com/blog/a-better-package-json-for-the-frontend)의 자매 글입니다. 그래서 만약 읽지 않았다면 꼭 읽어 보세요.
+
+**주의**: 여기서는 상당히 두꺼운 것에서 꽤 빨리 진행합니다. 만약 Gulp에 대해 완전히 생소하다면, [Gulp for Beginners](https://css-tricks.com/gulp-for-beginners/)를 먼저 읽어 보세요.
+
+여기서 표현한 `gulpfile.js`는 당신이 지금 읽고 있는 웹사이트를 빌드하기위해 사용됩니다. 그리고 `package.json`파일과 묵이고 *어떤* 프로젝트라도 시작할수 있는 좋은 기초를 제공합니다. 
+
+이 글은 이미 Node.js와 NPM(이나 [Yarn](https://yarnpkg.com/en/)), 그리고 [Gulp](https://gulpjs.com/)를 전역으로 당신의 개발 환경에 설치했다고 가정합니다.
+
+우리는 `gulpfile.js`의 여러 덩어리를 순서에 상관없이 보여줄 것이지만 마지막에선 전체 `gulpfile.js`를 보여줘서 참고하도록 하겠습니다. 
 
 ## GULPFILE.JS PREAMBLE
 
