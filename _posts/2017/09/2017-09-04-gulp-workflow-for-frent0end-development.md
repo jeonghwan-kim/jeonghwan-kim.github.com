@@ -189,7 +189,46 @@ vagrant@homestead:~/sites/nystudio107$ tree -a -L 2 -I "node_modules|.git|script
 
 우리는 `gulpfile.js`의 여러 덩어리를 순서에 상관없이 보여줄 것이지만 마지막에선 전체 `gulpfile.js`를 보여줘서 참고하도록 하겠습니다. 
 
-## GULPFILE.JS PREAMBLE
+## GULPFILE.JS 시작 
+
+`gulpfile.js`의 처음은 이렇습니다.
+
+```js
+// 패키지 변수
+const pkg = require("./package.json");
+
+// gulp
+const gulp = require("gulp");
+
+// devDependencies에 있는 모든 플러그인을 $ 변수에 로딩합니다
+const $ = require("gulp-load-plugins")({
+    pattern: ["*"],
+    scope: ["devDependencies"]
+});
+
+const onError = (err) => console.log(err);
+
+const banner = [
+    "/**",
+    " * @project        <%= pkg.name %>",
+    " * @author         <%= pkg.author %>",
+    " * @build          " + $.moment().format("llll") + " ET",
+    " * @release        " + $.gitRevSync.long() + " [" + $.gitRevSync.branch() + "]",
+    " * @copyright      Copyright (c) " + $.moment().format("YYYY") + ", <%= pkg.copyright %>",
+    " *",
+    " */",
+    ""
+].join("\n");
+```
+
+이것의 대부분을 [A Better package.json for the Frontend]() 글에서 설명하고 있지만, 간단히 요약하면 이렇다: 
+
+* 먼저 우리는 `package.json`을 `pkg` 상수로 넣어야한다. 그래서 `gulpfeil.js`로 부터 편리하게 `package.json`에서 선언된 모든것에 접근할 수 있다
+* 다음으로 `gulp`를 `require`해서 스트림 API로의 접근을 가질을 있고 다양한 Gulp 모듈을 활용할 수 있다
+* 다음으로 [gulp-load-plugin]() 모듈을 사용해서 `devDependencies` 목록에 있는 `npm`모듈을 모두 로딩해서 `$` 변수 아래에 namespaced 한다. 이것은 단지 우리가 사용하는 모든 모듈을 위해 많은 `require()` 구문을 사용하지 않고 우리의 `package.json`을 tidy 하게 만든다
+* `onError` 상수를 세팅해서 간단히 에러를 콘솔에 로깅하는 익명함수를 만들수 있다.  그리고 편리한 목적으로 
+* 마지막으로, 
+
 
 ## PRIMARY GULP TASKS
 
