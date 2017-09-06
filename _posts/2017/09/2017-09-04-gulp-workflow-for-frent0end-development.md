@@ -189,7 +189,41 @@ vagrant@homestead:~/sites/nystudio107$ tree -a -L 2 -I "node_modules|.git|script
 
 우리는 `gulpfile.js`의 여러 덩어리를 순서에 상관없이 보여줄 것이지만 마지막에선 전체 `gulpfile.js`를 보여줘서 참고하도록 하겠습니다. 
 
-## GULPFILE.JS PREAMBLE
+## GULPFILE.JS 시작 
+
+`gulpfile.js`의 처음은 이렇습니다.
+
+```js
+// 패키지 변수
+const pkg = require("./package.json");
+
+// gulp
+const gulp = require("gulp");
+
+// devDependencies에 있는 모든 플러그인을 $ 변수에 로딩합니다
+const $ = require("gulp-load-plugins")({
+    pattern: ["*"],
+    scope: ["devDependencies"]
+});
+
+const onError = (err) => {
+    console.log(err);
+};
+
+const banner = [
+    "/**",
+    " * @project        <%= pkg.name %>",
+    " * @author         <%= pkg.author %>",
+    " * @build          " + $.moment().format("llll") + " ET",
+    " * @release        " + $.gitRevSync.long() + " [" + $.gitRevSync.branch() + "]",
+    " * @copyright      Copyright (c) " + $.moment().format("YYYY") + ", <%= pkg.copyright %>",
+    " *",
+    " */",
+    ""
+].join("\n");
+```
+
+
 
 ## PRIMARY GULP TASKS
 
