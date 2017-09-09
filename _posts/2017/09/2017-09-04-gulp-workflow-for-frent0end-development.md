@@ -262,9 +262,76 @@ gulp.task("build", ["download", "default", "favicons", "imagemin", "fonts", "cri
 
 또한 `default` 작업은 템플릿에 어떠한 변화라도 있으면 [gulp-livereload](https://www.npmjs.com/package/gulp-livereload) 웹브라우져를 자동으로 다시 로딩합니다. 간단히 [livereload Chrome extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)만 설치하면 됩니다. 
 
-## CSS GULP TASKS
+## CSS GULP 작업 
 
-## JS GULP TASKS
+`css` 작업과 이것을 트리거하는 하위 작업을 봅시다.
+
+```js
+// scss = paths를 포함한 build 폴더로 scss를 빌드하고 소스맵을 만듭니다 
+gulp.task("scss", () => {
+    $.fancyLog("-> Compiling scss");
+    return gulp.src(pkg.paths.src.scss + pkg.vars.scssName)
+        .pipe($.plumber({errorHandler: onError}))
+        .pipe($.sourcemaps.init({loadMaps: true}))
+        .pipe($.sass({
+                includePaths: pkg.paths.scss
+            })
+            .on("error", $.sass.logError))
+        .pipe($.cached("sass_compile"))
+        .pipe($.autoprefixer())
+        .pipe($.sourcemaps.write("./"))
+        .pipe($.size({gzip: true, showFiles: true}))
+        .pipe(gulp.dest(pkg.paths.build.css));
+});
+
+// css 작업 - 배포용 CSS를 public css 폴더로 하나로 합치고 최소화하고 여기에 배너를 추가합니다 
+gulp.task("css", ["scss"], () => {
+    $.fancyLog("-> Building css");
+    return gulp.src(pkg.globs.distCss)
+        .pipe($.plumber({errorHandler: onError}))
+        .pipe($.newer({dest: pkg.paths.dist.css + pkg.vars.siteCssName}))
+        .pipe($.print())
+        .pipe($.sourcemaps.init({loadMaps: true}))
+        .pipe($.concat(pkg.vars.siteCssName))
+        .pipe($.cssnano({
+            discardComments: {
+                removeAll: true
+            },
+            discardDuplicates: true,
+            discardEmpty: true,
+            minifyFontValues: true,
+            minifySelectors: true
+        }))
+        .pipe($.header(banner, {pkg: pkg}))
+        .pipe($.sourcemaps.write("./"))
+        .pipe($.size({gzip: true, showFiles: true}))
+        .pipe(gulp.dest(pkg.paths.dist.css))
+        .pipe($.filter("**/*.css"))
+        .pipe($.livereload());
+});
+```
+
+`gulp.task()` 메소드의 첫 파라매터는 작업의 이름입니다. 두번째 파라메터는 *의존성(dependencies)* (혹은 deps) 이구요. 의존성은 이 작업을 실행하기 전에 돌려야하는 작업들입니다. 이런 방법으로 작업들을 함께 연결(chine)할 수 있습니다.
+
+그래서 첫번째 `css` 작업이 하는일은 `scss`작업을 실행해서 모든 SCSS를 컴파일 하는 것입니다. 우리의 `scss` 작업은 CSS 소스맵을 초기화하고 SCSS를 경로와 함께 컴파일한뒤 결과를 캐쉬합니다. 이런 방법으로 변경해야할 게 앖다면 SCSS를 재컴파일할 필요가 없습니다. 
+
+만약 뭔가 변경되었다면 프로젝트 루트에 있는 `browserlist` 파일을 보고 있는 자동 전처리(autoprefixer)를 실생합니다. 
+
+```
+# Supported browsers
+
+last 3 versions
+iOS >= 8
+```
+
+그러면 그것은 소스맵과  유용한 크기 정보를 기록하고 빌드된 CSS를 `pkg.paths.build.css`로 기록합니다. 우리는 여기있는 중간 빌드 파일을 사용해서 우리 사이트 전체 CSS 번들을 위한 다른 파일처럼 `css` 작업이 컴파일된 CSS를 포함하도록 할수 있습니다.
+
+`css` 작업은 `pkg.globs.distCss`에 있는 각 파일이 우리의 빌드된 CSS 보다 새로운지 보장합니다. 그렇지 않으면 재빌딩을 하지 않구요. 새로운 파일이 있다면 소스파일을 초기화하고 CSS 들을 함께 묶을 뒤 `cssnano`를 통해 최소화 합니다. 그리고 헤더로서 `banner`를 추가하고 thtmaoqdmf wkrtjdgkrh 전체 사이트 CSS를 `pkg.paths.dist.css`에 있는 공용 배포 폴더로 빌드합니다. 
+
+또한 `css` 작업을 전체 브라우져 로딩없이 [gulp-livereload](https://www.npmjs.com/package/gulp-livereload)를 통해서 자동으로 웹페이지의 CSS 갱신합니다. 여러분은 간단하게 [livereload Chrome extensio](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)만 설치하면 됩니다.
+
+
+## JS GULP TASKS`
 
 ## MISC GULP TASKS
 
