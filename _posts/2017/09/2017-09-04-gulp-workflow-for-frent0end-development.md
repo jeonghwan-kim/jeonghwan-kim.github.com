@@ -253,12 +253,14 @@ gulp.task("default", ["css", "js"], () => {
 gulp.task("build", ["download", "default", "favicons", "imagemin", "fonts", "criticalcss"]);
 ```
 
-이 두개 작업이 프론트엔드 자동화를 모션으로 설정하는데 일반적입니다. 대충 두개로 나눌수 있느데:
+이 두개 작업이 프론트엔드 자동화를 모션으로 설정하는데 일반적입니다. 대충 두개로 나눌수 있는데:
 
 1. **default** - 매일 빠르게 사용하는 작업
 1. **build** - 가끔 사용하는 작업 (보통 초기 빌드나 프로덕션 빌드를 위한 최종 빌드), 시간이 좀 걸리수 있음 
 
+전형적인 날은 `gulp`를 입력하고 다양한 HTML, Twig, CSS, SCSS, 자바스크립트 등으로 일하는 것입니다. default 작업은 우리의 CSS & 자바스크립트를 빌드하고 CSS/SCSS/JS 파일들을 감시합니다. 뭐 하나라도 변경하면 우리 사이트의 CSS나 자바스크립트를 적절히 다시 빌드 합니다. 
 
+또한 `default` 작업은 템플릿에 어떠한 변화라도 있으면 [gulp-livereload](https://www.npmjs.com/package/gulp-livereload) 웹브라우져를 자동으로 다시 로딩합니다. 간단히 [livereload Chrome extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)만 설치하면 됩니다. 
 
 ## CSS GULP TASKS
 
