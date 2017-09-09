@@ -206,9 +206,7 @@ const $ = require("gulp-load-plugins")({
     scope: ["devDependencies"]
 });
 
-const onError = (err) => {
-    console.log(err);
-};
+const onError = (err) => console.log(err);
 
 const banner = [
     "/**",
@@ -223,6 +221,15 @@ const banner = [
 ].join("\n");
 ```
 
+이것의 대부분을 [A Better package.json for the Frontend]() 글에서 설명하고 있지만, 간단히 요약하면 이렇다: 
+
+* 먼저 우리는 `package.json`을 `pkg` 상수로 넣어야한다. 그래서 `gulpfeil.js`로 부터 편리하게 `package.json`에서 선언된 모든것에 접근할 수 있다
+* 다음으로 `gulp`를 `require`해서 스트림 API로의 접근을 가질을 있고 다양한 Gulp 모듈을 활용할 수 있다
+* 다음으로 [gulp-load-plugin]() 모듈을 사용해서 `devDependencies` 목록에 있는 `npm`모듈을 모두 로딩해서 `$` 변수 아래에 namespaced 한다. 이것은 단지 우리가 사용하는 모든 모듈을 위해 많은 `require()` 구문을 사용하지 않고 우리의 `package.json`을 tidy 하게 만든다
+* `onError` 상수를  익명 함수로 설정하여 편의상 다시 에러를 콘솔에 로깅할 수 있습니다
+* 마지막으로, `banner` 상수를 설정하여 빌드 될때 자바스크립트/CSS 최상단에 멋진 배너를 만들 수 있습니다. 
+
+만약 프론트엔드 세계로 부터 나왔다면 `$`를 변수처럼 사용하는 것을 헷갈리지 마세요. 제이쿼리 스타일처럼 보이지만 이건 어떤 이름으로도 사용할수 있는 변수랍니다.
 
 
 ## PRIMARY GULP TASKS
