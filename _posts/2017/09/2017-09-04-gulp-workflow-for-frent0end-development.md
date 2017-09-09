@@ -231,8 +231,34 @@ const banner = [
 
 만약 프론트엔드 세계로 부터 나왔다면 `$`를 변수처럼 사용하는 것을 헷갈리지 마세요. 제이쿼리 스타일처럼 보이지만 이건 어떤 이름으로도 사용할수 있는 변수랍니다.
 
+## 주요 Gulp 작업
 
-## PRIMARY GULP TASKS
+여기까지가 `gulpfile.js` 의 시작 부분입니다. 이제 아래로 내려가서 두 개의 주요한 작업을 볼텐데 명령창에서 실행합니다. 
+
+```js
+// 기본 작업 
+gulp.task("default", ["css", "js"], () => {
+    $.livereload.listen();
+    gulp.watch([pkg.paths.src.scss + "**/*.scss"], ["css"]);
+    gulp.watch([pkg.paths.src.css + "**/*.css"], ["css"]);
+    gulp.watch([pkg.paths.src.js + "**/*.js"], ["js"]);
+    gulp.watch([pkg.paths.templates + "**/*.{html,htm,twig}"], () => {
+        gulp.src(pkg.paths.templates)
+            .pipe($.plumber({errorHandler: onError}))
+            .pipe($.livereload());
+    });
+});
+
+// 프로덕션 빌드 
+gulp.task("build", ["download", "default", "favicons", "imagemin", "fonts", "criticalcss"]);
+```
+
+이 두개 작업이 프론트엔드 자동화를 모션으로 설정하는데 일반적입니다. 대충 두개로 나눌수 있느데:
+
+1. **default** - 매일 빠르게 사용하는 작업
+1. **build** - 가끔 사용하는 작업 (보통 초기 빌드나 프로덕션 빌드를 위한 최종 빌드), 시간이 좀 걸리수 있음 
+
+
 
 ## CSS GULP TASKS
 
