@@ -420,7 +420,7 @@ js 작업이 실행될때 가장 먼저 일어나는 것이 의존성 작업이 
 
 또한 `js` 작업은 자바스크립트의 어떠한 변화도 감지하여 [gulp-livereload](https://www.npmjs.com/package/gulp-livereload)로 웹 브라우져를 자동 리로드 합니다. 당신은 간단하게 [livereload Chrome extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)만 설치하면 됩니다.
 
-## MISC GULP TASKS
+## MISC GULP 태스크 
 
 기본 CSS/JS 빌딩을 위해 추가로 `gulpefile.js`에는 유용한 여러가지가 있는데 `package.json`의 데이터를 기초로 동작합니다. 
 
@@ -629,7 +629,14 @@ gulp.task("download", (callback) => {
 
 만료 헤더를 제어 할 수있을뿐 아니라 웹 페이지의 모든 내용을 로드하기 위해 필요한 DNS 조회 횟수를 줄일 수 있습니다.
 
-## WHAT’S LEFT OUT?
+## 뭐가 더 남아나요?
+
+저의 프론트엔드 워크풀로우에는 몇 개가 더 넘았습니다. 아마 몇몇 분들이 기대하고 있을 거에요
+
+* **CSS/SCSS 린팅** - 저는 [PhpStorm]()을 에디터로 사용하는데요, 에디터에 이 기능이 있어요. 만약 따로 원하신다면 `css` 태스크에 CSS/SCSS 린팅 스텝을 쉽게 추가할 수 있습니다 
+* **Browsersync** - 저는 livereload를 사용하지만 멀티 디바이스 테스트를 위해 [Browsersync](https://www.browsersync.io/)를 선호한다면 `default` 태스크에서 로 바꾸는 것은 어려운 일이 아닙니다. 
+
+다른 사람들이 빌드 프로세스를 위해 사용하는 좋은게 있을 것입니다. 제가 일하는 최소한의 세트만 보여드린 겁니다.
 
 ## THE FULL MONTY
 
