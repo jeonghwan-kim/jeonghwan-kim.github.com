@@ -422,6 +422,213 @@ js 작업이 실행될때 가장 먼저 일어나는 것이 의존성 작업이 
 
 ## MISC GULP TASKS
 
+기본 CSS/JS 빌딩을 위해 추가로 `gulpefile.js`에는 유용한 여러가지가 있는데 `package.json`의 데이터를 기초로 동작합니다. 
+
+특별한 순서 없이 보자면:
+
+```js
+// 파비콘 생성 작업 
+gulp.task("favicons-generate", () => {
+    $.fancyLog("-> Generating favicons");
+    return gulp.src(pkg.paths.favicon.src).pipe($.favicons({
+        appName: pkg.name,
+        appDescription: pkg.description,
+        developerName: pkg.author,
+        developerURL: pkg.urls.live,
+        background: "#FFFFFF",
+        path: pkg.paths.favicon.path,
+        url: pkg.site_url,
+        display: "standalone",
+        orientation: "portrait",
+        version: pkg.version,
+        logging: false,
+        online: false,
+        html: pkg.paths.build.html + "favicons.html",
+        replace: true,
+        icons: {
+            android: false, // 안드로이드 홈스크린 아이콘 생성. 불리언 
+            appleIcon: true, // 애플 터치 아이콘 생성. 불리언 
+            appleStartup: false, // 에플 시작 이미지 생성. 불리언
+            coast: true, // 오페라 Coast 아이콘 생성. 불리언
+            favicons: true, // 기본 파비콘 생성. 불리언
+            firefox: true, // 파이어폭스 운영체제 아이콘 생성. 불리언 
+            opengraph: false, // 페이스북 오픈 그래프 이미지 생성. 불리언
+            twitter: false, // 트위터 써머리 카드 이미지 생성. 불리언 
+            windows: true, // 윈도우즈 8 타이틀 아이콘 생성. 불리언 
+            yandex: true // Yandex 브라우져 아이콘 생성. 불리언 
+        }
+    })).pipe(gulp.dest(pkg.paths.favicon.dest));
+});
+
+// 파비콘 복사 태스크 
+gulp.task("favicons", ["favicons-generate"], () => {
+    $.fancyLog("-> Copying favicon.ico");
+    return gulp.src(pkg.globs.siteIcon)
+        .pipe($.size({gzip: true, showFiles: true}))
+        .pipe(gulp.dest(pkg.paths.dist.base));
+});
+```
+`favicons` 태스크는 하나의 소스 이미지로 부터 수많은 웹사이트 파비콘을 생성합니다. 또한 그것들을 포함/디스플레이하는 HTML을 생성하기도 합니다. 이것은 다양한 파비콘 형식의 모든것을 생성하기 매우 쉽습니다. 
+
+```js
+// imagemin 태스크 
+gulp.task("imagemin", () => {
+    return gulp.src(pkg.paths.dist.img + "**/*.{png,jpg,jpeg,gif,svg}")
+        .pipe($.imagemin({
+            progressive: true,
+            interlaced: true,
+            optimizationLevel: 7,
+            svgoPlugins: [{removeViewBox: false}],
+            verbose: true,
+            use: []
+        }))
+        .pipe(gulp.dest(pkg.paths.dist.img));
+});
+```
+
+`imagemin` 태스크는 `pkg.paths.dist.img`에 있는 모든 이미지들을 *현장에서* 최적화 합니다. 사이트 자체의 이미지이고 git 저장소에 들어가는 이미지 들입니다. 클라이언트가 업로드 하게될 이미지는 서버 사이트에서 최적화 되야 합니다. [Creating Optimized Images in Craft CMS](https://nystudio107.com/blog/creating-optimized-images-in-craft-cms) 아티클 처럼 말이죠.
+
+```js
+// fontello 생성 태스크 
+gulp.task("generate-fontello", () => {
+    return gulp.src(pkg.paths.src.fontello + "config.json")
+        .pipe($.fontello())
+        .pipe($.print())
+        .pipe(gulp.dest(pkg.paths.build.fontello))
+});
+
+// 서체 복사 태스크 
+gulp.task("fonts", ["generate-fontello"], () => {
+    return gulp.src(pkg.globs.fonts)
+        .pipe(gulp.dest(pkg.paths.dist.fonts));
+});
+```
+
+`fonts` 태스크는 먼저 오직 필요한 glyps만 포함하는 `config.json`파일의 [fontello]()에 의해 커스텀 아이콘 폰트를 생성합니다. 여섯ro 소셜 아이콘만 사용할 때는 큰 `294k` 폰트어썸(FontAwesome)을 포함시키지 마세요. 
+
+그리고는 fontello 폰트와 `pkg.globs.fonts`의 다른 폰트를 `pkg.paths.dist.fonts`의 퍼블릭 배포 폴더로 복사합니다.
+
+```js
+// 배열에 있는 데이터를 순차적으로 처리합니다
+// nths 아이템 콜벡이후에 n_1 아이템을 이동하면서 말이죠 
+function doSynchronousLoop(data, processData, done) {
+    if (data.length > 0) {
+        const loop = (data, i, processData, done) => {
+            processData(data[i], i, () => {
+                if (++i < data.length) {
+                    loop(data, i, processData, done);
+                } else {
+                    done();
+                }
+            });
+        };
+        loop(data, 0, processData, done);
+    } else {
+        done();
+    }
+}
+
+// 한번에 criticla path CSS 처리합니다 
+function processCriticalCSS(element, i, callback) {
+    const criticalSrc = pkg.urls.critical + element.url;
+    const criticalDest = pkg.paths.templates + element.template + "_critical.min.css";
+
+    let criticalWidth = 1200;
+    let criticalHeight = 1200;
+    if (element.template.indexOf("amp_") !== -1) {
+        criticalWidth = 600;
+        criticalHeight = 19200;
+    }
+    $.fancyLog("-> Generating critical CSS: " + $.chalk.cyan(criticalSrc) + " -> " + $.chalk.magenta(criticalDest));
+    $.critical.generate({
+        src: criticalSrc,
+        dest: criticalDest,
+        inline: false,
+        ignore: [],
+        base: pkg.paths.dist.base,
+        css: [
+            pkg.paths.dist.css + pkg.vars.siteCssName,
+        ],
+        minify: true,
+        width: criticalWidth,
+        height: criticalHeight
+    }, (err, output) => {
+        if (err) {
+            $.fancyLog($.chalk.magenta(err));
+        }
+        callback();
+    });
+}
+
+// 크리티컬 CSS 태스크 
+gulp.task("criticalcss", ["css"], (callback) => {
+    doSynchronousLoop(pkg.globs.critical, processCriticalCSS, () => {
+        // 모두 완료 
+        callback();
+    });
+});
+```
+
+`criticalcss` 태스크는 "above the fold content"를 렌더하기 위해 필요한 스타일을을 가지고 있는 Criticla CSS를 생성합니다. [Implementing Critical CSS on your website]() 아티클에서 자세하게 설명하는 내용으로 들어가 보죠.
+
+```js
+// Run pa11y accessibility tests on each template
+function processAccessibility(element, i, callback) {
+    const accessibilitySrc = pkg.urls.critical + element.url;
+    const cliReporter = require('./node_modules/pa11y/reporter/cli.js');
+    const options = {
+        log: cliReporter,
+        ignore:
+                [
+                    'notice',
+                    'warning'
+                ],
+        };
+    const test = $.pa11y(options);
+
+    $.fancyLog("-> Checking Accessibility for URL: " + $.chalk.cyan(accessibilitySrc));
+    test.run(accessibilitySrc, (error, results) => {
+        cliReporter.results(results, accessibilitySrc);
+        callback();
+    });
+}
+
+// accessibility task
+gulp.task("a11y", (callback) => {
+    doSynchronousLoop(pkg.globs.critical, processAccessibility, () => {
+        // all done
+        callback();
+    });
+});
+```
+
+`a11y` 태스크는 웹사이트 모든 템플릿의 접근성 심사를 실행합니다. 여기서 더 깊게 가지는 않을게요. 자세한 내용은 [Making Websites Better through Accessibility]() 아티클에 있으니까요. 
+
+```js
+// 한번에 하나씩 다운로드를 처리합니다 
+function processDownload(element, i, callback) {
+    const downloadSrc = element.url;
+    const downloadDest = element.dest;
+
+    $.fancyLog("-> Downloading URL: " + $.chalk.cyan(downloadSrc) + " -> " + $.chalk.magenta(downloadDest));
+    $.download(downloadSrc)
+        .pipe(gulp.dest(downloadDest));
+    callback();
+}
+
+// 다운로드 태스크 
+gulp.task("download", (callback) => {
+    doSynchronousLoop(pkg.globs.download, processDownload, () => {
+        // all done
+        callback();
+    });
+});
+```
+
+다운로드 태스크는  스스로는 제공하려는 하려는 써드파티 자바스크립트(예를들어 Google Analytics)를 다운로드하므로 `expreies` 헤더를 제어할 수 있습니다. 이것은 잡초에서 조금 벗어나고 있지만, 써드파티 자바스크립트를 사용하는 것 사이에서 좋은 균형을 유지합니다. 컨텐츠를 제공하고 전달하는 방법을 여전히 제어하면서 말이죠.
+
+만료 헤더를 제어 할 수있을뿐 아니라 웹 페이지의 모든 내용을 로드하기 위해 필요한 DNS 조회 횟수를 줄일 수 있습니다.
+
 ## WHAT’S LEFT OUT?
 
 ## THE FULL MONTY
