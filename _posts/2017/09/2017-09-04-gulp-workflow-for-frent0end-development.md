@@ -330,8 +330,95 @@ iOS >= 8
 
 또한 `css` 작업을 전체 브라우져 로딩없이 [gulp-livereload](https://www.npmjs.com/package/gulp-livereload)를 통해서 자동으로 웹페이지의 CSS 갱신합니다. 여러분은 간단하게 [livereload Chrome extensio](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)만 설치하면 됩니다.
 
+## JS GULP 작업 
 
-## JS GULP TASKS`
+이제 `js` 작업과 관련 작업을 살펴 봅시다.
+
+```js
+// Prism js task - combine the prismjs Javascript & config file into one bundle
+// Prism js 작업 - prismjs 자바스크립트와 컨피그 파일을 하나의 번들로 합칩니다 
+gulp.task("prism-js", () => {
+    $.fancyLog("-> Building prism.min.js...");
+    return gulp.src(pkg.globs.prismJs)
+        .pipe($.plumber({errorHandler: onError}))
+        .pipe($.newer({dest: pkg.paths.build.js + "prism.min.js"}))
+        .pipe($.concat("prism.min.js"))
+        .pipe($.uglify())
+        .pipe($.size({gzip: true, showFiles: true}))
+        .pipe(gulp.dest(pkg.paths.build.js));
+});
+
+// 바벨 js 작업 - 자바스크립트를 빌드 폴더로 트랜스파일 합니다 
+gulp.task("js-babel", () => {
+    $.fancyLog("-> Transpiling Javascript via Babel...");
+    return gulp.src(pkg.globs.babelJs)
+        .pipe($.plumber({errorHandler: onError}))
+        .pipe($.newer({dest: pkg.paths.build.js}))
+        .pipe($.babel())
+        .pipe($.size({gzip: true, showFiles: true}))
+        .pipe(gulp.dest(pkg.paths.build.js));
+});
+
+// 인라인 js 작업 - 인라인 자바스크립트로 템플릿 경로의 _inlinejs 로 최소화 합니다 
+gulp.task("js-inline", () => {
+    $.fancyLog("-> Copying inline js");
+    return gulp.src(pkg.globs.inlineJs)
+        .pipe($.plumber({errorHandler: onError}))
+        .pipe($.if(["*.js", "!*.min.js"],
+            $.newer({dest: pkg.paths.templates + "_inlinejs", ext: ".min.js"}),
+            $.newer({dest: pkg.paths.templates + "_inlinejs"})
+        ))
+        .pipe($.if(["*.js", "!*.min.js"],
+            $.uglify()
+        ))
+        .pipe($.if(["*.js", "!*.min.js"],
+            $.rename({suffix: ".min"})
+        ))
+        .pipe($.size({gzip: true, showFiles: true}))
+        .pipe(gulp.dest(pkg.paths.templates + "_inlinejs"));
+});
+
+// js 작업 - public js 폴더로 배포 자바스크립트를 최소화하고 여기에 배너를 추가합니다 
+gulp.task("js", ["js-inline", "js-babel", "prism-js"], () => {
+    $.fancyLog("-> Building js");
+    return gulp.src(pkg.globs.distJs)
+        .pipe($.plumber({errorHandler: onError}))
+        .pipe($.if(["*.js", "!*.min.js"],
+            $.newer({dest: pkg.paths.dist.js, ext: ".min.js"}),
+            $.newer({dest: pkg.paths.dist.js})
+        ))
+        .pipe($.if(["*.js", "!*.min.js"],
+            $.uglify()
+        ))
+        .pipe($.if(["*.js", "!*.min.js"],
+            $.rename({suffix: ".min"})
+        ))
+        .pipe($.header(banner, {pkg: pkg}))
+        .pipe($.size({gzip: true, showFiles: true}))
+        .pipe(gulp.dest(pkg.paths.dist.js))
+        .pipe($.filter("**/*.js"))
+        .pipe($.livereload());
+});
+```
+
+js 작업이 실행될때 가장 먼저 일어나는 것이 의존성 작업이 실생되는 것입니다.
+
+* **js-inline** - 특정 자바스크립트를 가져와 Craft 템플릿 폴더에 저장하여 그것을 [source]() 또는 [include]()할 수 있습니다. 이것은 다른것을 로드하는 자바스크립트 입니다 (그래서 HTML에서 인라인 하길 원합니다). Twig 템플릿으로 파싱할 필요가 있습니다
+* **js-babel** - `pkg.globs.babelJs`에 적은 자바스크립트를 바벨로 트랜스파일하여 `pkg.paths.build.js` 폴더로 이동해서 나중에 처리하도록 합니다 
+* **Prims-js** - 이건은 내가 모든 프로젝타마다 사용하지 않는  gulilfe.js의 기능중 하나입니다. 오직 우리가 원하는것을 포한하는 [PrismJS]()를 위한 커스텀 자바스크립트를 빌드합니다. 웹사이트에서 멋진 형식의 코드 샘플을 보여주기 위해 사용합니다
+
+바베일 정확하게 일하는 것에 주의하는 것이 중요한데요, 어떤것을 트랜스 파일할지 말해주는  프로젝트 상단의 `.babelrc` 파일이 필요합니다. 제건 아래와 같아요.
+
+```json
+{
+  "presets": ["es2015"],
+  "compact": true
+}
+```
+
+마지막으로, `js` 작업을 실행하고 `pkg.globs.distJS`의 모든 작업을 수행하고 난돈화하고 필요하다면 `.min.js`를 붙입니다. 그리고 `banner` 해더를 붙이고 각각의 자바스크립트 파일을 `pkg.paths.dist.js`에 퍼블릭 배포 폴더에 기록합니다.
+
+또한 `js` 작업은 자바스크립트의 어떠한 변화도 감지하여 [gulp-livereload](https://www.npmjs.com/package/gulp-livereload)로 웹 브라우져를 자동 리로드 합니다. 당신은 간단하게 [livereload Chrome extension](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)만 설치하면 됩니다.
 
 ## MISC GULP TASKS
 
