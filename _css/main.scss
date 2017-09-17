@@ -1,6 +1,3 @@
----
-# Only the main Sass file needs front matter (the dashes are enough)
----
 @charset "utf-8";
 
 // Our variables
@@ -12,12 +9,12 @@ $font-size-small: 14px;
 
 $font-weight-default: 400;
 $font-weight-light: 100;
-$font-weight-heavy: 600;
+$font-weight-heavy: 900;
 
-$line-height-default: 1.5;
+$line-height-default: 1.8;
 $line-height-small: 1.1;
 
-$spacing-unit:     30px; /* ? */
+$spacing-unit: 30px; /* ? */
 
 $color-text: #111;
 $color-background: #fff;
@@ -49,7 +46,7 @@ $post-list-featured-image-height: $post-list-featured-image-width;
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-  "base",
-  "layout",
-  "syntax-highlighting"
+  "./base",
+  "./layout",
+  "./syntax-highlighting"
 ;
