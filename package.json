@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "blog.jeonghwan.net",
   "main": "index.js",
+  "gulp": {
+    "cssFiles": "_css/**/*.scss",
+    "cssEntry": "_css/main.scss",
+    "siteRoot": "_site",
+    "static": "assets",
+  },
   "dependencies": {
   },
   "devDependencies": {
