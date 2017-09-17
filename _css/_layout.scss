@@ -21,16 +21,15 @@
     float: right;
     line-height: $site-header-height;
     position: absolute;
-    top: 5px;
+    top: 0;
     right: $spacing-unit / 2;
     z-index: 999;
     .menu-icon {
       display: block;
       float: right;
-      padding-top: 10px;
       width: 36px;
-      height: 26px;
-      line-height: 0;
+      height: 100%;
+      line-height: 48px;
       color: $site-header-color;
       a,
       a:visited {
@@ -140,7 +139,8 @@
 }
 .post-title {
   font-size: 300%;
-  font-weight: $font-weight-light;
+  line-height: 1em;
+  font-weight: $font-weight-default;
   color: $color-text;
   margin-top: 25px;
   margin-bottom: 0;
@@ -164,7 +164,7 @@
 }
 .post-content {
   margin-bottom: $spacing-unit;
-  font-weight: 200;
+  font-weight: $font-weight-default;
   h2, h3, h4 {
     font-weight: $font-weight-heavy;
   }
@@ -176,9 +176,6 @@
   }
   h4 {
     font-size: 110%;
-  }
-  code {
-    font-weight: $font-weight-default;
   }
 }
 .pagination {

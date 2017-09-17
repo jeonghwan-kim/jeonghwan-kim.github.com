@@ -7,3 +7,4 @@ node_modules
 yarn.lock
 .bundle
 vendor
+package-lock.json
