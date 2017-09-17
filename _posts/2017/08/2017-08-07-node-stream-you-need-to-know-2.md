@@ -1,9 +1,10 @@
 ---
-title: (번역)Node.js Stream 당신이 알아야할 모든 것 2편
+title: Node.js Stream 당신이 알아야할 모든 것 2편
 layout: post
 category: node
 tags:
   stream
+summary: 노드 스트림의 기본 개념을 설명하는 글입니다 
 ---
 
 > 원본: [https://medium.freecodecamp.com/node-js-streams-everything-you-need-to-know-c9141306be93](https://medium.freecodecamp.com/node-js-streams-everything-you-need-to-know-c9141306be93)

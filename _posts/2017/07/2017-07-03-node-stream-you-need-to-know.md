@@ -1,9 +1,10 @@
 ---
-title: (번역)Node.js Stream 당신이 알아야할 모든 것 1편
+title: Node.js Stream 당신이 알아야할 모든 것 1편
 layout: post
 category: node
 tags:
   stream
+summary: 스트림을 왜 사용하는지 간단한 예제를 통해 알아봅니다 
 ---
 
 > 원본: [https://medium.freecodecamp.com/node-js-streams-everything-you-need-to-know-c9141306be93](https://medium.freecodecamp.com/node-js-streams-everything-you-need-to-know-c9141306be93)

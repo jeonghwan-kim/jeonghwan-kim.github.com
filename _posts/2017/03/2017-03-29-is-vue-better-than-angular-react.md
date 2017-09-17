@@ -1,5 +1,5 @@
 ---
-title: (번역) 과연 Vue.js가 앵귤러나 리엑트보다 좋을까?
+title: 과연 Vue.js가 앵귤러나 리엑트보다 좋을까?
 layout: post
 category: vue
 tags:

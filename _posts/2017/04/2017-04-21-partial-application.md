@@ -1,5 +1,5 @@
 ---
-title: (함수형JS) 함수로 함수 만들기3 부분적용
+title: 함수로 함수 만들기3 부분적용
 layout: post
 category: js
 tags:
