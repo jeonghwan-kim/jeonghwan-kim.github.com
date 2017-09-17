@@ -6,10 +6,11 @@ const sass = require('gulp-sass');
 
 const pkg = require('./package.json'); // todo use pkg variables
 const siteRoot = '_site';
-const cssFiles = '_css/main.scss';
+const cssFiles = '_css/**/*.scss';
+const cssFilesEntry = '_css/main.scss';
 
 gulp.task('css', () => {
-  gulp.src(cssFiles)
+  gulp.src(cssFilesEntry)
     .pipe(sass({
       outputStyle: 'compressed'
     }))
@@ -35,7 +36,7 @@ gulp.task('jekyll', () => {
 
 gulp.task('serve', () => {
   browserSync.init({
-    files: [siteRoot + '/**'],
+    files: [siteRoot + '/**', 'assets/**'],
     port: 4000,
     server: {
       baseDir: siteRoot
