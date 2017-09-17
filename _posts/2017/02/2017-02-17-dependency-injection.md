@@ -4,6 +4,7 @@ layout: post
 category: js
 tags:
   dependency-injection
+summary: 프론트엔드에서 의존성 주입에 대해 설명하는 글입니다 
 ---
 
 ## 의존성 주입은 어떻게 사용하는가?

@@ -1,5 +1,5 @@
 ---
-title: (함수형JS) 함수로 함수 만들기1 다형성 
+title: 함수로 함수 만들기1 다형성 
 layout: post
 category: js
 tags:
