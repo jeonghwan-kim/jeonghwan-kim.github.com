@@ -4,6 +4,6 @@
 
 {% if post.category %}
   <span class="category">
-    <i class="fa fa-archive" aria-hidden="true"></i> <a href="/category/{{post.category}}.html">{{ post.category | upcase }}</a>
+    분류:<a href="/category/{{post.category}}.html">{{ post.category | upcase }}</a>
 </span>
 {% endif %}
