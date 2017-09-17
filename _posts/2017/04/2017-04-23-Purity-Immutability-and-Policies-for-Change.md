@@ -1,5 +1,5 @@
 ---
-title: (함수형JS) 순수성, 불변성, 변경정책
+title: 순수성, 불변성, 변경정책
 layout: post
 category: js
 tags:

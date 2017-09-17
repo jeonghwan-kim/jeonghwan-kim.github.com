@@ -1,10 +1,11 @@
 ---
-title: (번역) 에러 처리를 위한 익스프레스 가이드 
+title: 에러 처리를 위한 익스프레스 가이드 
 layout: post
 category: node
 tags:
   error
   express
+summary: async/await을 활용해서 익스프레스 에러 미들웨어를 개발하는 방법을 설명합니다 
 ---
 
 > 원문: http://thecodebarbarian.com/80-20-guide-to-express-error-handling.html

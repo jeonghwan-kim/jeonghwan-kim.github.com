@@ -1,5 +1,5 @@
 ---
-title: (함수형JS) 고차 함수 
+title: 고차 함수 
 layout: post
 category: js
 tags:

@@ -1,5 +1,5 @@
 ---
-title: (번역)함수형 프로그래머가 되고 싶다고? 파트6
+title: 함수형 프로그래머가 되고 싶다고? 파트6
 layout: post
 category: etc
 tags: functional-programming
