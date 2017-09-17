@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
-
   {% include head.html %}
   {% include google-adsense.html %}
   <body>
-
-    {% include header.html %}
-
-    <div class="page-content">
-      {{ content }}
+    <div class='row'>
+      <div class='col3'>
+        
+        {% include header.html %}
+      </div>
+      <div class='col8'>
+        <div class="page-content">
+          {{ content }}
+        </div>
+      </div>
     </div>
-
     {% include footer.html %}
-
   </body>
-
 </html>
