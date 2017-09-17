@@ -4,17 +4,14 @@ const browserSync = require('browser-sync').create();
 const gutil = require('gulp-util');
 const sass = require('gulp-sass');
 
-const pkg = require('./package.json'); // todo use pkg variables
-const siteRoot = '_site';
-const cssFiles = '_css/**/*.scss';
-const cssFilesEntry = '_css/main.scss';
+const pkg = require('./package.json').gulp;
 
 gulp.task('css', () => {
-  gulp.src(cssFilesEntry)
+  gulp.src(pkg.cssEntry)
     .pipe(sass({
       outputStyle: 'compressed'
     }))
-    .pipe(gulp.dest('assets'));
+    .pipe(gulp.dest(`${pkg.static}/css`));
 });
 
 gulp.task('jekyll', () => {
@@ -36,14 +33,17 @@ gulp.task('jekyll', () => {
 
 gulp.task('serve', () => {
   browserSync.init({
-    files: [siteRoot + '/**', 'assets/**'],
+    files: [
+      `${pkg.siteRoot}/**`,
+      `${pkg.static}/**`
+    ],
     port: 4000,
     server: {
-      baseDir: siteRoot
+      baseDir: pkg.siteRoot
     }
   });
 
-  gulp.watch(cssFiles, ['css']);
+  gulp.watch(pkg.cssFiles, ['css']);
 });
 
 gulp.task('default', ['css', 'jekyll', 'serve']);
