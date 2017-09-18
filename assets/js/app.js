@@ -49,6 +49,22 @@ var NotPopupAreaDOM = (function() {
   return NotPopupAreaDOM;
 })();
 
+var EventBinder = {
+    init: function (selector) {
+        this.el = document.querySelector(selector);
+        if (!this.el) throw Error(selector + ' 로 엘레멘트를 찾을 수 없음');
+    },
+    bindEvent: function (eventName, eventHandler) {
+        if (!this.el) throw Error('init()을 먼저 실행하세요')
+        this.el.addEventListener(eventName, eventHandler.bind(this))
+    },
+    styleDisplay: function (selector, value) {
+        var targetEl = document.querySelector('.sidebar');
+        if (!targetEl) throw Error(selector + ' 로 엘레멘트를 찾을 수 없음');
+        targetEl.style.display = value;
+    }
+};
+
 (function(document) {
   document.addEventListener('DOMContentLoaded', function() {
     var popupMng,
@@ -86,4 +102,18 @@ var NotPopupAreaDOM = (function() {
       }
     }
   });
+
+
+  var sidebarOpenBtn = Object.create(EventBinder);
+  sidebarOpenBtn.init('.btn-open-sidebar');
+  sidebarOpenBtn.bindEvent('click', function (e) {
+    sidebarOpenBtn.styleDisplay('.sidebar', 'block');
+  });
+
+  var sidebarCloseBtn = Object.create(EventBinder);
+  sidebarCloseBtn.init('.btn-close-sidebar');
+  sidebarCloseBtn.bindEvent('click', function (e) {
+    sidebarCloseBtn.styleDisplay('.sidebar', 'none');
+  });
 })(document);
+
