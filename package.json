@@ -7,7 +7,7 @@
     "cssFiles": "_css/**/*.scss",
     "cssEntry": "_css/main.scss",
     "siteRoot": "_site",
-    "static": "assets",
+    "static": "assets"
   },
   "dependencies": {
   },
