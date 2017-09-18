@@ -65,8 +65,7 @@ var EventBinder = {
     }
 };
 
-(function(document) {
-  document.addEventListener('DOMContentLoaded', function() {
+var initPopup = function() {
     var popupMng,
         popup = document.getElementById('category-popup'),
         popupClosebtn = document.getElementById('category-popup-close'),
@@ -74,46 +73,52 @@ var EventBinder = {
         ctgyBtn = document.getElementById('category-pupup-btn');
 
     if (ctgyBtn && popup && popupClosebtn) {
-      popupMng = new PopupManager(popup);
-      notPopupArea.mount(document.body);
+        popupMng = new PopupManager(popup);
+        notPopupArea.mount(document.body);
 
-      ctgyBtn.onclick = function onCategoryBtn() {
-        notPopupArea
-            .toggle()
-            .onClick(function onClickNotPopupArea(){
-              notPopupArea.hide();
-              popupMng.hide();
-            })
-            .show();
+        ctgyBtn.onclick = function onCategoryBtn() {
+            notPopupArea
+                .toggle()
+                .onClick(function onClickNotPopupArea(){
+                    notPopupArea.hide();
+                    popupMng.hide();
+                })
+                .show();
 
-        popupMng.toggle();
-      };
+            popupMng.toggle();
+        };
 
-      popupClosebtn.onclick = function onCategoryPopupClose(){
-        notPopupArea.hide();
-        popupMng.hide();
-      };
+        popupClosebtn.onclick = function onCategoryPopupClose(){
+            notPopupArea.hide();
+            popupMng.hide();
+        };
 
-      document.onkeydown = function(e) {
-        if (e.key === 'Escape') {
-          notPopupArea.hide();
-          popupMng.hide();
+        document.onkeydown = function(e) {
+            if (e.key === 'Escape') {
+                notPopupArea.hide();
+                popupMng.hide();
+            }
         }
-      }
     }
-  });
+}
+var initSidebar = function () {
+  var sidebarOpenBtn,
+      sidebarCloseBtn;
 
+    sidebarOpenBtn = Object.create(EventBinder);
+    sidebarOpenBtn.init('.btn-open-sidebar');
+    sidebarOpenBtn.bindEvent('click', function (e) {
+        sidebarOpenBtn.styleDisplay('.sidebar', 'block');
+    });
 
-  var sidebarOpenBtn = Object.create(EventBinder);
-  sidebarOpenBtn.init('.btn-open-sidebar');
-  sidebarOpenBtn.bindEvent('click', function (e) {
-    sidebarOpenBtn.styleDisplay('.sidebar', 'block');
-  });
+    sidebarCloseBtn = Object.create(EventBinder);
+    sidebarCloseBtn.init('.btn-close-sidebar');
+    sidebarCloseBtn.bindEvent('click', function (e) {
+        sidebarCloseBtn.styleDisplay('.sidebar', 'none');
+    });
+};
 
-  var sidebarCloseBtn = Object.create(EventBinder);
-  sidebarCloseBtn.init('.btn-close-sidebar');
-  sidebarCloseBtn.bindEvent('click', function (e) {
-    sidebarCloseBtn.styleDisplay('.sidebar', 'none');
-  });
-})(document);
-
+document.addEventListener('DOMContentLoaded', function() {
+  initPopup();
+  initSidebar();
+});
