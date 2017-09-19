@@ -1,3 +1,5 @@
+@import '_sidebar.scss';
+
 /**
  * Site header
  */
@@ -6,8 +8,7 @@
   height: $site-header-height;
   background-color: $site-header-background-color;
   text-align: center;
-  $sidebar-left-padding: 6px;
-  $sidebar-top-padding: 6px;
+
   .btn {
     display: inline-block;
     padding: 4px 8px;
@@ -25,43 +26,6 @@
     top: $sidebar-top-padding;
     left: $sidebar-left-padding;
     z-index: 998;
-  }
-  .sidebar {
-    position: fixed;
-    text-align: left;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    padding-top: $sidebar-top-padding;
-    padding-left: $sidebar-left-padding;
-    background-color: $grey-color-dark;
-    width: $sidebar-width;
-    z-index: 999;
-    transition: all .3s ease-in-out;
-    .btn-close-sidebar {
-    }
-    .sidebar-title {
-      text-align: left;
-      color: $sidebar-title;
-    }
-    .category-list {
-      margin-left: 15px;
-    }
-    .category-list-item {
-      list-style: none;
-      text-align: left;
-      a {
-        color: darken($sidebar-title, 40%);
-        font-size: 80%;
-        &:hover,
-        &:focus {
-          color: $sidebar-title;
-        }
-      }
-    }
-  }
-  .sidebar.hide {
-    margin-left: -($sidebar-width + $sidebar-left-padding);
   }
   .site-title {
     font-size: 24px;
