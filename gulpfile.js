@@ -6,12 +6,13 @@ const sass = require('gulp-sass');
 
 const pkg = require('./package.json').gulp;
 
-gulp.task('css', () => {
-  gulp.src(pkg.cssEntry)
+gulp.task('scss', () => {
+  gulp.src(pkg.scssEntry)
     .pipe(sass({
       outputStyle: 'compressed'
     }))
-    .pipe(gulp.dest(`${pkg.static}/css`));
+    .pipe(gulp.dest(`${pkg.static}/css`))
+    .pipe(browserSync.reload({stream: true}))
 });
 
 gulp.task('jekyll', () => {
@@ -21,29 +22,30 @@ gulp.task('jekyll', () => {
     '--drafts'
   ]);
 
-  const jekyllLogger = (buffer) => {
+  const jekyllLogger = buffer => {
     buffer.toString()
       .split(/\n/)
-      .forEach((message) => gutil.log('Jekyll: ' + message));
+      .forEach(message => {
+        gutil.log('Jekyll: ' + message)
+        const doneJekyll = /done in .* seconds/.test(message)
+        if (doneJekyll) browserSync.reload()
+      });
   };
 
   jekyll.stdout.on('data', jekyllLogger);
-  jekyll.stderr.on('data', jekyllLogger);
 });
 
-gulp.task('serve', () => {
+gulp.task('browserSync', () => {
   browserSync.init({
-    files: [
-      `${pkg.siteRoot}/**`,
-      `${pkg.static}/**`
-    ],
     port: 4000,
     server: {
       baseDir: pkg.siteRoot
     }
   });
-
-  gulp.watch(pkg.cssFiles, ['css']);
 });
 
-gulp.task('default', ['css', 'jekyll', 'serve']);
+gulp.task('serve', ['browserSync', 'scss', 'jekyll'], () => {
+  gulp.watch(pkg.scssFiles,  ['scss']);
+})
+
+gulp.task('default', ['serve']);
