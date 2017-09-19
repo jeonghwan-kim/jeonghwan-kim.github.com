@@ -4,8 +4,8 @@
   "description": "blog.jeonghwan.net",
   "main": "index.js",
   "gulp": {
-    "cssFiles": "_css/**/*.scss",
-    "cssEntry": "_css/main.scss",
+    "scssFiles": "./_scss/**/*.scss",
+    "scssEntry": "_scss/main.scss",
     "siteRoot": "_site",
     "static": "assets"
   },
