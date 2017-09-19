@@ -27,8 +27,6 @@
     z-index: 998;
   }
   .sidebar {
-    float: left;
-    display: none;
     position: fixed;
     text-align: left;
     left: 0;
@@ -37,9 +35,9 @@
     padding-top: $sidebar-top-padding;
     padding-left: $sidebar-left-padding;
     background-color: $grey-color-dark;
-    width: 200px;
+    width: $sidebar-width;
     z-index: 999;
-    transition: transform 2s;
+    transition: all .3s ease-in-out;
     .btn-close-sidebar {
     }
     .sidebar-title {
@@ -61,6 +59,9 @@
         }
       }
     }
+  }
+  .sidebar.hide {
+    margin-left: -($sidebar-width + $sidebar-left-padding);
   }
   .site-title {
     font-size: 24px;

@@ -58,10 +58,15 @@ var EventBinder = {
         if (!this.el) throw Error('init()을 먼저 실행하세요')
         this.el.addEventListener(eventName, eventHandler.bind(this))
     },
-    styleDisplay: function (selector, value) {
-        var targetEl = document.querySelector('.sidebar');
+    openSidebar: function (selector) {
+        var targetEl = document.querySelector(selector);
         if (!targetEl) throw Error(selector + ' 로 엘레멘트를 찾을 수 없음');
-        targetEl.style.display = value;
+        targetEl.className = targetEl.className.replace('hide', '')
+    },
+    closeSidebar: function (selector) {
+        var targetEl = document.querySelector(selector);
+        if (!targetEl) throw Error(selector + ' 로 엘레멘트를 찾을 수 없음');
+        targetEl.className = targetEl.className + ' hide'
     }
 };
 
@@ -108,13 +113,13 @@ var initSidebar = function () {
     sidebarOpenBtn = Object.create(EventBinder);
     sidebarOpenBtn.init('.btn-open-sidebar');
     sidebarOpenBtn.bindEvent('click', function (e) {
-        sidebarOpenBtn.styleDisplay('.sidebar', 'block');
+        sidebarOpenBtn.openSidebar('.sidebar');
     });
 
     sidebarCloseBtn = Object.create(EventBinder);
     sidebarCloseBtn.init('.btn-close-sidebar');
     sidebarCloseBtn.bindEvent('click', function (e) {
-        sidebarCloseBtn.styleDisplay('.sidebar', 'none');
+        sidebarCloseBtn.closeSidebar('.sidebar');
     });
 };
 
