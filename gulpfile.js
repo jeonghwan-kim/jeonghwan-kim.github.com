@@ -1,8 +1,9 @@
 const gulp = require('gulp');
-const child = require('child_process');
-const browserSync = require('browser-sync').create();
-const gutil = require('gulp-util');
 const sass = require('gulp-sass');
+const gutil = require('gulp-util');
+const child = require('child_process');
+const webpack = require('webpack-stream');
+const browserSync = require('browser-sync').create();
 
 const pkg = require('./package.json').gulp;
 
@@ -11,7 +12,7 @@ gulp.task('scss', () => {
     .pipe(sass({
       outputStyle: 'compressed'
     }))
-    .pipe(gulp.dest(`${pkg.static}/css`))
+    .pipe(gulp.dest(`${pkg.static}`))
     .pipe(browserSync.reload({stream: true}))
 });
 
@@ -44,7 +45,13 @@ gulp.task('browserSync', () => {
   });
 });
 
-gulp.task('serve', ['browserSync', 'scss', 'jekyll'], () => {
+gulp.task('webpack', () => {
+  webpack(require('./webpack.config'))
+    .pipe(gulp.dest('./assets'))
+})
+
+gulp.task('serve', ['browserSync', 'webpack', 'scss', 'jekyll'], () => {
+  gulp.watch(pkg.jsFiles,  ['webpack']);
   gulp.watch(pkg.scssFiles,  ['scss']);
 })
 
