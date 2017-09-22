@@ -1,5 +1,10 @@
 <header class="site-header">
-  <a class="btn btn-open-sidebar">메뉴</a>
+  <div class="wrapper">
+    <a class="site-title" href="{{ site.baseurl }}/"><h1>{{site.title}}</h1></a>
+    <p class="site-description">{{site.description}}</p>  
+    <a class="btn-open-sidebar">메뉴</a>
+  </div>
+  
   <nav class="sidebar hide">
     <a class="btn btn-close-sidebar">닫기</a>
 
@@ -22,9 +27,5 @@
         </a>
       </li>
     </ul>
-
   </nav>
-  <div class="wrapper">
-    <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
-  </div>
 </header>
