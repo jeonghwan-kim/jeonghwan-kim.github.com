@@ -21,6 +21,11 @@ $grey-color-light: lighten($grey-color, 40%);
 $grey-color-dark: darken($grey-color, 25%);
 $white-color: rgb(254, 254, 254);
 $no-color: rgba(0, 0, 0, 0);
+$site-header-background-color: rgb(56, 56, 56);
+
+
+$site-header-height: 48px;
+$site-header-color: rgba(255, 255, 255, 0.901961);
 
 // Width of the content area
 $content-width: 800px;
