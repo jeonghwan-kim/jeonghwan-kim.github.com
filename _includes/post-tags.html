@@ -3,11 +3,11 @@
   {% for post_tag in post.tags %}
     {% if forloop.first == true %} {% assign tags_content = '' %} {% endif %}
     {% capture tags_content_temp %}
-      {{ tags_content }}<a href="/tags#{{ post_tag }}">#{{ post_tag }}</a>{% if forloop.last == false %}, {% endif %}
+      {{ tags_content }}<a href="/tags.html#{{ post_tag }}">#{{ post_tag }}</a>{% if forloop.last == false %} {% endif %}
     {% endcapture %}
     {% assign tags_content = tags_content_temp %}
   {% endfor %}
 {% else %}
   {% assign tags_content = '' %}
 {% endif %}
-<span>태그: {{ tags_content }}</span>
+<span>{{ tags_content }}</span>

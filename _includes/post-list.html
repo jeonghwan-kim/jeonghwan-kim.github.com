@@ -1,8 +1,4 @@
 <div class="post-list-item">
-  <div class="post-feature-image">
-    <img src="{{ post.featured_image | prepend: site.baseurl }}" alt="">
-  </div>
-
   <div class="post-text">
     <h2 class="post-title">
       <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
@@ -14,10 +10,7 @@
 
     <p class="post-meta">
       {% include post-date.html %}
-      {% include post-category.html %}
       {% include post-tags.html %}
     </p>
   </div>
 </div>
-
-<div class="seperator"></div>
