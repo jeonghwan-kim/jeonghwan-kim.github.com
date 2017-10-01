@@ -5,7 +5,7 @@
 "./variables",
 "./base",
 "./layout",
-"./syntax-highlighting";
+"./syntax-highlighting/monakai";
 
 @mixin media-query($device) {
   @media screen and (max-width: $device) {
