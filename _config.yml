@@ -30,4 +30,4 @@ gems:
   - jekyll-paginate
 
 # Pagination
-paginate: 10
+paginate: 30
