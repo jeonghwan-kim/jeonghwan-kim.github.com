@@ -24,7 +24,8 @@
     "webpack-stream": "^4.0.0"
   },
   "scripts": {
-    "start": "bundle exec jekyll serve --incremental"
+    "dev": "NODE_ENV=development gulp",
+    "build": "NODE_ENV=production gulp build"
   },
   "repository": {
     "type": "git",
