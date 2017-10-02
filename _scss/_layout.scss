@@ -201,6 +201,11 @@
 }
 .pagination {
   margin-bottom: $spacing-unit;
+  .current-page {
+    display: inline-block;
+    margin-left: $spacing-unit / 2;
+    margin-right: $spacing-unit / 2;
+  }
 }
 
 /**
