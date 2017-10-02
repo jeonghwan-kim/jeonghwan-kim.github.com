@@ -10,7 +10,9 @@
     "siteRoot": "_site",
     "static": "assets"
   },
-  "dependencies": {},
+  "dependencies": {
+    "git-hooks": "^1.1.8"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -24,7 +26,8 @@
     "webpack-stream": "^4.0.0"
   },
   "scripts": {
-    "start": "bundle exec jekyll serve --incremental"
+    "dev": "NODE_ENV=development gulp",
+    "build": "NODE_ENV=production gulp build"
   },
   "repository": {
     "type": "git",

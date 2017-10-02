@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
+const debug = process.env.NODE_ENV === 'development'
 
+console.log('debug:', debug)
 
 module.exports = {
     entry: {
@@ -21,7 +23,16 @@ module.exports = {
             }
         }]
     },
-    plugins: [
-        new webpack.optimize.UglifyJsPlugin()
+    plugins: debug ? [] : [
+        new webpack.optimize.UglifyJsPlugin({
+          compress: { // https://github.com/mishoo/UglifyJS2/tree/harmony#compress-options
+            drop_debugger: true,
+            warnings: false,
+            drop_console: true,
+          },
+          output: {
+            comments: false
+          }
+        })
     ]
 };
