@@ -36,6 +36,22 @@ gulp.task('jekyll', () => {
   jekyll.stdout.on('data', jekyllLogger);
 });
 
+gulp.task('jekyll:build', () => {
+  const jekyll = child.spawn('bundle', ['exec', 'jekyll', 'build']);
+
+  const jekyllLogger = buffer => {
+    buffer.toString()
+    .split(/\n/)
+    .forEach(message => {
+      gutil.log('Jekyll: ' + message)
+      const doneJekyll = /done in .* seconds/.test(message)
+      if (doneJekyll) browserSync.reload()
+    });
+  };
+
+  jekyll.stdout.on('data', jekyllLogger);
+})
+
 gulp.task('browserSync', () => {
   browserSync.init({
     port: 4000,
@@ -49,6 +65,8 @@ gulp.task('webpack', () => {
   webpack(require('./webpack.config'))
     .pipe(gulp.dest('./assets'))
 })
+
+gulp.task('build', ['webpack', 'scss', 'jekyll:build'])
 
 gulp.task('serve', ['browserSync', 'webpack', 'scss', 'jekyll'], () => {
   gulp.watch(pkg.jsFiles,  ['webpack']);
