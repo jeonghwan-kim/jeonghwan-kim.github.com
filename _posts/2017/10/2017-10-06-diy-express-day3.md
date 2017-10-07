@@ -481,9 +481,3 @@ const newPost = (req, res, next) => {
 ```
 
 오늘은 여기까지! 
-
-
-## session
-## passport 
-## orm 
-
