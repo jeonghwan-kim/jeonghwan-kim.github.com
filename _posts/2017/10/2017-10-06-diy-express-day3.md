@@ -2,7 +2,7 @@
 title: 익스프레스 만들기 Day 3 
 layout: post
 tags:
-  express  
+  expressjs  
   view-engine
 summary: pug와 비슷한 뷰 엔진을 만들어 본다   
 ---
