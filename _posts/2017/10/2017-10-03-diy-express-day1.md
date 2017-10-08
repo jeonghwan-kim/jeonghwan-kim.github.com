@@ -2,7 +2,7 @@
 title: 익스프레스 만들기 Day 1 
 layout: post
 tags:
-  express
+  expressjs
   debug
   static-serve
   middleware

@@ -2,7 +2,7 @@
 title: 익스프레스 만들기 Day 2 
 layout: post
 tags:
-  express
+  expressjs
   morgan
   request
   response

@@ -4,7 +4,7 @@ layout: post
 category: node
 tags:
   error
-  express
+  expressjs
 summary: async/await을 활용해서 익스프레스 에러 미들웨어를 개발하는 방법을 설명합니다 
 ---
 
