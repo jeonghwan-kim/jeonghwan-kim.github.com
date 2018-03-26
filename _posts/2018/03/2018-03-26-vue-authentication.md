@@ -97,7 +97,7 @@ curl -vs -X GET localhost:3000/me
 요청해 보자.
 
 ```bash 
-curl -vs -X POST localhost:3000/login 'email=test@test.com&password=123123'
+curl -vs -X POST localhost:3000/login -d 'email=test@test.com&password=123123'
 ...
 {
   "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ…"
