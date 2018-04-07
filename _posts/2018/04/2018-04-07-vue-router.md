@@ -5,7 +5,7 @@ tags: vue
 summary: 
 ---
 
-![brand image](/assets/imgs/2018/04/07/brand.jpg)
+![brand image](/assets/imgs/2018/04/07/post-logo.jpg)
 
 ## 뷰JS의 간단한 라우팅 
 
