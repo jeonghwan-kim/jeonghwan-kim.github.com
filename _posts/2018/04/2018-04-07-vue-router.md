@@ -5,6 +5,8 @@ tags: vue
 summary: 
 ---
 
+![brand image](/assets/imgs/2018/04/07/brand.jpg)
+
 ## 뷰JS의 간단한 라우팅 
 
 단일 페이지 어플리케이션(SPA)에서 가장 먼저 처리해야 할 것이 바로 라우팅이다. 서버에서 라우팅은 URI에 따라  해당하는 
