@@ -2,7 +2,7 @@
 title: jQuery 보다 먼저 알았으면 좋았을 것들
 layout: post
 tags: javascript
-summary: 
+summary: 바닐라JS와 제이쿼리 
 ---
 
 웹개발할 때 난 jquery 부터 사용하기 시작한것 같다. 라이브러리가 주는 편리함 넘어 어떻게 DOM API를 사용하는지는 몰랐다. 앵귤러, 리엑트 같은 프레임웍을 사용할 때도 마찬가지다. 기능을 구현하는데 별다는 어려움은 없었다. 
