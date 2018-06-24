@@ -239,7 +239,7 @@ Vue에 추가한다.
 ```js 
 // main.js
 
-import App from './App.vue
+import App from './App.vue'
 import router from './router'
 import store from './store'
 
