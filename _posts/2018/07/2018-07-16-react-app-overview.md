@@ -3,20 +3,20 @@ title: React로 만든 프로젝트 톺아보기
 layout: post
 tags: 
   react
-summary: create-react-app부터 react-saga까지 리엑트에서 사용하는 기술을 알아보니다 
+summary: create-react-app부터 react-saga까지 리액트에서 사용하는 기술을 알아보니다 
 ---
 
 ![logo](/assets/imgs/2018/07/16/react-logo.png)
 
-최근 이직 후 리엑트(React.js) 기반의 어드민 사이트를 만질수 있는 기회가 생겼다. AE(Account Executive)가 사용하는 서비스로 광고 캠페인을 관리하고 효율을 모니터링 할 수 있는 인하우스 어플리케이션이다.
+최근 이직 후 리액트(React.js) 기반의 어드민 사이트를 만질수 있는 기회가 생겼다. AE(Account Executive)가 사용하는 서비스로 광고 캠페인을 관리하고 효율을 모니터링 할 수 있는 인하우스 어플리케이션이다.
 
-업무 파악겸 리엑트 기반의 프로젝트에서는 어떤 기술을 사용하는지 프로젝트에서 사용한 기술을 중심으로 정리해 보았다.
+업무 파악겸 리액트 기반의 프로젝트에서는 어떤 기술을 사용하는지 프로젝트에서 사용한 기술을 중심으로 정리해 보았다.
 
 ![logo](/assets/imgs/2018/07/16/dashboard.png)
 
 ## Create-react-app
 
-ES6, JSX 기술로 구현된 리엑트는 직접 웹팩 설정을 구성하여 빌드 환경을 만들어야 한다. 반면 터미널 기반의 코드 제너레이터를 사용하면 이러한 설정을 자동으로 만들어주는데 **[create-react-app](https://github.com/facebook/create-react-app)**이 바로 그러한 도구다. 뷰js 진영의 vue-cli 와 달리 매우 서술적인 이름이 인상적이다.
+ES6, JSX 기술로 구현된 리액트는 직접 웹팩 설정을 구성하여 빌드 환경을 만들어야 한다. 반면 터미널 기반의 코드 제너레이터를 사용하면 이러한 설정을 자동으로 만들어주는데 **[create-react-app](https://github.com/facebook/create-react-app)**이 바로 그러한 도구다. 뷰js 진영의 vue-cli 와 달리 매우 서술적인 이름이 인상적이다.
 
 ```
 $ npm i -g create-react-app // 설치
@@ -39,7 +39,7 @@ src
  |-- index.css
 ```
 
-src/index.js 는 어플리케이션의 엔트리 포인트 역할을 하는데 리엑트 루트 컴포넌트를 DOM에 마운팅 하는 역할을 한다.
+src/index.js 는 어플리케이션의 엔트리 포인트 역할을 하는데 리액트 루트 컴포넌트를 DOM에 마운팅 하는 역할을 한다.
 
 ```js
 // src/index.js
@@ -55,7 +55,7 @@ ReactDom.render(
 )
 ```
 
-코드 하단에 보면 JSX 문법을 사용하는데 리엑트 라이브러리를 로딩하면 이를 해석할 수 있다. 루트 컴포넌트 App을 돔에 마운트하기 위해서는 react-dom 라이브러리의 redner() 함수를 사용한다.  index.css 는 css-loader에 의해 처리되는데 이 모든 것이 create-react-app이 제공해 주는 환경이다. 👍
+코드 하단에 보면 JSX 문법을 사용하는데 리액트 라이브러리를 로딩하면 이를 해석할 수 있다. 루트 컴포넌트 App을 돔에 마운트하기 위해서는 react-dom 라이브러리의 redner() 함수를 사용한다.  index.css 는 css-loader에 의해 처리되는데 이 모든 것이 create-react-app이 제공해 주는 환경이다. 👍
 
 루트 컴포넌트로 넘어가 보자.
 
@@ -73,7 +73,7 @@ class App extends Component {
 export default App
 ```
 
-리엑트 라이브러리에서 Component 클래스를 가져와 상속하는 방식으로 App 컴포넌트를 만들수 있다. 화면을 그려주는 render() 메소드를 구현해 컴포넌트를 어떻게 보여줄지 JSX 로 기술했다. 
+리액트 라이브러리에서 Component 클래스를 가져와 상속하는 방식으로 App 컴포넌트를 만들수 있다. 화면을 그려주는 render() 메소드를 구현해 컴포넌트를 어떻게 보여줄지 JSX 로 기술했다. 
 
 이렇게 하면 브라우져는 App 컴포넌트를 아래처럼 그리게 되는 것이다.
 
@@ -202,7 +202,7 @@ const Topics = ({ match }) => (
 export default Topics
 ```
 
-리엑트 라우터에 의해 라우터 전달인자를 받은 Topics 컴포넌트는 match.url를 통해 자신이 렌더링 될때의 경로 값을 알 수 있다. 여기서는 "/topics" 문자열이 변수를 통해 전달될 것이다. 이 값을 가지고 한 번 더 라우팅을 선언할 수 있는데 코드 하단의 `Route` 컴포넌트를 사용한 부분이다.
+리액트 라우터에 의해 라우터 전달인자를 받은 Topics 컴포넌트는 match.url를 통해 자신이 렌더링 될때의 경로 값을 알 수 있다. 여기서는 "/topics" 문자열이 변수를 통해 전달될 것이다. 이 값을 가지고 한 번 더 라우팅을 선언할 수 있는데 코드 하단의 `Route` 컴포넌트를 사용한 부분이다.
 
 "/topics/:topicId" 경로를 설정하기 위해 Route 컴포넌트의 path 속성에 경로를, component 속성에는 Topic 컴포넌트를 전달했다. Topic 컴포는트는 topicId 라는 부분을 동적으로 받게될 것이다.
 
@@ -242,7 +242,7 @@ export default Topic
 Vue도 마찬가지지만 Flux 아키텍처를 따르는 React는 Redux라는 상태관리 솔류션을 사용한다. 
 
 리덕스는 단독으로 사용할수 있어서 굳이 리액트가 아니어도 동작한다. 
-이 프로젝트에서는 리덕스-리엑트의 간편한 연동을 위해 [react-redux](https://github.com/reduxjs/react-redux)를 함께 사용했다.
+이 프로젝트에서는 리덕스-리액트의 간편한 연동을 위해 [react-redux](https://github.com/reduxjs/react-redux)를 함께 사용했다.
 
 ```
 npm i redux react-redux 
@@ -250,7 +250,7 @@ npm i redux react-redux
 
 상태관리를 위한 전역 저장소를 **"스토어"**라고 하는데 redux의 createStore 함수로 만들 수 있다. 
 
-리엑트 어플리케이션이 스토어에 접근하기 위해서는 루트 컴포넌트에 이를 넣어주어야 하는데, react-redux의 Provider 컴포넌트가 그러한 역할을 하는 녀석이다.
+리액트 어플리케이션이 스토어에 접근하기 위해서는 루트 컴포넌트에 이를 넣어주어야 하는데, react-redux의 Provider 컴포넌트가 그러한 역할을 하는 녀석이다.
 
 ```js
 // src/index.js
@@ -270,7 +270,7 @@ ReactDom.render(
 )
 ```
 
-createStore함수에 전달한 dashbardApp 인자는 어떻게 구성된 객체일까? 먼저 스토어를 위한 폴더 구조를 만들자.
+createStore함수에 전달한 dashboardApp 인자는 어떻게 구성된 객체일까? 먼저 스토어를 위한 폴더 구조를 만들자.
 
 ```
 src
@@ -313,7 +313,7 @@ export default (state = initialSatate, action) => {
 }
 ```
 
-스토어에서 사용하는 유져 관련 "액션"과 "액션 생성자 함수" 그리고 "리듀서"를 정의했다.
+스토어에서 사용하는 유저 관련 "액션"과 "액션 생성자 함수" 그리고 "리듀서"를 정의했다.
 
 분류에 따라 user.js 뿐만아니라 다른 파일도 만들 수 있는데, 이를 하나의 스토어로 조합해 주는것이 리덕스의 combineReducers 함수의 역할이다. 
 
@@ -328,7 +328,7 @@ export default combineReducers({
 })
 ```
 
-리엑트에서 좀 특이한건 모든 컴포넌트가 스토어에 직접 접근하지는 않는 것이다. 그렇게 할 수도 있겠지만) 리덕스를 만든 Dan Abramov는 역할에 따라 컴포넌트를 분리하고 상태가 있는 컴포넌트(컨테이너)가 스토어와 커뮤니케이션 하도록하라고 가이드한다. (참고: [Presentational and Container Component](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0))
+리액트에서 좀 특이한건 모든 컴포넌트가 스토어에 직접 접근하지는 않는 것이다. 그렇게 할 수도 있겠지만) 리덕스를 만든 Dan Abramov는 역할에 따라 컴포넌트를 분리하고 상태가 있는 컴포넌트(컨테이너)가 스토어와 커뮤니케이션 하도록하라고 가이드한다. (참고: [Presentational and Container Component](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0))
 
 그래서 component 폴더와 별개로 container 폴더도 추가했다.
 
@@ -347,7 +347,7 @@ src
 
 유저 스토어를 이용해 유저 목록을 보여주는 컴포넌트를 어떻게 컨테이너와 함께 설계할 수 있는지 알아보자.
 
-먼저 보여주는 부분만 담당하는 UserList 컴포넌트를 만들건인데 이를 **"프리젠테이셔널 컴포넌트(Presentational Component)"**라고 한다.
+먼저 보여주는 부분만 담당하는 UserList 컴포넌트를 만들건데 이를 **"프리젠테이셔널 컴포넌트(Presentational Component)"**라고 한다.
 
 ```js
 // src/components/UserList.js
@@ -455,7 +455,7 @@ const store = createStore(
 )
 ```
 
-redux의 applyMiddleware 함수는 미들웨어를 만들어 주는 함수인데 그 실행 결과값을 createStore 함수의 인자겨 넘겨준다.
+redux의 applyMiddleware 함수는 미들웨어를 만들어 주는 함수인데 그 실행 결과값을 createStore 함수의 인자로 넘겨준다.
 
 미들웨어를 위한 middlewares 폴더를 만들어 스토어 로거(storeLogger) 미들웨어를 직접 구현해 보겠다.
 폴더 구조는 아래와 같다.
@@ -645,21 +645,21 @@ put은 리덕스 액션을 디스패치할 때 사용한다. 그래서 REQUEST_U
 
 <br />
 
-Vue.js 진영에서 사용하는 상태관리 솔류션인 Vuex에도 동기/비동기 로직을 처리하는 개념이 있다. 동기적으로 상태를 변경하는 것이 mutation이라는 개념이고 commit 함수로 제공한다. API 통신같은 비동기 로직은 action 이라는 개념이 담당하는데 dispatch 함수로 구현할 수 있다. 
+Vue.js 진영에서 사용하는 상태관리 솔루션인 Vuex에도 동기/비동기 로직을 처리하는 개념이 있다. 동기적으로 상태를 변경하는 것이 mutation이라는 개념이고 commit 함수로 제공한다. API 통신같은 비동기 로직은 action 이라는 개념이 담당하는데 dispatch 함수로 구현할 수 있다. 
 
-액션을 보내 동기적으로 상태를 변경하는 리엑트의 dispatch 가 Vuex의  mutation 같고, 비동기 로직을 처리하는 redux-saga가 Vuex의 action과 유사하다는 느낌을 받았다.
+액션을 보내 동기적으로 상태를 변경하는 리액트의 dispatch 가 Vuex의  mutation 같고, 비동기 로직을 처리하는 redux-saga가 Vuex의 action과 유사하다는 느낌을 받았다.
 
 
 
 
 ## 결론 
 
-리엑트 프로젝트를 빠르게 시작하려면 create-react-app이란 터미널도구를 사용할수 있다.
+리액트 프로젝트를 빠르게 시작하려면 create-react-app이란 터미널도구를 사용할수 있다.
 react-app-rewired로 시작한 프로젝트라면 깔끔한 개발환경 코드를 유지하면서 확장하는 것도 가능하다.
 
-단일페이지 어플리케이션 개발을 위해 react-router를 사용했고 특히 브라우져 상에서 구현현된 react-router-dom을 함께 사용해야 한다.
+단일페이지 어플리케이션 개발을 위해 react-router를 사용했고 특히 브라우져 상에서 구현된 react-router-dom을 함께 사용해야 한다.
 
-상태관리를 위해 redux 아키텍쳐를 채택했다. 리엑트와의 연동을 위해 react-redux 라이브러리도 같이 사용한다.
+상태관리를 위해 redux 아키텍쳐를 채택했다. 리액트와의 연동을 위해 react-redux 라이브러리도 같이 사용한다.
 
 리덕스는 미들웨어를 통해 스토어 기능을 확장할 수 있다. 기본적으로 동기 로직인 리덕스에 비동기 로직을 구현하려면 
 redux-thunk나 redux-saga 같은 미들웨어를 사용하는게 편하다.
