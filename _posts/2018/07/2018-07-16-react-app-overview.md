@@ -3,7 +3,7 @@ title: React로 만든 프로젝트 톺아보기
 layout: post
 tags: 
   react
-summary: aaa
+summary: create-react-app부터 react-saga까지 리엑트에서 사용하는 기술을 알아보니다 
 ---
 
 ![logo](/assets/imgs/2018/07/16/react-logo.png)
