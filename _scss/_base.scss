@@ -130,6 +130,21 @@ pre {
   }
 }
 
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+table, td, th {
+  border: 1px solid black;
+}
+th {
+  font-weight: bold;
+}
+td, th {
+  padding: 4px 6px;
+  text-align: center;
+}
+
 /**
  * Wrapper
  */
