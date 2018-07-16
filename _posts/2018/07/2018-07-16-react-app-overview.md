@@ -663,3 +663,5 @@ react-app-rewired로 시작한 프로젝트라면 깔끔한 개발환경 코드�
 
 리덕스는 미들웨어를 통해 스토어 기능을 확장할 수 있다. 기본적으로 동기 로직인 리덕스에 비동기 로직을 구현하려면 
 redux-thunk나 redux-saga 같은 미들웨어를 사용하는게 편하다.
+
+샘플 코드: [https://github.com/jeonghwan-kim/lecture-react-app-overview](https://github.com/jeonghwan-kim/lecture-react-app-overview)
