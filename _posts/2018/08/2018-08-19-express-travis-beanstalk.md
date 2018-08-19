@@ -12,7 +12,7 @@ summary: 리액트 어플리케이션을 노드 익스프레스로 통합하고 
 
 ## 익스프레스 서버 추가 
 
-클라이언트(client), 서버(server) 폴더로 프로젝트를 시작한다. create-react-app (혹은 react-app-ejected)로 만든 리액트 어플리케이션 코드를 client 폴더로 모두 이동한다. 
+클라이언트(client), 서버(server) 폴더로 프로젝트를 시작한다. create-react-app (혹은 react-app-rewired)로 만든 리액트 어플리케이션 코드를 client 폴더로 모두 이동한다. 
  
 그리고 나서 익스프레스(express.js) 서버를 server 폴더에 작성한다.
 
@@ -64,7 +64,7 @@ const opts = { stdio: 'inherit', cwd: 'client', shell: true }
 require('child_process').spawn('npm', args, opts)
 ```
 
-client 폴더에서 npm start를 실행하는 것은 crate-react-app 으로 만든 프로젝트에서 개발 서버를 띄우는 명령인 셈이다.
+client 폴더에서 npm start를 실행하는 것은 create-react-app 으로 만든 프로젝트에서 개발 서버를 띄우는 명령인 셈이다.
 
 단일 페이지 어플리케이션인 프론트엔드에서는 api 요청시 특정 도메인으로 요청했을 것이다. 이제는 이걸 동일한 도메인 요청으로 변경해야 한다. 예를 들면 `http://api.other-domain.com/users` 요청을 동일 도메인인 `/user` 로 바꾸는 것이다.
 
@@ -167,7 +167,7 @@ deploy:
 
 master 브랜치는 My_APP-production으로 배포된고, develop 브랜치는 MY_APP-development 환경으로 배포될 것이다.
 
-빈스톡은 배포할 때 S3로 배포 코드를 압축하여 저장한다. 트라비스에서는 `buckt_name` 키에 이 S3 버킷명을 설정할 수 있는데 이것도 브랜치 별로 세팅했다.
+빈스톡은 배포할 때 S3로 배포 코드를 압축하여 저장한다. 트라비스에서는 `bucket_name` 키에 이 S3 버킷명을 설정할 수 있는데 이것도 브랜치 별로 세팅했다.
 
 마지막으로 master와 develop브랜치만 트라비스 동작 세팅을 위해 `on` 키에 아래와 같이 세팅한다.
 
