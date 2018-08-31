@@ -28,19 +28,21 @@
     left: $sidebar-left-padding;
     z-index: 998;
   }
-  h1 {
+  .site-title {
     margin-bottom: 0;
-    .site-title {
-      font-size: 100%;
-      font-weight: 100;
-      line-height: $site-header-height;
-      letter-spacing: -2px;
+    font-weight: 100;
+    line-height: $site-header-height;
+    letter-spacing: -2px;
+    a {
       color: $site-header-color;
       &,
       &:visited {
         color: $site-header-color;
       }
     }
+  }
+  .site-title-sm {
+    font-size: 1em;
   }
   .site-description {
     margin-bottom: 0;
