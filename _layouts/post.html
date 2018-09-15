@@ -2,14 +2,10 @@
 layout: default
 ---
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-
   <header class="post-header">
     <div class="wrapper">
       <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-      <p class="post-meta">
-        {% include post-date.html %}
-        {% include post-tags.html %}
-      </p>
+      <div class="post-meta">{% include post-date.html %}</div>
     </div>
   </header>
 
@@ -17,6 +13,7 @@ layout: default
     <div class="post-content" itemprop="articleBody">
       {{ content }}
     </div>
+    <div class="post-meta">{% include post-tags.html %}</div>
     <div>{% include fb-like.html %}</div>
     <div>{% include comments.html %}</div>
   </div>
