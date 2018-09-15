@@ -5,7 +5,7 @@ layout: home
 
 <div class="wrapper">
   <!-- Paginated Posts -->
-  <ul class="post-list">
+  <ul id="post-list" class="post-list">
     {% for post in paginator.posts %}
       <li>{% include post-list.html %}</li>
     {% endfor %}
