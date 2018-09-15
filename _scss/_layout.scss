@@ -149,7 +149,6 @@
  * Posts
  */
 .post-header {
-  margin-bottom: $spacing-unit;
   background-color: $color-background;
   padding: 13px 0;
 }
@@ -173,16 +172,27 @@
   color: $grey-color;
   display: block;
   font-weight: normal;
-  a {
-    color: $grey-color;
-    &:hover,
-    &:focus {
-      border-bottom: solid 1px $grey-color;
-    }
-  }
-  .date,
-  .category {
+  margin-bottom: $spacing-unit;
+  .date {
     margin-right: 10px;
+  }
+}
+.post-list .post-meta .tag-link  {
+  color: $grey-color;
+  &:hover,
+  &:focus {
+    border-bottom: solid 1px $grey-color;
+  }
+}
+.post .post-meta .tag-link {
+  font-family: $mono-font-family;
+  background-color: $light-grey-color;
+  color: $color-text;
+  padding: 10px 12px;
+  border-radius: 4px;
+  &:hover,
+  &:focus {
+    background-color: darken($light-grey-color, 10%);
   }
 }
 .post-content {
