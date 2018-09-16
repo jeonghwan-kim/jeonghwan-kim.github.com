@@ -87,10 +87,14 @@ var onload = function onload() {
   if (post || postList) {
     var el = post || postList;
     el.addEventListener('click', function (evt) {
+      var tagName = evt.target.dataset.tagName;
+
+      if (!tagName) return;
+
       _googleAnalytics2.default.sendEvent({
         category: 'Tag',
         action: 'Click in ' + (post ? 'post' : 'post list'),
-        label: evt.target.dataset.tagName
+        label: tagName
       });
     });
   }
