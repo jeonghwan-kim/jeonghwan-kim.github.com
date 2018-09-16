@@ -12,10 +12,9 @@ const onload = () => {
     const el = post || postList
     el.addEventListener('click', evt => {
       googleAnalytics.sendEvent({
-        category: 'tag',
-        action: 'click',
-        label: post ? 'in post' : 'in post list',
-        value: evt.target.dataset.gaValue
+        category: 'Tag',
+        action: `Click in ${post ? 'post' : 'post list'}`,
+        label: evt.target.dataset.tagName
       })
     })
   }
