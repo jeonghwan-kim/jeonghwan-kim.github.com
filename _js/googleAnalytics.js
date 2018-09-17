@@ -16,12 +16,12 @@ const googleAnalytics = {
     ga('send', 'pageview');
   },
 
-  sendEvent({category, action, label, value}) {
+  sendEvent({category, action, label, value = 1}) {
     if (!category || !action) return
     if (typeof ga !== 'function') return
 
     ga('send', 'event', category, action, label, value)
-    console.log(tag, `ga('send', 'event', '${category}', '${action}', '${label}', '${value}')`)
+    console.log(tag, `ga('send', 'event', '${category}', '${action}', '${label}', ${value})`)
   }
 }
 
