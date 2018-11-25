@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=187
 permalink: /hapijs-joi/
-category: node
+category: series
 tags:
   - hapijs
   - joi
@@ -222,7 +222,4 @@ module.exports = function (server) {
 
 &nbsp;
 
-
-관련글:
-
-{% include lecture-hapi-startup-index.html %}
+🗂 [목차 바로가기](/series/2015/02/13/hapijs-index.html)

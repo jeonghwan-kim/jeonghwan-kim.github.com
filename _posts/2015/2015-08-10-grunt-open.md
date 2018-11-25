@@ -8,7 +8,7 @@ guid: http://whatilearn.com/?p=580
 permalink: /grunt-open/
 AGLBIsDisabled:
   - 0
-category: node
+category: dev
 tags:
   - grunt
   - grunt-open

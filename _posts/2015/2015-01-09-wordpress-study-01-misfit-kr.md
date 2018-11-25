@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://www.whatilearn.com/?p=85
 permalink: /wordpress-study-01-misfit-kr/
-category: php
+category: dev
 tags:
   - wordpress
 ---

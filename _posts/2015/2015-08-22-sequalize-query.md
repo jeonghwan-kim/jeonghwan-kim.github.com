@@ -8,7 +8,7 @@ guid: http://whatilearn.com/?p=562
 permalink: /sequalize-%ec%bf%bc%eb%a6%ac/
 AGLBIsDisabled:
   - 0
-category: node
+category: dev
 tags:
   - sequelize
 featured_image: /assets/imgs/2016/sequelize-icon.png

@@ -3,12 +3,10 @@ id: 216
 title: Hapi Api 서버 스캐폴드
 date: 2015-02-22T12:00:26+00:00
 author: Chris
-layout: post
+category: series
 guid: http://whatilearn.com/?p=216
 permalink: /hapi-api-server-scaffold/
-Layout:
-  - default
-category: node
+layout: post
 tags:
   - dao
   - hapijs
@@ -177,6 +175,4 @@ exports.remove = function (userId, callback) {
 
 전체코드: <a href="https://github.com/jeonghwan-kim/hapi_study/tree/10_add-dao">https://github.com/jeonghwan-kim/hapi_study/tree/10_add-dao</a>
 
-관련글:
-
-{% include lecture-hapi-startup-index.html %}
+🗂 [목차 바로가기](/series/2015/02/13/hapijs-index.html)

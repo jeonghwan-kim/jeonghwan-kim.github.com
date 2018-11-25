@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://54.64.213.117/?p=60
 permalink: /underscore-js/
-category: js
+category: dev
 tags:
   - javascript
   - underscore

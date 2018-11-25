@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=363
 permalink: /server-side-loggin-in-angular/
-category: angular
+category: dev
 tags:
   - angularjs
   - exception

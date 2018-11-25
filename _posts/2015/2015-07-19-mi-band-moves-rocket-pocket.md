@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=413
 permalink: /mi-band-moves-rocket-pocket/
-category: etc
+category: dev
 tags:
   - mi-band
 ---

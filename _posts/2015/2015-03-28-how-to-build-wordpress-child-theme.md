@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=312
 permalink: /how-to-build-wordpress-child-theme/
-category: php
+category: dev
 tags:
   - wordpress
 ---

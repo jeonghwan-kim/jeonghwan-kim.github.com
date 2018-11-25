@@ -8,7 +8,7 @@ guid: http://whatilearn.com/?p=594
 permalink: /resource%eb%a1%9c-rest-api-%ec%82%ac%ec%9a%a9%ed%95%98%ea%b8%b0/
 AGLBIsDisabled:
   - 0
-category: angular
+category: dev
 tags:
   - ngResource
   - angularjs

@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=938
 permalink: /mongodump-is-not-working-on-cronjob/
-category: linux
+category: dev
 tags:
   - cron
   - docker

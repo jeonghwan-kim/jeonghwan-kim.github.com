@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=205
 permalink: /wordpress-and-grunt/
-category: php
+category: dev
 tags:
   - grunt
   - wordpress

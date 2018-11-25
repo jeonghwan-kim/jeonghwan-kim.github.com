@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://www.whatilearn.com/?p=107
 permalink: /angularjs-passport%eb%a1%9c-%ec%9d%b8%ec%a6%9d%ea%b5%ac%ed%98%84/
-category: angular
+category: dev
 tags:
   - angular-fullstack
   - angularjs

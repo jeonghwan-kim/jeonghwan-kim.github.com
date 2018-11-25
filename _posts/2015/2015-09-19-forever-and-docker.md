@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=733
 permalink: /forever-and-docker/
-category: node
+category: dev
 tags:
   - docker
   - forever

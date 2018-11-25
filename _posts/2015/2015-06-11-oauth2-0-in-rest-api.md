@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=379
 permalink: /oauth2-0-in-rest-api/
-category: node
+category: dev
 tags:
   - express-jwt
   - jwt

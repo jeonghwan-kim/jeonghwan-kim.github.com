@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=143
 permalink: /start-with-hapi/
-category: node
+category: series
 tags:
   - hapijs
   - javascript
@@ -205,6 +205,4 @@ module.exports = function (server) {
 전체 코드: <a href="https://github.com/jeonghwan-kim/hapi_study/tree/05_routeHelper" target="_blank">https://github.com/jeonghwan-kim/hapi_study/tree/05_routeHelper</a>
 
 
-관련글:
-
-{% include lecture-hapi-startup-index.html %}
+🗂 [목차 바로가기](/series/2015/02/13/hapijs-index.html)
