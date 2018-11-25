@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://54.64.213.117/?p=4
 permalink: /elastic-beanstalk/
-category: aws
+category: dev
 tags:
   - elastic-beanstalk
   - nodejs
