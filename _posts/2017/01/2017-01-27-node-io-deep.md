@@ -1,14 +1,15 @@
 ---
 title: 노드 개발자가 IO 작업을 시작하면 무슨일이 일어날까?
 layout: post
-category: node
+category: dev
+permalink: node/2017/01/27/node-io-deep.html
 tags:
-summary: 노드에서 IO 작업이 일아나는 과정을 설명하는 번역글입니다 
+summary: 노드에서 IO 작업이 일아나는 과정을 설명하는 번역글입니다
 ---
 
 > 이 문서는 http://www.nearform.com/nodecrunch/developer-initiates-io-operation-wont-believe-happens-next/를 번역한 내용입니다.
 
-> 모든 링크를 열어보면서 읽어보기 바란다. 
+> 모든 링크를 열어보면서 읽어보기 바란다.
 
 _코어 팀의 [Saúl Ibarra Corretgé님](https://github.com/saghul), 이 포스트를 리뷰해 주셔서 고맙습니다._
 

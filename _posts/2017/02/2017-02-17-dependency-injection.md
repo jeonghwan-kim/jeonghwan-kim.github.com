@@ -1,10 +1,11 @@
 ---
 title: 의존성 주입
 layout: post
-category: js
+category: dev
+permalink: js/2017/02/17/dependency-injection.html
 tags:
   dependency-injection
-summary: 프론트엔드에서 의존성 주입에 대해 설명하는 글입니다 
+summary: 프론트엔드에서 의존성 주입에 대해 설명하는 글입니다
 ---
 
 ## 의존성 주입은 어떻게 사용하는가?
@@ -96,7 +97,7 @@ di.register('dep2', [], function() {
 di.register('main', ['dep1', 'dep2'], function(dep1, dep2) {
   return function() {
     /* main 함수 본문 */
-    return dep1() + dep2();  
+    return dep1() + dep2();
   }
 });
 ```

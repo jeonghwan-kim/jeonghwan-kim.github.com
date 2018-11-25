@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=350
 permalink: /how-to-run-nodejs-and-php-by-using-nginx/
-category: linux
+category: dev
 tags:
   - apache2
   - nginx

@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=252
 permalink: /plugins-in-wordpress/
-category: php
+category: dev
 tags:
   - wordpress
 ---

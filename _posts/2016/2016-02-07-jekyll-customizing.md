@@ -2,9 +2,8 @@
 title: 'Jekyll 커스터마이징 1 - 코멘트와 페이지네이션'
 author: Chris
 layout: post
-category: etc
+category: dev
 tags: jekyll
-summary: '지킬(Jekyll) 기본 템플릿에는 글목록과 글만 있다. 워드프레스로 작성한 블로그를 지킬로 가져오는데 이것만으로는 부족한 점이 많다. 각 글에는 댓글 시스템을 추가하고 글 목록은 페이지네이션으로 처리하자'
 featured_image: /assets/imgs/2016/jekyll_logo.png
 permalink: /2016/02/07/jekyll-customizing.html
 ---

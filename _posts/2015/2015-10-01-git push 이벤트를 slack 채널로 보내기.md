@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=774
 permalink: /git-push-%ec%9d%b4%eb%b2%a4%ed%8a%b8%eb%a5%bc-slack-%ec%b1%84%eb%84%90%eb%a1%9c-%eb%b3%b4%eb%82%b4%ea%b8%b0/
-category: etc
+category: dev
 tags:
   - git
   - slack

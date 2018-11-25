@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=958
 permalink: /ng-plualize-%eb%8b%a8%ec%88%98-%eb%b3%b5%ec%88%98%ed%98%95-%ec%b2%98%eb%a6%ac/
-category: angular
+category: dev
 tags:
   - angularjs
   - gist

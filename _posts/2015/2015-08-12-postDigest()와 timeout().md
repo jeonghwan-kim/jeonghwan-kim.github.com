@@ -8,7 +8,7 @@ guid: http://whatilearn.com/?p=618
 permalink: /postdigest%ec%99%80-timeout/
 AGLBIsDisabled:
   - 0
-category: angular
+category: dev
 tags:
   - angularjs
 ---

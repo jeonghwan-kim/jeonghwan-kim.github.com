@@ -1,6 +1,8 @@
 ---
 title: AWS를 슬랙으로 모니터링
 layout: post
+category: dev
+permalink: 2018/10/21/aws-sns-to-slack.html
 tags:
   aws slack
 summary: AWS 빈스톡 상태를 슬랙으로 모니터링 하는 방법을 정리합니다.

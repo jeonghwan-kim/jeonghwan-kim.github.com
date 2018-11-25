@@ -1,13 +1,12 @@
 ---
 id: 1041
 title: 워드프레스 파일 업로드 시 파일명 처리
-category: etc
+category: dev
 date: 2016-01-11T21:15:30+00:00
 author: Chris
 layout: post
 guid: http://whatilearn.com/?p=1041
 permalink: /naming-uploaded-file-on-wordpress/
-category: php
 tags:
   - wordpress
 summary: 워드프렝스에서 이미지 업로드할때 파일명이 깨지는 경우가 있다. 인코딩 관련 문제인데...

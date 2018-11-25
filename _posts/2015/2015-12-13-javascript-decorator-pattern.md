@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=892
 permalink: /javascript-decorator-pattern/
-category: js
+category: dev
 tags:
   - coffeescript
   - decorator-pattern

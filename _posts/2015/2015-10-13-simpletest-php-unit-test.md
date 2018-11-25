@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=786
 permalink: /simpletest-php-unit-test/
-category: php
+category: dev
 tags:
   - simpleTest
   - unit-test

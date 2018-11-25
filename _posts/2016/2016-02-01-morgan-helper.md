@@ -2,12 +2,11 @@
 id: 970
 title: morgan-helper
 date: 2016-02-01T08:29:51+00:00
-category: node
+category: dev
 author: Chris
 layout: post
 guid: http://whatilearn.com/?p=970
 permalink: /morgan-helper/
-category: node
 tags:
   - expressjs
   - logging

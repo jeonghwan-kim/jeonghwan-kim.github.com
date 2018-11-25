@@ -1,8 +1,9 @@
 ---
 title: 토이프로젝트_페이스북 분석기
 layout: post
-category: toy_project
-tags:
+category: dev
+permalink: toy_project/2017/01/16/facebook-analysis.html
+tags: toy-project
 ---
 
 4년전 페이스북 초창기에 몇가지 아이디어가 타임라인에 올라왔다.

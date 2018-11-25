@@ -1,17 +1,18 @@
 ---
 title: Node.js Stream 당신이 알아야할 모든 것 3편
 layout: post
-category: node
+category: dev
+permalink: node/2017/08/12/node-stream-you-need-to-know-3.html
 tags:
   stream
-summary: 노드 스트림을 직접 구현해 봅니다  
+summary: 노드 스트림을 직접 구현해 봅니다
 ---
 
 > 원본: [https://medium.freecodecamp.com/node-js-streams-everything-you-need-to-know-c9141306be93](https://medium.freecodecamp.com/node-js-streams-everything-you-need-to-know-c9141306be93)
 
 이전글: [(번역)Node.js Stream 당신이 알아야할 모든 것 2편](/node/2017/08/07/node-stream-you-need-to-know-2.html)
 
-## 스트림 구현하기 
+## 스트림 구현하기
 
 노드js의 스트림을 말할때 두 가지 다른 태스트가 있습니다
 
@@ -20,9 +21,9 @@ summary: 노드 스트림을 직접 구현해 봅니다
 
 지금까지는 스트림을 사용하는 것에 대해 말했으니까 이젠 직접 구현해 볼까요?
 
-스트림 구현체들은 대게 `stream` 모듈을 `require` 합니다 
+스트림 구현체들은 대게 `stream` 모듈을 `require` 합니다
 
-### 쓰기 스트림 만들기 
+### 쓰기 스트림 만들기
 
 쓰기 가능한 스트림을 구현하려면 스트림 모듈의 `Writable` 생성자를 사용해야 합니다
 
@@ -70,7 +71,7 @@ process.stdin.pipe(outStream);
 process.stdin.pipe(process.stdout);
 ```
 
-### 읽기 스트림 만들기 
+### 읽기 스트림 만들기
 
 읽기 가능한 스트림을 만들기 위해서는 `Readable` 인터페이스가 필요하고 이것으로 객체를 만들어야 합니다.
 
@@ -90,12 +91,12 @@ const inStream = new Readable();
 inStream.push('ABCDEFGHIJKLM');
 inStream.push('NOPQRSTUVWXYZ');
 
-inStream.push(null); // 더 이상 데이터 없음 
+inStream.push(null); // 더 이상 데이터 없음
 
 inStream.pipe(process.stdout);
 ```
 
-`null` 객체를 `push` 하는 것은 더 이상 데이터가 없다는 신호입니다. 
+`null` 객체를 `push` 하는 것은 더 이상 데이터가 없다는 신호입니다.
 
 이 스트림을 소비하려면 쓰기 가능한 스트림은 `process.stdout`으로 연결만 하면 됩니다.
 
@@ -106,7 +107,7 @@ inStream.pipe(process.stdout);
 ```js
 const inStrem = new Readable({
   read(size) {
-    // 데이터 요구가 있고... 누군가 이것을 읽고자 함 
+    // 데이터 요구가 있고... 누군가 이것을 읽고자 함
   }
 });
 ```
@@ -132,7 +133,7 @@ inStream.pipe(process.stdout);
 
 이 코드는 먼저 만든 코드와 동일하지만의 소비자가 요청할 때만 데이터를 푸시할 수 있게 되었습니다. 항상 이렇게 구현해야 합니다.
 
-### Duplex/Transform 스트림 만들기 
+### Duplex/Transform 스트림 만들기
 
 듀플렉스 스트림을 이용하면 한 객체로 읽기/쓰기 가능한 스트림을 만들 수 있습니다. 두 인터페이스로부터 상속한 것 처럼 말이죠.
 
@@ -141,18 +142,18 @@ inStream.pipe(process.stdout);
 ```js
 const { Duplex } = require('stream');
 
-const inoutStream = new Duplex({  
-  write(chunk, encoding, callback) {    
-    console.log(chunk.toString());    
-    callback();  
+const inoutStream = new Duplex({
+  write(chunk, encoding, callback) {
+    console.log(chunk.toString());
+    callback();
   },
 
-  read(size) {    
-    this.push(String.fromCharCode(this.currentCharCode++));    
-    
-    if (this.currentCharCode > 90) {      
-      this.push(null);    
-    }  
+  read(size) {
+    this.push(String.fromCharCode(this.currentCharCode++));
+
+    if (this.currentCharCode > 90) {
+      this.push(null);
+    }
   }
 });
 
@@ -167,17 +168,17 @@ process.stdin.pipe(inoutStream).pipe(process.stdout);
 
 트랜스폼 스트림은 듀플렉스 스트림보다 더 재밌는데 입력으로부터 출력이 계산되기 때문입니다.
 
-트랜스폼 스트림을 만들 때는 `read`나 `write` 메소드를 구현할 필요가 없습니다. 이 둘을 결합한 `transform` 메소드만 구현하면 됩니다. `write` 메소드의 시그니처를 가지고 있고 데이터를 `push` 할 수 있습니다. 
+트랜스폼 스트림을 만들 때는 `read`나 `write` 메소드를 구현할 필요가 없습니다. 이 둘을 결합한 `transform` 메소드만 구현하면 됩니다. `write` 메소드의 시그니처를 가지고 있고 데이터를 `push` 할 수 있습니다.
 
 아래는 입력한 데이터를 대문자로 변경한 뒤 에코하는 간단한 트랜스폼 스트림입니다.
 
 ```js
 const { Transform } = require('stream');
 
-const upperCaseTr = new Transform({  
-  transform(chunk, encoding, callback) {    
-    this.push(chunk.toString().toUpperCase());    
-    callback();  
+const upperCaseTr = new Transform({
+  transform(chunk, encoding, callback) {
+    this.push(chunk.toString().toUpperCase());
+    callback();
   }
 });
 
@@ -195,52 +196,52 @@ process.stdin.pipe(upperCaseTr).pipe(process.stdout);
 ```js
 const { Transform } = require('stream');
 
-const commaSplitter = new Transform({  
-  readableObjectMode: true,  
-  
-  transform(chunk, encoding, callback) {    
-    this.push(chunk.toString().trim().split(','));    
-    callback();  
+const commaSplitter = new Transform({
+  readableObjectMode: true,
+
+  transform(chunk, encoding, callback) {
+    this.push(chunk.toString().trim().split(','));
+    callback();
   }
 });
 
-const arrayToObject = new Transform({  
-  readableObjectMode: true,  
-  writableObjectMode: true,  
-  
-  transform(chunk, encoding, callback) {    
-    const obj = {};    
-    for (let i=0; i < chunk.length; i+=2) {      
-      obj[chunk[i]] = chunk[i+1];    
-    }    
-    this.push(obj);    
-    callback();  
+const arrayToObject = new Transform({
+  readableObjectMode: true,
+  writableObjectMode: true,
+
+  transform(chunk, encoding, callback) {
+    const obj = {};
+    for (let i=0; i < chunk.length; i+=2) {
+      obj[chunk[i]] = chunk[i+1];
+    }
+    this.push(obj);
+    callback();
   }
 });
 
-const objectToString = new Transform({  
-  writableObjectMode: true,  
-  
-  transform(chunk, encoding, callback) {    
-    this.push(JSON.stringify(chunk) + '\n');    
-    callback();  
+const objectToString = new Transform({
+  writableObjectMode: true,
+
+  transform(chunk, encoding, callback) {
+    this.push(JSON.stringify(chunk) + '\n');
+    callback();
   }
 });
 
-process.stdin  
-  .pipe(commaSplitter)  
-  .pipe(arrayToObject)  
-  .pipe(objectToString)  
+process.stdin
+  .pipe(commaSplitter)
+  .pipe(arrayToObject)
+  .pipe(objectToString)
   .pipe(process.stdout)
 ```
 
-`"a,b,c,d"` 같은 입력 문자열을 `commaSplitter`로 보냅니다. 이것은 읽기 가능한 데이터로 `["a", "b", "c", "d"]` 배열을 푸시 합니다. 우리는 문자열이 아닌 객체를 푸시 할거니깐 `readableObjectMode` 플래그를 추가해야 합니다. 
+`"a,b,c,d"` 같은 입력 문자열을 `commaSplitter`로 보냅니다. 이것은 읽기 가능한 데이터로 `["a", "b", "c", "d"]` 배열을 푸시 합니다. 우리는 문자열이 아닌 객체를 푸시 할거니깐 `readableObjectMode` 플래그를 추가해야 합니다.
 
-그리고나서 배열을 얻고 `arrayToObject` 스트림으로 연결합니다. 객체를 받기 위해서 `writableObjectMode` 플래그가 필요하죠. 이건 다시 객체(배열 객체로 매핑한)를 푸시할 것이고 `readableObjectMode` 플래그가 필요한 이유입니다. 마지막 `objectToString` 스트림은 객체를 받지만 문자열을 푸시합니다. 때문에 `writableObjectMode` 플래그만 필요합니다. 읽기 가능한 부분은 일반 문자열(문자열화된 객체)입니다. 
+그리고나서 배열을 얻고 `arrayToObject` 스트림으로 연결합니다. 객체를 받기 위해서 `writableObjectMode` 플래그가 필요하죠. 이건 다시 객체(배열 객체로 매핑한)를 푸시할 것이고 `readableObjectMode` 플래그가 필요한 이유입니다. 마지막 `objectToString` 스트림은 객체를 받지만 문자열을 푸시합니다. 때문에 `writableObjectMode` 플래그만 필요합니다. 읽기 가능한 부분은 일반 문자열(문자열화된 객체)입니다.
 
 ![Usage of the example avobe](https://cdn-images-1.medium.com/max/1600/1*u2kQzUD0ruPpt-xx0UOHoA.png)
 
-### 빌트인 트랜스폼 스트림 
+### 빌트인 트랜스폼 스트림
 
 노드는 매우 쓸만한 빌트인 트랜스폼 스트림을 가지고 있습니다. 이름하야 zip과 crypto 스트림이죠.
 
@@ -272,7 +273,7 @@ fs.createReadStream(file)
   .on('finish', () => console.log('Done'));
 ```
 
-`pipe` 메소드와 함께 스트림을 쉽게 소비할 수 있지만, 여전히 필요에 따라 이벤트를 이용해 스트림과의 상호작용을 더 커스터마이징 하고 싶습니다. 
+`pipe` 메소드와 함께 스트림을 쉽게 소비할 수 있지만, 여전히 필요에 따라 이벤트를 이용해 스트림과의 상호작용을 더 커스터마이징 하고 싶습니다.
 
 `pipe` 메소드의 위대한 점은 프로그램을 조각 조각 *구성(compose)*해서 읽기 쉽게 만들수 있다는 점입니다. 예를들어 위처럼 `data` 이벤트를 리스닝하는 대신, 진행 상태를 리포팅하기 위해 간단한 트랜스폼 스트림을 만들수 있습니다. 그리고 `.on()` 호출 대신에 또 다른 `.pipe()`를 호출합니다.
 
@@ -283,17 +284,17 @@ const file = process.argv[2];
 
 const { Transform } = require('stream');
 
-const reportProgress = new Transform({  
-  transform(chunk, encoding, callback) {    
-    process.stdout.write('.');    
-    callback(null, chunk);  
+const reportProgress = new Transform({
+  transform(chunk, encoding, callback) {
+    process.stdout.write('.');
+    callback(null, chunk);
   }
 });
 
-fs.createReadStream(file)  
-  .pipe(zlib.createGzip())  
-  .pipe(reportProgress)  
-  .pipe(fs.createWriteStream(file + '.zz'))  
+fs.createReadStream(file)
+  .pipe(zlib.createGzip())
+  .pipe(reportProgress)
+  .pipe(fs.createWriteStream(file + '.zz'))
   .on('finish', () => console.log('Done'));
 ```
 
@@ -305,24 +306,24 @@ fs.createReadStream(file)
 const crypto = require('crypto');
 // ...
 
-fs.createReadStream(file)  
-  .pipe(zlib.createGzip())  
-  .pipe(crypto.createCipher('aes192', 'a_secret')) 
-  .pipe(reportProgress)  
-  .pipe(fs.createWriteStream(file + '.zz'))  
+fs.createReadStream(file)
+  .pipe(zlib.createGzip())
+  .pipe(crypto.createCipher('aes192', 'a_secret'))
+  .pipe(reportProgress)
+  .pipe(fs.createWriteStream(file + '.zz'))
   .on('finish', () => console.log('Done'));
 ```
 
-이 스크립트는 압축 후 전달된 파일을 암호화하고 시크릿이 있는 사용자만 생성된 파일을 사용할 수 있습니다. 암호화 되었기 때문에 보통의 unzip 유틸리티로는 압축을 풀 수 없습니다. 
+이 스크립트는 압축 후 전달된 파일을 암호화하고 시크릿이 있는 사용자만 생성된 파일을 사용할 수 있습니다. 암호화 되었기 때문에 보통의 unzip 유틸리티로는 압축을 풀 수 없습니다.
 
 실제로 위 스크립트로 압축된 파일을 풀기 위해서는 crypto와 zlib의 역순 스트림이 필요합니다. 간단해요.
 
 ```js
-fs.createReadStream(file)  
-  .pipe(crypto.createDecipher('aes192', 'a_secret')) 
-  .pipe(zlib.createGunzip())  
-  .pipe(reportProgress)  
-  .pipe(fs.createWriteStream(file.slice(0, -3))  
+fs.createReadStream(file)
+  .pipe(crypto.createDecipher('aes192', 'a_secret'))
+  .pipe(zlib.createGunzip())
+  .pipe(reportProgress)
+  .pipe(fs.createWriteStream(file.slice(0, -3))
   .on('finish', () => console.log('Done'));
 ```
 

@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=879
 permalink: /atom-%ed%94%8c%eb%9f%ac%ea%b7%b8%ec%9d%b8-atom-sync/
-category: tool
+category: dev
 tags:
   - atom
 ---

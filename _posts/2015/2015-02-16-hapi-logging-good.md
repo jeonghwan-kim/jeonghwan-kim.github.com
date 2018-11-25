@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=192
 permalink: /hapi-logging-good/
-category: node
+category: series
 tags:
   - good
   - hapijs
@@ -106,6 +106,4 @@ console.log()로 출력하면 로그 메세지가 제대로 출력되지 않는�
 
 전체 코드: <a href="https://github.com/jeonghwan-kim/hapi_study/tree/07_good">https://github.com/jeonghwan-kim/hapi_study/tree/07_good</a>
 
-관련글:
-
-{% include lecture-hapi-startup-index.html %}
+🗂 [목차 바로가기](/series/2015/02/13/hapijs-index.html)

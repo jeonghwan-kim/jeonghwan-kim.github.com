@@ -6,7 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=246
 permalink: /wordpress-and-jquery/
-category: php
+category: dev
 tags:
   - jquery
   - wordpress

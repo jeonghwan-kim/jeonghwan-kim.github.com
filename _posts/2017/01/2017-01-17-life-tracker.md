@@ -1,8 +1,9 @@
 ---
 title: 토이프로젝트_라이프트래커
 layout: post
-category: toy_project
-tags:
+category: dev
+permalink: toy_project/2017/01/17/life-tracker.html
+tags: toy-project
 ---
 
 4년 전만 해도 기록하고 분석하는 것에 상당한 관심을 가지고 있었다. [독후감]() 말고도 일기와 가계부를 꾸준히 기록하고 있었다. 온/오프라인 할 것없이 여기저기 닥치는 대로 기록해 오다가, 졸업한 뒤로는 모든 것을 컴퓨터에 저장해왔다.

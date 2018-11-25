@@ -1,29 +1,31 @@
 ---
 title: jQuery 보다 먼저 알았으면 좋았을 것들
 layout: post
-tags: javascript
-summary: 바닐라JS와 제이쿼리 
+category: dev
+permalink: 2018/01/25/before-jquery.html
+tags: javascript jquery
+summary: 바닐라JS와 제이쿼리
 ---
 
-웹개발할 때 난 jquery 부터 사용하기 시작한것 같다. 라이브러리가 주는 편리함 넘어 어떻게 DOM API를 사용하는지는 몰랐다. 앵귤러, 리엑트 같은 프레임웍을 사용할 때도 마찬가지다. 기능을 구현하는데 별다는 어려움은 없었다. 
+웹개발할 때 난 jquery 부터 사용하기 시작한것 같다. 라이브러리가 주는 편리함 넘어 어떻게 DOM API를 사용하는지는 몰랐다. 앵귤러, 리엑트 같은 프레임웍을 사용할 때도 마찬가지다. 기능을 구현하는데 별다는 어려움은 없었다.
 
-그러다 보니 다양한 개발 환경에 민첩하게 움직이기 쉽지 않다. 운영중인 서비스에 쉽게 UI 프레임웍을 도입할수 없는 경우. 여러 버전의 제이쿼리를 혼용해서 사용하는 경우. 
+그러다 보니 다양한 개발 환경에 민첩하게 움직이기 쉽지 않다. 운영중인 서비스에 쉽게 UI 프레임웍을 도입할수 없는 경우. 여러 버전의 제이쿼리를 혼용해서 사용하는 경우.
 
 라이브러리야 어찌되었듯 DOM API만은 브라우저에서 지원하기 때문에 처한 상황에 관계없이 안심하고 사용할 수 있다. 이럴 때 순수 자바스크립트 개발 역량은 무엇보다 중요하다고 생각한다.
 
 ## 다시 기본으로...
 
-우리가 자바 웹 개발을 공부한다고 가정해 보자. 아마 이 순서로 공부거다. 
+우리가 자바 웹 개발을 공부한다고 가정해 보자. 아마 이 순서로 공부거다.
 
-> 1. 자바문법 공부 -> 2. JSP 서블릿 공부 -> 3. Spring 공부 
+> 1. 자바문법 공부 -> 2. JSP 서블릿 공부 -> 3. Spring 공부
 
 같은 방법으로 프론트엔드 개발을 공부한다고 하면 이렇게 되겠지.
 
-> 1. 자바스크립트 문법 공부 -> 2. 브라우져 API 공부 (DOM API) -> 3. 제이쿼리 등의 라이브러리/프레임워크 공부 
+> 1. 자바스크립트 문법 공부 -> 2. 브라우져 API 공부 (DOM API) -> 3. 제이쿼리 등의 라이브러리/프레임워크 공부
 
-3번을 먼저 공부해왔던 나는 라이브러리의 고도로 추상화된 API만 사용하다보니 1, 2는 몰라도 결과물을 만들어 낼수 있었다. 하지만 어느 정도 시간이 지나 한계를 깨닫고 DOM 스크립트에 관심을 갖게 되었다. 
+3번을 먼저 공부해왔던 나는 라이브러리의 고도로 추상화된 API만 사용하다보니 1, 2는 몰라도 결과물을 만들어 낼수 있었다. 하지만 어느 정도 시간이 지나 한계를 깨닫고 DOM 스크립트에 관심을 갖게 되었다.
 
-이번 글은 **순수 자바스크립트를 사용했던 경험**을 정리한 내용이다. 
+이번 글은 **순수 자바스크립트를 사용했던 경험**을 정리한 내용이다.
 
 ![기초로 돌아가는 사진](/assets/imgs/2018/01/25/this-way.jpg)
 
@@ -48,7 +50,7 @@ document.getElementById('app')
 document.querySelector('#app')
 ```
 
-`getelementById()` 함수는 아이디로 돔을 찾는 DOM API다. 가장 많이 쓰이고 많이 알고 있는 듯. 
+`getelementById()` 함수는 아이디로 돔을 찾는 DOM API다. 가장 많이 쓰이고 많이 알고 있는 듯.
 두번째 `querySelector()`는 제이쿼리와 비슷하게 CSS 스타일의 선택자로 돔을 선택할 수 있다.
 
 돔은 선택에는 아이디 뿐만 아니라 클래스명도 사용될 수 있다.
@@ -88,15 +90,15 @@ document.querySelectorAll('div')
 
 뭔가 패턴이 보이는가? 난 `querySelector()`와 `querySelectorAll()` 만 사용해도 충분하다고 본다. CSS 스타일의 선택자를 사용할수 있다는 점은 매우 편리하고 (제이쿼리가 그렇게 사용하니깐) 무엇보다 **"일관성"**이 있기 때문이다. [IE8부터 지원](https://developer.mozilla.org/ko/docs/Web/API/Document/querySelector)하고 있으니 안심하고 사용해도 된다.
 
-## 돔에서 데이터 얻기 
+## 돔에서 데이터 얻기
 
-돔을 찾는 방법을 알았으니 이것으로 뭔가 해볼수 있을 것 같다. 먼저는 data 속성 (`data-*`) 값을 읽고 써보자. 
+돔을 찾는 방법을 알았으니 이것으로 뭔가 해볼수 있을 것 같다. 먼저는 data 속성 (`data-*`) 값을 읽고 써보자.
 
-그전에 data 속성값을 왜 쓰는지 부터 짚고 넘어가야겠다. 
+그전에 data 속성값을 왜 쓰는지 부터 짚고 넘어가야겠다.
 
 PHP나 Node.js의 서버는 데이터를 이용해서 HTML을 만든다. 예를 들어 상품명("Guitar") 같은 경우는 텍스트로 만들어 HTML 코드를 만든다. 이것 화면에 출력하기 위한 용도다.
 
-한편 화면에 보이지는 않지만 프론트엔드 자바스크립트 로직에 사용할 데이터가 있다. (예를들어 "G123") 이 경우 data 속성 값을 사용할 수 있다. 
+한편 화면에 보이지는 않지만 프론트엔드 자바스크립트 로직에 사용할 데이터가 있다. (예를들어 "G123") 이 경우 data 속성 값을 사용할 수 있다.
 
 아래 코드를 보면 이해하는데 수월할 것이다.
 
@@ -158,7 +160,7 @@ $('a').on('click', evt => {
 })
 ```
 
-그럼 자바스크립트는? 
+그럼 자바스크립트는?
 
 ```js
 document.querySelector('a').addEventListener('click', evt => {
@@ -166,7 +168,7 @@ document.querySelector('a').addEventListener('click', evt => {
 })
 ```
 
-뭐, 간단하다. 
+뭐, 간단하다.
 
 한편 이벤트를 방출(emit)하는 것은 어떨까? 제이쿼리부터...
 
@@ -220,7 +222,7 @@ evt.initCustomeEvent('@click', true, false, 'some data')
 document.dispatchEvent(evt)
 ```
 
-`document.createEvent()` 함수로 생성한 이벤트 객체의 `initCustomeEvent()` 함수로 이벤트 명과 전달할 데이터를 설정한다. 매개변수는 순서대로 이벤트명, 버블(bubble)?, 취송가능여부(cancelable)?, 전달할 데이터(detail)를 의미한다. 
+`document.createEvent()` 함수로 생성한 이벤트 객체의 `initCustomeEvent()` 함수로 이벤트 명과 전달할 데이터를 설정한다. 매개변수는 순서대로 이벤트명, 버블(bubble)?, 취송가능여부(cancelable)?, 전달할 데이터(detail)를 의미한다.
 
 ## 스타일
 
@@ -230,7 +232,7 @@ document.dispatchEvent(evt)
 $('#foo').addClass('active')
 ```
 
-`addClass()` 로 'active' 클래스를 추가했다. 
+`addClass()` 로 'active' 클래스를 추가했다.
 
 그럼 자바스크립트는?
 
@@ -258,9 +260,9 @@ $('#foo').text('Hello Chris')
 document.querySelector('#foo').innerHTML = 'Hello Chris'
 ```
 
-## 비동기 요청 
+## 비동기 요청
 
-제이쿼리의 `ajax()` 함수를 이용하면 서버 측에 비동기 요청을 보낼수 있다. 
+제이쿼리의 `ajax()` 함수를 이용하면 서버 측에 비동기 요청을 보낼수 있다.
 
 ```js
 $.ajax('/resource').then(success, fail)
@@ -280,7 +282,7 @@ req.onreadystatechange = () => {
 req.send(null)
 ```
 
-`XMLHttpRequest` 객체를 직접 사용하면 가능하다. GET, POST 뿐만 아니라 파일 업로드까지! 
+`XMLHttpRequest` 객체를 직접 사용하면 가능하다. GET, POST 뿐만 아니라 파일 업로드까지!
 
 최근에 나온 [fetch api](https://developer.mozilla.org/ko/docs/Web/API/Fetch_API)를 사용해도 되지만 IE 브라우져 호완성이 필요하다면 라이브러리를 사용해야 한다. 제이쿼리의 [ajax()](http://api.jquery.com/jquery.ajax/) 함수나 노드 진영에서 많이 사용하는 [request](https://github.com/request/request) 그리고 Vue.JS에서 추천하는 [axios](https://github.com/axios/axios) 등이 대표적이다.
 
@@ -300,7 +302,7 @@ $('li').each(() => {
 
 ```js
 Array.from(document.querySelectorAll('li')).forEach(li => {
-  
+
 })
 ```
 
@@ -308,7 +310,7 @@ Array.from(document.querySelectorAll('li')).forEach(li => {
 
 `Array.prototype`에는 `map()`, `reduce()`, `every()`, `some()` 등 [lodash](https://lodash.com/docs/4.17.4)같은 유틸리티 라이브러리에서 지원하는 컬렉션 함수가 있다.
 
-객체 메소드도 살펴보자. 두 객체를 합칠때(merge) 제이쿼리는 `extend()` 함수를 사용한다. 
+객체 메소드도 살펴보자. 두 객체를 합칠때(merge) 제이쿼리는 `extend()` 함수를 사용한다.
 
 ```js
 const obj3 = $.extend(obj1, obj2)
@@ -320,20 +322,20 @@ const obj3 = $.extend(obj1, obj2)
 const obj3 = Object.assign({}, obj1, obj2)
 ```
 
-`Object.assign()` 함수를 이용해서 합친 새로운 객체를 만들어 낼수 있다. 
+`Object.assign()` 함수를 이용해서 합친 새로운 객체를 만들어 낼수 있다.
 
 ## 결론
 
-지금까지 프론트엔드 개발에 제이쿼리는 필수였다. 크로스브라우져 이슈, 특히나 버전별 IE를 지원하는 것은 개발자에게 너무도 편리한 기능이다. 
+지금까지 프론트엔드 개발에 제이쿼리는 필수였다. 크로스브라우져 이슈, 특히나 버전별 IE를 지원하는 것은 개발자에게 너무도 편리한 기능이다.
 
-하지만 기술은 계속 변한다. 앵귤러, 리엑트등 최신 UI 프레임웍을 사용할 때는 제이쿼리와는 다른 방법으로 접근한다. ES5, ES6에서 제공하는 자바스크립트 문법으로 대체해서 사용하고, 까다로운 UI 작업일 경우는 상대적으로 무거운 제이쿼리보다는 직접 DOM 스크립트를 이용하면 가볍게 구현할 수 있다. 
+하지만 기술은 계속 변한다. 앵귤러, 리엑트등 최신 UI 프레임웍을 사용할 때는 제이쿼리와는 다른 방법으로 접근한다. ES5, ES6에서 제공하는 자바스크립트 문법으로 대체해서 사용하고, 까다로운 UI 작업일 경우는 상대적으로 무거운 제이쿼리보다는 직접 DOM 스크립트를 이용하면 가볍게 구현할 수 있다.
 
-[2018 프론트엔드 로드맵](https://github.com/kamranahmedse/developer-roadmap)에 jQuery가 제외된걸 보면 기술은 변하고 있다는 말을 실감할 수 있을 것이다. 
+[2018 프론트엔드 로드맵](https://github.com/kamranahmedse/developer-roadmap)에 jQuery가 제외된걸 보면 기술은 변하고 있다는 말을 실감할 수 있을 것이다.
 
 ![2018 프론트엔드 로드맵](/assets/imgs/2018/01/25/2018-frontend-roadmap.png)
 
 참고
-* [You Don't Need jQuery!](https://blog.garstasio.com/you-dont-need-jquery/) 
+* [You Don't Need jQuery!](https://blog.garstasio.com/you-dont-need-jquery/)
 * [DOM을 깨우치다](http://www.yes24.com/24/Goods/11371306?Acode=101)
 * [Can I Use](https://caniuse.com)
 
