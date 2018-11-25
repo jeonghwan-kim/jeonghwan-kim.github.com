@@ -1,7 +1,7 @@
 ---
 title: 'Promise.reject()에 에러 객체를 넘겨줘야하는 이유'
 layout: post
-category: js
+category: dev
 tags: [promise, error, javascript]
 summary: '노드에서는 비동기 코드를 작성할 때가 많다. 그래서 콜백헬, 프라미스 키워드가 자주 등장한다. 콜백헬의 대안으로 프라미스를 사용한다는 글도 있지만 꼭 그런것도 아니다. 콜백헬과 프라미스는 그냥 별도의 개념들이다'
 permalink: /2016/03/21/must-use-error-in-reject.html

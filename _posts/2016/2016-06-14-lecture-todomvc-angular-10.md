@@ -1,7 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 10 - Express.js로 웹서버 만들기'
 layout: post
-category: angular
+category: series
 tags:
   angularjs
   lecture
@@ -90,6 +90,4 @@ package.json에 npm 명령어를 설정할 수 있다.
 앞으로는 npm start으로 서버를 구동시키자.
 
 
-관련글:
-
-{% include lecture-todomvc-angular-1-index.html %}
+[📖 목차 바로가기](/series/2016/06/11/lecture-todomvc-angular-index.html)

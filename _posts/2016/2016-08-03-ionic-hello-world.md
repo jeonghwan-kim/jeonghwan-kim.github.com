@@ -1,7 +1,7 @@
 ---
 title: 'Ionic으로 Hello world 시작하기'
 layout: post
-category: js
+category: dev
 tags:
   ionic
 featured_image: /assets/imgs/2016/ionic.png

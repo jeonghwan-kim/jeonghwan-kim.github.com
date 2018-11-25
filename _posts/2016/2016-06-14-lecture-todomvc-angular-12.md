@@ -1,7 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 12 - APIs'
 layout: post
-category: angular
+category: series
 tags:
   expressjs
   lecture
@@ -188,7 +188,4 @@ Delete와 PUT은 직접 작성해보자!
 1. Static File
 1. APIs
 
-
-관련글:
-
-{% include lecture-todomvc-angular-1-index.html %}
+[📖 목차 바로가기](/series/2016/06/11/lecture-todomvc-angular-index.html)

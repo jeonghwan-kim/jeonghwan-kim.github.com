@@ -1,7 +1,7 @@
 ---
 title: 'Nock, Mocha로 HTTP 테스트하기'
 layout: post
-category: node
+category: dev
 tags:
   - nock
   - mocha

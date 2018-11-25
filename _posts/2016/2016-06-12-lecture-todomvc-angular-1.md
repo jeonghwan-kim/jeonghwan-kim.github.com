@@ -1,7 +1,7 @@
 ---
 title: '앵귤러로 Todo앱 만들기 1 - 노드설치'
 layout: post
-category: angular
+category: series
 tags:
   angularjs
   nodejs
@@ -128,7 +128,4 @@ npm은 Node Package Manager 인데... [npmjs.com](https://www.npmjs.com)에서 �
 
 우리 프로젝트에서는 1) 패키지를 추가하고 2) 노드 서버를 구동하는 툴로 사용할 것이다.
 
-
-관련글:
-
-{% include lecture-todomvc-angular-1-index.html %}
+[📖 목차 바로가기](/series/2016/06/11/lecture-todomvc-angular-index.html)
