@@ -1,5 +1,5 @@
 ---
-title: '🗂 Hapi.js로 API 서버 시작하기 - 목차'
+title: '🛵 Hapi.js로 API 서버 시작하기(목차)'
 date: 2015-02-13
 layout: post
 category: series

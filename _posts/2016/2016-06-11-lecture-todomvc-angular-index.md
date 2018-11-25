@@ -1,5 +1,5 @@
 ---
-title: '[목차] 앵귤러로 Todo앱 만들기'
+title: '🛡앵귤러로 Todo앱 만들기(목차)'
 layout: post
 category: series
 date: 2016-06-11
