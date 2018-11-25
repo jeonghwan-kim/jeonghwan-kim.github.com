@@ -1,19 +1,21 @@
 ---
-title: 리액트, 노드 백엔드 통합 후 CI 연동하기 
+title: 리액트, 노드 백엔드 통합 후 CI 연동하기
 layout: post
-tags: 
+category: dev
+tags:
   react travis express elastic-beanstalk
-summary: 리액트 어플리케이션을 노드 익스프레스로 통합하고 트라비스로 AWS 빈스톡에 배포하는 방법을 설명합니다 
+permalink: 2018/08/19/express-travis-beanstalk.html
+summary: 리액트 어플리케이션을 노드 익스프레스로 통합하고 트라비스로 AWS 빈스톡에 배포하는 방법을 설명합니다
 ---
 
 [지난 블로그](/2018/07/16/react-app-overview.html)에서 설명한 리액트 기반의 프로젝트를 노드 서버로 통합하는 작업을 진행했다. 물리적으로 분리된 프론트앤드와 백엔드를 하나의 서버로 합치는 일이다. 각자를 분리하면서 얻는 이점도 있겠지만, 제한된 인력 리소스로는 이를 통합하는 것이 생산성 측면에서 더 좋다고 판단했기 때문이다.
 
 효율적인 업무를 위해서는 서버의 통합 뿐만 아니라 코드 저장소, 개발 환경, 배포 프로세스까지 하나로 관리하는 방법이 필요하다. 이번 글은 리액트로 만든 싱글페이지 어플리케이션과 노드 웹서버를 통합하여 운영하는 방법을 정리한 내용이다.
 
-## 익스프레스 서버 추가 
+## 익스프레스 서버 추가
 
-클라이언트(client), 서버(server) 폴더로 프로젝트를 시작한다. create-react-app (혹은 react-app-rewired)로 만든 리액트 어플리케이션 코드를 client 폴더로 모두 이동한다. 
- 
+클라이언트(client), 서버(server) 폴더로 프로젝트를 시작한다. create-react-app (혹은 react-app-rewired)로 만든 리액트 어플리케이션 코드를 client 폴더로 모두 이동한다.
+
 그리고 나서 익스프레스(express.js) 서버를 server 폴더에 작성한다.
 
 기존 싱글페이지어플리케이션은 리액트가 라우팅을 담당했지만, 이제는 익스프레스와 함께 라우팅을 수행해야 한다.
@@ -23,14 +25,14 @@ const express = require('express')
 const app = express()
 const clientApp = path.join(__dirname, '../client/build')
 
-api.use('/api/*', apiRouters()) // api 라우팅처리 후 
+api.use('/api/*', apiRouters()) // api 라우팅처리 후
 app.use('*', express.static(clientApp)) // 모든 요청을 프론트엔드 정적 파일이 처리
 ```
 
 /api 경로로 시작되는 백엔드 api 요청은 익스프레스 로직이 처리한다. (apiRouters())
 이 후 모든 요청은 리엑트에서 처리하는 순서다. (clientApp)
 
-## 개발 환경 구성 
+## 개발 환경 구성
 
 리액트 어플리케이션은 웹팩 노드 서버를 띄워 개발환경을 제공해 주었다. 하지만 지금은 백엔드를 담당하는 익스프레스 개발 서버(여기서는 nodemon을 사용한다)도 띄워야하는 상황이다.
 
@@ -39,7 +41,7 @@ app.use('*', express.static(clientApp)) // 모든 요청을 프론트엔드 정�
 ```json
 {
   "scripts": {
-    "start": "node ./bin/www", 
+    "start": "node ./bin/www",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
     "dev:server": "nodemon ./bin/www",
     "dev:client": "node ./bin/start-client.js",
@@ -78,14 +80,14 @@ client 폴더에서 npm start를 실행하는 것은 create-react-app 으로 만
 }
 ```
 
-이제 개발환경에서 클라이언트가 요청한 모든 api 요청은 자신의 3000번 포트가 아니라, 프록시로 설정한 4000 포트로 전달된다. 따라서 `GET /users` 를 클라이언트에서 요청하더라도 개발환경에서는 `GET http://localhost:3000/users`로 요청해 주는 것이다. 
+이제 개발환경에서 클라이언트가 요청한 모든 api 요청은 자신의 3000번 포트가 아니라, 프록시로 설정한 4000 포트로 전달된다. 따라서 `GET /users` 를 클라이언트에서 요청하더라도 개발환경에서는 `GET http://localhost:3000/users`로 요청해 주는 것이다.
 
-이렇게 한뒤 npm run dev를 실행하면 
+이렇게 한뒤 npm run dev를 실행하면
 * 노드 서버와 리액트 개발 서버가 동시에 구동된다.
 * 클라이언트 폴더의 코드가 변경되면 웹팩이 동작하고,
 * 서버 폴더의 코드가 변경되면 노드몬에 의해 노드 서버가 재시작되는 환경이다.
 
-## 트라비스 
+## 트라비스
 
 개발 환경은 이 정도로 꾸몄고 이젠 배포할 차례다. CI 서비스는 트라비스를 사용했다. 트라비스 세팅을 노드로 해두면 npm에 test 명령어가 기본적으로 실행된다.
 
@@ -129,17 +131,17 @@ install:
 
 참고로 이 커밋은 트라비스 환경에서만 기록되고 프로젝트 환경의 깃(예를 들어 깃헙)에는 아무 영향을 주지 않는다.
 
-### 트라비스에서 빈스톡 설정 
+### 트라비스에서 빈스톡 설정
 
-빌드 후에 이 코드를 aws 빈스톡으로 내보내야 하는데, [트라비스가 제공하는 배포 프로바이더](https://docs.travis-ci.com/user/deployment/#supported-providers) 중에 빈스톡으로 설정해 주면된다. 
+빌드 후에 이 코드를 aws 빈스톡으로 내보내야 하는데, [트라비스가 제공하는 배포 프로바이더](https://docs.travis-ci.com/user/deployment/#supported-providers) 중에 빈스톡으로 설정해 주면된다.
 
 ```yaml
 deploy:
   provider: elasticbeanstalk
-  region: "ap-northeast-2"  
+  region: "ap-northeast-2"
 ```
 
-aws credentials 정보는 트라비스 환경 변수로 등록해서 사용하는 것이 좋다. 
+aws credentials 정보는 트라비스 환경 변수로 등록해서 사용하는 것이 좋다.
 
 ```yaml
 deploy:
@@ -163,7 +165,7 @@ deploy:
 
 `env`키 에 배포할 대상 환경을 설정하는데 브랜치 설정했다.
 * master 브랜치: MY_APP-production
-* develop 브랜치: MY_APP-development 
+* develop 브랜치: MY_APP-development
 
 master 브랜치는 My_APP-production으로 배포된고, develop 브랜치는 MY_APP-development 환경으로 배포될 것이다.
 
@@ -178,8 +180,8 @@ deploy:
     condition: $TRAVIS_BRANCH =~ ^master|develop$
 ```
 
-결과적으로 이 세팅은 
-* 노드 테스트 환경을 준비하고 테스트를 먼저 실행한다. 
+결과적으로 이 세팅은
+* 노드 테스트 환경을 준비하고 테스트를 먼저 실행한다.
 * 테스트에 통과하면 웹팩 빌드와 배포 커밋을 만든다.
 * 마지막으로 브랜치에 따라 해당하는 빈스톡 환경으로 코드를 배포한다.
 
@@ -203,7 +205,7 @@ option_settings:
     /static: /client/build/static
 ```
 
-## 결론 
+## 결론
 
 리액트 어플리케이션을 노드 서버에 통합하기 위해 익스프레스 정적파일로 라우팅 처리했다. 웹팩 기반의 리액트 개발 환경을 그대로 가져가면서 노드 개발환경과 통합하는 방법도 함께 설명했다.
 
