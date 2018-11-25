@@ -1,16 +1,17 @@
 ---
-title: Vue 글로벌 컴포넌트 테스트 
+title: Vue 글로벌 컴포넌트 테스트
 layout: post
-category: vue
+category: dev
+permalink: vue/2017/04/19/vue-component-test.html
 tags:
   vue
   unit-test
 ---
 
 
-뷰js의 장점 중 하나는 기존의 프로젝트에 점진적으로 적용할 수 있다는 점이다. 이것은 앵귤러나 리액트를 사용해 본 사람이라면 쉽게 납득할 수 있을 것이다. 
+뷰js의 장점 중 하나는 기존의 프로젝트에 점진적으로 적용할 수 있다는 점이다. 이것은 앵귤러나 리액트를 사용해 본 사람이라면 쉽게 납득할 수 있을 것이다.
 
-앵귤러 2를 사용하려면 타입스크립트를 알아야 한다. 프레임웍이기 때문에 프로젝트 전체 설계를 앵귤러 식으로 변경해야하는 큰 작업이다. 리액트는 ES6, JSX, 웹팩, 바벨 등 새롭게 공부해야할 기술이 한 두 가지가 아니다. 
+앵귤러 2를 사용하려면 타입스크립트를 알아야 한다. 프레임웍이기 때문에 프로젝트 전체 설계를 앵귤러 식으로 변경해야하는 큰 작업이다. 리액트는 ES6, JSX, 웹팩, 바벨 등 새롭게 공부해야할 기술이 한 두 가지가 아니다.
 
 반면 뷰js는 어떤가? 물론 뷰js도 온갖 신기술을 활용한 웹 어플리케이션을 만들어 낼 수 있다. 반드시 그렇게 시작해야 하는게 아니다. 가이드 문서의 헬로월드 코드가 잘 보여주고 있다. 당장 사용하려면 빌드 툴, 새로운 언어 같은 기술이 필요없다. 그동안 사용해 왔던 웹 기술위에서 조용히 동작하는 녀석이 뷰js다.
 
@@ -18,11 +19,11 @@ tags:
 
 
 ## 왜 글로벌 컴포넌트를 테스트 하는가?
-유닛 테스트 관점에서 바라보자. 테스트에 대한 가이드 문서는 좀 부족하다( [단위 테스팅 — Vue.js](https://kr.vuejs.org/v2/guide/unit-testing.html) ). 단일파일 컴포넌트 테스트 방법 설명하고 있다. 운영중인 프로젝트에 뷰js를 도입할라치면 이런 기술을 녹여내기가  마당찮다. 
+유닛 테스트 관점에서 바라보자. 테스트에 대한 가이드 문서는 좀 부족하다( [단위 테스팅 — Vue.js](https://kr.vuejs.org/v2/guide/unit-testing.html) ). 단일파일 컴포넌트 테스트 방법 설명하고 있다. 운영중인 프로젝트에 뷰js를 도입할라치면 이런 기술을 녹여내기가  마당찮다.
 
 때문에 템플릿과 뷰 컴포넌트가 분리된 형태로 사용해야 하고 글로벌 컴포넌트로 등록하여 사용하게 되었다. 이런 구조 상에서 테스트 하는 방법이 필요했다. 문서에는 잘 나와 있지 않은 글로벌 컴포넌트 테스트 방법에 대해 정리한 글이다.
 
-## 테스트 환경 구성 
+## 테스트 환경 구성
 테스트 방법을 이해하기 위해 개발 환경을 좀더 설명하자면,
 
 * 기존에 운영중인 프로젝트는 php 기반이다
@@ -46,7 +47,7 @@ Vue.component('section-title', {
 index.html:
 ```js
 <div id="app">
-  <section-title title="제목1"></section-title>  
+  <section-title title="제목1"></section-title>
 </div>
 
 <script id="section-title" type="text/x-template">
@@ -72,7 +73,7 @@ describe('<section-title>', ()=> {
 });
 ```
 
-컴포넌트 등록시 사용한 `Vue.component()` 함수는 파라매터 1개만 전달하면, 등록한 컴포넌트 이름을 문자열로 넘겨주면, 등록한 컴포넌트 생성자 함수를 불러온다( [Vue Component](https://kr.vuejs.org/v2/api/#Vue-component) ).  new 키워드로 인스턴스를 만들고 $mount() 함수로 템플릿에 마운트시켜 뷰모델을 만들어 낼수 있다. 마지막 라인은  뷰모델이 유효한지 검증하는 코드다. 
+컴포넌트 등록시 사용한 `Vue.component()` 함수는 파라매터 1개만 전달하면, 등록한 컴포넌트 이름을 문자열로 넘겨주면, 등록한 컴포넌트 생성자 함수를 불러온다( [Vue Component](https://kr.vuejs.org/v2/api/#Vue-component) ).  new 키워드로 인스턴스를 만들고 $mount() 함수로 템플릿에 마운트시켜 뷰모델을 만들어 낼수 있다. 마지막 라인은  뷰모델이 유효한지 검증하는 코드다.
 
 하지만 카르마로 실행하면 아래와 같은 에러 메세지가 뜬다.
 
@@ -84,11 +85,11 @@ ERROR: '[Vue warn]: Failed to mount component: template or render function not d
 (found in <Root>)'
 ```
 
-section-title 컴포넌트가 마운팅할 대상 즉  `#section-title` 셀렉터로 템플릿을 찾을 수 없다는 의미다.  이것은 단일 컴포넌트가 아니라 템플릿과 뷰 컴포넌트가 분리된 파일에 있다. 템플릿 역할을 하는 html 파일도 테스트 환경에 로딩하는 과정이 필요하다. 테스트의 픽스쳐(fixture)를 이용해 템플릿 파일을 로딩할 수 있다. 
+section-title 컴포넌트가 마운팅할 대상 즉  `#section-title` 셀렉터로 템플릿을 찾을 수 없다는 의미다.  이것은 단일 컴포넌트가 아니라 템플릿과 뷰 컴포넌트가 분리된 파일에 있다. 템플릿 역할을 하는 html 파일도 테스트 환경에 로딩하는 과정이 필요하다. 테스트의 픽스쳐(fixture)를 이용해 템플릿 파일을 로딩할 수 있다.
 
-### 템플릿 픽스쳐 로딩 
+### 템플릿 픽스쳐 로딩
 
-> 픽스쳐란 테스트를 위해 필요한 모든 자원을 뜻한다. 
+> 픽스쳐란 테스트를 위해 필요한 모든 자원을 뜻한다.
 
 카르마에서는 html, json 파일같은 픽스쳐를 테스트 환경에 로드해 주는 플러그인이 있다.  karma-fixture라는 플러그인을 사용하겠다( [GitHub - billtrik/karma-fixture: A plugin for the Karma test runner that loads .html and .json fixtures](https://github.com/billtrik/karma-fixture) ) .
 
@@ -96,7 +97,7 @@ section-title 컴포넌트가 마운팅할 대상 즉  `#section-title` 셀렉�
 
 karma.config.js:
 ```js
-frameworks: ['jasmine', 'fixture'], // fixture 추가 
+frameworks: ['jasmine', 'fixture'], // fixture 추가
 files: [
   // 픽스처 로딩
   'src/index.html',
@@ -107,21 +108,21 @@ preprocessors: {
 },
 ```
 
-프레임워크에 fixture를 추가한다. 테스트에 필요한 파일을 로딩하는데 픽스쳐 파일 경로도 추가한다.  마지막으로 전처리를 해야하는데 html 코드를 자바스크립트로 변경해야 한다. 전처리 후에는 window 객체를 통해 텍스처 엘레맨트에 접근할 수 있는데 자바스크립트로 작성하는 테스트 코드에서 window 객체를 통해 픽쳐스에 접근할 수 있다 . html2js는 html 코드를 window.__html__ 에 html 엘레먼트 형식으로 변환하여 추가한다.  `npm i karma-html2js-preprocessor --save-dev` 명령어로 html2js를 다운로드 한다. 
+프레임워크에 fixture를 추가한다. 테스트에 필요한 파일을 로딩하는데 픽스쳐 파일 경로도 추가한다.  마지막으로 전처리를 해야하는데 html 코드를 자바스크립트로 변경해야 한다. 전처리 후에는 window 객체를 통해 텍스처 엘레맨트에 접근할 수 있는데 자바스크립트로 작성하는 테스트 코드에서 window 객체를 통해 픽쳐스에 접근할 수 있다 . html2js는 html 코드를 window.__html__ 에 html 엘레먼트 형식으로 변환하여 추가한다.  `npm i karma-html2js-preprocessor --save-dev` 명령어로 html2js를 다운로드 한다.
 
 여기까지가 픽스처 사용을 위한 카르마 설정이다. 다음은 window.__html__에 로딩한 텍스처 객체를 테스트 케이스에 로딩하는 단계다. 아래 추가한 테스트 코드를 보자.
 
 ```js
 describe('<section-title>', ()=> {
   const SectionTitle = Vue.component('section-title');
-  
+
   beforeEach(()=> {
     // 텍스쳐 로딩
     fixture.setBase('src');
     fixture.load('index.html');
   });
 
-  // 로딩한 텍스쳐 제거 
+  // 로딩한 텍스쳐 제거
   afterEach(()=> fixture.cleanup());
 
   it('뷰 모델을 생성한다',()=>{
@@ -131,7 +132,7 @@ describe('<section-title>', ()=> {
 });
 ```
 
-beforeEach 훅에서 픽스처를 로딩한다. setBase() 함수로 텍스쳐 루트 경로를 설정하고 곧 이어 load() 함수로 테스트에 필요한 텍스처 파일을 로딩한다. load() 함수는 window.__html__에 설정한 텍스처 객체를 로딩할 것이다. 
+beforeEach 훅에서 픽스처를 로딩한다. setBase() 함수로 텍스쳐 루트 경로를 설정하고 곧 이어 load() 함수로 테스트에 필요한 텍스처 파일을 로딩한다. load() 함수는 window.__html__에 설정한 텍스처 객체를 로딩할 것이다.
 
 돌아다니는 샘플 코드를 보면 대부분 픽스쳐를 위한 경로를 따로 가져간다. 아마도 테스트 전용 html을 별도로 관리하는 것 같다. 이 부분은 제대로 픽스쳐의 용도를 이해한 것인지 의문이 남는다.
 
@@ -199,7 +200,7 @@ Vue.component('search-form', {
 });
 ```
 
-입력한 문자열을 저장하는 용도로 query 데이터를 설정했다. 검색어 유무에 반응하는 버튼을 만들기 위해 isEmptyQuery라는 계산된 속성을 추가했는데 템플릿 코드에서 버튼의  disabled 속성과 바딩할 것이다. 메소드는 두 가지다. 검색 버튼의 클릭 이벤트 핸들러인 onSearch는 부모 컴포넌트로 'search' 이벤트를 발생시키고 입력한 검색어를 담은 객체를 넘겨준다. 초기화 버튼의 클릭 이벤트 핸들러인 onReset은 query 문자열을 초기화한다. 
+입력한 문자열을 저장하는 용도로 query 데이터를 설정했다. 검색어 유무에 반응하는 버튼을 만들기 위해 isEmptyQuery라는 계산된 속성을 추가했는데 템플릿 코드에서 버튼의  disabled 속성과 바딩할 것이다. 메소드는 두 가지다. 검색 버튼의 클릭 이벤트 핸들러인 onSearch는 부모 컴포넌트로 'search' 이벤트를 발생시키고 입력한 검색어를 담은 객체를 넘겨준다. 초기화 버튼의 클릭 이벤트 핸들러인 onReset은 query 문자열을 초기화한다.
 
 컴포넌트와 연결된 템플릿 코드는 아래와 같다.
 
@@ -213,7 +214,7 @@ Vue.component('search-form', {
 </script>
 ```
 
-이것을 사용하는 것은 간단하다. 
+이것을 사용하는 것은 간단하다.
 ```html
 <search-form @search="onSearch"></search-form>
 ```
@@ -232,17 +233,17 @@ Vue.component('search-form', {
 
 ```js
 describe('<search-form>', ()=> {
-  // 픽스처 로딩 
+  // 픽스처 로딩
 
   describe('검색 문자열을 입력', ()=> {
     let insertedText;
 
     beforeEach(done => {
       insertedText = 'abc';
-      vm.query = insertedText; // 입력 문자 설정 
+      vm.query = insertedText; // 입력 문자 설정
 
       // 뷰 라이프사이클에 의해 다음 코드 실행 시점에 데이터가 반영된다.
-      vm.$nextTick(()=> { 
+      vm.$nextTick(()=> {
         expect(vm.query).toBe(insertedText);
         done();
       });
@@ -257,7 +258,7 @@ describe('<search-form>', ()=> {
 
 ```js
 it('검색 버튼의 disabled 속성이 제거된다', () => {
-  const searchBtn = vm.$el.querySelectorAll('button')[0];     
+  const searchBtn = vm.$el.querySelectorAll('button')[0];
   expect(searchBtn.getAttribute('disabled')).toBe(null);
 });
 ```
@@ -271,7 +272,7 @@ it('검색 버튼의 disabled 속성이 제거된다', () => {
 ```js
 it('초기화 버튼 클릭시 인풋 필드 값을 빈 문자열로 초기화한다', done => {
   const resetBtn = vm.$el.querySelectorAll('button')[1];
-  resetBtn.click(); // 클릭 이벤트 발생 
+  resetBtn.click(); // 클릭 이벤트 발생
 
   // 뷰 라이프사이클에 의해 다음 코드 실행 시점에 클릭한 결과가 반영된다.
   vm.$nextTick(() => {
@@ -298,10 +299,10 @@ onSearch: function () {
 ```js
 it('검색 버튼 클릭시 search 이벤트를 발생하고 검색 데이터를 전달한다', done => {
   const searchBtn = vm.$el.querySelectorAll('button')[0];
-  const spy = jasmine.createSpy('onSearch'); // 스파이 함수 생성 
+  const spy = jasmine.createSpy('onSearch'); // 스파이 함수 생성
   vm.$on('search', spy); // 뷰모델의 search 이벤트와 spy 함수 바인딩
 
-  searchBtn.click(); // 버튼 클릭 
+  searchBtn.click(); // 버튼 클릭
 
   // 뷰 라이프사이클에 의해 다음 코드 실행 시점에 클릭한 결과가 반영된다.
   vm.$nextTick(() => {
@@ -316,17 +317,17 @@ it('검색 버튼 클릭시 search 이벤트를 발생하고 검색 데이터를
 
 자스민의 createSpy() 함수로 스파이 함수를 만들어 뷰모델의 search 이벤트와 연결했다. 그리고 버튼 객체의 click() 함수로 이벤트를 발생시킨다. 실제 이벤트는 $nextTikc()에 전달한 콜백함수 실행시에 발생한다. search 이벤트와 바인딩된 스파이 함수가 호출된것을 자스민의 toHaveBeenCalledWith() 로 체크하고 데이터가 전달되었는지도 확인할 수 있다.
 
-## 결론 
+## 결론
 HTML이나 PHP로 작성한 템플릿 파일과 컴포넌트 파일이 나눠진 컴포넌트를 테스트해 봤다. 자바스크립트가 아닌 템플릿을 테스트 환경에 로딩해 주어야 하는데 카르마 픽스처 플러그인으로 해결했다.
 
 테스트를 위해 사용한 뷰js의 API는 다음과 같다.
 
 * Vue.component(): 등록한 글로벌 컴포넌트의 생성자 함수를 가져온다
 * vm.$mount(): 컴포넌트에 템플릿을 마운트한다.
-* vm.$el: 마운팅된 컴포넌트의 돔 엘레멘트다 
-* vm.$nextTick(): 컴포넌트 라이프 사이클에 맞춰 비동기 작업에 쓰인다 
+* vm.$el: 마운팅된 컴포넌트의 돔 엘레멘트다
+* vm.$nextTick(): 컴포넌트 라이프 사이클에 맞춰 비동기 작업에 쓰인다
 * vm.$on(): 컴포넌트에 이벤트와 핸들러 함수를 바인딩 한다.
 
 사용한 전체 코드는 다음 깃 저장소에서 확인할 수 있다.
 
-* [GitHub - jeonghwan-kim/vue-unit-test](https://github.com/jeonghwan-kim/vue-unit-test) 
+* [GitHub - jeonghwan-kim/vue-unit-test](https://github.com/jeonghwan-kim/vue-unit-test)

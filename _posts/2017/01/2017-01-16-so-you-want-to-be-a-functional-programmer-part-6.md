@@ -1,8 +1,9 @@
 ---
 title: 함수형 프로그래머가 되고 싶다고? 파트6
 layout: post
-category: etc
-tags: functional-programming
+category: dev
+permalink: etc/2017/01/16/so-you-want-to-be-a-functional-programmer-part-6.html
+tags: functional-programming 번역
 summary: FEDevelopers에서 번역에 참여한 글입니다.
 ---
 

@@ -1,7 +1,8 @@
 ---
 title: 순수성, 불변성, 변경정책
 layout: post
-category: js
+category: series
+permalink: js/2017/04/23/Purity-Immutability-and-Policies-for-Change.html
 tags:
   javascript
   functional-programming

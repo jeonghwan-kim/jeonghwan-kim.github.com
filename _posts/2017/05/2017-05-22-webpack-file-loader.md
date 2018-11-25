@@ -1,7 +1,8 @@
 ---
 title: 웹팩의 file-loader와 url-loader
 layout: post
-category: js
+category: dev
+permalink: js/2017/05/22/webpack-file-loader.html
 tags:
   file-loader
   url-loader
