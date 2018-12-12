@@ -22,3 +22,19 @@ category: series
 
 1. [오리엔테이션](/series/2018/12/01/node-web-1_orientation.html)
 1. [기본모듈 http](/series/2018/12/02/node-web-2_http.html)
+1. [리팩토링](/series/2018/12/03/node-web-3_refactoring.html)
+1. 어플리케이션
+1. 커스텀 모듈 1 - debug
+1. 정적 파일
+1. 커스텀 모듈 2 - serve-static
+1. 미들웨어 
+1. 미들웨어 활용
+1. 커스텀 모듈 3 - logger
+1. 라우터 1 - use()
+1. API 1 - 포스트 조회 
+1. 응답 객체 
+1. 요청 객체 
+1. 라우터 2 - get(), post()
+1. 커스텀 모듈 4 - body-parser
+1. 익스프레스JS
+1. 정리
