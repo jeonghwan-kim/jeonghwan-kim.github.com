@@ -24,7 +24,7 @@ category: series
 1. [기본모듈 http](/series/2018/12/02/node-web-2_http.html)
 1. [리팩토링](/series/2018/12/03/node-web-3_refactoring.html)
 1. [어플리케이션](/series/2018/12/04/node-web-4_application.html)
-1. 커스텀 모듈 1 - debug
+1. [커스텀 모듈 1 - debug](/series/2018/12/05/node-web-5_debug.html)
 1. 정적 파일
 1. 커스텀 모듈 2 - serve-static
 1. 미들웨어 
