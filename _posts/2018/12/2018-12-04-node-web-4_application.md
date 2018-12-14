@@ -8,7 +8,7 @@ category: series
 ## 🌳목표 
 
 우리가 만들었던 server.js는 http 모듈을 직접 가져다 사용한 것입니다. 
-모듈의 createServer() 함수를 바로 사용하고 listen() 함수를 직접 사용했죠. 
+모듈의 createServer() 함수와 listen() 함수를 직접 사용했죠. 
 
 외부 모듈 혹은 라이브러리 따위를 사용할 때는 한 번 래핑해서 사용하는 것이 좋습니다.
 우리 코드가 라이브러리와 강하게 커플링 되지 않도록 하는것이죠. 
@@ -25,7 +25,7 @@ category: series
 $ git checkout -f application/listen-spec
 ```
 
-추가 모듈이 있기 때문에 (sinon) package.json에 기록한 모듈을 설치합니다.
+추가 모듈(sinon)이 있기 때문에 package.json에 기록한 모듈을 설치합니다.
 
 ```
 $ npm install
@@ -81,12 +81,12 @@ listen 메소드가 실행되었는지 스파이를 통해 검사하는 코드�
 테스트를 돌려 볼까요? 
 
 ```
-npm t
+$ npm t
 
 Error: Cannot find module './Application'
 ```
 
-이것보다 많은 메세지가 나오지만 위에 Application 모듈을 찾지 못하는게 핵심입니다.
+이것보다 많은 메세지가 나오지만 Application 모듈을 찾지 못하는게 핵심입니다.
 왜냐면 우리는 테스트 코드만 만들었지 대상이 되는 Application.js 는 만들지 않았기 때문이죠.
 
 ## 🐤실습 - Application 모듈과 listen 메소드 구현 
@@ -118,7 +118,7 @@ module.exports = Application
 그리고 자바스크립트의 모듈 패턴으로 Application을 구현했습니다. 
 모듈 패턴은 자바스크립트 객체를 반환하는데요, 
 테스트 코드에 있는 listen 함수를 넣어서 반환했습니다. 아직 이건 빈 함수이고요.
-마자막 줄에 Application을 모듈로 만들어서 외부에서 사용하도록 했습니다.
+마지막 줄에 Application을 모듈로 만들어서 외부에서 사용하도록 했습니다.
 
 ```js
  const _server = http.createServer((req, res) => {
@@ -162,7 +162,7 @@ $ npm test
   1 passing (8ms)
 ```
 
-성공적으로 테스트에 통과했네요.
+성공적으로 통과했네요.
 
 server.js를 app.js로 이름을 바꾸겠습니다. 
 이제는 서버라기보다는 어플리케이션 모듈을 이용한 어플리케이션 객체라는 의미죠. 
@@ -206,7 +206,7 @@ Application 모듈은 아래 초록색 부분입니다.
 
 ## 정리 
 
-* http를 직접사용하지 않고 Application 객체로 추상화 하였습니다.
+* http를 직접 사용하지 않고 Application 객체로 추상화 하였습니다.
 
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)
