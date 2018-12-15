@@ -1,5 +1,5 @@
 ---
-title: Node.js코드랩 - 4. 어플리케이션
+title: '[Node.js코드랩] 4.어플리케이션'
 layout: post
 summary: 어플리케이션 모듈을 만듭니다.
 category: series

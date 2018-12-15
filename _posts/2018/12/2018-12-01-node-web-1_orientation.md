@@ -1,5 +1,5 @@
 ---
-title: Node.js 코드랩 - 1. 오리엔테이션
+title: '[Node.js 코드랩] 1.오리엔테이션'
 layout: post
 summary: 실습 환경을 구성합니다.
 category: series
