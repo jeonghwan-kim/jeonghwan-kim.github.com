@@ -29,7 +29,7 @@ category: series
 1. [커스텀 모듈 serve-static](/series/2018/12/07/node-web-7_serve-static.html)
 1. [미들웨어](/series/2018/12/08/node-web-8_middleware.html) 
 1. [미들웨어 활용](/series/2018/12/09/node-web-9_middleware2.html)
-1. 커스텀 모듈 3 - logger
+1. [커스텀 모듈 logger](/series/2018/12/10/node-web-10_logger.html)
 1. 라우터 1 - use()
 1. API 1 - 포스트 조회 
 1. 응답 객체 
