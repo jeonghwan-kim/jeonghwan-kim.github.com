@@ -25,7 +25,7 @@ category: series
 1. [리팩토링](/series/2018/12/03/node-web-3_refactoring.html)
 1. [어플리케이션](/series/2018/12/04/node-web-4_application.html)
 1. [커스텀 모듈 1 - debug](/series/2018/12/05/node-web-5_debug.html)
-1. 정적 파일
+1. [정적 파일](/series/2018/12/06/node-web-6_static-files.html)
 1. 커스텀 모듈 2 - serve-static
 1. 미들웨어 
 1. 미들웨어 활용
