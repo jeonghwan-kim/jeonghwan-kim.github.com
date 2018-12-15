@@ -1,5 +1,5 @@
 ---
-title: 🌳Node.js 코드랩 - 소개 및 목차
+title: '🌳[Node.js 코드랩] 소개 및 목차'
 layout: post
 summary: 코드랩 소개와 목차 입니다
 category: series
@@ -24,9 +24,9 @@ category: series
 1. [기본모듈 http](/series/2018/12/02/node-web-2_http.html)
 1. [리팩토링](/series/2018/12/03/node-web-3_refactoring.html)
 1. [어플리케이션](/series/2018/12/04/node-web-4_application.html)
-1. [커스텀 모듈 1 - debug](/series/2018/12/05/node-web-5_debug.html)
+1. [커스텀 모듈 debug](/series/2018/12/05/node-web-5_debug.html)
 1. [정적 파일](/series/2018/12/06/node-web-6_static-files.html)
-1. 커스텀 모듈 2 - serve-static
+1. [커스텀 모듈 serve-static](/series/2018/12/07/node-web-7_serve-static.html)
 1. 미들웨어 
 1. 미들웨어 활용
 1. 커스텀 모듈 3 - logger
