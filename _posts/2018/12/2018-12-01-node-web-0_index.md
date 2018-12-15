@@ -27,7 +27,7 @@ category: series
 1. [커스텀 모듈 debug](/series/2018/12/05/node-web-5_debug.html)
 1. [정적 파일](/series/2018/12/06/node-web-6_static-files.html)
 1. [커스텀 모듈 serve-static](/series/2018/12/07/node-web-7_serve-static.html)
-1. 미들웨어 
+1. [미들웨어](/series/2018/12/08/node-web-8_middleware.html) 
 1. 미들웨어 활용
 1. 커스텀 모듈 3 - logger
 1. 라우터 1 - use()
