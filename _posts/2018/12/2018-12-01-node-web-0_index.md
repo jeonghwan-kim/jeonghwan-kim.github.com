@@ -31,7 +31,7 @@ category: series
 1. [미들웨어 활용](/series/2018/12/09/node-web-9_middleware2.html)
 1. [커스텀 모듈 logger](/series/2018/12/10/node-web-10_logger.html)
 1. [라우터 use()](/series/2018/12/11/node-web-11_router-use.html)
-1. API 1 - 포스트 조회 
+1. [포스트 조회 API](/series/2018/12/12/node-web-12_get-posts-api.html)
 1. 응답 객체 
 1. 요청 객체 
 1. 라우터 2 - get(), post()
