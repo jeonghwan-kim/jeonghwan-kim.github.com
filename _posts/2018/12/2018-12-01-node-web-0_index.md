@@ -34,7 +34,7 @@ category: series
 1. [포스트 조회 API](/series/2018/12/12/node-web-12_get-posts-api.html)
 1. [응답 객체](/series/2018/12/13/node-web-13_res.html)
 1. [요청 객체](/series/2018/12/14/node-web-14_req.html)
-1. 라우터 2 - get(), post()
+1. [라우터 get(), post()](/series/2018/12/15/node-web-15_get_post.html)
 1. 커스텀 모듈 4 - body-parser
 1. 익스프레스JS
 1. 정리
