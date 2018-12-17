@@ -37,4 +37,4 @@ category: series
 1. [라우터 get(), post()](/series/2018/12/15/node-web-15_get_post.html)
 1. [커스텀 모듈 body-parser](/series/2018/12/16/node-web-16_body-parser.html)
 1. [익스프레스JS](/series/2018/12/17/node-web-17_expressjs.html)
-1. 정리
+1. [마무리](/series/2018/12/17/node-web-18_summary.html)
