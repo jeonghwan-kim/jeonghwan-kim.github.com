@@ -35,6 +35,6 @@ category: series
 1. [응답 객체](/series/2018/12/13/node-web-13_res.html)
 1. [요청 객체](/series/2018/12/14/node-web-14_req.html)
 1. [라우터 get(), post()](/series/2018/12/15/node-web-15_get_post.html)
-1. 커스텀 모듈 4 - body-parser
+1. [커스텀 모듈 body-parser](/series/2018/12/16/node-web-16_body-parser.html)
 1. 익스프레스JS
 1. 정리
