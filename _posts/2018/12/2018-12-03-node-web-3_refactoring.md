@@ -88,7 +88,7 @@ server.listen(port, hostname, () => {
 이제 테스트코드를 돌려볼까요?
 
 ```
-$ npm t
+$ npm test
 
   server
     ✓ should have listen()
