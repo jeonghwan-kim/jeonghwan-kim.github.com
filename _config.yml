@@ -11,9 +11,9 @@ title: 김정환 블로그
 description: 주로 웹 기술에 대해 이야기 합니다
 url: http://blog.jeonghwan.net
 email: ej88ej@gmail.com
-twitter_username: JeonghwanKim4
+twitter_username: jeonghwan0424
 github_username:  jeonghwan-kim
-facebook_username: jeonghwan.kim1
+facebook_username: jeonghwan0424
 linkedin_username: jeonghwan-kim-07706488
 
 
@@ -26,7 +26,7 @@ kramdown:
   hard_wrap: false
 
 # Plugins
-gems:
+plugins:
   - jekyll-paginate
 
 # Pagination

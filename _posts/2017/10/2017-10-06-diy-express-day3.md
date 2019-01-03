@@ -122,7 +122,7 @@ const render = (html, cb) => {
   fs.readFile(`${viewPath}/${partialName}`, (err, file) => {
     if (err) throw err
 
-    text = text.replace(`{{{${partialName}}}}`, file.toString())
+    text = text.replace(`${partialName}`, file.toString())
     render(text, cb)
   })
 }
@@ -152,7 +152,7 @@ const findPartials = text => {
   if (!partialName) return {text, partialName}
 
   partialName = partialName[0].replace(/include '(.*\.view)'/, '$1')
-  text = text.replace(/include '(.*\.view)'/, '{{{$1}}}')
+  text = text.replace(/include '(.*\.view)'/, '$1')
 
   return {text, partialName}
 }
@@ -218,7 +218,7 @@ curl -vs localhost:3000/index2.html
 설정할 거다.
 
 ```html
-<div>{{msg}}</div>
+<div>{%raw%}{{msg}}{%endraw%}</div>
 ```
 
 이 코드에 넣은 데이터 객체는 뷰 파일을 파싱하는 `render()` 함수의 인자로 전달한다.
@@ -237,7 +237,7 @@ render(file.toString(), data, html => {
 
   // 데이터로 동적인 HTML을 생성한다
   Object.keys(data).forEach(key => {
-    html = html.replace(RegExp(`{{*${key}}}`, 'g'), data[key])
+    html = html.replace(RegExp(`{%raw%}{{${key}}}{%endraw%}`, 'g'), data[key])
   })
 
   res.set('Content-Type', 'text/html').send(html)
@@ -267,7 +267,7 @@ const respose = (res, appData) => {
       render(file.toString(), html => {
 
         Object.keys(data).forEach(key => {
-          html = html.replace(RegExp(`{{*${key}}}`, 'g'), data[key])
+          html = html.replace(RegExp(`{%raw%}{{${key}}}{%endraw%}`, 'g'), data[key])
         })
 
         res.set('Content-Type', 'text/html').send(html)
