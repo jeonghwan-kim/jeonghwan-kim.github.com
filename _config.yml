@@ -26,7 +26,7 @@ kramdown:
   hard_wrap: false
 
 # Plugins
-gems:
+plugins:
   - jekyll-paginate
 
 # Pagination
