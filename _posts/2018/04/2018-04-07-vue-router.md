@@ -344,7 +344,7 @@ template 부분에 `<router-view>` 태그를 삽입했다.
   component: {
 
     // this.$route.params.id로 id 값에 접근할 수 있다
-    template: '<div>PostView<br />id:{{this.$route.params.id}}</div>'
+    template: '<div>PostView<br />id:{%raw%}{{this.$route.params.id}}{%endraw%}</div>'
   }
 },
 ```
