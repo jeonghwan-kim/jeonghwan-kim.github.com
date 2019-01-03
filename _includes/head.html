@@ -6,13 +6,14 @@
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@jeonghwan0424" />
   <meta name="twitter:creator" content="@jeonghwan0424" />
-  <meta property="og:url" content="{{ post.url | prepend: site.baseurl }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ page.url | prepend: site.baseurl | prepend: site.url }}" />
   <meta property="og:title" content="{%if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
   <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-  <meta property="og:image" content="http://graphics8.nytimes.com/images/2011/12/08/technology/bits-newtwitter/bits-newtwitter-tmagArticle.jpg" />
+  <meta property="og:image" content="{%if page.featured_image %}{{ page.featured_image | prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.profile_url | prepend: site.baseurl | prepend: site.url }}{% endif %}" />
   <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
-  <link rel="shortcut icon" href="/assets/imgs/favicon.png" />
+  <link rel="shortcut icon" href="/assets/imgs/favicon.ico" />
 </head>
