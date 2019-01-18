@@ -6,11 +6,11 @@ category: dev
 tags: go
 ---
 
-소프트웨어는 메모리 상의 바이트 단위로 데이터를 인식한다. 97이란 바이트 값을 정수로 보면 97이지만 문자로 보면 "a"다. 메모리 바이트는 해석하는 틀에 따라 달라지는데 이러한 변환을 '**인코딩**' 또는 '**마샬링**'이라고 한다. 
+소프트웨어는 바이트 단위로 데이터를 인식한다. 97이란 바이트 값을 정수로 보면 97이지만 문자로 보면 "a"다. 메모리 바이트는 해석하는 틀에 따라 달라지는데 이러한 변환을 '**인코딩**' 또는 '**마샬링**'이라고 한다. 
 
-Go의 [encoding](https://golang.org/pkg/encoding/) 패키지는 이런한 변환을 담당하는 기본 패키지다. 실제로는 인터페이스 타입만 정의 되어 있고 데이터 형태에 따라 서브 패키지로 기능을 제공한다.
+Go의 [encoding](https://golang.org/pkg/encoding/)이 이를 담당하는 기본 패키지다. 실제로는 인터페이스 타입만 정의 되어 있고 데이터 형태에 따라 서브 패키지로 기능을 제공한다.
 
-여러가지 서브패키지 중 컴퓨터간 통신을 위한 테이터 포맷인 [encoding/json](https://golang.org/pkg/encoding/json/) 패키지에 대해 살펴 보겠다. 그리고 에코(echo) 웹프레임웍에서 이를 어떻게 사용하는지 확인하고 글을 마무리하겠다.
+그 중 컴퓨터간 통신을 위한 테이터 포맷인 [encoding/json](https://golang.org/pkg/encoding/json/) 패키지에 대해 살펴 보겠다. 마지막엔 에코(echo) 웹프레임웍에서 이를 어떻게 사용하는지 확인하고 글을 마무리하겠다.
 
 ## 마샬링
 
@@ -43,7 +43,7 @@ type User struct {
 }
 var u = User {"Gopher", 7}
 b, _ := json.Marshal(u) 
-fmt.Prinln(b)          // [123 34 78 97 109 101 34 58 34 ...]]
+fmt.Prinln(b)          // [123 34 78 97 109 101 34 58 34 ...]
 fmt.Println(string(b)) // {"Name":"Gopher","Age":7}
 ```
 
@@ -115,7 +115,7 @@ json.Unmarshal([]byte(s), &u)
 fmt.Printf("%+v\n", u) // {Name:gopher Age:7}
 ```
 
-JSON 문자열을 바이트 슬라이스 형태로 넘겨주고 User 타입 변수 u의 포인터를 전달한다. 함수가 실행되면 문자열이 파싱되서 User 값이 생성된다.
+JSON 문자열을 바이트 슬라이스 형태로 넘겨주고 User 타입 변수 u의 포인터를 전달한다. 함수가 실행되면 문자열이 파싱되어 User 값이 생성된다.
 
 ## 인코더 
 
@@ -140,7 +140,7 @@ enc.Encode(u)
 
 io.Writer 타입을 인자로 받는 json.NewEncoder에 표준 출력 os.Stdout를 전달한다. 생성된 인코더는 앞으로 입력할 데이터를 표준 출력으로 연결하는 스트림을 갖는다. Encode(u) 로 User 값을 보내면 표준 출력에는 인코딩된 JSON 문자열이 출력된다.
 
-io.Writer 인터페이스를 따르는 파일도 스트림으로 연결할 수 있다.
+마찬가지로 io.Writer 인터페이스를 따르는 파일도 스트림으로 연결할 수 있다.
 
 ```go
 f, _ := os.Create("out.txt")
@@ -157,7 +157,7 @@ $ cat out.txt
 {"name":"Gopher","age":7}
 ```
 
-마샬링처럼 인코더도 들여쓰기를 추가한 **SetIndent** 메소드를 제공한다.
+마샬링처럼 인코더도 들여쓰기를 설정할 수 있는 **SetIndent** 메소드를 제공한다.
 
 ```go
 enc := json.NewEncoder(os.Stdout)
@@ -192,14 +192,14 @@ dec.Decode(&u)
 fmt.Printf("%+v\n", u)
 ```
 
-io.Reader 타입을 인자로 받는 json.NewDecoder에 표준 입력 os.Stdin을 전달한다. 생성된 디코더는 표준 입력으로 연결된 스트림을 갖게된다. 표준 입력으로부터 데이터가 들어오면 Decode(&u) 메소드에 의해 User 데이터로 변경되는 것이다.
+io.Reader 타입을 인자로 받는 json.NewDecoder에 표준 입력 os.Stdin을 전달한다. 생성된 디코더는 표준 입력으로 연결된 스트림을 갖게 된다. 표준 입력으로부터 데이터가 들어오면 Decode(&u) 메소드에 의해 User 데이터로 변경되는 것이다.
 
 ```
 $ {"name":"gopher","age":7}
 {Name:gopher Age:7}
 ```
 
-io.Reader 인터페이스 따르는 파일도 마찬가지다.
+io.Reader 인터페이스를 만족하는 파일도 마찬가지다.
 
 ```
 $ cat input.txt
@@ -219,7 +219,7 @@ input.txt에 기록된 JSON 문자열을 스트림으로 받아서 User 타입�
 
 바이트 슬라이스나 문자열을 사용하려면 Marshal/Unmarshal 함수가 적합하다. 만약 표준 입출력이나 파일 같은 Reader/Writer 인터페이스를 사용하여 스트림 기반으로 동작하려면 Encoder/Decoder를 사용한다.
 
-처리 속도는 스트림 방식이 더 낫다. 데이터 크기가 작다면 비슷한 성능이지만 비교적 큰 데이터를 다룬다면 스트림 기반의 Encoder/Decoder가 거의 50% 정도 더 빠른 성능을 낸다(출처: Go 언어를 활용한 마이크로서비스 개발 - 에이콘)
+처리 속도는 스트림 방식이 더 낫다. 데이터 크기가 작다면 성능차이를 체감할 수 없지만 비교적 큰 데이터를 다룬다면 스트림 기반의 Encoder/Decoder가 거의 50% 정도 더 빠른 성능을 낸다(출처: Go 언어를 활용한 마이크로서비스 개발 - 에이콘)
 
 ## HTTP 서버 핸들러 
 
@@ -238,9 +238,9 @@ func (b *DefaultBinder) Bind(i interface{}, c Context) (err error) {
 }
 ```
  
-c.Request() 함수 호출로 반환된 http.Request는 요청 데이터를 담고있는 Body 프로퍼티를 가지고 있다. io.Reader 인터페이스를 구현한 io.ReadClose 타입의 req.Body를 json.NewDecoder 인자로 전달하여 스트림을 생성한다. 그리고 Decode 함수를 이용해 req.Body이 값이 스트림 기반으로 디코딩 하는 것이다.
+c.Request() 함수 호출로 반환된 http.Request는 요청 데이터를 담고있는 Body 프로퍼티를 가지고 있다. io.Reader 인터페이스를 구현한 io.ReadClose 타입의 req.Body를 json.NewDecoder 인자로 전달하여 스트림을 생성한다. 그리고 Decode 함수를 이용해 req.Body 값을 스트림 기반으로 디코딩 하는 것이다.
 
-응답 데이터를 보낼 때는 컨택스트의 [json](https://github.com/labstack/echo/blob/master/context.go#L427) 메소드를 호출하는데 여기서도 스트림 방식으로 인코딩된 제이슨 문자열을 생성한다.
+응답 데이터를 보낼 때는 컨택스트의 [json](https://github.com/labstack/echo/blob/master/context.go#L427) 메소드를 호출하는데 여기서도 스트림 방식으로 인코딩된 문자열을 생성한다.
 
 ```go
 func (c *context) json(code int, i interface{}, indent string) error {
@@ -254,7 +254,7 @@ func (c *context) json(code int, i interface{}, indent string) error {
 }
 ```
 
-io.Writer 인터페이스를 구현한 c.Response를 이용해 스티림 기반 인코더를 생성한다. 들여쓰기를 설정하고 헤더값 처리를 한뒤 마지막에 Encode() 메소드를 호출하여 i 값을 제이슨 문자열로 변환한다.
+io.Writer 인터페이스를 구현한 c.Response를 이용해 스트림 기반 인코더를 생성한다. 들여쓰기를 설정하고 헤더값 처리 후 마지막에 Encode() 메소드를 호출하여 i 값을 문자열로 변환한다.
 
 ## 정리 
 
@@ -262,4 +262,4 @@ encoding/json 패키지는 JSON 문자열(혹은 바이트 슬라이스)과 타�
 
 문자열을 다룰 때는  json.Marshal, json.Unmashal 함수를 사용한다. json.Marshal은 Go 밸류를 JSON 문자열로 변환하고 json.Unmashal은 그 반대 방향으로 동작한다.
 
-스트림 방식으로 데이터를 다룰때는 json.Encoder, json.Decoder 타입을 사용한다. json.Encoder는 Go 밸류를 JSON 문자열로 변환하고 json.Decoder는 그 반대 방향일때 사용한다.
+스트림 방식으로 데이터를 다룰 때는 json.Encoder, json.Decoder 타입을 사용한다. json.Encoder는 Go 밸류를 JSON 문자열로 변환하고 json.Decoder는 그 반대 방향일 때 사용한다.
