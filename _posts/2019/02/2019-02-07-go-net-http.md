@@ -7,13 +7,13 @@ tags: go
 ---
 
 웹 어플리케이션을 개발하려고 Go 언어를 살펴보기 시작했다.
-앞서 정리한 몇 가지 기본 패키지는 net/http 패키지를 사용하기 위한 준비 과정이라 생각하자.
+[앞서 정리한 몇 가지 기본 패키지](/tags#go)는 net/http 패키지를 사용하기 위한 준비 과정이라 생각하자.
 이번에는 네트웍 프로그래밍을 위한 net/http 패키지 사용법을 정리해 보겠다.
 
 ## Get 요청하기
 
 브라우져는 사용자가 입력한 url를 통해 해당 웹페이지를 요청한다.
-이처럼 웹상의 리소스를 요청하려면 패키지의 Get 함수를 사용한다.
+이처럼 웹상의 리소스를 요청하려면 패키지의 **Get** 함수를 사용한다.
 
 ```go
 func Get(url string) (resp *Response, err error)
@@ -45,7 +45,7 @@ Allow: /search/about
 
 ## Client와 Request로 요청 제어하기
 
-Get 함수는 내부에서 Client 구조체를 사용하고 있다.
+Get 함수는 내부에서 **Client** 구조체를 사용하고 있다.
 
 ```go
 func Get(url string) (resp *Response, err error) {
@@ -70,7 +70,7 @@ client := &http.Client{
 Client 생성시 CheckRedirect 훅에 리다이렉트 관련 동작을 정의했다.
 ErrUseLastResponse 값을 리턴하면 리다이렉트를 처리할때 다음 요청을 보내지 않겠다는 의미다.
 
-더불어 Request 구조체도 필요한데 NewRequest 함수로 만들 수 있다.
+더불어 **Request** 구조체도 필요한데 NewRequest 함수로 만들 수 있다.
 
 ```go
 func NewRequest(method, url string, body io.Reader) (*Request, error)
@@ -104,6 +104,8 @@ fmt.Printf("%s\n", robots)
 서버를 구동한뒤 요청을 보내보면 리다이렉트 요청을 하지 않았기 때문에 다음과 같은 응답을 받게 될 것이다.
 
 ```
+redirectPolicyFunc()
+
 <HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
 <TITLE>301 Moved</TITLE></HEAD><BODY>
 <H1>301 Moved</H1>
@@ -115,7 +117,7 @@ The document has moved
 ## 서버 구현을 위한 Handler
 
 브라우져가 서버로 요청을 만들면 서버는 해당 요청을 처리하고 응답한다.
-이러한 요청/응답 패턴을 추상화한 것이 바로 Handler 인터페이스다.
+이러한 요청/응답 패턴을 추상화한 것이 바로 **Handler** 인터페이스다.
 
 ```go
 type Handler interface {
@@ -128,7 +130,7 @@ Handler 인터페이스도 마찬가지 역할을 하는데 ServeHTTP 메소드�
 
 ## 서버를 구동하는 ListenAndServe
 
-Handler 인터페이스는 어디에서 사용할까? 가장 쉽게 발견할 수 있는 곳이 바로 서버를 구동하는 ListenAndServe 함수다.
+Handler 인터페이스는 어디에서 사용할까? 가장 쉽게 발견할 수 있는 곳이 바로 서버를 구동하는 **ListenAndServe** 함수다.
 
 ```go
 func ListenAndServe(addr string, handler Handler) error
@@ -138,7 +140,7 @@ func ListenAndServe(addr string, handler Handler) error
 
 ## 정적 파일 서버를 만들수 있는 FileServe
 
-그럼 Handler 구현체는 뭐가 있을까? 정적 파일을 호스팅하는 FileServer 함수가 이를 반환한다.
+그럼 Handler 구현체는 뭐가 있을까? 정적 파일을 호스팅하는 **FileServer** 함수가 이를 반환한다.
 
 ```go
 func FileServer(root FileSystem) Handler
@@ -169,7 +171,7 @@ $ go run main.go
 
 ## 핸들러를 등록하는 Handle과 HandleFunc
 
-이번엔 다양한 핸들러를 등록해 보자. Handle 함수가 본격적으로 핸들러를 등록하는 함수다.
+이번엔 다양한 핸들러를 등록해 보자. **Handle** 함수가 본격적으로 핸들러를 등록하는 함수다.
 
 ```go
 func Handle(pattern string, handler Handler)
@@ -182,7 +184,7 @@ http.Handle("/", http.FileServer(http.Dir("./public")))
 http.ListenAndServe(":8080", nil)
 ```
 
-핸들러 로직을 만들고 싶다면 HandlerFunc을 사용한다.
+핸들러 로직을 만들고 싶다면 **HandlerFunc**을 사용한다.
 
 ```go
 func HandleFunc(pattern string, handler func(ResponseWriter, *Request))
@@ -200,7 +202,7 @@ http.ListenAndServe(":8080", nil)
 
 ## Request로 요청 쿼리 접근하기
 
-핸들러 로직을 작성하려면 먼저 요청 정보에 접근할 수 있어야 할 것이다. Request 구조체는 요청 정보를 추상화한다.
+핸들러 로직을 작성하려면 먼저 요청 정보에 접근할 수 있어야 할 것이다. **Request** 구조체는 요청 정보를 추상화한다.
 
 ```go
 type Request struct {
@@ -245,7 +247,7 @@ name: Gopher
 
 ## ResponseWriter로 응답하기
 
-핸들러 함수 인자 중 ResponseWriter가 응답을 위한 구조체다.
+핸들러 함수 인자 중 **ResponseWriter**가 응답을 위한 구조체다.
 
 ```go
 type ResponseWriter interface {
@@ -273,7 +275,6 @@ http.ListenAndServe(":8080", nil)
 ```
 
 서버를 구동하고 요청을 보내면 서버 터미널에 찍현던 로그가 응답 데이터로 전달된다.
-C에서도 경험했지만 파일로 추상화 해놓은건 참 편리하다.
 
 ## 요청 바디 처리
 
@@ -315,7 +316,7 @@ $ curl "localhost:8080" -d '{"id":1,"name":"Gopher"}'
 
 ## JSON 데이터 응답하기
 
-요청 바디 처리와 반대로 JSON 응답은 구조체를 JSON 문자열로 인코딩한다.
+요청 바디 처리와 반대로 JSON 응답은 구조체를 JSON 형식의 문자열로 인코딩한다.
 
 ```go
 http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -351,7 +352,7 @@ $ curl "localhost:8080" -d '{"id":1,"name":"Gopher"}'  -vs
 ## 에러 응답을 위한 Error
 
 서버가 정상 응답만하는 것은 아니다. 에러 처리야 말로 신뢰성 있는 서버를 만드는 필수 조건이다.
-Error 클라이언트에게 에러 헤더와 데이터를 응답하는 함수다.
+**Error** 클라이언트에게 에러 헤더와 데이터를 응답하는 함수다.
 
 ```go
 func Error(w ResponseWriter, error string, code int)
@@ -400,7 +401,7 @@ Not Authorized
 
 ## NotFound 에러
 
-NotFound 처럼 잘 알려진 에러는 미리 만들어 놓은 함수 NotFound 혹은 NotFoundHandler 함수를 사용하면 간편하다.
+404 처럼 잘 알려진 에러는 미리 만들어 놓은 함수 **NotFound** 혹은 **NotFoundHandler** 함수를 사용하면 간편하다.
 
 ```go
 func NotFound(w ResponseWriter, r *Request)
@@ -408,7 +409,8 @@ func NotFoundHandler() Handler { return HandlerFunc(NotFound) }
 ```
 
 함수 시그니쳐가 이제 눈에 익는다.
-NotFound는 핸들러 함수 시그니처와 같고, NotFoundHandler는 Handler 타입을 반환한다. 따라서 Handle이나 HandleFunc 함수로 등록할 수 있다.
+NotFound는 핸들러 함수 시그니처와 같고, NotFoundHandler는 Handler 타입을 반환한다.
+따라서 Handle이나 HandleFunc 함수로 등록할 수 있다.
 
 ```go
 http.HandleFunc("/api", func(w http.ResponseWriter, r *http.Request) {
