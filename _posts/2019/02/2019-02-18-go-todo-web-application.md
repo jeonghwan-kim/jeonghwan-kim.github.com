@@ -86,7 +86,7 @@ func main() {
 $ go run .
 ```
 
-![Todo 어플리케이션](todo-app.png)
+![Todo 어플리케이션](/assets/imgs/2019/02/18/todo-app.png)
 
 
 ## 로컬스토리지를 API로 변경
@@ -239,7 +239,7 @@ http.ListenAndServe(":3000", nil)
 
 브라우저로 요청하면 샘플 데이터가 서버에서 브라우져까지 제대로 전달되는 것을 확인할 수 있다.
 
-![get todo api](get-todo-api.png)
+![get todo api](/assets/imgs/2019/02/18/get-todo-api.png)
 
 
 ## Application 타입 정의
@@ -471,9 +471,9 @@ a.Post("/api/todos", func(rw http.ResponseWriter, r *http.Request) {
 요청 바디데이터를 Todo 값으로 디코딩하여 db 에 추가한다. 그리고 바로 응답하는 방식이다.
 브라우져로 todo2 를 추가해 보자.
 
-![add todo 1](add-todo-1.png)
+![add todo 1](/assets/imgs/2019/02/18/add-todo-1.png)
 
-![add todo 2](add-todo-2.png)
+![add todo 2](/assets/imgs/2019/02/18/add-todo-2.png)
 
 잘 동작한다.
 
