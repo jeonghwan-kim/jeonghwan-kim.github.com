@@ -1,17 +1,19 @@
 ---
 title: 'Go로 투두 웹 어플리케이션 만들기'
 layout: post
-summary: 'Go 기본 모듈만 이용해 웹 어플리케이션을 만들어 봅니다'
+summary: '기본 모듈만 이용해 웹 어플리케이션을 만들어 봅니다'
 category: dev
 tags: go
 ---
 
-## 소개
+지금까지 [Go 기본 패키지에 대해 정리했던 것](http://blog.jeonghwan.net/tags#go)을 기반으로 웹 어플리케이션을 만들어보는건 어떨까?
+SPA 구조의 프론트엔드를 공부할 때 종종 둘러보는 [TodoMVC](http://todomvc.com/)를 이용하고,
+Go 언어로 백엔드를 만들어 가는 과정을 정리해 보면 웹 어플리케이션 개발을 이해하는데 도움이 되지 않을까 생각한다.
 
 
 ## TodoMVC에서 가져오기
 
-go-todo란 폴더부터 만들자.
+먼저 go-todo란 폴더부터 만들자.
 
 ```
 $ mkdir go-todo && cd go-todo
@@ -29,7 +31,7 @@ $ git fetch front
 ```
 
 저장소의 examples 폴더에 가면 프론트엔드 기술별로 투두(Todo) 어플리케이션을 구현해 놓은 코드가 있다.
-이것들 중 라이브러리를 사용하지 않고 구현한 vanillajs 코드를 가져오자.
+이 중 라이브러리를 사용하지 않고 구현한 vanillajs 코드를 가져오자.
 
 ```
 $ git checkout front/master -- examples/vanillajs
@@ -89,9 +91,9 @@ $ go run .
 ![Todo 어플리케이션](/assets/imgs/2019/02/18/todo-app.png)
 
 
-## 로컬스토리지를 API로 변경
+## 로컬 스토리지를 API로 변경
 
-프론트엔드 파일 중에 store.js 가 데이터 처리를 담당한다.
+프론트엔드 파일 중 store.js가 데이터 처리를 담당한다.
 
 ```
 examples/vanillajs
@@ -117,7 +119,7 @@ examples/vanillajs
     └── SpecRunner.html
 ```
 
-코드를 좀 살펴보니 브라우져의 localStorage 저장소를 사용한다.
+코드를 좀 살펴보니 브라우져의 localStorage 저장소를 사용하고 있다.
 
 ```js
 // Store 클래스
@@ -144,10 +146,10 @@ Store.prototype.save = function (updateData, callback, id) { };
 Store.prototype.remove = function (id, callback) { };
 ```
 
-우리가 만들 Go 서버는 정적 파일 뿐만아니라 API도 제공할 것이기 때문에 기존에 브라우져 로컬스토리지를 사용하는 부분을 Ajax 요청으로 변경하겠다.
+우리가 만들 Go 서버는 정적 파일 뿐만아니라 API도 제공할 것이기 때문에 로컬 스토리지 사용하는 부분을 Ajax 요청으로 변경하겠다.
 
 매 요청시마다 사용될 XMLHttpRequest 객체를 래핑한 $http 모듈을 전역에 등록한다.
-helpers.js 파일에 아래 코드를 추가한다.
+helpers.js 파일을 열고 아래 코드를 추가한다.
 
 ```js
 window.$http = function (path, method, data, callback) {
@@ -176,7 +178,7 @@ window.$http = function (path, method, data, callback) {
 ```
 
 요청 경로(path), 메소드(method), 바디 데이터(data)를 인자로 받는다.
-Ajax 요청이 비동기로 마치고 난 후 응답 데이터를 콜백(callback) 함수 인자로 전달해 호출하는 방식이다.
+Ajax 요청이 비동기로 마친 뒤 응답 데이터를 콜백(callback)의 함수 인자로 전달해 호출하는 방식이다.
 
 이 $http 함수를 이용하여 전체 데이터를 조회하는 findAll 메소드부터 Ajax 요청으로 바꾸어 보자.
 
@@ -244,9 +246,9 @@ http.ListenAndServe(":3000", nil)
 
 ## Application 타입 정의
 
-조회 API가 "GET /api/todos" 이듯이 추가 API는 메소드만 변경한 "POST /api/todos"로 만들겠다.
+조회시 "GET /api/todos" API를 사용한것 처럼 데이터 생성 API는 메소드만 POST로 바꾼 "POST /api/todos"가 필요하다.
 
-먼저 프론트엔드 코드에서 이 주소를 요청하는 코드를 만들자.
+먼저 이 URL을 요청하는 프론트엔드 코드를 만들자.
 
 ```js
 Store.prototype.save = function (updateData, callback, id) {
@@ -661,3 +663,14 @@ func main() {
 
 ## 정리
 
+기본 패키지만으로 웹 어플리케이션을 만들어봤다. 
+메인함수에 로직을 작성하다가 필요에 의해 Application과 Store라는 타입으로 역할을 분담하는 방식으로 개선했다.
+
+Application은 API 라우팅, 정적파일 처리, 서버 실행같은 웹 서버의 뼈대 역할을 한다.
+
+Store는 데이터를 관리를 위한 녀석인데 여기서는 투두 데이터에 대한 CRUD 작업을 제공한다.
+
+main 함수에서는 Application과 Store 인스턴스를 만들어 관리한다.
+라우트 핸들러 로직을 정의하고 정적파일 위치를 세팅한 뒤 서버를 구동하는 일을 한다.
+
+참고 코드: [https://github.com/jeonghwan-kim/go-todo](https://github.com/jeonghwan-kim/go-todo)
