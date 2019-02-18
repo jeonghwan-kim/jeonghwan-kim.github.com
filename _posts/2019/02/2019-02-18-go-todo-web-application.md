@@ -6,7 +6,7 @@ category: dev
 tags: go
 ---
 
-지금까지 [Go 기본 패키지에 대해 정리했던 것](http://blog.jeonghwan.net/tags#go)을 기반으로 웹 어플리케이션을 만들어보는건 어떨까?
+지금까지 [Go 기본 패키지에 대해 정리했던 것](/tags.html#go)을 기반으로 웹 어플리케이션을 만들어보는건 어떨까?
 SPA 구조의 프론트엔드를 공부할 때 종종 둘러보는 [TodoMVC](http://todomvc.com/)를 이용하고,
 Go 언어로 백엔드를 만들어 가는 과정을 정리해 보면 웹 어플리케이션 개발을 이해하는데 도움이 되지 않을까 생각한다.
 
@@ -20,7 +20,7 @@ $ mkdir go-todo && cd go-todo
 $ git init
 ```
 
-폴더로 이동한뒤 깃 초기화까지 진행했다.
+폴더로 이동해서 깃 트래킹을 초기화했다.
 
 이미 구현해 놓은 Todo 어플리케이션 코드를 가져오자.
 깃헙 tastejs 계정의 todomvc 저장소에서 가져올 것이므로 "front" 라는  이름 원격 저장소로 등록한 뒤 패치한다.
@@ -31,7 +31,7 @@ $ git fetch front
 ```
 
 저장소의 examples 폴더에 가면 프론트엔드 기술별로 투두(Todo) 어플리케이션을 구현해 놓은 코드가 있다.
-이 중 라이브러리를 사용하지 않고 구현한 vanillajs 코드를 가져오자.
+라이브러리를 사용하지 않고 구현한 vanillajs 코드를 가져오자.
 
 ```
 $ git checkout front/master -- examples/vanillajs
@@ -286,7 +286,7 @@ save 메소드는 id 인자에 따라 데이터를 추가하거나 업데이트�
 두 Ajax를 지원하기 위한 백엔드 코드를 만들 차례다.
 
 메도드 종류에 따라 핸들러 함수를 실행하려면 등록된 메소드와 핸들러 정보를 함께 쌍으로 기억하고 있어야한다.
-이를 추상화한 Route 구조체를 정의하자.
+이를 추상화한 **Route** 구조체를 정의하자.
 
 ```go
 type Route struct {
@@ -297,7 +297,7 @@ type Route struct {
 ```
 
 Route 타입은 메소드(method), 주소 규칙(pattern) 그리고 핸들러(handler) 정보를 담은 구조체다.
-서버가 제공하는 엔드포인트 수량만큼 Route를 만들어야하는데 이를 관리하는 것이 Appllication 타입이다.
+서버가 제공하는 엔드포인트 수량만큼 Route를 만들어야하는데 이를 관리하는 것이 **Appllication** 타입이다.
 아래와 같이 정의하자.
 
 ```go
@@ -308,7 +308,7 @@ type Application struct {
 
 엔드포인트를 등록할때 마다 Application의 routes 슬라이스에 Route를 추가할 것이다.
 
-추가를 위한 Add 메소드는 아래와 같이 정의한다.
+추가를 위한 **Add** 메소드는 아래와 같이 정의한다.
 
 ```go
 func (a *Application) Add(method, path string, handler http.Handler) {
@@ -320,7 +320,7 @@ func (a *Application) Add(method, path string, handler http.Handler) {
 }
 ```
 
-핸들러를 함수 정의 형식으로 받기 위해 AddFunc 메소드도 정의하자.
+핸들러를 함수 정의 형식으로 받기 위해 **AddFunc** 메소드도 정의하자.
 
 ```go
 func (a *Application) AddFunc(method, path string, handler func(rw http.ResponseWriter, r *http.Request)) {
@@ -332,7 +332,7 @@ func (a *Application) AddFunc(method, path string, handler func(rw http.Response
 http.HandlerFunc(handler)로 함수를 핸들러로 변경할 수 있다.
 이 핸들러를 곧장 Add 함수 인자로 전달하여 Route 를 추가한다.
 
-그럼 이제 아래와 같은 Get 메소드를 정의할 수 있다.
+그럼 이제 아래와 같은 **Get** 메소드를 정의할 수 있다.
 
 ```go
 func (a *Application) Get(path string, handler func(rw http.ResponseWriter, r *http.Request)) {
@@ -341,7 +341,7 @@ func (a *Application) Get(path string, handler func(rw http.ResponseWriter, r *h
 ```
 
 메소드 인자를 미리 정의된 MethodGet 상수로 고정하여 AddFunc를 호출하는 부분함수 패턴을 사용했다.
-Post, Put, Delete  메소드도 같은 방식으로 만들 수 있다.
+**Post**, **Put**, **Delete**  메소드도 같은 방식으로 만들 수 있다.
 
 ```go
 func (a *Application) Post(path string, handler func(rw http.ResponseWriter, r *http.Request)) {
@@ -359,9 +359,8 @@ func (a *Application) Put(path string, handler func(rw http.ResponseWriter, r *h
 
 그리고 한가지 더.
 Application 타입을 http.ListenAndServer() 함수의 두번재 인자로 전달하고 싶다.
-
-두번째 인자가  Handler 타입인데 ServerHTTP 메소드를 요구하는 인터페이스다.
-따라서 Application에 ServeHTTP 메소드를 아래와 같이 구현한다.
+두번째 인자가 Handler 타입인데 ServerHTTP 메소드를 요구하는 인터페이스다.
+따라서 Application에 **ServeHTTP** 메소드를 아래와 같이 구현한다.
 
 ```go
 func (a *Application) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
@@ -380,7 +379,7 @@ func (a *Application) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 routes 슬라이스에 Route 값이 들어 있는데 요청에 따라 이 중 하나의 Route를 꺼내서 핸들러를 실행해 주면 된다.
 
 for문으로 슬라이스를 순회하면서 요청주소(r.URL.Path)와 등록된 패턴(route.pattern)이 일치하는지 검사한다.
-뿐만 아니라 요청 메소드(r.Method)와 등록된 메소드 (route.method)가 일치하는지도 점검한다.
+뿐만 아니라 요청 메소드(r.Method)와 등록된 메소드(route.method)도 확인한다.
 
 모두 일치하면 등록된 핸들러(route.hander)의 ServeHTTP 메소드에 ResponseWriter와 Request를 전달하여 후속처리를 하도록 넘긴다.
 
@@ -390,7 +389,7 @@ for문으로 슬라이스를 순회하면서 요청주소(r.URL.Path)와 등록�
 ## Application 역할 추가
 
 이왕에 몇 가지 역할을 Application에게 위임해 보자.
-Static 매소드를 만들어 정적 파일 처리하는 역할을 옮기자.
+**Static** 매소드를 만들어 정적 파일 처리하는 역할을 옮기자.
 
 ```go
 func (a *Application) Static(root string) {
@@ -402,7 +401,7 @@ func (a *Application) Static(root string) {
 정적 파일이 있는 루트 경로를 문자열로 받아 파일서버를 만든다.
 모든 Get 요청에 대해 이 파일서버 핸들러가 처리하도롤 Add로 추가했다.
 
-Start 메소드로 서버를 구동하는 역할도 맡기자.
+**Start** 메소드로 서버를 구동하는 역할도 맡기자.
 
 ```go
 func (a *Application) Start(port string) {
@@ -414,7 +413,7 @@ func (a *Application) Start(port string) {
 대기할 포트 번호를 받아 ListenAndServer를 호출한다.
 두번째 인자로 Application의 포인터 리시버를 전달할수 있는데 이것은 ServeHTTP 메소드를 구현하여 Handler 인터페이스를 충족했기 때문이다.
 
-마지막으로 생성 함수까지 만들어 Application 개발을 일단락하자.
+마지막으로 **생성 함수**까지 만들어 Application 개발을 일단락하자.
 
 ```go
 func NewApplication() *Application {
@@ -566,7 +565,7 @@ func Json(rw http.ResponseWriter, i interface{}) {
 
 ## 스토어 타입
 
-데이터 핸들링 부분도 Store로 떼어내면 코드 중복을 줄일 수 있겠다.
+데이터 핸들링 부분도 Store로 떼어내면 중복 코드를 줄일 수 있겠다.
 
 ```go
 type Store struct {
@@ -663,8 +662,8 @@ func main() {
 
 ## 정리
 
-기본 패키지만으로 웹 어플리케이션을 만들어봤다. 
-메인함수에 로직을 작성하다가 필요에 의해 Application과 Store라는 타입으로 역할을 분담하는 방식으로 개선했다.
+기본 패키지만으로 웹 어플리케이션을 만들어봤다.
+메인함수 작성을 시작으로 필요에 따라 Application과 Store로 역할을 나눠주는 방식으로 개선했다.
 
 Application은 API 라우팅, 정적파일 처리, 서버 실행같은 웹 서버의 뼈대 역할을 한다.
 
