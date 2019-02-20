@@ -22,4 +22,4 @@ jeonghwan-kim.github.com
     $ bundle exec jekyll serve
     ```
 
-    그리고나서 <http://localhost:4000> 주소를 브라우져로 접속하면 됩니다.
+    그리고나서 브라우져로 <http://localhost:4000> 주소에 접속하면 됩니다.
