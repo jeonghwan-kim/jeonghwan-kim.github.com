@@ -27,9 +27,8 @@
   var onload = () => {
     googleAnalytics.init('UA-31588166-2');
 
-    var $ = document.querySelector;
-    var post = $('#post');
-    var postList = $('#post-list');
+    var post = document.querySelector('#post');
+    var postList = document.querySelector('#post-list');
 
     if (post || postList) {
       var el = post || postList
