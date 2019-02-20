@@ -1,0 +1,39 @@
+$base-font-family:  "IropkeBatangM", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$mono-font-family: Courier, "Lucida Console", monospace;
+
+$font-size-default: 18px;
+$font-size-large: 18px;
+$font-size-small: 14px;
+
+$font-weight-default: 400;
+$font-weight-light: 100;
+$font-weight-heavy: 900;
+
+$line-height-default: 1.8;
+$line-height-small: 1.1;
+
+$spacing-unit: 30px;
+
+$color-text: #111;
+$color-background: #fff;
+$color-brand: #0070c9;
+$light-grey-color: #f5f5f5;
+$grey-color: #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark: darken($grey-color, 25%);
+$white-color: rgb(254, 254, 254);
+$no-color: rgba(0, 0, 0, 0);
+$site-header-background-color: rgb(56, 56, 56);
+
+
+$site-header-height: auto;
+$site-header-color: rgba(255, 255, 255, 0.901961);
+
+// Width of the content area
+$content-width: 800px;
+$on-palm: 800px;
+
+$profile-image-width: 150px;
+
+$post-list-featured-image-width: 90px;
+$post-list-featured-image-height: $post-list-featured-image-width;

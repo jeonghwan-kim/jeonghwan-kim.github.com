@@ -1,0 +1,18 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+# only Main files contain this front matter, not partials.
+---
+
+@charset "utf-8";
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import "./variables";
+@import "./base";
+@import "./layout";
+@import "./syntax-highlighting/monakai";
+
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
