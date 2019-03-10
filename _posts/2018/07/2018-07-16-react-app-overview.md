@@ -241,7 +241,7 @@ export default Topic
 
 ## Redux
 
-Vue도 마찬가지지만 Flux 아키텍처를 따르는 React는 Redux라는 상태관리 솔류션을 사용한다.
+Vue도 마찬가지지만 Flux 아키텍처를 따르는 React는 Redux라는 상태관리 솔션을 사용한다.
 
 리덕스는 단독으로 사용할수 있어서 굳이 리액트가 아니어도 동작한다.
 이 프로젝트에서는 리덕스-리액트의 간편한 연동을 위해 [react-redux](https://github.com/reduxjs/react-redux)를 함께 사용했다.
