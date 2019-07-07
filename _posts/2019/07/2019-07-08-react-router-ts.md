@@ -4,7 +4,6 @@ layout: post
 summary: '타입스크립트로 리액트 라우터 사용하는 방법을 정리합니다'
 category: dev
 tags: react typescript
-date: 2019-07-07
 ---
 
 지난 글 [리액트, 타입스크립트 시작하기](/dev/2019/06/25/react-ts.html)에 이어 타입스크립트로 리액트 라우터를 어떻게 사용하는지 정리해 보자.
