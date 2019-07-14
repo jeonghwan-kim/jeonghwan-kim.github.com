@@ -3,8 +3,7 @@ title: 과연 Vue.js가 앵귤러나 리엑트보다 좋을까?
 layout: post
 category: dev
 permalink: vue/2017/03/29/is-vue-better-than-angular-react.html
-tags:
-  vue
+tags: vuejs
 summary: 이 문서는 Vue.js Is Good, But Is It Better Than Angular Or React? 를 번역한 내용입니다.
 ---
 
