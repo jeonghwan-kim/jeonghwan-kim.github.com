@@ -1,5 +1,5 @@
-$base-font-family:  "IropkeBatangM", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$mono-font-family: Courier, "Lucida Console", monospace;
+$base-font-family: "IropkeBatangM", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$mono-font-family: "SF Mono", "Menlo", Courier, "Lucida Console", monospace;
 
 $font-size-default: 18px;
 $font-size-large: 18px;
@@ -24,7 +24,6 @@ $grey-color-dark: darken($grey-color, 25%);
 $white-color: rgb(254, 254, 254);
 $no-color: rgba(0, 0, 0, 0);
 $site-header-background-color: rgb(56, 56, 56);
-
 
 $site-header-height: auto;
 $site-header-color: rgba(255, 255, 255, 0.901961);
