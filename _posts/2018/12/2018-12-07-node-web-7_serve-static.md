@@ -3,6 +3,7 @@ title: '[Node.js코드랩] 7.커스텀 모듈 serve-static'
 layout: post
 summary: serve-static 모듈을 만듭니다
 category: series
+tags: lecture
 ---
 
 ## 🌳목표 

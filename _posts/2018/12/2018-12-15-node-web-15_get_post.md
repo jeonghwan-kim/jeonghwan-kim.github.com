@@ -3,6 +3,7 @@ title: '[Node.js코드랩] 15.라우터 Get, Post'
 layout: post
 summary: 메소드에 따라 라우팅 합니다.
 category: series
+tags: lecture
 ---
 
 ## 🌳목표 

@@ -3,6 +3,7 @@ title: '[Node.js코드랩] 9.미들웨어 활용'
 layout: post
 summary: 미들웨어를 활용합니다
 category: series
+tags: lecture
 ---
 
 ## 🌳목표 

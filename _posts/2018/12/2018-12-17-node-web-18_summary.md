@@ -3,6 +3,7 @@ title: '[Node.js코드랩] 18. 마무리'
 layout: post
 summary: 시리즈를 정리합니다 
 category: series
+tags: lecture
 ---
 
 ## 구성도 다시보기 

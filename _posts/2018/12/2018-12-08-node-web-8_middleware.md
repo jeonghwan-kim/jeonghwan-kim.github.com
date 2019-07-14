@@ -3,6 +3,7 @@ title: '[Node.js코드랩] 8.미들웨어'
 layout: post
 summary: 미들웨어 패턴을 구현합니다
 category: series
+tags: lecture
 ---
 
 ## 🌳목표 

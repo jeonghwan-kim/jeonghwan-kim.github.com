@@ -3,6 +3,7 @@ title: '[Node.js코드랩] 12.포스트 조회 API'
 layout: post
 summary: 포스트 조회 API를 구현합니다
 category: series
+tags: lecture
 ---
 
 ## 🌳목표 
