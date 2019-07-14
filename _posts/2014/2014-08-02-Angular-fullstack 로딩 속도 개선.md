@@ -8,7 +8,6 @@ guid: http://54.64.213.117/?p=16
 permalink: /angular-fullstack-%eb%a1%9c%eb%94%a9-%ec%86%8d%eb%8f%84-%ea%b0%9c%ec%84%a0/
 category: dev
 tags:
-  - angular-fullstack
   - angularjs
 ---
 

@@ -8,7 +8,6 @@ layout: post
 guid: http://whatilearn.com/?p=962
 permalink: /boot2docker-%ec%97%85%eb%8d%b0%ec%9d%b4%ed%8a%b8-v1-9/
 tags:
-  - boot2docker
   - docker
 summary: 도커 업데이트
 ---

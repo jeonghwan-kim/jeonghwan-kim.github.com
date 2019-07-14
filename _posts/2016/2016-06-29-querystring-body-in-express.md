@@ -4,9 +4,6 @@ layout: post
 category: dev
 tags:
   expressjs
-  nodejs
-  request
-  http
 featured_image:
 summary: 'Nodejs, Expressjs, Request모듈에서 쿼리스트링 인코딩을 어떻게 처리하고 있을까? 그리고 어떻게 사용해야 할까?'
 permalink: /2016/06/29/querystring-body-in-express.html

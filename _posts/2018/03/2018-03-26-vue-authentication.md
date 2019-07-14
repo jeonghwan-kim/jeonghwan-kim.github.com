@@ -3,7 +3,7 @@ title: Vuex, Vue-router, Axios를 이용한 SPA 인증 구현
 layout: post
 category: dev
 permalink: 2018/03/26/vue-authentication.html
-tags: vue
+tags: vuejs
 summary: 뷰JS로 싱글페이지 어플리케이션을 개발할때 필수 기능인 인증 플로우에 대한 설명입니다.
 ---
 

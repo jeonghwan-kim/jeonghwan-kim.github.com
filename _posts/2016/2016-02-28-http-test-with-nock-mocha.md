@@ -3,10 +3,8 @@ title: 'Nock, Mocha로 HTTP 테스트하기'
 layout: post
 category: dev
 tags:
-  - nock
-  - mocha
   - nodejs
-  - unit-test
+  - test
 permalink: /2016/02/28/http-test-with-nock-mocha.html
 ---
 

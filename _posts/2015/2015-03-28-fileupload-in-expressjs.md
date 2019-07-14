@@ -8,10 +8,7 @@ guid: http://whatilearn.com/?p=307
 permalink: /fileupload-in-expressjs/
 category: dev
 tags:
-  - elastic-beanstalk
   - expressjs
-  - nginx
-  - nodejs
 ---
 노드 익스프레스에서 파일 업로드를 위해서는  <a href="https://github.com/expressjs/multer">multer</a> 모듈을 로딩해야 한다. 로딩 후 리퀘스트 객체를 통해 업로드한 파일을 핸들링 할수 있다. (<code>req.files</code>)
 

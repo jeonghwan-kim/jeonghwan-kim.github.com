@@ -2,8 +2,7 @@
 title: 리액트, 노드 백엔드 통합 후 CI 연동하기
 layout: post
 category: dev
-tags:
-  react travis express elastic-beanstalk
+tags: react travis expressjs aws
 permalink: 2018/08/19/express-travis-beanstalk.html
 summary: 리액트 어플리케이션을 노드 익스프레스로 통합하고 트라비스로 AWS 빈스톡에 배포하는 방법을 설명합니다
 ---

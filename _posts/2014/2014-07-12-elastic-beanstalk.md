@@ -8,9 +8,7 @@ guid: http://54.64.213.117/?p=4
 permalink: /elastic-beanstalk/
 category: dev
 tags:
-  - elastic-beanstalk
-  - nodejs
-  - npm
+  - aws
 ---
 
 

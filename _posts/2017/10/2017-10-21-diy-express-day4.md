@@ -4,9 +4,7 @@ layout: post
 category: series
 permalink: 2017/10/21/diy-express-day4.html
 tags:
-  express
-  cookie
-  session
+  expressjs
   authentication
 summary: 쿠키, 세션 기능을 만들고 인증을 구현해 본다
 ---

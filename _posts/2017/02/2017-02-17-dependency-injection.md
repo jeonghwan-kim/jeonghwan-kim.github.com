@@ -4,7 +4,7 @@ layout: post
 category: dev
 permalink: js/2017/02/17/dependency-injection.html
 tags:
-  dependency-injection
+  design-pattern
 summary: 프론트엔드에서 의존성 주입에 대해 설명하는 글입니다
 ---
 

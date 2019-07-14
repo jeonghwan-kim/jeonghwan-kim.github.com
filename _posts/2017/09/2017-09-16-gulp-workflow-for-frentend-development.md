@@ -3,9 +3,7 @@ title: 프론트엔드 개발을 위한 Gulp
 layout: post
 category: dev
 permalink: tool/2017/09/16/gulp-workflow-for-frentend-development.html
-tags:
-  gulp
-  frontend
+tags: gulp 번역 
 summary: Gulp를 이용한 프론트엔드 개발 자동화에 대한 번역글입니다
 ---
 

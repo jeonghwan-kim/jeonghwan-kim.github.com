@@ -5,9 +5,6 @@ category: series
 permalink: 2017/10/03/diy-express-day1.html
 tags:
   expressjs
-  debug
-  static-serve
-  middleware
 summary: 노드 기본모듈만 사용해 익스프레스 프레임웍를 만들어 보자
 ---
 

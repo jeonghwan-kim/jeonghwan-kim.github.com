@@ -4,8 +4,8 @@ layout: post
 category: dev
 permalink: vue/2017/04/19/vue-component-test.html
 tags:
-  vue
-  unit-test
+  vuejs
+  test
 ---
 
 

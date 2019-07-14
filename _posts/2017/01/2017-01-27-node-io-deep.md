@@ -3,7 +3,7 @@ title: 노드 개발자가 IO 작업을 시작하면 무슨일이 일어날까?
 layout: post
 category: dev
 permalink: node/2017/01/27/node-io-deep.html
-tags:
+tags: 번역
 summary: 노드에서 IO 작업이 일아나는 과정을 설명하는 번역글입니다
 ---
 

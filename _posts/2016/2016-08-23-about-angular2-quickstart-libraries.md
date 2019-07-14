@@ -3,7 +3,7 @@ title: 'Angular2 Quickstart에서 사용하는 라이브러리는 왜 이렇게 
 layout: post
 category: dev
 tags:
-  angular2
+  angular
 summary:
 permalink: /2016/08/23/about-angular2-quickstart-libraries.html
 ---

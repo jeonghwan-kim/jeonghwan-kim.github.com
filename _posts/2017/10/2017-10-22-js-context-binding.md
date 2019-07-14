@@ -5,7 +5,6 @@ category: dev
 permalink: 2017/10/22/js-context-binding.html
 tags:
   javascript
-  context
 summary: 자바스크립트의 네 가지 컨텍스트 바인딩에 대한 우선순위를 정리한다
 ---
 

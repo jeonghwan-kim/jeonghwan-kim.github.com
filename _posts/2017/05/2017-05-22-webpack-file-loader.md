@@ -4,10 +4,7 @@ layout: post
 category: dev
 permalink: js/2017/05/22/webpack-file-loader.html
 tags:
-  file-loader
-  url-loader
   webpack
-  webpack-loader
 featured_image: /assets/imgs/2017/05/webpack-logo.jpg
 ---
 

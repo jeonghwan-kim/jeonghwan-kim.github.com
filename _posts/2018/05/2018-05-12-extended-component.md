@@ -3,7 +3,7 @@ title: UI 컴포넌트 확장
 layout: post
 category: dev
 permalink: 2018/05/12/extended-component.html
-tags: vue
+tags: vuejs
 summary: DRY한 코드를 유지하기 위한 Vue 컴포넌트 확장 방법에 대해 알아봅니다.
 ---
 

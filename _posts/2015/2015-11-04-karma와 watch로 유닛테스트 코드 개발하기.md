@@ -7,10 +7,7 @@ layout: post
 guid: http://whatilearn.com/?p=840
 permalink: /karma%ec%99%80-watch%eb%a1%9c-%ec%9c%a0%eb%8b%9b%ed%85%8c%ec%8a%a4%ed%8a%b8-%ec%bd%94%eb%93%9c-%ea%b0%9c%eb%b0%9c%ed%95%98%ea%b8%b0/
 category: dev
-tags:
-  - grunt
-  - karma
-  - unit-test
+tags: test
 ---
 [Karma](https://github.com/karma-runner/karma)는 프로론트엔드 유닛테스를 위한 라이브러리다. Grunt와 함께 사용하는 방법에 대해 살펴보자.
 

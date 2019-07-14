@@ -5,10 +5,6 @@ category: series
 permalink: 2017/10/05/diy-express-day2.html
 tags:
   expressjs
-  morgan
-  request
-  response
-  body-parser
 summary: 노드 기본모듈만 사용해 익스프레스 프레임웍를 만들어 보자
 ---
 

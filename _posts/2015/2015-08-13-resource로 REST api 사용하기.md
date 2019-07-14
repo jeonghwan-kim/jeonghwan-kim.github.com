@@ -10,9 +10,7 @@ AGLBIsDisabled:
   - 0
 category: dev
 tags:
-  - ngResource
   - angularjs
-  - rest-api
 ---
 # REST API와 $resource
 

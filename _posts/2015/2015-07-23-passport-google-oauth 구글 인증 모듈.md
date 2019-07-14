@@ -10,9 +10,7 @@ AGLBIsDisabled:
   - 0
 category: dev
 tags:
-  - google-api
-  - passport
-  - passport-google-oauth
+  - authentication
 ---
 <h1>구글 개발자 콘솔 설정</h1>
 구글 인증을 사용하기 위해서는 <a href="https://console.developers.google.com/project">구글 웹 콘솔</a>에 접속하여 콜백 주소 등의 정보를 입력한 뒤 클라이언트 아이디와 클라이언트 시크릿을 받아야한다. 프로젝트를 생성하고 아이디/시크릿을 받는 과정까지 알아보자.

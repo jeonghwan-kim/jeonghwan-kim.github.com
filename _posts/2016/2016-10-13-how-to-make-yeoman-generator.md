@@ -4,7 +4,6 @@ layout: post
 category: dev
 tags:
   yeoman
-  yeoman-generator
 summary: ExpressJS, Sequelize, MySQL 기반의 요맨 제너레이터를 만들어봤다.
 featured_image: /assets/imgs/2016/yeoman-logo.png
 permalink: /2016/10/13/how-to-make-yeoman-generator.html

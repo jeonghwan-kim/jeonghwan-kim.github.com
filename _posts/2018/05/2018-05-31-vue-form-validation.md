@@ -4,8 +4,7 @@ layout: post
 category: dev
 permalink: 2018/05/31/vue-form-validation.html
 tags:
-  vue
-  form
+  vuejs
 summary: VueJS 폼 검증 방법에 대한 내용을 살펴 봅니다
 ---
 

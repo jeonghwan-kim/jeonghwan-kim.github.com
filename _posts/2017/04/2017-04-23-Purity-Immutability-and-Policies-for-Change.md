@@ -6,10 +6,6 @@ permalink: js/2017/04/23/Purity-Immutability-and-Policies-for-Change.html
 tags:
   javascript
   functional-programming
-  Purity
-  Immutability
-  순수성
-  불변성
 featured_image: /assets/imgs/2017/04/17/functional-javascript-thumbnail.png
 ---
 

@@ -4,7 +4,6 @@ layout: post
 category: dev
 tags:
   - aws
-  - elastic-beanstalk
 summary: 'AWS 한국 리젼이 추가되면서 빈스톡도 서울에 설치해봤다'
 featured_image: /assets/imgs/2016/elastic_beanstalk_logo.png
 permalink: /2016/02/20/beanstalk-in-seoul.html

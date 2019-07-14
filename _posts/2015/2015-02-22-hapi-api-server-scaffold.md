@@ -8,9 +8,7 @@ guid: http://whatilearn.com/?p=216
 permalink: /hapi-api-server-scaffold/
 layout: post
 tags:
-  - dao
   - hapijs
-  - node-mysql
 ---
 Hapi 프레임웍을 이용해 Api 서버를 구현할 때 필요한 최소한의 기능은 이렇다.
 

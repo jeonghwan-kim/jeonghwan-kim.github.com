@@ -11,7 +11,6 @@ AGLBIsDisabled:
 category: dev
 tags:
   - grunt
-  - grunt-open
 ---
 Grunt, Gulp등 프로젝트 빌드툴을 사용하면 편리한 점이 한 두가지가 아니다. 브라우져를 자동으로 띄워주는<a href="https://github.com/jsoverson/grunt-open">grunt-open</a>부터 살펴보자.
 

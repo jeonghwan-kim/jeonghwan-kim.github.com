@@ -9,8 +9,6 @@ permalink: /server-side-loggin-in-angular/
 category: dev
 tags:
   - angularjs
-  - exception
-  - stacktrace.js
 ---
 <p class="crayon-selected">웹서비스를 런칭하고 유저들이 접속하여 사용하게 되면 다양한 버그가 발생한다. 특히 처리하지 못한 예외 케이스들을 브라우저에서만 나타날뿐 개발자가 놓치게 되는 경우가 많다. 사용자는 '이거 안되요, 저거 안되요' 라고 말하지만 개발자는 문제에 대한 아무런 정보도 얻을 수 없다. 이러한 프론트단에서의 에러(자바스크립트 예외)정보를 서버로 저장하는 방법에 대해 알아보자.</p>
 <p class="crayon-selected">사전 준비</p>

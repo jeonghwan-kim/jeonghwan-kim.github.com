@@ -5,7 +5,6 @@ category: series
 permalink: 2017/10/06/diy-express-day3.html
 tags:
   expressjs
-  view-engine
 summary: pug와 비슷한 뷰 엔진을 만들어 본다
 ---
 

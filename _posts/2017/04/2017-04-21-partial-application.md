@@ -6,8 +6,6 @@ permalink: js/2017/04/21/partial-application.html
 tags:
   javascript
   functional-programming
-  curry
-  partial-application
 featured_image: /assets/imgs/2017/04/17/functional-javascript-thumbnail.png
 ---
 

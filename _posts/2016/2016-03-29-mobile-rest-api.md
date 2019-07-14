@@ -2,7 +2,7 @@
 title: '서버 개발자 입장에서 바라본 모바일 API 디자인'
 layout: post
 category: dev
-tags: [rest-api, http]
+tags: http
 permalink: /2016/03/29/mobile-rest-api.html
 ---
 

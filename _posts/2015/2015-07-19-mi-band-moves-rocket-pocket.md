@@ -6,9 +6,7 @@ author: Chris
 layout: post
 guid: http://whatilearn.com/?p=413
 permalink: /mi-band-moves-rocket-pocket/
-category: dev
-tags:
-  - mi-band
+category: think
 ---
 샤오미의 미밴드(<a href="http://www.mi.com/my/miband/">Mi Band</a>)를 한달간 사용해 봤다. 가장 궁금한 것은 이 가격에 얼마나 정확한 데이터를 뽑아낼수 있느냐이다. 현재 사용 중인 다른 서비스와 비교해 봤다. (1) 스마트폰으로 자동으로 이동거리 측정하는 무브스(<a href="https://www.moves-app.com/">Moves</a>)와 (2) 시작/종료 버튼으로 트래킹 할수 있는  <a href="http://www.poketroket.co/">로켓포켓</a>으로 비교했다.
 

@@ -3,7 +3,7 @@ title: Vue-Router 살펴보기
 layout: post
 category: dev
 permalink: 2018/04/07/vue-router.html
-tags: vue
+tags: vuejs
 summary: 뷰JS의 간단한 라우팅 기능을 구현하고 뷰 라우터 (vue-router) 라이브러리를 정리한 내용입니다
 ---
 

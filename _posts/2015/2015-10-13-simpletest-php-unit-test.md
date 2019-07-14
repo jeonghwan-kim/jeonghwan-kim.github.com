@@ -7,9 +7,7 @@ layout: post
 guid: http://whatilearn.com/?p=786
 permalink: /simpletest-php-unit-test/
 category: dev
-tags:
-  - simpleTest
-  - unit-test
+tags: test
 ---
 Php 유닛 테스트 라이브러 중 하나이다. [PHPUnit](https://phpunit.de)과 [SimpleTest](http://www.simpletest.org) 중 후자가 바로 사용하기 간단해 보임.
 

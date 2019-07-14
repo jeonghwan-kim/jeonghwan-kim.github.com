@@ -3,8 +3,7 @@ title: Node.js Stream 당신이 알아야할 모든 것 1편
 layout: post
 category: dev
 permalink: node/2017/07/03/node-stream-you-need-to-know.html
-tags:
-  stream
+tags: nodejs 번역 
 summary: 스트림을 왜 사용하는지 간단한 예제를 통해 알아봅니다
 ---
 

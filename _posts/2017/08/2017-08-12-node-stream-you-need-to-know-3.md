@@ -3,8 +3,7 @@ title: Node.js Stream 당신이 알아야할 모든 것 3편
 layout: post
 category: dev
 permalink: node/2017/08/12/node-stream-you-need-to-know-3.html
-tags:
-  stream
+tags: nodejs 번역 
 summary: 노드 스트림을 직접 구현해 봅니다
 ---
 

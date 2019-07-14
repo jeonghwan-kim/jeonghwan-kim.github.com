@@ -8,11 +8,8 @@ guid: http://www.whatilearn.com/?p=107
 permalink: /angularjs-passport%eb%a1%9c-%ec%9d%b8%ec%a6%9d%ea%b5%ac%ed%98%84/
 category: dev
 tags:
-  - angular-fullstack
   - angularjs
   - nodejs
-  - passport
-  - session
 ---
 AngularJS를 사용하는 프로젝트에서 사용자 인증을 구현해 보자. 작업환경은 아래와 같다.
 

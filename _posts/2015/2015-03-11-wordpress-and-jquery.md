@@ -10,7 +10,6 @@ category: dev
 tags:
   - jquery
   - wordpress
-  - yeoPress
 ---
 <h2>워드프레스와 제이쿼리</h2>
 

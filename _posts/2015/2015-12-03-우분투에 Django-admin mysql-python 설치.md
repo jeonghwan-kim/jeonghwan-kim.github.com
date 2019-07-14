@@ -8,10 +8,7 @@ guid: http://whatilearn.com/?p=923
 permalink: /%ec%9a%b0%eb%b6%84%ed%88%ac%ec%97%90-django-admin-mysql-python-%ec%84%a4%ec%b9%98/
 category: dev
 tags:
-  - django
-  - mysql
-  - pip
-  - ubuntu
+  - python
 ---
 
 ## 우분투에서 pip가 동작하지 않을 때

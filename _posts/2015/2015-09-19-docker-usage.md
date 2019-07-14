@@ -9,7 +9,6 @@ permalink: /docker-usage/
 category: dev
 tags:
   - docker
-  - forever
 ---
 도커를 활용한 예제입니다.
 우분투 서버에 노드를 설치하고 익스프레스 엔진으로 서버를 구현하는 방법에 대해 설명합니다.

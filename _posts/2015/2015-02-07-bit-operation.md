@@ -7,8 +7,6 @@ layout: post
 guid: http://whatilearn.com/?p=156
 permalink: /bit-operation/
 category: dev
-tags:
-  - bit-operation
 ---
 비트연산은 공부할 때만 익혔지 실제 프로그래밍에 사용해 본적은 이번이 처음이다. '간단히 비트 연산으로 하면되지' 라고 생각했지만 코딩한 경우는 처음이라 어색했다. 몇 가지 비트연산을 정리해 보자.
 
