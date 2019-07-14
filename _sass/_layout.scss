@@ -170,6 +170,8 @@
   }
 }
 .post-list .post-meta .tag-link  {
+  font-family: $mono-font-family;
+  font-weight: 100;
   color: $grey-color;
   &:hover,
   &:focus {
@@ -255,7 +257,7 @@
   .home-sidebar {
     width: $sidebar-width;
     float: left;
-    @include media-query(800px) {
+    @include media-query($device-mobile-width) {
       width: 100%;
       float: none;
     }
@@ -267,11 +269,32 @@
     }
     li {
       list-style: none;
+      &.active {
+        font-weight: 900;
+        a {
+          &::before {
+            content: '=> '
+          }
+        }
+      }
+      @include media-query($device-mobile-width) {
+        display: inline-block;
+        border-radius: 4px;
+        border: solid 1px $color-brand;
+        padding: 2px 10px;
+        margin-right: 10px;
+        &.active {
+          background-color: $color-brand;
+          a {
+            color: $white-color;
+            &::before {
+              content: ''
+            }
+          }
+        }
+      }
       a {
         font-size: 90%;
-      }
-      a.active {
-        font-weight: 900;
       }
     }
   }
