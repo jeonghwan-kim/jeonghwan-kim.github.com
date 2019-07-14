@@ -135,8 +135,8 @@
  */
 .post-header {
   background-color: $color-background;
-  padding: 13px 0;
-  margin-bottom: 100px;
+  padding: 40px 0 80px;
+  margin-bottom: $spacing-unit;
   .post-title {
     font-size: 200%;
     line-height: 1em;
