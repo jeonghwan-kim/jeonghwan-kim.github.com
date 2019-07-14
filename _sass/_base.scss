@@ -202,7 +202,11 @@ td, th {
 a.tag-title-link,
 a.tag-title-link:hover,
 a.tag-title-link:focus {
+  font-family: $mono-font-family;
   color: $color-text;
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-size: $font-size-large;
 }
 
 .center {
