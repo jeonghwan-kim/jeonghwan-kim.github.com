@@ -250,26 +250,35 @@
  * Sidebar
  */
 .home-wrapper {
-  display: flex;
-}
-.home-sidebar {
-  flex: 0 0 136px;
-  .title {
-    line-height: 1em;
-  }
-  ul {
-    margin-left: 0;
-  }
-  li {
-    list-style: none;
-    a {
-      font-size: 90%;
+  $sidebar-width: 136px;
+  position: relative;
+  .home-sidebar {
+    width: $sidebar-width;
+    float: left;
+    @include media-query(800px) {
+      width: 100%;
+      float: none;
     }
-    a.active {
-      font-weight: 900;
+    .title {
+      line-height: 1em;
+    }
+    ul {
+      margin-left: 0;
+    }
+    li {
+      list-style: none;
+      a {
+        font-size: 90%;
+      }
+      a.active {
+        font-weight: 900;
+      }
     }
   }
-}
-.home-main {
-  flex: 1 1 auto;
+  .home-main {
+    margin-left: $sidebar-width;
+    @include media-query(800px) {
+      margin-left: 0;
+    }
+  }
 }

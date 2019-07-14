@@ -10,9 +10,3 @@
 @import "./base";
 @import "./layout";
 @import "./syntax-highlighting/monakai";
-
-@mixin media-query($device) {
-  @media screen and (max-width: $device) {
-    @content;
-  }
-}

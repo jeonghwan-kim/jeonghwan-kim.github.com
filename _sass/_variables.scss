@@ -37,3 +37,9 @@ $profile-image-width: 150px;
 
 $post-list-featured-image-width: 90px;
 $post-list-featured-image-height: $post-list-featured-image-width;
+
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
