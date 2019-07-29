@@ -43,7 +43,7 @@ export interface AddMemoAction {
   type: typeof types.ADD_MEMO_REQUEST
   payload: Memo
 }
-
+ㅍ
 export const addMemo = (memo: Memo): AddMemoAction => ({
   type: types.ADD_MEMO_REQUEST,
   payload: memo
@@ -65,8 +65,8 @@ function addMemo$(action: AddMemoAction) {
 }
 ```
 
-`takeLatest()` 함수로 `ADD_MEMO_REQUEST` 액션을 감시하는 `addMemo$()` 제네레이터는 액션 객체를 인자로 받는다. 
-미리 정의한 `AddMemoAction` 인터페이스를 이용해 전달받은 액션 구조를 정확히 추적할 수 있다.
+`takeLatest()` 함수로 `ADD_MEMO_REQUEST` 액션을 감시하고 있다가 `addMemo$()`를 실행하도록한다.
+이 제네레이터는 액션 객체를 인자로 받는데 미리 정의한 `AddMemoAction` 인터페이스를 이용해 전달받은 액션 구조를 정확히 추적할 수 있다.
 
 이 액션 객체를 이용해 메모 추가 로직 작성해 보자.
 
@@ -83,7 +83,13 @@ function* addMemo$(action: AddMemoAction) {
     yield put({ type: ADD_MEMO_SUCCESS, payload: memo })
 
     // 얼럿창으로 유저에게 피드백
-    yield call(window.alert, '메모가 생성되었습니다. 메뉴 수정 화면으로 이동합니다.')
+    yield put({ type: SHOW_DIALOG, payload: {
+      type: 'alert',
+      text: '메모가 생성되었습니다. 메뉴 수정 화면으로 이동합니다.'
+    }})
+    
+    // 얼럿을 닫을 때까지 대기 
+    yield take(CONFIRM_DIALOG)
     
     // 생성된 메모 조회 화면으로 이동
     yield put(push(`/memo/${memo.id}`))
@@ -99,13 +105,13 @@ function* addMemo$(action: AddMemoAction) {
 프라미스를 반환하는 `api.addMemo()` 함수를 `call()` 이팩트로 실행했다. 
 액션으로 받은 페이로드를 인자로 전달했는데 이것은 `AddMemoAction` 타입의 페이로드가 `Memo` 타입이기 때문이다. (`api.addMemo()`는 `Memo` 타입을 인자로 받는다)
 
-Api 응답에 성공하면 메모 데이터가 넘어오는데 이것을 스토어 상태로 저장하기 위해 `ADD_MEMO_SUCCESS` 액션을 디스패치한다. 
+Api 응답에 성공하면 메모 데이터를 얻을 수 있는데 이것을 스토어 상태로 저장하기 위해 `ADD_MEMO_SUCCESS` 액션을 발행한다. 
 사가는 액션만 발행하고 상태 갱신은 리듀서의 몫으로 남겨 두는 것이 사가 작성의 묘미다.
 
-다음은 `alert()` 함수로 유저에게 화면 이동을 알린다. 
-동기 함수이지만 커스텀 알럿 컴포넌트를 이용한다면, 그리고 그것이 프라미스를 반환하는 비동기 동작이라면 `call()` 함수로 호출할 수 있다. 
-커스텀 알럿을 생성하기 위한 액션 타입이 정의되어 있다면 `put(SHOW_ALERT)`처럼 액션을 디스패치해도 된다. 
-여기서 말하고자 하는 것은 비동기 얼럿을 사용할 때도 사가 함수 안에서 `call()` 이펙트로 제어하면 된다는 것이다.
+다음은 미리 만들어둔 다이얼로그 액션 `SHOW_DIALOG`을 디스패치하여 팝업창을 띄웠다.
+입력한 메모가 생성되었다는 메세지를 피드백한다.
+
+유저가 다이얼로그를 닫으면 `CONFIRM_DIALOG` 액션이 발행하는데 이때까지 사가 로직을 대기하도록 `take()` 이펙트 함수를 사용했다. 
 
 유저 피드백 후 생성된 메모 조회 화면 이동하도록 한다.
 이것을 위해 `push()` 함수를 사용했는데 주소 이동을 위한 액션 생성자 함수를 반환한다.
@@ -113,7 +119,7 @@ connected-redux-router 패키지에서 가져왔다.
 
 사가 함수의 최종 종착지인 `finally` 구문에서는 api 작업 종료를 의미하는 `CLEAR_API_CALL_STATUS` 액션을 발행했다. 
 
-이렇게 제네레이터로 작성하는 리덕스 사가함수를 이용하면 비동기 로직을 수월하게 관리할수 있다.
+이렇게 제네레이터로 작성하는 리덕스 사가함수를 이용하면 비동기 로직을 비교적 간편하게 관리할수 있다.
 
 한편 컴포넌트에서는 어떻게 사용했는지 살펴보자.
 containers/AddMemo.tsx
@@ -209,23 +215,26 @@ class AddMemoPage extends React.Component<Props> {
 
 ![add02](/assets/imgs/2019/07/29/add02.png)
 `ADD_MEMO_REQUEST` 타입의 액션이 발행되었다. 
-`apiCalling` 상태값이 세팅되어서 이것과 연결되 저장 버튼이 비활성화 되었다. 
+`apiCalling` 상태값이 세팅되어서 이것과 연결된 저장 버튼이 비활성화 되었다. 
 
 ![add03](/assets/imgs/2019/07/29/add03.png)
-`ADD_MEMO_SUCCESS` 액션과 `CLEAR_API_CALL_STATUS` 액션이 발행되었다.
-좌측 메모 목록에 세번째 메모가 추가 되었고 저장 버튼이 다시 활성화 되었다.
+`ADD_MEMO_SUCCESS` 액션과 `SHOW_DIALOG` 액션이 발행되었다.
+좌측 메모 목록에 세번째 메모가 추가 되었고 다이얼로그가 보인다.
 
 ![add04](/assets/imgs/2019/07/29/add04.png)
+다이얼로그의 확인 버튼을 클릭하면 `CONFIRM_DIALOG` 액션이 발행되어 다이얼로그 창이 닫힌다.
+
+![add05](/assets/imgs/2019/07/29/add05.png)
 새로 만든 메모 조회 화면(/memos/3) 으로 이동했다. 
 
 
 ## 비동기 처리 실패 피드백: 토스트 띄우기
 
-지금까지 사가함수에서 실패처리는 비어있는 `catch` 구문으로 남겨 두었다. 모두 Api 통신을 다루는 함수 였는데 실패한다면 어떻게 처리하는 것이 좋을까? 
+지금까지 사가함수에서 실패처리는 비어있는 `catch` 구문으로 남겨 두었다. 모두 api 통신을 다루는 함수 였는데 실패한다면 어떻게 처리하는 것이 좋을까? 
 
 ![toast gif](/assets/imgs/2019/07/29/toast00.png)
 
-실패 메세지를 토스트로 보여주는 기능을 만들어 보자. 
+실패 메세지를 우측에 보이는 토스트로 보여주는 기능을 만들어 보자. 
 
 먼저 토스트를 리덕스로 관리하기 위한 모델부터 정의한다.
 models/index.ts
@@ -290,7 +299,7 @@ const appReducer = (
 토스트 추가 액션은 기존 배열에 새로운 토스트 객체를 추가한다. 
 반대로 토스트 제거 액션은 특정 아이디의 토스트를 배열에서 제거한다.
 
-간단히 리듀서 로직을 작성했으면 `SHOW_TOAST` 액션 타입을 위한 사가 함수를 만들 차례다. 
+리듀서 로직을 작성했으면 `SHOW_TOAST` 액션 타입을 위한 사가 함수를 만들 차례다. 
 sagas/index.ts
 
 ```ts
@@ -364,7 +373,7 @@ export default function* rootSaga() {
 ```
 
 `takeEvery()` 이팩터는 액션 타입 문자열을 받지만 타입의 패턴을 계산하는 함수를 받을 수도 있다.
-`_FAILURE` 로 끝나는 액션타입을 모두 감지해서 `handleFailure()` 제네레이터를 실행하도록 했다.
+`_FAILURE` 로 끝나는 액션타입을 모두 감지해서 `handleFailure$()` 제네레이터를 실행하도록 했다.
 
 ```ts
 function* handleFailure$(action: {payload: any}) {
@@ -393,6 +402,7 @@ function* addMemo$(action: AddMemoAction) {
   }
 }
 ```
+
 `ADD_MEMO_FAILURE` 액션을 발행했는데 `_FAILURE` 로 끝나는 액션 타입이기 때문에 이를 감시하고 있는 사가함수에 의해 `handleFailure$()` 사가가 동작할 것이다.
 
 이제 스토어에 있는 토스트 상태와 컴포넌트를 연결한다.
@@ -404,7 +414,7 @@ compoentns/Layout.tsx
 const Layout: React.FC = props => {
   <React.Fragment>
     // 토스트 리스트 컨테이너를 추가한다
-    <ToastList />
+    <ToastListContainer />
     <div>{props.children}</div>
   </React.Fragment>
 ```
@@ -490,7 +500,7 @@ export default function* rootSaga() {
 }
 ```
 
-액션이 많아질수록 사가 함수도 증가할텐데 이런식으로 하나의 제네레이터로만 관리하면 한계에 이른다.
+액션이 많아질수록 사가 함수 갯수도 늘어날텐데 이런식으로 하나의 제네레이터로만 관리하면 한계에 이른다.
 메모 관련한 사가와 어플리케이션 사가로 나누었는데 이 녀석들을 서브 사가 함수로 분리할 수 있다. 
 
 먼저 메모 사가를 sagas/memo.ts 파일에 분리해 보자.
@@ -561,3 +571,17 @@ export default function* rootSaga() {
 
 ## 정리 
 
+사가 함수를 이용한 예제를 살펴 보았다. 
+비동기 제어를 담당하는 사가는 다양한 함수를 통해 마치 동기 코드처럼 관리할 수 있는데 이를 이펙터라고 부른다.
+
+* `put()`: 액션을 발행한다
+* `call()`: 함수를 실행한다 
+* `take()`: 액션 발행을 대기한다 
+* `delay()`: 실행을 지연한다
+* `all()`: 사가 함수를 동시에 실행한다 
+
+Api 통신과 유저 인터렉션 코드를 사가로 작성하면 비교적 쉽게 로직을 작성할 수 있다. 
+
+설명이 부족한 부분은 아래 전체 코드를 보면서 확인해 보도록하고 리덕스 이쯤해서 사가 사용법에 대한 글을 마무리하겠다.
+
+전체 코드: [https://github.com/jeonghwan-kim/study-react-ts/tree/master/redux-saga](https://github.com/jeonghwan-kim/study-react-ts/tree/master/redux-saga)
