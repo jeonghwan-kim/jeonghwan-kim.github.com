@@ -23,7 +23,8 @@ AngularJS를 사용하는 프로젝트에서 사용자 인증을 구현해 보�
 
 우선 패스포트 모듈을 익스프레스과 연동해야 한다. 앵귤러풀스택에서는 <code>app.js</code> 에서 익스프레스 객체를 생성하여 별도로 구현한 <code>config/express.js</code> 모듈에 넘겨준다. <code>express.js</code>에서는 서버 정보를 설정하는 작업을 한다. 마찬가지로 필자도 <code>config/passport.js</code> 모듈을 작성하고 여기에서 패스포트 관련한 설정 작업을 할 것이다.
 
-<pre class="lang:js decode:true" title="config/passport.js">var passport = require('passport');
+```js
+var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 exports = module.exports = function (app) {
@@ -53,11 +54,12 @@ exports = module.exports = function (app) {
     done(null, user);
   });
 };
-</pre>
+```
 
 세션 메모리를 패스포트 데이터 저장소로 사용했기 때문에 익스프레스에 세션 모듈을 연동해야 한다. <a href="https://github.com/expressjs/session">express-seesion</a> 모듈을 아래와 같이 연결한다.
 
-<pre class="lang:js decode:true" title="config/express.js">var session = require('express-session');
+```js
+var session = require('express-session');
 
 module.exports = function (app) {
 
@@ -68,7 +70,8 @@ module.exports = function (app) {
       secret: 'MY_S3CR3T'
     }));
 
-  // ..</pre>
+  // ..
+```
 
 이것으로 익스프레스와 패스포트 모듈을 연동했다. 이젠 백엔드 프로토콜을 작성해 보자. <code>yo angular-fullstack:endpoint auth</code> 로 백엔드 api 스패폴딩 파일을 자동을 생성한다. <code>api/auth/index.js</code> 파일에 아래의 세가지 프로토콜을 작성한다.
 
@@ -78,7 +81,8 @@ module.exports = function (app) {
     <li>`/api/auth (DELETE)`: 세션 정보를 삭제하여 로그아웃 수행</li>
 </ul>
 
-<pre class="lang:js decode:true" title="api/auth/index.js">'use strict';
+```js
+'use strict';
 
 var express = require('express');
 var passport = require('passport');
@@ -105,7 +109,7 @@ router.delete('/', function (req, res) {
 });
 
 module.exports = router;
-</pre>
+```
 
 &nbsp;
 
@@ -113,7 +117,8 @@ module.exports = router;
 
 인증이 필요한 페이지로 라우팅할때 promise를 사용한다. ui-route (혹은 ng-route)로 라우팅 설정할때 resove 속성을 추가할 수 있다. 이때 <code>/api/auth (GET)</code>으로 로그인 여부를 백엔드에서 확인하고 인증된 경우뫈 라우팅을 허용한다. 그렇지 않은 경우는 로그인 페이지(<code>/login</code>)로 리다이렉팅 한다.
 
-<pre class="lang:js decode:true" title="main.js">'use strict';
+```js
+'use strict';
 
 angular.module('myApp')
   .config(function ($stateProvider) {
@@ -139,11 +144,13 @@ angular.module('myApp')
           }
         }
       });
-  });</pre>
+  });
+  ```
 
 로그인 페이지는 <code>/login</code> 으로 라우팅하고, 로그인 템플릿과 컨트롤러를 가각 연결한다. 컨트롤러에서는 <code>/api/auth (POST)</code> 프로토콜로 인증을 시도한다. 인증 성공후 메인페이지(<code>/</code>)로 라우팅하고 그렇지 않을 경우 로그인 페이지 (<code>/login</code>)에서 인증 정보를 재 입력 받도록 한다.
 
-<pre class="lang:js decode:true " title="login.controller.js">'use strict';
+```js
+'use strict';
 
 angular.module('myApp')
   .controller('LoginCtrl', function ($scope, $http, $location) {
@@ -172,11 +179,12 @@ angular.module('myApp')
     };
 
   });
-</pre>
+```
 
 각 페이지에는 로그아웃 버튼을 배치한다. 로그아웃 버튼 클리시 바로 백엔드 프로토콜인 <code>/api/auth (DELETE)</code>를 호출하여 서버의 세션 메모리에 저장된 유저 정보를 삭제한다. 삭제후 반환되는 값을 확인하고 다시 메인 페이지(<code>/</code>)로 라우팅한다. 메인페이지에서는 세션 여부를 체크하고 다시 로그인 페이지로 리다이렉팅 된다.
 
-<pre class="lang:js decode:true  ">'use strict';
+```js
+'use strict';
 
 angular.module('myApp')
   .controller('NavbarCtrl', function ($scope, $location, $http, $state) {
@@ -196,6 +204,5 @@ angular.module('myApp')
         });
     }
 
-  });</pre>
-
-&nbsp;
+  });
+```
