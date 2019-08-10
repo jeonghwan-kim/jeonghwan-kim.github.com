@@ -10,6 +10,7 @@ category: dev
 tags:
   - angularjs
   - nodejs
+  - authentication
 ---
 AngularJS를 사용하는 프로젝트에서 사용자 인증을 구현해 보자. 작업환경은 아래와 같다.
 
