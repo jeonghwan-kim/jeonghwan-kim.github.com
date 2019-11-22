@@ -1,13 +1,13 @@
-<div class="post-list-item">
-  <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+<a class="post-list-item post-link" href="{{ post.url | prepend: site.baseurl }}">
     <div class="post-text">
       <h2 class="post-title">
         {{ post.title }}
       </h2>
       <p class="post-summary">{{ post.summary }}</p>
       <p class="post-meta">
-        {% include post-date.html %}
+        {% if post.date %}
+        <span class="date">{{ post.date | date : "%Y년 %m월 %d일" }}</span>
+        {% endif %}
       </p>
     </div>
-  </a>
-</div>
+</a>
