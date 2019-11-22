@@ -23,7 +23,7 @@
   .site-title {
     margin-bottom: 0;
     font-weight: 100;
-    font-family: "IropkeBatangM";
+    font-family: $article-font-family;
     line-height: $site-header-height;
     letter-spacing: -2px;
     a {
@@ -113,7 +113,7 @@
           font-size: 150%;
           margin-bottom: 5px;
           color: $color-text;
-          font-family: "IropkeBatangM";
+          font-family: $article-font-family;
         }
         .post-summary {
           font-size: $font-size-default;
@@ -140,7 +140,7 @@
   .post-title {
     font-size: 200%;
     line-height: 1em;
-    font-family: "IropkeBatangM";
+    font-family: $article-font-family;
     font-weight: $font-weight-default;
     color: $color-text;
     border-bottom: 1px solid $grey-color-light;
