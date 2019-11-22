@@ -18,24 +18,21 @@
     }
   }
   .site-title {
+    padding: 10px 0;
     margin-bottom: 0;
-    font-weight: 100;
-    font-family: $article-font-family;
-    line-height: $site-header-height;
-    letter-spacing: -2px;
-    a {
-      color: $site-header-color;
-      &:hover {
-        text-decoration: none;
-      }
-      &:visited {
-        color: $site-header-color;
-      }
+    line-height: 28px;
+    .site-logo {
+      @include site-logo(28px);
     }
   }
   .site-title-sm {
-    font-size: 1em;
+    padding: 7px 0;
+    line-height: 15px;
+    .site-logo {
+      @include site-logo(15px);
+    }
   }
+  
   .site-description {
     margin-bottom: 0;
     font-size: 90%;

@@ -43,3 +43,12 @@ $device-mobile-width: 800px;
     @content;
   }
 }
+
+@mixin site-logo($height) {
+  display: inline-block;
+  width: 100%;
+  height: $height;
+  line-height: $height;
+  background: url(/assets/imgs/logo.png) no-repeat 0 0 / contain;
+  color: transparent;
+}
