@@ -8,6 +8,7 @@ layout: default
       <div class="post-summary">{{ page.summary }}</div>
     </div>
   </header>
+  <div id="post-index" class="post-index"></div>
   <div class="wrapper">
     <div class="post-content" itemprop="articleBody">
       {{ content }}
@@ -20,3 +21,5 @@ layout: default
     <div>{% include comments.html %}</div>
   </div>
 </article>
+
+<script src="/assets/js/index-creator.js"></script>
