@@ -1,0 +1,43 @@
+
+
+.row {
+  display: flex;
+  .col-1 {
+    box-sizing: border-box;
+    width: 8.333333%;
+  }
+  .col-2 {
+    box-sizing: border-box;
+    width: 16.666666%;
+  }
+  .col-3 {
+    box-sizing: border-box;
+    width: 25%;
+  }
+  .col-4 {
+    box-sizing: border-box;
+    width: 33.333333%;
+  }
+  .col-6 {
+    box-sizing: border-box;
+    width: 50%;
+  }
+  .col-9 {
+    box-sizing: border-box;
+    width: 75%;
+  }
+  .col-12 {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+.align-left {
+  text-align: left;
+}
+.align-right {
+  text-align: right;
+}
+.align-center {
+  text-align: center;
+}
