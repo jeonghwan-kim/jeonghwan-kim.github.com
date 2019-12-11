@@ -532,7 +532,7 @@ module.exports = {
 우리 예제에서는 main.js로 결과물이 하나이기 때문에 플러그인이 한번만 동작한 것이다. 
 
 그러면 어떻게 번들 결과에 접근할 수 있을까? 
-웹팩 내장 플러그인 BannerPlugin 코드를 참고하자.
+웹팩 내장 플러그인 [BannerPlugin 코드](https://github.com/lcxfs1991/banner-webpack-plugin/blob/master/index.js)를 참고하자.
 
 myplugin.js:
 ```js
@@ -716,14 +716,19 @@ console.log(api.domain) // 'http://dev.api.domain.com'
 
 빌드 타임에 결정된 값을 어플리이션에 전달할 때는 define-plugin을 사용하자.  
 
-<!-- TODO: 여기까지 작업 -->
-
 ### 6.3 HtmlTemplatePlugin
 
 이번엔 써드 파티 패키지에 대해 알아보자. 
 [HtmlTemplatePlugin](https://github.com/jantimon/html-webpack-plugin/)은 HTML 파일을 후처리하는데 사용한다. 
 빌드 타임의 값을 넣거나 코드를 압축할수 있다.
 
+먼저 패키지를 다운로드 한다.
+
+```
+$ npm install html-webpack-plugin
+```
+
+이 플러그인으로 빌드하면 HTML파일로 아웃풋에 생성될 것이다.
 index.html 파일을 src/index.html로 옮긴뒤 다음과 같이 작성해 보자.
 
 src/index.html:
@@ -731,12 +736,11 @@ src/index.html:
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
     <title>타이틀<%= env %></title>
   </head>
   <body>
-    <!-- 여기에 앱이 마운트 됩니다. -->
-    <div id="app"></div>    
+    <!-- 로딩 스크립트 제거 -->
+    <!-- <script src="dist/main.js"></script> -->
   </body>
 </html>
 ```
@@ -744,9 +748,12 @@ src/index.html:
 타이틀 부분에 ejs 문법을 이용하는데 `<%= env %>` 는 전달받은 env 변수 값을 출력한다.
 HtmlTemplatePlugin은 이 변수에 데이터를 주입시켜 동적으로 HTML 코드를 생성한다.
 
+뿐만 아니라 웹팩으로 빌드한 결과물을 자동으로 로딩하는 코드를 주입해 준다.
+때문에 스크립트 로딩 코드도 제거했다.
+
 webpack.config.js:
 ```js
-const HtmlWebpackPlugin = reuqire('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports {
   plugins: [
@@ -764,15 +771,13 @@ module.exports {
 NODE_ENV=development 로 설정해서 빌드하면 빌드결과 "타이틀(개발용)"으로 나온다. 
 NODE_ENV=production 으로 설정해서 빌드하면 빌드결과 "타이틀"로 나온다.
 
-운영 환경에서는 파일을 압축하고 불필요한 주석을 제거하는 기능도 한다.
+![HtmlTemplatePlugin](/assets/imgs/2019/12/11/html-template-plugin.jpg)
+
+개발 환경과 달리 운영 환경에서는 파일을 압축하고 불필요한 주석을 제거하는 것이 좋다.
 
 webpack.config.js:
 ```js
 new HtmlWebpackPlugin({
-  template: './src/index.html',
-  templateParameters: {
-    env: process.env.NODE_ENV === 'development' ? '(개발용)' : '',
-  },
   minify: process.env.NODE_ENV === 'production' ? { 
     collapseWhitespace: true, // 빈칸 제거 
     removeComments: true, // 주석 제거 
@@ -784,8 +789,7 @@ new HtmlWebpackPlugin({
 환경변수에 따라 minify 옵션을 켰다.
 `NOE_ENV=production npm run build`로 빌드하면 아래처럼 코드가 압축된다.
 
-<!-- TODO: 캡처 -->
-![]()
+![HtmlTemplatePlugin 2](/assets/imgs/2019/12/11/html-template-plugin-2.jpg)
 
 정적파일을 배포하면 즉각 브라우져에 반영되지 않는 경우가 있다.
 브라우져 캐쉬가 원인일 경우가 있는데 이를 위한 예방 옵션도 있다.
@@ -793,25 +797,13 @@ new HtmlWebpackPlugin({
 webpack.config.js:
 ```js
 new HtmlWebpackPlugin({
-  template: './src/index.html',
-  templateParameters: {
-    env: process.env.NODE_ENV === 'development' ? '(개발용)' : '',
-  },
-  minify: process.env.NODE_ENV === 'production' ? {
-      collapseWhitespace: true,
-      removeComments: true,
-  } : false,
   hash: true, // 정적 파일을 불러올때 쿼리문자열에 웹팩 해쉬값을 추가한다
 })
 ```
 
 `hash: true` 옵션을 추가하면 빌드할 시 생성하는 해쉬값을 정적파일 로딩 주소의 쿼리 문자열로 붙여서 HTML을 생성한다.
 
-<!-- TODO: 결과 -->
-![]()
-```html
-<script type="text/javascript" src="main.js?867cae8cc1888b2ebe03"></script></body>
-```
+![HtmlTemplatePlugin 3](/assets/imgs/2019/12/11/html-template-plugin-3.jpg)
 
 ### 6.4 CleanWebpackPlugin
 
@@ -822,8 +814,8 @@ new HtmlWebpackPlugin({
 가령 아웃풋 폴더에 foo.js 파일을 임의로 만든뒤 빌드해 보자.
 파일이 남아있다.
 
-<!-- TODO: 캡처 -->
-![]()
+![CleanWebpackPlugin](/assets/imgs/2019/12/11/clean-webpack-plugin.jpg)
+
 
 이러한 현상을 CleanWebpackPlugin으로 해결해 보자.
 먼저 패키지를 설치한다.
@@ -836,7 +828,7 @@ $ npm install clean-webpack-plugin
 
 webpack.config.js:
 ```js
-const { CleanWebacpkPlugin } = reuiqre('clean-webpack-plugin');
+const { CleanWebpackPlugin } = reuiqre('clean-webpack-plugin');
 
 module.exports = {
   plugins: [
@@ -845,7 +837,7 @@ module.exports = {
 }
 ```
 
-빌드 결과를 확인하면 foo.js가 사라진 것을 알수 있다.
+빌드 결과를 확인하면 foo.js가 사라진 것을 알 수 있다.
 
 ### 6.5 MiniCssExtractPlugin
 
@@ -879,7 +871,7 @@ module.exports = {
 }
 ```
 프로덕션 환경일 경우만 이 플러그인을 추가했다. 
-옵션의 filename으로 CSS 파일이 만들어질 것이다.
+`filename`으로 CSS 파일이 만들어질 것이다.
 
 개발 환경에서는 css-loader에의해 자바스크립트 모듈로 변경된 스타일시트를 적용하기위해 style-loader를 사용했다.
 반면 프로덕션 환경에서는 별도의 CSS 파일으로 추출하는 플러그인을 적용했으므로 다른 로더가 필요하다.
@@ -904,6 +896,8 @@ module.exports = {
 
 `NODE_ENV=production npm run build`로 결과를 확인해보자. 
 
+![MiniCssExtractPlugin](/assets/imgs/2019/12/11/mini-css-extract-plugin.jpg)
+
 dist/main.css가 생성되었고 index.html에 이 파일을 로딩하는 코드가 추가되었다. 
 
 ## 7. 정리
@@ -919,9 +913,5 @@ ECMAScript2015 이전에는 모듈을 만들기 위해 즉시실행함수와 네
 ### 7.1 참고
 
 * https://d2.naver.com/helloworld/12864
-* http://www.commonjs.org/
-* https://webpack.js.org/contribute/writing-a-plugin/
-* https://github.com/lcxfs1991/banner-webpack-plugin/blob/master/index.js
-* https://webpack.js.org/plugins/banner-plugin/
-* https://webpack.js.org/plugins/define-plugin/
+* https://webpack.js.org
 
