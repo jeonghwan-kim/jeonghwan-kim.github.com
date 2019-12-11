@@ -8,48 +8,58 @@ tags: babel
 
 ## 1. 배경
 
-만들었던 코드가 모든 브라우져에서 잘 동작할까? 
-최신 버전의 그래 IE 브라우져를 통해 접속해 보자. 
-우리는 화살표함수를 사용했는데 IE에서는 인지하지 못하고 에러가 난다. 
+아래 코드가 모든 브라우져에서 잘 동작할까? 
 
-![IE에서 에러 화면](/assets/imgs/2019/12/12/caniuse.jpg)
+src/index.js
+```js
+const alert = msg => window.alert(msg);
+alert('알림창입니다.');
+```
 
-CanIUse에서 보면 화살표함수는 IE 뿐만 아니라 안드로이드용 오페라 브라우져(Opera Mini) 그리고 구버전 삼성 스마트폰에서는 돌아가지 않는다. 
+IE 브라우져로 확인해 보자. 
+화살표 함수를 사용했는데 브라우져는 이걸 해석하지 못해서 에러가 발생한다.
 
-이들도 브라우져기 때문에 자바스크립트를 이해할 수는다. 
-그들이 이해하는 버전의 자바스크립트로 변환해야하는 처리가 필요한데 이것을 트랜스 파일이라 한다. 
-종종 빌드라는 용어와 함께 사용하는데 정확한 의미는 이렇다. 
+![IE에서 에러 화면]()
 
-* 빌드: 소스 코드를 이진코드로 변경
-* 트랜트파일: 상위 코드를 다른 하위 코드로 변경
+브라우져별로 언어의 스펙을 지원하는지를 확인하는 [CanIUse](https://caniuse.com/#feat=arrow-functions)에서 확인해 보자.
 
-가령 ES6 코드를 ES5 코드로 변환하는 것이기 때문에 트랜스파일한다라는 표현이 더 정확할 것이다. 
+![caniuse](/assets/imgs/2019/12/12/caniuse.jpg)
 
-이러한 역할을 하는것이 바벨이다. 바벨은 최신버번의 자바스크립트를 컴파일해서 원하는 버전으로 변경해 주는 도구이다. 
+IE 뿐만 아니라 안드로이드용 오페라 브라우져(Opera Mini) 그리고 구버전 삼성 스마트폰용 브라우져에서도 화살표 함수는 동작하지 않는다.
+
+이들 브라우져가 이해하는 버전의 자바스크립트로 변환해야하는 처리가 필요한데 이것을 **트랜스 파일(transpile)**이라 한다. 
+
+### 1.1 트랜스파일
+
+하나의 언어를 다른 언어로 변환하는 것을 총칭해서 빌드라고 한다. 
+예를 들어 gcc는 c 언어로 작성된 소스코드를 이진 파일을 변환하는데 이것이 빌드다. 
+
+트랜스파일도 마찬가지로 하나의 언어를 다른 언어로 변환하는 과정이다. 
+빌드와 다른 점은 변환 전후의 추상화 수준이 비슷하다는 것이다.
+타입스크립트를 자바스크립트로 변환하는 것을 트랜스파일이라고 부른다. 
+빌드 결과는 읽기 어렵지만 트랜스파일의 결과는 추상화 수준이 비슷하기 때문에 코드를 읽을 수 있다.
+
+요즘에는 이 두 용어를 구분하지 않고 사용하는 것 같다.
+
+자바스크립트의 언어 명세인 ECMASCript는 여러 버전이 있다.
+ES5, ES6, ES7 ...... 이러한 버전별로 언어를 변환하는 것도 트랜스파일의 일종이다.
+바벨은 상위 버전의 언어를 하위 버전으로 변환하기 위한 도구다.
 
 ## 2. 사용방법
 
-### 2.1 설치
+### 2.1 설치 및 실행
 
-프로젝트 폴더에 바벨 프로그램을 설치해 보자. 
+프로젝트에 [바벨을 설치](https://babeljs.io/setup#installation)해 보자.
 
 ```
-$ npm install babel-cli
-$ npm install  @babel/core @babel/cli
+$ npm install @babel/core @babel/cli
 ```
 
-바벨을 설치하면 기본적으로 세 개의 프로그램이 설치된다. 
+테미널에서 바벨을 사용하려면 두 개의 패키지를 사용해야 한다.
 
-* babel
-* babel-node
-* babel-external-helpers
+* @babel/core: 바벨 핵심 모듈 
+* @babel/cli: 터미널에서 바벨을 사용할 수 있도록 한다 
 
-babel은 es6로 작성한 코드를 변경하는 역할을 한다. 
-babel-node는 es6로 작성한 노드 코드를 실행하는 기능이다. 
-node와 동일한 기능을 하는데 es6 문법을 완전히 지원한다는 점에서 차이가 있다. 
-babel-external-helpers는? 
-
-### 2.2 실행 / 옵션
 
 바벨 명령어로 코드를 컴파일해 보자.
 
@@ -59,60 +69,41 @@ $ node_modules/.bin/babel src -d dist
 
 src에 있는 파일이 바벨 처리를 거쳐 dist 폴더로 저장되었다. 
 
-간다히 아래 코드를 변경해 봤다. 
+![dist/app.js 캡쳐]()
 
-```js
-const result = sum(1,2);
-```
+그런데 바벨로 처리한 코드가 그대로다.
+ES6 코드를 ES5 코드로 트랜스파일 하려고 했는데 말이다.
 
-그런데 변경된 결과도 es6 코드이지 뭔가? 
-바벨 명령어를 통해 es6 코드를 es5 코드로 변환하려는 것이 의도인데 이것은 다른 결과다. 
-
-바벨은 별도의 빌드 대상에 따라 플러그인형태로 제공한다. 이것을 설치하자. 
+바벨은 별도의 빌드 대상에 따라 플러그인 형태로 제공한다. 
+적당한 플러그인 을 설치하자.
 
 ```
 $ npm install @babel/preset-env
 ```
 
-바벨을 실행할때 설치한 프리셋을 지정해서 컴파일할 수 있다. 
+바벨 사용법을 확인해 보자.
 
 ```
-$ node_module/.bin/babel --help
-
-Usage: babel [options] <files ...>
-
-Options:
-  -f, --filename [filename]                   The filename to use when reading from stdin. This will be used in source-maps, errors etc.
+$ npx babel --help
   --presets [list]                            A comma-separated list of preset names.
-  --
 ```
 
-실행해 보자.
+`--presets` 옵션을 추가하면 바벨을 실행할때 설치한 플러그인으로 제공되는 프리셋을 지정해서 컴파일 할 수 있다.
+방금 설치한 env 프리셋으로 다시 시도해 보자.
 
 ```
-$ node_modules/.bin/babel src -d dist --presets @babel/env
+$ npx babel src -d dist --presets @babel/env
 ```
 
-결과를 보면 화살표함수가 일반 함수로 변경되었다. 
+이번엔 좀 다른 결과가 나왔다. 
 
-dist/math.js:
-```js
-"use strict";
+![dist/app.js 캡쳐 2]()
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.sum = void 0;
+화살표 함수가 일반 함수로 변경되었다.
+뿐만 아니라 const가 var로 변경되었고 ES5에서 사용하는 "use strict" 구문도 상단에 추가되었다.
 
-var sum = function sum(a, b) {
-  return a + b;
-};
-
-exports.sum = sum;
-```
-
-
-바벨은 이것 뿐만 아니라 flow나 typescript 처럼 타입을 지원하는 문법을 갖는 언어를 변환할때도 사용한다. (flow preset, typescript preset) 리액트에서 사용한 jsx 도 변환이 필요한데 물론 프리셋을 제공한다. (preset-react)
+ECMAScript 외에도 바벨은 flow나 typescript처럼 타입 언어를 변환할때도 사용한다.(flow preset, typescript preset). 
+리액트에서 사용한 jsx도 트랜스파일이 필요한데 물론 프리셋을 제공한다(preset-react).
 
 ### 2.3 설정 파일
 
