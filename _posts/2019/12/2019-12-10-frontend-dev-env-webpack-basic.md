@@ -107,9 +107,6 @@ index.html:
 `<script>` 태그로 로딩할 때 `type="text/javascript"` 대신 `type="module"`을 사용하면 `src="app.js"`를 로딩할 때 모듈을 지원한다.
 브라우져는 app.js의 코드를 읽고 모듈을 로딩하는 방식이다.
 
-<!-- TODO:  -->
-![캡쳐]()
-
 그러나 브라우져에 무관하게 모듈을 사용하고 싶다. 이제야 웹팩이 나올 차례다.
 
 ## 2. 엔트리/아웃풋
@@ -126,7 +123,7 @@ app.js부터 시작해서 math.js 파일을 찾은 뒤 하나의 파일로 만�
 $ npm install webpack webpack-cli
 ```
 
-설치를 완료하면 `node_modules/.bin` 폴더에 실행가능한 명령어가 위치해 있다.
+설치 완료하면 `node_modules/.bin` 폴더에 실행가 능한 명령어가 몇 개 위치해 있다.
 webpack과 webpack-cli가 있는데 둘 중 하나를 실행하면 된다. 
 --help 옵션으로 사용 방법을 확인해 보자.
 
@@ -139,7 +136,7 @@ $ node_modules/.bin/webpack --help
   --output, -o                  The output path and file for compilation assets
 ```
 
-`--mode`, `--entry`, `--output` 이렇게 세개 옵션만 사용하면 번들링 작업을 진행할 수 있다.
+`--mode`, `--entry`, `--output` 세 개 옵션만 사용하면 우선 번들링 할 수 있다.
 
 ```
 $ node_modules/.bin/webpack --entry ./src/app.js --mode development --output dist/main.js
@@ -150,6 +147,9 @@ $ node_modules/.bin/webpack --entry ./src/app.js --mode development --output dis
 * `--output`은 번들링 결과물을 위치할 경로다
 
 위 명령어를 실행하면 dist/main.js에 번들된 결과가 저장된다.
+
+![웹팩 번들 결과](/assets/imgs/2019/12/11/webpack-bundle-result.jpg)
+
 이 코드를 index.html에 로딩하면 번들링 전과 똑같은 결과를 만든다.
 
 index.html:
@@ -157,23 +157,20 @@ index.html:
 <script src="dist/main.js"></script>
 ```
 
-<!-- // TODO: -->
-![사진]()
-
-웹팩 옵션중 `--config` 항목을 보자.
+옵션 중 `--config` 항목을 보자.
 
 ```
 $ node_modules/.bin/webpack --help
 
   --config               Path to the config file
-                            [문자열] [기본: webpack.config.js or webpackfile.js]
+                         [문자열] [기본: webpack.config.js or webpackfile.js]
 ```
 
 이 옵션은 웹팩 설정파일의 경로를 지정할 수 있는데 기본 파일명이 webpack.config.js 혹은 webpackfile.js다. 
 webpack.config.js 파일을 만들어 방금 터미널에서 사용한 옵션을 코드로 구성해 보자. 
 
 webpack.config.js:
-```html
+```js
 const path = require('path');
 
 module.exports = {
@@ -192,7 +189,7 @@ module.exports = {
 
 * mode는 'development' 문자열을 사용했다. 
 * entry는 어플리케이션 진입점인 src/app.js로 설정한다. 
-* ouput에 설정한  "[name]"은 entry에 추가한 main이 문자열로 들어오는 방식이다. 
+* ouput에 설정한  '[name]'은 entry에 추가한 main이 문자열로 들어오는 방식이다. 
   * output.path는 절대 경로를 사용하기 때문에 path 모듈의 resolve() 함수를 사용해서 계산했다. (path는 노드 코어 모듈 중 하나로 경로를 처리하는 기능을 제공한다)
 
 웹팩 실행을 위한 NPM 커스텀 명령어를 추가한다.
@@ -241,10 +238,8 @@ webpack.config.js:
 ```js
 module: {
   rules: [{
-    test: /\.js$/,\ // .js 확장자로 끝나는 모든 파일
-    use: {
-      loader: path.resolve('./myloader.js'), // 방금 만든 로더를 적용한다 
-    }
+    test: /\.js$/, // .js 확장자로 끝나는 모든 파일
+    use: [path.resolve('./myloader.js')] // 방금 만든 로더를 적용한다 
   }],
 }
 ```
@@ -262,8 +257,8 @@ module: {
  
 이제 `npm run build`로 웹팩을 실행해 보자. 
 
-// TODO: 캡처 
-![]()
+![웹팩 번들 결과](/assets/imgs/2019/12/11/custom-loader-result.jpg)
+
 
 터미널에 'myloader가 동작함' 문자열이 찍힌다. 
 myloader() 함수가 동작한 것이다. 
@@ -282,7 +277,7 @@ module.exports = function myloader (content) {
 
 빌드후 확인하면 다음과 같이 console.log() 함수가 alert() 함수로 변경되었다.
 
-![소스 캡처]()
+![웹팩 번들 결과](/assets/imgs/2019/12/11/custom-loader-result-2.jpg)
 
 
 ## 4 자주 사용하는 로더
@@ -290,6 +285,18 @@ module.exports = function myloader (content) {
 로덕의 동작 원리를 살펴 보았으니 이제는 다양한 로더의 사용법을 익혀보자.
 
 ## 4.1 css-loader
+
+웹팩은 모든것을 모듈로 바라보기 때문에 자바스크립트 뿐만 아니라 스타일시트로 import 구문으로 불러 올수 있다.
+
+app.js:
+```js
+import './style.css'
+```
+
+style.css: 
+```css
+background-color: green;
+```
 
 CSS 파일을 자바스크립트에서 불러와 사용하려면 CSS를 모듈로 변환하는 작업이 필요하다.
 [css-loader](https://github.com/webpack-contrib/css-loader)가 그러한 역할을 하는데 우리 코드에서 CSS 파일을 모듈처럼 불러와 사용할 수 있게끔 해준다.
@@ -318,8 +325,7 @@ use.loader에 로더 경로를 설정하는 대신 배열에 로더 이름을 �
 
 빌드 한 결과 CSS코드가 자바스크립트로 변환된 것을 확인할 수 있다. 
 
-<!-- TODO:  -->
-![캡처]()
+![웹팩 번들 결과](/assets/imgs/2019/12/11/css-loader.jpg)
 
 ### 4.2 style-loader
 
@@ -350,8 +356,7 @@ modules.exports = {
 배열로 설정하면 뒤에서부터 앞으로 로더가 동작한다.  
 위 설정은 모든 .css 확장자로 끝나는 모듈을 읽어 들여 css-loader를 적용하고 그 다음 style-loader를 적용한다.
 
-<!-- TODO:  -->
-![캡쳐]()
+![웹팩 번들 결과](/assets/imgs/2019/12/11/style-loader.jpg)
 
 ### 4.3 file-loader
 
@@ -376,20 +381,19 @@ webpack.config.js:
 module.exports = {
   module: {
     rules: [{
-      test: /\.svg$/, // .svg 확장자로 마치는 모든 파일
+      test: /\.png$/, // .png 확장자로 마치는 모든 파일
       loader: 'file-loader', // 파일 로더를 적용한다
     }]
   }
 }
 ```
 
-웹펙이 .svg 파일을 발견하면 file-loader를 실행할 것이다.
+웹펙이 .png 파일을 발견하면 file-loader를 실행할 것이다.
 로더가 동작하고 나면 아웃풋에 설정한 경로로 이미지 파일을 복사된다. 
 아래 그림처럼 파일명이 해쉬코드로 변경 되었다. 
 캐쉬 갱신을 위한 처리로 보인다.
 
-<!-- TODO: 캡처 -->
-![]()
+![웹팩 번들 결과](/assets/imgs/2019/12/11/file-loader.jpg)
 
 하지만 이대로 index.html 파일을 브라우져에 로딩하면 이미지를 제대로 로딩하지 못할 것이다. 
 CSS를 로딩하면 background-image: url(bg.svg) 코드에 의해 동일 폴더에서 이미지를 찾으려고 시도할 것이다. 
@@ -404,7 +408,7 @@ module.exports = {
       test: /\.png$/, // .png 확장자로 마치는 모든 파일
       loader: 'file-loader',
       options: {
-        publicPath: './dist/' // prefix를 아웃풋 경로로 지정 
+        publicPath: './dist/', // prefix를 아웃풋 경로로 지정 
         name: '[name].[ext]?[hash]', // 파일명 형식 
       }
     }]
@@ -417,7 +421,13 @@ output에 설정한 'dist' 폴더에 이미지 파일을 옮길것이므로 publ
 파일을 사용하는 측에서는 'bg.png'를 'dist/bg.png'로 변경하여 사용할 것이다. 
 
 또한 `name` 옵션을 사용했는데 이것은 로더가 파일을 아웃풋에 복사할때 사용하는 파일 이름이다.
-기본적으로 설정된 해쉬값을 쿼리스트링으로 옮겨서 'bg.png?b08916f341839041bb8a5d07051ef13c' 형식으로 파일을 요청하도록 변경했다. 
+기본적으로 설정된 해쉬값을 쿼리스트링으로 옮겨서 'bg.png?6453a9c65953c5c28aa2130dd437bbde' 형식으로 파일을 요청하도록 변경했다. 
+
+![파일로더 결과 2](/assets/imgs/2019/12/11/file-loader-2.jpg)
+
+이렇게 스타일시트에서 불러온 파일이 동작한다.
+
+![파일로더 결과 3](/assets/imgs/2019/12/11/file-loader-3.jpg)
 
 ### 4.4 url-loader
 
@@ -428,7 +438,7 @@ output에 설정한 'dist' 폴더에 이미지 파일을 옮길것이므로 publ
 
 먼저 로더를 설치한다.
 ```
-$ npm instgall url-loader
+$ npm install url-loader
 ```
 
 그리고 웹팩 설정을 추가한다.
@@ -454,10 +464,12 @@ file-loader와 옵션 설정이 거의 비슷하고 마지막 `limit` 속성만 
 빌드 결과를 보면 small.png 파일이 문자열로 변경되어 있는 것을 확인 할 수 있다.
 반면 5kb 이상인 bg.png는 여전히 파일로 존재한다.
 
+![url 로더 결과 1](/assets/imgs/2019/12/11/url-loader-1.jpg)
+
 브라우저에서도 확인하면 스타일스트에 small.png가 Data url형태로 변환되어 있다. 
 
-<!-- TODO: 캡처 -->
-![]()
+![url 로더 결과 2](/assets/imgs/2019/12/11/url-loader-2.jpg)
+
 
 아이콘처럼 용량이 작거나 사용 빈도가 높은 이미지는 파일을 그대로 사용하기 보다는 Data URI Scheeme을 적용하기 위해 url-loader를 사용하면 좋겠다.
 
@@ -485,6 +497,8 @@ class MyPlugin {
     })
   }
 }
+
+module.exports = MyPlugin;
 ```
 
 로더와 다르게 플러그인은 클래스로 제작한다. 
@@ -509,8 +523,7 @@ module.exports = {
 
 웹팩으로 빌드해 보자.
 
-<!-- TODO: 캡처 -->
-![]()
+![myplugin](/assets/imgs/2019/12/11/myplugin.jpg)
 
 로그가 찍힌걸 보니 플러그인이 동작했다.
 
@@ -542,8 +555,7 @@ compiler.plugin() 함수의 두번재 인자 콜백함수는 emit 이벤트가 �
 번들된 결과가 compilation 객체에 들어 있는데 compilation.assets['main.js'].source() 함수로 접근할 수 있다. 
 실행하면 터미널에 번들링된 결과물을 확인할 수 있다. 
 
-<!-- TODO: 캡처 -->
-![]()
+![myplugin](/assets/imgs/2019/12/11/myplugin-2.jpg)
 
 이걸 이용해서 번들 결과 상단에 아래와 같은 배너를 추가하는 플러그인으로 만들어 보자.
 
@@ -573,8 +585,7 @@ class MyPlugin {
 
 빌드하고 결과물을 확인해 보면 다음과 같다. 
 
-<!-- TODO: 캡처 -->
-![결과]()
+![myplugin 3](/assets/imgs/2019/12/11/myplugin-3.jpg)
 
 ## 6. 자주 사용하는 플러그인
 
@@ -629,14 +640,14 @@ module.exports = function banner() {
   return (
     `commitVersion: ${commit}` +
     `Build Date: ${date}\n` +
-    `Author: ${user}`;
+    `Author: ${user}`
   );
+}
 ```
 
 빌드한뒤 플러그인이 처리한 결과는 다음과 같다.
 
-<!-- TODO: 첨부 -->
-![]()
+![BannerPlugin](/assets/imgs/2019/12/11/banner-plugin.jpg)
 
 ### 6.2 DefinePlugin
 
@@ -660,7 +671,7 @@ export default {
 ```
 
 빈 객체를 전달해도 기본적으로 넣어주는 값이 있다. 
-노드 환경정보인 process.env.NODE_ENV. 
+노드 환경정보인 process.env.NODE_ENV인데 웹팩 설정의 mode에 따라 값이 들어간다.
 development를 기본값으로 설정했기 때문에 어플리케이션 코드에서 process.env.NODE_ENV 변수로 접근하면 'development' 값을 얻을 수 있다.
 
 app.js
@@ -689,9 +700,9 @@ console.log(TWO); // 2
 ```js
 new webpack.DefinePlugin({
   VERSION: JSON.stringify('v.1.2.3')
-  PRODUCTION: JSON.stringfy(false),
-  MAX_COUNT: JSON.stringfy(999),
-  ['api.domain']: JSON.stringify('http://dev.api.domain.com'),
+  PRODUCTION: JSON.stringify(false),
+  MAX_COUNT: JSON.stringify(999),
+  'api.domain': JSON.stringify('http://dev.api.domain.com'),
 })
 ```
 
@@ -700,12 +711,12 @@ app.js:
 console.log(VERSION) // 'v.1.2.3'
 console.log(PRODUCTION) // true
 console.log(MAX_COUNT) // 999
-console.log(foo.bar) // 'http://dev.api.domain.com'
+console.log(api.domain) // 'http://dev.api.domain.com'
 ```
 
 빌드 타임에 결정된 값을 어플리이션에 전달할 때는 define-plugin을 사용하자.  
 
-// TODO: 여기까지 작업 
+<!-- TODO: 여기까지 작업 -->
 
 ### 6.3 HtmlTemplatePlugin
 
