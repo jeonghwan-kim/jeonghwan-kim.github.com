@@ -10,7 +10,7 @@ tags: webpack
 
 먼저 모듈에 대해 이야기 해보자. 
 문법 수준에서 모듈을 지원하기 시작한 것은 ES2015부터다.
-import/export 구문이 없었던 모듈 이전 상황을 살펴보는 것이 웹팩 등장 배경을 설명하는데 수얼할 것 같다.
+import/export 구문이 없었던 모듈 이전 상황을 살펴보는 것이 웹팩 등장 배경을 설명하는데 수월할 것 같다.
 
 아래 덧셈 함수를 보자.
 
@@ -25,7 +25,7 @@ sum(1, 2); // 3
 ```
 
 위 코드는 모두 하나의 HTML 파일 안에서 로딩해야만 실행된다. 
-sum.js가 로딩되면 app.js는 네임스페이스에서 'sum'을 찾은 뒤 이 함수를 실행한다.
+sum.js가 로딩되면 app.js는 이름 공간에서 'sum'을 찾은 뒤 이 함수를 실행한다.
 문제는 'sum'이 전역 공간에 노출된다는 것.
 다른 파일에서도 'sum'이란 이름을 사용한다면 충돌한다.
 
@@ -33,7 +33,7 @@ sum.js가 로딩되면 app.js는 네임스페이스에서 'sum'을 찾은 뒤 �
 
 이러한 문제를 예방하기 위해 스코프를 사용한다. 
 함수 스코프를 만들어 외부에서 안으로 접근하지 못하도록 공간을 격리하는 것이다.
-스코프 안에서는 자신만의 네임스페이스가 존재하므로 스코프 외부 코드와의 이름 충돌을 막을 수 있다. 
+스코프 안에서는 자신만의 이름 공간이 존재하므로 스코프 외부와 이름 충돌을 막을 수 있다. 
 
 sum.js:
 ```js
@@ -45,7 +45,7 @@ var math = math || {}; // math 네임스페이스
 })();
 ```
 
-같은 코드를 즉시실행함수로 둘러 쌌기 때문에 다른 파일에서는 이 공간 안으로 접근할 수 없다.
+같은 코드를 즉시실행함수로 감싸서 다른 파일에서 이 안으로 접근할 수가 없다.
 심지어 같은 파일일지라도 말이다.
 자바스크립트 함수 스코프의 특징이다. 
 'sum'이란 이름은 즉시실행함수 안에 감추어졌기 때문에 외부에서는 같은 이름을 사용해도 괜찮다. 
@@ -55,9 +55,9 @@ var math = math || {}; // math 네임스페이스
 
 이러한 방식으로 자바스크립트 모듈을 구현하는 대표적인 명세가 AMD와 CommonJS다. 
 
-**[CommonJS](http://www.commonjs.org/)**는 자바스크립트를 사용하는 모든 환경에서 모듈을 하는것이 목표다.
+**[CommonJS](http://www.commonjs.org/)**는 자바스크립트를 사용하는 모든 환경에서 모듈을 하는 것이 목표다.
 exports 키워드로 모듈을 만들고 require() 함수로 불러 들이는 방식이다. 
-대표적으로 서버 사이드 플래폼인 Nodejs에서 이를 채용한다.
+대표적으로 서버 사이드 플래폼인 Nodejs에서 이를 사용한다.
 
 math.js:
 ```js
@@ -70,13 +70,13 @@ const sum = require('./sum.js');
 sum(1, 2); // 3
 ```
 
-**[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)**(Asynchronous Module Definition)는 비동기적으로 로딩되는 환경에서 모듈시스템을 사용하는 것이 목표다.
+**[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)**(Asynchronous Module Definition)는 비동기로 로딩되는 환경에서 모듈을 사용하는 것이 목표다.
 주로 브라우져 환경이다.
 
-**[UMD](https://github.com/umdjs/umd)**(Univertial Module Definition)은 AMD 방식을 기반으로 CommonJS 방식도 지원하는 통합 형태이다. 
+**[UMD](https://github.com/umdjs/umd)**(Univertial Module Definition)는 AMD기반으로 CommonJS 방식까지 지원하는 통합 형태다. 
 
 이렇게 각 커뮤니티에서 각자의 스펙을 제안하다가 **[ES2015에서 표준 모듈 시스템](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)**을 내 놓았다. 
-지금은 바벨과 웹팩을 이용해 이러한 모듈 시스템을 사용하는 것이 널리 퍼져있다. 
+지금은 바벨과 웹팩을 이용해 모듈 시스템을 사용하는 것이 일반적이다.
 ES2015 모듈 시스템의 모습을 살펴보자.
 
 sum.js:
@@ -95,8 +95,8 @@ math.sum(1, 2); // 3
 ### 1.3 브라우져의 모듈 지원
 
 안타깝게도 모든 브라우져에서 모듈 시스템을 지원하지는 않는다. 
-인터넷 익스플로러를 포함한 몇 몇 브라우져는 여전히 모듈을 사용하지 못한다.
-가장 많이 사용하는 크롬 브라우져만 살짝 살펴보자.
+인터넷 익스플로러를 포함한 몇 몇 브라우져에서는 여전히 모듈을 사용하지 못한다.
+가장 많이 사용하는 크롬 브라우져만 잠시 살펴보자.
 ([버전 61부터 모듈시스템을 지원](https://developers.google.com/web/updates/2017/09/nic61#modules) 한다)
 
 index.html:
@@ -104,17 +104,16 @@ index.html:
 <script type="module" src="app.js"></script>
 ```
 
-`<script>` 태그로 로딩할 때 `type="text/javascript"` 대신 `type="module"`을 사용하면 `src="app.js"`를 로딩할 때 모듈을 지원한다.
-브라우져는 app.js의 코드를 읽고 모듈을 로딩하는 방식이다.
+`<script>` 태그로 로딩할 때 `type="text/javascript"` 대신 `type="module"`을 사용한다.
+app.js는 모듈을 사용할 수 있다.
 
-그러나 브라우져에 무관하게 모듈을 사용하고 싶은데...... 
-이제야 웹팩이 나올 차례다.
+그러나 브라우져에 무관하게 모듈을 사용하고 싶은데...... 이제야 웹팩이 나올 차례다.
 
 ## 2. 엔트리/아웃풋
 
-[웹팩](https://webpack.js.org/)은 여러개 파일을 하나의 파일로 만들어 주는 번들러(bundler)다. 
-하나의 시작점(entry point)으로부터 의존적인 모든 모듈을 찾아 하나의 파일에 코드를 모아서 결과물을 만들어 낸다.
-app.js부터 시작해서 math.js 파일을 찾은 뒤 하나의 파일로 만드는 방식이다.
+[웹팩](https://webpack.js.org/)은 여러개 파일을 하나의 파일로 합쳐주는 번들러(bundler)다. 
+하나의 시작점(entry point)으로부터 의존적인 모듈을 전부 찾아내서 하나의 결과물을 만들어 낸다.
+app.js부터 시작해 math.js 파일을 찾은 뒤 하나의 파일로 만드는 방식이다.
 
 간단히 웹팩으로 번들링 작업을 해보자.
 
@@ -124,7 +123,7 @@ app.js부터 시작해서 math.js 파일을 찾은 뒤 하나의 파일로 만�
 $ npm install webpack webpack-cli
 ```
 
-설치 완료하면 `node_modules/.bin` 폴더에 실행가 능한 명령어가 몇 개 위치해 있다.
+설치 완료하면 `node_modules/.bin` 폴더에 실행 가능한 명령어가 몇 개 생긴다.
 webpack과 webpack-cli가 있는데 둘 중 하나를 실행하면 된다. 
 `--help` 옵션으로 사용 방법을 확인해 보자.
 
@@ -137,14 +136,14 @@ $ node_modules/.bin/webpack --help
   --output, -o                  The output path and file for compilation assets
 ```
 
-`--mode`, `--entry`, `--output` 세 개 옵션만 사용하면 우선 번들링 할 수 있다.
+--mode, --entry, --output 세 개 옵션만 사용하면 우선 번들링 할 수 있다.
 
 ```
-$ node_modules/.bin/webpack --entry ./src/app.js --mode development --output dist/main.js
+$ node_modules/.bin/webpack --mode development --entry ./src/app.js --output dist/main.js 
 ```
 
+* `--mode`는 웹팩 실행 모드는 의미하는데 개발 버전인 development를 지정한다 
 * `--entry`는 시작점 경로를 지정하는 옵션이다
-* `--mode`는 웹팩 실행 모드는 의미하는데 개발 버전인 development를 지정
 * `--output`은 번들링 결과물을 위치할 경로다
 
 위 명령어를 실행하면 dist/main.js에 번들된 결과가 저장된다.
@@ -168,7 +167,7 @@ $ node_modules/.bin/webpack --help
 ```
 
 이 옵션은 웹팩 설정파일의 경로를 지정할 수 있는데 기본 파일명이 webpack.config.js 혹은 webpackfile.js다. 
-webpack.config.js 파일을 만들어 방금 터미널에서 사용한 옵션을 코드로 구성해 보자. 
+`webpack.config.js` 파일을 만들어 방금 터미널에서 사용한 옵션을 코드로 구성해 보자. 
 
 webpack.config.js:
 ```js
@@ -256,7 +255,6 @@ module: {
 이제 `npm run build`로 웹팩을 실행해 보자. 
 
 ![웹팩 번들 결과](/assets/imgs/2019/12/11/custom-loader-result.jpg)
-
 
 터미널에 'myloader가 동작함' 문자열이 찍힌다. 
 myloader() 함수가 동작한 것이다. 
@@ -387,7 +385,7 @@ module.exports = {
 }
 ```
 
-웹펙이 .png 파일을 발견하면 file-loader를 실행할 것이다.
+웹팩이 .png 파일을 발견하면 file-loader를 실행할 것이다.
 로더가 동작하고 나면 아웃풋에 설정한 경로로 이미지 파일을 복사된다. 
 아래 그림처럼 파일명이 해쉬코드로 변경 되었다. 
 캐쉬 갱신을 위한 처리로 보인다.
@@ -416,7 +414,7 @@ module.exports = {
 ```
 
 `publicPath` 옵션은 file-loader가 처리하는 파일을 모듈로 사용할 때 경로 앞에 추가되는 문자열이다. 
-output에 설정한 'dist' 폴더에 이미지 파일을 옮길것이므로 publicPath 값을 이것으로로 지정했다. 
+output에 설정한 'dist' 폴더에 이미지 파일을 옮길 것이므로 publicPath 값을 이것으로로 지정했다. 
 파일을 사용하는 측에서는 'bg.png'를 'dist/bg.png'로 변경하여 사용할 것이다. 
 
 또한 `name` 옵션을 사용했는데 이것은 로더가 파일을 아웃풋에 복사할때 사용하는 파일 이름이다.
@@ -456,7 +454,7 @@ webpack.config.js:
 }
 ```
 
-file-loader와 옵션 설정이 거의 비슷하고 마지막 `limit` 속성만 추가 되었다. 
+file-loader와 옵션 설정이 거의 비슷하고 마지막 `limit` 속성만 추가했다. 
 모듈로 사용한 파일중 크기가 5kb 미만인 파일만 url-loader를 적용하는 설정이다. 
 만약 이보다 크면 file-loader가 처리하는데 옵션 중 [fallback](https://github.com/webpack-contrib/url-loader#options) 기본값이 file-loader이기 때문이다. 
 
@@ -671,7 +669,7 @@ export default {
 ```
 
 빈 객체를 전달해도 기본적으로 넣어주는 값이 있다. 
-노드 환경정보인 process.env.NODE_ENV인데 웹팩 설정의 mode에 따라 값이 들어간다.
+노드 환경정보인 process.env.NODE_ENV 인데 웹팩 설정의 mode에 따라 값이 들어간다.
 development를 기본값으로 설정했기 때문에 어플리케이션 코드에서 process.env.NODE_ENV 변수로 접근하면 'development' 값을 얻을 수 있다.
 
 app.js
@@ -687,7 +685,7 @@ new webpack.DefinePlugin({
 })
 ```
 
-TWO라는 전역 변수에 '1+1' 이란 코드 조각을 넣었다.
+TWO라는 전역 변수에 `1+1` 이란 코드 조각을 넣었다.
 실제 어플리케이션 코드에서 이것을 출력해보면 2가 나올 것이다.
 
 app.js
@@ -713,7 +711,7 @@ console.log(MAX_COUNT) // 999
 console.log(api.domain) // 'http://dev.api.domain.com'
 ```
 
-빌드 타임에 결정된 값을 어플리이션에 전달할 때는 define-plugin을 사용하자.  
+빌드 타임에 결정된 값을 어플리이션에 전달할 때는 이 플러그인을 사용하자.  
 
 ### 6.3 HtmlTemplatePlugin
 
@@ -787,6 +785,7 @@ new HtmlWebpackPlugin({
 
 환경변수에 따라 minify 옵션을 켰다.
 `NOE_ENV=production npm run build`로 빌드하면 아래처럼 코드가 압축된다.
+물론 주석도 제거 되었다.
 
 ![HtmlTemplatePlugin 2](/assets/imgs/2019/12/11/html-template-plugin-2.jpg)
 
@@ -808,10 +807,9 @@ new HtmlWebpackPlugin({
 
 [CleanWebpackPlugin](https://github.com/johnagan/clean-webpack-plugin)은 빌드 이전 결과물을 제거하는 플러그인이다. 
 빌드 결과물은 아웃풋 경로에 모이는데 과거 파일이 남아 있을수 있다. 
-이전 빌드내용이 덮여 씌여지면 상관없지만 그렇지 않은경우는 결과에 여전히 남아있을 수 있다. 
+이전 빌드내용이 덮여 씌여지면 상관없지만 그렇지 않으면 아웃풋 폴더에 여전히 남아 있을 수 있다. 
 
-가령 아웃풋 폴더에 foo.js 파일을 임의로 만든뒤 빌드해 보자.
-파일이 남아있다.
+임시로 아웃풋 폴더에 foo.js 파일을 만든 후 다시 빌드해 보자...... 파일이 남아 있다.
 
 ![CleanWebpackPlugin](/assets/imgs/2019/12/11/clean-webpack-plugin.jpg)
 
@@ -835,16 +833,17 @@ module.exports = {
 }
 ```
 
-빌드 결과를 확인하면 foo.js가 사라진 것을 알 수 있다.
+빌드 결과 foo.js가 깨끗히 사라졌다. 
+아웃풋 폴더인 dist 폴더가 모두 삭제된후 결과물이 생성되었기 때문이다.
 
 ### 6.5 MiniCssExtractPlugin
 
 스타일시트가 점점 많아지면 하나의 자바스크립트 결과물로 만드는 것이 부담일 수 있다.
-번들 결과에서 스트일스트 코드만 뽑아서 별도의 CSS 파일로 만들어 역할에 따라 파일을 분리하는 것이 좋다.
-브라우져에서 큰 파일 하나를 내려받는것 보다, 여러개의 작은 파일을 동시에 다운로드하는 것이 더 좋은 성능을 내기 때문이다. 
+번들 결과에서 스트일시트 코드만 뽑아서 별도의 CSS 파일로 만들어 역할에 따라 파일을 분리하는 것이 좋다.
+브라우져에서 큰 파일 하나를 내려받는 것 보다, 여러 개의 작은 파일을 동시에 다운로드하는 것이 더 빠르다.
 
 개발 환경에서는 CSS를 하나의 모듈로 처리해도 상관없지만 프로덕션 환경에서는 분리하는 것이 효과적이다. 
-[MiniCssExtractPlugin](https://github.com/webpack-contrib/mini-css-extract-plugin)이 CSS를 별로 파일로 뽑아내는 플러그인이다. 
+[MiniCssExtractPlugin](https://github.com/webpack-contrib/mini-css-extract-plugin)은 CSS를 별로 파일로 뽑아내는 플러그인이다. 
 
 먼저 패키지를 설치한다.
 
@@ -869,7 +868,7 @@ module.exports = {
 }
 ```
 프로덕션 환경일 경우만 이 플러그인을 추가했다. 
-`filename`으로 CSS 파일이 만들어질 것이다.
+`filename`에 설정한 값으로 아웃풋 경로에 CSS 파일이 생성될 것이다.
 
 개발 환경에서는 css-loader에의해 자바스크립트 모듈로 변경된 스타일시트를 적용하기위해 style-loader를 사용했다.
 반면 프로덕션 환경에서는 별도의 CSS 파일으로 추출하는 플러그인을 적용했으므로 다른 로더가 필요하다.
