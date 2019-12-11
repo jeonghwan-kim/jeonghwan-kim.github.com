@@ -3,16 +3,16 @@ title: '프론트엔드 개발환경의 이해: 웹팩(기본)'
 layout: post
 summary: ''
 category: series
-tags: 
+tags: webpack
 ---
 
 ## 1. 배경 
 
 먼저 모듈에 대해 이야기 해보자. 
 문법 수준에서 모듈을 지원하기 시작한 것은 ES2015부터다.
-import와 from 구문이 없었던 모듈 이전 상황을 살펴보는 것이 웹팩 등장 배경을 설명하는데 편할 것 같다.
+import/export 구문이 없었던 모듈 이전 상황을 살펴보는 것이 웹팩 등장 배경을 설명하는데 수얼할 것 같다.
 
-아래 덧셈 함수를 보자 
+아래 덧셈 함수를 보자.
 
 sum.js:
 ```js
@@ -24,16 +24,16 @@ app.js:
 sum(1, 2); // 3
 ```
 
-위 코드는 모두 하나의 html 파일에 로딩해야 실행된다. 
-sum.js가 로딩되면 app.js는 네임스페이스에서 'sum'을 찾은 뒤 함수를 실행한다.
+위 코드는 모두 하나의 HTML 파일 안에서 로딩해야만 실행된다. 
+sum.js가 로딩되면 app.js는 네임스페이스에서 'sum'을 찾은 뒤 이 함수를 실행한다.
 문제는 'sum'이 전역 공간에 노출된다는 것.
-다른 파일에서도 'sum'이란 이름을 사용한다면 충돌할 가능성이 있다.
+다른 파일에서도 'sum'이란 이름을 사용한다면 충돌한다.
 
 ### 1.1 IEFF 방식의 모듈
 
 이러한 문제를 예방하기 위해 스코프를 사용한다. 
-함수 스코프를 만들어 외부에서 스코프 안으로 접근하지 못하도록 공간을 격리한다. 
-그러면 외부 코드와 네임스페이스 충돌을 막을 수 있다. 
+함수 스코프를 만들어 외부에서 안으로 접근하지 못하도록 공간을 격리하는 것이다.
+스코프 안에서는 자신만의 네임스페이스가 존재하므로 스코프 외부 코드와의 이름 충돌을 막을 수 있다. 
 
 sum.js:
 ```js
@@ -45,17 +45,17 @@ var math = math || {}; // math 네임스페이스
 })();
 ```
 
-같은 코드를 즉시실행함수로 둘러 쌌기 때문에 다른 파일에서는 이 안으로 접근할 수 없다.
+같은 코드를 즉시실행함수로 둘러 쌌기 때문에 다른 파일에서는 이 공간 안으로 접근할 수 없다.
 심지어 같은 파일일지라도 말이다.
 자바스크립트 함수 스코프의 특징이다. 
-'sum'이란 이름은 즉시실행함수 안에 감추어졌기 때문에 외부에서는 동일한 이름을 사용해도 괜찮다. 
-대신 전역에 등록한 'math'라는 이름 공간만 잘 유지하면 된다.
+'sum'이란 이름은 즉시실행함수 안에 감추어졌기 때문에 외부에서는 같은 이름을 사용해도 괜찮다. 
+전역에 등록한 'math'라는 이름 공간만 잘 활용하면 된다.
 
 ### 1.2 다양한 모듈 스펙 
 
 이러한 방식으로 자바스크립트 모듈을 구현하는 대표적인 명세가 AMD와 CommonJS다. 
 
-**CommonJS**는 자바스크립트를 사용하는 모든 환경에서 모듈을 하는것이 목표다.
+**[CommonJS](http://www.commonjs.org/)**는 자바스크립트를 사용하는 모든 환경에서 모듈을 하는것이 목표다.
 exports 키워드로 모듈을 만들고 require() 함수로 불러 들이는 방식이다. 
 대표적으로 서버 사이드 플래폼인 Nodejs에서 이를 채용한다.
 
@@ -70,12 +70,12 @@ const sum = require('./sum.js');
 sum(1, 2); // 3
 ```
 
-**AMD**(Asynchronous Module Definition)는 비동기적으로 로딩되는 환경에서 모듈시스템을 사용하는 것이 목표다.
+**[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)**(Asynchronous Module Definition)는 비동기적으로 로딩되는 환경에서 모듈시스템을 사용하는 것이 목표다.
 주로 브라우져 환경이다.
 
-**UMD**(Univertial Module Definition)은 AMD 방식을 기반으로 CommonJS 방식도 지원하는 통합 형태이다. 
+**[UMD](https://github.com/umdjs/umd)**(Univertial Module Definition)은 AMD 방식을 기반으로 CommonJS 방식도 지원하는 통합 형태이다. 
 
-이렇게 각 커뮤니티에서 각자의 스펙을 제안하다가 **ES2015에서 표준 모듈 시스템**을 내 놓았다. 
+이렇게 각 커뮤니티에서 각자의 스펙을 제안하다가 **[ES2015에서 표준 모듈 시스템](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)**을 내 놓았다. 
 지금은 바벨과 웹팩을 이용해 이러한 모듈 시스템을 사용하는 것이 널리 퍼져있다. 
 ES2015 모듈 시스템의 모습을 살펴보자.
 
@@ -94,8 +94,8 @@ math.sum(1, 2); // 3
 
 ### 1.3 브라우져의 모듈 지원
 
-그러나 안타깝게도 모든 브라우져에서 모듈 시스템을 지원하지는 않는다. 
-아직은 인터넷 익스플로러를 포함한 몇몇 브라우져는 지원하지 않는다. 
+안타깝게도 모든 브라우져에서 모듈 시스템을 지원하지는 않는다. 
+인터넷 익스플로러를 포함한 몇 몇 브라우져는 여전히 모듈을 사용하지 못한다.
 가장 많이 사용하는 크롬 브라우져만 살짝 살펴보자.
 ([버전 61부터 모듈시스템을 지원](https://developers.google.com/web/updates/2017/09/nic61#modules) 한다)
 
@@ -107,11 +107,12 @@ index.html:
 `<script>` 태그로 로딩할 때 `type="text/javascript"` 대신 `type="module"`을 사용하면 `src="app.js"`를 로딩할 때 모듈을 지원한다.
 브라우져는 app.js의 코드를 읽고 모듈을 로딩하는 방식이다.
 
-그러나 브라우져에 무관하게 모듈을 사용하고 싶다. 이제야 웹팩이 나올 차례다.
+그러나 브라우져에 무관하게 모듈을 사용하고 싶은데...... 
+이제야 웹팩이 나올 차례다.
 
 ## 2. 엔트리/아웃풋
 
-웹팩은 여러개 파일을 하나의 파일로 만들어 주는 번들러(bundler)다. 
+[웹팩](https://webpack.js.org/)은 여러개 파일을 하나의 파일로 만들어 주는 번들러(bundler)다. 
 하나의 시작점(entry point)으로부터 의존적인 모든 모듈을 찾아 하나의 파일에 코드를 모아서 결과물을 만들어 낸다.
 app.js부터 시작해서 math.js 파일을 찾은 뒤 하나의 파일로 만드는 방식이다.
 
@@ -125,7 +126,7 @@ $ npm install webpack webpack-cli
 
 설치 완료하면 `node_modules/.bin` 폴더에 실행가 능한 명령어가 몇 개 위치해 있다.
 webpack과 webpack-cli가 있는데 둘 중 하나를 실행하면 된다. 
---help 옵션으로 사용 방법을 확인해 보자.
+`--help` 옵션으로 사용 방법을 확인해 보자.
 
 ```
 $ node_modules/.bin/webpack --help
@@ -187,10 +188,10 @@ module.exports = {
 
 터미널에서 사용한 옵션인 mode, entry, ouput을 설정한다. 
 
-* mode는 'development' 문자열을 사용했다. 
-* entry는 어플리케이션 진입점인 src/app.js로 설정한다. 
-* ouput에 설정한  '[name]'은 entry에 추가한 main이 문자열로 들어오는 방식이다. 
-  * output.path는 절대 경로를 사용하기 때문에 path 모듈의 resolve() 함수를 사용해서 계산했다. (path는 노드 코어 모듈 중 하나로 경로를 처리하는 기능을 제공한다)
+* `mode`는 'development' 문자열을 사용했다. 
+* `entry`는 어플리케이션 진입점인 src/app.js로 설정한다. 
+* `ouput`에 설정한  '[name]'은 entry에 추가한 main이 문자열로 들어오는 방식이다. 
+  * `output.path`는 절대 경로를 사용하기 때문에 path 모듈의 resolve() 함수를 사용해서 계산했다. (path는 노드 코어 모듈 중 하나로 경로를 처리하는 기능을 제공한다)
 
 웹팩 실행을 위한 NPM 커스텀 명령어를 추가한다.
 
@@ -239,20 +240,17 @@ webpack.config.js:
 module: {
   rules: [{
     test: /\.js$/, // .js 확장자로 끝나는 모든 파일
-    use: [path.resolve('./myloader.js')] // 방금 만든 로더를 적용한다 
+    loader: [path.resolve('./myloader.js')] // 방금 만든 로더를 적용한다 
   }],
 }
 ```
 
-`module.rules` 배열에 모듈을 추가하는데 `test`와 `use`로 구성된 객체를 전달한다.
-
-* `test`: 로딩할 파일을 지정
-* `use`: 적용할 로더를 설정
+`module.rules` 배열에 모듈을 추가하는데 test와 use로 구성된 객체를 전달한다.
 
 `test`에는 로딩에 적용할 파일을 지정한다. 
 파일명 뿐만아니라 파일 패턴을 정규표현식으로 지정할수 있는데 위 코드는 .js 확장자를 갖는 모든 파일을 처리하겠다는 의미다.
 
-`use`에는 이 패턴에 해당하는 파일에 적용할 로더를 설정하는 부분이다. 
+`loader`에는 이 패턴에 해당하는 파일에 적용할 로더를 설정하는 부분이다. 
 방금 만든 myloader 함수의 경로를 지정한다. 
  
 이제 `npm run build`로 웹팩을 실행해 보자. 
@@ -278,7 +276,6 @@ module.exports = function myloader (content) {
 빌드후 확인하면 다음과 같이 console.log() 함수가 alert() 함수로 변경되었다.
 
 ![웹팩 번들 결과](/assets/imgs/2019/12/11/custom-loader-result-2.jpg)
-
 
 ## 4 자주 사용하는 로더
 
@@ -311,12 +308,13 @@ $ npm install css-loader
 
 webpack.config.js:
 ```js
-modules.exports = {
+module.exports = {
   module: {
     rules: [{
       test: /\.css$/, // .css 확장자로 끝나는 모든 파일 
       use: ['css-loader'], // css-loader를 적용한다 
     ]}
+  }
 }
 ```
 
@@ -344,12 +342,13 @@ $ npm install style-loader
 
 package.json:
 ```js
-modules.exports = {
+module.exports = {
   module: {
     rules: [{
       test: /\.css$/,
       use: ['style-loader', 'css-loader'], // style-loader를 앞에 추가한다 
     ]}
+  }
 }
 ```
 
@@ -577,7 +576,8 @@ class MyPlugin {
  
       callback();
     })
-
+  }
+}
 ```
 
 번들 소스를 얻어오는 함수 source()를 재정의 했다. 
@@ -678,7 +678,6 @@ app.js
 ```js
 console.log(process.env.NODE_ENV) // 'development'
 ```
-
 
 이 외에도 웹팩 컴파일 시간에 결정되는 값을 전역 상수 문자열로 어플리케이션에 주입할 수 있다.
 
@@ -816,7 +815,6 @@ new HtmlWebpackPlugin({
 
 ![CleanWebpackPlugin](/assets/imgs/2019/12/11/clean-webpack-plugin.jpg)
 
-
 이러한 현상을 CleanWebpackPlugin으로 해결해 보자.
 먼저 패키지를 설치한다.
 
@@ -884,7 +882,7 @@ module.exports = {
       use: [
         process.env.NODE_ENV === 'production' 
         ? MiniCssExtractPlugin.loader  // 프로덕션 환경
-        : 'styel-loader',  // 개발 환경
+        : 'style-loader',  // 개발 환경
         'css-loader'
       ],
     }]
@@ -903,15 +901,9 @@ dist/main.css가 생성되었고 index.html에 이 파일을 로딩하는 코드
 ## 7. 정리
 
 ECMAScript2015 이전에는 모듈을 만들기 위해 즉시실행함수와 네임스페이스 패턴을 사용했다. 
-이후 각 커뮤니티에서 모듈 시스템 스펙이 나왔고 웹팩은 ECMAScript2015 모듈시스템을 쉽게 사요하도록 돕는 역할을 한다.
+이후 각 커뮤니티에서 모듈 시스템 스펙이 나왔고 웹팩은 ECMAScript2015 모듈시스템을 쉽게 사용하도록 돕는 역할을 한다.
 
-엔트리포인트를 시작으로 연결된 모든 모듈을 하나로 합쳐서 결과물을 만드는 것이 웹팩의 역할이다.
-자바스크립트 모듈 뿐만 아니라 스타일시트, 이미지 파일까지도 모듈로 제공해 주기 때문에 일관적으로 개발할 수있다.
+엔트리포인트를 시작으로 연결되어 었는 모든 모듈을 하나로 합쳐서 결과물을 만드는 것이 웹팩의 역할이다.
+자바스크립트 모듈 뿐만 아니라 스타일시트, 이미지 파일까지도 모듈로 제공해 주기 때문에 일관적으로 개발할 수 있다.
 
 웹팩의 로더와 플러그인의 원리에 대해 살펴보았고 자주 사용하는 것들의 기본적인 사용법에 대해 익혔다.
-
-### 7.1 참고
-
-* https://d2.naver.com/helloworld/12864
-* https://webpack.js.org
-
