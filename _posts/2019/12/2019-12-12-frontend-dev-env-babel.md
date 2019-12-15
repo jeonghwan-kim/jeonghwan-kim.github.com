@@ -409,18 +409,24 @@ $ npx babel app.js
 new Promise();
 ```
 
-env 프리셋으로 변환했지만 결과는 그대로다. 
-분면 target에 ie 11을 설정했지만 인터넷 익스플로러는 프라미스를 해석하지 못하고 에러를 던진다.
+env 프리셋으로 변환을 시도했지만 Promise 그대로 변함이 없다.
+target에 ie 11을 설정한 트랜트파일이지만 인터넷 익스플로러는 여전히 프라미스를 해석하지 못하고 에러를 던진다.
 
 ![promise-error-in-ie]()
 
-브라우져는 Promise 객체를 모르기 때문에 함수 호출을 시도할 것이다.
+프라미스 객체를 모르는 브라우져는 Promise() 구문으로 보고 함수 호출을 시도할 것이다.
 스코프 어디에도 Promise란 이름이 없기 때문에 타입에러를 발생하고 프로그램이 죽은 것이다.
 
 플러그인이 Promise도 ECMAScript5 버전으로 변환할 것으로 기대했는데 예상과 다르다.
-이유는... 
+바벨은 ECMAScript2015+를 ECMASCript5 버전으로 변환할 수 있는 것만 변환한다. 
+그렇지 못한 것들은 "폴리필"이라고 부르는 코드조각으로 해결한다. 
 
-이처럼 ...을 폴리필이라고 한다. 바벨 플러그인은 이처럼 ...을 처리하지 못하다. 이런 것을 해결하는 것을  ‘폴리필'이라고 한다. 
+가량 ECMAScript2015 블록 스코핑은 ECMASCript5 함수 스코핑으로 대체할 수 있다.
+화살표 함수도 일반 함수로 대체할수 있다. 
+이런 것들은 바벨이 변환해서 ECMAScript5 버전으로 결과물을 만든다. 
+
+반면 Promise는 ECMASCript5 버전으로 대체할수 없다. 
+다만 ECMASCript5 버전으로 구현할 수는 있다(참고: https://github.com/zloirock/core-js/blob/master/packages/core-js/modules/es.promise.js). 
 
 env 프리셋은 폴리필을 지정할 수 있는 옵션을 제공한다.
 
@@ -441,10 +447,12 @@ module.exports = {
 };
 ```
 
-`useBuiltIns`는 어떤방식으로 폴리 필을 사용할지 설정하는 옵션이다. "usage" , "entry", false 세 가지 값을 사용하는데 기본값이 false 이므로 폴리필이 동작하지 않았던 것이다. 
+`useBuiltIns`는 어떤 방식으로 폴리필을 사용할지 설정하는 옵션이다. 
+"usage" , "entry", false 세 가지 값을 사용하는데 기본값이 false 이므로 폴리필이 동작하지 않았던 것이다. 
 반면 usage나 entry를 설정하면 폴리필 패키지중 core-js를 모듈로 가져온다(이전에 사용하던 babel/polyfile은 바벨 7.4.0에서 디프리케이트 됨).
 
-corejs 모듈의 버전도 명시하는데 기본값이 2다. 
+corejs 모듈의 버전도 명시하는데 기본값은 2인데 버전 3과 차이는 확실히 잘 모르겠다. 
+이럴 땐 그냥 기본값을 사용하는 편이다.
 
 자세한 폴리필 옵션은 바벨 문서의 [useBuiltIns](https://babeljs.io/docs/en/babel-preset-env#usebuiltins)와 [corejs](https://babeljs.io/docs/en/babel-preset-env#corejs) 섹션을 참고하자.
 
@@ -460,7 +468,7 @@ require("core-js/modules/es6.object.to-string");
 new Promise();
 ```
 
-core-js 패키지 중에 프라미스 모듈을 가져오는 임포트 구문이 상단에 추가되었다.
+core-js 패키지로부터 프라미스 모듈을 가져오는 임포트 구문이 상단에 추가되었다.
 이제는 인터넷 익스플로러 위에서 안전하게 돌아가는 코드가 된 것이다.
 
 ## 6. 웹팩으로 통합
@@ -502,8 +510,6 @@ module.exports = {
 
 이러한 프러그인들을 모아놓은 세트를 프리셋이라고 하는데 ECMAScript+ 환경은 env 프리셋을 사용한다.
 
-폴리
+바벨이 변환하지 못하는 코드는 폴리필이라 부르는 코드조각을 불러와 결과물에 합쳐서 해결한다.
 
 babel-loader 패키지를 이용해서 웹팩과 통합하여 사용하면 훨씬 단순하고 자동화된 프론트엔드 개발환경을 갖출 수 있다.
-
-### 7.1 참고 
