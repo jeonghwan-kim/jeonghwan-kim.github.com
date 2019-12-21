@@ -8,14 +8,15 @@ tags:
 
 ## 1. 배경
 
-오래된 스웨터의 보푸라기 같은 것을 린트(Lint)라고 부른다. 보푸라기가 많으면 옷이 보기 좋지 않은데 코드에서도 이런 보프라기가 있다.
-들여쓰기를 맞추지 않을 경우. 괄호를 열지 않은 경우. 이런 것은 코드를 읽기 어렵게 만든다.
-보프라기 있는 옷을 입을 수는 있듯이 이러한 코드도 어플리케이션으로 동작한다.
-하지만 보기 좋지 않은 코드는 가독성이 떨어지고 점점 유지보수하기 어려운 애물단지가 되어버리기 일쑤다.
+오래된 스웨터의 보푸라기 같은 것을 린트(Lint)라고 부른다. 
+보푸라기가 많으면 옷이 보기 좋지 않은데 코드에서도 이런 보프라기가 있다.
+들여쓰기를 맞추지 않은 경우, 선언한 변수를 사용하지 않은 경우...... 
+보프라기 있는 옷을 입을 수는 있듯이 이러한 코드로 만든 어플리케이션도 동작은 한다.
+그러나 코드의 가독성이 떨어지고 점점 유지보수하기 어려운 애물단지가 되어버리기 일쑤다.
 
-린트 롤러(Lint roller)가 보푸라기를 코드의 오류나 버그, 스타일 따위를 점검하는 것을 [린트(Lint)](https://en.wikipedia.org/wiki/Lint_(software)) 혹은 린터(Linter)라고 부른다.
+보푸라기를 제거하는 린트 롤러(Lint roller)처럼 코드의 오류나 버그, 스타일 따위를 점검하는 것을 [린트(Lint) 혹은 린터(Linter)](https://en.wikipedia.org/wiki/Lint_(software))라고 부른다.
 
-### 1.1 린터가 필요한 상황 
+### 1.1 린트가 필요한 상황 
 
 아래 코드 유심히 보자. 
 console.log() 함수를 실행하고 다음 줄에서 즉시 실행함수를 실행하려는 코드다. 
@@ -26,14 +27,13 @@ console.log()
 ```
 
 하지만 이 코드를 브라우져에서 실행해 보면 TypeError가 발생한다.
-브라우져는 코드에 세미콜론를 자동으로 넣는 과정(ASI)을 수행하는데, 위와 같은 경우는 우리의 의도대로 해석하지 못하고 아래 코드로 해석한다.
-([Rules of Automatic Semicolon Insertion](http://www.ecma-international.org/ecma-262/7.0/index.html#sec-rules-of-automatic-semicolon-insertion)을 참고)
+브라우져는 코드에 세미콜론를 자동으로 넣는 과정(ASI)을 수행하는데, 위와 같은 경우는 우리의 의도대로 해석하지 못하고 아래 코드로 해석한다([Rules of Automatic Semicolon Insertion](http://www.ecma-international.org/ecma-262/7.0/index.html#sec-rules-of-automatic-semicolon-insertion)을 참고).
 
 ```js
 console.log()(function(){})();
 ```
 console.log()가 반환하는 값이 함수가 아닌데 함수 호출을 해서 타입에러가 발생한 것이다.
-모든 문장에 세미콜론을 붙였다면 혹은 즉시 함수호출 앞에 세미콜론을 붙였다면 예방할 수 있는 버그다.
+모든 문장에 세미콜론을 붙였다면, 혹은 즉시 함수호출 앞에 세미콜론을 붙였다면 예방할 수 있는 버그다.
 
 린트는 코드의 가독성을 높이는 것 뿐만 아니라 동적 언어 특성인 런타임에 가서야만 버그를 확인할수 있는 단점을 미리 찾아주는 역할도 한다.
 
@@ -70,7 +70,7 @@ npm i -D eslint
 
 ```js
 // .eslintrc.js
-module.export = {}
+module.exports = {}
 ```
 
 빈 객체로 아무런 설정 없이 모듈만 만들었다.
@@ -92,7 +92,7 @@ ESLint는 검사 규칙을 미리 정해 놓았다.
 
 ```js
 // .eslintrc.js
-modules.exports = {
+module.exports = {
   rules: {
     "no-unexpected-multiline": 2
   }
@@ -107,6 +107,8 @@ modules.exports = {
 ```
 npx eslint app.js
 2:1 error  Unexpected newline between function and ( of function call  no-unexpected-multiline
+
+✖ 1 problem (1 error, 0 warnings)
 ```
 
 예상대로 에러가 발생하고 코드 위치와 위반한 규칙명을 알려준다.
@@ -133,7 +135,7 @@ console.log();; // 세미콜론 연속 두 개 붙임
 
 ```js
 // .eslintrc.js
-exports.module = {
+module.exports = {
   rules: {
     "no-extra-semi": 2, 
   }
@@ -146,7 +148,7 @@ exports.module = {
 npx eslint app.js
 1:15  error  Unnecessary semicolon  no-extra-semi
 
-✖ 2 problems (2 errors, 0 warnings)
+✖ 1 problem (1 error, 0 warnings)
   1 error and 0 warnings potentially fixable with the `--fix` option.
 ```
 
@@ -262,11 +264,6 @@ console.log('----------------매 우 긴 문 장 입 니 다 80자가 넘 는 �
 ESLint는 [max-len](https://eslint.org/docs/rules/max-len) 규칙을 이용해 위 코드를 검사만 한다.
 수정하는 것은 개발자의 몫이다.
 
-```
-npx eslint app.js --fix
-
-```
-
 반면 프리티어는 어떻게 수정해야할지 알고 있기 때문에 아래처럼 코드를 다시 작성한다.
 
 ```js
@@ -307,20 +304,78 @@ foo(
 [eslint-config-prettier](https://github.com/prettier/eslint-config-prettier) 는 프리티어와 충돌하는 ESLint 규칙을 끄는 역할을 한다. 
 둘 다 사용하는 경우 규칙이 충돌하기 때문이다.
 
-예를 들어 airbnb 스타일로 ESLint를 사용하면 세미콜론을 강제한다. 이것은 프리티터어도 마찬가지이다. 
+패키지를 설치한뒤,
+
+```
+npm i -D eslint-config-prettier
+```
+
+설정파일의 extends 배열에 추가하다.
+
+```js
+// .eslintrc.js
+{
+  extends: [
+    "eslint-config-prettier"
+  ]
+}
+```
+
+예를 들어 ESLint는 중복 세미콜론 사용을 검사한다. 이것을 프리티어도 마찬가지다.
 따라서 어느 한쪽에서는 꺼야하는데 eslint-config-prettier를 extends 하면 중복되는 ESLint 규칙을 비활성화 한다. 
 
-그럼 ESLint는 중복된 포매팅 규칙을 프리티어에게 맞기고 나머지 코드 품질에 관한 검사만 한다. 
-따라서 아래처럼 두 명령어를 함께 실행해야 한다.
-
-```
-npx eslint && npx prettier
+```js
+var foo = '' // 사용하지 않은 변수. ESLint가 검사
+console.log();;;;;;; // 중복 세미콜론 사용. 프리티어가 자동 수정
 ```
 
-[eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)는 프리티어 규칙을 ESLint 규칙으로 추가하는 플러그인이다. 프리티어의 모든 규칙이 ESLint로 들어오기 때문에 ESLint만 실행하면 된다.
+ESLint는 중복된 포매팅 규칙을 프리티어에게 맞기고 나머지 코드 품질에 관한 검사만 한다. 
+따라서 아래처럼 두 개를 동시에 실행해서 코드를 검사한다.
 
 ```
-npx eslint
+npx prettier app.js --write && npx eslint app.js --fix
+
+1:5  error  'foo' is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (1 error, 0 warnings)
+```
+
+프리터에서 의해 코드가 아래과 같이 포매팅 되었고 
+
+```js
+var foo = "";
+console.log();
+```
+
+Eslint에 의해 코드 품질과 관련된 오류(no-unused-vars)를 리포팅한다.
+
+한편 [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)는 프리티어 규칙을 ESLint 규칙으로 추가하는 플러그인이다. 프리티어의 모든 규칙이 ESLint로 들어오기 때문에 ESLint만 실행하면 된다.
+
+패키지를 설치하고 
+
+```
+npm i -D eslint-plugin-prettier
+```
+
+설정 파일에서 pulugins와 rules에 설정을 추가한다.
+
+```js
+// .eslintrc.js
+{
+  plugins: [
+    "prettier"
+  ],
+  rules: {
+    "prettier/prettier": "error"
+  },
+}
+```
+
+프리티어의 모든 규칙을 ESLint 규칙으로 가져온 설정이다.
+이제는 ESLint만 실행해도 프리티어 포매팅 기능을 가져갈 수 있다.
+
+```
+npx eslint app.js --fix
 ```
 
 프리티어는 이 두 패키지를 함께 사용하는 [단순한 설정](https://prettier.io/docs/en/integrating-with-linters.html)을 제공하는데 아래 설정을 추가하면 된다.
@@ -335,15 +390,15 @@ npx eslint
 ## 4. 자동화
 
 린트는 코딩할 때마다 수시로 싱행해야하는데 이러한 일은 자동화 하는 것이 좋다.
-깃 훅을 사용하는 방법과 IDE의 확장 도구로를 사용하는 방법을 각각 소개한다.
+깃 훅을 사용하는 방법과 에디터 확장 도구로를 사용하는 방법을 각각 소개한다.
 
 ### 4.1 변경한 내용만 검사
 
 소스 트래킹 도구로 깃을 사용한다면 깃 훅을 이용하는 것이 좋다. 
 커밋 전, 푸시 전 등 깃 커맨드 실행 시점에 끼여들수 있는 훅을 제공한다. 
-깃 훅은 버전 0부터 지원하기 때문에 설치된 버전을 확인하고 최신 버전으로 유지하자.
 
 [husky](https://github.com/typicode/husky)는 깃 훅을 쉽게 사용할 수 있는 도구다. 
+(Git 2.13.0 이상 버전에서 지원한다.)
 커밋 메세지 작성전에 끼어들어 린트로 코드 검사하는 작업을 추가하면 좋겠다. 
 
 먼저 패키지를 다운로드 한다.
@@ -354,11 +409,11 @@ npm i husky
 
 허스키는 패키지 파일에 설정을 추가한다.
 
+package.json:
 ```json
-//  package.json
 {
-  "hooks": {
-    "husky": {
+  "husky": {
+    "hooks": {
       "pre-commit": "echo \"이것은 커밋전에 출력됨\""
     }
   }
@@ -377,8 +432,8 @@ husky > pre-commit (node v13.1.0)
 pre-commit에 설정한 내용이 출력되었다. 
 출력 대신에 린트 명령어로 대체하면 커밋 메세지 작성 전에 린트를 수행할 수 있다.
 
+package.json:
 ```json
-// package.json
 {
   "husky": {
     "hooks": {
@@ -404,8 +459,8 @@ npm i lint-staged
 
 패키지 파일에 설정을 추가한다.
 
+package.json:
 ```json
-// package.json
 {
   "lint-staged": {
     "*.js": "eslint --fix"
@@ -417,31 +472,35 @@ npm i lint-staged
 
 pre-commit 훅도 아래처럼 변경한다.
 
+package.json:
 ```json
-"husky": {
+{
+  "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
+}
 ```
 
 커밋 메세지 작성전에 lint-staged를 실행할 것이다.
 
 이제 커밋하면 모든 파일을 검사하는 것이 아니라, 변경되거나 추가된 파일만 검사한다. 
 
-### 4.2 에디터 통합
+### 4.2 에디터 확장도구 
 
 코딩할때 실시간으로 검사하는 방법도 있다. 
 vs-code의 eslint와 prettier 익스텐션이 그러한 기능을 제공한다.
+우리는 프리티어 규칙을 eslint와 통합했기 때문에 eslit 익스텐션을 사용해 보겠다.
 
 먼저 [eslint 익스텐션](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 부터 설치해 보자. 
 
-![eslint 익스텐션 설치]()
+![eslint 익스텐션 설치](/assets/imgs/2019/12/21/eslint-extention.jpg)
 
 설치를 마친 뒤 eslint를 활성화 설정을 추가한다.
 
+.vscode/settings.json:
 ```json
-// .vscode/settings.json:
 {
   "eslint.enable": true,
 }
@@ -449,50 +508,22 @@ vs-code의 eslint와 prettier 익스텐션이 그러한 기능을 제공한다.
 
 설치하면 자동으로 ESLint 설정파일을 읽고 파일을 검사한다.
 
-![eslint 익스텐션 동작]()
+![eslint 익스텐션 동작](/assets/imgs/2019/12/21/eslint-extention-result.jpg)
 
-vs-code는 포매팅 기능이 있는데 prettier가 이 역할을 하도록 바꾸면 된다.
+툴팁 메뉴를 클릭해서 문제를 수정한다.
 
-[prettier 익스테션]을 설치한 뒤
+에디터 설정중 저장시 액션을 추가할 수 있는데 ESLint로 코드를 정정할 수 있다.
 
-![prettier 익스텐션 설치]()
-
-기본 포매터로 이 익스텐션을 지정한다.
-
+.vscode/settings.json:
 ```json
-// .vscode/settings.json:
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
 ```
 
-코드를 작성한 뒤
-
-```js
-foo(reallyLongArg(), omgSoManyParameters(), IShouldRefactorThis(), isThereSeriouslyAnotherOne());
-```
-
-F1 > 문서서식을 선택하거나 옵션+시프트+f 단축키를 누르면 설정한 포메터인 프리티어 플러그인이 실행된다. 
-
-```js
-foo(
-  reallyLongArg(),
-  omgSoManyParameters(),
-  IShouldRefactorThis(),
-  isThereSeriouslyAnotherOne()
-);
-```
-
-에디터로 저장 할때 포맷터를 실행할 수도 있다.
-
-```json
-// .vscode/settings.json:
-{
-  "editor.formatOnSave": true
-}
-```
-
-이렇게 ESLint 익스텐션으로는 실시간 코드 품질 검사를 하고, 프리티어 익스텐션으로는 자동 포메팅을 하도록 하면 
+이렇게 ESLint 익스텐션으로는 실시간 코드 품질 검사를 하고 저장시 자동 포메팅을 하도록 하면 
 실시간으로 코드 품질을 검사하고 포맷도 일관적으로 유지할 수 있다.
 
 ## 5. 정리
