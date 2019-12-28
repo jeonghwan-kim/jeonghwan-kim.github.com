@@ -6,7 +6,7 @@ category: series
 tags: webpack
 ---
 
-이전글 [프론트엔드 개발환경의 이해: 웹팩(기본편)]()에서는 웹팩의 개념과 간단한 사용법에 대해 살펴보았다.
+이전글 [웹팩(기본편)](/series/2019/12/10/frontend-dev-env-webpack-basic.html)에서는 웹팩의 개념과 간단한 사용법에 대해 살펴보았다.
 웹팩은 프론트엔드 개발 환경을 위한 개발 서버를 제공하고 빌드 결과를 최적화 하는 다양한 방법을 제공하는데 이번글에서 자세히 살펴 보겠다.
 
 
@@ -21,11 +21,11 @@ tags: webpack
 운영환경과 유사하게 함으로서 배포시 잠재적 문제를 미리 확인할 수 있다. 
 게다가 ajax 방식의 api 연동은 cors 정책 때문에 반드시 서버가 필요하다. 
 
-프론트엔드 개발환경에서 이러한 개발용 서버를 제공해 주는 것이 webpack-dev-server다.
+프론트엔드 개발환경에서 이러한 개발용 서버를 제공해 주는 것이 [webpack-dev-server](https://webpack.js.org/configuration/dev-server/)다.
 
 ### 1.2 설치 및 사용 
 
-webpack-dev-server 패키지를 우리 프로젝트에 설치한다.
+먼저 webpack-dev-server 패키지를 설치한다.
 
 ```
 npm i webpack-dev-server
@@ -133,7 +133,7 @@ npm 스크립트를 수정해보자.
 
 ![webpack-dev-server-run-2](/assets/imgs/2019/12/28/webpack-dev-server-run-2.gif)
 
-이외에도 다양한 옵션은 [여기]()를 참고하자.
+이외에도 다양한 옵션은 [여기](https://webpack.js.org/configuration/dev-server/)를 참고하자.
 
 ## 2. API 연동
 
@@ -143,7 +143,7 @@ npm 스크립트를 수정해보자.
 
 ### 2.1 목업 API 1: devServer.before
 
-웹팩 개발 서버 설정 중 before 속성은 웹팩 서버에 기능을 추가할 수 있는 여지를 제공한다. 
+웹팩 개발 서버 설정 중 [before](https://webpack.js.org/configuration/dev-server/#devserverbefore) 속성은 웹팩 서버에 기능을 추가할 수 있는 여지를 제공한다. 
 이것을 이해하려면 노드 웹 프레임웍인 Express.js에 사전지식이 있으면 유리한데,
 간단히 말하면 익스프레스는 미들웨어 형태로 서버 기능을 확장할 수 있다. 
 이 before에 추가하는 것이 바로 미들웨어인 셈이다. 
@@ -221,7 +221,7 @@ export default {
 
 ### 2.2 목업 API 2: connect-api-mocker
 
-목업 api 작업이 많을때는 [connect-api-mocker]() 패키지의 도움을 받자. 
+목업 api 작업이 많을때는 [connect-api-mocker](https://github.com/muratcorlu/connect-api-mocker) 패키지의 도움을 받자. 
 특정 목업 폴더를 만들어 api 응답을 담은 파일을 저장한 뒤, 이 폴더를 api로 제공해 주는 기능을 한다.
 
 먼저 이 패키지를 설치하고,
@@ -302,7 +302,7 @@ export default {
 http://localhost:8080에서 http://localhost:8081 로 ajax 호출을 하지 못하는데 이유는 CORS 정책 때문이라는 메세지다. 
 요청하는 리소스에 "Access-Control-Allow-Origin" 헤더가 없다는 말도 한다.
 
-CORS(Cross Origin Resource Shaing)이란 브라우져와 서버간의 보안상의 정책인데 브라우저가 최초로 접속한 서버에서만 ajax 요청을 할수 있다는 내용이다. 
+[CORS(Cross Origin Resource Shaing)](https://developer.mozilla.org/ko/docs/Web/HTTP/Access_control_CORS이란) 브라우져와 서버간의 보안상의 정책인데 브라우저가 최초로 접속한 서버에서만 ajax 요청을 할수 있다는 내용이다. 
 방금같은 경우는 localhost로 같은 도메인이지만 포트번호가 8080, 8081로 달라서 다른 서버로 인식하는 것이다. 
 
 해결하는 방법은 두 가지 인데 먼저 서버측 솔루션 부터 보자.
@@ -363,7 +363,7 @@ export default {
 
 ### 3.2 설정
 
-설정은 간단하다. hot 속성을 켠다.
+설정은 간단하다. [devServer.hot](https://webpack.js.org/configuration/dev-server/#devserverhot) 속성을 켠다.
 
 ```js
 // webpack.config.js:
@@ -464,7 +464,7 @@ view.js 코드를 변경하고 저장하면 브라우져 갱신 없이 화면이
 
 ### 4.1 production 모드
 
-웹팩에 내장되어 있는 최적화 방법중 mode 값을 설정하는 방식이 가장 기본이다. 
+웹팩에 내장되어 있는 최적화 방법중 [mode](https://webpack.js.org/configuration/mode/) 값을 설정하는 방식이 가장 기본이다. 
 세 가지 값이 올 수 있는데 지금까지 설정한 "development"는 대버깅 편의를 위해 아래 두 개 플러그인을 사용한다.
 
 - NamedChunksPlugin 
@@ -522,7 +522,7 @@ npm run build
 
 ### 4.2 optimazation 속성으로 최적화 
 
-빌드 과정을 커스터마지징할 수 있는 여지를 제공하는데 그것이 바로 optimazation 속성이다.
+빌드 과정을 커스터마지징할 수 있는 여지를 제공하는데 그것이 바로 [optimazation](https://webpack.js.org/configuration/optimization/) 속성이다.
 
 HtmlWebpackPlugin이 html 파일을 압축한것 처럼 css 파일도 빈칸을 없애는 압축을 하려면 어떻게 해야할까? 
 [optimize-css-assets-webpack-plugin](https://webpack.js.org/plugins/mini-css-extract-plugin/#minimizing-for-production)이 바로 그것이다.
@@ -555,8 +555,8 @@ optimization.minimizer는 웹팩이 결과물을 압축할때 사용할 플러�
 ![css 빌드 결과](/assets/imgs/2019/12/28/compress-css.jpg)
 
 
-`mode=production`일 경우 사용되는 [TerserWebpackPlugin]()은 자바스크립트 코드를 난독화하고 debugger 구문을 제거한다.
-[기본 설정]() 외에도 콘솔 로그를 제가하는 옵션도 있는데 배포 버전에는 로그를 감추는 것이 좋을 수도 있기 때문이다.
+`mode=production`일 경우 사용되는 [TerserWebpackPlugin](https://webpack.js.org/plugins/terser-webpack-plugin/)은 자바스크립트 코드를 난독화하고 debugger 구문을 제거한다.
+기본 설정 외에도 [콘솔 로그를 제거하는 옵션](https://github.com/terser/terser#compress-options)도 있는데 배포 버전에는 로그를 감추는 것이 좋을 수도 있기 때문이다.
 
 이 플러그인을 설치한 뒤,
 
@@ -615,7 +615,7 @@ HtmlWebpackPlugin에 의해 html 코드에소 두 파일을 로딩하는 코드�
 
 axios 모듈인데 main, controller 둘 다 axios를 사용하기 때문이다.
 
-[SplitChunksPlugin]()은 코드를 분리할때 중복을 예방하는 플러그인이다.
+[SplitChunksPlugin](https://webpack.js.org/guides/code-splitting/#prevent-duplication)은 코드를 분리할때 중복을 예방하는 플러그인이다.
 optization.splitChucks 속성을 설정하는 방식이다.
 
 ```js
@@ -689,7 +689,7 @@ import() 함수로 가져올 컨트롤러 모듈 경로를 전달하는데 주�
 
 조금만 더 생각해 보면 최적화해 볼 수 있는 부분이 있다. 바로 axios같은 써드파티 라이브러리다.
 패키지로 제공될때 이미 빌드 과정을 거쳤기 때문에 빌드 프로세스에서 제외하는 것이 좋다.
-웹팩 설정중 externals가 바로 이러한 기능을 제공한다.
+웹팩 설정중 [externals](https://webpack.js.org/configuration/externals/)가 바로 이러한 기능을 제공한다.
 
 ```js
 // webpack.config.js:
@@ -759,10 +759,3 @@ axios는 빌드하지 않고 복사만 한다. controller와  main이 분리되�
 mode 옵션을 production으로 설정하면 웹팩 내장 플러그인이 프로덕션 모드로 동작한다. 
 번들링 결과물 크기가 커지면 브라우져에서 다운로딩하는 성능이 떨어질수 있는데 코드 스플리트 기법을 사용해서 해결할 수 있다. 
 써드파티 라이브러리는 externals로 옮겨 빌드 과정에서 제외할수 있다.
-
-참고
-- https://webpack.js.org/configuration/dev-server/
-- https://github.com/muratcorlu/connect-api-mocker
-- https://webpack.js.org/configuration/dev-server/#devserverhot
-- https://webpack.js.org/plugins/hot-module-replacement-plugin/
-- https://webpack.js.org/configuration/externals/
