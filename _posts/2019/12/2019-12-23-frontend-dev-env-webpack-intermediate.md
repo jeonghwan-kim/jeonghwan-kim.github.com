@@ -73,14 +73,14 @@ npm start
 
 ```js
 // webpack.config.js:
-{
+module.exports = {
   devServer: {
-    contentBase: path.join(__dirname, 'dist'), 
-    publicPath: '/', 
-    host: 'dev.domain.com',
+    contentBase: path.join(__dirname, "dist"), 
+    publicPath: "/", 
+    host: "dev.domain.com",
     overlay: true,
     port: 8081,
-    stats: 'errors-only',
+    stats: "errors-only",
     historyApiFallback: true,
   }
 }
@@ -105,13 +105,13 @@ npm start
 404가 발생하면 index.html로 리다이렉트한다.
 
 
-이 외에도 개발 서버를 실행할때 명령어 인자로 **--progress**를 추가하면 빌드 진행율을 보여준다. 빌드 시간이 길어질 경우 사용하면 좋다.
+이 외에도 개발 서버를 실행할때 명령어 인자로 `--progress`를 추가하면 빌드 진행율을 보여준다. 빌드 시간이 길어질 경우 사용하면 좋다.
 
 메세지 출력 옵션만 설정한 뒤,
 
 ```js
 // webpack.config.js:
-{
+module.exports = {
   devServer: {
     overlay: true,
     stats: 'errors-only',
@@ -137,19 +137,21 @@ npm 스크립트를 수정해보자.
 
 ## 2. API 연동
 
-프론트엔드에서는 서버와 데이터 주고 받는 스펙도 필요한데 http 기반의 api를 사용한다.
-보통은 api 서버를 어딘가에 띄우고 혹은 로컬호스트에 띄우고 프론트 서버와 함께 개발한다. 
+프론트엔드에서는 서버와 데이터 주고 받기 위해 ajax를 사용한다.
+보통은 api 서버를 어딘가에 띄우고(혹은 로컬호스트에 띄우고) 프론트 서버와 함께 개발한다. 
 개발 환경에서 이러한 api 서버 구성을 어떻게 하는지 알아 보자.
 
 ### 2.1 목업 API 1: devServer.before
 
-웹팩 개발 서버 설정 중 before 속성은 웹펙 서버에 기능을 추가할 수 있는 여지를 제공한다. 
-이것을 이해하려면 노드 웹 프레임웍인 Express.js에 사전지식이 있으면 유리한데 간단히 말하면 익스프레스는 미들웨어 형태로 서버 기능을 확장할수 있다. 
-이 before가 바로 미들웨어인 것이다. 아래 코드를 보자.
+웹팩 개발 서버 설정 중 before 속성은 웹팩 서버에 기능을 추가할 수 있는 여지를 제공한다. 
+이것을 이해하려면 노드 웹 프레임웍인 Express.js에 사전지식이 있으면 유리한데,
+간단히 말하면 익스프레스는 미들웨어 형태로 서버 기능을 확장할 수 있다. 
+이 before에 추가하는 것이 바로 미들웨어인 셈이다. 
+아래 코드를 보자.
 
 ```js
 // webpack.config.js
-{
+module.exports = {
   devServer: {
     before: (app, server, compiler) => {
       app.get('/api/keywords', (req, res) => {
@@ -165,9 +167,10 @@ npm 스크립트를 수정해보자.
 }
 ```
 
-before에 설정한 함수가 바로 미들웨어다. 이것은 익스프레스에 의해서 app 객체가 전달되는데 이것이 Express 객체이다. 
-이 에 라우팅을 추가할수 있다. app.get(url, controller) 형태로 url에 대한 라우팅 컨트롤러 함수를 정의한다. 
-컨트롤러에서는 요청 req과 응답 res 객체를 받는데 여기서는 응답객체의 json() 함수로 응답하는 코드다. 
+before에 설정한 함수가 바로 미들웨어다. 
+익스프레스에 의해서 app 객체가 인자로 전달되는데 Express 인스턴스다.
+이 객체에 라우트 컨트롤러를 추갛라 수 있는데 `app.get(url, controller)` 형태로 함수를 작성한다.
+컨트롤러에서는 요청 req과 응답 res 객체를 받는데 여기서는 응답객체의 json() 함수로 응답하는 코드를 만들었다.
 
 웹팩 개발 서버는 GET /api/keywords 요청시 4개의 엔트리를 담은 배열을 반환할 것이다. 
 서버를 다시 구동하고 curl로 http 요청을 보내보자.
@@ -214,25 +217,24 @@ export default {
 기존에는 data에 데이터를 관리했는데 이제는 ajax 호출 후 응답된 데이터를 반환하도록 변경했다. 
 화면을 확인해 보면 웹펙에 설정한 응답이 화면에 나오는걸 확인할 수 있다. 
 
-![캡처]() 
+![캡처](/assets/imgs/2019/12/28/before.jpg) 
 
 ### 2.2 목업 API 2: connect-api-mocker
 
-목업 api 작업이 많을때는 connect-api-mocker 라는 패키지의 도움을 받자. 
-최근검색어 조회, 검색 api 는 요걸로 추가해 보겠다. 
+목업 api 작업이 많을때는 [connect-api-mocker]() 패키지의 도움을 받자. 
+특정 목업 폴더를 만들어 api 응답을 담은 파일을 저장한 뒤, 이 폴더를 api로 제공해 주는 기능을 한다.
 
-먼저 이 패키지를 설치한다
+먼저 이 패키지를 설치하고,
 
 ```
 npm install connect-api-mocker
 ```
 
-요거는 API 메소드와 경로에 맞게 폴더를 만들고 응답 정보를 json파일로 해당 폴더에 넣으면 자동으로 웹팩 개발 서버가 엔드포인트를 만들어준다. 
+다음 경로에 API 응답 파일을 만든다.
 
-동일한 엔드포인트를 만들기 위해서 다음과 같이 폴더를 구성한다.
 mocks/api/keywords/GET.json
 
-GET 메소드를 사용하기때문에 GET.json으로 파일을 만들었다. POST, DELETE 등 메소드 명으로도 파일을 만들 수 있다.
+GET 메소드를 사용하기때문에 GET.json으로 파일을 만들었다(물론 POST, PUT, DELETE 도 지원).
 
 GET.json:
 ```json
@@ -240,16 +242,18 @@ GET.json:
   { "keyword": "이탈리아" }, 
   { "keyword": "세프의요리" }, 
   { "keyword": "제철" }, 
-  { "keyword": "홈파티 "},
+  { "keyword": "홈파티 " }
 ]
 ```
 
-응답 데이터를 json 형식으로 작성하면된다.
+기존에 설정한 목업 응답 컨트롤러를 제거하고 대신 connect-api-mocker 패키지로 미들웨어를 대신한다.
 
-이렇게 만든 뒤 devServer.before 에 이 목업 폴더를 가지고 패키지를 추가해야한다.
 ```js
 // webpack.config.js:
-{
+
+const apiMocker = require('connect-api-mocker')
+
+module.exports = {
   devServer: {
     before: (app, server, compiler) => {
       app.use(apiMocker('/api', 'mocks/api'))
@@ -258,23 +262,24 @@ GET.json:
 }
 ```
 
-익스프레스 객체인 app은 미들웨어 추가를 위해 use 함수를 제공하는데 apiMocker는 미들웨어이기 때문에 use 함수로 추가했다. 
-패키지에 전달한 인자중 첫번째 인자는 설정할 라우우팅 경로로서 /api로 들어온 모든 경로를 설정했다. 
-두 번째 인자는 해당경로로 들어왔을 때 이패키지가 응답으로 제공할 목업 파일이 있는 경로이다. 
-mocks/api 로 설정했다. 
+익스프레스 객체인 app은 get() 메소드 뿐만 아니라 미들웨어 추가를 위한 범용 메소드인 use()를 제공하는데,
+이를 이용해 목업 미들웨어를 추가했다.
+패키지에 전달한 인자 중 첫번째 인자는 설정할 라우팅 경로로써 "/api"로 들어요 요청에 대한 설정이다.
+두 번째 인자는 응답으로 제공할 목업 파일 경로인데 "mocks/api" 로 설정했다. 
 
+목업 API 갯수가 많다면 직접 컨트롤러를 작성하는 것 보다 목업 파일로 관리하는 것을 추천한다.
 
 ### 2.3 실제 API 연동: devServer.proxy
 
-이번에는 api 서버를 로컬환경에 실행한다음 목업이 아닌 이 서버에 api 요청을 해보자. 
-로컬호스트 8081 포트에 아래와 같이 서버가 구성되었다고 가정해 보자.
+이번에는 api 서버를 로컬환경에서 띄운 다음 목업이 아닌 이 서버에 직접 api 요청을 해보자. 
+로컬호스트 8081 포트에 아래와 같이 서버가 구성되었다고 가정하겠다.
 
 ```
 $ curl localhost:8081/api/keywords
 [{"keyword":"이탈리아"},{"keyword":"세프의요리"},{"keyword":"제철"},{"keyword":"홈파티"}]
 ```
 
-이 api 서버로 요청하도록 코드를 수정해 보겠다.
+ajax 요청 부분의 코드를 변경한다.
 
 ```js
 // src/model.js
@@ -282,25 +287,26 @@ export default {
   async get() {
     // const result = await axios.get('/api/keywords');
 
-    const { data } = await axios.get('http://localhost:8081/api/keywords');
+    // 직접 api 서버로 요청한다.
+    const { data } = await axios.get('http://localhost:8081/api/keywords'); 
     return data;
   }
 }
 ```
 
 웹팩 개발서버를 띄우고 화면을 확인해 보자. 잘 나오는가? 
-브라우져 개발자 도구에 보면 다음과 같은 에러 메세지가 출력된다.
+브라우져 개발자 도구에 보면 다음과 같은 오류 메세지가 출력된다.
 
-![캡쳐]()
+![cors 오류](/assets/imgs/2019/12/28/cors.jpg)
 
 http://localhost:8080에서 http://localhost:8081 로 ajax 호출을 하지 못하는데 이유는 CORS 정책 때문이라는 메세지다. 
-요청하는 리소스에 ‘Access-Control-Allpw-Origin 헤더가 없다는 말도 한다.
+요청하는 리소스에 "Access-Control-Allow-Origin" 헤더가 없다는 말도 한다.
 
 CORS(Cross Origin Resource Shaing)이란 브라우져와 서버간의 보안상의 정책인데 브라우저가 최초로 접속한 서버에서만 ajax 요청을 할수 있다는 내용이다. 
 방금같은 경우는 localhost로 같은 도메인이지만 포트번호가 8080, 8081로 달라서 다른 서버로 인식하는 것이다. 
 
-이것을 해결하기 위해서 서버측에서 작업할 수 있다. 
-ajax 요청에 응답에 Access-Control-Allop0w-Origiin: * 헤더를 추가한 뒤 응답하면 된다.
+해결하는 방법은 두 가지 인데 먼저 서버측 솔루션 부터 보자.
+해당 api 응답 헤더에 "Access-Control-Allow-Origiin: *" 헤더를 추가한 뒤 응답하면 브라우져에서 응답을 수신할 수 있다.
 
 ```js
 // server/index.js
@@ -310,22 +316,22 @@ app.get('/api/keywords', (req, res) => {
 })
 ```
 
-브라우져에서 다시 확인하면 방금같은 에러가 발생하지 않고 정상적은 ajax 호출을 한다.
-
-서버에서 설정하지 않고 프론트엔드 개발활환경에서도 설정할 수있다. 서버 주소를 "**프록싱**"하는 것이다. 
-웹팩 개발서버는 proxy 속성으로 이를 지원한다. 
+한편 프론트엔드 측 솔류션을 보자. 서버 응답 헤더를 추가할 필요없이 웹팩 개발 서버에서 api 서버로 "**프록싱**"하는 것이다. 
+웹팩 개발 서버는 proxy 속성으로 이를 지원한다. 
 
 ```js
 // webpack.config.js
-devServer: {
-  proxy: {
-    '/api': 'http://localhost:8081', // 프록시
+module.exports = {
+  devServer: {
+    proxy: {
+      '/api': 'http://localhost:8081', // 프록시
+    }
   }
 }
 ```
 
-개발서버에 들어온 모든 http 요청중 /api로 시작되는것은 http://localhost:8081로 요청하는 프록시 설정이다. 
-api 호출코드를 다시 수정하고 
+개발서버에 들어온 모든 http 요청중 /api로 시작되는것은 http://localhost:8081로 요청하는 설정이다. 
+api 호출코드를 다시 복구한 뒤, 
 
 ```js
 // src/model.js
@@ -333,7 +339,7 @@ export default {
   async get() {
     // const { data } = await axios.get('http://localhost:8081/api/keywords');
 
-    const {data} = await axios.get('/api/keywords');
+    const { data } = await axios.get('/api/keywords');
     return data;
   }
 }
@@ -341,7 +347,6 @@ export default {
 
 확인해보면 정상 동작하는 것을 확인할 수 있다. 
 
-클라이어늩에서는 최초로 접속한 8081 포트에 요청하지만 개발서버는 이를 8081포트로 전달한다. 
 
 ## 3. 핫 모듈 리플레이스먼트
 
