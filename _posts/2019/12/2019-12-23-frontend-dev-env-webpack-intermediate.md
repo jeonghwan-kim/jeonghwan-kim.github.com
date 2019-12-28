@@ -555,19 +555,23 @@ optimization.minimizer는 웹팩이 결과물을 압축할때 사용할 플러�
 ![css 빌드 결과](/assets/imgs/2019/12/28/compress-css.jpg)
 
 
+`mode=production`일 경우 사용되는 [TerserWebpackPlugin]()은 자바스크립트 코드를 난독화하고 debugger 구문을 제거한다.
+[기본 설정]() 외에도 콘솔 로그를 제가하는 옵션도 있는데 배포 버전에는 로그를 감추는 것이 좋을 수도 있기 때문이다.
 
+이 플러그인을 설치한 뒤,
 
-mode=production일 경우 사용되는 TerserWebpackPlugin은 자바스크립트 코드를 난독화하고 debugger 구문을 제가한다.
-[기본 설정]() 외에도 콘솔 로그를 제가하는 옵션도 있다. 
-배포 버전에는 콘솔 로그가 불필요하기 때문이다.
+```
+npm i terser-webpack-plugin
+```
+
+optionmization.minimizer 배열에 추가한다.
 
 ```js
 // webpack.config.js:
 const TerserPlugin = require('terser-webpack-plugin');
 
-{
+module.exports = {
   optimization: {
-    // minimize: true, 꼭 넣어야하나?
     minimizer: mode === 'production' ? [
       new TerserPlugin({
         terserOptions: {
@@ -580,7 +584,6 @@ const TerserPlugin = require('terser-webpack-plugin');
   },
 }
 ```
-
 
 ### 4.3 코드 스플리팅
 
@@ -599,14 +602,19 @@ module.exports = {
 }
 ```
 
-빌드하면 엔트리가 두 개 생성되었다. 물론 하나보다 용량이 조금 줄었다.
 
-![]()
+빌드하면 엔트리가 두 개 생성되고 물론 하나의 엔트이일 때보다 용량이 조금 줄었다.
+
+![다중 엔트리](/assets/imgs/2019/12/28/optimazation1.jpg)
 
 모듈을 어떻게 분리하는냐에 따라 이 결과물의 크기를 조절할 수 있는데 지금은 거의 변화가 없다.
-HtmlWebpackPlugin에 의해 html 코드에소 두 파일을 로딩하는 코드도 추가되었다.
+HtmlWebpackPlugin에 의해 html 코드에소 두 파일을 로딩하는 코드도 추가된다.
 
-하지만 두 파일을 비교해 보면 중복코드가 있다. axios 모듈인데 main에서 axios를 사용하고 models에서도 axios를 사용하기 때문이다.
+하지만 두 파일을 비교해 보면 중복코드가 있다. 
+
+![중복](/assets/imgs/2019/12/28/duplicate.jpg)
+
+axios 모듈인데 main, controller 둘 다 axios를 사용하기 때문이다.
 
 [SplitChunksPlugin]()은 코드를 분리할때 중복을 예방하는 플러그인이다.
 optization.splitChucks 속성을 설정하는 방식이다.
@@ -624,11 +632,11 @@ module.exports = {
 
 다시 빌드해보자.
 
-![]()
+![청크 분리](/assets/imgs/2019/12/28/optimazation2.jpg)
 
-main.js, controller.js외에도 vendors~main-controller.js 파일도 생겼다. 
+main.js, controller.js외에도 vendors~main~controller.js 파일도 생겼다. 
 마지막 파일은 두 엔트리의 중복 코드를 담은 파일이다. 
-axios로 검색하면 main.js와 controller.js에서는 없고 vendors-main-controller.js에만 있다. 
+axios로 검색하면 main.js와 controller.js에서는 없고 vendors~main~controller.js에만 있다. 
 
 이런 방식은 엔트리 포인트를 적절히 분리해야기 때문에 손이 많이 가는 편이다.
 반면 자동으로 변경해 주는 방식이 있는데 이를 "다이나믹 임포트"라고 부른다.
@@ -672,9 +680,9 @@ import() 함수로 가져올 컨트롤러 모듈 경로를 전달하는데 주�
 
 빌드하면 자동으로 파일이 분리되었다.
 
-![]()
+![다이나믹 임포트](/assets/imgs/2019/12/28/optimazation3.jpg)
 
-엔트리를 분리하지 않아도 controller와 app의 중복코드를 vendors~...js 파일로 분리한다. 
+엔트리를 분리하지 않아도 controller와 app의 중복코드를 vendors~controller.js 파일로 분리한다. 
 다이나믹 임포트로 모듈을 가져오면 단일 엔트리를 유지하면서 코드를 분리할 수 있다. 
 
 
