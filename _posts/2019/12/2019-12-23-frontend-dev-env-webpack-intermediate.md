@@ -367,7 +367,7 @@ export default {
 
 ```js
 // webpack.config.js:
-{
+module.exports = {
   devServer = {
     hot: true,
   },
@@ -383,28 +383,23 @@ import { render } from "./view";
 
 const controller = {
   async init(el) {
-    this.el = el;
-    const data = await model.get()
-    render(data, el);
+    this.el = el
+    view.render(await model.get(), this.el);
   }
 }
 
 export default controller;
 ```
 
-컨트롤러는 모델과 view 모듈의 의존성이 있다.
-모델로 데이터를 가져와 뷰로 데이터를 그린다.
-만약 view.js 모듈에 변화가 있을 경우 전체 화면을 갱신하지 않고 모듈만 갈아 치우도록 해보자.
+컨트롤러는 model과 view에 의존성이 있는데 이 둘을 이용해 데이터를 가져와 화면을 렌더한다.
+만약 view.js 모듈에 변화가 있을 경우 전체 화면을 갱신하지 않고 변경된 view.js 모듈만 다시 실행하는 것이 핫 모듈의 작동 방식이다.
 
-컨트롤러 하단에 다음과 같이 추가해 보자.
+이 기능을 만들기 위해 컨트롤러 하단에 다음 코드를 추가해 보자.
 
 ```js
 // src/controller.js
 
-/**
- * 중략
- */
-
+// 중략
 export default controller;
 
 if (module.hot) {
@@ -412,34 +407,52 @@ if (module.hot) {
 
   module.hot.accept('./view', async () => {
     console.log('view 모듈 변경됨')
-    render(await model.get(), controller.el)
+
+    // render(await model.get(), controller.el)
   }) 
 }
 ```
 
-devServer.hot 옵션을 켜면 웹팩 개발 서버 위에서 module객체의 hot 객체가 생성된다.
+devServer.hot 옵션을 켜면 웹팩 개발 서버 위에서 module.hot 객체가 생성된다.
 이 객체의 accept() 메소드는 감시할 모듈과 콜백 함수를 인자로 받는다.
+위에서는 view.js 모듈을 감시하고 변경이 있으면 전달한 콜백 함수가 동작하도록 했다.
 
-이 콜백함수에서 변경된 모듈을 사용하는 코드를 추가했다. 
-모델로 데이터를 부르고 다시 변경된 렌더 함수를 실행했다.
+웹팩 개발 서버를 재 시작하면 브라우져에 다음과 같이 로그가 찍힌다.
 
-view.js 코드를 변경하고 저장하면 브라우져 갱신 없이 화면이 바뀌는 것을 알수 있다.
+![핫 로딩 시작](/assets/imgs/2019/12/28/hot1.jpg)
 
-![.gif]()
+후에 view.js 파일을 수정하면 다음 로그가 찍히는 것을 확인할 수 있다.
+
+![핫 로딩 변화 감지](/assets/imgs/2019/12/28/hot2.jpg)
+
+그럼 이 콜백 함수에서 변경된 모듈을 사용하는 코드를 추가하면 변경된 view.js 모듈을 바꿔치지 할수 있다.
+모델로 데이터를 부르고 다시 변경된 뷰 모듈로 렌더 함수를 실행했다.
+
+```js
+// src/controller.js
+
+if (module.hot) {
+  module.hot.accept('./view', async () => {
+    render(await model.get(), controller.el); // 변경된 모듈로 교체 
+  }) 
+}
+```
+
+view.js 코드를 변경하고 저장하면 브라우져 갱신 없이 화면이 변경된다.
+
+![핫 모듈 리플레이스먼트](/assets/imgs/2019/12/28/hot.gif)
 
 
 ### 3.3 핫로딩을 지원하는 로더 
 
-이처럼 "hot 인터페이스를 따른다"라고 표현하고 이러한 것들이 핫 로딩을 지원하다.
-웹팩 로더 중에 핫 로딩을 지원하는 것이 style-loader다. 
+이러한 HMR 인터페이스를 구현한 로더만이 핫 로딩을 지원하는데 웹팩 기본편에서 보았던 style-loader가 그렇다.
 잠깐 코드를 보면 hot.accept() 함수를 사용한 것을 알 수 있다.
 
-![코드 캡쳐]()
+![스타일 로더 코드](/assets/imgs/2019/12/28/style-loader.jpg)
 
-참고: [https://github.com/webpack-contrib/style-loader/blob/master/src/index.js#L34](https://github.com/webpack-contrib/style-loader/blob/master/src/index.js#L34)
+참고: [style-loader 코드](https://github.com/webpack-contrib/style-loader/blob/master/src/index.js#L34-L37)
 
-이 외에도 리액트를 지원하는 react-hot-loader, 파일을 지원하는 file-loader는 핫 모듈 리플레이스먼트를 지원한다. 
-추가로 지원하는 로더 목록은 [여기](https://webpack.js.org/guides/hot-module-replacement/#other-code-and-frameworks)서 확인할 수 잇다.
+이 외에도 리액트를 지원하는 react-hot-loader, 파일을 지원하는 file-loader는 핫 모듈 리플레이스먼트를 지원하는데 [여기](https://webpack.js.org/guides/hot-module-replacement/#other-code-and-frameworks)를 참고하자.
 
 
 ## 4. 최적화
@@ -452,18 +465,14 @@ view.js 코드를 변경하고 저장하면 브라우져 갱신 없이 화면이
 ### 4.1 production 모드
 
 웹팩에 내장되어 있는 최적화 방법중 mode 값을 설정하는 방식이 가장 기본이다. 
-세 가지 값이 올 수 있는데 지금까지 설정한 **"development"**는 다음과 같은 동작을 한다.
-
-디버깅 편의를 위해 다음 2개 플로그인을 켠다.
+세 가지 값이 올 수 있는데 지금까지 설정한 "development"는 대버깅 편의를 위해 아래 두 개 플러그인을 사용한다.
 
 - NamedChunksPlugin 
 - NamedModulesPlugin
 
-DefinePlugin을 사용한다면 process.env.NODE_ENV 값을 "development"로 자동 설정된다.
+DefinePlugin을 사용한다면 process.env.NODE_ENV 값이 "development"로 설정되어 어플리케이션에 전역변수로 주입된다.
 
-반면 mode를 "**production**" 값으로 설정하면 다음과 같은 동작을 한다. 
-
-자바스크립트 결과물을 최소화 하기 위해 다음 7개 플러그인을 켠다.
+반면 mode를 "production"으로 설정하면 자바스크립트 결과물을 최소화 하기 위해 다음 일곱 개 플러그인을 사용한다.
 
 - FlagDependencyUsagePlugin
 - FlagIncludedChunksPlugin
@@ -471,11 +480,11 @@ DefinePlugin을 사용한다면 process.env.NODE_ENV 값을 "development"로 자
 - NoEmitOnErrorsPlugin
 - OccurrenceOrderPlugin
 - SideEffectsFlagPlugin
-- TerserPlugin: 자바스크립트 최소화
+- TerserPlugin
 
-DefinePlugin을 사용한다면 process.env.NODE_ENV 값을 "production" 으로 설정한다.
+DefinePlugin을 사용한다면 process.env.NODE_ENV 값이 "production" 으로 설정되어 어플리케이션 전역변수로 들어간다.
 
-환경변수 NODE_ENV 값에 따라 모드를 설정하도록 웹팩 설정 코드를 다음과 같이 고쳐보았다.
+그럼 환경변수 NODE_ENV 값에 따라 모드를 설정하도록 웹팩 설정 코드를 다음과 같이 추가할 수 이겠다.
 
 ```js
 // webpack.config.js:
@@ -483,16 +492,17 @@ const mode = process.env.NODE_ENV || 'development'; // 기본값을 development�
 
 module.exports = {
   mode,
+}
 ```
 
-웹팩 빌드시에 이를 운영 모드로 설정하여 실행하도록 npm 스크립트를 추가한다.
+빌드 시에 이를 운영 모드로 설정하여 실행하도록 npm 스크립트를 추가한다.
 
 package.json:
 ```json
 {
   "scripts": {
     "start": "webpack-dev-server --progress",
-    "build": "NODE_ENV=production webpack"
+    "build": "NODE_ENV=production webpack --progress"
   }
 }
 ```
@@ -506,13 +516,9 @@ start는 개발 서버를 구동하기 때문에 환경변수를 설정하지 �
 npm run build
 ```
 
-![캡쳐]()
+![빌드 결과](/assets/imgs/2019/12/28/compress-js.jpg)
 
-main.js 파일이 최소화 되었다. 
-
-development로 설정해서 빌드한 결과물과 비교해 보면 확연한 차이를 알 수 있다.
-
-![캡쳐]()
+왼쪽에 development로 설정해서 빌드한 결과물과 비교해 보면 오른쪽에 production으로 빌드한 결과물의 확연한 차이를 볼 수 있다.
 
 ### 4.2 optimazation 속성으로 최적화 
 
@@ -530,7 +536,9 @@ npm i optimize-css-assets-webpack-plugin
 웹팩 설정을 추가한다. 
 ```js
 // webpack.config.js:
-{
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+module.exports = {
   optimization: {
     minimizer: mode === 'production' ? [
       new OptimizeCSSAssetsPlugin(),
@@ -540,11 +548,12 @@ npm i optimize-css-assets-webpack-plugin
 ```
 
 optimization.minimizer는 웹팩이 결과물을 압축할때 사용할 플러그인을 넣는 배열이다.
-설치한 OptimizeCSSAssetsPlugin을 전달했다.
+설치한 OptimizeCSSAssetsPlugin을 전달해서 빌드 결과물중 css 파일을 압축하도록 했다.
 
 빌드하뒤 확인하면 css 파일도 압축되었다.
 
-![]()
+![css 빌드 결과](/assets/imgs/2019/12/28/compress-css.jpg)
+
 
 
 
