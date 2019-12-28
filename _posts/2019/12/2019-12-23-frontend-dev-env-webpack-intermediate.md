@@ -602,7 +602,6 @@ module.exports = {
 }
 ```
 
-
 빌드하면 엔트리가 두 개 생성되고 물론 하나의 엔트이일 때보다 용량이 조금 줄었다.
 
 ![다중 엔트리](/assets/imgs/2019/12/28/optimazation1.jpg)
@@ -688,7 +687,7 @@ import() 함수로 가져올 컨트롤러 모듈 경로를 전달하는데 주�
 
 ### 4.4 externals
 
-조금만 더 생각해 보면 최적화해 볼수 있는 부분이 있다. 바로 axios같은 써드파티 라이브러리다.
+조금만 더 생각해 보면 최적화해 볼 수 있는 부분이 있다. 바로 axios같은 써드파티 라이브러리다.
 패키지로 제공될때 이미 빌드 과정을 거쳤기 때문에 빌드 프로세스에서 제외하는 것이 좋다.
 웹팩 설정중 externals가 바로 이러한 기능을 제공한다.
 
@@ -702,7 +701,9 @@ module.exports = {
 ```
 
 externals에 추가하면 웹팩은 코드에서 axios를 사용하더라도 번들에 포함하지 않고 빌드한다.
-대신 이를 전역 변수로 접근하도록하는데 키로설정한 axios가 그 이름이다.
+대신 이를 전역 변수로 접근하도록하는데 키로 설정한 axios가 그 이름이다.
+
+![axios 전역 이름](/assets/imgs/2019/12/28/axios.jpg)
 
 axios는 이미 node_modules에 위치해 있기 때문에 이를 웹팩 아웃풋에 옮기고 index.html에서 로딩해야한다.
 파일을 복사하는 CopyPlugin을 설치한다.
@@ -711,15 +712,19 @@ axios는 이미 node_modules에 위치해 있기 때문에 이를 웹팩 아웃�
 npm i copy-webpack-plugin
 ```
 
-플로그인을 사용해서 라이브러리를 복사한다.
+플러그인을 사용해서 라이브러리를 복사한다.
 
 ```js
-plugins: [
-  new CopyPlugin([{
-    from: './node_modules/axios/dist/axios.min.js',
-    to: './axios.min.js' // 목적지 파일에 들어간다
-  }])
-]
+const CopyPlugin = require('copy-webpack-plugin');
+
+module.exports = {
+  plugins: [
+    new CopyPlugin([{
+      from: './node_modules/axios/dist/axios.min.js',
+      to: './axios.min.js' // 목적지 파일에 들어간다
+    }])
+  ]
+}
 ```
 
 마지막으로 index.html에서는 axios를 로딩하는 코드를 추가한다. 
@@ -731,13 +736,29 @@ plugins: [
 </html>
 ```
 
-axios는 이렇게 직접 추가했지만 번들링한 결과물은 htmlwebpacplugin이 주입해 주는 것을 잊지말자.
+axios는 이렇게 직접 추가했지만 번들링한 결과물은 htmlwebpacPlugin이 주입해 주는 것을 잊지말자.
 
-이렇게 써드파티 라이브러리를 externals로 분리하면 용량이 감소뿐만 아니라 빌드시간도 줄어들고 덩달아 개발 환경도 가벼워진다.
+다시 빌드해 보면......
+
+![externals](/assets/imgs/2019/12/28/optimazation4.jpg)
+
+axios는 빌드하지 않고 복사만 한다. controller와  main이 분리되었다. 
+이전에는 공통의 코드인 axios가 vender~.js로 분리되었는데 지금은 파일조차 없다. 
+만약 써드파티 라이브러리 외에 공통의 코드가 있다면 이 파일로 분리되었을 것이다.
+
+이렇게 써드파티 라이브러리를 externals로 분리하면 용량이 감소뿐만 아니라 빌드시간도 줄어들고 덩달아 개발 환경도 가벼워질 수 있다.
 
 ## 5. 정리
 
-웹팩 최적화 방법에 대해 알아보았다. mode 옵션을 production으로 설정하면 웹팩 내장 프러그인이 프로덕션 모드로 동작한다. 번들링 결과물 크기가 커지면 브라우져에서 다운로딩하는 성능이 떨어질수 있는데 코드 스플리트 기법을 사용해서 해결할 수 있다. 엔트리 포인트를 쪼개고 중복 코드를 분리하는 방식인데 이걸 자동화하는게 동적 임포트 방식이다. 마지막으로 써드파티 라이브러리는 externals로 옮겨 놓을 수 있다. 
+웹팩 사용방법에 대해 좀더 알아 보았다.
+
+개발 서버를 띄워 파일 감지, api 서버 연동 등 개발 환경을 좀 더 편리하게 구성할 수 있었다.
+특히, 핫 모듈 리플레이스먼트는 일부 모듈의 변경만 감지하여 페이지 갱신 없이 변경사항을 브라우져에 렌더링할 수 있다.
+
+웹팩 최적화 방법에 대해서도 알아보았다.
+mode 옵션을 production으로 설정하면 웹팩 내장 플러그인이 프로덕션 모드로 동작한다. 
+번들링 결과물 크기가 커지면 브라우져에서 다운로딩하는 성능이 떨어질수 있는데 코드 스플리트 기법을 사용해서 해결할 수 있다. 
+써드파티 라이브러리는 externals로 옮겨 빌드 과정에서 제외할수 있다.
 
 참고
 - https://webpack.js.org/configuration/dev-server/
