@@ -1,0 +1,25 @@
+.home {
+  max-width: 800px;
+  ul.post-list {
+    list-style: none;
+    padding: 0;
+    li {
+      a.post-item {
+        text-decoration: none;
+        display: block;
+        .post-item-title {
+          color: $brand-color;            
+        }
+        .post-meta {
+          .date {
+            color: $black-color;
+          }
+        }
+        .post-summary {
+          color: $black-color;
+          line-height: 1.5em;;
+        }
+      }
+    }
+  }
+}
