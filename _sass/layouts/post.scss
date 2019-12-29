@@ -40,9 +40,6 @@
           color: $secondary-color
         }
       }
-      .post-summary {
-  
-      }
     }
     .post-content {
       font-size: 18px;
@@ -73,9 +70,20 @@
       }
       .highlight {
         border-radius: $spacing-unit / 2;
+        overflow-x: scroll;
       }
       pre.highlight {
         padding: $spacing-unit * 2 $spacing-unit;
+      }
+    }
+    .post-tags {
+      a {
+        color: $black-color;
+        padding: $spacing-unit * 1 $spacing-unit * 2;
+        border-radius: $spacing-unit / 2;
+        background-color: $secondary-color;
+        text-decoration: none;
+
       }
     }
   }
