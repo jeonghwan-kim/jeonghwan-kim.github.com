@@ -25,5 +25,20 @@
         text-decoration: none;
       }
     }
+    .category {
+      position: relative;
+      .category-list {
+        position: absolute;
+        top: 26px;
+        right: 0;
+        background-color: $thenary-color;
+        border-radius: $spacing-unit / 2;
+        padding: $spacing-unit;
+        z-index: 1000;
+        min-width: 150px;
+        // js로 제어 
+        // visibility: hidden;
+      }
+    }
   }
 }
