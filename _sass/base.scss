@@ -23,8 +23,25 @@
 @include spacing('padding', 'p');
 @include spacing('margin', 'm');
 
+.icon {
+  display: inline-block;
+  width: $spacing-unit * 8;
+  height: $spacing-unit * 8;
+  background-repeat: no-repeat;
+  background-position-x: 0;
+  background-position-y: 0;
+  background-size: contain;
+}
 
-
+.icon-rss {
+  background-image: url(/assets/imgs/icons/icon-rss.svg);
+}
+.icon-github {
+  background-image: url(/assets/imgs/icons/icon-github.svg);
+}
+.icon-email {
+  // background-image: url(/assets/imgs/icons/icon-email.svg);
+}
 
 // /**
 //  * Reset some basic elements

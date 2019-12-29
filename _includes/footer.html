@@ -1,27 +1,23 @@
-<div class="wrapper">
-  <footer class="site-footer">
-    <ul class="site-footer-links list-inline">
-      <li class="site-footer-link">
-        <a href="{{ '/feed.xml' | prepend: site.baseurl }}">
-          RSS
-        </a>
-      </li>
-      {% if site.email%}
-      <li class="site-footer-link">
-        <a href="mailto:{{ site.email }}">
-          이메일
-        </a>
-      </li>
-      {% endif %}
-      {% if site.github_username %}
-      <li class="site-footer-link">
-        <a href="https://github.com/{{ site.github_username }}">
-          깃헙
-        </a>
-      </li>
-      {% endif %}
-    </ul>
-  </footer>
-</div>
+<footer class="site-footer mt-15 mb-0 py-5">
+  <ul>
+    <li>
+      <a class="icon icon-rss" href="{{ '/feed.xml' | prepend: site.baseurl }}" title="rss">
+      </a>
+    </li>
+    <!-- {% if site.email%}
+    <li>
+      <a class="icon icon-email" href="mailto:{{ site.email }}">
+        이메일
+      </a>
+    </li>
+    {% endif %} -->
+    {% if site.github_username %}
+    <li>
+      <a class="icon icon-github" href="https://github.com/{{ site.github_username }}" title="github">
+      </a>
+    </li>
+    {% endif %}
+  </u>
+</footer>
 
 <script src="/assets/js/main.js"></script>
