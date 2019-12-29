@@ -8,11 +8,11 @@
         text-decoration: none;
         display: block;
         .post-item-title {
-          color: $brand-color;            
+          color: $primary-color;            
         }
         .post-meta {
           .date {
-            color: $black-color;
+            color: $secondary-color;
           }
         }
         .post-summary {
@@ -20,6 +20,16 @@
           line-height: 1.5em;;
         }
       }
+    }
+  }
+  .pagination {
+    font-size: 18px;
+    a {
+      color: $primary-color;
+      text-decoration: none;
+    }
+    .current-page {
+      color: $black-color;
     }
   }
 }

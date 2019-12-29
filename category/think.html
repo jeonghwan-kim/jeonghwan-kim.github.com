@@ -1,25 +1,8 @@
 ---
-layout: home
+layout: category
 title: 생각
 ---
 
-<div class="wrapper">
-  <div class="home-wrapper">
-    <nav class="home-sidebar">
-      <h3 class="title">글 분류</h3>
-      <ul>
-        <li><a href="/">전체보기</a></li>
-        <li><a href="/category/dev.html">개발({{ site.categories.dev.size }})</a></li>
-        <li><a href="/category/series.html">연재물({{ site.categories.series.size }})</a></li>
-        <li class="active"><a href="#">생각({{ site.categories.think.size }})</a></li>
-      </ul>
-    </nav>
-    <div class="home-main">
-      <ul id="post-list" class="post-list">
-        {% for post in site.categories.think %}
-          <li>{% include post-list.html %}</li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
-</div>
+{% for post in site.categories.think %}
+  <li>{% include post-list.html %}</li>
+{% endfor %}

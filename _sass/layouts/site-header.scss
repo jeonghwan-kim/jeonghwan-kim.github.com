@@ -1,7 +1,7 @@
 .site-header {
   height: 80px;
   background-color: $primary-color;
-  border-bottom: 3px solid $brand-color;
+  border-bottom: 3px solid $thenary-color;
   .site-title {
     margin: 0;
     font-size: 24px;
@@ -27,11 +27,12 @@
     }
     .category {
       position: relative;
+      color: $white-color;
       .category-list {
         position: absolute;
         top: 26px;
         right: 0;
-        background-color: $thenary-color;
+        background-color: $secondary-color;
         border-radius: $spacing-unit / 2;
         padding: $spacing-unit;
         z-index: 1000;

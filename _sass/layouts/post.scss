@@ -24,66 +24,74 @@
       }
       > ul {
         margin-left: $spacing-unit * 4;
-        border-left: 5px solid $secondary-color;
+        border-left: 5px solid $thenary-color;
       }
       @media (max-width: 860px) {
         display: none;
       }
     }
-    .post-header {
-      .post-title {
-        color: $brand-color;
-        font-size: 42px;
-      }
-      .post-meta {
-        .date {
-          color: $secondary-color
+    .post-container {
+      max-width: 800px;
+      margin: 0 auto;
+      .post-header {
+        .post-title {
+          color: $primary-color;
+          font-size: 42px;
+        }
+        .post-meta {
+          .date {
+            color: $secondary-color
+          }
         }
       }
-    }
-    .post-content {
-      font-size: 18px;
-      line-height: 1.5em;
-      h1 {
-        font-size: 200px;
+      .post-content {
+        font-size: 18px;
+        line-height: 1.5em;
+        h1 {
+          font-size: 200px;
+        }
+        h2 {
+          font-size: 180%;
+        }
+        h3 {
+          font-size: 160%;
+        }
+        h4 {
+          font-size: 140%;
+        }
+        h5 {
+          font-size: 120%;
+        }
+        h1, h2, h3, h4, h5, h6 {
+          color: $primary-color;
+        }
+        img {
+          max-width: 100%;
+        }
+        a {
+          color: $primary-color;
+        }
+        .highlight {
+          border-radius: $spacing-unit / 2;
+          overflow-x: scroll;
+        }
+        pre.highlight {
+          padding: $spacing-unit * 2 $spacing-unit;
+        }
       }
-      h2 {
-        font-size: 180%;
+      .post-tags {
+        a {
+          font-family: $fixed-font-family;
+          color: $black-color;
+          padding: $spacing-unit * 1 $spacing-unit * 2;
+          border-radius: $spacing-unit / 2;
+          background-color: $secondary-color;
+          text-decoration: none;
+          color: $white-color;
+        }
       }
-      h3 {
-        font-size: 160%;
-      }
-      h4 {
-        font-size: 140%;
-      }
-      h5 {
-        font-size: 120%;
-      }
-      h1, h2, h3, h4, h5, h6 {
-        color: $brand-color;
-      }
-      img {
-        max-width: 100%;
-      }
-      a {
-        color: $primary-color;
-      }
-      .highlight {
-        border-radius: $spacing-unit / 2;
-        overflow-x: scroll;
-      }
-      pre.highlight {
-        padding: $spacing-unit * 2 $spacing-unit;
-      }
-    }
-    .post-tags {
-      a {
-        color: $black-color;
-        padding: $spacing-unit * 1 $spacing-unit * 2;
-        border-radius: $spacing-unit / 2;
-        background-color: $secondary-color;
-        text-decoration: none;
-
+      .post-footer {
+        
       }
     }
   }

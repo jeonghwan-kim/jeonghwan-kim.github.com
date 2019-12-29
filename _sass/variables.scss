@@ -1,15 +1,22 @@
+$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+// $article-font-family: Georgia, Cambria, "Times New Roman", Times, serif; // 미디엄 스타일 
+$article-font-family: $base-font-family;
+$fixed-font-family: "SF Mono", "Menlo", Courier, "Lucida Console", monospace;
+
+$font-size-default: 18px;
+
 $site-width: 1024px;
 $mobile-width: 320px;
 $content-width: 800px;
 $spacing-unit: 8px;
 
 // https://visme.co/blog/website-color-schemes/ #30
-$brand-color: #f4976c;
-$primary-color: #303c6c;
-$secondary-color: #fbe8a6;
+$brand-color: #687864;
+$primary-color: #317082;
+$secondary-color: #5085a5;
 $thenary-color: #8fc1e3;
 $black-color: #000000;
-$white-color: #ffffff;
+$white-color: #f7f9fb;
 
 @mixin spacing($target, $shortcut) {
   @for $i from 0 to 21 {
