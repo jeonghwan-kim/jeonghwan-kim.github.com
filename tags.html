@@ -1,5 +1,5 @@
 ---
-layout: tag
+layout: default
 ---
 
 {% comment %}
@@ -37,19 +37,24 @@ The following part removes dulpicated tags and invalid tags like blank tag.
 The purpose of this snippet is to list all your posts posted with a certain tag.
 =======================
 {% endcomment %}
-{% for tag in tags %}
-	<h2 id="{{ tag | slugify }}">
-	  <a href="/tags#{{ tag | slugify}}" class="tag-title-link">#{{ tag }}</a>
-	</h2>
-	<ul>
-	 {% for post in site.posts %}
-		 {% if post.tags contains tag %}
-		 <li>
-    		 <a href="{{ post.url }}">
-    		 {{ post.title }}
-  		   </a>
-		 </li>
-		 {% endif %}
-	 {% endfor %}
-	</ul>
-{% endfor %}
+
+<div class="container flex">
+	{% for tag in tags %}
+	<div class="foo">
+		<h2 id="{{ tag | slugify }}">
+			<a href="/tags#{{ tag | slugify}}" class="tag-title-link">#{{ tag }}</a>
+		</h2>
+		<ul>
+		 {% for post in site.posts %}
+			 {% if post.tags contains tag %}
+			 <li>
+					 <a href="{{ post.url }}">
+					 {{ post.title }}
+					 </a>
+			 </li>
+			 {% endif %}
+		 {% endfor %}
+		</ul>
+	</div>
+	{% endfor %}
+</div>
