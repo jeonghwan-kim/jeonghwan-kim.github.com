@@ -6,14 +6,18 @@
       flex: 0 0 300px;
       position: sticky;
       top: $spacing-unit;
+      @media (max-width: 860px) {
+        display: none;
+      }
     }
     .post-header {
       .post-title {
-  
+        color: $brand-color;
+        font-size: 42px;
       }
       .post-meta {
         .date {
-  
+          color: $secondary-color
         }
       }
       .post-summary {
@@ -21,8 +25,37 @@
       }
     }
     .post-content {
+      font-size: 18px;
+      line-height: 1.5em;
+      h1 {
+        font-size: 200px;
+      }
+      h2 {
+        font-size: 180%;
+      }
+      h3 {
+        font-size: 160%;
+      }
+      h4 {
+        font-size: 140%;
+      }
+      h5 {
+        font-size: 120%;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        color: $brand-color;
+      }
       img {
         max-width: 100%;
+      }
+      a {
+        color: $primary-color;
+      }
+      .highlight {
+        border-radius: $spacing-unit / 2;
+      }
+      pre.highlight {
+        padding: $spacing-unit * 2 $spacing-unit;
       }
     }
   }

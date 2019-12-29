@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .container {
   max-width: $site-width;
   margin-left: auto;
@@ -10,9 +13,11 @@
 }
 .flex-1 {
   flex: 1;
+  overflow: auto;
 }
 .flex-0 {
   flex: 0;
+  overflow: auto;
 }
 
 @include spacing('padding', 'p');

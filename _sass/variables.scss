@@ -1,9 +1,18 @@
 $site-width: 1024px;
+$mobile-width: 320px;
 $content-width: 800px;
 $spacing-unit: 8px;
 
+// https://visme.co/blog/website-color-schemes/ #30
+$brand-color: #f4976c;
+$primary-color: #303c6c;
+$secondary-color: #fbe8a6;
+$thenary-color: #8fc1e3;
+$black-color: #000000;
+$white-color: #ffffff;
+
 @mixin spacing($target, $shortcut) {
-  @for $i from 1 to 10 {
+  @for $i from 0 to 21 {
     .#{$shortcut}t-#{$i} { 
       #{$target}-top: #{$i * $spacing-unit}; 
     }
