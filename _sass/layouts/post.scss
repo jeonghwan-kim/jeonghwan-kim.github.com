@@ -76,7 +76,8 @@
           overflow-x: scroll;
         }
         pre.highlight {
-          padding: $spacing-unit * 2 $spacing-unit;
+          padding: $spacing-unit * 2 $spacing-unit * 3;
+          margin: 0;
         }
       }
       .post-tags {

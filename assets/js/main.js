@@ -23,7 +23,8 @@
     init: function init(triggerEl, targetEl) {
       if (!triggerEl || !targetEl) return;
 
-      triggerEl.addEventListener('click', function() {
+      triggerEl.addEventListener('click', function(evt) {
+        evt.preventDefault();
         categoryButton.toggleTarget(targetEl);
       })
     },
