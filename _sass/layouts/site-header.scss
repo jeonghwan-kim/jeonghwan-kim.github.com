@@ -26,6 +26,7 @@
       }
     }
     .category {
+      cursor: pointer;
       position: relative;
       color: $white-color;
       .category-list {
@@ -37,8 +38,7 @@
         padding: $spacing-unit;
         z-index: 1000;
         min-width: 150px;
-        // js로 제어 
-        // visibility: hidden;
+        visibility: hidden; // js로 제어 
       }
     }
   }

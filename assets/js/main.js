@@ -13,39 +13,29 @@
     },
 
     sendEvent({category, action, label, value = 1}) {
-      if (!category || !action) {
-        return;
-      }
-      if (typeof ga !== 'function') {
-        return;
-      }
-
+      if (!category || !action) return;
+      if (typeof ga !== 'function') return;
       ga('send', 'event', category, action, label, value);
     },
   }
 
-  var onload = () => {
-    googleAnalytics.init('UA-31588166-2');
+  var categoryButton = {
+    init: function init(triggerEl, targetEl) {
+      if (!triggerEl || !targetEl) return;
 
-    var post = document.querySelector('#post');
-    var postList = document.querySelector('#post-list');
-
-    if (post || postList) {
-      var el = post || postList
-      el.addEventListener('click', evt => {
-        var tagName = evt.target.dataset.tagName;
-        if (!tagName) {
-          return;
-        }
-
-        googleAnalytics.sendEvent({
-          category: 'Tag',
-          action: 'Click in ' + post ? 'post' : 'post list',
-          label: tagName,
-        });
-      });
+      triggerEl.addEventListener('click', function() {
+        categoryButton.toggleTarget(targetEl);
+      })
+    },
+    toggleTarget: function onClick(targetEl) {
+      var value = targetEl.style.visibility;
+      var isHidden = !value || value === 'hidden' 
+      return targetEl.style.visibility = isHidden ? 'visible' : 'hidden';
     }
-  };
+  }
 
-  document.addEventListener('DOMContentLoaded', onload);
+  document.addEventListener('DOMContentLoaded', function() {
+    googleAnalytics.init('UA-31588166-2');
+    categoryButton.init(document.querySelector('#category-btn'), document.querySelector('#category-popup'))
+  });
 })();
