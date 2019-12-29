@@ -7,7 +7,7 @@ tags: webpack
 ---
 
 이전글 [웹팩(기본편)](/series/2019/12/10/frontend-dev-env-webpack-basic.html)에서는 웹팩의 개념과 간단한 사용법에 대해 살펴보았다.
-웹팩은 프론트엔드 개발 환경을 위한 개발 서버를 제공하고 빌드 결과를 최적화 하는 다양한 방법을 제공하는데 이번글에서 자세히 살펴 보겠다.
+웹팩은 프론트엔드 개발 서버를 제공하고, 몇 가지 방법으로 빌드 결과를 최적화 할 수 있는데 이번글에서 자세히 살펴 보겠다.
 
 
 ## 1. 웹팩 개발 서버
@@ -17,8 +17,8 @@ tags: webpack
 지금까지는 브라우져에 파일을 직접 로딩해서 결과물을 확인했다. 
 인터넷에 웹사이트를 게시하려면 서버 프로그램으로 이 파일을 읽고 요청한 클러이언트에게 제공해야 한다.
 
-개발환경에서도 유사한 환경을 갖추는 것이 좋다.
-운영환경과 유사하게 함으로서 배포시 잠재적 문제를 미리 확인할 수 있다. 
+개발환경에서도 이와 유사한 환경을 갖추는 것이 좋다.
+운영환경과 맞춤으로써 배포시 잠재적 문제를 미리 확인할 수 있다. 
 게다가 ajax 방식의 api 연동은 cors 정책 때문에 반드시 서버가 필요하다. 
 
 프론트엔드 개발환경에서 이러한 개발용 서버를 제공해 주는 것이 [webpack-dev-server](https://webpack.js.org/configuration/dev-server/)다.
@@ -44,7 +44,7 @@ package.json:
 
 npm start 명령어로 실행하면 다음과 같이 서버가 구동되었다는 메시지를 확인할 수 있다. 
 
-```
+```shell
 npm start
 
 > webpack-dev-server
@@ -69,7 +69,7 @@ npm start
 
 ### 1.3 기본 설정
 
-웹팩 설정 파일에 devServer 객체에 개발 서버 옵션을 설정할 수 있다.
+웹팩 설정 파일의 devServer 객체에 개발 서버 옵션을 설정할 수 있다.
 
 ```js
 // webpack.config.js:
@@ -144,9 +144,9 @@ npm 스크립트를 수정해보자.
 ### 2.1 목업 API 1: devServer.before
 
 웹팩 개발 서버 설정 중 [before](https://webpack.js.org/configuration/dev-server/#devserverbefore) 속성은 웹팩 서버에 기능을 추가할 수 있는 여지를 제공한다. 
-이것을 이해하려면 노드 웹 프레임웍인 Express.js에 사전지식이 있으면 유리한데,
-간단히 말하면 익스프레스는 미들웨어 형태로 서버 기능을 확장할 수 있다. 
-이 before에 추가하는 것이 바로 미들웨어인 셈이다. 
+이것을 이해하려면 노드 Express.js에 사전지식이 있으면 유리한데,
+간단히 말하면 익스프레스는 미들웨어 형태로 서버 기능을 확장할 수 있는 웹프레임웍이다. 
+devServer.before에 추가하는 것이 바로 미들웨어인 셈이다. 
 아래 코드를 보자.
 
 ```js
@@ -167,15 +167,14 @@ module.exports = {
 }
 ```
 
-before에 설정한 함수가 바로 미들웨어다. 
-익스프레스에 의해서 app 객체가 인자로 전달되는데 Express 인스턴스다.
-이 객체에 라우트 컨트롤러를 추갛라 수 있는데 `app.get(url, controller)` 형태로 함수를 작성한다.
-컨트롤러에서는 요청 req과 응답 res 객체를 받는데 여기서는 응답객체의 json() 함수로 응답하는 코드를 만들었다.
+before에 설정한 미들웨어는 익스프레스에 의해서 app 객체가 인자로 전달되는데 Express 인스턴스다.
+이 객체에 라우트 컨트롤러를 추가할 수 있는데 app.get(url, controller) 형태로 함수를 작성한다.
+컨트롤러에서는 요청 req과 응답 res 객체를 받는데 여기서는 res.json() 함수로 응답하는 코드를 만들었다.
 
 웹팩 개발 서버는 GET /api/keywords 요청시 4개의 엔트리를 담은 배열을 반환할 것이다. 
 서버를 다시 구동하고 curl로 http 요청을 보내보자.
 
-```
+```shell
 curl localhost:8080/api/keywords
 [{"keyword":"이탈리아"},{"keyword":"세프의요리"},{"keyword":"제철"},{"keyword":"홈파티"}]
 ```
@@ -187,11 +186,11 @@ curl localhost:8080/api/keywords
 프론트 코드를 수정해서 방금 만든 엔드폰인트를 호출하는 코드로 변경해 보자. 
 ajax 라이브러리인 axios를 설치한다.
 
-```
+```shell
 npm install axios
 ```
 
-프론트엔드의 KeywordModel.js 코드를 다음과 같이 수정한다.
+프론트엔드의 model.js 코드를 다음과 같이 수정한다.
 
 ```js
 // src/model.js:
@@ -204,7 +203,7 @@ import axios from 'axios'
 //   {keyword: '홈파티'},
 // ]
 
-export default {
+const model = {
   async get() {
     // return data
     
@@ -212,6 +211,8 @@ export default {
     return result.data;
   }
 }
+
+export default model;
 ```
 
 기존에는 data에 데이터를 관리했는데 이제는 ajax 호출 후 응답된 데이터를 반환하도록 변경했다. 
@@ -230,9 +231,7 @@ export default {
 npm install connect-api-mocker
 ```
 
-다음 경로에 API 응답 파일을 만든다.
-
-mocks/api/keywords/GET.json
+mocks/api/keywords/GET.json 경로에 API 응답 파일을 만든다.
 
 GET 메소드를 사용하기때문에 GET.json으로 파일을 만들었다(물론 POST, PUT, DELETE 도 지원).
 
@@ -246,11 +245,10 @@ GET.json:
 ]
 ```
 
-기존에 설정한 목업 응답 컨트롤러를 제거하고 대신 connect-api-mocker 패키지로 미들웨어를 대신한다.
+기존에 설정한 목업 응답 컨트롤러를 제거하고 connect-api-mocker로 미들웨어를 대신한다.
 
 ```js
 // webpack.config.js:
-
 const apiMocker = require('connect-api-mocker')
 
 module.exports = {
@@ -264,8 +262,8 @@ module.exports = {
 
 익스프레스 객체인 app은 get() 메소드 뿐만 아니라 미들웨어 추가를 위한 범용 메소드인 use()를 제공하는데,
 이를 이용해 목업 미들웨어를 추가했다.
-패키지에 전달한 인자 중 첫번째 인자는 설정할 라우팅 경로로써 "/api"로 들어요 요청에 대한 설정이다.
-두 번째 인자는 응답으로 제공할 목업 파일 경로인데 "mocks/api" 로 설정했다. 
+첫번째 인자는 설정할 라우팅 경로인데 /api로 들어온 요청에 대해 처리하겠다는 의미다.
+두번째 인자는 응답으로 제공할 목업 파일 경로인데 방금 만든 mocks/api 경로를 전달했다.
 
 목업 API 갯수가 많다면 직접 컨트롤러를 작성하는 것 보다 목업 파일로 관리하는 것을 추천한다.
 
@@ -274,7 +272,7 @@ module.exports = {
 이번에는 api 서버를 로컬환경에서 띄운 다음 목업이 아닌 이 서버에 직접 api 요청을 해보자. 
 로컬호스트 8081 포트에 아래와 같이 서버가 구성되었다고 가정하겠다.
 
-```
+```shell
 $ curl localhost:8081/api/keywords
 [{"keyword":"이탈리아"},{"keyword":"세프의요리"},{"keyword":"제철"},{"keyword":"홈파티"}]
 ```
@@ -283,7 +281,7 @@ ajax 요청 부분의 코드를 변경한다.
 
 ```js
 // src/model.js
-export default {
+const model = {
   async get() {
     // const result = await axios.get('/api/keywords');
 
@@ -302,10 +300,10 @@ export default {
 http://localhost:8080에서 http://localhost:8081 로 ajax 호출을 하지 못하는데 이유는 CORS 정책 때문이라는 메세지다. 
 요청하는 리소스에 "Access-Control-Allow-Origin" 헤더가 없다는 말도 한다.
 
-[CORS(Cross Origin Resource Shaing)](https://developer.mozilla.org/ko/docs/Web/HTTP/Access_control_CORS이란) 브라우져와 서버간의 보안상의 정책인데 브라우저가 최초로 접속한 서버에서만 ajax 요청을 할수 있다는 내용이다. 
+[CORS(Cross Origin Resource Shaing)](https://developer.mozilla.org/ko/docs/Web/HTTP/Access_control_CORS이란) 브라우져와 서버간의 보안상의 정책인데 브라우저가 최초로 접속한 서버에서만 ajax 요청을 할 수 있다는 내용이다. 
 방금같은 경우는 localhost로 같은 도메인이지만 포트번호가 8080, 8081로 달라서 다른 서버로 인식하는 것이다. 
 
-해결하는 방법은 두 가지 인데 먼저 서버측 솔루션 부터 보자.
+해결하는 방법은 두 가지인데 먼저 서버측 솔루션 부터 보자.
 해당 api 응답 헤더에 "Access-Control-Allow-Origiin: *" 헤더를 추가한 뒤 응답하면 브라우져에서 응답을 수신할 수 있다.
 
 ```js
@@ -316,8 +314,8 @@ app.get('/api/keywords', (req, res) => {
 })
 ```
 
-한편 프론트엔드 측 솔류션을 보자. 서버 응답 헤더를 추가할 필요없이 웹팩 개발 서버에서 api 서버로 "**프록싱**"하는 것이다. 
-웹팩 개발 서버는 proxy 속성으로 이를 지원한다. 
+한편 프론트엔드 측 해결방법을 보자. 서버 응답 헤더를 추가할 필요없이 웹팩 개발 서버에서 api 서버로 **프록싱**하는 것이다. 
+웹팩 개발 서버는 [proxy](https://webpack.js.org/configuration/dev-server/#devserverproxy) 속성으로 이를 지원한다. 
 
 ```js
 // webpack.config.js
@@ -335,7 +333,7 @@ api 호출코드를 다시 복구한 뒤,
 
 ```js
 // src/model.js
-export default {
+const model = {
   async get() {
     // const { data } = await axios.get('http://localhost:8081/api/keywords');
 
@@ -392,7 +390,7 @@ export default controller;
 ```
 
 컨트롤러는 model과 view에 의존성이 있는데 이 둘을 이용해 데이터를 가져와 화면을 렌더한다.
-만약 view.js 모듈에 변화가 있을 경우 전체 화면을 갱신하지 않고 변경된 view.js 모듈만 다시 실행하는 것이 핫 모듈의 작동 방식이다.
+만약 view 모듈에 변화가 있을 경우 전체 화면을 갱신하지 않고 변경된 view 모듈만 다시 실행하는 것이 핫 모듈의 작동 방식이다.
 
 이 기능을 만들기 위해 컨트롤러 하단에 다음 코드를 추가해 보자.
 
@@ -405,10 +403,8 @@ export default controller;
 if (module.hot) {
   console.log('핫모듈 켜짐')
 
-  module.hot.accept('./view', async () => {
+  module.hot.accept('./view', () => {
     console.log('view 모듈 변경됨')
-
-    // render(await model.get(), controller.el)
   }) 
 }
 ```
@@ -425,8 +421,8 @@ devServer.hot 옵션을 켜면 웹팩 개발 서버 위에서 module.hot 객체�
 
 ![핫 로딩 변화 감지](/assets/imgs/2019/12/28/hot2.jpg)
 
-그럼 이 콜백 함수에서 변경된 모듈을 사용하는 코드를 추가하면 변경된 view.js 모듈을 바꿔치지 할수 있다.
-모델로 데이터를 부르고 다시 변경된 뷰 모듈로 렌더 함수를 실행했다.
+이 콜백 함수 안에서 변경된 view 모듈을 이용하면 view 모듈을 교체할 수 있을 것 같다.
+model로 데이터를 부르고 다시 변경된 view 모듈로 렌더 함수를 실행했다.
 
 ```js
 // src/controller.js
@@ -465,7 +461,7 @@ view.js 코드를 변경하고 저장하면 브라우져 갱신 없이 화면이
 ### 4.1 production 모드
 
 웹팩에 내장되어 있는 최적화 방법중 [mode](https://webpack.js.org/configuration/mode/) 값을 설정하는 방식이 가장 기본이다. 
-세 가지 값이 올 수 있는데 지금까지 설정한 "development"는 대버깅 편의를 위해 아래 두 개 플러그인을 사용한다.
+세 가지 값이 올 수 있는데 지금까지 설정한 "development"는 디버깅 편의를 위해 아래 두 개 플러그인을 사용한다.
 
 - NamedChunksPlugin 
 - NamedModulesPlugin
@@ -484,7 +480,7 @@ DefinePlugin을 사용한다면 process.env.NODE_ENV 값이 "development"로 설
 
 DefinePlugin을 사용한다면 process.env.NODE_ENV 값이 "production" 으로 설정되어 어플리케이션 전역변수로 들어간다.
 
-그럼 환경변수 NODE_ENV 값에 따라 모드를 설정하도록 웹팩 설정 코드를 다음과 같이 추가할 수 이겠다.
+그럼 환경변수 NODE_ENV 값에 따라 모드를 설정하도록 웹팩 설정 코드를 다음과 같이 추가할 수 있겠다.
 
 ```js
 // webpack.config.js:
@@ -512,7 +508,7 @@ start는 개발 서버를 구동하기 때문에 환경변수를 설정하지 �
 
 빌드한 뒤 결과물을 확인해 보자.
 
-```
+```shell
 npm run build
 ```
 
@@ -547,7 +543,7 @@ module.exports = {
 }
 ```
 
-optimization.minimizer는 웹팩이 결과물을 압축할때 사용할 플러그인을 넣는 배열이다.
+[optimization.minimizer](https://webpack.js.org/configuration/optimization/#optimizationminimizer)는 웹팩이 결과물을 압축할때 사용할 플러그인을 넣는 배열이다.
 설치한 OptimizeCSSAssetsPlugin을 전달해서 빌드 결과물중 css 파일을 압축하도록 했다.
 
 빌드하뒤 확인하면 css 파일도 압축되었다.
@@ -560,7 +556,7 @@ optimization.minimizer는 웹팩이 결과물을 압축할때 사용할 플러�
 
 이 플러그인을 설치한 뒤,
 
-```
+```shell
 npm i terser-webpack-plugin
 ```
 
@@ -633,12 +629,12 @@ module.exports = {
 
 ![청크 분리](/assets/imgs/2019/12/28/optimazation2.jpg)
 
-main.js, controller.js외에도 vendors~main~controller.js 파일도 생겼다. 
+main.js, controller.js외에도 vendors~controller_main.js 파일도 생겼다. 
 마지막 파일은 두 엔트리의 중복 코드를 담은 파일이다. 
-axios로 검색하면 main.js와 controller.js에서는 없고 vendors~main~controller.js에만 있다. 
+axios로 검색하면 main.js와 controller.js에서는 없고 vendors~controller~main.js에만 있다. 
 
 이런 방식은 엔트리 포인트를 적절히 분리해야기 때문에 손이 많이 가는 편이다.
-반면 자동으로 변경해 주는 방식이 있는데 이를 "다이나믹 임포트"라고 부른다.
+반면 자동으로 변경해 주는 방식이 있는데 이를 **다이나믹 임포트**라고 부른다.
 
 기존 컨트롤러 코드를 보면 이렇다.
 
@@ -705,10 +701,10 @@ externals에 추가하면 웹팩은 코드에서 axios를 사용하더라도 번
 
 ![axios 전역 이름](/assets/imgs/2019/12/28/axios.jpg)
 
-axios는 이미 node_modules에 위치해 있기 때문에 이를 웹팩 아웃풋에 옮기고 index.html에서 로딩해야한다.
-파일을 복사하는 CopyPlugin을 설치한다.
+axios는 이미 node_modules에 위치해 있기 때문에 이를 웹팩 아웃풋 폴더에 옮기고 index.html에서 로딩해야한다.
+파일을 복사하는 [CopyWebpackPlugin](https://webpack.js.org/plugins/copy-webpack-plugin/)을 설치한다.
 
-```
+```shell
 npm i copy-webpack-plugin
 ```
 
@@ -753,7 +749,7 @@ axios는 빌드하지 않고 복사만 한다. controller와  main이 분리되�
 웹팩 사용방법에 대해 좀더 알아 보았다.
 
 개발 서버를 띄워 파일 감지, api 서버 연동 등 개발 환경을 좀 더 편리하게 구성할 수 있었다.
-특히, 핫 모듈 리플레이스먼트는 일부 모듈의 변경만 감지하여 페이지 갱신 없이 변경사항을 브라우져에 렌더링할 수 있다.
+특히 핫 모듈 리플레이스먼트는 일부 모듈의 변경만 감지하여 페이지 갱신 없이 변경사항을 브라우져에 렌더링할 수 있다.
 
 웹팩 최적화 방법에 대해서도 알아보았다.
 mode 옵션을 production으로 설정하면 웹팩 내장 플러그인이 프로덕션 모드로 동작한다. 
