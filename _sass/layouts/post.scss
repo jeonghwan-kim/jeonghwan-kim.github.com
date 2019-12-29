@@ -1,0 +1,29 @@
+.post {
+  .flex {
+    flex-flow: row-reverse;
+    align-items: flex-start;
+    .post-toc {
+      flex: 0 0 300px;
+      position: sticky;
+      top: $spacing-unit;
+    }
+    .post-header {
+      .post-title {
+  
+      }
+      .post-meta {
+        .date {
+  
+        }
+      }
+      .post-summary {
+  
+      }
+    }
+    .post-content {
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
