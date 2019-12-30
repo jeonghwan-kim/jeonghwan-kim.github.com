@@ -32,13 +32,46 @@
     },
     toggleTarget: function onClick(targetEl) {
       var value = targetEl.style.visibility;
-      var isHidden = !value || value === 'hidden' 
-      targetEl.style.visibility = isHidden ? 'visible' : 'hidden';
-      if (!isHidden) {
+      var isTryShow = !value || value === 'hidden' 
+      targetEl.style.visibility = isTryShow ? 'visible' : 'hidden';
+
+      function handleClickOuter(evt) {
+        var el = evt.target;
+        while (el) {
+          if (el === targetEl) {
+            return;
+          }
+          el = el.parentElement
+        }
+
+        targetEl.style.visibility = 'hidden';
+
+        window.removeEventListener('click', handleClickOuter)
+      }
+
+      // wip: 토글 작업중
+      // console.log('isTryShow', isTryShow)
+      // function handlePressEsc(evt) {
+      //   const esc = 27;
+      //   if (evt.keyCode === esc) {
+      //     targetEl.style.visibility = 'hidden';
+      //     categoryButton.triggerEl.blur();
+      //   }
+
+      //   window.removeEventListener('keydown', handlePressEsc)
+      // }
+
+      if (isTryShow) {
+        setTimeout(function() {
+          window.addEventListener('click', handleClickOuter)
+          window.addEventListener('keydown', handlePressEsc)
+        },1)
+      }
+      if (!isTryShow) {
         categoryButton.triggerEl.blur()
       }
       return;
-    }
+    },
   }
 
   document.addEventListener('DOMContentLoaded', function() {
