@@ -58,6 +58,10 @@ body {
   padding: 0;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .foo {
   flex: 1 1 400px;
 }

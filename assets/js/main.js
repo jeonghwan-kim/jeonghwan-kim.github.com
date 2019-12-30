@@ -23,6 +23,8 @@
     init: function init(triggerEl, targetEl) {
       if (!triggerEl || !targetEl) return;
 
+      this.triggerEl = triggerEl;
+
       triggerEl.addEventListener('click', function(evt) {
         evt.preventDefault();
         categoryButton.toggleTarget(targetEl);
@@ -31,7 +33,11 @@
     toggleTarget: function onClick(targetEl) {
       var value = targetEl.style.visibility;
       var isHidden = !value || value === 'hidden' 
-      return targetEl.style.visibility = isHidden ? 'visible' : 'hidden';
+      targetEl.style.visibility = isHidden ? 'visible' : 'hidden';
+      if (!isHidden) {
+        categoryButton.triggerEl.blur()
+      }
+      return;
     }
   }
 
