@@ -50,6 +50,7 @@
       .post-content {
         font-size: 18px;
         line-height: 1.5em;
+        font-family: $article-font-family;
         h1 {
           font-size: 200px;
         }
@@ -67,9 +68,21 @@
         }
         h1, h2, h3, h4, h5, h6 {
           color: $primary-color;
+          font-family: $base-font-family;
         }
         img {
           max-width: 100%;
+        }
+        blockquote {
+          color: lighten($black-color, 20%);
+          position: relative;
+          &::before {
+            content: '“';
+            position: absolute;
+            left: -$spacing-unit * 3;
+            font-size: 40px;
+            color: lighten($black-color, 60%)
+          }
         }
         .highlight {
           border-radius: $spacing-unit / 2;
