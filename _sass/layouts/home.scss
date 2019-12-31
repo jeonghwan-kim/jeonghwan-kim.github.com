@@ -1,5 +1,5 @@
 .home {
-  max-width: 800px;
+  max-width: $content-width;
   ul.post-list {
     list-style: none;
     padding: 0;
@@ -12,7 +12,7 @@
         }
         .post-meta {
           .date {
-            color: $secondary-color;
+            color: lighten($black-color, 40%);
           }
         }
         .post-summary {
@@ -25,7 +25,6 @@
   .pagination {
     font-size: 18px;
     a {
-      color: $primary-color;
       text-decoration: none;
     }
     .current-page {

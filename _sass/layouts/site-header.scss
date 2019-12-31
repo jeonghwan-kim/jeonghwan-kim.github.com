@@ -1,7 +1,11 @@
 .site-header {
   height: 80px;
-  background-color: $primary-color;
-  border-bottom: 3px solid $thenary-color;
+  background-color: $brand-color;
+  border-bottom: $spacing-unit / 2 solid darnken($thenary-color, 30%);
+  a {
+    color: $white-color;
+    text-decoration: none;
+  }
   .site-title {
     margin: 0;
     font-size: 24px;
@@ -11,7 +15,7 @@
       width: 100%;
       height: 28px;
       line-height: 28px;
-      color: $white-color;
+      font-weight: bold;
       text-decoration: none;
     }
   }
@@ -25,15 +29,7 @@
       li.site-nav {
         margin-right: $spacing-unit;
         a {
-          display: inline-block;
           padding: $spacing-unit $spacing-unit / 2;
-          color: $white-color;
-          text-decoration: none;
-          &:hover,
-          &:focus {
-            border-bottom: solid $spacing-unit / 2 rgba(0,0,0, 0.5);
-            padding-bottom: $spacing-unit - $spacing-unit / 2;
-          }
         }
         &:last-child {
           margin-right: 0;
@@ -48,26 +44,16 @@
       z-index: 1000;
       min-width: 150px;
       background-color: $secondary-color;
-      border-radius: $spacing-unit / 2;
       li {
-        &:first-child {
-          border-top-left-radius: $spacing-unit / 2;
-          border-top-right-radius: $spacing-unit / 2;;
-        }
-        &:last-child {
-          border-bottom-left-radius: $spacing-unit / 2;
-          border-bottom-right-radius: $spacing-unit / 2;;
-        }
         a {
+          font-size: 14px;
           &:hover,
           &:focus {
-            border-left: solid $spacing-unit / 2 rgba(0,0,0,0.5);
-            padding-left: $spacing-unit * 3 - $spacing-unit / 2
+            background: rgba(0,0,0,0.5);
           }
           display: block;
           padding: $spacing-unit $spacing-unit * 3;
           color: $white-color;
-          text-decoration: none;
         }
       }
     }

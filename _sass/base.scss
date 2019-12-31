@@ -5,6 +5,9 @@ body {
   font-family: $base-font-family;
   color: $black-color;
 }
+a {
+  color: $black-color;
+}
 .container {
   max-width: $site-width;
   margin-left: auto;

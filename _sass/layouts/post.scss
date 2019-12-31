@@ -14,7 +14,7 @@
           margin-bottom: $spacing-unit / 2;
           a {
             text-decoration: none;
-            color: $black-color;
+            color: lighten($black-color, 40%);
             &:hover,
             &:focus {
               color: $black-color;
@@ -27,7 +27,7 @@
       }
       > ul {
         margin-left: $spacing-unit * 4;
-        border-left: 5px solid $thenary-color;
+        border-left: $spacing-unit / 2 solid $secondary-color;
       }
       @media (max-width: $desktop-width - 1) {
         display: none;
@@ -38,12 +38,12 @@
       margin: 0 auto;
       .post-header {
         .post-title {
-          color: $primary-color;
+          color: $black-color;
           font-size: 42px;
         }
         .post-meta {
           .date {
-            color: $secondary-color
+            color: lighten($black-color, 40%);
           }
         }
       }
@@ -70,9 +70,6 @@
         }
         img {
           max-width: 100%;
-        }
-        a {
-          color: $primary-color;
         }
         .highlight {
           border-radius: $spacing-unit / 2;

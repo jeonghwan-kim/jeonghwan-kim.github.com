@@ -12,13 +12,13 @@ $content-width: 800px;
 
 $spacing-unit: 8px;
 
-// https://visme.co/blog/website-color-schemes/ #logo
-$brand-color: #ff0028;
-$primary-color: #beef00;
-$secondary-color: #657a00;
-$thenary-color: #8fc1e3;
-$black-color: #000000;
-$white-color: #f7f9fb;
+// https://hookagency.com/website-color-schemes/ #7
+$brand-color: #313d4b;
+$primary-color: #cd5554;
+$secondary-color: #91684a;
+$thenary-color: #00c07f;
+$black-color: #3d3d3f;
+$white-color: #f9f8fd;
 
 @mixin spacing($target, $shortcut) {
   @for $i from 0 to 21 {
