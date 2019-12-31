@@ -1,23 +1,27 @@
 <footer class="site-footer mt-15 mb-0 py-5">
-  <ul>
-    <li>
-      <a class="icon icon-rss" href="{{ '/feed.xml' | prepend: site.baseurl }}" title="rss">
-      </a>
+  <!-- <div class="footer-desc mb-5">
+    James Long is a developer & designer with over a decade of experience building large-scale applications. Get in touch
+  </div> -->
+  <ul class="footer-navs  mb-4">
+    <li class="mr-3"><a href="/">POSTS</a></li>
+    <li><a href="/tags/">TAGS</a></li>
+  </ul>
+  <ul class="mb-10">
+    <li class="mr-2">
+      <a class="icon icon-rss" href="{{ '/feed.xml' | prepend: site.baseurl }}" title="rss"></a>
     </li>
-    <!-- {% if site.email%}
-    <li>
-      <a class="icon icon-email" href="mailto:{{ site.email }}">
-        이메일
-      </a>
-    </li>
-    {% endif %} -->
-    {% if site.github_username %}
-    <li>
-      <a class="icon icon-github" href="https://github.com/{{ site.github_username }}" title="github">
-      </a>
+    {% if site.email%}
+    <li class="mr-2">
+      <a class="icon icon-email" href="mailto:{{ site.email }}" title="email"></a>
     </li>
     {% endif %}
-  </u>
+    {% if site.github_username %}
+    <li>
+      <a class="icon icon-github" href="https://github.com/{{ site.github_username }}" title="github"></a>
+    </li>
+    {% endif %}
+  </ul>
+  <div class="footer-copyright">© 김정환 2020</div>
 </footer>
 
 <script src="/assets/js/main.js"></script>

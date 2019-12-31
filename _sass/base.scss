@@ -33,8 +33,8 @@ a {
 
 .icon {
   display: inline-block;
-  width: $spacing-unit * 8;
-  height: $spacing-unit * 8;
+  width: $spacing-unit * 3;
+  height: $spacing-unit * 3;
   background-repeat: no-repeat;
   background-position-x: 0;
   background-position-y: 0;
@@ -48,7 +48,7 @@ a {
   background-image: url(/assets/imgs/icons/icon-github.svg);
 }
 .icon-email {
-  // background-image: url(/assets/imgs/icons/icon-email.svg);
+  background-image: url(/assets/imgs/icons/icon-email.svg);
 }
 
 .btn {
