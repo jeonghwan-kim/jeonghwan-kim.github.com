@@ -12,7 +12,7 @@
       ga('send', 'pageview');
     },
 
-    sendEvent({category, action, label, value = 1}) {
+    sendEvent: function sendEvent({category, action, label, value = 1}) {
       if (!category || !action) return;
       if (typeof ga !== 'function') return;
       ga('send', 'event', category, action, label, value);
@@ -20,62 +20,88 @@
   }
 
   var categoryButton = {
-    init: function init(triggerEl, targetEl) {
+    init: function(triggerEl, targetEl) {
       if (!triggerEl || !targetEl) return;
 
       this.triggerEl = triggerEl;
+      this.targetEl = targetEl;
 
-      triggerEl.addEventListener('click', function(evt) {
-        evt.preventDefault();
-        categoryButton.toggleTarget(targetEl);
-      })
+      this.triggerEl.addEventListener('click', categoryButton.onClick);
     },
-    toggleTarget: function onClick(targetEl) {
-      var value = targetEl.style.visibility;
-      var isTryShow = !value || value === 'hidden' 
-      targetEl.style.visibility = isTryShow ? 'visible' : 'hidden';
 
-      function handleClickOuter(evt) {
-        var el = evt.target;
-        while (el) {
-          if (el === targetEl) {
-            return;
-          }
-          el = el.parentElement
-        }
+    onClick: function(evt) {
+      evt.preventDefault();
+      var willVisible = categoryButton.willVisible()
+      categoryButton.toggleTarget(willVisible);
+      categoryButton.handleEvents(willVisible);
+    },
+    
+    hideTarget: function() {
+      categoryButton.targetEl.style.visibility = 'hidden';
+    },
+    
+    showTarget: function() {
+      categoryButton.targetEl.style.visibility = 'visible';
+    },
 
-        targetEl.style.visibility = 'hidden';
+    toggleTarget: function(willVisible) {
+      willVisible ? categoryButton.showTarget() : categoryButton.hideTarget();
+    },
 
-        window.removeEventListener('click', handleClickOuter)
-      }
+    willVisible: function()  {
+      var visibility = categoryButton.targetEl.style.visibility;
+      return !visibility || visibility === 'hidden';
+    },
 
-      // wip: 토글 작업중
-      // console.log('isTryShow', isTryShow)
-      // function handlePressEsc(evt) {
-      //   const esc = 27;
-      //   if (evt.keyCode === esc) {
-      //     targetEl.style.visibility = 'hidden';
-      //     categoryButton.triggerEl.blur();
-      //   }
-
-      //   window.removeEventListener('keydown', handlePressEsc)
-      // }
-
-      if (isTryShow) {
+    handleEvents: function(willVisible) {
+      if (willVisible) {
         setTimeout(function() {
-          window.addEventListener('click', handleClickOuter)
-          window.addEventListener('keydown', handlePressEsc)
-        },1)
+          window.addEventListener('click', categoryButton.handleClickOuter)
+          window.addEventListener('keydown', categoryButton.handleKeydownEsc)
+        })
+      } else {
+        categoryButton.blur();
       }
-      if (!isTryShow) {
-        categoryButton.triggerEl.blur()
-      }
-      return;
     },
-  }
+    
+    blur: function() {
+      categoryButton.triggerEl.blur();
+    },
+    
+    handleClickOuter: function(evt) {
+      var el = evt.target;
+      while (el) {
+        if (el === categoryButton.targetEl) {
+          window.removeEventListener('click', categoryButton.handleClickOuter)
+          return;
+        }
+        el = el.parentElement
+      }
+      
+      categoryButton.hideTarget()
+      categoryButton.removeEventLinsteners();
+    },
+    
+    handleKeydownEsc: function handleKeydownEsc(evt) {
+      var esc = 27;
+      if (evt.keyCode === esc) {
+        categoryButton.hideTarget()
+      }
+      categoryButton.removeEventLinsteners()
+    },
+    
+    removeEventLinsteners: function() {
+      window.removeEventListener('keydown', categoryButton.handleKeydownEsc)
+      window.removeEventListener('click', categoryButton.handleClickOuter)
+    },
+  };
+  
 
   document.addEventListener('DOMContentLoaded', function() {
     googleAnalytics.init('UA-31588166-2');
-    categoryButton.init(document.querySelector('#category-btn'), document.querySelector('#category-popup'))
+    categoryButton.init(
+      document.querySelector('#category-btn'), 
+      document.querySelector('#category-dropdown'),
+    )
   });
 })();
