@@ -34,3 +34,5 @@ paginate: 30
 
 sass:
   style: compressed # possible values: nested expanded compact compressed
+
+excerpt_seperator:  <!--break-->

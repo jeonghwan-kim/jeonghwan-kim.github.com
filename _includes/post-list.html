@@ -7,5 +7,5 @@
     <span class="date">{{ post.date | date : "%Y년 %m월 %d일" }}</span>
     {% endif %}
   </p>
-  <p class="post-summary">{{ post.summary }}</p>
+  <p class="post-summary">{{ post.content | strip_html | truncate: 200, '...'}}</p>
 </a>
