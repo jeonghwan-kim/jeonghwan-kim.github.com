@@ -19,6 +19,9 @@
             &:focus {
               color: $brand-color;
             }
+            &.active {
+              color: $brand-color
+            }
           }
         }
       }
