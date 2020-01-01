@@ -22,7 +22,7 @@
     {% endif %}
     
     {% assign next_id = index | plus: 1 %}
-    {% if next_id <= pageSeries.size %}
+    {% if next_id <= seriesSize %}
       {% assign nextUrl = pageSeries.posts[next_id] %}
     {% endif %}
   {% endif %}
