@@ -1,0 +1,7 @@
+- id: 1
+  title: '프론트엔드 개발환경의 이해'
+  posts: 
+    - /series/2019/12/09/frontend-dev-env-npm.html
+    - /series/2019/12/10/frontend-dev-env-webpack-basic.html
+    - /series/2019/12/22/frontend-dev-env-babel.html
+    - /series/2019/12/30/frontend-dev-env-lint.html

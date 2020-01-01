@@ -1,0 +1,57 @@
+{% if page.category == "series" %}
+{% if page.seriesId %}
+  {% for series in site.data.series %}
+    {% if series.id == page.seriesId %}
+      {% assign pageSeries = series %}
+    {% endif %}
+  {% endfor %}
+  {% if pageSeries %}
+    {% assign seriesTitle = pageSeries.title %}
+    {% assign seriesSize = pageSeries.size | plus: 1%}
+    
+    {% for post in pageSeries.posts %}
+      {% if post == page.url %}
+        {% assign currentSereisIndex = forloop.index %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign index = currentSereisIndex | minus: 1 %}
+    {% assign prev_id = index | minus: 1 %}
+    {% if prev_id > -1 %}
+      {% assign prevUrl = pageSeries.posts[prev_id] %}
+    {% endif %}
+    
+    {% assign next_id = index | plus: 1 %}
+    {% if next_id <= pageSeries.size %}
+      {% assign nextUrl = pageSeries.posts[next_id] %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+{% endif %}
+
+
+{% if seriesTitle %}
+<div class="series-nav mb-1">
+  <div class="mb-1">
+    <span class="series-title">
+      {{ seriesTitle }} 
+    </span>
+    <span class="series-order">
+      <span class="active">{{ currentSereisIndex }}</span>/{{ seriesSize }}
+    </span>
+  </div>
+  <div class="series-controls">
+    {% if prevUrl %}
+    <a href="{{ prevUrl }}">« 이전</a>
+    {% endif %}
+    {% if prevUrl %}
+      {% if nextUrl %}
+        <span> | </span>
+      {% endif %}
+    {% endif %}
+    {% if nextUrl %}
+    <a href="{{ nextUrl }}">다음 »</a>
+    {% endif %}
+  </div>
+</div>
+{% endif %}

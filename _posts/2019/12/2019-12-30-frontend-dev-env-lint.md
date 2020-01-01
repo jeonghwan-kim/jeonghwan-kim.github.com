@@ -3,6 +3,7 @@ title: "프론트엔드 개발환경의 이해: 린트"
 layout: post
 summary: ""
 category: series
+seriesId: 1
 tags:
 ---
 

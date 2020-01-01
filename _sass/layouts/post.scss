@@ -45,6 +45,26 @@
           .date {
             color: lighten($black-color, 40%);
           }
+          .series-nav {
+            color: $secondary-color;
+            .series-title { 
+              font-weight: bold;
+              &::before {
+                content: '[연재물]';
+              }
+            }
+            .series-order {
+              .active {
+                font-weight: bold;
+              }
+            }
+            .series-controls {
+              a {
+                color: $secondary-color;
+                text-decoration: none;
+              }
+            }
+          }
         }
       }
       .post-content {
@@ -113,5 +133,27 @@
         
       }
     }
+  }
+}
+
+.series-navigator {
+  border: $spacing-unit / 8 solid $secondary-color;
+  border-radius: $spacing-unit / 2;
+
+  .flex {
+    flex-flow: row;
+  }
+  .controls {
+    flex: 0 0 100px;
+    text-align: right;
+    a {
+      text-decoration: none;
+    }
+  }
+  .series-title {
+    margin-top: $spacing-unit;
+  }
+  .series-order {
+
   }
 }

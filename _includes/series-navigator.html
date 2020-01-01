@@ -1,0 +1,53 @@
+{% if page.category == "series" %}
+{% if page.seriesId %}
+  {% for series in site.data.series %}
+    {% if series.id == page.seriesId %}
+      {% assign pageSeries = series %}
+    {% endif %}
+  {% endfor %}
+  {% if pageSeries %}
+    {% assign seriesTitle = pageSeries.title %}
+    {% assign seriesSize = pageSeries.size %}
+    
+    {% for post in pageSeries.posts %}
+      {% if post == page.url %}
+        {% assign currentSereisIndex = forloop.index %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign currentSereisIndex = currentSereisIndex | minus: 1 %}
+
+    {% assign prev_id = currentSereisIndex | minus: 1 %}
+    {% if prev_id > -1 %}
+      {% assign prevUrl = pageSeries.posts[prev_id] %}
+    {% endif %}
+    
+    {% assign next_id = currentSereisIndex | plus: 1 %}
+    {% if next_id <= pageSeries.size %}
+      {% assign nextUrl = pageSeries.posts[next_id] %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+{% endif %}
+
+<div class="series-navigator mb-10 px-2 pt-3 pb-6">
+  <div class="flex">
+    <div class="flex-1">
+      <span>연재물</span>
+    </div>
+    <div class="controls">
+      {% if prevUrl %}
+      <a href="{{ prevUrl }}">« 이전</a>
+      {% endif %}
+      {% if nextUrl %}
+      <a href="{{ nextUrl }}">다음 »</a>
+      {% endif %}
+    </div>
+  </div>
+  <h3 class="series-title">
+    {{ seriesTitle }} 
+    <span class="series-order">
+      ({{currentSereisIndex}}/{{seriesSize}})
+    </span>
+  </h3>
+</div>
