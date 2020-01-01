@@ -1,0 +1,112 @@
+.post {
+  .flex {
+    flex-flow: row-reverse;
+    align-items: flex-start;
+    .post-toc {
+      flex: 0 0 250px;
+      position: sticky;
+      top: $spacing-unit;
+      ul {
+        list-style: none;
+        margin: 0;
+        padding-left: $spacing-unit * 2;
+        li {
+          margin-bottom: $spacing-unit / 2;
+          a {
+            text-decoration: none;
+            color: lighten($black-color, 40%);
+            &:hover,
+            &:focus {
+              color: $black-color;
+            }
+            &.active {
+              color: $brand-color
+            }
+          }
+        }
+      }
+      > ul {
+        margin-left: $spacing-unit * 4;
+        border-left: $spacing-unit / 2 solid $secondary-color;
+      }
+      @media (max-width: $desktop-width - 1) {
+        display: none;
+      }
+    }
+    .post-container {
+      max-width: 800px;
+      margin: 0 auto;
+      .post-header {
+        .post-title {
+          color: $black-color;
+          font-size: 42px;
+        }
+        .post-meta {
+          .date {
+            color: lighten($black-color, 40%);
+          }
+        }
+      }
+      .post-content {
+        font-size: 18px;
+        line-height: 1.5em;
+        font-family: $article-font-family;
+        h1 {
+          font-size: 200px;
+        }
+        h2 {
+          font-size: 180%;
+        }
+        h3 {
+          font-size: 160%;
+        }
+        h4 {
+          font-size: 140%;
+        }
+        h5 {
+          font-size: 120%;
+        }
+        h1, h2, h3, h4, h5, h6 {
+          color: $primary-color;
+          font-family: $base-font-family;
+        }
+        img {
+          max-width: 100%;
+        }
+        blockquote {
+          color: lighten($black-color, 20%);
+          position: relative;
+          &::before {
+            content: '“';
+            position: absolute;
+            left: -$spacing-unit * 3;
+            font-size: 40px;
+            color: lighten($black-color, 60%)
+          }
+        }
+        .highlight {
+          border-radius: $spacing-unit / 2;
+          overflow-x: scroll;
+        }
+        pre.highlight {
+          padding: $spacing-unit * 2 $spacing-unit * 3;
+          margin: 0;
+        }
+      }
+      .post-tags {
+        a {
+          font-family: $fixed-font-family;
+          color: $black-color;
+          padding: $spacing-unit * 1 $spacing-unit * 2;
+          border-radius: $spacing-unit / 2;
+          background-color: $secondary-color;
+          text-decoration: none;
+          color: $white-color;
+        }
+      }
+      .post-footer {
+        
+      }
+    }
+  }
+}

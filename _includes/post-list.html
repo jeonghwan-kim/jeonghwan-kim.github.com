@@ -1,13 +1,11 @@
-<a class="post-list-item post-link" href="{{ post.url | prepend: site.baseurl }}">
-    <div class="post-text">
-      <h2 class="post-title">
-        {{ post.title }}
-      </h2>
-      <p class="post-summary">{{ post.summary }}</p>
-      <p class="post-meta">
-        {% if post.date %}
-        <span class="date">{{ post.date | date : "%Y년 %m월 %d일" }}</span>
-        {% endif %}
-      </p>
-    </div>
+<a class="post-item my-7" href="{{ post.url | prepend: site.baseurl }}">
+  <h2 class="post-item-title mb-0">
+    {{ post.title }}
+  </h2>
+  <p class="post-meta mt-1">
+    {% if post.date %}
+    <span class="date">{{ post.date | date : "%Y년 %m월 %d일" }}</span>
+    {% endif %}
+  </p>
+  <p class="post-summary">{{ post.content | strip_html | truncate: 200, '...'}}</p>
 </a>

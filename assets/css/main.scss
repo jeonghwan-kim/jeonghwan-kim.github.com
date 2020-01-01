@@ -6,7 +6,9 @@
 @charset "utf-8";
 
 // Import partials from `sass_dir` (defaults to `_sass`)
+@import "./normalize";
 @import "./variables";
 @import "./base";
-@import "./layout";
-@import "./syntax-highlighting/monakai";
+@import "./layouts/index";
+@import "./pages/index";
+@import "./syntax-highlighting/default";

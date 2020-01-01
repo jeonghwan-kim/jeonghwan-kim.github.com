@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: $base-font-family;
+  color: $black-color;
+}
+a {
+  color: $black-color;
+}
+.container {
+  max-width: $site-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 $spacing-unit;
+  height: 100%;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.flex-1 {
+  flex: 1;
+  overflow: auto;
+}
+.flex-0 {
+  flex: 0;
+  overflow: auto;
+}
+
+@include spacing('padding', 'p');
+@include spacing('margin', 'm');
+
+.icon {
+  display: inline-block;
+  width: $spacing-unit * 3;
+  height: $spacing-unit * 3;
+  background-repeat: no-repeat;
+  background-position-x: 0;
+  background-position-y: 0;
+  background-size: contain;
+}
+
+.icon-rss {
+  background-image: url(/assets/imgs/icons/icon-rss.svg);
+}
+.icon-github {
+  background-image: url(/assets/imgs/icons/icon-github.svg);
+}
+.icon-email {
+  background-image: url(/assets/imgs/icons/icon-email.svg);
+}
+
+.btn {
+  
+}
+
+.btn-text {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.post-list {
+  list-style: none;
+  padding: 0;
+  .post-item {
+    text-decoration: none;
+    display: block;
+    .post-item-title {
+      color: $primary-color;            
+    }
+    .post-summary {
+      color: $black-color;
+      line-height: 1.5em;;
+    }
+  }
+}
+
+.post-meta {
+  .date {
+    color: lighten($black-color, 40%);
+  }
+}
+

@@ -1,0 +1,29 @@
+.site-footer {
+  background-color: $brand-color;
+  text-align: center;
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      display: inline-block
+    }
+  }
+  .footer-desc {
+    display: inline-block;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    color: darken($white-color, 10%);
+  }
+  .footer-navs {
+    font-size: 18px;
+    a {
+      color: $white-color;
+      text-decoration: none;;
+    }
+  }
+  
+  .footer-copyright {
+    color: rgba(0,0,0,0.4)
+  }
+}

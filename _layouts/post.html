@@ -1,22 +1,24 @@
 ---
 layout: default
 ---
-<article id="post" class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header class="post-header">
-    <div class="wrapper">
-      <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-      <div class="post-summary">{{ page.summary }}</div>
+<article id="post" class="container post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="flex mt-20">
+    <div id="toc" class="post-toc"></div>
+    <div class="post-container flex-1">
+      <header class="mb-7 post-header">
+        <h1 class="mt-0 mb-1 post-title" itemprop="name headline">{{ page.title }}</h1>
+        <div class="post-meta">{% include post-date.html %}</div>
+      </header>
+      <div class="post-content" itemprop="articleBody">
+        {{ content }}
+      </div>
+      <div class="post-tags my-7">{% include post-tags.html %}</div>
+      <div class="post-footer">
+        <div>{% include fb-like.html %}</div>
+        <div>{% include comments.html %}</div>
+      </div>
     </div>
-  </header>
-  <div class="wrapper">
-    <div class="post-content" itemprop="articleBody">
-      {{ content }}
-    </div>
-    <div class="post-meta">
-      <p>{% include post-date.html %}</p>
-      <div>{% include post-tags.html %}</div>
-    </div>
-    <div>{% include fb-like.html %}</div>
-    <div>{% include comments.html %}</div>
   </div>
 </article>
+
+<script src="/assets/js/toc.js"></script>

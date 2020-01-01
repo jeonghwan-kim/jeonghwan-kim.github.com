@@ -12,40 +12,96 @@
       ga('send', 'pageview');
     },
 
-    sendEvent({category, action, label, value = 1}) {
-      if (!category || !action) {
-        return;
-      }
-      if (typeof ga !== 'function') {
-        return;
-      }
-
+    sendEvent: function sendEvent({category, action, label, value = 1}) {
+      if (!category || !action) return;
+      if (typeof ga !== 'function') return;
       ga('send', 'event', category, action, label, value);
     },
   }
 
-  var onload = () => {
-    googleAnalytics.init('UA-31588166-2');
+  var categoryButton = {
+    init: function(triggerEl, targetEl) {
+      if (!triggerEl || !targetEl) return;
 
-    var post = document.querySelector('#post');
-    var postList = document.querySelector('#post-list');
+      this.triggerEl = triggerEl;
+      this.targetEl = targetEl;
 
-    if (post || postList) {
-      var el = post || postList
-      el.addEventListener('click', evt => {
-        var tagName = evt.target.dataset.tagName;
-        if (!tagName) {
+      this.triggerEl.addEventListener('click', categoryButton.onClick);
+    },
+
+    onClick: function(evt) {
+      evt.preventDefault();
+      var willVisible = categoryButton.willVisible()
+      categoryButton.toggleTarget(willVisible);
+      categoryButton.handleEvents(willVisible);
+    },
+    
+    hideTarget: function() {
+      categoryButton.targetEl.style.visibility = 'hidden';
+    },
+    
+    showTarget: function() {
+      categoryButton.targetEl.style.visibility = 'visible';
+    },
+
+    toggleTarget: function(willVisible) {
+      willVisible ? categoryButton.showTarget() : categoryButton.hideTarget();
+    },
+
+    willVisible: function()  {
+      var visibility = categoryButton.targetEl.style.visibility;
+      return !visibility || visibility === 'hidden';
+    },
+
+    handleEvents: function(willVisible) {
+      if (willVisible) {
+        setTimeout(function() {
+          window.addEventListener('click', categoryButton.handleClickOuter)
+          window.addEventListener('keydown', categoryButton.handleKeydownEsc)
+        })
+      } else {
+        categoryButton.blur();
+      }
+    },
+    
+    blur: function() {
+      categoryButton.triggerEl.blur();
+    },
+    
+    handleClickOuter: function(evt) {
+      var el = evt.target;
+      while (el) {
+        if (el === categoryButton.targetEl) {
+          window.removeEventListener('click', categoryButton.handleClickOuter)
           return;
         }
-
-        googleAnalytics.sendEvent({
-          category: 'Tag',
-          action: 'Click in ' + post ? 'post' : 'post list',
-          label: tagName,
-        });
-      });
-    }
+        el = el.parentElement
+      }
+      
+      categoryButton.hideTarget()
+      categoryButton.removeEventLinsteners();
+    },
+    
+    handleKeydownEsc: function handleKeydownEsc(evt) {
+      var esc = 27;
+      if (evt.keyCode === esc) {
+        categoryButton.hideTarget()
+      }
+      categoryButton.removeEventLinsteners()
+    },
+    
+    removeEventLinsteners: function() {
+      window.removeEventListener('keydown', categoryButton.handleKeydownEsc)
+      window.removeEventListener('click', categoryButton.handleClickOuter)
+    },
   };
+  
 
-  document.addEventListener('DOMContentLoaded', onload);
+  document.addEventListener('DOMContentLoaded', function() {
+    googleAnalytics.init('UA-31588166-2');
+    categoryButton.init(
+      document.querySelector('#category-btn'), 
+      document.querySelector('#category-dropdown'),
+    )
+  });
 })();

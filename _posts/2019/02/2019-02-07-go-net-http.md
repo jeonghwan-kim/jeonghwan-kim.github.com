@@ -1,7 +1,11 @@
 ---
 title: 'Go net/http 패키지'
 layout: post
-summary: 'Go net/http 패키지 사용법을 살펴봅니다'
+summary: 
+  "Go net/http 패키지 사용법을 살펴봅니다.
+  웹 어플리케이션을 개발하려고 Go 언어를 살펴보기 시작했다.
+  [앞서 정리한 몇 가지 기본 패키지](/tags#go)는 net/http 패키지를 사용하기 위한 준비 과정이라 생각하자.
+  이번에는 네트웍 프로그래밍을 위한 net/http 패키지 사용법을 정리해 보겠다."
 category: dev
 tags: go
 ---
