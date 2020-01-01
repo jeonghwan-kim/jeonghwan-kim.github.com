@@ -54,8 +54,8 @@
               }
             }
             .series-order {
+              font-weight: bold;
               .active {
-                font-weight: bold;
               }
             }
             .series-controls {
@@ -152,8 +152,16 @@
   }
   .series-title {
     margin-top: $spacing-unit;
+    &::before {
+      content: "[연재물]"
+    }
   }
-  .series-order {
-
+  .post-list {
+    a {
+      text-decoration: none;
+    }
+    .active {
+      font-weight: bold;
+    }
   }
 }

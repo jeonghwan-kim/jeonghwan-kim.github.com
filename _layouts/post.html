@@ -8,7 +8,7 @@ layout: default
       <header class="mb-7 post-header">
         <h1 class="mt-0 mb-1 post-title" itemprop="name headline">{{ page.title }}</h1>
         <div class="post-meta">
-          {% include series-navigator-light.html %}
+          {% include series-nav-light.html %}
           {% include post-date.html %}
         </div>
       </header>
@@ -16,7 +16,7 @@ layout: default
         {{ content }}
       </div>
       <div class="post-tags my-7">{% include post-tags.html %}</div>
-      <!-- {% include series-navigator.html %} -->
+      {% include series-nav-detail.html %}
       <div class="post-footer">
         <div>{% include fb-like.html %}</div>
         <div>{% include comments.html %}</div>

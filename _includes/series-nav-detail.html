@@ -1,0 +1,26 @@
+{% include series-nav.html %}
+
+<div class="series-navigator mb-10 px-2 pt-3 pb-3">
+  <h3 class="series-title">
+    {{ seriesTitle }} 
+  </h3>
+  <div class="post-list">
+    <ol>
+      {% for post in pageSeries.posts %}
+      <li>
+        {% for _post in site.posts %}
+          {% if _post.url == post %}
+            {% assign title = _post.title %}
+          {% endif %}
+        {% endfor %}
+
+        {% if post == page.url %}
+          <span class="active">{{ title }}</span>
+        {% else %}
+          <a href="{{ post }}" class="">{{ title }}</a>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>

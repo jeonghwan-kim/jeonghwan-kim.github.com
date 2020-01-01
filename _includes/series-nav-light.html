@@ -1,0 +1,27 @@
+{% include series-nav.html %}
+
+{% if seriesTitle %}
+<div class="series-nav mb-1">
+  <div class="mb-1">
+    <span class="series-title">
+      {{ seriesTitle }} 
+    </span>
+    <span class="series-order">
+      <span class="active">{{ currentSereisIndex }}</span>/{{ seriesSize }}
+    </span>
+  </div>
+  <div class="series-controls">
+    {% if prevUrl %}
+    <a href="{{ prevUrl }}">« 이전</a>
+    {% endif %}
+    {% if prevUrl %}
+      {% if nextUrl %}
+        <span> | </span>
+      {% endif %}
+    {% endif %}
+    {% if nextUrl %}
+    <a href="{{ nextUrl }}">다음 »</a>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
