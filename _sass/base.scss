@@ -52,9 +52,21 @@ a {
 }
 
 .btn {
-  
+  padding: $spacing-unit * 1 $spacing-unit * 2;
+  border-radius: $spacing-unit / 2;
+  background-color: $white-color;
+  text-decoration: none;
+  color: $black-color;
+  border: solid 1px $black-color
 }
 
+.btn-primary {
+  color: $primary-color;
+}
+.btn-secondary {
+  color: $secondary-color;
+  border-color: $secondary-color;
+}
 .btn-text {
   border: none;
   background: none;

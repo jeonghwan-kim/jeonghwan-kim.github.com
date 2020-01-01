@@ -1,26 +1,21 @@
 {% include series-nav.html %}
 
 {% if seriesTitle %}
-<div class="series-nav mb-1">
-  <div class="mb-1">
+<div class="series-nav mb-2 py-3 px-2">
+  <div class="mb-2">
     <span class="series-title">
       {{ seriesTitle }} 
     </span>
     <span class="series-order">
-      <span class="active">{{ currentSereisIndex }}</span>/{{ seriesSize }}
+      (<span class="active">{{ currentSereisIndex }}</span>/{{ seriesSize }})
     </span>
   </div>
-  <div class="series-controls">
+  <div class="series-controls flex">
     {% if prevUrl %}
-    <a href="{{ prevUrl }}">« 이전</a>
-    {% endif %}
-    {% if prevUrl %}
-      {% if nextUrl %}
-        <span> | </span>
-      {% endif %}
+    <span class="prev"><a class="" href="{{ prevUrl }}">« 이전</a></span>
     {% endif %}
     {% if nextUrl %}
-    <a href="{{ nextUrl }}">다음 »</a>
+    <span class="next"><a class="" href="{{ nextUrl }}">다음 »</a></span>
     {% endif %}
   </div>
 </div>

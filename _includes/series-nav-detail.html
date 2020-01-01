@@ -1,5 +1,6 @@
 {% include series-nav.html %}
 
+{% if seriesTitle %}
 <div class="series-navigator mb-10 px-2 pt-3 pb-3">
   <h3 class="series-title">
     {{ seriesTitle }} 
@@ -24,3 +25,4 @@
     </ol>
   </div>
 </div>
+{% endif %}

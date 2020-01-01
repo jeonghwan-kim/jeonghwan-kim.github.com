@@ -1,37 +1,70 @@
 .post {
-  .flex {
+  >.flex {
     flex-flow: row-reverse;
     align-items: flex-start;
-    .post-toc {
+    aside {
       flex: 0 0 250px;
       position: sticky;
       top: $spacing-unit;
-      ul {
-        list-style: none;
-        margin: 0;
-        padding-left: $spacing-unit * 2;
-        li {
-          margin-bottom: $spacing-unit / 2;
-          a {
-            text-decoration: none;
-            color: lighten($black-color, 40%);
-            &:hover,
-            &:focus {
-              color: $black-color;
-            }
-            &.active {
-              color: $brand-color
+      margin-left: $spacing-unit * 4;
+      .series-nav {
+        border: 1px solid $secondary-color;
+        border-radius: $spacing-unit / 2;
+        .series-title {
+          font-weight: bold;
+          &::before {
+            content: '[연재물]';
+            display: block;
+            font-weight: normal;
+          }
+        }
+        .series-order {
+          .active {
+            font-weight: bold;
+          }
+        }
+        .prev,
+        .next {
+          display: inline-block;
+          flex: 1 0 50%;
+        }
+        .prev {
+          text-align: left;
+        }
+        .next {
+          text-align: right;
+        }
+        a {
+          color: $secondary-color;
+          text-decoration: none;
+        }
+      }
+      .post-toc {
+        border-left: 1px solid $secondary-color;
+        ul {
+          padding-left: $spacing-unit * 2;
+          list-style: none;
+          margin: 0;
+          li {
+            margin-bottom: $spacing-unit / 2;
+            a {
+              text-decoration: none;
+              color: lighten($black-color, 40%);
+              &:hover,
+              &:focus {
+                color: $black-color;
+              }
+              &.active {
+                color: $brand-color
+              }
             }
           }
         }
+        @media (max-width: $desktop-width - 1) {
+          display: none;
+        }
       }
-      > ul {
-        margin-left: $spacing-unit * 4;
-        border-left: $spacing-unit / 2 solid $secondary-color;
-      }
-      @media (max-width: $desktop-width - 1) {
-        display: none;
-      }
+
     }
     .post-container {
       max-width: 800px;
