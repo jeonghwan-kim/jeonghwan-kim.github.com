@@ -30,9 +30,7 @@ plugins:
   - jekyll-paginate
 
 # Pagination
-paginate: 30
+paginate: 10
 
 sass:
   style: compressed # possible values: nested expanded compact compressed
-
-excerpt_seperator:  <!--break-->
