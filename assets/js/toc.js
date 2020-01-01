@@ -18,7 +18,8 @@
     },
 
     headingsInContent: function() {
-      return Array.from(toc.contentEl.querySelectorAll("h1,h2,h3,h4,h5,h6"));
+      return Array.from(toc.contentEl.querySelectorAll("h1,h2,h3,h4,h5,h6"))
+        .filter(h => h.id);
     },
 
     html: function() {
