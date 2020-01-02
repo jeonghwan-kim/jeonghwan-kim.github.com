@@ -61,7 +61,14 @@
     },
 
     removeTocEl: function() {
-      toc.el.parentElement.removeChild(toc.el);
+      var parent = toc.el.parentElement
+      parent.removeChild(toc.el);
+      if (!parent.length) {
+        // HACK: Remnove aside
+        parent.parentElement.removeChild(parent)
+        // HACK: Remnove aside
+        document.querySelector('.post-aside').parentElement.removeChild(document.querySelector('.post-aside'));
+      }
     },
 
     render: function(html) {

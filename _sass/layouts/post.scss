@@ -2,7 +2,7 @@
   >.flex {
     flex-flow: row-reverse;
     align-items: flex-start;
-    aside {
+    aside.post-aside {
       flex: 0 0 250px;
       position: sticky;
       top: $spacing-unit;
@@ -65,105 +65,106 @@
         }
       }
     }
-    .post-container {
+    .post-container,
+    .footer-container {
       max-width: 800px;
       margin: 0 auto;
-      .post-header {
-        .post-title {
-          color: $black-color;
-          font-size: 42px;
+    }
+    .post-header {
+      .post-title {
+        color: $black-color;
+        font-size: 42px;
+      }
+      .post-meta {
+        .date {
+          color: lighten($black-color, 40%);
         }
-        .post-meta {
-          .date {
-            color: lighten($black-color, 40%);
-          }
-          .series-nav {
-            color: $secondary-color;
-            .series-title { 
-              font-weight: bold;
-              &::before {
-                content: '[연재물]';
-              }
-            }
-            .series-order {
-              font-weight: bold;
-              .active {
-              }
-            }
-            .series-controls {
-              a {
-                color: $secondary-color;
-                text-decoration: none;
-              }
+        .series-nav {
+          color: $secondary-color;
+          .series-title { 
+            font-weight: bold;
+            &::before {
+              content: '[연재물]';
             }
           }
-        }
-      }
-      .post-content {
-        font-size: 18px;
-        line-height: 1.5em;
-        font-family: $article-font-family;
-        h1 {
-          font-size: 200%;
-          padding-top: 20px;
-        }
-        h2 {
-          font-size: 180%;
-          padding-top: 18px;
-        }
-        h3 {
-          font-size: 160%;
-          padding-top: 16px;
-        }
-        h4 {
-          font-size: 140%;
-          padding-top: 14px;
-        }
-        h5 {
-          font-size: 120%;
-          padding-top: 12px;
-        }
-        h1, h2, h3, h4, h5, h6 {
-          color: $primary-color;
-          font-family: $base-font-family;
-        }
-        img {
-          max-width: 100%;
-        }
-        blockquote {
-          color: lighten($black-color, 20%);
-          position: relative;
-          &::before {
-            content: '“';
-            position: absolute;
-            left: -$spacing-unit * 3;
-            font-size: 40px;
-            color: lighten($black-color, 60%)
+          .series-order {
+            font-weight: bold;
+            .active {
+            }
+          }
+          .series-controls {
+            a {
+              color: $secondary-color;
+              text-decoration: none;
+            }
           }
         }
-        .highlight {
-          border-radius: $spacing-unit / 2;
-          overflow-x: scroll;
-        }
-        pre.highlight {
-          padding: $spacing-unit * 2 $spacing-unit * 3;
-          margin: 0;
+      }
+    }
+    .post-content {
+      font-size: 18px;
+      line-height: 1.5em;
+      font-family: $article-font-family;
+      h1 {
+        font-size: 200%;
+        padding-top: 20px;
+      }
+      h2 {
+        font-size: 180%;
+        padding-top: 18px;
+      }
+      h3 {
+        font-size: 160%;
+        padding-top: 16px;
+      }
+      h4 {
+        font-size: 140%;
+        padding-top: 14px;
+      }
+      h5 {
+        font-size: 120%;
+        padding-top: 12px;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        color: $primary-color;
+        font-family: $base-font-family;
+      }
+      img {
+        max-width: 100%;
+      }
+      blockquote {
+        color: lighten($black-color, 20%);
+        position: relative;
+        &::before {
+          content: '“';
+          position: absolute;
+          left: -$spacing-unit * 3;
+          font-size: 40px;
+          color: lighten($black-color, 60%)
         }
       }
-      .post-tags {
-        a {
-          font-family: $fixed-font-family;
-          color: $black-color;
-          padding: $spacing-unit * 1 $spacing-unit * 2;
-          border-radius: $spacing-unit / 2;
-          background-color: $secondary-color;
-          text-decoration: none;
-          color: $white-color;
-        }
+      .highlight {
+        border-radius: $spacing-unit / 2;
+        overflow-x: scroll;
       }
-      .post-footer {
-        
+      pre.highlight {
+        padding: $spacing-unit * 2 $spacing-unit * 3;
+        margin: 0;
       }
+    }
+    .post-tags {
+      a {
+        font-family: $fixed-font-family;
+        color: $black-color;
+        padding: $spacing-unit * 1 $spacing-unit * 2;
+        border-radius: $spacing-unit / 2;
+        background-color: $secondary-color;
+        text-decoration: none;
+        color: $white-color;
+      }
+    }
+    .post-footer {
+      
     }
   }
 }

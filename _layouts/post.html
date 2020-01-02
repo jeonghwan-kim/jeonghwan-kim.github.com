@@ -3,11 +3,11 @@ layout: default
 ---
 <article id="post" class="container post" itemscope itemtype="http://schema.org/BlogPosting">
   <div class="flex mt-20">
-    <aside>
+    <aside class="post-aside">
       {% include series-nav-light.html %}
       <div id="toc" class="post-toc"></div>
     </aside>
-    <div class="post-container flex-1">
+    <main class="post-container flex-1">
       <header class="mb-7 post-header">
         <h1 class="mt-0 mb-1 post-title" itemprop="name headline">{{ page.title }}</h1>
         <div class="post-meta">
@@ -18,12 +18,15 @@ layout: default
         {{ content }}
       </div>
       <div class="post-tags my-7">{% include post-tags.html %}</div>
-      {% include series-nav-detail.html %}
-      <div class="post-footer">
-        <div>{% include fb-like.html %}</div>
-        <div>{% include comments.html %}</div>
-      </div>
-    </div>
+      <div>{% include fb-like.html %}</div>
+    </main>
+  </div>
+  <div class="flex py-10">
+    <aside class="post-aside"></aside>
+    <footer class="footer-container post-footer flex-1">
+      <div class="mb-8">{% include series-nav-detail.html %}</div>
+      <div>{% include comments.html %}</div>
+    </footer>
   </div>
 </article>
 
