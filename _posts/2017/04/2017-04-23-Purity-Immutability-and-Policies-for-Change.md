@@ -2,6 +2,7 @@
 title: 순수성, 불변성, 변경정책
 layout: post
 category: series
+seriesId: 20170422
 permalink: js/2017/04/23/Purity-Immutability-and-Policies-for-Change.html
 tags:
   javascript

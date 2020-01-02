@@ -2,6 +2,7 @@
 title: 함수로 함수 만들기1 다형성
 layout: post
 category: series
+seriesId: 20170422
 permalink: js/2017/04/10/function-by-function.html
 tags:
   javascript

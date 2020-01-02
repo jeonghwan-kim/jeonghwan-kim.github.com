@@ -2,6 +2,7 @@
 title: '앵귤러로 Todo앱 만들기 13 - $http로 앵귤러 서비스 개선하기'
 layout: post
 category: series
+seriesId: 20160611
 tags:
   angularjs
   lecture
@@ -97,5 +98,3 @@ angular.module('todomvc')
 ## 나머지는 직접 구현해보자
 
 전체 코드는 [todomvc-angular](https://github.com/jeonghwan-kim/todomvc-angular)를 참고하길 바란다.
-
-[📖 목차 바로가기](/series/2016/06/11/lecture-todomvc-angular-index.html)

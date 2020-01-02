@@ -2,6 +2,7 @@
 title: '앵귤러로 Todo앱 만들기 3 - 컨트롤러'
 layout: post
 category: series
+seriesId: 20160611
 tags:
   angularjs
   lecture
@@ -81,5 +82,3 @@ index.html:
 우리는 여기까지 해서 템플릿과 컨트롤러에 대해 알아봤다.
 앵귤러에서 제공하는 다양한 기능중 템플릿, 컨트롤러만으로도 기본적인 동작을 하는 todo 앱을 만들수 있다.
 다음 포스트부터는 컨트롤러의 `$scope` 변수를 이용해 기본적인 todo 앱을 만들어 보자.
-
-[📖 목차 바로가기](/series/2016/06/11/lecture-todomvc-angular-index.html)

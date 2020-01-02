@@ -2,6 +2,7 @@
 title: '앵귤러로 Todo앱 만들기 11 - Static Files'
 layout: post
 category: series
+seriesId: 20160611
 tags:
   expressjs
   lecture
@@ -58,5 +59,3 @@ app.use('/node_modules', express.static(path.join(__dirname, '../node_modules'))
 우리가 만들었던 앵귤러 페이지가 제대로 보일 것이다.
 
 ![](/assets/imgs/2016/lecture-todomvc-angular-14-result1.png)
-
-[📖 목차 바로가기](/series/2016/06/11/lecture-todomvc-angular-index.html)

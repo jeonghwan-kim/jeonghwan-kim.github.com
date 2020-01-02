@@ -3,6 +3,7 @@ title: '[Node.js코드랩] 6.정적 파일'
 layout: post
 summary: 정적파일을 처리할 수 있습니다
 category: series
+seriesId: 20181201
 ---
 
 ## 🌳목표 

@@ -2,6 +2,7 @@
 title: 함수로 함수 만들기3 부분적용
 layout: post
 category: series
+seriesId: 20170422
 permalink: js/2017/04/21/partial-application.html
 tags:
   javascript

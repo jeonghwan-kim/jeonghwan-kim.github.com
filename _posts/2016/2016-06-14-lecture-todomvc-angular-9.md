@@ -2,6 +2,7 @@
 title: '앵귤러로 Todo앱 만들기 9 - Service'
 layout: post
 category: series
+seriesId: 20160611
 tags:
   angularjs
   lecture
@@ -188,5 +189,3 @@ angular.module('todomvc')
 
 ![](/assets/imgs/2016/lecture-todomvc-angular-12-result1.png)
 
-
-[📖 목차 바로가기](/series/2016/06/11/lecture-todomvc-angular-index.html)

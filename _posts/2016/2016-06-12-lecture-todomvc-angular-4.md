@@ -2,6 +2,7 @@
 title: '앵귤러로 Todo앱 만들기 4 - 투두 목록 출력하기'
 layout: post
 category: series
+seriesId: 20160611
 tags:
   angularjs
   lecture
@@ -140,5 +141,3 @@ angular.module('todomvc')
     });
 
 ```
-
-[📖 목차 바로가기](/series/2016/06/11/lecture-todomvc-angular-index.html)

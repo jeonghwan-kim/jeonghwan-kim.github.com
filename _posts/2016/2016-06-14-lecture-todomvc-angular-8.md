@@ -2,6 +2,7 @@
 title: '앵귤러로 Todo앱 만들기 8 - Directive'
 layout: post
 category: series
+seriesId: 20160611
 tags:
   angularjs
   lecture
@@ -138,5 +139,3 @@ index.html:
 ![](/assets/imgs/2016/lecture-todomvc-angular-2-result12.png)
 
 다른 것도 디렉티브로 모듈로 분리해보자.
-
-[📖 목차 바로가기](/series/2016/06/11/lecture-todomvc-angular-index.html)

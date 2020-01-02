@@ -2,6 +2,7 @@
 title: '앵귤러로 Todo앱 만들기 2 - 앵귤러 로딩'
 layout: post
 category: series
+seriesId: 20160611
 tags:
   angularjs
   lecture
@@ -103,5 +104,3 @@ angular.module('todoapp', []);
 브라우져에서 index.html 파일을 띄우면 angular.js와 app.js 파일이 함께 다운로드되는 것을 확인할 수 있다.
 
 ![](/assets/imgs/2016/lecture-todomvc-angular-2-result2.png)
-
-[📖 목차 바로가기](/series/2016/06/11/lecture-todomvc-angular-index.html)

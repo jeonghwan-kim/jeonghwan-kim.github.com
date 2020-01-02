@@ -2,6 +2,7 @@
 title: '[Node.js코드랩] 5.커스텀 모듈 Debug'
 layout: post
 summary: Debug 모듈을 만듭니다 
+seriesId: 20181201
 category: series
 ---
 

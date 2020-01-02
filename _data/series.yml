@@ -1,3 +1,65 @@
+- id: 20181201
+  title: Node.js 코드랩
+  posts:
+    - /series/2018/12/01/node-web-0_index.html
+    - /series/2018/12/01/node-web-1_orientation.html
+    - /series/2018/12/02/node-web-2_http.html
+    - /series/2018/12/03/node-web-3_refactoring.html
+    - /series/2018/12/04/node-web-4_application.html
+    - /series/2018/12/05/node-web-5_debug.html
+    - /series/2018/12/06/node-web-6_static-files.html
+    - /series/2018/12/07/node-web-7_serve-static.html
+    - /series/2018/12/08/node-web-8_middleware.html
+    - /series/2018/12/09/node-web-9_middleware2.html
+    - /series/2018/12/10/node-web-10_logger.html
+    - /series/2018/12/11/node-web-11_router-use.html
+    - /series/2018/12/12/node-web-12_get-posts-api.html
+    - /series/2018/12/13/node-web-13_res.html
+    - /series/2018/12/14/node-web-14_req.html
+    - /series/2018/12/15/node-web-15_get_post.html
+    - /series/2018/12/16/node-web-16_body-parser.html
+    - /series/2018/12/17/node-web-17_expressjs.html
+    - /series/2018/12/17/node-web-18_summary.html
+- id: 20171002
+  title: Express.js 만들기
+  posts:
+    - /2017/10/03/diy-express-day1.html
+    - /2017/10/05/diy-express-day2.html
+    - /2017/10/06/diy-express-day3.html
+    - /2017/10/21/diy-express-day4.html
+- id: 20170422
+  title: 함수형 프로그래밍
+  posts:
+    - /js/2017/04/03/high-order-function-in-javascript.html
+    - /js/2017/04/10/function-by-function.html
+    - /js/2017/04/17/curry.html
+    - /js/2017/04/21/partial-application.html
+    - /js/2017/04/23/Purity-Immutability-and-Policies-for-Change.html
+    - /js/2017/05/11/pipeline.html
+- id: 20150222
+  title: 'Hapi.js로 API 서버 시작하기'
+  posts:
+    - /hapijs-joi/
+    - /hapi-logging-good/
+    - '/hapi-auth/'
+    - /hapi-test/
+    - /hapi-api-server-scaffold/
+- id: 20160611
+  title: '앵귤러로 Todo앱 만들기'
+  posts:
+    - /lectures/todomvc-angular/1/
+    - /lectures/todomvc-angular/2/
+    - /lectures/todomvc-angular/3/
+    - /lectures/todomvc-angular/4/
+    - /lectures/todomvc-angular/5/
+    - /lectures/todomvc-angular/6/
+    - /lectures/todomvc-angular/7/
+    - /lectures/todomvc-angular/8/
+    - /lectures/todomvc-angular/9/
+    - /lectures/todomvc-angular/10/
+    - /lectures/todomvc-angular/11/
+    - /lectures/todomvc-angular/12/
+    - /lectures/todomvc-angular/13/
 - id: 1
   title: '프론트엔드 개발환경의 이해'
   posts: 

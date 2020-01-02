@@ -4,6 +4,7 @@ title: Hapi Api 서버 스캐폴드
 date: 2015-02-22T12:00:26+00:00
 author: Chris
 category: series
+seriesId: 20150222
 guid: http://whatilearn.com/?p=216
 permalink: /hapi-api-server-scaffold/
 layout: post
@@ -21,36 +22,27 @@ Hapi 프레임웍을 이용해 Api 서버를 구현할 때 필요한 최소한�
 
 예를들어 /users 라우팅시 아래와 같은 폴더 구조로 만들 수 있다.
 
-<pre class="striped:false marking:false nums:false nums-toggle:false lang:default decode:true" title="/users 라우팅시 폴터 구조 ">app
-
+```
+app
 ⌊ routes
-
   ⌊ users
-
     ⌊ index.js: /users 라우팅을 등록한다.
-
     ⌊ users.valid.js: /users 프로토콜의 파라매터를 검증한다.
-
     ⌊ users.ctrl.js: /users 프로토콜의 비지니스 로직을 구현한다.
-
     ⌊ users.spec.js: /users 프로토콜에 대한 테스트 코드를 구현한다.
-
-</pre>
+```
 
 이외에 데이터베이스 연결 모듈, 로깅 모듈 등 라우팅 이외의 모듈을 components 폴더에 위치한다. 지금까지 작성한 모듈을 정리하면 아래와 같다.
 
-<pre class="nums:false lang:default decode:true" title="components 폴더 구조 ">app
-
+```
+app
 ⌊ components
-
   ⌊ logHelper/index.js: good, good-console, good-file 모듈을 이용한 로깅 모듈 
-
   ⌊ routeHelper/index.js: server.route() 함수로 라우팅 설정시 하위 폴더에 대한 라우팅을 위해 server 객체를 넘겨주는 모듈
-
   ⌊ session/index.js: 세션 인증을 위해 hapi-auth-cookie 모듈을 이용한 인증 모듈
-</pre>
+```
 
-<h2>DAO</h2>
+# DAO
 
 본 글에서 새로 추가할 부분이 DAO 폴더다. 각 데이터베이스 별로 Dao 라이브러리를 제공하고 있지만 이번 글에서는 node-mysql 모듈을 사용하여 쿼리를 직접 작성하면서 DAO를 구현해 보자.
 
@@ -68,7 +60,8 @@ Hapi 프레임웍을 이용해 Api 서버를 구현할 때 필요한 최소한�
 
 우선 DAO를 사용한 users.ctrl.js 모듈을 살펴보자. user DAO 모듈을 불러와 각 프로토콜 핸들러 로직에 추가한다.
 
-<pre class="lang:js decode:true" title="routes/users/users.ctrl.js">// userDao 모듈을 로딩한다.
+```js
+// userDao 모듈을 로딩한다.
 // 데이터베이스에 유저 관련 데이터에대해 CRUD 작업을 수행한다.
 var userDao = require('../../dao/user');
 
@@ -124,11 +117,13 @@ exports.remove = function (req, reply) {
 
     reply({users: users});
   });
-};</pre>
+};
+```
 
 userDao 모듈을 살펴보자. 각 로직에 해당하는 쿼리를 로딩하여 실행한 결과를 반환한다. 보통 프로토콜은 GET/POST/PUT/DELETE로 구성되고 이에 맞게 find()/query()(id로 조회할 경우 등)/insert()/update()/remove() 함수를 DAO 모듈에 구현한다.
 
-<pre class="lang:js decode:true" title="dao/user/index.js">var fs = require('fs');
+```js
+var fs = require('fs');
 var path = require('path');
 var db = require('../../components/db');
 
@@ -165,12 +160,10 @@ exports.update = function (userId, payload, callback) {
 exports.remove = function (userId, callback) {
   /* 쿼리 로딩 후 쿼리 실행 결과 반환 */
 };
-</pre>
+```
 
 &nbsp;
 
-<h2>전체 스케폴드</h2>
+# 전체 스케폴드
 
 전체코드: <a href="https://github.com/jeonghwan-kim/hapi_study/tree/10_add-dao">https://github.com/jeonghwan-kim/hapi_study/tree/10_add-dao</a>
-
-🗂 [목차 바로가기](/series/2015/02/13/hapijs-index.html)

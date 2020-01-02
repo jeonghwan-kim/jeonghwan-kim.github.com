@@ -3,6 +3,7 @@ title: '[Node.js코드랩] 3.리팩토링'
 layout: post
 summary: 헬로월드 코드를 리팩토링 합니다.
 category: series
+seriesId: 20181201
 tags: lecture
 ---
 

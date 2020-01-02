@@ -2,6 +2,7 @@
 title: 익스프레스 만들기 Day 2
 layout: post
 category: series
+seriesId: 20171002
 permalink: 2017/10/05/diy-express-day2.html
 tags:
   expressjs

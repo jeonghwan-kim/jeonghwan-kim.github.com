@@ -2,6 +2,7 @@
 title: 고차 함수
 layout: post
 category: series
+seriesId: 20170422
 permalink: js/2017/04/03/high-order-function-in-javascript.html
 tags:
   javascript

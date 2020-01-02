@@ -63,10 +63,10 @@
     removeTocEl: function() {
       var parent = toc.el.parentElement
       parent.removeChild(toc.el);
-      if (!parent.length) {
+      if (!parent.children.length) {
         // HACK: Remnove aside
         parent.parentElement.removeChild(parent)
-        // HACK: Remnove aside
+        // HACK: Remnove footer aside
         document.querySelector('.post-aside').parentElement.removeChild(document.querySelector('.post-aside'));
       }
     },
