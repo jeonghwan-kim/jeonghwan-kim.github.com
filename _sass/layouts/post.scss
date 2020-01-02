@@ -7,6 +7,9 @@
       position: sticky;
       top: $spacing-unit;
       margin-left: $spacing-unit * 4;
+      @media (max-width: $desktop-width - 1) {
+        display: none;
+      }
       .series-nav {
         border: 1px solid $secondary-color;
         border-radius: $spacing-unit / 2;
@@ -60,11 +63,7 @@
             }
           }
         }
-        @media (max-width: $desktop-width - 1) {
-          display: none;
-        }
       }
-
     }
     .post-container {
       max-width: 800px;
