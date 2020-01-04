@@ -86,7 +86,7 @@ const babel = code => code;
 myplugin.js 라는 파일을 아래처럼 만들어 보자(출처: [바벨 홈페이지의 예제 코드](https://babeljs.io/docs/en/plugins#plugin-development)). 
 
 ```js
-// myplugins.js:
+// myplugin.js:
 module.exports = function myplugin() {
   return {
     visitor: {
@@ -296,7 +296,7 @@ module.exports = {
 * preset-typescript
 
 preset-env는 ECMAScript2015+를 변환할 때 사용한다.
-바벨 7버전 이전에는 연도별로 각 프리셋을 제공했지만(babel-reset-es2015, babel-reset-es2016, babel-reset-es2017, babel-reset-latest) 지금은 env 하나로 합쳐졌다. 
+바벨 7 이전 버전에는 연도별로 각 프리셋을 제공했지만(babel-reset-es2015, babel-reset-es2016, babel-reset-es2017, babel-reset-latest) 지금은 env 하나로 합쳐졌다. 
 무척 맘에드는 부분이다.
 
 preset-flow, preset-react, preset-typescript는 flow, 리액트, 타입스크립트를 변환하기 위한 프리셋이다. 
@@ -340,7 +340,7 @@ var alert = function alert(msg) {
 
 ### 5.1 타겟 브라우져 
 
-우리 코드가 Chrome 최신버전(2019년 12월 기준)만 지원하다고 하자. 
+우리 코드가 크롬 최신 버전(2019년 12월 기준)만 지원하다고 하자. 
 그렇다면 인터넷 익스플로러를 위한 코드 변환은 불필요하다.
 `target` 옵션에 브라우져 버전명만 지정하면 env 프리셋은 이에 맞는 플러그인들을 찾아 최적의 코드를 출력해 낸다.
 

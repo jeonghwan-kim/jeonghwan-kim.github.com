@@ -7,7 +7,7 @@ seriesId: 1
 tags: webpack
 ---
 
-## 1. 배경 
+# 1. 배경 
 
 먼저 모듈에 대해 이야기 해보자. 
 문법 수준에서 모듈을 지원하기 시작한 것은 ES2015부터다.
@@ -30,7 +30,7 @@ sum.js가 로딩되면 app.js는 이름 공간에서 'sum'을 찾은 뒤 이 함
 문제는 'sum'이 전역 공간에 노출된다는 것.
 다른 파일에서도 'sum'이란 이름을 사용한다면 충돌한다.
 
-### 1.1 IIFE 방식의 모듈
+## 1.1 IIFE 방식의 모듈
 
 이러한 문제를 예방하기 위해 스코프를 사용한다. 
 함수 스코프를 만들어 외부에서 안으로 접근하지 못하도록 공간을 격리하는 것이다.
@@ -52,7 +52,7 @@ var math = math || {}; // math 네임스페이스
 'sum'이란 이름은 즉시실행함수 안에 감추어졌기 때문에 외부에서는 같은 이름을 사용해도 괜찮다. 
 전역에 등록한 'math'라는 이름 공간만 잘 활용하면 된다.
 
-### 1.2 다양한 모듈 스펙 
+## 1.2 다양한 모듈 스펙 
 
 이러한 방식으로 자바스크립트 모듈을 구현하는 대표적인 명세가 AMD와 CommonJS다. 
 
@@ -93,7 +93,7 @@ math.sum(1, 2); // 3
 
 `export` 구문으로 모듈을 만들고 `import` 구문으로 가져올 수 있다. 
 
-### 1.3 브라우져의 모듈 지원
+## 1.3 브라우져의 모듈 지원
 
 안타깝게도 모든 브라우져에서 모듈 시스템을 지원하지는 않는다. 
 인터넷 익스플로러를 포함한 몇 몇 브라우져에서는 여전히 모듈을 사용하지 못한다.
@@ -110,7 +110,7 @@ app.js는 모듈을 사용할 수 있다.
 
 그러나 브라우져에 무관하게 모듈을 사용하고 싶은데...... 이제야 웹팩이 나올 차례다.
 
-## 2. 엔트리/아웃풋
+# 2. 엔트리/아웃풋
 
 [웹팩](https://webpack.js.org/)은 여러개 파일을 하나의 파일로 합쳐주는 번들러(bundler)다. 
 하나의 시작점(entry point)으로부터 의존적인 모듈을 전부 찾아내서 하나의 결과물을 만들어 낸다.
@@ -207,9 +207,9 @@ package.json:
 모든 옵션을 웹팩 설정 파일로 옮겼기 때문에 단순히 webpack 명령어만 실행한다.
 이제부터는 `npm run build`로 웹팩 작업을 지시할 수 있다.
 
-## 3. 로더 
+# 3. 로더 
 
-### 3.1 로더의 역할
+## 3.1 로더의 역할
 
 웹팩은 모든 파일을 모듈로 바라본다. 
 자바스크립트로 만든 모듈 뿐만아니라 스타일시트, 이미지, 폰트까지도 전부 모듈로 보기 때문에 import 구문을 사용하면 자바스크립트 코드 안으로 가져올수 있다.
@@ -218,7 +218,7 @@ package.json:
 로더는 타입스크립트 같은 다른 언어를 자바스크립트 문법으로 변환해 주거나 이미지를 data URL 형식의 문자열로 변환한다.
 뿐만아니라 CSS 파일을 자바스크립트에서 직접 로딩할수 있도록 해준다.
 
-### 3.2 커스텀 로더 만들기
+## 3.2 커스텀 로더 만들기
 
 로더를 사용하기 전에 동작 원리를 이해하기 위해 로더를 직접 만들어 보자. 
 
@@ -240,7 +240,7 @@ webpack.config.js:
 module: {
   rules: [{
     test: /\.js$/, // .js 확장자로 끝나는 모든 파일
-    loader: [path.resolve('./myloader.js')] // 방금 만든 로더를 적용한다 
+    use: [path.resolve('./myloader.js')] // 방금 만든 로더를 적용한다 
   }],
 }
 ```
@@ -250,7 +250,7 @@ module: {
 `test`에는 로딩에 적용할 파일을 지정한다. 
 파일명 뿐만아니라 파일 패턴을 정규표현식으로 지정할수 있는데 위 코드는 .js 확장자를 갖는 모든 파일을 처리하겠다는 의미다.
 
-`loader`에는 이 패턴에 해당하는 파일에 적용할 로더를 설정하는 부분이다. 
+`use`에는 이 패턴에 해당하는 파일에 적용할 로더를 설정하는 부분이다. 
 방금 만든 myloader 함수의 경로를 지정한다. 
  
 이제 `npm run build`로 웹팩을 실행해 보자. 
@@ -276,11 +276,11 @@ module.exports = function myloader (content) {
 
 ![웹팩 번들 결과](/assets/imgs/2019/12/11/custom-loader-result-2.jpg)
 
-## 4 자주 사용하는 로더
+# 4. 자주 사용하는 로더
 
 로더의 동작 원리를 살펴 보았으니 이번에는 몇몇 자주 사용하는 로더를 소개하겠다.
 
-## 4.1 css-loader
+# 4.1 css-loader
 
 웹팩은 모든것을 모듈로 바라보기 때문에 자바스크립트 뿐만 아니라 스타일시트로 import 구문으로 불러 올수 있다.
 
@@ -324,7 +324,7 @@ use.loader에 로더 경로를 설정하는 대신 배열에 로더 이름을 �
 
 ![웹팩 번들 결과](/assets/imgs/2019/12/11/css-loader.jpg)
 
-### 4.2 style-loader
+## 4.2 style-loader
 
 모듈로 변경된 스타일 시트는 돔에 추가되어야만 브라우져가 해석할 수 있다. 
 css-loader로 처리하면 자바스크립트 코드로만 변경되었을 뿐 돔에 적용되지 않았기 때문에 스트일시트가 적용되지 않았다.
@@ -356,7 +356,7 @@ module.exports = {
 
 ![웹팩 번들 결과](/assets/imgs/2019/12/11/style-loader.jpg)
 
-### 4.3 file-loader
+## 4.3 file-loader
 
 CSS 뿐만 아니라 소스코드에서 사용하는 모든 파일을 모듈로 사용하게끔 할 수 있다.
 파일을 모듈 형태로 지원하고 웹팩 아웃풋에 파일을 옮겨주는 것이 [file-loader](https://github.com/webpack-contrib/file-loader)가 하는 일이다. 
@@ -427,7 +427,7 @@ output에 설정한 'dist' 폴더에 이미지 파일을 옮길 것이므로 pub
 
 ![파일로더 결과 3](/assets/imgs/2019/12/11/file-loader-3.jpg)
 
-### 4.4 url-loader
+## 4.4 url-loader
 
 사용하는 이미지 갯수가 많다면 네트웍 리소스를 사용하는 부담이 있고 사이트 성능에 영향을 줄 수도 있다. 
 만약 한 페이지에서 작은 이미지를 여러개 사용한다면 [Data URI Scheme](https://en.wikipedia.org/wiki/Data_URI_scheme)을 이용하는 방법이 더 낫다.
@@ -471,9 +471,9 @@ file-loader와 옵션 설정이 거의 비슷하고 마지막 `limit` 속성만 
 
 아이콘처럼 용량이 작거나 사용 빈도가 높은 이미지는 파일을 그대로 사용하기 보다는 Data URI Scheeme을 적용하기 위해 url-loader를 사용하면 좋겠다.
 
-## 5. 플러그인
+# 5. 플러그인
 
-### 5.1 플러그인의 역할
+## 5.1 플러그인의 역할
 
 웹팩에서 알아야 할 마지막 기본 개념이 플러그인이다. 
 로더가 파일 단위로 처리하는 반면 플러그인은 번들된 결과물을 처리한다. 
@@ -481,7 +481,7 @@ file-loader와 옵션 설정이 거의 비슷하고 마지막 `limit` 속성만 
 
 이것도 사용하기에 앞서 동작 원리를 이해하기 위해 플러그인을 직접 만들어 보자.
 
-### 5.2 커스텀 플러그인 만들기
+## 5.2 커스텀 플러그인 만들기
 
 웹팩 문서의 [Writing a plugin](https://webpack.js.org/contribute/writing-a-plugin/)을 보면 클래스로 플러그인을 정의 하도록 한다. 
 [헬로월드 코드](https://webpack.js.org/contribute/writing-a-plugin/#basic-plugin-architecture)를 가져다 그대로 실행 붙여보자.
@@ -586,12 +586,12 @@ class MyPlugin {
 
 ![myplugin 3](/assets/imgs/2019/12/11/myplugin-3.jpg)
 
-## 6. 자주 사용하는 플러그인
+# 6. 자주 사용하는 플러그인
 
 개발하면서 플러그인을 직접 작성할 일은 거의 없었다. 
 웹팩에서 직접 제공하는 플러그인을 사용하거나 써드파티 라이브러리를 찾아 사용하는데 자주 사용하는 플러그인에 대해 알아보자.
 
-### 6.1 BannerPlugin
+## 6.1 BannerPlugin
 
 MyPlugin와 비슷한 것이 [BannerPlugin](https://webpack.js.org/plugins/banner-plugin/)이다. 
 결과물에 빌드 정보나 커밋 버전같은 걸 추가할 수 있다. 
@@ -648,7 +648,7 @@ module.exports = function banner() {
 
 ![BannerPlugin](/assets/imgs/2019/12/11/banner-plugin.jpg)
 
-### 6.2 DefinePlugin
+## 6.2 DefinePlugin
 
 어플리케이션은 개발환경과 운영환경으로 나눠서 운영한다. 
 가령 환경에 따라 API 서버 주소가 다를 수 있다. 
@@ -714,7 +714,7 @@ console.log(api.domain) // 'http://dev.api.domain.com'
 
 빌드 타임에 결정된 값을 어플리이션에 전달할 때는 이 플러그인을 사용하자.  
 
-### 6.3 HtmlTemplatePlugin
+## 6.3 HtmlTemplatePlugin
 
 이번엔 써드 파티 패키지에 대해 알아보자. 
 [HtmlTemplatePlugin](https://github.com/jantimon/html-webpack-plugin/)은 HTML 파일을 후처리하는데 사용한다. 
@@ -804,7 +804,7 @@ new HtmlWebpackPlugin({
 
 ![HtmlTemplatePlugin 3](/assets/imgs/2019/12/11/html-template-plugin-3.jpg)
 
-### 6.4 CleanWebpackPlugin
+## 6.4 CleanWebpackPlugin
 
 [CleanWebpackPlugin](https://github.com/johnagan/clean-webpack-plugin)은 빌드 이전 결과물을 제거하는 플러그인이다. 
 빌드 결과물은 아웃풋 경로에 모이는데 과거 파일이 남아 있을수 있다. 
@@ -837,7 +837,7 @@ module.exports = {
 빌드 결과 foo.js가 깨끗히 사라졌다. 
 아웃풋 폴더인 dist 폴더가 모두 삭제된후 결과물이 생성되었기 때문이다.
 
-### 6.5 MiniCssExtractPlugin
+## 6.5 MiniCssExtractPlugin
 
 스타일시트가 점점 많아지면 하나의 자바스크립트 결과물로 만드는 것이 부담일 수 있다.
 번들 결과에서 스트일시트 코드만 뽑아서 별도의 CSS 파일로 만들어 역할에 따라 파일을 분리하는 것이 좋다.
@@ -898,7 +898,7 @@ module.exports = {
 
 dist/main.css가 생성되었고 index.html에 이 파일을 로딩하는 코드가 추가되었다. 
 
-## 7. 정리
+# 7. 정리
 
 ECMAScript2015 이전에는 모듈을 만들기 위해 즉시실행함수와 네임스페이스 패턴을 사용했다. 
 이후 각 커뮤니티에서 모듈 시스템 스펙이 나왔고 웹팩은 ECMAScript2015 모듈시스템을 쉽게 사용하도록 돕는 역할을 한다.
