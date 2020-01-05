@@ -403,7 +403,7 @@ npx eslint app.js --fix
 먼저 패키지를 다운로드 한다.
 
 ```
-npm i husky 
+npm i -D husky 
 ```
 
 허스키는 패키지 파일에 설정을 추가한다.
@@ -452,7 +452,7 @@ package.json:
 패키지를 설치하고,
 
 ```
-npm i lint-staged
+npm i -D lint-staged
 ```
 
 패키지 파일에 설정을 추가한다.

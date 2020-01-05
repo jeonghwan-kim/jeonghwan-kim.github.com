@@ -121,7 +121,7 @@ app.js부터 시작해 math.js 파일을 찾은 뒤 하나의 파일로 만드�
 번들 작업을 하는 [webpack](https://github.com/webpack/webpack) 패키지와 웹팩 터미널 도구인 [webpack-cli](https://github.com/webpack/webpack-cli)를 설치한다.
 
 ```
-$ npm install webpack webpack-cli
+$ npm install -D webpack webpack-cli
 ```
 
 설치 완료하면 `node_modules/.bin` 폴더에 실행 가능한 명령어가 몇 개 생긴다.
@@ -302,7 +302,7 @@ CSS 파일을 자바스크립트에서 불러와 사용하려면 CSS를 모듈�
 먼저 로더를 설치 하자.
 
 ```
-$ npm install css-loader
+$ npm install -D css-loader
 ```
 
 웹팩 설정에 로더를 추가한다. 
@@ -336,7 +336,7 @@ CSS를 번들링하기 위해서는 css-loader와 style-loader를 함께 사용�
 먼저 스타일 로더를 다운로드 한다.
 
 ```
-$ npm install style-loader
+$ npm install -D style-loader
 ```
 
 그리고 웹팩 설정에 로더를 추가한다.
@@ -438,7 +438,7 @@ output에 설정한 'dist' 폴더에 이미지 파일을 옮길 것이므로 pub
 
 먼저 로더를 설치한다.
 ```
-$ npm install url-loader
+$ npm install -D url-loader
 ```
 
 그리고 웹팩 설정을 추가한다.
@@ -724,7 +724,7 @@ console.log(api.domain) // 'http://dev.api.domain.com'
 먼저 패키지를 다운로드 한다.
 
 ```
-$ npm install html-webpack-plugin
+$ npm install -D html-webpack-plugin
 ```
 
 이 플러그인으로 빌드하면 HTML파일로 아웃풋에 생성될 것이다.
@@ -819,7 +819,7 @@ new HtmlWebpackPlugin({
 먼저 패키지를 설치한다.
 
 ```
-$ npm install clean-webpack-plugin
+$ npm install -D clean-webpack-plugin
 ```
 
 웹팩 설정을 추가한다.
@@ -850,7 +850,7 @@ module.exports = {
 먼저 패키지를 설치한다.
 
 ```
-$ npm install mini-css-extract-plugin
+$ npm install -D mini-css-extract-plugin
 ```
 
 웹팩 설정을 추가한다.

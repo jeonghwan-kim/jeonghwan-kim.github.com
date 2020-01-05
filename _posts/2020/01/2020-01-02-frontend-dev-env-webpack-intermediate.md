@@ -29,7 +29,7 @@ tags: webpack
 먼저 webpack-dev-server 패키지를 설치한다.
 
 ```
-npm i webpack-dev-server
+npm i -D webpack-dev-server
 ```
 
 node_modules/.bin에 있는 webpack-dev-servr 명령어를 바로 실행해도 되지만 npm 스크립트로 등록해서 사용하겠다.
@@ -188,7 +188,7 @@ curl localhost:8080/api/keywords
 ajax 라이브러리인 axios를 설치한다.
 
 ```shell
-npm install axios
+npm i axios
 ```
 
 프론트엔드의 model.js 코드를 다음과 같이 수정한다.
@@ -229,7 +229,7 @@ export default model;
 먼저 이 패키지를 설치하고,
 
 ```
-npm install connect-api-mocker
+npm i -D connect-api-mocker
 ```
 
 mocks/api/keywords/GET.json 경로에 API 응답 파일을 만든다.
@@ -526,7 +526,7 @@ HtmlWebpackPlugin이 html 파일을 압축한것 처럼 css 파일도 빈칸을 
 플러그인을 다운로드 하고,
 
 ```
-npm i optimize-css-assets-webpack-plugin
+npm i -D optimize-css-assets-webpack-plugin
 ```
 
 웹팩 설정을 추가한다. 
@@ -557,7 +557,7 @@ module.exports = {
 이 플러그인을 설치한 뒤,
 
 ```shell
-npm i terser-webpack-plugin
+npm i -D terser-webpack-plugin
 ```
 
 optionmization.minimizer 배열에 추가한다.
@@ -705,7 +705,7 @@ axios는 이미 node_modules에 위치해 있기 때문에 이를 웹팩 아웃�
 파일을 복사하는 [CopyWebpackPlugin](https://webpack.js.org/plugins/copy-webpack-plugin/)을 설치한다.
 
 ```shell
-npm i copy-webpack-plugin
+npm i -D copy-webpack-plugin
 ```
 
 플러그인을 사용해서 라이브러리를 복사한다.

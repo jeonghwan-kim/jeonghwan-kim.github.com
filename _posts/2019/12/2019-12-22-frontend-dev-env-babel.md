@@ -45,7 +45,7 @@ const alert = msg => window.alert(msg);
 터미널 도구를 사용하기 위해 커맨드라인 도구도 함께 설치하자.
 
 ```
-npm install @babel/core  @babel/cli
+npm install -D @babel/core  @babel/cli
 ```
 
 설치를 완료후 node_modules/.bin 폴더에 추가된 바벨 명령어를 사용할 수 있다.
@@ -182,7 +182,7 @@ const, let 처럼 블록 스코핑을 따르는 예약어를 함수 스코핑을
 NPM 패키지로 제공하는 플러그인을 설치하고,
 
 ``` 
-npm install @babel/plugin-transform-block-scoping
+npm install -D @babel/plugin-transform-block-scoping
 ```
 
 설치한 플러그인을 사용해보면,
@@ -198,7 +198,7 @@ var alert = msg => window.alert(msg);
 인터넷 익스플로러는 화살표 함수도 지원하지 않는데 [arrow-functions](https://babeljs.io/docs/en/babel-plugin-transform-arrow-functions) 플러그인을 이용해서 일반 함수로 변경할 수 있다.
 
 ```
-npm install @babel/plugin-transform-arrow-functions
+npm install -D @babel/plugin-transform-arrow-functions
 
 npx babel app.js \
   --plugins @babel/plugin-transform-block-scoping \
@@ -305,7 +305,7 @@ preset-flow, preset-react, preset-typescript는 flow, 리액트, 타입스크립
 먼저 패키지를 다운로드한다.
 
 ```
-npm install @babel/preset-env
+npm install -D @babel/preset-env
 ```
 
 설치한 바벨 설정을 조금만 더 바꿔본다.
@@ -480,7 +480,7 @@ core-js 패키지로부터 프라미스 모듈을 가져오는 임포트 구문�
 먼저 패키지를 설치하고,
 
 ```
-npm install babel-loader
+npm install -D babel-loader
 ```
 
 웹팩 설정에 로더를 추가한다.
