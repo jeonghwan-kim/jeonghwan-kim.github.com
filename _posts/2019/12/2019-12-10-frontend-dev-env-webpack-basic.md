@@ -291,7 +291,9 @@ import './style.css'
 
 style.css: 
 ```css
-background-color: green;
+body {
+  background-color: green;
+}
 ```
 
 CSS 파일을 자바스크립트에서 불러와 사용하려면 CSS를 모듈로 변환하는 작업이 필요하다.
@@ -489,7 +491,7 @@ file-loader와 옵션 설정이 거의 비슷하고 마지막 `limit` 속성만 
 myplugin.js:
 ```js
 class MyPlugin {
-  apply(compilor) {
+  apply(compiler) {
     compiler.hooks.done.tap('My Plugin', stats => {
       console.log('MyPlugin: done');
     })
@@ -500,14 +502,14 @@ module.exports = MyPlugin;
 ```
 
 로더와 다르게 플러그인은 클래스로 제작한다. 
-apply 함수를 구현하면 되는데 이 코드에서는 인자로 받은 compilor의 tap 함수를 사용했다. 
+apply 함수를 구현하면 되는데 이 코드에서는 인자로 받은 compiler의 tap 함수를 사용했다. 
 플러그인 작업이 완료되는(done) 시점에 로그를 찍는 코드인것 같다.
 
 플러그인을 웹팩 설정에 추가한다.
 
 webpack.config.js:
 ```js
-const MyPlugin = require('./myplogin');
+const MyPlugin = require('./myplugin');
 
 module.exports = {
   plugins: [
@@ -660,7 +662,6 @@ module.exports = function banner() {
 webpack.config.js
 ```js
 const webpack = require('webpack');
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 export default {
   plugins: [
@@ -670,12 +671,12 @@ export default {
 ```
 
 빈 객체를 전달해도 기본적으로 넣어주는 값이 있다. 
-노드 환경정보인 process.env.NODE_ENV 인데 웹팩 설정의 mode에 따라 값이 들어간다.
-development를 기본값으로 설정했기 때문에 어플리케이션 코드에서 process.env.NODE_ENV 변수로 접근하면 'development' 값을 얻을 수 있다.
+노드 환경정보인 process.env.NODE_ENV 인데 웹팩 설정의 mode에 설정한 값이 여기에 들어간다.
+"development"를 설정했기 때문에 어플리케이션 코드에서 process.env.NODE_ENV 변수로 접근하면 "development" 값을 얻을 수 있다.
 
 app.js
 ```js
-console.log(process.env.NODE_ENV) // 'development'
+console.log(process.env.NODE_ENV) // "development"
 ```
 
 이 외에도 웹팩 컴파일 시간에 결정되는 값을 전역 상수 문자열로 어플리케이션에 주입할 수 있다.
@@ -825,7 +826,7 @@ $ npm install clean-webpack-plugin
 
 webpack.config.js:
 ```js
-const { CleanWebpackPlugin } = reuiqre('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   plugins: [

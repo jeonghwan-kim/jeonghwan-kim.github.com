@@ -176,7 +176,9 @@ npx eslint app.js --fix
 ```js
 // .eslintrc.js
 module.exports = {
-  extends: "eslint:recommended", // 미리 설정된 규칙 세트을 사용한다
+  extends: [
+    "eslint:recommended", // 미리 설정된 규칙 세트을 사용한다
+  ], 
 }
 ```
 
@@ -311,6 +313,7 @@ npm i -D eslint-config-prettier
 // .eslintrc.js
 {
   extends: [
+    "eslint:recommended",
     "eslint-config-prettier"
   ]
 }
@@ -378,7 +381,10 @@ npx eslint app.js --fix
 ```js
 // .eslintrc.js
 {
-  "extends": ["plugin:prettier/recommended"]
+  "extends": [
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ]
 }
 ```
 

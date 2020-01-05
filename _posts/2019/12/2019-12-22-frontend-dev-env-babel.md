@@ -305,7 +305,7 @@ preset-flow, preset-react, preset-typescript는 flow, 리액트, 타입스크립
 먼저 패키지를 다운로드한다.
 
 ```
-npm instll @babel/preset-env
+npm install @babel/preset-env
 ```
 
 설치한 바벨 설정을 조금만 더 바꿔본다.
