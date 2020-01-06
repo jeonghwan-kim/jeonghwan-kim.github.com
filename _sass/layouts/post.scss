@@ -80,6 +80,11 @@
     margin-right: auto;
   }
 
+  // HACK: 안그러면 우측에 추가공간 생김
+  .post-container {
+    overflow-x: hidden;
+  }
+
   .post-header {
     .post-title {
       color: $black-color;
