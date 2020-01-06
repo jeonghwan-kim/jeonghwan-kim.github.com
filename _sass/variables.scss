@@ -19,6 +19,8 @@ $secondary-color: #91684a;
 $thenary-color: #00c07f;
 $black-color: #3d3d3f;
 $white-color: #f9f8fd;
+$gray-color: lighten($black-color, 40%);
+$light-gray-color: #e7e9ee;
 
 @mixin spacing($target, $shortcut) {
   @for $i from 0 to 21 {
@@ -45,56 +47,6 @@ $white-color: #f9f8fd;
   }
 }
 
-// $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-// $article-font-family: $base-font-family;
-// $mono-font-family: "SF Mono", "Menlo", Courier, "Lucida Console", monospace;
-
-// $font-size-default: 18px;
-// $font-size-large: 24px;
-// $font-size-small: 14px;
-
-// $font-weight-default: 400;
-// $font-weight-light: 100;
-// $font-weight-heavy: 900;
-
-// $line-height-default: 1.8;
-// $line-height-small: 1.1;
-
-// $spacing-unit: 30px;
-
-// $color-text: #111;
-// $color-background: #fff;
-// $color-brand: #0070c9;
-// $light-grey-color: #f5f5f5;
-// $grey-color: #828282;
-// $grey-color-light: lighten($grey-color, 40%);
-// $grey-color-dark: darken($grey-color, 25%);
-// $white-color: rgb(254, 254, 254);
-// $no-color: rgba(0, 0, 0, 0);
-// $site-header-background-color: rgb(56, 56, 56);
-
-// $site-header-height: auto;
-// $site-header-color: rgba(255, 255, 255, 0.901961);
-
-// // Width of the content area
-
-// $on-palm: 800px;
-
-// $profile-image-width: 150px;
-
-// $device-mobile-width: 800px;
-
-// @mixin media-query($device) {
-//   @media screen and (max-width: $device) {
-//     @content;
-//   }
-// }
-
-// @mixin site-logo($height) {
-//   display: inline-block;
-//   width: 100%;
-//   height: $height;
-//   line-height: $height;
-//   background: url(/assets/imgs/logo.png) no-repeat 0 0 / contain;
-//   color: transparent;
-// }
+@function seperator($width: 2px) {
+  @return $width solid $light-gray-color;
+}

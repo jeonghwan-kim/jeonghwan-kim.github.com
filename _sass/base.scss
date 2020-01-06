@@ -28,6 +28,13 @@ a {
   overflow: auto;
 }
 
+.align-left {
+  text-align: left;
+}
+.align-right {
+  text-align: right;
+}
+
 @include spacing('padding', 'p');
 @include spacing('margin', 'm');
 
@@ -60,12 +67,21 @@ a {
   border: solid 1px $black-color
 }
 
+@mixin btn($color) {
+  color: $color;
+  border-color: $color;
+  &:focus,
+  &:hover {
+    background-color: $color !important;
+    color: $white-color !important;
+  }
+}
+
 .btn-primary {
-  color: $primary-color;
+  @include btn($primary-color);
 }
 .btn-secondary {
-  color: $secondary-color;
-  border-color: $secondary-color;
+  @include btn($secondary-color);
 }
 .btn-text {
   border: none;

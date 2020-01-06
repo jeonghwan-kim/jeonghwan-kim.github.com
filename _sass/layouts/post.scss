@@ -1,11 +1,21 @@
+@mixin sereis-title-prefix($text: "연재물") {
+  &::before {
+    content: $text;
+    display: block;
+    font-size: 14px;
+    color: $gray-color;
+    font-weight: normal;
+  }
+}
+
 .post {
-  >.flex {
+  > .flex {
     align-items: flex-start;
     .post-aside {
       order: 1;
     }
     .post-container {
-      order: 0
+      order: 0;
     }
   }
 
@@ -17,16 +27,13 @@
     @media (max-width: $desktop-width - 1) {
       display: none;
     }
+    > * {
+      border-left: seperator();
+    }
     .series-nav {
-      border: 1px solid $secondary-color;
-      border-radius: $spacing-unit / 2;
       .series-title {
         font-weight: bold;
-        &::before {
-          content: '[연재물]';
-          display: block;
-          font-weight: normal;
-        }
+        @include sereis-title-prefix();
       }
       .series-order {
         .active {
@@ -38,19 +45,12 @@
         display: inline-block;
         flex: 1 0 50%;
       }
-      .prev {
-        text-align: left;
-      }
-      .next {
-        text-align: right;
-      }
       a {
         color: $secondary-color;
         text-decoration: none;
       }
     }
     .post-toc {
-      border-left: 1px solid $secondary-color;
       ul {
         padding-left: $spacing-unit * 2;
         list-style: none;
@@ -59,13 +59,13 @@
           margin-bottom: $spacing-unit / 2;
           a {
             text-decoration: none;
-            color: lighten($black-color, 40%);
+            color: $gray-color;
             &:hover,
             &:focus {
               color: $black-color;
             }
             &.active {
-              color: $brand-color
+              color: $brand-color;
             }
           }
         }
@@ -76,7 +76,8 @@
   .post-container,
   .footer-container {
     max-width: 800px;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .post-header {
@@ -86,27 +87,7 @@
     }
     .post-meta {
       .date {
-        color: lighten($black-color, 40%);
-      }
-      .series-nav {
-        color: $secondary-color;
-        .series-title { 
-          font-weight: bold;
-          &::before {
-            content: '[연재물]';
-          }
-        }
-        .series-order {
-          font-weight: bold;
-          .active {
-          }
-        }
-        .series-controls {
-          a {
-            color: $secondary-color;
-            text-decoration: none;
-          }
-        }
+        color: $gray-color;
       }
     }
   }
@@ -135,7 +116,12 @@
       font-size: 120%;
       padding-top: 12px;
     }
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       color: $primary-color;
       font-family: $base-font-family;
     }
@@ -146,11 +132,11 @@
       color: lighten($black-color, 20%);
       position: relative;
       &::before {
-        content: '“';
+        content: "“";
         position: absolute;
         left: -$spacing-unit * 3;
         font-size: 40px;
-        color: lighten($black-color, 60%)
+        color: lighten($black-color, 60%);
       }
     }
     .highlight {
@@ -163,13 +149,12 @@
     }
   }
   .post-footer {
-    
   }
 }
 
 .series-navigator {
-  border: $spacing-unit / 8 solid $secondary-color;
-  border-radius: $spacing-unit / 2;
+  border-top: 2px solid $light-gray-color;
+  border-bottom: 2px solid $light-gray-color;
 
   .flex {
     flex-flow: row;
@@ -183,16 +168,25 @@
   }
   .series-title {
     margin-top: $spacing-unit;
-    &::before {
-      content: "[연재물]"
-    }
+    @include sereis-title-prefix("이 연재물 더보기");
   }
   .post-list {
+    line-height: 1.5em;
     a {
+      display: inline-block;
+      width: 100%;
       text-decoration: none;
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
     }
-    .active {
-      font-weight: bold;
+    li {
+      list-style: circle;
+      &.active {
+        list-style: unset;
+        font-weight: bold;
+      }
     }
   }
 }
