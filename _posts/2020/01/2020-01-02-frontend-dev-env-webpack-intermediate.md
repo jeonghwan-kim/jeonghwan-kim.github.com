@@ -429,7 +429,7 @@ model로 데이터를 부르고 다시 변경된 view 모듈로 렌더 함수를
 
 if (module.hot) {
   module.hot.accept('./view', async () => {
-    render(await model.get(), controller.el); // 변경된 모듈로 교체 
+    view.render(await model.get(), controller.el); // 변경된 모듈로 교체 
   }) 
 }
 ```
