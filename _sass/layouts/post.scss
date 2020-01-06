@@ -1,160 +1,169 @@
 .post {
   >.flex {
-    flex-flow: row-reverse;
     align-items: flex-start;
-    aside.post-aside {
-      flex: 0 0 250px;
-      position: sticky;
-      top: $spacing-unit;
-      margin-left: $spacing-unit * 4;
-      @media (max-width: $desktop-width - 1) {
-        display: none;
+    .post-aside {
+      order: 1;
+    }
+    .post-container {
+      order: 0
+    }
+  }
+
+  .post-aside {
+    flex: 0 0 250px;
+    position: sticky;
+    top: $spacing-unit;
+    margin-left: $spacing-unit * 4;
+    @media (max-width: $desktop-width - 1) {
+      display: none;
+    }
+    .series-nav {
+      border: 1px solid $secondary-color;
+      border-radius: $spacing-unit / 2;
+      .series-title {
+        font-weight: bold;
+        &::before {
+          content: '[연재물]';
+          display: block;
+          font-weight: normal;
+        }
+      }
+      .series-order {
+        .active {
+          font-weight: bold;
+        }
+      }
+      .prev,
+      .next {
+        display: inline-block;
+        flex: 1 0 50%;
+      }
+      .prev {
+        text-align: left;
+      }
+      .next {
+        text-align: right;
+      }
+      a {
+        color: $secondary-color;
+        text-decoration: none;
+      }
+    }
+    .post-toc {
+      border-left: 1px solid $secondary-color;
+      ul {
+        padding-left: $spacing-unit * 2;
+        list-style: none;
+        margin: 0;
+        li {
+          margin-bottom: $spacing-unit / 2;
+          a {
+            text-decoration: none;
+            color: lighten($black-color, 40%);
+            &:hover,
+            &:focus {
+              color: $black-color;
+            }
+            &.active {
+              color: $brand-color
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .post-container,
+  .footer-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .post-header {
+    .post-title {
+      color: $black-color;
+      font-size: 42px;
+    }
+    .post-meta {
+      .date {
+        color: lighten($black-color, 40%);
       }
       .series-nav {
-        border: 1px solid $secondary-color;
-        border-radius: $spacing-unit / 2;
-        .series-title {
+        color: $secondary-color;
+        .series-title { 
           font-weight: bold;
           &::before {
             content: '[연재물]';
-            display: block;
-            font-weight: normal;
           }
         }
         .series-order {
+          font-weight: bold;
           .active {
-            font-weight: bold;
           }
         }
-        .prev,
-        .next {
-          display: inline-block;
-          flex: 1 0 50%;
-        }
-        .prev {
-          text-align: left;
-        }
-        .next {
-          text-align: right;
-        }
-        a {
-          color: $secondary-color;
-          text-decoration: none;
-        }
-      }
-      .post-toc {
-        border-left: 1px solid $secondary-color;
-        ul {
-          padding-left: $spacing-unit * 2;
-          list-style: none;
-          margin: 0;
-          li {
-            margin-bottom: $spacing-unit / 2;
-            a {
-              text-decoration: none;
-              color: lighten($black-color, 40%);
-              &:hover,
-              &:focus {
-                color: $black-color;
-              }
-              &.active {
-                color: $brand-color
-              }
-            }
+        .series-controls {
+          a {
+            color: $secondary-color;
+            text-decoration: none;
           }
         }
       }
     }
-    .post-container,
-    .footer-container {
-      max-width: 800px;
-      margin: 0 auto;
+  }
+
+  .post-content {
+    font-size: 18px;
+    line-height: 1.5em;
+    font-family: $article-font-family;
+    h1 {
+      font-size: 200%;
+      padding-top: 20px;
     }
-    .post-header {
-      .post-title {
-        color: $black-color;
-        font-size: 42px;
-      }
-      .post-meta {
-        .date {
-          color: lighten($black-color, 40%);
-        }
-        .series-nav {
-          color: $secondary-color;
-          .series-title { 
-            font-weight: bold;
-            &::before {
-              content: '[연재물]';
-            }
-          }
-          .series-order {
-            font-weight: bold;
-            .active {
-            }
-          }
-          .series-controls {
-            a {
-              color: $secondary-color;
-              text-decoration: none;
-            }
-          }
-        }
-      }
+    h2 {
+      font-size: 180%;
+      padding-top: 18px;
     }
-    .post-content {
-      font-size: 18px;
-      line-height: 1.5em;
-      font-family: $article-font-family;
-      h1 {
-        font-size: 200%;
-        padding-top: 20px;
-      }
-      h2 {
-        font-size: 180%;
-        padding-top: 18px;
-      }
-      h3 {
-        font-size: 160%;
-        padding-top: 16px;
-      }
-      h4 {
-        font-size: 140%;
-        padding-top: 14px;
-      }
-      h5 {
-        font-size: 120%;
-        padding-top: 12px;
-      }
-      h1, h2, h3, h4, h5, h6 {
-        color: $primary-color;
-        font-family: $base-font-family;
-      }
-      img {
-        max-width: 100%;
-      }
-      blockquote {
-        color: lighten($black-color, 20%);
-        position: relative;
-        &::before {
-          content: '“';
-          position: absolute;
-          left: -$spacing-unit * 3;
-          font-size: 40px;
-          color: lighten($black-color, 60%)
-        }
-      }
-      .highlight {
-        border-radius: $spacing-unit / 2;
-        overflow-x: scroll;
-      }
-      pre.highlight {
-        padding: $spacing-unit * 2 $spacing-unit * 3;
-        margin: 0;
+    h3 {
+      font-size: 160%;
+      padding-top: 16px;
+    }
+    h4 {
+      font-size: 140%;
+      padding-top: 14px;
+    }
+    h5 {
+      font-size: 120%;
+      padding-top: 12px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: $primary-color;
+      font-family: $base-font-family;
+    }
+    img {
+      max-width: 100%;
+    }
+    blockquote {
+      color: lighten($black-color, 20%);
+      position: relative;
+      &::before {
+        content: '“';
+        position: absolute;
+        left: -$spacing-unit * 3;
+        font-size: 40px;
+        color: lighten($black-color, 60%)
       }
     }
-    .post-footer {
-      
+    .highlight {
+      border-radius: $spacing-unit / 2;
+      overflow-x: scroll;
     }
+    pre.highlight {
+      padding: $spacing-unit * 2 $spacing-unit * 3;
+      margin: 0;
+    }
+  }
+  .post-footer {
+    
   }
 }
 
