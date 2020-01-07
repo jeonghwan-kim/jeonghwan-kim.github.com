@@ -22,8 +22,11 @@
   .post-aside {
     flex: 0 0 250px;
     position: sticky;
+    max-height: 100vh;
+    overflow-y: scroll;
     top: $spacing-unit;
     margin-left: $spacing-unit * 4;
+    padding-bottom: $spacing-unit;
     @media (max-width: $desktop-width - 1) {
       display: none;
     }
@@ -129,6 +132,7 @@
     h6 {
       color: $primary-color;
       font-family: $base-font-family;
+      line-height: 1em;
     }
     img {
       max-width: 100%;
@@ -156,7 +160,7 @@
   .social-share-btns {
     align-items: flex-start;
     min-height: 30px; // 나중에 로딩되는 영역이라서 미리 높이 설정(스크롤 이슈와 연관)
-    padding: $spacing-unit * 8 0;
+    padding-top: $spacing-unit * 8;
   }
   .post-footer {
   }
