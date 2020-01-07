@@ -155,7 +155,8 @@
   }
   .social-share-btns {
     align-items: flex-start;
-    min-height: 22px; // 나중에 로딩되는 영역이라서 미리 높이 설정(스크롤 이슈와 연관)
+    min-height: 30px; // 나중에 로딩되는 영역이라서 미리 높이 설정(스크롤 이슈와 연관)
+    padding: $spacing-unit * 8 0;
   }
   .post-footer {
   }
