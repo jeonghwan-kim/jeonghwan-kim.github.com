@@ -70,6 +70,7 @@ a {
 }
 
 .btn {
+  display: inline-block;
   padding: $spacing-unit * 1 $spacing-unit * 2;
   border-radius: $spacing-unit / 2;
   background-color: $white-color;
