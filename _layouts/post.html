@@ -17,8 +17,11 @@ layout: default
       <div class="post-content" itemprop="articleBody">
         {{ content }}
       </div>
-      <div class="post-tags my-7">{% include post-tags.html %}</div>
-      <div>{% include fb-like.html %}</div>
+      <div class="my-7">{% include post-tags.html %}</div>
+      <div class="flex social-share-btns">
+        <div class="mr-1">{% include twitter-tweet.html %}</div>
+        {% include fb-like.html %}
+      </div>
     </main>
   </div>
   <footer class="post-footer footer-container py-10 mt-10">
