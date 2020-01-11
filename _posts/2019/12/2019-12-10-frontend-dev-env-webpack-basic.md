@@ -1,7 +1,6 @@
 ---
 title: '프론트엔드 개발환경의 이해: 웹팩(기본)'
 layout: post
-summary: '먼저 모듈에 대해 이야기 해보자. 문법 수준에서 모듈을 지원하기 시작한 것은 ES2015부터다. import/export 구문이 없었던 모듈 이전 상황을 살펴보는 것이 웹팩 등장 배경을 설명하는데 수월할 것 같다.'
 category: series
 seriesId: 1
 tags: webpack
@@ -280,7 +279,7 @@ module.exports = function myloader (content) {
 
 로더의 동작 원리를 살펴 보았으니 이번에는 몇몇 자주 사용하는 로더를 소개하겠다.
 
-# 4.1 css-loader
+## 4.1 css-loader
 
 웹팩은 모든것을 모듈로 바라보기 때문에 자바스크립트 뿐만 아니라 스타일시트로 import 구문으로 불러 올수 있다.
 
