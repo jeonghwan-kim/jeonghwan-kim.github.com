@@ -14,7 +14,7 @@ import/export 구문이 없었던 모듈 이전 상황을 살펴보는 것이 �
 
 아래 덧셈 함수를 보자.
 
-sum.js:
+math.js:
 ```js
 function sum(a, b) { return a + b; } // 전역 공간에 sum이 노출 
 ```
@@ -25,7 +25,7 @@ sum(1, 2); // 3
 ```
 
 위 코드는 모두 하나의 HTML 파일 안에서 로딩해야만 실행된다. 
-sum.js가 로딩되면 app.js는 이름 공간에서 'sum'을 찾은 뒤 이 함수를 실행한다.
+math.js가 로딩되면 app.js는 이름 공간에서 'sum'을 찾은 뒤 이 함수를 실행한다.
 문제는 'sum'이 전역 공간에 노출된다는 것.
 다른 파일에서도 'sum'이란 이름을 사용한다면 충돌한다.
 
@@ -35,7 +35,7 @@ sum.js가 로딩되면 app.js는 이름 공간에서 'sum'을 찾은 뒤 이 함
 함수 스코프를 만들어 외부에서 안으로 접근하지 못하도록 공간을 격리하는 것이다.
 스코프 안에서는 자신만의 이름 공간이 존재하므로 스코프 외부와 이름 충돌을 막을 수 있다. 
 
-sum.js:
+math.js:
 ```js
 var math = math || {}; // math 네임스페이스 
 
@@ -66,20 +66,20 @@ exports function sum(a, b) { return a + b; }
 
 app.js:
 ```js
-const sum = require('./sum.js');
+const sum = require('./math.js');
 sum(1, 2); // 3
 ```
 
 **[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)**(Asynchronous Module Definition)는 비동기로 로딩되는 환경에서 모듈을 사용하는 것이 목표다.
 주로 브라우져 환경이다.
 
-**[UMD](https://github.com/umdjs/umd)**(Univertial Module Definition)는 AMD기반으로 CommonJS 방식까지 지원하는 통합 형태다. 
+**[UMD](https://github.com/umdjs/umd)**(Universal Module Definition)는 AMD기반으로 CommonJS 방식까지 지원하는 통합 형태다. 
 
 이렇게 각 커뮤니티에서 각자의 스펙을 제안하다가 **[ES2015에서 표준 모듈 시스템](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)**을 내 놓았다. 
 지금은 바벨과 웹팩을 이용해 모듈 시스템을 사용하는 것이 일반적이다.
 ES2015 모듈 시스템의 모습을 살펴보자.
 
-sum.js:
+math.js:
 ```js
 export function sum(a, b) { return a + b; }
 ```
