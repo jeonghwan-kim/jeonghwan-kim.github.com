@@ -366,7 +366,7 @@ CSS 뿐만 아니라 소스코드에서 사용하는 모든 파일을 모듈로 
 style.css:
 ```css
 body {
-  background-image: url(bg.svg)
+  background-image: url(bg.png);
 }
 ```
 
@@ -395,7 +395,7 @@ module.exports = {
 ![웹팩 번들 결과](/assets/imgs/2019/12/11/file-loader.jpg)
 
 하지만 이대로 index.html 파일을 브라우져에 로딩하면 이미지를 제대로 로딩하지 못할 것이다. 
-CSS를 로딩하면 background-image: url(bg.svg) 코드에 의해 동일 폴더에서 이미지를 찾으려고 시도할 것이다. 
+CSS를 로딩하면 background-image: url(bg.png) 코드에 의해 동일 폴더에서 이미지를 찾으려고 시도할 것이다. 
 그러나 웹팩으로 빌드한 이미지 파일은 output인 dist 폴더 아래로 이동했기 때문에 이미지 로딩에 실패할 것이다.
 
 file-loader 옵션을 조정해서 경로를 바로 잡아 주어야 한다.
