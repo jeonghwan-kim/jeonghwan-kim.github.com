@@ -95,12 +95,12 @@ ESLint는 검사 규칙을 미리 정해 놓았다.
 // .eslintrc.js
 module.exports = {
   rules: {
-    "no-unexpected-multiline": 2
+    "no-unexpected-multiline": "error"
   }
 }
 ```
 
-규칙에 설정하는 값은 세 가지다. 0은 끔, 1은 경고, 2는 오류. 
+규칙에 설정하는 값은 세 가지다. "off"나 0은 끔, "warn"이나 1은 경고, "error"나 2는 오류. 
 설정한 규칙에 어긋나는 코드를 발견하면 오류를 출력하도록 했다.
 
 다시 검사해 보자.
@@ -138,7 +138,7 @@ console.log();; // 세미콜론 연속 두 개 붙임
 // .eslintrc.js
 module.exports = {
   rules: {
-    "no-extra-semi": 2, 
+    "no-extra-semi": "error", 
   }
 }
 ```
