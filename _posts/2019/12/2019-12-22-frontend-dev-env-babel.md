@@ -502,7 +502,21 @@ module.exports = {
 .js 확장자로 끝나는 파일은 babel-loader가 처리하도록 설정했다.
 사용하는 써드파티 라이브라리가 많을수록 바벨 로더가 느리게 동작할 수 있는데 node_modules 폴더를 로더가 처리하지 않도록 예외 처리했다([참고](https://github.com/babel/babel-loader#babel-loader-is-slow)).
 
-웹팩으로 빌드하면,
+폴리필 사용 설정을 했다면 core-js도 설치해야한다. 
+웹팩은 바벨 로더가 만든 아래 코드를 만나면 core-js를 찾을 것이기 때문이다.
+
+```js
+require("core-js/modules/es6.promise");
+require("core-js/modules/es6.object.to-string");
+```
+
+버전 2로 패키지를 추가하자.
+
+```
+npm i core-js@2
+```
+
+그리고 웹팩으로 빌드하면,
 
 ```
 npm run build
