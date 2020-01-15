@@ -5,7 +5,7 @@
     </h1>
     <nav class="site-navs">
       <ul class="flex ml-1">
-        <li class="site-nav"><a id="category-btn" href="#">POSTS</a></li>
+        <li class="site-nav"><a id="category-btn" href="#" class="flex"><i class="icon-article"></i><span class="nav-title">POSTS</span></a></li>
         <li id="category-dropdown" class="category-popup hidden">
           <ul>
             <li><a href="/category/">전체보기({{ site.posts.size }})</a></li>
@@ -14,8 +14,8 @@
             <li ><a href="/category/think.html">생각({{ site.categories.think.size }})</a></li>
           </ul>
         </li>
-        <li class="site-nav"><a href="/#videos">VIDEOS</a></li>
-        <li class="site-nav"><a href="/tags/">TAGS</a></li>
+        <li class="site-nav"><a href="/#videos" class="flex"><i class="icon-video"></i><span class="nav-title">VIDEOS</span></a></li>
+        <li class="site-nav"><a href="/tags/" class="flex"><i class="icon-tag"></i><span class="nav-title">TAGS</span></a></li>
       </ul>
     </nav>
   </div>

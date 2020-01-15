@@ -38,24 +38,32 @@ a {
 @include spacing('padding', 'p');
 @include spacing('margin', 'm');
 
-.icon {
-  display: inline-block;
-  width: $spacing-unit * 3;
-  height: $spacing-unit * 3;
-  background-repeat: no-repeat;
-  background-position-x: 0;
-  background-position-y: 0;
-  background-size: contain;
-}
-
 .icon-rss {
-  background-image: url(/assets/imgs/icons/icon-rss.svg);
+  @include icon("/assets/imgs/icons/icon-rss.png", $spacing-unit * 5, $spacing-unit * 5);
 }
 .icon-github {
-  background-image: url(/assets/imgs/icons/icon-github.svg);
+  @include icon("/assets/imgs/icons/icon-github.png", $spacing-unit * 5, $spacing-unit * 5);
 }
 .icon-email {
-  background-image: url(/assets/imgs/icons/icon-email.svg);
+  @include icon("/assets/imgs/icons/icon-email.png", $spacing-unit * 5, $spacing-unit * 5);
+}
+.icon-article {
+  @include icon("/assets/imgs/icons/icon-article.png", $spacing-unit * 3, $spacing-unit * 3);
+}
+.icon-video {
+  @include icon("/assets/imgs/icons/icon-video.png", $spacing-unit * 3, $spacing-unit * 3);
+}
+.icon-tag {
+  @include icon("/assets/imgs/icons/icon-tag.png", $spacing-unit * 3, $spacing-unit * 3);
+}
+// todo: 여기 있을게 아니다 
+@media (max-width: $tablet-width - 1) {
+  .icon-article,
+  .icon-video,
+  .icon-tag{
+    width: $spacing-unit * 4;
+    height: $spacing-unit * 4;
+  }
 }
 
 .btn {

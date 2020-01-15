@@ -34,16 +34,24 @@
         &:last-child {
           margin-right: 0;
         }
+        @media (max-width: $tablet-width - 1) {
+          .nav-title {
+            display: none;
+          }
+        }
       }
     }
     .category-popup {
       position: absolute;
       top: 40px;
-      right: 50px;
       box-shadow: 0 0 20px rgba(0,0,0, 0.5);
       z-index: 1000;
       min-width: 150px;
       background-color: $secondary-color;
+      @media (max-width: $tablet-width - 1) {
+        top: 50px;
+        right: 80px;
+      }
       li {
         a {
           font-size: 14px;

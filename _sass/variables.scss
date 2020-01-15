@@ -7,6 +7,7 @@ $font-size-default: 18px;
 
 $site-width: 1024px;
 $mobile-width: 320px;
+$tablet-width: 768px;
 $desktop-width: 1024px;
 $content-width: 800px;
 
@@ -49,4 +50,15 @@ $light-gray-color: #e7e9ee;
 
 @function seperator($width: 2px) {
   @return $width solid $light-gray-color;
+}
+
+@mixin icon($image, $width: $spacing-unit * 3, $height: $spacing-unit * 3) {
+  display: inline-block;
+  width: $width;
+  height: $height;
+  background-repeat: no-repeat;
+  background-position-x: 0;
+  background-position-y: 0;
+  background-size: contain;
+  background-image: url($image);
 }

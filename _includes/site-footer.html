@@ -6,16 +6,16 @@
   </ul>
   <ul class="mb-10">
     <li class="mr-2">
-      <a class="icon icon-rss" href="{{ '/feed.xml' | prepend: site.baseurl }}" title="rss"></a>
+      <a class="icon-rss" href="{{ '/feed.xml' | prepend: site.baseurl }}" title="rss"></a>
     </li>
     {% if site.email%}
     <li class="mr-2">
-      <a class="icon icon-email" href="mailto:{{ site.email }}" title="email"></a>
+      <a class="icon-email" href="mailto:{{ site.email }}" title="email"></a>
     </li>
     {% endif %}
     {% if site.github_username %}
     <li>
-      <a class="icon icon-github" href="https://github.com/{{ site.github_username }}" title="github"></a>
+      <a class="icon-github" href="https://github.com/{{ site.github_username }}" title="github"></a>
     </li>
     {% endif %}
   </ul>
