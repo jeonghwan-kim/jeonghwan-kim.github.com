@@ -313,7 +313,7 @@ module.exports = {
     rules: [{
       test: /\.css$/, // .css 확장자로 끝나는 모든 파일 
       use: ['css-loader'], // css-loader를 적용한다 
-    ]}
+    }]
   }
 }
 ```
@@ -347,7 +347,7 @@ module.exports = {
     rules: [{
       test: /\.css$/,
       use: ['style-loader', 'css-loader'], // style-loader를 앞에 추가한다 
-    ]}
+    }]
   }
 }
 ```
@@ -370,10 +370,10 @@ body {
 }
 ```
 
-배경 이미지를 bg.svg 파일로 지정했다.
+배경 이미지를 bg.png 파일로 지정했다.
 
 웹팩은 엔트리 포인트인 app.js가 로딩하는 style.css 파일을 읽을 것이다. 
-그리고 이 스타일시트는 url() 함수로 bg.svg를 사용하는데 이때 로더를 동작시킨다.
+그리고 이 스타일시트는 url() 함수로 bg.png를 사용하는데 이때 로더를 동작시킨다.
 
 webpack.config.js:
 ```js
@@ -697,7 +697,7 @@ console.log(TWO); // 2
 코드가 아닌 값을 입력하려면 문자열화 한 뒤 넘긴다.
 ```js
 new webpack.DefinePlugin({
-  VERSION: JSON.stringify('v.1.2.3')
+  VERSION: JSON.stringify('v.1.2.3'),
   PRODUCTION: JSON.stringify(false),
   MAX_COUNT: JSON.stringify(999),
   'api.domain': JSON.stringify('http://dev.api.domain.com'),
