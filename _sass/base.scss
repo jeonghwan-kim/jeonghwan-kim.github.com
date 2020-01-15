@@ -10,6 +10,7 @@ a {
 }
 .container {
   max-width: $site-width;
+  min-width: $mobile-width;
   margin-left: auto;
   margin-right: auto;
   padding: 0 $spacing-unit;
