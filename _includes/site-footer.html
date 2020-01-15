@@ -6,22 +6,22 @@
   </ul>
   <ul class="mb-10">
     <li class="mr-2">
-      <a class="icon-rss" href="{{ '/feed.xml' | prepend: site.baseurl }}" title="rss"></a>
+      <a class="icon icon-5x icon-rss" href="{{ '/feed.xml' | prepend: site.baseurl }}" title="rss"></a>
     </li>
     {% if site.email%}
     <li class="mr-2">
-      <a class="icon-email" href="mailto:{{ site.email }}" title="email"></a>
+      <a class="icon icon-5x icon-email" href="mailto:{{ site.email }}" title="email"></a>
     </li>
     {% endif %}
     {% if site.github_username %}
     <li>
-      <a class="icon-github" href="https://github.com/{{ site.github_username }}" title="github"></a>
+      <a class="icon icon-5x icon-github" href="https://github.com/{{ site.github_username }}" title="github"></a>
     </li>
     {% endif %}
   </ul>
   <div class="footer-copyright">
     <div class="mr-1">© 김정환 2020</div>
-    <a href="https://twitter.com/jeonghwan0424?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @jeonghwan0424</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    {% include twitter-follow.html %}
   </div>
   
 </footer>

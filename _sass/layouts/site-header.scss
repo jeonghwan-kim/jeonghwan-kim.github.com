@@ -67,3 +67,12 @@
     }
   }
 }
+
+@media (max-width: $tablet-width - 1) {
+  .icon-article,
+  .icon-video,
+  .icon-tag{
+    width: $spacing-unit * 4;
+    height: $spacing-unit * 4;
+  }
+}
