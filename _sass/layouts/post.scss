@@ -9,6 +9,13 @@
 }
 
 .post {
+  padding-top: $spacing-unit * 20;
+  @media (max-width: $tablet-width) {
+    padding-top: $spacing-unit * 10;
+  }
+  @media (max-width: $mobile-width) {
+    padding-top: $spacing-unit * 5;
+  }
   > .flex {
     align-items: flex-start;
     .post-aside {

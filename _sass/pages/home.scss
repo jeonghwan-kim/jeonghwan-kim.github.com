@@ -1,6 +1,9 @@
 .home {
+  padding-top: $spacing-unit * 6;
+  @media (max-width: $tablet-width) {
+    padding-top: 0;
+  }
   section {
-    padding-top: $spacing-unit * 6;
     padding-bottom: $spacing-unit * 12;
     .section-inner {
       max-width: $content-width;
