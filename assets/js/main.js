@@ -95,7 +95,7 @@
       window.removeEventListener('click', categoryButton.handleClickOuter)
     },
   };
-  
+
 
   document.addEventListener('DOMContentLoaded', function() {
     googleAnalytics.init('UA-31588166-2');

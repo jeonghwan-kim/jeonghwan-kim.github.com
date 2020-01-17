@@ -10,9 +10,23 @@
       .section-title a {
         text-decoration: none;
       }
-      .posts {
+    }
+  }
+  .post-list {
+    list-style: none;
+    padding: 0;
+    .post-item {
+      text-decoration: none;
+      display: block;
+      .post-item-title {
+        color: $primary-color;            
       }
-      .videos {
+      .post-summary {
+        color: $black-color;
+        line-height: 1.5em;;
+        @media (max-width: $mobile-width) {
+          display: none;
+        }
       }
     }
   }
