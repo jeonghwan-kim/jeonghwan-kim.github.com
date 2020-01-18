@@ -108,7 +108,7 @@ a {
 }
 
 .hidden {
-  visibility: hidden;
+  display: none;
 }
 
 .post-list {
@@ -134,4 +134,25 @@ a {
   .date {
     color: lighten($black-color, 40%);
   }
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 9999;
+}
+
+.modal {
+  z-index: 10000;
+  background: white;
+  min-width: 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: 0px 4px -1px rgba(0,0,0,.1);
 }

@@ -19,89 +19,34 @@
     },
   }
 
-  var categoryButton = {
-    init: function(triggerEl, targetEl) {
-      if (!triggerEl || !targetEl) return;
-
+  var modal = {
+    init: function (triggerEl, modalEl, backdropEl) {
       this.triggerEl = triggerEl;
-      this.targetEl = targetEl;
+      this.modalEl = modalEl;
+      this.backdropEl = backdropEl;
 
-      this.triggerEl.addEventListener('click', categoryButton.onClick);
+      this.triggerEl.addEventListener('click', this.showModal.bind(this))
     },
-
-    onClick: function(evt) {
-      evt.preventDefault();
-      var willVisible = categoryButton.willVisible()
-      categoryButton.toggleTarget(willVisible);
-      categoryButton.handleEvents(willVisible);
+    showModal: function () {
+      document.body.style.overflowY = 'hidden';
+      this.modalEl.classList.remove('hidden');
+      this.backdropEl.classList.remove('hidden');
+      this.backdropEl.addEventListener('click', this.hideModal.bind(this))
     },
-    
-    hideTarget: function() {
-      categoryButton.targetEl.style.visibility = 'hidden';
-    },
-    
-    showTarget: function() {
-      categoryButton.targetEl.style.visibility = 'visible';
-    },
-
-    toggleTarget: function(willVisible) {
-      willVisible ? categoryButton.showTarget() : categoryButton.hideTarget();
-    },
-
-    willVisible: function()  {
-      var visibility = categoryButton.targetEl.style.visibility;
-      return !visibility || visibility === 'hidden';
-    },
-
-    handleEvents: function(willVisible) {
-      if (willVisible) {
-        setTimeout(function() {
-          window.addEventListener('click', categoryButton.handleClickOuter)
-          window.addEventListener('keydown', categoryButton.handleKeydownEsc)
-        })
-      } else {
-        categoryButton.blur();
-      }
-    },
-    
-    blur: function() {
-      categoryButton.triggerEl.blur();
-    },
-    
-    handleClickOuter: function(evt) {
-      var el = evt.target;
-      while (el) {
-        if (el === categoryButton.targetEl) {
-          window.removeEventListener('click', categoryButton.handleClickOuter)
-          return;
-        }
-        el = el.parentElement
-      }
-      
-      categoryButton.hideTarget()
-      categoryButton.removeEventLinsteners();
-    },
-    
-    handleKeydownEsc: function handleKeydownEsc(evt) {
-      var esc = 27;
-      if (evt.keyCode === esc) {
-        categoryButton.hideTarget()
-      }
-      categoryButton.removeEventLinsteners()
-    },
-    
-    removeEventLinsteners: function() {
-      window.removeEventListener('keydown', categoryButton.handleKeydownEsc)
-      window.removeEventListener('click', categoryButton.handleClickOuter)
-    },
-  };
-
+    hideModal: function() {
+      document.body.style.overflowY = 'auto';
+      this.backdropEl.classList.add('hidden');
+      this.modalEl.classList.add('hidden');
+    }
+  }
 
   document.addEventListener('DOMContentLoaded', function() {
     googleAnalytics.init('UA-31588166-2');
-    categoryButton.init(
-      document.querySelector('#category-btn'), 
-      document.querySelector('#category-dropdown'),
+
+    modal.init(
+      document.querySelector('#category-btn'),
+      document.querySelector('#modal-category-selector'),
+      document.querySelector('#backdrop'),
     )
   });
 })();
