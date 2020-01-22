@@ -143,7 +143,15 @@
       line-height: 1em;
     }
     img {
-      max-width: 100%;
+      border-radius: $spacing-unit / 2;
+      display: block;
+      margin: $spacing-unit * 2 auto;
+      max-width: 93%;
+      transition: transform 0.3s ease;
+      &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
     }
     blockquote {
       color: lighten($black-color, 20%);
