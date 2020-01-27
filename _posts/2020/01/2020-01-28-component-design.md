@@ -2,7 +2,7 @@
 title: 컴포넌트의 역할 분리
 layout: post
 category: dev
-tags: webpack
+tags: react
 ---
 
 리액트로 프론트엔드 일을 하면서 지난 1년간 가장 많이 사용한 관련 기술이 리덕스다.
