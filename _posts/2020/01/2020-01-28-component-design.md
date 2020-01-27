@@ -8,7 +8,7 @@ tags: webpack
 리액트로 프론트엔드 일을 하면서 지난 1년간 가장 많이 사용한 관련 기술이 리덕스다.
 최근 Mobx를 사용하면서 구조가 다소 바뀌긴 했지만 컴포넌트를 구성하는 방식은 여전히 리덕스를 사용했던 방식이 남아있다.
 
-몇년전 플룩스 아키텍처가 나올 즈음 이 글([Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0))을 읽고 컴포넌트 설계 방식을 많이 참고하였다. 
+몇 년 전 플룩스 아키텍처가 나올 즈음 이 글([Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0))을 읽고 컴포넌트 설계 방식을 많이 참고하였다. 
 [번역글](https://blueshw.github.io/2017/06/26/presentaional-component-container-component/)도 있다.
 여러가지 내용이 있지만 나는 두 가지 점을 잘 활용했던것 같다. 
 
@@ -22,7 +22,7 @@ tags: webpack
 # 버튼 예제
 
 화면 하단에 고정된 저장 버튼은 모바일 화면에서 많이 사용하는 레이아웃이다. 
-개발 초기에 컴포넌트로 만든다면 FooterSaveButton 컴포넌트 하나만 이용해서 구현할 것이다. 
+먼저 FooterSaveButton 컴포넌트로 구현해 보자.
 
 ![FooterSaveButton](/assets/imgs/2020/01/27/SaveFooterButton.gif)
 
@@ -64,29 +64,28 @@ export default class FooterSaveButton  extends React.Component {
 ```
 
 처음 컴포넌트를 만들게 되면 컨테이너와 프린젠터를 구분하는게 쉽지 않다. 
-그럴땐 그냥 하나의 컴포넌트로 '돌아가는 버전'을 먼저 만드는게 우선이다. 
+그럴 땐 그냥 하나의 컴포넌트로 "돌아가는 버전"을 먼저 만드는게 우선이다. 
+버튼은 잘 동작한다. 
 
-이런 식으로 버튼을 만들면 잘 동작한다. 
-
-이제 시간이 좀 되고 코드를 다시 볼 여유가 생기면 리팩토리할 부분을 찾을 수 있다. 
+이제 시간이 좀 되고 코드를 다시 볼 여유가 생기면 리팩토링할 부분을 찾을 수 있다. 
 먼저 이 컴포넌트의 역할을 하나씩 나열해 보자.
 
 FooterSaveButton 컴포넌트는 다음과 같은 역할을 한다.
 
 1. fetching 상태를 가지고 있어 상태에 따라 버튼 텍스트와 disabled를 제어한다 (동작)
-1. 버튼 클릭 이벤트릴 처리하는데, fetching 상태를 갱신하고 save 메소드 호출한다 (동작)
-1. css 파일을 불러와 버튼의 UI를 만든다 (모습)
+1. 버튼 클릭 이벤트를 처리하는데, fetching 상태를 갱신하고 save() 메소드 호출한다 (동작)
+1. CSS 파일을 불러와 버튼의 UI를 만든다 (모습)
 
-역할을 동작과 모습으로 나누면 수월하게 컴포넌트를 분리할 수 있다. 
+역할을 동작과 모습으로 나누면 컴포넌트를 분리하는게 좀 수월해진다.
 
 ## 개선 
 
-사실 컴포넌트 이름에서 부터 냄새가 난다. 
-SaveFooterButton이라는 이름 안에 동작(Save)과 표현(Footer)이 섞여있기 때문이다.
+사실 컴포넌트 이름에서부터 냄새가 난다. 
+FooterSaveButton이라는 이름 안에 동작(Save)과 표현(Footer)이 섞여있기 때문이다.
 
 ### FooterButton 
 
-먼저 UI를 담당하는 세 번째 역할을 FooterButton 컴포넌트로 분리해 보자.
+UI를 담당하는 세 번째 역할을 FooterButton 컴포넌트로 분리해 보자.
 
 ```js
 // FooterButton.js
@@ -106,7 +105,7 @@ export default FooterButton;
 
 ### SaveButton 
 
-이제 나머지 동작을 담당하는 SaveButton 컴포넌트를 만들어 보자.
+이제 동작을 담당하는 SaveButton 컴포넌트를 만들어 보자.
 
 ```js
 // SaveButton.js
@@ -140,20 +139,20 @@ export default class SaveButton extends React.Component {
 ```
 
 데이터 요청 상태를 갖고 있는 fetching 상태를 두었고 이것으로 버튼 메세지와 클릭 가능 여부를 제어한다. 
-onClick() 메소드는 클릭 이벤트를 처리하는 기능으로 비동기 행동이 발생하는 동안 컴포넌트의 fetching 상태를 제어한다. 
+onClick() 메소드는 클릭 이벤트를 처리하는 역할을 하는데 비동기 행동이 발생하는 동안 컴포넌트의 fetching 상태를 업데이트 한다. 
 
-fetching 상태를 기반으로 버튼의 메세지와 클릭 여부를 제어하는 것은 동작과 관련된 것이기 때문에 컨테이너의 역할을 맞다.
+fetching 상태를 기반으로 버튼의 메세지와 클릭 여부를 제어하는 것은 동작과 관련되기 때문에 컨테이너의 역할을 맞다.
 
-컨테이너에서 UI 요소는 모두 사라졌는데 전부 FooterButton이 처리하도록 프롭스로 전달했다.
+컨테이너에서 UI 요소는 모두 사라졌는데 전부 FooterButton에게 위임하려고 프롭스로 전달했다.
 
 ## 효과
 
 이런 식의 리팩토링이 어떤 효과가 있을까? 먼저는 **기능과 로직을 컴포넌트 단위로 나눈 점**이다. 
-코드를 읽기 쉬울 뿐만아니라 유지보수 할 때에도 문제의 원인을 빠르게 찾을 수 있다. 
-UI 버그라면 프리젠터인 FooterButton를 보면되고 기능 버그라면 컨테너인 SaveButton을 찾으면 된다.
+코드가 읽기 쉬워서 유지보수 할 때 문제의 원인을 빠르게 찾을 수 있다. 
+UI 버그라면 프리젠터인 FooterButton를 보면되고 기능 버그라면 컨테이너인 SaveButton을 찾으면 된다.
 
 게다가 FooterButton은 **재활용이 가능**하다. 
-기존 SaveFooterButton은 버튼 이름이 정해져 있을 뿐만아니라 상태와 이벤트를 제어하는 로직이 하나의 컴포넌트로 강하게 엮여 있어서 재활용할 수 없었다. 
+SaveFooterButton은 버튼 이름이 정해져 있고 상태와 이벤트를 제어하는 로직이 하나의 컴포넌트로 강하게 엮여 있어서 재활용할 수 없었다. 
 하지만 disabled와 onClick 그리고 children을 컴포넌트 외부에서 제어하도록 여지를 주었기 대문에 푸터에 위치할 버튼은 모두 이것을 재활용해서 만들 수 있다.
 
 
@@ -170,7 +169,7 @@ UI 버그라면 프리젠터인 FooterButton를 보면되고 기능 버그라면
 
 ## 단일 컴포넌트로 만들기 
 
-이것도 컴포넌트로 만들건데 처음엔 하나의 컴포넌트로 '돌아가는 버전'을 만든다. 
+이것도 처음엔 하나의 컴포넌트로 "돌아가는 버전"을 먼저 만든다. 
 아래 BoardPage 컴포넌트처럼 말이다. 
 
 ```js
@@ -212,7 +211,7 @@ export default class BoardPage extends React.Component {
   render() {
 ```
 
-상태가 꽤 많다. 
+코드가 길어서 중간에 끊었다. 상단에 보이듯이 관리하는 상태가 무척 많다. 
 게시물 목록을 저장한 posts 배열, 페이지네이션 상태를 위한 pagination 객체, api 요청 상태를 나타내는 fetching, 
 모달 상태를 제어하는 modalShown, 마지막으로 모달에 띄울 포스트 객체인 post다. 
 
@@ -228,7 +227,7 @@ fetching 상태를 활성화하고 api로 가져온 뒤 응답 데이터로 상�
 
     return (
       <div className="BoardPage">
-        // 게시물 목록 
+        // 1) 게시물 목록 
         <ul className="posts">
           {posts.map((post, idx) => {
             return (
@@ -242,7 +241,7 @@ fetching 상태를 활성화하고 api로 가져온 뒤 응답 데이터로 상�
           })}
         </ul>
 
-        // 페이지네이션 
+        // 2) 페이지네이션 
         <ul className={`pagination ${fetching ? 'disabled' : ''}`}>
           {new Array(pagination.totalPages).fill(1).map((_, idx) => {
             const className = `${idx + 1 === pagination.page ? 'active' : ''} `;
@@ -259,7 +258,7 @@ fetching 상태를 활성화하고 api로 가져온 뒤 응답 데이터로 상�
           })}
         </ul>
 
-        // 모달 
+        // 3) 모달 
         {modalShown && 
         <>
           <div className="Modal-backdrop" onClick={() => this.toggleModal()}></div>
@@ -297,7 +296,7 @@ fetching 상태를 활성화하고 api로 가져온 뒤 응답 데이터로 상�
 
 리팩토링에 앞서 BoardPage 컴포넌트의 역할을 나열해 보자.
 
-1. api를 호출하여 응답값을 상태로 가진다 (동작) 
+1. API를 호출하여 응답값을 상태로 가진다 (동작) 
 1. 포스트 목록을 그린다 (모습) 
 1. 포스트를 클릭하면 모달을 띄운다 (동작)
 1. 모달에서는 포스트 상세 정보를 그린다 (모습)
@@ -427,7 +426,7 @@ export default BoardPage;
 이전의 두 프리젠터와 마친가지로 이 컴포넌트는 모습만 그리기 때문이다. 
 하단에는 Pagination 컴포넌트를 사용했다.
 
-이렇게 세 개 컴포넌트는 모습만을 담당하는 프리젼터 컴포넌트다. 
+이렇게 세 개 컴포넌트는 **모습만을 담당하는 프리젼터 컴포넌트**다. 
 
 ### BoardContainer
 
@@ -498,7 +497,7 @@ export default class BoardContainer extends React.Component {
 마운트 되었을 때 데이터를 가져오는 로직도 여전하다. 
 
 렌더 함수 부분이 좀다른데 프리젠터인 BoardPage 컴포넌트를 사용했다. 
-컨테이너의 상태와 메소드를 전달하는데 모습과 관련된 것을 이 컴포넌트로 위임한다는 의도다.
+컨테이너의 상태와 메소드를 프롭스로 전달하는데 UI와 관련된 것을 이 컴포넌트로 위임한다는 의도다.
 
 대신 BoarPage에서 발생한 이벤트를 BoardContainer의 메소드가 처리하도록 했다.
 페이징 이벤트가 발생하면 페이지 번호를 받아 데이터를 다시 패치한다(fetchData()). 
@@ -508,7 +507,7 @@ export default class BoardContainer extends React.Component {
 모달이 토글되면 컨테이너의 modalShown 상태가 바뀌는데 이것에 따라 이미 만들어둔 Modal 컴포넌트가 그려진다. 
 모달에서 close 이벤트가 발생하면 모달 상태를 변경하는 toggleModal() 함수를 동작하도록 했다. 
 
-이처럼 컨테이너는 수시로 변하는 상태를 관리하면서 하위 컴포넌트들을 제어하는 역할을 한다.
+이처럼 **컨테이너는 수시로 변하는 상태를 관리하면서 하위 컴포넌트들을 제어**하는 역할을 한다.
 
 ## 효과
 
@@ -530,7 +529,7 @@ Modal 컴포넌트로 이미지나 동영상 엘레먼트를 감싸면 갤러리
 # 지금도 유효할까?
 
 서두에 언급한 글은 리덕스 나올때 읽었던 글이다. 
-리액트 훅스가 나오고  Mobx가 나오면서 이러한 구조는 잘 안 맞을 수 있겠다는 생각을 한다. 
-그리고 그러한 주장을 하는 글들도 있다. 
+리액트 훅스와 나오고 Mobx가 나오면서 컴포넌트를 굳이 이렇게 나눌 필요가 없다는 말들도 한다.
+Mobx를 사용하다보면 정말 그런것 같기도 한데 아직 머릿 속에 정리된 수준은 아니다.
 
-전체코드: []()
+전체코드: [https://github.com/jeonghwan-kim/post-component-design](https://github.com/jeonghwan-kim/post-component-design)
