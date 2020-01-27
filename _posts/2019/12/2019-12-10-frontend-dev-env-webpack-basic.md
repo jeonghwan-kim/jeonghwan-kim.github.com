@@ -66,8 +66,8 @@ exports function sum(a, b) { return a + b; }
 
 app.js:
 ```js
-const sum = require('./math.js');
-sum(1, 2); // 3
+const math = require('./math.js');
+math.sum(1, 2); // 3
 ```
 
 **[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)**(Asynchronous Module Definition)는 비동기로 로딩되는 환경에서 모듈을 사용하는 것이 목표다.
