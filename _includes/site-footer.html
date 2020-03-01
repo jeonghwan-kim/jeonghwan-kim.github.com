@@ -26,4 +26,7 @@
   
 </footer>
 
-<script src="/assets/js/main.js"></script>
+<script src="/assets/js/common.min.js"></script>
+{% if page.layout == "post" %}
+  <script src="/assets/js/post.min.js"></script>
+{% endif %}
