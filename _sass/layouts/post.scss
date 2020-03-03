@@ -37,10 +37,8 @@
     @media (max-width: $desktop-width - 1) {
       display: none;
     }
-    > * {
-      border-left: seperator();
-    }
     .series-nav {
+      border-left: seperator();
       .series-title {
         font-weight: bold;
         @include sereis-title-prefix();
@@ -61,6 +59,7 @@
       }
     }
     .post-toc {
+      border-left: seperator();
       ul {
         padding-left: $spacing-unit * 2;
         list-style: none;
@@ -79,6 +78,36 @@
               color: $brand-color;
             }
           }
+        }
+      }
+    }
+    .series-video {
+      a {
+        display: block;
+        position: relative;
+        img {
+          width: 100%;
+        }
+        .series-video-description-backdrop {
+          display: none;
+        }
+        &:hover {
+          .series-video-description-backdrop {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            .series-video-description-text {
+              color: white;
+              text-decoration: underline;
+            }
+          }
+
         }
       }
     }

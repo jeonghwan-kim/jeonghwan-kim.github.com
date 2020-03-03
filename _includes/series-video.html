@@ -1,0 +1,14 @@
+{% include series-nav.html %}
+
+{% if seriesVideo %}
+<div class="series-video">
+  <a href={{ seriesVideo.url}}>
+    <img src={{ seriesVideo.thumb}} />
+    <div class="series-video-description-backdrop">
+      <div class="series-video-description-text">
+        영상 더보기 &raquo;
+      </div>
+    </div>
+  </a>
+</div>
+{% endif %}

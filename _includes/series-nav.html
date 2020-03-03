@@ -8,6 +8,7 @@
   {% if pageSeries %}
     {% assign seriesTitle = pageSeries.title %}
     {% assign seriesSize = pageSeries.posts.size %}
+    {% assign seriesVideo = pageSeries.video %}
     
     {% for post in pageSeries.posts %}
       {% if post == page.url %}
