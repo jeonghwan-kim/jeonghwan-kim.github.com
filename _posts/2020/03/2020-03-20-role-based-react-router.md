@@ -1,5 +1,5 @@
 ---
-title: 리액트 라우터 활용한 권한별 라우팅 제어
+title: 리액트 라우터를 활용한 권한별 라우팅 제어
 layout: post
 category: dev
 tags: react
