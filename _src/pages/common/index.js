@@ -1,12 +1,4 @@
-import Modal from "../../design-system/modal";
 import "../../sass/main.scss";
+import CommonPage from "./CommonPage";
 
-const onload = () => {
-  new Modal(
-    document.querySelector("#category-btn"),
-    document.querySelector("#modal-category-selector"),
-    document.querySelector("#backdrop")
-  );
-};
-
-document.addEventListener("DOMContentLoaded", onload);
+new CommonPage();

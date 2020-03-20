@@ -1,7 +1,7 @@
 {
   "name": "jeonghwan-kim.github.com",
   "version": "1.0.0",
-  "description": "jeonghwan-kim.github.com ========================",
+  "description": "jeonghwan-kim.github.com",
   "main": "webpack.config.js",
   "dependencies": {
     "clean-webpack-plugin": "^3.0.0",
