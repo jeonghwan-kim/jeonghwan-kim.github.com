@@ -2,8 +2,9 @@
 title: '프론트엔드 개발환경의 이해: 웹팩(기본)'
 layout: post
 category: series
-seriesId: 1
 tags: webpack
+seriesId: 1
+videoId: 1
 ---
 
 # 1. 배경 

@@ -1,0 +1,23 @@
+{% if page %}
+  {% assign post = page %}
+{% endif %}
+
+{% if post.videoId %}
+  {% for video in site.data.videos %}
+    {% if video.id == post.videoId %}
+      {% assign postVideo = video %}
+    {% endif %}
+  {% endfor %}
+  {% if postVideo %}
+    <div class="post-video">
+      <a href={{ postVideo.url}} id="post-video">
+        <img src={{ postVideo.thumb}} />
+        <div class="post-video-description-backdrop">
+          <div class="post-video-description-text">
+            영상 더보기 &raquo;
+          </div>
+        </div>
+      </a>
+    </div>
+  {% endif %}
+{% endif %}

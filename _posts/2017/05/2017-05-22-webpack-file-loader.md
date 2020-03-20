@@ -6,6 +6,7 @@ permalink: js/2017/05/22/webpack-file-loader.html
 tags:
   webpack
 featured_image: /assets/imgs/2017/05/webpack-logo.jpg
+videoId: 1
 ---
 
 웹팩에서 이미지나 폰트같은 파일을 다루는데 file-loader와 url-loader를 많이 사용하는 것 같다. 뷰JS를 시작할 때 vue-cli를 이용해서 코드 스캐폴딩을 만들어 내는데 이 중 웹팩 설정파일에 보면 나온다. 파일을 처리하는 file-loader와 파일 내용을 모듈에 문자열 형태로 추가하는 url-loader에 대해 정리해 보자.
