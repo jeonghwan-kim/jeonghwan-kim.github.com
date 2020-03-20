@@ -43,6 +43,13 @@
   document.addEventListener('DOMContentLoaded', function() {
     googleAnalytics.init('UA-31588166-2');
 
+    const postVideo = document.querySelector('#post-video')
+    if (postVideo) {
+      postVideo.addEventListener('click', function onClickPostVideo(evt) {
+        googleAnalytics.sendEvent({category: '포스트/관련영상', action: '클릭', label: decodeURIComponent(evt.currentTarget.href)})
+      })
+    }
+
     modal.init(
       document.querySelector('#category-btn'),
       document.querySelector('#modal-category-selector'),
