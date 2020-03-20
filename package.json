@@ -20,6 +20,11 @@
     "webpack-dev-server": "^3.10.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/preset-typescript": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "core-js": "^3.6.4",
     "eslint": "^6.8.0"
   },
   "scripts": {
@@ -40,5 +45,21 @@
   "bugs": {
     "url": "https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/issues"
   },
-  "homepage": "https://github.com/jeonghwan-kim/jeonghwan-kim.github.com#readme"
+  "homepage": "https://github.com/jeonghwan-kim/jeonghwan-kim.github.com#readme",
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-typescript",
+        {
+          "useBuiltIns": "usage",
+          "corejs": {
+            "version": 3
+          },
+          "targets": {
+            "ie": "11"
+          }
+        }
+      ]
+    ]
+  }
 }

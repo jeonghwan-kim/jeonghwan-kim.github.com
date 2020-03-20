@@ -1,21 +1,26 @@
 import ScrollSpy from "./ScrollSpy";
 
 export default class TOC {
-  constructor(el, contentEl) {
+  el: HTMLElement;
+  contentEl: HTMLElement;
+
+  constructor(el: HTMLElement, contentEl: HTMLElement) {
     if (!el || !contentEl) throw "el";
 
     this.el = el;
     this.contentEl = contentEl;
 
-    if (!this.headingsInContent().length || !this.html())
-      return this.removeTocEl();
+    if (!this.headingsInContent().length || !this.html()) {
+      this.removeTocEl();
+      return;
+    }
 
     this.render(this.html());
 
-    new ScrollSpy(this.el, this.headingsInContent());
+    new ScrollSpy(this.el, this.headingsInContent() as HTMLElement[]);
   }
 
-  headingsInContent() {
+  headingsInContent(): Element[] {
     return Array.from(
       this.contentEl.querySelectorAll("h1,h2,h3,h4,h5,h6")
     ).filter(h => h.id);
@@ -52,18 +57,23 @@ export default class TOC {
 
   removeTocEl() {
     const parent = this.el.parentElement;
+    if (!parent) return;
+
     parent.removeChild(this.el);
     if (!parent.children.length) {
       // HACK: Remnove aside
-      parent.parentElement.removeChild(parent);
-      // HACK: Remnove footer aside
-      document
-        .querySelector(".post-aside")
-        .parentElement.removeChild(document.querySelector(".post-aside"));
+      if (parent.parentElement) {
+        parent.parentElement.removeChild(parent);
+        // HACK: Remnove footer aside
+        document
+          .querySelector(".post-aside")!
+          .parentElement!.removeChild(document.querySelector(".post-aside")!);
+
+      }
     }
   }
 
-  render(html) {
+  render(html: string) {
     this.el.innerHTML = html;
   }
 }

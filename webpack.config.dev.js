@@ -4,13 +4,16 @@ const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    common: "./_src/pages/common/index.js",
-    post: "./_src/pages/post/index.js"
+    common: "./_src/pages/common/index.ts",
+    post: "./_src/pages/post/index.ts"
   },
   output: {
     path: path.resolve("_site/assets"),
     filename: "js/[name].min.js",
     publicPath: "/assets"
+  },
+  resolve: {
+    extensions: [".ts", ".js"]
   },
   devServer: {
     contentBase: path.resolve("_site"),
@@ -30,6 +33,10 @@ module.exports = {
           "css-loader",
           "sass-loader"
         ]
+      },
+      {
+        test: /\.(ts|js)$/,
+        use: ["babel-loader"]
       }
     ]
   },

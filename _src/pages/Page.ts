@@ -1,9 +1,7 @@
-export default class Page {
+export default abstract class Page {
   constructor() {
     document.addEventListener("DOMContentLoaded", () => this.onMount());
   }
 
-  onMount() {
-    throw "implement!";
-  }
+  abstract onMount(): void;
 }

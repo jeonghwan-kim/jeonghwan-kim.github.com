@@ -1,5 +1,8 @@
 export default class ScrollSpy {
-  constructor(menuElements, refs) {
+  menus: HTMLElement[];
+  refs: HTMLElement[];
+
+  constructor(menuElements: HTMLElement, refs: HTMLElement[]) {
     this.menus = Array.from(menuElements.querySelectorAll("a"));
     this.refs = refs;
 
@@ -26,7 +29,7 @@ export default class ScrollSpy {
     });
   }
 
-  findRefAndAddClass(id, className) {
+  findRefAndAddClass(id: string, className: string) {
     const found = this.menus.filter(a => a.dataset.targetId === id)[0];
     if (found) found.classList.add(className);
   }
