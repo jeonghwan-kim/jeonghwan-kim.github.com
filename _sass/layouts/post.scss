@@ -81,18 +81,18 @@
         }
       }
     }
-    .series-video {
+    .post-video {
       a {
         display: block;
         position: relative;
         img {
           width: 100%;
         }
-        .series-video-description-backdrop {
+        .post-video-description-backdrop {
           display: none;
         }
         &:hover {
-          .series-video-description-backdrop {
+          .post-video-description-backdrop {
             position: absolute;
             top: 0;
             bottom: 0;
@@ -102,7 +102,7 @@
             align-items: center;
             justify-content: center;
             background: rgba(0,0,0,0.3);
-            .series-video-description-text {
+            .post-video-description-text {
               color: white;
               text-decoration: underline;
             }

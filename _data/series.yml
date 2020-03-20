@@ -62,9 +62,6 @@
     - /lectures/todomvc-angular/13/
 - id: 1
   title: '프론트엔드 개발환경의 이해'
-  video: 
-    thumb: https://cdn.inflearn.com/public/courses/324671/course_cover/638eee1a-6381-402d-a17b-3724751414f1/frontend-env-eng.png
-    url: https://www.inflearn.com/course/프론트엔드-개발환경
   posts: 
     - /series/2019/12/09/frontend-dev-env-npm.html
     - /series/2019/12/10/frontend-dev-env-webpack-basic.html
