@@ -12,6 +12,7 @@ description: 주로 웹 기술에 대해 이야기 합니다
 url: https://jeonghwan-kim.github.io
 profile_url: /assets/imgs/me.jpg
 email: ej88ej@gmail.com
+google_analytics_token: UA-31588166-2
 twitter_username: jeonghwan0424
 github_username:  jeonghwan-kim
 facebook_username: jeonghwan0424
@@ -32,5 +33,3 @@ plugins:
 # Pagination
 paginate: 10
 
-sass:
-  style: compressed # possible values: nested expanded compact compressed
