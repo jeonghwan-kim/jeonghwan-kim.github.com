@@ -758,7 +758,7 @@ module.exports {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html', // 템플릿 경로를 지정 
-      templateParameters: { // 템플리셍 주입할 파라매터 변수 지정
+      templateParameters: { // 템플릿에 주입할 파라매터 변수 지정
         env: process.env.NODE_ENV === 'development' ? '(개발용)' : '', 
       },
     })
