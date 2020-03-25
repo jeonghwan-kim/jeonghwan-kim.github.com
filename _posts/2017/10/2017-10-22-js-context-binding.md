@@ -223,24 +223,24 @@ obj.hello.call({name: 'alice'}); // 'alice
 * 새로운 객체를 반환한다
 * 새로운 객체는 객체의 메소드 호출시 this로 바인딩 된다
 
-아래 `person()` 함수를 `new` 키워드로 호출하면 어떤 일이 일어날까?
+아래 `Person()` 함수를 `new` 키워드로 호출하면 어떤 일이 일어날까?
 
 ```js
-function person(name) {
+function Person(name) {
   this.name = name
 }
 Person.prototype.hello() {
   console.log(this.name)
 }
 
-var obj = new person('chris');
+var obj = new Person('chris');
 obj.hello(); // "chris"
 ```
 
-`new person(name)` 함수를 실행하면 새로운 객체를 반환하는데 이것이 `obj`에 할당된다.
+`new Person(name)` 함수를 실행하면 새로운 객체를 반환하는데 이것이 `obj`에 할당된다.
 `obj.hello()` 를 실행하면 `hello()` 함수는 **new로 반환된 obj 객체를 this 컨택스트와 바인딩 되는 규칙**을 따른다.
 
-따라서 `hello()` 함수 내에서 this는 `new person()` 이 반환하는 객체가 되는 것이다.
+따라서 `hello()` 함수 내에서 this는 `new Person()` 이 반환하는 객체가 되는 것이다.
 
 ## 암시적 바인딩과 new 바인딩의 우선순위
 
@@ -273,7 +273,7 @@ console.log(obj2.name); // alice
 
 암시적 바인딩을 사용하기 전에 new 바인딩이 되었는지 먼저 확인하자!
 
-## 명시적 바인딩과 new 바인디의 우선순위
+## 명시적 바인딩과 new 바인딩의 우선순위
 
 이제 남은 건 명시적 바인딩과 new 바인딩과의 관계다.
 명시적 바인딩을 위한 `call()`, `apply()` 함수와 `new`를 동시에 테스트하는건 좀 어려워 보인다.
