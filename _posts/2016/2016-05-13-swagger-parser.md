@@ -59,12 +59,12 @@ const SwaggerParser = require('swagger-parser');
 app.get('/swagger-document', (req, res) => {
   let document = '' // 여기에 스웨거 문서를 로딩한다
 
-  SwaggerParser.validate(docuemtn, (err, api) => {
+  SwaggerParser.validate(document, (err, api) => {
 
     // 문법 에러
     if (err) {
       console.error(err);
-      res.json({error: err}); // 에러 메세지를 보낸다
+      res.json({ error: err }); // 에러 메세지를 보낸다
     }
 
     // 문법 검증 통과
@@ -83,4 +83,4 @@ swagger-parser로 검증된 경우에만 스웨거 문서를 응답하고 그렇
 
 [스웨거 스펙](http://swagger.io/specification/)을 꼼꼼하게 읽어보지 못한 탓이다.
 하지만 누가 스펙을 다 읽어보고 개발할까?
-그런점에서 swagger-parser는 참 유용한 것 같다.
+그런 점에서 swagger-parser는 참 유용한 것 같다.

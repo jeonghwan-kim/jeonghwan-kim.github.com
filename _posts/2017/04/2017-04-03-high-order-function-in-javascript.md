@@ -141,7 +141,7 @@ k() 함수는 파라매터 value를 반환하는 함수를 반환하다. k() 함
 ```js
 function kCount(value) {
   let count = 0;
-  return () => `value${count++}`
+  return () => `${value}${count++}`
 }
 
 repeatedly(3, kCount('foo')) // ['foo0', 'foo1', 'foo2']
