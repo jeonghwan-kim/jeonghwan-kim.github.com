@@ -10,11 +10,18 @@
   {% endfor %}
   {% if postVideo %}
     <div class="post-video">
-      <a href={{ postVideo.url}} id="post-video">
+      <a id="post-video" href={{ postVideo.url}} >
         <img src={{ postVideo.thumb}} />
-        <div class="post-video-description-backdrop">
-          <div class="post-video-description-text">
-            영상 더보기 &raquo;
+        <div class="post-video-overlay">
+          <div class="video-icon-wrapper">
+            <div class="video-icon"></div>
+          </div>
+          <div class="post-video-title">
+            {% if postVideo.title %}
+              {{postVideo.title}} &raquo;
+            {% else %}
+              영상 더보기 &raquo;
+            {% endif %}
           </div>
         </div>
       </a>
