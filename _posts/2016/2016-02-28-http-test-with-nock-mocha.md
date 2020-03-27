@@ -6,6 +6,7 @@ tags:
   - nodejs
   - test
 permalink: /2016/02/28/http-test-with-nock-mocha.html
+videoId: 4
 ---
 
 API 서버를 개발할 때 유닛테스트를 꼼꼼히 작성하는 편이다. 반복적인 작업임은 물론이고 '이럴 경우도

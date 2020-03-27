@@ -5,6 +5,7 @@ category: dev
 permalink: 2018/03/26/vue-authentication.html
 tags: vuejs
 summary: 뷰JS로 싱글페이지 어플리케이션을 개발할때 필수 기능인 인증 플로우에 대한 설명입니다.
+videoId: 2
 ---
 
 웹 서비스를 개발할때 매번 등장하는 것이 바로 **"인증"**이다.

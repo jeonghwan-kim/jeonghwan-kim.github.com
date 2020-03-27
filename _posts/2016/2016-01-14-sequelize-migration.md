@@ -11,6 +11,7 @@ tags:
   - sequelize
 summary: 데이터베이스 마이크레이션 방법에 대해 알아본다.
 featured_image: /assets/imgs/2016/sequelize-icon.png
+videoId: 4
 ---
 Sequelize ORM을 사용하면서 편리한 점은 마이그레이션 지원이다. 특히 운영중인 서비스의 데이터베이스를 변경할 때 편리하다. 개발 단계에서는 매번 `sync({force: true})`로 데이터베이스를 갱신할 수 있겠지만 운영중인 서비스에서는 불가능하다. 그렇다고 데이터베이스 스키마를 직접 수정하고 Sequelize 모델링 코드를 변경한다는 것은 번거럽기도 할 뿐만아니라 까딱 잘못하면 돌이킬수 없는 결과를 낳을 수도 있다. 이번 포스팅에서는 Sequelize 마이그레이션 방법에 대해 알아보겠다.
 
