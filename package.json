@@ -4,17 +4,22 @@
   "description": "jeonghwan-kim.github.com",
   "main": "webpack.config.js",
   "dependencies": {
+    "@types/jest": "^25.1.4",
+    "babel-jest": "^25.2.3",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^25.2.3",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.1.3",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
@@ -33,7 +38,7 @@
     "build": "npm run clean:prod && webpack --config webpack.config.prod.js",
     "clean:dev": "rm -rf _site/assets/js _site/assets/css",
     "clean:prod": "rm -rf assets/js assets/css",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -60,6 +65,16 @@
           }
         }
       ]
+    ]
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "collectCoverageFrom": [
+      "_src/**/*.{ts,tsx}"
     ]
   }
 }
