@@ -1,36 +1,47 @@
 export default class ScrollSpy {
-  menus: HTMLElement[];
-  refs: HTMLElement[];
+  public targets: HTMLElement[];
+  public refs: HTMLElement[];
+  public sensitivity: number
 
-  constructor(menuElements: HTMLElement, refs: HTMLElement[]) {
-    this.menus = Array.from(menuElements.querySelectorAll("a"));
+  constructor(target: HTMLElement, refs: HTMLElement[], sensitivity?: number) {
+    this.targets = Array.from(target.querySelectorAll("a"));
     this.refs = refs;
+    this.sensitivity = sensitivity || -10;
 
     window.addEventListener("scroll", () => this.onScroll());
   }
 
   onScroll() {
-    var firstEl = this.refs[0];
-    if (document.documentElement.scrollTop - firstEl.offsetTop < -10) {
-      this.removeClassAll();
+    if (!this.isOnTopOfDoc(this.refs[0])) {
+      this.deactiveateTarget();
     }
 
     this.refs.forEach(ref => {
-      if (document.documentElement.scrollTop - ref.offsetTop >= -10) {
-        this.removeClassAll();
-        this.findRefAndAddClass(ref.id, "active");
+      if (this.isOnTopOfDoc(ref)) {
+        this.deactiveateTarget();
+        const t = this.findTarget(ref.id);
+        if (t) this.activate(t);
       }
     });
   }
 
-  removeClassAll() {
-    this.menus.forEach(function(a) {
-      a.classList.remove("active");
-    });
+  isOnTopOfDoc(ref: HTMLElement): boolean {
+    return document.documentElement.scrollTop - ref.offsetTop >= this.sensitivity;
   }
 
-  findRefAndAddClass(id: string, className: string) {
-    const found = this.menus.filter(a => a.dataset.targetId === id)[0];
-    if (found) found.classList.add(className);
+  deactiveateTarget() {
+    this.targets.forEach(a => this.deactivate(a))
+  }
+
+  findTarget(id: string): HTMLElement | undefined {
+    return this.targets.filter(a => a.dataset.targetId === id)[0];
+  }
+
+  activate(el: HTMLElement) {
+    el.classList.add("active")
+  }
+
+  deactivate(el: HTMLElement) {
+    el.classList.remove("active")
   }
 }
