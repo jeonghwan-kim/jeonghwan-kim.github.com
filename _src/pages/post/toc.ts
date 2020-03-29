@@ -32,8 +32,9 @@ export default class TOC {
       const headingLevel = Number(h.nodeName.toUpperCase().replace("H", ""));
       let html = "";
       const id = h.id;
-      const title = h.textContent;
-      var li = `<li><a href="#${id}" data-target-id="${id}">${title}</a></li>`;
+      var li = `<li><a href="#${id}" data-target-id="${id}">${TOC.htmlElementToText(
+        h as HTMLElement
+      )}</a></li>`;
 
       if (prevHeadingLevel < headingLevel) {
         html = "<ul>" + li;
@@ -55,6 +56,10 @@ export default class TOC {
     return html.join("");
   }
 
+  static htmlElementToText(el: HTMLElement): string {
+    return (el.textContent || "").replace("<", "&lt;").replace(">", "&gt;");
+  }
+
   removeTocEl() {
     const parent = this.el.parentElement;
     if (!parent) return;
@@ -68,7 +73,6 @@ export default class TOC {
         document
           .querySelector(".post-aside")!
           .parentElement!.removeChild(document.querySelector(".post-aside")!);
-
       }
     }
   }
