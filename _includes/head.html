@@ -12,6 +12,11 @@
   <meta property="og:locale" content="ko_KR" />
   <meta property="og:locale:alternate " content="en_US"/>
   <meta property="og:url" content="{{ page.url | prepend: site.baseurl | prepend: site.url }}" />
+
+  {% if page.date %}
+  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+  {% endif %}
+
   
   {% if site.twitter_username %}
   <meta name="twitter:card" content="summary" />
