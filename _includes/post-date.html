@@ -3,5 +3,5 @@
 {% endif %}
 
 {% if post.date %}
-  <span class="date">{{ post.date | date : "%Y년 %m월 %d일" }}</span>
+  <time class="date" itemprop="datePublished" datetime="{{post.date | date_to_xmlschema }}">{{ post.date | date : "%Y년 %m월 %d일" }}</time>
 {% endif %}
