@@ -13,8 +13,12 @@
 - id: 4
   url: https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api
   thumb: https://cdn.inflearn.com/wp-content/uploads/nodetdd.png
-  title: 테스트주도개발(TDD)로 만드는 NodeJS API 서버 
+  title: 테스트주도개발(TDD)로 만드는 NodeJS API 서버
 - id: 5
   url: https://www.inflearn.com/course/tdd-견고한-소프트웨어-만들기
   thumb: https://cdn.inflearn.com/wp-content/uploads/software-1.jpg
   title: 견고한 JS 소프트웨어 만들기
+- id: youtube_20200407
+  url: https://www.youtube.com/watch?v=_QCNqV_EfzE
+  thumb: https://i9.ytimg.com/vi/_QCNqV_EfzE/mqdefault.jpg?time=1586298677811&sqp=COj9s_QF&rs=AOn4CLAuR6LzaJU62MsazuaNstOp5ANB8A
+  title: 알아두면 쓸데있는 VSCode 노하우
