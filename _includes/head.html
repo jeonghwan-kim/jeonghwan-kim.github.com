@@ -16,10 +16,10 @@
   {% if page.date %}
   <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
   <script type="application/ld+json">{
-    @context: "http://schema.org",
-    @type: "BlogPosting",
-    url: "{{ page.url | prepend: site.baseurl }}",
-    headline: "{{ page.title }}",
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "url": "{{ page.url | prepend: site.baseurl }}",
+    "headline": "{{ page.title }}",
     "datePublished": "{{ page.date | date: "%Y-%m-%d" }}",
     "dateModified": "{{ page.date | date: "%Y-%m-%d" }}",
     "image": "{%if page.featured_image %}{{ page.featured_image |  prepend: site.url }}{% else %}{{ site.profile_url |  prepend: site.url }}{% endif %}"
