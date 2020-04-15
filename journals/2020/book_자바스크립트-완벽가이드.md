@@ -87,6 +87,9 @@ this는 자바스크립트 키워드. 변수 아님.
 
 클래스를 정의한다는 말은 모듈화되고 재사용 가능한 코드를 작성한다는 뜻.
 
+표준변환 메서드: toString, toLocaleString, valueOf, toJson
+
+비교메서드: equal, compareTo 
 
 # 10장. 정규 표현식을 사용한 패터 매칭
 
