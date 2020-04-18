@@ -2,7 +2,7 @@
 title: '리덕스 사가 사용하기 (타입스크립트 버전) - 1편'
 layout: post
 category: dev
-tags: react typescript
+tags: react TypeScript
 ---
 
 [지난 글](/dev/2019/07/15/react-redux-ts.html)에서 정리한 것 처럼 리덕스는 다음 순서로 상태를 관리한다.

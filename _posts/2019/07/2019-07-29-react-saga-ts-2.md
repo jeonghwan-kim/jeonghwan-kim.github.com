@@ -2,7 +2,7 @@
 title: '리덕스 사가 사용하기 (타입스크립트 버전) - 2편'
 layout: post
 category: dev
-tags: react typescript
+tags: react TypeScript
 ---
 
 [이전 글](/dev/2019/07/22/react-saga-ts-1.html)에 이어서 리덕스 사가 예제를 몇 가지 만들어 보자.
