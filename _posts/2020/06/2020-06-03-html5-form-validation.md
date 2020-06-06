@@ -5,33 +5,33 @@ category: dev
 tags: []
 ---
 
-# 도입
-검증이 가장 어렵더라 
+???
 
 # 검증 속성(Validation attributes)
 
-이미 브라우져에는 폼 검증 기능이 구현되어 있어서 API를 제공하고 있다. 
-이메일 입력 필드에 `required` 속성을 추가해보자.
+대부분 브라우져는 폼 검증 할 수있는 기능이 있고 개발자가 사용할 수 있도록 API를 제공한다.
+가령 이메일 입력 필드를 반드시 입력 받고자 한다면 요소에 `required` 속성을 한 번 추가해 보자.
 
 ```html
 <form>
+  <!-- required 속성을 추가했다 -->
   <input name="email" placeholder="이메일을 입력하세요" required />
   <button>제출</button>
 </form>
 ```
 
-폼 컨트롤에 required 하나만 추가해도 브라우져에서는 이 필드 입력을 필수로 이해하고 검증로직을 태운다.
-값을 입력하고 제출하기 버튼을 클릭하면 폼이 전송된다.
-그러나 아무것도 입력하지 않고 제출하기 버튼을 클릭하면 다음과 같은 결과를 보여준다.
+입력 요소에 `required` 속성 하나만 추가했을 뿐이지만 브라우져는 이 필드 입력의 입력을 필수로 알고 검증 로직를 수행할 것이다.
+사용자가 올바른 값을 입력하고 제출하기 버튼을 클릭한다면 폼은 기대하는것 처럼 서버로 전송된다.
+반면 아무것도 입력하지 않고 제출하기 버튼을 클릭하면 다음과 같은 결과를 보여준다.
 
-![result1]()
+![result1](/assets/imgs/2020/06/03/result1.jpg)
 
-입력하지 않았기 때문에 폼을 전송하지 않는다.
-게다가 "입력해야 한다"는 오류 메세지도 툴팁으로 띄워서 사용자에게 바른 입력을 하도록 유도하기까지 한다.
+제출 버튼을 클릭하면 브라우져의 검증 로직이 실행되고 선언한 `required` 규칙과 맞지 않아서 폼을 전송하지 않는다.
+게다가 "이 입력란을 작성하세요"라는 오류 메세지도 근처에 툴팁으로 띄워 사용자로 하여금 바르게 입력하도록 한다.
 
-이처럼 HTML5 폼 컨트롤은 required 같은 검증 속성(validation attributes)을 가지고 있는데 다음 7가지 속성이 컨트롤 검증에 사용되는 것들이다.
+이처럼 HTML5 의 입력 요소는 `required`를 포함한 검증 속성([validation attributes](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation))을 가지고 있는데 아래가 검증에 사용되는  속성들이다.
 
-- required
+  - required
 - minlength / maxlength
 - min / max
 - type
@@ -39,12 +39,13 @@ tags: []
 
 # CSS 가상 클래스 
 
-브라우져가 폼 컨트롤을 검증한 결과는 툴팁과 폼 제출 제어 뿐만 아니라 스타일에도 영향을 준다. 
-브라우져는 required 속성을 붙인 요소에 `:valid`, `:invalid` 가상 클래스를 붙여준다.
+브라우져가 폼 컨트롤을 검증한 결과는 폼 제출 여부와 툴팁 메세지 뿐만 아니라 입력 요소의 스타일에도 영향을 준다. 
+브라우져는 검증 속성을 붙인 요소는 폼 검증 후에 `:valid`와 `:invalid` 가상 클래스가 추가된다.
 
-![css-pseudo-calss]()
+- `:valid`: 유효한 값을 입력한 경우
+- `:invalid`: 유효하지 않은 값을 입력한 경우
 
-폼 컨트롤에 입력한 값의 유효성을 표시하기 위해 이 가상클래스를 활용하면 좋겠다.
+요소 값의 유효성을 표시하기 위해 이 가상클래스를 활용하면 좀 더 명확한 UI로 사용자에게 결과를 전달할 수 있다.
 
 ```css
 input:invalid {
@@ -52,32 +53,35 @@ input:invalid {
 }
 ```
 
-잘못된 값이 들어 있는 경우 붉은색 테두리로 표시했다. 
+요소에의 값이 규칙에 어긋날 경우 붉은색 테두리로 표시하도록 했다. 
 트위터 부트스트랩 등 여러 라이브러리에서 이런 방식의 UI를 사용한다.
 
-![result2]()
-
-정리하면 HTML5 스펙을 따르는 모던 브라우져는 폼 검증을 다음 방식으로 동작한다. 
-
-- 사용자가 데이터 전송을 시도한다.
-- 입력값이 규칙에 맞으면 폼을 제출한다.
-- 입력값이 규칙에 어긋나면 폼 전송을 차단한다.
-- 차단 후 오류 문구를 툴팁 형태로 노출한다.
+![result2](/assets/imgs/2020/06/03/result2.jpg)
 
 
-# 보채지 말자 
+정리하면 HTML5 스펙을 따르는 모던 브라우져는 아래 방식으로 폼 입력 값을 처리한다.
 
-폼 검증을 개발하다 보면 이런 경우가 빈번하게 발생한다.
-화면에 로딩하고 입력 필드에 값을 넣기도 전에 결과를 먼저 보여주는 경우가 그렇다.
-마치 이전 결과처럼 말이다. 
+- 사용자가 요소에 값을 입력한다
+  - 검증 결과에 따라 요소에 `:valid/:invalid` CSS 가상 클래스를 추가한다
+- 사용자가 폼 데이터 전송을 시도한다
+- 요소에 설정한 규칙에 의해 입력값을 검증한다
+  - 검증에 통과하면 데이터를 서버로 전송한다
+  - 검증에 통과하지 못하면 서버 전송을 차단한다
+    - 오류 문구를 툴팁 형태로 노출한다
 
-이게 결코 좋은 모습은 아니라고 생각하는데 이제 막 입력하려고 하는데 붉은 색으로 피드백을 주는 것이 사용자에게 스트레스를 준다고 생각한다.
-사용자가 폼 제출을 시도한 뒤에 결과를 알려주는 것이 공손하게 들리는 것 같다.
+# 오류 메세지를 차분하게 보여주자
 
-사용자가 제출 버튼을 클릭해서 submit 이벤트를 발생하면 폼을 검증한 뒤 맞지 않으면 invalid 이벤트를 발생한다. 
-// todd 이벤트 호출 순서 확인 필요
+화면에 폼 검증을 추가하다 보면 이전 결과처럼 작업했던 경우가 종종 있었다.
+무슨말인가 하면, 화면에 진입하고 요소에 값을 입력하기도 전에 결과를 먼저 보여준다는 것이다.
 
-이때 폼이 검증되었다는 표시를 해두면 될 것같다.
+사용자 입장에서는 이제 입력하려고 하는데 붉은 색으로 피드백을 주는 것은 웬지모를 긴장감을 주는 것으로서 결코 좋은 모습은 아니라고 생각한다.
+사용자가 폼 제출을 시도한 뒤에 결과를 알려주는 것이 어쩌면 공손하게 보이는 것같다.
+브라우져의 툴팁은 이미 그렇게 동작하고 있다. 
+테두리의 붉은 표시도 툴팁처럼 폼 제출후에 동작하도록 하면 좋겠다.
+
+폼 제출을 시도하면 브라우져는 폼의 입력값을 검증한 실패하면 [invalid](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event) 이벤트를 발생시킨다.
+
+이 시점에 폼이 검증되었다는 표시를 해두면 이걸 보고 요소에 붉은색 표시를 하면 되겠다.
 폼 요소에 클래스명을 추가하는 방식을 사용해 보자.
 
 ```js
@@ -90,37 +94,43 @@ document.querySelectorAll('input').forEach(input => {
 ```
 
 폼이 유효하지 않을 경우 폼 엘레먼트에 `.was-validated` CSS 클래스를 추가했다.
-그럼 이 클래스가 있을 경우에만 `:invalid` 가상 클래스가 동작하도록 스타일 정의를 수정하자.
+그럼 이 클래스가 있을 경우에만 `:invalid` 가상 클래스가 동작하도록 스타일을 수정하자.
 
 ```css
+/* 폼 검증 후에만 invalid 스타일을 적용한다 */
 form.was-validated input:invalid {
   border-color: red;
 }
 ```
 
-화면이 로딩되고 제출 버튼을 클릭하기 전까지는 `.was-validated` 클래스가 없다. 
+화면이 로딩되고 제출 버튼을 클릭하기 전까지는 폼 요소에는 `.was-validated` 클래스가 없다.
 따라서 입력 컨트롤에 검증 가상 클래스가 있더라고 이를 표시하지 않을 것이다. 
 
-![result3]()
+![result3](/assets/imgs/2020/06/03/result3.jpg)
 
-제출한 뒤에는 이렇게 검증 결과가 붉은 색으로 표시된다.
+제출한 뒤에는 툴팁이 뜨고 
+
+![result4](/assets/imgs/2020/06/03/result4.jpg)
+
+요소에 붉은 색으로 테두리가 표시된다.
+
+![result5](/assets/imgs/2020/06/03/result5.jpg)
 
 # Constraint Validation API
 
-브라우져의 검증 시스템은 생각보다 많은 일을 해준다.
-일곱가지 검증 규칙에 대한 검사하를 하고 입력이 옳지 않을 경우 알맞은 문구를 툴팁 형태로 띄워 준다.
-현재 버전의 크롬에서는 입력할 때마다 실시간으로 사용자에게 가이드라인 메세지를 주어서 올바로 입력하도록 안내하는 역할도 하고 있다.
+브라우져의 폼 검증 기능은 생각보다 많은 일을 해준다.
+위에서 언급한 일곱가지 규칙에 대한 검증을 한다. 
+다시 한번 요약하면 요소의 입력이 유효하지 않을 경우 폼을 전송을 차단하고 오류 문구를 툴팁 형태로 띄워주며 CSS 가상 클래스도 추가한다. 
 
-![message]()
+만약 브라우져 로케일이 한글이 아니라면 메세지는 해당 언어로 번역되어 나온다.
 
-만약 브라우져 로케일 정보가 한글이 아닌 영문, 혹은 일본어라면 메세지는 해당 언어로 번역되어 나온다.
+![message-i18n](/assets/imgs/2020/06/03/message-i18n.jpg)
 
-![message-i18n]()
+이러한 브라우져의 기본 동작들을 잘 사용할 수 있다면 무척 편하게 개발할 수 있을 것 같지만 그렇지 못한 경우가 많았다.
+브라우져 별로 다른 메세지 UI와 운영체제/브라우져 세팅에 달라지는 언어는 대부분의 사람들이 일관적이지 못하다고 느끼는 것 같다.
+그래서 보통은 커스텀 메세지, 커스텀 디자인을 사용하는 이유이기도 하다.
 
-이러한 기본 동작이 개발 요구사항에 맞으면 몰라도 그렇지 않은 경우가 많은 것 같다. 
-툴팁 스타일을 변경하고 싶거나, 브라우져 로케일과 무관하게 서비스 언어 제공에 따라 메세지를 보여주고 싶은 경우에 말이다. 
-
-Constraint Validation API를 사용하면 검증 메시지를 요구사항에 맞게 커스터마이징 할 수 있다. 
+[Constraint Validation API](https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation)를 사용하면 HTML5 만으로도 직접 검증 메시지를 커스터마이징할 수 있다.
 
 이 API의 인터페이스는 다음 두 가지 모습을 갖추어야 한다.
 
@@ -139,46 +149,61 @@ Constraint Validation API를 사용하면 검증 메시지를 요구사항에 �
 
 위 요소들은 일반 요소와 검증 상태를 나타내는 속성을 가지고 있다.
 
-- validity: ValidityState를 나타내는 객체 
+- validity: ValidityState를 나타내는 객체
 - validationMessage: 검증 결과 메세지
-- willValidate: ?
+- willValidate: 요소가 검증 후보인지 여부 
 
-또한 검증을 수행하고 invalid 이벤트를 발행하는 메소드도 가지고 있다.
+또한 검증을 수행하거나 invalid 이벤트를 발행하는 메소드도 가지고 있다.
 
-- checkValidity(): 폼 입력 값을 검증하고 유효하지 않으면 invalid 이벤트를 발생한뒤 false를 반환
-- reportValidity(): 상동? 
-- setCustomValidity(message): message 툴팁을 띄움
+- checkValidity(): 폼 입력 값을 검증하고 유효하지 않으면 invalid 이벤트를 발행. false를 반환한다.
+- reportValidity()
+- setCustomValidity(message): 오류 메세지를 보여준다.
 
-자세한 내용은 다음 문서를 참고: https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation
-
-# 커스텀 메세지 사용하기
+# 커스텀 메세지 보여주기 
 
 검증 상태를 나타내는 validity 객체를 좀 들여다 보자.
 
 ```js
 input.addEventListener('invalid', () => {
-  console.log(input.validity) // todo 
+  /**
+   * ValidityState {
+   *   badInput: false,  // 잘못된 입력 
+   *   customError: false, // 커스텀 오류
+   *   patternMismatch: false, // 패턴 오류
+   *   rangeOverflow: false, // 범위 초과 오류
+   *   rangeUnderflow: false, // 범위 미달 오류
+   *   stepMismatch: false, // 간격 오류
+   *   tooLong: false, // 길이 오류
+   *   tooShort: false, // 길이 오류
+   *   typeMismatch: false, // 타입 오류
+   *   valid: false, // 검증 결과 
+   *   valueMissing: true // 필수값 오류
+   * }
+   */
+  console.log(input.validity);
 })
 ```
 
-입력 값에 대해 검증한 뒤 유효하지 않으면 invalid 이벤트를 발행하는데 그때의 input.validty 상태를 통해 검증 결과에 접근할 수 있는 것 같다. 
+입력 값에 대해 검증한 뒤 유효하지 않으면 `invalid` 이벤트를 발행하는데 그때의 `input.validty`로 ValidityState 값에 접근할 수 있다.
 
-각 키가 오류를 나타내는 오류 메세지 맵을 맞들고 메세지 게터를 만들면 커스텀 메세지를 관리할 수 있을것 같다.
+각 오류 상태를 불리언 값으로 가지고 있다는 걸 눈여겨 보자. 
+이를 이용해 오류 메세지 사전을 만들고 메세지 조회 함수를 만들면 커스텀 메세지를 관리할 수 있을것 같다.
 
 ```js
+// 오류 메세지 사전을 만든다
 const validityMessage = {
-  // badInput: '잘못된 입력입니다',
-  // patternMismatch: '_patternMismatch',
-  // rangeOverflow: '_rangeOverflow',
-  // rangeUnderflow: '_rangeUnderflow',
-  // stepMismatch: '_stepMismatch',
-  // tooLong: '_tooLong',
-  // tooShort: '6자 이상 입력하세요',
-  typeMismatch: '[커스텀 메세지] 이메일 주소 형식으로 입력하세요',
-  valueMissing: '[커스텀 메세지] 이메일을 반드시 입력하세요',
+  badInput: '[커스텀 메세지] 잘못된 입력입니다.',
+  patternMismatch: '[커스텀 메세지] 패턴에 맞게 입력하세요',
+  rangeOverflow: '[커스텀 메세지] 범위를 초과하였습니다',
+  rangeUnderflow: '[커스텀 메세지] 범위에 미달하였습니다',
+  stepMismatch: '[커스텀 메세지] 간격에 맞게 입력하세요',
+  tooLong: '[커스텀 메세지] 최대 글자 미만으로 입력하세요',
+  tooShort: '[커스텀 메세지] 최소 글자 미만으로 입력하세요',
+  typeMismatch: '[커스텀 메세지] 형식에 맞게 입력하세요',
+  valueMissing: '[커스텀 메세지] 이 필드를 반드시 입력하세요',
 }
 
-// validity 객체를 받아 메세지 맵에서 커스텀 요류 메세지를 반환한다
+// validity 객체를 받아 메세지 맵에서 오류 메세지를 찾는다
 function getMessage(validity) {
   for (const key in validityMessage) {
     if (validity[key]) {
@@ -188,7 +213,7 @@ function getMessage(validity) {
 }
 ```
 
-그럼 invalid 시점이 이 메세지 함수를 이용해서 오류 메세지를 지정해 주면 되겠다. 
+이제 invalid 이벤트가 발행하면 이 메세지 함수로 오류 메세지를 지정해 주는 일만 남았다.
 
 ```js
 function showError(input) {
@@ -198,36 +223,74 @@ function showError(input) {
     * - 오류가 있으면 문자열 전달 
     * - 오류가 없으면 빈 문자열 전달
     */
-  input.setCustomValidity(getMessage(input.validity) || '')
+  input.setCustomValidity(getMessage(input.validity) || '');
 }
 
 input.addEventListener('invalid', () => {
   // 커스텀 에러메세지 설정
-  showError(input)
+  showError(input);
 })
 ```
 
-`setCustomeValidity(message)` 메소드는 오류가 있으면 문자열을 전달해서 브라우져 툴팁을 띄운다.
-오류가 없으면 빈문자열을 전달해서 오류가 없다는 결과를 알리는 역할을 한다.
+`setCustomeValidity(message)` 메소드는 오류가 있으면 문자열을 전달해서 브라우져 오류 메시지 툴팁을 띄운다.
+그렇지 않으면 빈 문자열을 전달해서 오류가 없다는 결과를 알리는 역할을 한다.
 
-![result?]()
+![result6](/assets/imgs/2020/06/03/result6.jpg)
+![result7](/assets/imgs/2020/06/03/result7.jpg)
 
 폼 검증 이후 입력이 있을 때도 알리기 위해 input 이벤트에도 이 로직을 추가하자.
 
 ```js
 input.addEventListener('input', () => {
   // 커스텀 에러메세지 설정 
-  showError(input)
+  showError(input);
 })
 ```
 
 # 커스텀 메세지 스타일링
 
-오류메세지를 변경하는 것은 이렇게 하면 되지만 이걸 표현하는 방식은 여전히 브라우져 의존 적이다.
+오류메세지를 변경하는 것은 이렇게 하면 되지만 이걸 표현하는 방식은 여전히 브라우져 의존적이다.
 
-![custom-messages]()
+![firefox](/assets/imgs/2020/06/03/firefox.jpg)
+(파이어폭스 브라우져)
+
+![safari](/assets/imgs/2020/06/03/safari.jpg)
+(사파리 브라우져)
 
 
+메시지 UI의 일관성을 지켜야 한다면 각 브라우져의 스타일을 무시하고 직접 만들어야 할 것 같다.
+인풋 요소 근처 적당한 곳에 오류 메세지를 보여줄만한 요소를 추가하자.
+
+```html
+<input name="email" placeholder="email" required type="email" minlength="6"/>
+<!-- 오류 메세지를 보여줄 요소 -->
+<span id="error"></span>
+```
+
+오류 메세지를 출력하는 `showError()` 함수를 이렇게 변경했다. 
+
+```js
+function showError(input) {
+  // 커스텀 오류 메시지 UI
+  document.querySelector('#error').textContent = getMessage(input.validity)
+}
+```
+
+`setCustomValidity()` 함수로 툴팁을 표시하도록 했던 이전 코드 대신, 요소에 메세지를 추가하는 코드다. 
+
+검증 후 발생하는 invalid 이벤트 핸들러도 수정해야한다.
+이벤트가 발생하면 브라우져 검증 메세지 툴팁을 띄우는 것이 기본 동작인데 이것을 차단하는 코드를 추가했다.
+
+```js
+input.addEventListener('invalid', (e) => {
+  // 브라우져 툴팁 숨김 
+  e.preventDefault();
+})
+```
+
+이제는 브라우져 기본 툴팁 대신 커스텀 오류 메세지를 커스텀 스타일로 보여줄 수 있다. 
+
+![result8](/assets/imgs/2020/06/03/result8.jpg)
 
 # 결론 
 
