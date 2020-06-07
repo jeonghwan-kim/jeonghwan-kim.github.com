@@ -2,10 +2,23 @@
 title: "HTML5 Form Validation"
 layout: post
 category: dev
-tags: []
+tags: html5 
 ---
 
-???
+폼은 웹개발 할 때 반드시 다뤄야하는 기술이다. 
+아이디와 비밀번호를 입력하는 화면, 포스트를 작성하는 화면, 더 나아가 수십가지 데이터를 입력해야하는 커머스 어드민까지 폼은 웹 개발에 있어서 폭넓게 사용되고 있다.
+그 때마다 적당한 라이브러리를 사용해서 폼을 다루었다. 
+
+- 앵귤러 [ngForm](http://jeonghwan-kim.github.io/angular-form/)
+- 뷰 [vee-validate](http://jeonghwan-kim.github.io/2018/05/31/vue-form-validation.html#vee-validate)
+- 리액트 [antd](http://jeonghwan-kim.github.io/2018/10/13/ant-design-101.html)
+
+프레임웍마다 커뮤니티에서 많이 사용하는 라이브러리를 가져다 요구사항에 맞는 폼 로직을 구현해왔다.
+
+하지만 브라우져가 자동으로 처리하는 폼 검증 기능을 꺼버리고(novalidate) 라이브러리만 사용했던 것이 좀 안타까웠다. 
+HTML5 스펙을 구현해 놓은 이 기능을 좀 알고 있어서 상황에 맞게 사용할지 대안을 찾을지 결정하는 것이 더 합리적인 결정 과정이라는 생각이 든다.
+
+그래서 HTML5 명세를 따르는 일명 모던 브라우져가 가지고 있는 폼 제어 로직을 정리해 보도록 하자.
 
 # 검증 속성(Validation attributes)
 
@@ -29,7 +42,7 @@ tags: []
 제출 버튼을 클릭하면 브라우져의 검증 로직이 실행되고 선언한 `required` 규칙과 맞지 않아서 폼을 전송하지 않는다.
 게다가 "이 입력란을 작성하세요"라는 오류 메세지도 근처에 툴팁으로 띄워 사용자로 하여금 바르게 입력하도록 한다.
 
-이처럼 HTML5 의 입력 요소는 `required`를 포함한 검증 속성([validation attributes](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation))을 가지고 있는데 아래가 검증에 사용되는  속성들이다.
+이처럼 HTML5 의 입력 요소는 `required`를 포함한 검증 속성([validation attributes](https://developer.moz5illa.org/en-US/docs/Learn/Forms/Form_validation))을 가지고 있는데 아래가 검증에 사용되는  속성들이다.
 
   - required
 - minlength / maxlength
@@ -294,4 +307,17 @@ input.addEventListener('invalid', (e) => {
 
 # 결론 
 
-폼을 작성할때 보통 이걸 끄고 라이브러리에서 제공하는 폼만 사용하다 보니 이것의 기능과 한계를 잘 몰랐다.
+브라우져의 폼 제어는 분명 할수 있는 것과 할수 없는 것이 있다. 
+아주 간단한 코드만으로 검증 기능을 만들고 이를 사용자에게 피드백할 수 있다는 점은 무척 매력적이다. 
+오류 메세지나 스타일을 커스터마이징 하는것도 그렇게 부담스러운 작업이 아니다. 
+
+하지만 검증 부분에 있어서는 한계가 있는 것 같다. 
+가령 입력값을 서버 API 호출로 검증하는 경우가 그렇다. 
+인풋 요소의 규칙이 요소간의 의존적이 경우도 있을 수 있다. 
+예를 들어 옵션을 선택했을 경우에는 색상이 필드라던지 말이다. 
+이러한 부분은 기존의 검증로직을 확장하던지 새로 만들어야할 지도 모르겠다. 
+어쩌면 이때 라이브러리 도입을 고민해 보는 것이 더 좋을수도 있겠다. 
+
+그동안 웹개발을 하면서 폼에 대해 막연히 어렵다고만 생각했다. 
+아마 요구사항에 대해 어떤 기술을 사용해야할지 정확히 판단하지 못해서인것 같다.
+그런 점에서 브라우져의 기능의 범위를 알고 있다면 좀 더 현명한 판단을 할 수 있을것 같다는 생각이 든다. 
