@@ -320,5 +320,6 @@ input.addEventListener('invalid', (e) => {
 어쩌면 라이브러리를 찾는 것이 답이 될 수도 있겠다.
 
 참고
+* [전체 코드](https://github.com/jeonghwan-kim/post_form-validation)
 * [Client-side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
 * [Why you should be using HTML5 form validation: a tour](https://pageclip.co/blog/2018-02-20-you-should-use-html5-form-validation.html)
