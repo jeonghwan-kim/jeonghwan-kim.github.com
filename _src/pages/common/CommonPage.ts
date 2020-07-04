@@ -1,12 +1,14 @@
 import Modal from "../../design-system/modal";
 import Page from "../Page";
+import {$} from '../../lib/dom'
 
 export default class CommonPage extends Page {
   onMount() {
-    new Modal(
-      document.querySelector("#category-btn"),
-      document.querySelector("#modal-category-selector"),
-      document.querySelector("#backdrop")
-    );
+    const trigger = $("#category-btn");
+    const modal = $("#category-modal");
+    
+    if (trigger && modal) {
+      new Modal(trigger, modal);
+    }
   }
 }
