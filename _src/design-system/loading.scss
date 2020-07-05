@@ -1,0 +1,15 @@
+@import '../sass/variables.scss';
+
+.loading {
+  border: .5 * 8px solid lighten($gray-color, 30%);
+  border-top: .5 * 8px solid $gray-color; /* Blue */
+  border-radius: 50%;
+  width: 3 * 8px;
+  height: 3 * 8px;
+  animation: spin 1.2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

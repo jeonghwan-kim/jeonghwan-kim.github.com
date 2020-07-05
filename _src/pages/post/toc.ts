@@ -1,4 +1,5 @@
 import ScrollSpy from "./ScrollSpy";
+import Loading from "../../design-system/loading";
 
 export default class TOC {
   el: HTMLElement;
@@ -6,7 +7,7 @@ export default class TOC {
 
   constructor(el: HTMLElement, contentEl: HTMLElement) {
     if (!el || !contentEl) throw "el";
-
+    
     this.el = el;
     this.contentEl = contentEl;
 
@@ -15,9 +16,12 @@ export default class TOC {
       return;
     }
 
-    this.render(this.html());
+    new Loading(this.el)
 
-    new ScrollSpy(this.el, this.headingsInContent() as HTMLElement[]);
+    setTimeout(()=> {
+      this.render(this.html());
+      new ScrollSpy(this.el, this.headingsInContent() as HTMLElement[]);
+    }, 100)
   }
 
   headingsInContent(): Element[] {
