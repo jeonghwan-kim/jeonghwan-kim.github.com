@@ -9,6 +9,9 @@ body {
 a {
   color: $black-color;
 }
+pre, code {
+  font-family: $fixed-font-family;
+}
 .container {
   max-width: $site-width;
   min-width: $mobile-width;
