@@ -1,0 +1,14 @@
+.notice {
+  background-color: $thenary-color;
+  .notice-inner {
+    max-width: $content-width;
+    padding-top: $spacing-unit * 6;
+    padding-bottom: $spacing-unit * 6;
+    h2, a {
+      color: white;
+    }
+    a {
+      text-decoration: none;
+    }
+  }
+}
