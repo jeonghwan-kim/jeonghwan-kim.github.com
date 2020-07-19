@@ -142,6 +142,37 @@ app.get('/api/greeting', (req, res) => {
 })
 ```
 
+## 사용예3: html-webpack-plugin을 사용하고 있다면 
+
+웹팩에서 js, css, 이미지 파일을 대상으로 번들링 작업을 한 뒤 html 파일에서 이를 로딩한다.
+html 파일까지도 웹팩 빌드 프로세스에 추가하려면 html-webpack-plugin을 사용한다.
+
+webpack-dev-middleware를 사용해 서버를 구성할 때 HTML 파일을 서비스하는데 웹팩이 처리한 HTML파일의 위치를 찾아야 한다.
+webpack() 함수가 반환한 compiler객체는 outputFileStem 객체를 가지고 있다.
+빌드한 결과물을 위한 별도의 파일 시스템 인터페이스인 셈이다.
+
+이 객체 메소드중에 파일을 읽는 readFile()로 웹팩이 빌드한 결과물의 내용을 읽을 수 있는데 이 데이터를 응답해 주면 된다.
+
+```js
+// 개발 환경일 경우,
+if (process.env.NODE_ENV === 'development')  {
+  // 웹팩이 처리한 html 경로를 찾는다.
+  const filename = path.join(compiler.outputPath, 'index.html');
+  // 그 경로에에서 html 파일을 읽는다.
+  compiler.outputFileSystem.readFile(filename, (err, result) => {
+    if (err) return next(err);
+    res.set('content-type','text/html').end(result);
+  });
+  return;
+} 
+
+// 운영 환경일 경우,
+if (process.env.NODE_ENV === 'production') {
+  // 이미 빌드한 html를 제공한다.
+  res.sendFile(path.join(__dirname, "../public/index.html"));
+}
+```
+
 # 정리
 
 간단한 샘플 코드를 정리해 두었다.
