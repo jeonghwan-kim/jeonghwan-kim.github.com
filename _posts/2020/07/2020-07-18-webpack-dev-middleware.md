@@ -119,7 +119,6 @@ if (process.env.NODE_ENV === 'development') {
     '/dist',
     middleware(compiler, {
       // webpack-dev-middleware options
-      watch: true
     })
 );
 }
