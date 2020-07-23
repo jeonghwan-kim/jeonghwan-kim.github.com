@@ -8,13 +8,13 @@ tags:
 summary: create-react-app부터 react-saga까지 리액트에서 사용하는 기술을 알아보니다
 ---
 
-![logo](/assets/imgs/2018/07/16/react-logo.png)
+![logo](/assets/imgs/2018/07/16/react-logo.jpg)
 
 최근 이직 후 리액트(React.js) 기반의 어드민 사이트를 만질수 있는 기회가 생겼다. AE(Account Executive)가 사용하는 서비스로 광고 캠페인을 관리하고 효율을 모니터링 할 수 있는 인하우스 어플리케이션이다.
 
 업무 파악겸 리액트 기반의 프로젝트에서는 어떤 기술을 사용하는지 프로젝트에서 사용한 기술을 중심으로 정리해 보았다.
 
-![logo](/assets/imgs/2018/07/16/dashboard.png)
+![logo](/assets/imgs/2018/07/16/dashboard.jpg)
 
 ## Create-react-app
 
@@ -28,7 +28,7 @@ $ npm start                 // 개발 서버 실행
 
 npm으로 설치하고 코드 스캐폴딩을 만든 뒤, 개발 서버를 구동하면 아래와 같은 샘플 어플리케이션이 브라우져에 로딩된다.
 
-![logo](/assets/imgs/2018/07/16/create-react-app-result.png)
+![logo](/assets/imgs/2018/07/16/create-react-app-result.jpg)
 
 이 스캐폴딩을 기반으로 간단한 대쉬보드 사이트를 만들어 보겠다.
 샘플코드에서 불필요한 부분은 모두 제거하고 아래 코드만 남겨두었다.
@@ -79,7 +79,7 @@ export default App
 
 이렇게 하면 브라우져는 App 컴포넌트를 아래처럼 그리게 되는 것이다.
 
-![logo](/assets/imgs/2018/07/16/simple-app-result.png)
+![logo](/assets/imgs/2018/07/16/simple-app-result.jpg)
 
 ## React-app-rewired
 
@@ -162,8 +162,8 @@ Lint 컴포는트는 라우트 링크를 만드는 역할을 하는데 to 속성
 
 아래처럼 브라우저 상에서 라우팅이 동작할 것이다.
 
-![react-router-result-1](/assets/imgs/2018/07/16/react-router-result-1.png)
-![react-router-result-2](/assets/imgs/2018/07/16/react-router-result-2.png)
+![react-router-result-1](/assets/imgs/2018/07/16/react-router-result-1.jpg)
+![react-router-result-2](/assets/imgs/2018/07/16/react-router-result-2.jpg)
 
 세번째 메뉴를 클릭하면 보여주는 Topics 컴포넌트는 다른 컴포넌트와 달리 하위 경로를 가지고 있다.
 
@@ -232,11 +232,11 @@ export default Topic
 
 세번째 메뉴인 Topics 링크를 클릭하면 아래와 같이 중첩 라우팅이 동작하는 것을 확인할 수 있다.
 
-![react-router-result-3](/assets/imgs/2018/07/16/react-router-result-3.png)
-![react-router-result-4](/assets/imgs/2018/07/16/react-router-result-4.png)
-![react-router-result-5](/assets/imgs/2018/07/16/react-router-result-5.png)
-![react-router-result-6](/assets/imgs/2018/07/16/react-router-result-6.png)
-![react-router-result-7](/assets/imgs/2018/07/16/react-router-result-7.png)
+![react-router-result-3](/assets/imgs/2018/07/16/react-router-result-3.jpg)
+![react-router-result-4](/assets/imgs/2018/07/16/react-router-result-4.jpg)
+![react-router-result-5](/assets/imgs/2018/07/16/react-router-result-5.jpg)
+![react-router-result-6](/assets/imgs/2018/07/16/react-router-result-6.jpg)
+![react-router-result-7](/assets/imgs/2018/07/16/react-router-result-7.jpg)
 
 
 ## Redux
@@ -493,7 +493,7 @@ export default logger
 
 결과를 확인해 보면 아래와 같다.
 
-![state-loagger-middleware](/assets/imgs/2018/07/16/state-loagger-middleware.png)
+![state-loagger-middleware](/assets/imgs/2018/07/16/state-loagger-middleware.jpg)
 
 user/REQUEST_USER 액션이 디스패치된 후 상태를 로깅했다. `isFetching: true`와 `users: []` 인 상태이다.
 
