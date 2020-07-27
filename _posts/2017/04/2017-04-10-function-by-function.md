@@ -63,7 +63,7 @@ string([1,2,3]); // undefined
 
 ```js
 const dispatch = (...funs) => target => funs.reduce(
-  (ret, fun) => ret === undefined ? fun(null, target) : ret,
+  (ret, fun) => ret === undefined ? fun.call(null, target) : ret,
   undefined
 );
 ```
