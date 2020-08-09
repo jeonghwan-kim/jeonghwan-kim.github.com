@@ -1,0 +1,396 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.7bc9be3405e7931bfbf7.css">code[class*=language-],pre[class*=language-]{color:#000;background:none;text-shadow:0 1px #fff;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.site-header{height:80px;background-color:#313d4b;border-bottom:4px solid darnken(#00c07f,30%)}.site-header a{color:#f9f8fd;text-decoration:none}.site-header .site-title{margin:0;font-size:24px;font-weight:lighter}.site-header .site-title .site-logo{display:inline-block;width:100%;height:28px;line-height:28px;font-weight:700;text-decoration:none}.site-header .site-navs ul{position:relative;list-style:none;padding-left:0;margin:0;font-size:16px}@media (max-width:767px){.icon-article,.icon-tag,.icon-video{width:32px;height:32px}}li.site-nav{margin-right:8px}li.site-nav a{padding:8px 4px;-webkit-appearance:none;-moz-appearance:none;appearance:none;background:transparent;border:none;color:#fff}li.site-nav a:focus,li.site-nav a:hover{cursor:pointer}li.site-nav:last-child{margin-right:0}@media (max-width:767px){li.site-nav .nav-title{display:none}}.backdrop{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9999;display:flex;align-items:center;justify-content:center;animation:backdropFadeIn .3s forwards}.backdrop.hide{animation:backdropFadeOut .3s forwards}.backdrop .modal{background:#fff;min-width:300px;box-shadow:0 4px -1px rgba(0,0,0,.9);animation:modalFadeIn .3s forwards}.backdrop .modal.hide{animation:modalFadeOut .3s forwards}@keyframes modalFadeIn{0%{opacity:0;transform:scale(.98)}50%{transform:scale(1.02)}to{opacity:1;transform:none}}@keyframes modalFadeOut{0%{opacity:1;transform:none}30%{opacity:.3;transform:scale(1.05)}to{opacity:0;transform:scale(1.2)}}@keyframes backdropFadeOut{0%{opacity:1%}to{opacity:0}}.category-select-modal ul{margin:0;padding:0;list-style:none}.category-select-modal ul li a{text-decoration:none;text-align:center;display:block;padding:16px 24px;color:#3d3d3f;border-bottom:1px solid #e7e9ee}.category-select-modal ul li a:focus,.category-select-modal ul li a:hover{background:rgba(0,0,0,.1)}.site-footer{background-color:#313d4b;text-align:center}.site-footer ul{list-style:none;padding:0}.site-footer ul li{display:inline-block}.site-footer .footer-desc{display:inline-block;max-width:500px;margin-left:auto;margin-right:auto;color:#d7d0f2}.site-footer .footer-navs{font-size:18px}.site-footer .footer-navs a{color:#f9f8fd;text-decoration:none}.site-footer .footer-copyright{font-size:14px;color:hsla(0,0%,100%,.7);display:inline-flex;align-items:center}
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}[hidden],template{display:none}*{box-sizing:border-box}body{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;min-width:320px}a,body{color:#3d3d3f}.container{max-width:1024px;min-width:320px;margin-left:auto;margin-right:auto;padding:0 8px;height:100%}.flex{display:flex;align-items:center}.flex-1{flex:1 1;overflow:auto}.flex-0{flex:0 1;overflow:auto}.align-left{text-align:left}.align-right{text-align:right}.pt-0{padding-top:0}.pr-0{padding-right:0}.pb-0{padding-bottom:0}.pl-0,.px-0{padding-left:0}.px-0{padding-right:0}.py-0{padding-top:0;padding-bottom:0}.pt-1{padding-top:8px}.pr-1{padding-right:8px}.pb-1{padding-bottom:8px}.pl-1,.px-1{padding-left:8px}.px-1{padding-right:8px}.py-1{padding-top:8px;padding-bottom:8px}.pt-2{padding-top:16px}.pr-2{padding-right:16px}.pb-2{padding-bottom:16px}.pl-2,.px-2{padding-left:16px}.px-2{padding-right:16px}.py-2{padding-top:16px;padding-bottom:16px}.pt-3{padding-top:24px}.pr-3{padding-right:24px}.pb-3{padding-bottom:24px}.pl-3,.px-3{padding-left:24px}.px-3{padding-right:24px}.py-3{padding-top:24px;padding-bottom:24px}.pt-4{padding-top:32px}.pr-4{padding-right:32px}.pb-4{padding-bottom:32px}.pl-4,.px-4{padding-left:32px}.px-4{padding-right:32px}.py-4{padding-top:32px;padding-bottom:32px}.pt-5{padding-top:40px}.pr-5{padding-right:40px}.pb-5{padding-bottom:40px}.pl-5,.px-5{padding-left:40px}.px-5{padding-right:40px}.py-5{padding-top:40px;padding-bottom:40px}.pt-6{padding-top:48px}.pr-6{padding-right:48px}.pb-6{padding-bottom:48px}.pl-6,.px-6{padding-left:48px}.px-6{padding-right:48px}.py-6{padding-top:48px;padding-bottom:48px}.pt-7{padding-top:56px}.pr-7{padding-right:56px}.pb-7{padding-bottom:56px}.pl-7,.px-7{padding-left:56px}.px-7{padding-right:56px}.py-7{padding-top:56px;padding-bottom:56px}.pt-8{padding-top:64px}.pr-8{padding-right:64px}.pb-8{padding-bottom:64px}.pl-8,.px-8{padding-left:64px}.px-8{padding-right:64px}.py-8{padding-top:64px;padding-bottom:64px}.pt-9{padding-top:72px}.pr-9{padding-right:72px}.pb-9{padding-bottom:72px}.pl-9,.px-9{padding-left:72px}.px-9{padding-right:72px}.py-9{padding-top:72px;padding-bottom:72px}.pt-10{padding-top:80px}.pr-10{padding-right:80px}.pb-10{padding-bottom:80px}.pl-10,.px-10{padding-left:80px}.px-10{padding-right:80px}.py-10{padding-top:80px;padding-bottom:80px}.pt-11{padding-top:88px}.pr-11{padding-right:88px}.pb-11{padding-bottom:88px}.pl-11,.px-11{padding-left:88px}.px-11{padding-right:88px}.py-11{padding-top:88px;padding-bottom:88px}.pt-12{padding-top:96px}.pr-12{padding-right:96px}.pb-12{padding-bottom:96px}.pl-12,.px-12{padding-left:96px}.px-12{padding-right:96px}.py-12{padding-top:96px;padding-bottom:96px}.pt-13{padding-top:104px}.pr-13{padding-right:104px}.pb-13{padding-bottom:104px}.pl-13,.px-13{padding-left:104px}.px-13{padding-right:104px}.py-13{padding-top:104px;padding-bottom:104px}.pt-14{padding-top:112px}.pr-14{padding-right:112px}.pb-14{padding-bottom:112px}.pl-14,.px-14{padding-left:112px}.px-14{padding-right:112px}.py-14{padding-top:112px;padding-bottom:112px}.pt-15{padding-top:120px}.pr-15{padding-right:120px}.pb-15{padding-bottom:120px}.pl-15,.px-15{padding-left:120px}.px-15{padding-right:120px}.py-15{padding-top:120px;padding-bottom:120px}.pt-16{padding-top:128px}.pr-16{padding-right:128px}.pb-16{padding-bottom:128px}.pl-16,.px-16{padding-left:128px}.px-16{padding-right:128px}.py-16{padding-top:128px;padding-bottom:128px}.pt-17{padding-top:136px}.pr-17{padding-right:136px}.pb-17{padding-bottom:136px}.pl-17,.px-17{padding-left:136px}.px-17{padding-right:136px}.py-17{padding-top:136px;padding-bottom:136px}.pt-18{padding-top:144px}.pr-18{padding-right:144px}.pb-18{padding-bottom:144px}.pl-18,.px-18{padding-left:144px}.px-18{padding-right:144px}.py-18{padding-top:144px;padding-bottom:144px}.pt-19{padding-top:152px}.pr-19{padding-right:152px}.pb-19{padding-bottom:152px}.pl-19,.px-19{padding-left:152px}.px-19{padding-right:152px}.py-19{padding-top:152px;padding-bottom:152px}.pt-20{padding-top:160px}.pr-20{padding-right:160px}.pb-20{padding-bottom:160px}.pl-20,.px-20{padding-left:160px}.px-20{padding-right:160px}.py-20{padding-top:160px;padding-bottom:160px}.mt-0{margin-top:0}.mr-0{margin-right:0}.mb-0{margin-bottom:0}.ml-0,.mx-0{margin-left:0}.mx-0{margin-right:0}.my-0{margin-top:0;margin-bottom:0}.mt-1{margin-top:8px}.mr-1{margin-right:8px}.mb-1{margin-bottom:8px}.ml-1,.mx-1{margin-left:8px}.mx-1{margin-right:8px}.my-1{margin-top:8px;margin-bottom:8px}.mt-2{margin-top:16px}.mr-2{margin-right:16px}.mb-2{margin-bottom:16px}.ml-2,.mx-2{margin-left:16px}.mx-2{margin-right:16px}.my-2{margin-top:16px;margin-bottom:16px}.mt-3{margin-top:24px}.mr-3{margin-right:24px}.mb-3{margin-bottom:24px}.ml-3,.mx-3{margin-left:24px}.mx-3{margin-right:24px}.my-3{margin-top:24px;margin-bottom:24px}.mt-4{margin-top:32px}.mr-4{margin-right:32px}.mb-4{margin-bottom:32px}.ml-4,.mx-4{margin-left:32px}.mx-4{margin-right:32px}.my-4{margin-top:32px;margin-bottom:32px}.mt-5{margin-top:40px}.mr-5{margin-right:40px}.mb-5{margin-bottom:40px}.ml-5,.mx-5{margin-left:40px}.mx-5{margin-right:40px}.my-5{margin-top:40px;margin-bottom:40px}.mt-6{margin-top:48px}.mr-6{margin-right:48px}.mb-6{margin-bottom:48px}.ml-6,.mx-6{margin-left:48px}.mx-6{margin-right:48px}.my-6{margin-top:48px;margin-bottom:48px}.mt-7{margin-top:56px}.mr-7{margin-right:56px}.mb-7{margin-bottom:56px}.ml-7,.mx-7{margin-left:56px}.mx-7{margin-right:56px}.my-7{margin-top:56px;margin-bottom:56px}.mt-8{margin-top:64px}.mr-8{margin-right:64px}.mb-8{margin-bottom:64px}.ml-8,.mx-8{margin-left:64px}.mx-8{margin-right:64px}.my-8{margin-top:64px;margin-bottom:64px}.mt-9{margin-top:72px}.mr-9{margin-right:72px}.mb-9{margin-bottom:72px}.ml-9,.mx-9{margin-left:72px}.mx-9{margin-right:72px}.my-9{margin-top:72px;margin-bottom:72px}.mt-10{margin-top:80px}.mr-10{margin-right:80px}.mb-10{margin-bottom:80px}.ml-10,.mx-10{margin-left:80px}.mx-10{margin-right:80px}.my-10{margin-top:80px;margin-bottom:80px}.mt-11{margin-top:88px}.mr-11{margin-right:88px}.mb-11{margin-bottom:88px}.ml-11,.mx-11{margin-left:88px}.mx-11{margin-right:88px}.my-11{margin-top:88px;margin-bottom:88px}.mt-12{margin-top:96px}.mr-12{margin-right:96px}.mb-12{margin-bottom:96px}.ml-12,.mx-12{margin-left:96px}.mx-12{margin-right:96px}.my-12{margin-top:96px;margin-bottom:96px}.mt-13{margin-top:104px}.mr-13{margin-right:104px}.mb-13{margin-bottom:104px}.ml-13,.mx-13{margin-left:104px}.mx-13{margin-right:104px}.my-13{margin-top:104px;margin-bottom:104px}.mt-14{margin-top:112px}.mr-14{margin-right:112px}.mb-14{margin-bottom:112px}.ml-14,.mx-14{margin-left:112px}.mx-14{margin-right:112px}.my-14{margin-top:112px;margin-bottom:112px}.mt-15{margin-top:120px}.mr-15{margin-right:120px}.mb-15{margin-bottom:120px}.ml-15,.mx-15{margin-left:120px}.mx-15{margin-right:120px}.my-15{margin-top:120px;margin-bottom:120px}.mt-16{margin-top:128px}.mr-16{margin-right:128px}.mb-16{margin-bottom:128px}.ml-16,.mx-16{margin-left:128px}.mx-16{margin-right:128px}.my-16{margin-top:128px;margin-bottom:128px}.mt-17{margin-top:136px}.mr-17{margin-right:136px}.mb-17{margin-bottom:136px}.ml-17,.mx-17{margin-left:136px}.mx-17{margin-right:136px}.my-17{margin-top:136px;margin-bottom:136px}.mt-18{margin-top:144px}.mr-18{margin-right:144px}.mb-18{margin-bottom:144px}.ml-18,.mx-18{margin-left:144px}.mx-18{margin-right:144px}.my-18{margin-top:144px;margin-bottom:144px}.mt-19{margin-top:152px}.mr-19{margin-right:152px}.mb-19{margin-bottom:152px}.ml-19,.mx-19{margin-left:152px}.mx-19{margin-right:152px}.my-19{margin-top:152px;margin-bottom:152px}.mt-20{margin-top:160px}.mr-20{margin-right:160px}.mb-20{margin-bottom:160px}.ml-20,.mx-20{margin-left:160px}.mx-20{margin-right:160px}.my-20{margin-top:160px;margin-bottom:160px}.icon{display:inline-block;width:24px;height:24px;background-repeat:no-repeat;background-position-x:0;background-position-y:0;background-size:contain}.icon-1x{width:8px;height:8px}.icon-2x{width:16px;height:16px}.icon-3x{width:24px;height:24px}.icon-4x{width:32px;height:32px}.icon-5x{width:40px;height:40px}.icon-6x{width:48px;height:48px}.icon-7x{width:56px;height:56px}.icon-8x{width:64px;height:64px}.icon-9x{width:72px;height:72px}.icon-rss{background-image:url(/assets/imgs/icons/icon-rss.png)}.icon-github{background-image:url(/assets/imgs/icons/icon-github.png)}.icon-email{background-image:url(/assets/imgs/icons/icon-email.png)}.icon-article{background-image:url(/assets/imgs/icons/icon-article.png)}.icon-video{background-image:url(/assets/imgs/icons/icon-video.png)}.icon-tag{background-image:url(/assets/imgs/icons/icon-tag.png)}.btn{display:inline-block;padding:8px 16px;border-radius:4px;background-color:#f9f8fd;text-decoration:none;color:#3d3d3f;border:1px solid #3d3d3f}.btn-primary{color:#cd5554;border-color:#cd5554}.btn-primary:focus,.btn-primary:hover{background-color:#cd5554!important;color:#f9f8fd!important}.btn-secondary{color:#91684a;border-color:#91684a}.btn-secondary:focus,.btn-secondary:hover{background-color:#91684a!important;color:#f9f8fd!important}.btn-text{border:none;background:none;padding:0}.hidden{display:none}.post-meta .date{color:#a3a3a5}.gatsby-highlight{font-size:14px;line-height:1.5em}.category{max-width:800px}.post-list{list-style:none;padding:0}.post-list .post-item{text-decoration:none;display:block}.post-list .post-item .post-item-title{color:#cd5554}.post-list .post-item .post-summary{color:#3d3d3f;line-height:1.5em}@media (max-width:320px){.post-list .post-item .post-summary{display:none}}.home{padding-top:48px}@media (max-width:768px){.home{padding-top:0}}.home section{padding-bottom:96px}.home section .section-inner{max-width:800px}.home section .section-inner .section-title a{text-decoration:none}.tag-page .tag-item .tag-title-link{text-decoration:none;color:#cd5554;font-family:SF Mono,Menlo,Courier,Lucida Console,monospace}.tag-page .tag-item ul.post-list{padding-left:20px}.tag-page .tag-item ul.post-list li.post-item{margin-bottom:8px}.tag-page .tag-item ul.post-list li.post-item a.post-title{text-decoration:none;color:#3d3d3f}.tag-page .tag-item ul.post-list li.post-item a.post-title:focus,.tag-page .tag-item ul.post-list li.post-item a.post-title:hover{text-decoration:underline}.post-toc{border-left:2px solid #e7e9ee}.post-toc ul{padding-left:16px;list-style:none;margin:0}.post-toc ul li{margin-bottom:4px}.post-toc ul li p{margin:0}.post-toc ul li a{text-decoration:none;color:#a3a3a5;font-size:14px}.post-toc ul li a:focus,.post-toc ul li a:hover{color:#3d3d3f}.post-toc ul li a.active{color:#313d4b}.post-video a{display:block;position:relative;overflow:hidden}.post-video a img{width:100%;transition:all .3s ease}.post-video a:hover img{transform:scale(1.2)}.post-video a .post-video-overlay{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;flex-direction:column}.post-video a .post-video-overlay .video-icon-wrapper{flex:1 1;display:flex;align-items:center;justify-content:center}.post-video a .post-video-overlay .video-icon-wrapper .video-icon{background:url(/assets/imgs/icons/icon-video-2.png) no-repeat;background-position:50%;background-size:50px 50px;opacity:.7;width:100px;height:100px;border-radius:50%;background-color:rgba(0,0,0,.3)}.post-video a .post-video-overlay .post-video-title{background:rgba(0,0,0,.3);color:#fff;padding:8px;text-align:center;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:14px}.series-nav{border-left:2px solid #e7e9ee}.series-nav .series-title{font-weight:700}.series-nav .series-title:before{content:"\C5F0\C7AC\BB3C";display:block;font-size:14px;color:#a3a3a5;font-weight:400}.series-nav .series-order .active{font-weight:700}.series-nav .next,.series-nav .prev{display:inline-block;flex:1 0 50%}.series-nav a{color:#91684a;text-decoration:none}.series-navigator{border-top:2px solid #e7e9ee;border-bottom:2px solid #e7e9ee}.series-navigator .flex{flex-flow:row}.series-navigator .controls{flex:0 0 100px;text-align:right}.series-navigator .controls a{text-decoration:none}.series-navigator .series-title{margin-top:8px}.series-navigator .series-title:before{content:"\C774   \C5F0\C7AC\BB3C   \B354\BCF4\AE30";display:block;font-size:14px;color:#a3a3a5;font-weight:400}.series-navigator .post-list{line-height:1.5em}.series-navigator .post-list a{display:inline-block;width:100%;text-decoration:none}.series-navigator .post-list a:focus,.series-navigator .post-list a:hover{text-decoration:underline}.series-navigator .post-list li{list-style:circle}.series-navigator .post-list li.active{list-style:unset;font-weight:700}.post{padding-top:160px}@media (max-width:768px){.post{padding-top:80px}}@media (max-width:320px){.post{padding-top:40px}}.post>.flex{align-items:flex-start}.post>.flex .post-aside{order:1}.post>.flex .post-container{order:0}.post .post-aside{flex:0 0 250px;position:-webkit-sticky;position:sticky;max-height:100vh;overflow-y:scroll;top:8px;margin-left:32px;padding-bottom:8px}@media (max-width:1023px){.post .post-aside{display:none}}.post .footer-container,.post .post-container{max-width:800px;margin-left:auto;margin-right:auto}.post .post-container{overflow-x:hidden}.post .post-header .post-title{color:#3d3d3f;font-size:42px}.post .post-header .post-meta .date{color:#a3a3a5}.post .post-content{font-size:18px;line-height:1.5em;font-family:Helvetica Neue,Helvetica,Arial,sans-serif}.post .post-content h1{font-size:200%;padding-top:20px}.post .post-content h2{font-size:180%;padding-top:18px}.post .post-content h3{font-size:160%;padding-top:16px}.post .post-content h4{font-size:140%;padding-top:14px}.post .post-content h5{font-size:120%;padding-top:12px}.post .post-content h1,.post .post-content h2,.post .post-content h3,.post .post-content h4,.post .post-content h5,.post .post-content h6{color:#cd5554;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;line-height:1em}.post .post-content img{border-radius:4px;display:block;margin:16px auto;max-width:93%;transition:transform .3s ease}.post .post-content img:hover{transform:scale(1.03)}.post .post-content blockquote{color:#6f6f73;position:relative}.post .post-content blockquote:before{content:"\201C";position:absolute;left:-24px;font-size:40px;color:#d6d6d8}.post .post-content .highlight{border-radius:4px;overflow-x:scroll}.post .post-content pre.highlight{padding:16px 24px;margin:0}.post .social-share-btns{align-items:flex-start;min-height:50px;box-sizing:content-box;padding-top:64px}</style><meta name="generator" content="Gatsby 2.23.12"/><title data-react-helmet="true">프론트엔드 개발환경의 이해: 린트 | 김정환 블로그</title><meta data-react-helmet="true" name="description" content="주로 웹 기술에 대해 이야기 합니다"/><meta data-react-helmet="true" property="og:title" content="프론트엔드 개발환경의 이해: 린트"/><meta data-react-helmet="true" property="og:description" content="주로 웹 기술에 대해 이야기 합니다"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="김정환"/><meta data-react-helmet="true" name="twitter:title" content="프론트엔드 개발환경의 이해: 린트"/><meta data-react-helmet="true" name="twitter:description" content="주로 웹 기술에 대해 이야기 합니다"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="icon" href="/favicon-32x32.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#663399"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link as="script" rel="preload" href="/webpack-runtime-ce4be6f530f27c0f2791.js"/><link as="script" rel="preload" href="/framework-f600a0dcdbbe2ab3be17.js"/><link as="script" rel="preload" href="/app-7e7fd85447226af9207b.js"/><link as="script" rel="preload" href="/styles-89fd2ae28bdf06750a71.js"/><link as="script" rel="preload" href="/commons-a0a7d383b72c92281b17.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-index-tsx-c9526f1df2fcd6ef9a12.js"/><link as="fetch" rel="preload" href="/page-data/series/2019/12/30/frontend-dev-env-lint.html/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="site-header"><div class="flex container"><h1 class="flex-1 site-title"><a class="site-logo" href="/">김정환 블로그</a></h1><nav class="site-navs"><ul class="flex ml-1"><li class="site-nav"><a class="flex" href="/series/2019/12/30/frontend-dev-env-lint.html/#"><i class="icon icon-3x icon-article"></i><span class="nav-title">POSTS</span></a></li><li class="site-nav"><a class="flex" href="/#videos"><i class="icon icon-3x icon-video"></i><span class="nav-title">VIDEOS</span></a></li><li class="site-nav"><a class="flex" href="/tags/"><i class="icon icon-3x icon-tag"></i><span class="nav-title">TAGS</span></a></li></ul></nav></div></header><main><article id="post" class="post container" itemscope="" itemType="http://schema.org/BlogPosting"><div class="flex"><aside class="post-aside"><div class="post-toc"><ul>
+<li>
+<p><a href="#1-%EB%B0%B0%EA%B2%BD">1. 배경</a></p>
+<ul>
+<li><a href="#11-%EB%A6%B0%ED%8A%B8%EA%B0%80-%ED%95%84%EC%9A%94%ED%95%9C-%EC%83%81%ED%99%A9">1.1 린트가 필요한 상황</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#2-eslint">2. ESLint</a></p>
+<ul>
+<li><a href="#21-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90">2.1 기본 개념</a></li>
+<li><a href="#22-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EB%B2%95">2.2 설치 및 사용법</a></li>
+<li><a href="#23-%EA%B7%9C%EC%B9%99rules">2.3 규칙(Rules)</a></li>
+<li><a href="#24-%EC%9E%90%EB%8F%99%EC%9C%BC%EB%A1%9C-%EC%88%98%EC%A0%95%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-%EA%B7%9C%EC%B9%99">2.4 자동으로 수정할 수 있는 규칙</a></li>
+<li><a href="#25-extensible-config">2.5 Extensible Config</a></li>
+<li><a href="#26-%EC%B4%88%EA%B8%B0%ED%99%94">2.6 초기화</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#3-prettier">3. Prettier</a></p>
+<ul>
+<li><a href="#31-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EB%B2%95">3.1 설치 및 사용법</a></li>
+<li><a href="#32-%ED%8F%AC%EB%A7%A4%ED%8C%85%EB%8D%94-%EC%98%88%EC%81%98%EA%B2%8C">3.2 포매팅(더 예쁘게)</a></li>
+<li><a href="#33-%ED%86%B5%ED%95%A9%EB%B0%A9%EB%B2%95">3.3 통합방법</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#4-%EC%9E%90%EB%8F%99%ED%99%94">4. 자동화</a></p>
+<ul>
+<li><a href="#41-%EB%B3%80%EA%B2%BD%ED%95%9C-%EB%82%B4%EC%9A%A9%EB%A7%8C-%EA%B2%80%EC%82%AC">4.1 변경한 내용만 검사</a></li>
+<li><a href="#42-%EC%97%90%EB%94%94%ED%84%B0-%ED%99%95%EC%9E%A5%EB%8F%84%EA%B5%AC">4.2 에디터 확장도구</a></li>
+</ul>
+</li>
+<li><a href="#5-%EC%A0%95%EB%A6%AC">5. 정리</a></li>
+</ul></div><div class="series-nav mb-2 py-3 px-2"><div class="mb-1"><span class="series-title">프론트엔드 개발환경의 이해</span><span class="series-order">(<span class="active">4</span>/<!-- -->5<!-- -->)</span></div><div class="series-controls flex"><span class="prev align-left"><a class="btn btn-secondary" href="/series/2019/12/22/frontend-dev-env-babel.html">« 이전</a></span><span class="next align-right"><a class="btn btn-secondary" href="/series/2020/01/02/frontend-dev-env-webpack-intermediate.html">다음 »</a></span></div></div><div class="post-video"><a id="post-video" href="https://www.inflearn.com/course/프론트엔드-개발환경"><img src="https://cdn.inflearn.com/public/courses/324671/course_cover/638eee1a-6381-402d-a17b-3724751414f1/frontend-env-eng.png"/><div class="post-video-overlay"><div class="video-icon-wrapper"><div class="video-icon"></div></div><div class="post-video-title">프론트엔드 개발환경의 이해와 실습<!-- --> »</div></div></a></div></aside><main class="post-container flex-1"><header class="mb-7 post-header"><h1 class="mt-0 mb-1 post-title" itemProp="name headline">프론트엔드 개발환경의 이해: 린트</h1><div class="post-meta"><time class="date" itemProp="datePublished" dateTime="2019년 12월 30일">2019년 12월 30일</time></div></header><div class="post-content" itemProp="articleBody"><h2 id="1-배경" style="position:relative;"><a href="#1-%EB%B0%B0%EA%B2%BD" aria-label="1 배경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 배경</h2>
+<p>오래된 스웨터의 보푸라기 같은 것을 린트(Lint)라고 부른다.
+보푸라기가 많으면 옷이 보기 좋지 않은데 코드에서도 이런 보프라기가 있다.
+들여쓰기를 맞추지 않은 경우, 선언한 변수를 사용하지 않은 경우......</p>
+<p>보프라기 있는 옷을 입을 수는 있듯이 이러한 코드로 만든 어플리케이션도 동작은 한다.
+그러나 코드의 가독성이 떨어지고 점점 유지보수하기 어려운 애물단지가 되어버리기 일쑤다.</p>
+<p>보푸라기를 제거하는 린트 롤러(Lint roller)처럼 코드의 오류나 버그, 스타일 따위를 점검하는 것을 <a href="https://en.wikipedia.org/wiki/Lint_(software)">린트(Lint) 혹은 린터(Linter)</a>라고 부른다.</p>
+<h3 id="11-린트가-필요한-상황" style="position:relative;"><a href="#11-%EB%A6%B0%ED%8A%B8%EA%B0%80-%ED%95%84%EC%9A%94%ED%95%9C-%EC%83%81%ED%99%A9" aria-label="11 린트가 필요한 상황 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.1 린트가 필요한 상황</h3>
+<p>아래 코드 유심히 보자.
+console.log() 함수를 실행하고 다음 줄에서 즉시 실행함수를 실행하려는 코드다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+<p>하지만 이 코드를 브라우져에서 실행해 보면 TypeError가 발생한다.
+브라우져는 코드에 세미콜론를 자동으로 넣는 과정(ASI)을 수행하는데, 위와 같은 경우는 우리의 의도대로 해석하지 못하고 아래 코드로 해석한다(<a href="http://www.ecma-international.org/ecma-262/7.0/index.html#sec-rules-of-automatic-semicolon-insertion">Rules of Automatic Semicolon Insertion</a>을 참고).</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>console.log()가 반환하는 값이 함수가 아닌데 함수 호출을 시도했기 때문에 타입에러가 발생할 것이다.
+모든 문장에 세미콜론을 붙였다면, 혹은 즉시 함수호출 앞에 세미콜론을 붙였다면 예방할 수 있는 버그다.</p>
+<p>린트는 코드의 가독성을 높이는 것 뿐만 아니라 동적 언어의 특성인 런타임 버그를 예방하는 역할도 한다.</p>
+<h2 id="2-eslint" style="position:relative;"><a href="#2-eslint" aria-label="2 eslint permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. ESLint</h2>
+<h3 id="21-기본-개념" style="position:relative;"><a href="#21-%EA%B8%B0%EB%B3%B8-%EA%B0%9C%EB%85%90" aria-label="21 기본 개념 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.1 기본 개념</h3>
+<p>ESLint는 ECMAScript 코드에서 문제점을 검사하고 일부는 더 나은 코드로 정정하는 린트 도구 중의 하나다.
+코드의 가독성을 높이고 잠재적인 오류와 버그를 제거해 단단한 코드를 만드는 것이 목적이다.
+과거 JSLint, JSHint에 이어서 최근에는 ESLint를 많이 사용하는 편이다.</p>
+<p>코드에서 검사하는 항목을 크게 분류하면 아래 두 가지다.</p>
+<ul>
+<li>포맷팅</li>
+<li>코드 품질</li>
+</ul>
+<p><strong>포맷팅</strong>은 일관된 코드 스타일을 유지하도록 하고 개발자로 하여금 쉽게 읽히는 코드를 만들어 준다.
+이를 테면 "들여쓰기 규칙", "코드 라인의 최대 너비 규칙"을 따르는 코드가 가독성이 더 좋다.</p>
+<p>한편, <strong>코드 품질</strong>은 어플리케이션의 잠재적인 오류나 버그를 예방하기 위함이다.
+사용하지 않는 변수 쓰지 않기, 글로벌 스코프 함부로 다루지 않기 등이 오류 발생 확률을 줄여 준다.</p>
+<p>린트 도구를 사용해서 코드를 검사하고 더 나아가 단단한 하고 읽기 좋은 코드를 만드는 방법을 알아보자.</p>
+<h3 id="22-설치-및-사용법" style="position:relative;"><a href="#22-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EB%B2%95" aria-label="22 설치 및 사용법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.2 설치 및 사용법</h3>
+<p>먼저 노드 패키지로 제공되는 ESLint 도구를 다운로드 한다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm i -D eslint</code></pre></div>
+<p>환경설정 파일을 프로젝트 최상단에 생성한다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// .eslintrc.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre></div>
+<p>빈 객체로 아무런 설정 없이 모듈만 만들었다.
+ESLint로 코드를 검사 하면</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npx eslint app.js</code></pre></div>
+<p>아무런 결과를 출력하지 않고 프로그램을 종료한다.</p>
+<h3 id="23-규칙rules" style="position:relative;"><a href="#23-%EA%B7%9C%EC%B9%99rules" aria-label="23 규칙rules permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.3 규칙(Rules)</h3>
+<p>ESLint는 검사 규칙을 미리 정해 놓았다.
+문서의 <a href="https://eslint.org/docs/rules/">Rules</a> 메뉴에서 규칙 목록을 확인할 수 있다.</p>
+<p>우리가 우려했던 문제와 관련된 규칙은 <a href="https://eslint.org/docs/rules/no-unexpected-multiline">no-unexpected-multiline</a>이다.
+설정 파일의 rules 객체에 이 규칙을 추가한다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// .eslintrc.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"no-unexpected-multiline"</span><span class="token operator">:</span> <span class="token string">"error"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>규칙에 설정하는 값은 세 가지다. "off"나 0은 끔, "warn"이나 1은 경고, "error"나 2는 오류.
+설정한 규칙에 어긋나는 코드를 발견하면 오류를 출력하도록 했다.</p>
+<p>다시 검사해 보자.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npx eslint app.js
+2:1 error  Unexpected newline between function and ( of function call  no-unexpected-multiline
+
+✖ 1 problem (1 error, 0 warnings)</code></pre></div>
+<p>예상대로 에러가 발생하고 코드 위치와 위반한 규칙명을 알려준다.
+함수와 함수 호출의 괄호 "(" 사이에 줄바꿈이 있는데 이것이 문제라고 한다.
+코드 앞에 세미콜론을 넣거나 모든 문의 끝에 세미콜론을 넣어 문제를 해결할 수 있다.
+수정한 다음 다시 검사하면 검사에 통과할 것이다.</p>
+<h3 id="24-자동으로-수정할-수-있는-규칙" style="position:relative;"><a href="#24-%EC%9E%90%EB%8F%99%EC%9C%BC%EB%A1%9C-%EC%88%98%EC%A0%95%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94-%EA%B7%9C%EC%B9%99" aria-label="24 자동으로 수정할 수 있는 규칙 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.4 자동으로 수정할 수 있는 규칙</h3>
+<p>자바스크립트 문장 뒤에 세미콜론을 여러 개 중복 입력해도 어플리케이션은 동작한다.
+그러나 이것은 코드를 읽기 어렵게 하는 장애물일 뿐이다.
+이렇게 작성한 코드가 있다면 실수로 입력한게 틀림 없다.</p>
+<p>이 문제와 관련된 규칙은 <a href="https://eslint.org/docs/rules/no-extra-semi">no-extra-semi</a> 규칙이다.</p>
+<p>문장 뒤에 세미콜론을 더 추가한 뒤,</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// app.js</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span> <span class="token comment">// 세미콜론 연속 두 개 붙임</span></code></pre></div>
+<p>린트 설정에 no-extra-semi 규칙을 추가하고,</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// .eslintrc.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"no-extra-semi"</span><span class="token operator">:</span> <span class="token string">"error"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>코드를 검사하면 오류를 출력한다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npx eslint app.js
+1:15  error  Unnecessary semicolon  no-extra-semi
+
+✖ 1 problem (1 error, 0 warnings)
+  1 error and 0 warnings potentially fixable with the `--fix` option.</code></pre></div>
+<p>마지막 줄의 메세지를 보면 이 에러는 "잠재적으로 수정가능(potentially fixable)"하다고 말한다.
+<code class="language-text">--fix</code> 옵션을 붙여 검사해보면,</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npx eslint app.js --fix</code></pre></div>
+<p>검사 후 오류가 발생하면 코드를 자동으로 수정한다.</p>
+<p>이렇듯 ESLint 규칙에는 수정 가능한 것과 그렇지 못한 것이 있다.</p>
+<p><a href="https://eslint.org/docs/rules/">규칙 목록</a> 중 왼쪽에 렌치 표시가 붙은 것이 <code class="language-text">--fix</code> 옵션으로 자동 수정할 수 있는 규칙이다.</p>
+<h3 id="25-extensible-config" style="position:relative;"><a href="#25-extensible-config" aria-label="25 extensible config permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.5 Extensible Config</h3>
+<p>이러한 규칙을 여러게 미리 정해 놓은 것이 eslint:recommended 설정이다.
+<a href="https://eslint.org/docs/rules/">규칙 목록</a> 중에 왼쪽에 체크 표시되어 있는것이 이 설정에서 활성화되어 있는 규칙이다.</p>
+<p>이것을 사용하려면 extends 설정을 추가한다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// .eslintrc.js</span>
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"eslint:recommended"</span><span class="token punctuation">,</span> <span class="token comment">// 미리 설정된 규칙 세트을 사용한다</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>만약 이 설정 외에 규칙이 더 필요하다면 rules 속성에 추가해서 확장할 수 있다.</p>
+<p>ESLint에서 기본으로 제공하는 설정 외에 자주 사용하는 두 가지가 있다.</p>
+<ul>
+<li>airbnb</li>
+<li>standard</li>
+</ul>
+<p><strong>airbnb</strong> 설정은 <a href="https://github.com/airbnb/javascript">airbnb 스타일 가이드</a>를 따르는 규칙 모음이다.
+<a href="https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base">eslint-config-airbnb-base</a> 패키지로 제공된다.</p>
+<p><strong>standard</strong> 설정은 <a href="https://standardjs.com/">자바스크립트 스탠다드 스타일</a>을 사용한다.
+<a href="https://github.com/standard/eslint-config-standard">eslint-config-standard</a> 패키지로 제공된다.</p>
+<h3 id="26-초기화" style="position:relative;"><a href="#26-%EC%B4%88%EA%B8%B0%ED%99%94" aria-label="26 초기화 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2.6 초기화</h3>
+<p>사실 이러한 설정은 <code class="language-text">--init</code> 옵션을 추가하면 손쉽게 구성할 수 있다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npx eslint --init
+
+? How would you like to use ESLint?
+? What type of modules does your project use?
+? Which framework does your project use?
+? Where does your code run?
+? How would you like to define a style for your project?
+? Which style guide do you want to follow?
+? What format do you want your config file to be in?</code></pre></div>
+<p>대화식 명령어로 진행되는데 모듈 시스템을 사용하는지, 어떤 프레임웍을 사용하는지, 어플리케이션이 어떤 환경에서 동작하는지 등에 답하면 된다.
+답변에 따라 .eslintrc 파일을 자동으로 만들 수 있다.</p>
+<h2 id="3-prettier" style="position:relative;"><a href="#3-prettier" aria-label="3 prettier permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. Prettier</h2>
+<p>프리티어는 코드를 <strong>"더"</strong> 예쁘게 만든다.
+ESLint의 역할 중 포매팅과 겹치는 부분이 있지만 프리티터는 좀 더 일관적인 스타일로 코드를 다듬는다.
+반면 코드 품질과 관련된 기능은 하지 않는 것이 ESLint와 다른 점이다.</p>
+<h3 id="31-설치-및-사용법" style="position:relative;"><a href="#31-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EB%B2%95" aria-label="31 설치 및 사용법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.1 설치 및 사용법</h3>
+<p>프리티어 패키지를 다운로드 하고</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm i -D prettier</code></pre></div>
+<p>코드를 아래 처럼 작성한다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// app.js</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span></code></pre></div>
+<p>Prettier로 검사해 보자.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npx prettier app.js --write</code></pre></div>
+<p><code class="language-text">--write</code> 옵션을 추가하면 파일을 재작성한다. 그렇지 않을 경우 결과를 터미널에 출력한다.</p>
+<p>변경된 모습을 보면,</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// app.js</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>작은 따옴표를 큰 따옴표로 변경했다. 문장 뒤에 세미콜론도 추가했다.
+프리티어는 ESLint와 달리 규칙이 미리 세팅되어 있기 때문에 설정 없이도 바로 사용할 수 있다.</p>
+<h3 id="32-포매팅더-예쁘게" style="position:relative;"><a href="#32-%ED%8F%AC%EB%A7%A4%ED%8C%85%EB%8D%94-%EC%98%88%EC%81%98%EA%B2%8C" aria-label="32 포매팅더 예쁘게 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.2 포매팅(더 예쁘게)</h3>
+<p>다음 코드를 보자.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// app.js</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'----------------매 우 긴 문 장 입 니 다 80자가 넘 는 코 드 입 니 다.----------------'</span><span class="token punctuation">)</span></code></pre></div>
+<p>ESLint는 <a href="https://eslint.org/docs/rules/max-len">max-len</a> 규칙을 이용해 위 코드를 검사하고 결과만 알려 줄 뿐 수정하는 것은 개발자의 몫이다.
+반면 프리티어는 어떻게 수정해야할지 알고 있기 때문에 아래처럼 코드를 다시 작성한다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// app.js</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>
+  <span class="token string">"----------------매 우 긴 문 장 입 니 다 80자가 넘 는 코 드 입 니 다.----------------"</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>아래 코드는 어떻게 변환할까?</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">foo</span><span class="token punctuation">(</span><span class="token function">reallyLongArg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">omgSoManyParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">IShouldRefactorThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">isThereSeriouslyAnotherOne</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>프리티어는 코드를 문맥을 어느 정도 파악하고 상황에 따라 최적의 모습으로 스타일을 수정한다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">foo</span><span class="token punctuation">(</span>
+  <span class="token function">reallyLongArg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function">omgSoManyParameters</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function">IShouldRefactorThis</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function">isThereSeriouslyAnotherOne</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>더 멋진 예제도 있는데 프리티어를 만든 <a href="https://jlongster.com/A-Prettier-Formatter">James Long의 글</a>을 참고하자.
+이러한 포매팅 품질은 ESLint보다는 프리티어가 훨씬 좋은 결과를 만든다. 사람에게 더 친숙하도록 말이다.</p>
+<h3 id="33-통합방법" style="position:relative;"><a href="#33-%ED%86%B5%ED%95%A9%EB%B0%A9%EB%B2%95" aria-label="33 통합방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.3 통합방법</h3>
+<p>여전히 ESLint를 사용해야 하는 이유는 남아 있다.
+포맷팅은 프리티어에게 맡기더라도 코드 품질과 관련된 검사는 ESLint의 몫이기 때문이다.
+따라서 이 둘을 같이 사용하는 것이 최선이다. 프리티어는 이러한 ESLint와 통합 방법을 제공한다.
+<a href="https://github.com/prettier/eslint-config-prettier">eslint-config-prettier</a> 는 프리티어와 충돌하는 ESLint 규칙을 끄는 역할을 한다.
+둘 다 사용하는 경우 규칙이 충돌하기 때문이다.</p>
+<p>패키지를 설치한뒤,</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm i -D eslint-config-prettier</code></pre></div>
+<p>설정파일의 extends 배열에 추가한다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// .eslintrc.js</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"eslint:recommended"</span><span class="token punctuation">,</span>
+    <span class="token string">"eslint-config-prettier"</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>예를 들어 ESLint는 중복 세미콜론 사용을 검사한다. 이것을 프리티어도 마찬가지다.
+따라서 어느 한쪽에서는 규칙을 꺼야하는데 eslint-config-prettier를 extends 하면 중복되는 ESLint 규칙을 비활성화 한다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token string">''</span> <span class="token comment">// 사용하지 않은 변수. ESLint가 검사</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">;</span> <span class="token comment">// 중복 세미콜론 사용. 프리티어가 자동 수정</span></code></pre></div>
+<p>ESLint는 중복된 포매팅 규칙을 프리티어에게 맞기고 나머지 코드 품질에 관한 검사만 한다.
+따라서 아래처럼 두 개를 동시에 실행해서 코드를 검사한다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npx prettier app.js --write &amp;&amp; npx eslint app.js --fix
+
+1:5  error  &#39;foo&#39; is assigned a value but never used  no-unused-vars
+
+✖ 1 problem (1 error, 0 warnings)</code></pre></div>
+<p>프리터에서 의해 코드가 아래과 같이 포매팅 되었고</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">var</span> foo <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>ESlint에 의해 코드 품질과 관련된 오류(no-unused-vars)를 리포팅한다.</p>
+<p>한편, <a href="https://github.com/prettier/eslint-plugin-prettier">eslint-plugin-prettier</a>는 프리티어 규칙을 ESLint 규칙으로 추가하는 플러그인이다. 프리티어의 모든 규칙이 ESLint로 들어오기 때문에 ESLint만 실행하면 된다.</p>
+<p>패키지를 설치하고</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm i -D eslint-plugin-prettier</code></pre></div>
+<p>설정 파일에서 pulugins와 rules에 설정을 추가한다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// .eslintrc.js</span>
+<span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"prettier"</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"prettier/prettier"</span><span class="token operator">:</span> <span class="token string">"error"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>프리티어의 모든 규칙을 ESLint 규칙으로 가져온 설정이다.
+이제는 ESLint만 실행해도 프리티어 포매팅 기능을 가져갈 수 있다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npx eslint app.js --fix</code></pre></div>
+<p>프리티어는 이 두 패키지를 함께 사용하는 <a href="https://prettier.io/docs/en/integrating-with-linters.html">단순한 설정</a>을 제공하는데 아래 설정을 추가하면 된다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// .eslintrc.js</span>
+<span class="token punctuation">{</span>
+  <span class="token string">"extends"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"eslint:recommended"</span><span class="token punctuation">,</span>
+    <span class="token string">"plugin:prettier/recommended"</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h2 id="4-자동화" style="position:relative;"><a href="#4-%EC%9E%90%EB%8F%99%ED%99%94" aria-label="4 자동화 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. 자동화</h2>
+<p>린트는 코딩할 때마다 수시로 실행해야하는데 이러한 일은 자동화 하는 것이 좋다.
+"깃 훅을 사용하는 방법"과 "에디터 확장 도구"를 사용하는 방법을 각각 소개한다.</p>
+<h3 id="41-변경한-내용만-검사" style="position:relative;"><a href="#41-%EB%B3%80%EA%B2%BD%ED%95%9C-%EB%82%B4%EC%9A%A9%EB%A7%8C-%EA%B2%80%EC%82%AC" aria-label="41 변경한 내용만 검사 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.1 변경한 내용만 검사</h3>
+<p>소스 트래킹 도구로 깃을 사용한다면 깃 훅을 이용하는 것이 좋다.
+커밋 전, 푸시 전 등 깃 커맨드 실행 시점에 끼여들수 있는 훅을 제공한다.
+<a href="https://github.com/typicode/husky">husky</a>는 깃 훅을 쉽게 사용할 수 있는 도구다. (Git 2.13.0 이상 버전을 지원)
+커밋 메세지 작성전에 끼어들어 린트로 코드 검사 작업을 추가하면 좋겠다.</p>
+<p>먼저 패키지를 다운로드 한다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm i -D husky</code></pre></div>
+<p>허스키는 패키지 파일에 설정을 추가한다.</p>
+<p>package.json:</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"husky"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"hooks"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"pre-commit"</span><span class="token operator">:</span> <span class="token string">"echo \"이것은 커밋전에 출력됨\""</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>훅이 제대로 동작하는지 빈 커밋을 만들어 보자.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">git commit --allow-empty -m &quot;빈 커밋&quot;
+husky &gt; pre-commit (node v13.1.0)
+이것은 커밋전에 출력됨  ----&gt; 깃 훅이 동작함
+[master db8b4b8] empty</code></pre></div>
+<p>pre-commit에 설정한 내용이 출력되었다.
+출력 대신에 린트 명령어로 대체하면 커밋 메세지 작성 전에 린트를 수행할 수 있겠다.</p>
+<p>package.json:</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"husky"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"hooks"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"pre-commit"</span><span class="token operator">:</span> <span class="token string">"eslint app.js --fix"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>만약 린트 수행중 오류를 발견하면 커밋 과정은 취소된다.
+린트를 통과하게끔 코드를 수정해야만 커밋할 수 있는 환경이 되었다.</p>
+<p>한편, 코드가 점점 많아지면 커밋 작성이 느려질 수 있는데 커밋전에 모든 코드를 린트로 검사하는 시간이 소요되기 때문이다.
+커밋시 변경된 파일만 린트로 검사하면 더 좋지 않을까?
+<a href="https://github.com/okonet/lint-staged">lint-staged</a>는 변경된(스테이징된) 파일만 린트를 수행하는 도구다.</p>
+<p>패키지를 설치하고,</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm i -D lint-staged</code></pre></div>
+<p>패키지 파일에 설정을 추가한다.</p>
+<p>package.json:</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"lint-staged"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"*.js"</span><span class="token operator">:</span> <span class="token string">"eslint --fix"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>내용이 변경된 파일 중에 .js 확장자로 끝나는 파일만 린트로 코드 검사를 한다.</p>
+<p>pre-commit 훅도 아래처럼 변경한다.</p>
+<p>package.json:</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"husky"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"hooks"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"pre-commit"</span><span class="token operator">:</span> <span class="token string">"lint-staged"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>커밋 메세지 작성전에 lint-staged를 실행할 것이다.
+이제 커밋하면 모든 파일을 검사하는 것이 아니라 변경되거나 추가된 파일만 검사한다.
+커밋 과정이 훨씬 가벼워질 것이다.</p>
+<h3 id="42-에디터-확장도구" style="position:relative;"><a href="#42-%EC%97%90%EB%94%94%ED%84%B0-%ED%99%95%EC%9E%A5%EB%8F%84%EA%B5%AC" aria-label="42 에디터 확장도구 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.2 에디터 확장도구</h3>
+<p>코딩할때 실시간으로 검사하는 방법도 있다.
+vs-code의 eslint와 prettier 익스텐션이 그러한 기능을 제공한다.
+우리는 프리티어 규칙을 ESLint와 통합했기 때문에 ESLint 익스텐션을 사용해 보겠다.</p>
+<p>먼저 <a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint 익스텐션</a> 부터 설치해 보자.</p>
+<p><img src="/assets/imgs/2019/12/21/eslint-extention.jpg" alt="eslint 익스텐션 설치"></p>
+<p>설치를 마친 뒤 eslint를 활성화 설정을 추가한다.</p>
+<p>.vscode/settings.json:</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"eslint.enable"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>설치하면 자동으로 ESLint 설정파일을 읽고 파일을 검사한다.</p>
+<p><img src="/assets/imgs/2019/12/21/eslint-extention-result.jpg" alt="eslint 익스텐션 동작"></p>
+<p>툴팁 메뉴를 클릭해서 문제를 수정한다.</p>
+<p>에디터 설정중 저장시 액션을 추가할 수 있는데 ESLint로 코드를 정정할 수 있다.</p>
+<p>.vscode/settings.json:</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"editor.codeActionsOnSave"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"source.fixAll.eslint"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>이렇게 ESLint 익스텐션으로는 실시간 코드 품질 검사를 하고 저장시 자동 포메팅을 하도록 하면
+실시간으로 코드 품질을 검사하고 포맷도 일관적으로 유지할 수 있다.</p>
+<h2 id="5-정리" style="position:relative;"><a href="#5-%EC%A0%95%EB%A6%AC" aria-label="5 정리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5. 정리</h2>
+<p>읽기 좋은 코드는 유지보수 하기좋다. 그만큼 어플리케이션의 수명은 오래갈 수 있다.
+여럿이서 함께 일하는 환경에서 손으로 코드를 관리하는 것은 무척 번거럽고 어쩌면 불가능한 일일지도 모른다.
+규칙이 정해졌고 자동화할 수 있다면 도구의 도움을 받는 것이 현명하다.</p>
+<p>ESLint는 오류와 버그의 가능성을 찾아 코드 품질을 높이는 역할을 한다.
+프리티어는 코드를 일관적으로 포매팅하기 때문에 읽기 수월한 코드를 만들어 준다.
+이러한 도구를 개발 플로우의 적절한 시점에 통합하여 자동화하면 개발자는 좀 더 본질적인 코딩에 집중할 수 있을 것이다.</p></div><div class="mt-7"><span class="post-tags"><a class="btn btn-secondary" data-tag-name="lint" href="/tags/#lint">#<!-- -->lint</a> </span></div><div class="flex social-share-btns"><div class="mr-1"><button aria-label="twitter" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#00aced"></circle><path d="M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z" fill="white"></path></svg></button></div><div class="mr-1"><button aria-label="facebook" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#3b5998"></circle><path d="M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z" fill="white"></path></svg></button></div><div class="mr-1"><button aria-label="pocket" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#EF3F56"></circle><path d="M41.084 29.065l-7.528 7.882a2.104 2.104 0 0 1-1.521.666 2.106 2.106 0 0 1-1.522-.666l-7.528-7.882c-.876-.914-.902-2.43-.065-3.384.84-.955 2.228-.987 3.1-.072l6.015 6.286 6.022-6.286c.88-.918 2.263-.883 3.102.071.841.938.82 2.465-.06 3.383l-.015.002zm6.777-10.976C47.463 16.84 46.361 16 45.14 16H18.905c-1.2 0-2.289.82-2.716 2.044-.125.363-.189.743-.189 1.125v10.539l.112 2.096c.464 4.766 2.73 8.933 6.243 11.838.06.053.125.102.19.153l.04.033c1.882 1.499 3.986 2.514 6.259 3.014a14.662 14.662 0 0 0 6.13.052c.118-.042.235-.065.353-.087.03 0 .065-.022.098-.042a15.395 15.395 0 0 0 6.011-2.945l.039-.045.18-.153c3.502-2.902 5.765-7.072 6.248-11.852L48 29.674v-10.52c0-.366-.041-.728-.161-1.08l.022.015z" fill="white"></path></svg></button></div></div></main></div><footer class="post-footer footer-container py-10 mt-8"><div class="series-navigator px-2 pt-3 pb-2"><h3 class="series-title">프론트엔드 개발환경의 이해</h3><div class="post-list"><ul><li class=""><a href="/series/2019/12/09/frontend-dev-env-npm.html">프론트엔드 개발환경의 이해: NPM</a></li><li class=""><a href="/series/2019/12/10/frontend-dev-env-webpack-basic.html">프론트엔드 개발환경의 이해: 웹팩(기본)</a></li><li class=""><a href="/series/2019/12/22/frontend-dev-env-babel.html">프론트엔드 개발환경의 이해: Babel</a></li><li class="active"><div class="active">프론트엔드 개발환경의 이해: 린트</div></li><li class=""><a href="/series/2020/01/02/frontend-dev-env-webpack-intermediate.html">프론트엔드 개발환경의 이해: 웹팩(심화)</a></li></ul></div></div><div id="disqus_thread"></div></footer></article></main><footer class="site-footer mb-0 py-5"><ul class="footer-navs  mb-4"><li class="mr-3"><a href="/category/">POSTS</a></li><li class="mr-3"><a href="/#videos">VIDEOS</a></li><li><a href="/tags/">TAGS</a></li></ul><ul class="mb-10"><li class="mr-2"><a class="icon icon-5x icon-rss" title="rss" href="/feed.xml"></a></li><li class="mr-2"><a class="icon icon-5x icon-email" href="mailto:ej88ej@gmail.com" title="email"></a></li><li><a href="https://github.com/jeonghwan-kim" class="icon icon-5x icon-github" title="github"></a></li></ul><div class="footer-copyright"><div class="mr-1">© <!-- -->김정환<!-- --> <!-- -->2020</div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/series/2019/12/30/frontend-dev-env-lint.html";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-7e7fd85447226af9207b.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-5ddcf91263ffd8eeacf3.js"],"component---src-pages-category-dev-tsx":["/component---src-pages-category-dev-tsx-6634212b9390a2b3c6f6.js"],"component---src-pages-category-index-tsx":["/component---src-pages-category-index-tsx-c56fee75faaf89a0586f.js"],"component---src-pages-category-series-tsx":["/component---src-pages-category-series-tsx-97974f1913329643941b.js"],"component---src-pages-category-think-tsx":["/component---src-pages-category-think-tsx-ee9a2f0e88fcba46e57f.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-9494a8ff990a959207d8.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-a9b4e14db30ca6f5a93f.js"],"component---src-templates-blog-post-index-tsx":["/component---src-templates-blog-post-index-tsx-c9526f1df2fcd6ef9a12.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-index-tsx-c9526f1df2fcd6ef9a12.js" async=""></script><script src="/commons-a0a7d383b72c92281b17.js" async=""></script><script src="/styles-89fd2ae28bdf06750a71.js" async=""></script><script src="/app-7e7fd85447226af9207b.js" async=""></script><script src="/framework-f600a0dcdbbe2ab3be17.js" async=""></script><script src="/webpack-runtime-ce4be6f530f27c0f2791.js" async=""></script></body></html>

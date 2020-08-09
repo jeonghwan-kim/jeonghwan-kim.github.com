@@ -1,0 +1,689 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.7bc9be3405e7931bfbf7.css">code[class*=language-],pre[class*=language-]{color:#000;background:none;text-shadow:0 1px #fff;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.site-header{height:80px;background-color:#313d4b;border-bottom:4px solid darnken(#00c07f,30%)}.site-header a{color:#f9f8fd;text-decoration:none}.site-header .site-title{margin:0;font-size:24px;font-weight:lighter}.site-header .site-title .site-logo{display:inline-block;width:100%;height:28px;line-height:28px;font-weight:700;text-decoration:none}.site-header .site-navs ul{position:relative;list-style:none;padding-left:0;margin:0;font-size:16px}@media (max-width:767px){.icon-article,.icon-tag,.icon-video{width:32px;height:32px}}li.site-nav{margin-right:8px}li.site-nav a{padding:8px 4px;-webkit-appearance:none;-moz-appearance:none;appearance:none;background:transparent;border:none;color:#fff}li.site-nav a:focus,li.site-nav a:hover{cursor:pointer}li.site-nav:last-child{margin-right:0}@media (max-width:767px){li.site-nav .nav-title{display:none}}.backdrop{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:9999;display:flex;align-items:center;justify-content:center;animation:backdropFadeIn .3s forwards}.backdrop.hide{animation:backdropFadeOut .3s forwards}.backdrop .modal{background:#fff;min-width:300px;box-shadow:0 4px -1px rgba(0,0,0,.9);animation:modalFadeIn .3s forwards}.backdrop .modal.hide{animation:modalFadeOut .3s forwards}@keyframes modalFadeIn{0%{opacity:0;transform:scale(.98)}50%{transform:scale(1.02)}to{opacity:1;transform:none}}@keyframes modalFadeOut{0%{opacity:1;transform:none}30%{opacity:.3;transform:scale(1.05)}to{opacity:0;transform:scale(1.2)}}@keyframes backdropFadeOut{0%{opacity:1%}to{opacity:0}}.category-select-modal ul{margin:0;padding:0;list-style:none}.category-select-modal ul li a{text-decoration:none;text-align:center;display:block;padding:16px 24px;color:#3d3d3f;border-bottom:1px solid #e7e9ee}.category-select-modal ul li a:focus,.category-select-modal ul li a:hover{background:rgba(0,0,0,.1)}.site-footer{background-color:#313d4b;text-align:center}.site-footer ul{list-style:none;padding:0}.site-footer ul li{display:inline-block}.site-footer .footer-desc{display:inline-block;max-width:500px;margin-left:auto;margin-right:auto;color:#d7d0f2}.site-footer .footer-navs{font-size:18px}.site-footer .footer-navs a{color:#f9f8fd;text-decoration:none}.site-footer .footer-copyright{font-size:14px;color:hsla(0,0%,100%,.7);display:inline-flex;align-items:center}
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}[hidden],template{display:none}*{box-sizing:border-box}body{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;min-width:320px}a,body{color:#3d3d3f}.container{max-width:1024px;min-width:320px;margin-left:auto;margin-right:auto;padding:0 8px;height:100%}.flex{display:flex;align-items:center}.flex-1{flex:1 1;overflow:auto}.flex-0{flex:0 1;overflow:auto}.align-left{text-align:left}.align-right{text-align:right}.pt-0{padding-top:0}.pr-0{padding-right:0}.pb-0{padding-bottom:0}.pl-0,.px-0{padding-left:0}.px-0{padding-right:0}.py-0{padding-top:0;padding-bottom:0}.pt-1{padding-top:8px}.pr-1{padding-right:8px}.pb-1{padding-bottom:8px}.pl-1,.px-1{padding-left:8px}.px-1{padding-right:8px}.py-1{padding-top:8px;padding-bottom:8px}.pt-2{padding-top:16px}.pr-2{padding-right:16px}.pb-2{padding-bottom:16px}.pl-2,.px-2{padding-left:16px}.px-2{padding-right:16px}.py-2{padding-top:16px;padding-bottom:16px}.pt-3{padding-top:24px}.pr-3{padding-right:24px}.pb-3{padding-bottom:24px}.pl-3,.px-3{padding-left:24px}.px-3{padding-right:24px}.py-3{padding-top:24px;padding-bottom:24px}.pt-4{padding-top:32px}.pr-4{padding-right:32px}.pb-4{padding-bottom:32px}.pl-4,.px-4{padding-left:32px}.px-4{padding-right:32px}.py-4{padding-top:32px;padding-bottom:32px}.pt-5{padding-top:40px}.pr-5{padding-right:40px}.pb-5{padding-bottom:40px}.pl-5,.px-5{padding-left:40px}.px-5{padding-right:40px}.py-5{padding-top:40px;padding-bottom:40px}.pt-6{padding-top:48px}.pr-6{padding-right:48px}.pb-6{padding-bottom:48px}.pl-6,.px-6{padding-left:48px}.px-6{padding-right:48px}.py-6{padding-top:48px;padding-bottom:48px}.pt-7{padding-top:56px}.pr-7{padding-right:56px}.pb-7{padding-bottom:56px}.pl-7,.px-7{padding-left:56px}.px-7{padding-right:56px}.py-7{padding-top:56px;padding-bottom:56px}.pt-8{padding-top:64px}.pr-8{padding-right:64px}.pb-8{padding-bottom:64px}.pl-8,.px-8{padding-left:64px}.px-8{padding-right:64px}.py-8{padding-top:64px;padding-bottom:64px}.pt-9{padding-top:72px}.pr-9{padding-right:72px}.pb-9{padding-bottom:72px}.pl-9,.px-9{padding-left:72px}.px-9{padding-right:72px}.py-9{padding-top:72px;padding-bottom:72px}.pt-10{padding-top:80px}.pr-10{padding-right:80px}.pb-10{padding-bottom:80px}.pl-10,.px-10{padding-left:80px}.px-10{padding-right:80px}.py-10{padding-top:80px;padding-bottom:80px}.pt-11{padding-top:88px}.pr-11{padding-right:88px}.pb-11{padding-bottom:88px}.pl-11,.px-11{padding-left:88px}.px-11{padding-right:88px}.py-11{padding-top:88px;padding-bottom:88px}.pt-12{padding-top:96px}.pr-12{padding-right:96px}.pb-12{padding-bottom:96px}.pl-12,.px-12{padding-left:96px}.px-12{padding-right:96px}.py-12{padding-top:96px;padding-bottom:96px}.pt-13{padding-top:104px}.pr-13{padding-right:104px}.pb-13{padding-bottom:104px}.pl-13,.px-13{padding-left:104px}.px-13{padding-right:104px}.py-13{padding-top:104px;padding-bottom:104px}.pt-14{padding-top:112px}.pr-14{padding-right:112px}.pb-14{padding-bottom:112px}.pl-14,.px-14{padding-left:112px}.px-14{padding-right:112px}.py-14{padding-top:112px;padding-bottom:112px}.pt-15{padding-top:120px}.pr-15{padding-right:120px}.pb-15{padding-bottom:120px}.pl-15,.px-15{padding-left:120px}.px-15{padding-right:120px}.py-15{padding-top:120px;padding-bottom:120px}.pt-16{padding-top:128px}.pr-16{padding-right:128px}.pb-16{padding-bottom:128px}.pl-16,.px-16{padding-left:128px}.px-16{padding-right:128px}.py-16{padding-top:128px;padding-bottom:128px}.pt-17{padding-top:136px}.pr-17{padding-right:136px}.pb-17{padding-bottom:136px}.pl-17,.px-17{padding-left:136px}.px-17{padding-right:136px}.py-17{padding-top:136px;padding-bottom:136px}.pt-18{padding-top:144px}.pr-18{padding-right:144px}.pb-18{padding-bottom:144px}.pl-18,.px-18{padding-left:144px}.px-18{padding-right:144px}.py-18{padding-top:144px;padding-bottom:144px}.pt-19{padding-top:152px}.pr-19{padding-right:152px}.pb-19{padding-bottom:152px}.pl-19,.px-19{padding-left:152px}.px-19{padding-right:152px}.py-19{padding-top:152px;padding-bottom:152px}.pt-20{padding-top:160px}.pr-20{padding-right:160px}.pb-20{padding-bottom:160px}.pl-20,.px-20{padding-left:160px}.px-20{padding-right:160px}.py-20{padding-top:160px;padding-bottom:160px}.mt-0{margin-top:0}.mr-0{margin-right:0}.mb-0{margin-bottom:0}.ml-0,.mx-0{margin-left:0}.mx-0{margin-right:0}.my-0{margin-top:0;margin-bottom:0}.mt-1{margin-top:8px}.mr-1{margin-right:8px}.mb-1{margin-bottom:8px}.ml-1,.mx-1{margin-left:8px}.mx-1{margin-right:8px}.my-1{margin-top:8px;margin-bottom:8px}.mt-2{margin-top:16px}.mr-2{margin-right:16px}.mb-2{margin-bottom:16px}.ml-2,.mx-2{margin-left:16px}.mx-2{margin-right:16px}.my-2{margin-top:16px;margin-bottom:16px}.mt-3{margin-top:24px}.mr-3{margin-right:24px}.mb-3{margin-bottom:24px}.ml-3,.mx-3{margin-left:24px}.mx-3{margin-right:24px}.my-3{margin-top:24px;margin-bottom:24px}.mt-4{margin-top:32px}.mr-4{margin-right:32px}.mb-4{margin-bottom:32px}.ml-4,.mx-4{margin-left:32px}.mx-4{margin-right:32px}.my-4{margin-top:32px;margin-bottom:32px}.mt-5{margin-top:40px}.mr-5{margin-right:40px}.mb-5{margin-bottom:40px}.ml-5,.mx-5{margin-left:40px}.mx-5{margin-right:40px}.my-5{margin-top:40px;margin-bottom:40px}.mt-6{margin-top:48px}.mr-6{margin-right:48px}.mb-6{margin-bottom:48px}.ml-6,.mx-6{margin-left:48px}.mx-6{margin-right:48px}.my-6{margin-top:48px;margin-bottom:48px}.mt-7{margin-top:56px}.mr-7{margin-right:56px}.mb-7{margin-bottom:56px}.ml-7,.mx-7{margin-left:56px}.mx-7{margin-right:56px}.my-7{margin-top:56px;margin-bottom:56px}.mt-8{margin-top:64px}.mr-8{margin-right:64px}.mb-8{margin-bottom:64px}.ml-8,.mx-8{margin-left:64px}.mx-8{margin-right:64px}.my-8{margin-top:64px;margin-bottom:64px}.mt-9{margin-top:72px}.mr-9{margin-right:72px}.mb-9{margin-bottom:72px}.ml-9,.mx-9{margin-left:72px}.mx-9{margin-right:72px}.my-9{margin-top:72px;margin-bottom:72px}.mt-10{margin-top:80px}.mr-10{margin-right:80px}.mb-10{margin-bottom:80px}.ml-10,.mx-10{margin-left:80px}.mx-10{margin-right:80px}.my-10{margin-top:80px;margin-bottom:80px}.mt-11{margin-top:88px}.mr-11{margin-right:88px}.mb-11{margin-bottom:88px}.ml-11,.mx-11{margin-left:88px}.mx-11{margin-right:88px}.my-11{margin-top:88px;margin-bottom:88px}.mt-12{margin-top:96px}.mr-12{margin-right:96px}.mb-12{margin-bottom:96px}.ml-12,.mx-12{margin-left:96px}.mx-12{margin-right:96px}.my-12{margin-top:96px;margin-bottom:96px}.mt-13{margin-top:104px}.mr-13{margin-right:104px}.mb-13{margin-bottom:104px}.ml-13,.mx-13{margin-left:104px}.mx-13{margin-right:104px}.my-13{margin-top:104px;margin-bottom:104px}.mt-14{margin-top:112px}.mr-14{margin-right:112px}.mb-14{margin-bottom:112px}.ml-14,.mx-14{margin-left:112px}.mx-14{margin-right:112px}.my-14{margin-top:112px;margin-bottom:112px}.mt-15{margin-top:120px}.mr-15{margin-right:120px}.mb-15{margin-bottom:120px}.ml-15,.mx-15{margin-left:120px}.mx-15{margin-right:120px}.my-15{margin-top:120px;margin-bottom:120px}.mt-16{margin-top:128px}.mr-16{margin-right:128px}.mb-16{margin-bottom:128px}.ml-16,.mx-16{margin-left:128px}.mx-16{margin-right:128px}.my-16{margin-top:128px;margin-bottom:128px}.mt-17{margin-top:136px}.mr-17{margin-right:136px}.mb-17{margin-bottom:136px}.ml-17,.mx-17{margin-left:136px}.mx-17{margin-right:136px}.my-17{margin-top:136px;margin-bottom:136px}.mt-18{margin-top:144px}.mr-18{margin-right:144px}.mb-18{margin-bottom:144px}.ml-18,.mx-18{margin-left:144px}.mx-18{margin-right:144px}.my-18{margin-top:144px;margin-bottom:144px}.mt-19{margin-top:152px}.mr-19{margin-right:152px}.mb-19{margin-bottom:152px}.ml-19,.mx-19{margin-left:152px}.mx-19{margin-right:152px}.my-19{margin-top:152px;margin-bottom:152px}.mt-20{margin-top:160px}.mr-20{margin-right:160px}.mb-20{margin-bottom:160px}.ml-20,.mx-20{margin-left:160px}.mx-20{margin-right:160px}.my-20{margin-top:160px;margin-bottom:160px}.icon{display:inline-block;width:24px;height:24px;background-repeat:no-repeat;background-position-x:0;background-position-y:0;background-size:contain}.icon-1x{width:8px;height:8px}.icon-2x{width:16px;height:16px}.icon-3x{width:24px;height:24px}.icon-4x{width:32px;height:32px}.icon-5x{width:40px;height:40px}.icon-6x{width:48px;height:48px}.icon-7x{width:56px;height:56px}.icon-8x{width:64px;height:64px}.icon-9x{width:72px;height:72px}.icon-rss{background-image:url(/assets/imgs/icons/icon-rss.png)}.icon-github{background-image:url(/assets/imgs/icons/icon-github.png)}.icon-email{background-image:url(/assets/imgs/icons/icon-email.png)}.icon-article{background-image:url(/assets/imgs/icons/icon-article.png)}.icon-video{background-image:url(/assets/imgs/icons/icon-video.png)}.icon-tag{background-image:url(/assets/imgs/icons/icon-tag.png)}.btn{display:inline-block;padding:8px 16px;border-radius:4px;background-color:#f9f8fd;text-decoration:none;color:#3d3d3f;border:1px solid #3d3d3f}.btn-primary{color:#cd5554;border-color:#cd5554}.btn-primary:focus,.btn-primary:hover{background-color:#cd5554!important;color:#f9f8fd!important}.btn-secondary{color:#91684a;border-color:#91684a}.btn-secondary:focus,.btn-secondary:hover{background-color:#91684a!important;color:#f9f8fd!important}.btn-text{border:none;background:none;padding:0}.hidden{display:none}.post-meta .date{color:#a3a3a5}.gatsby-highlight{font-size:14px;line-height:1.5em}.category{max-width:800px}.post-list{list-style:none;padding:0}.post-list .post-item{text-decoration:none;display:block}.post-list .post-item .post-item-title{color:#cd5554}.post-list .post-item .post-summary{color:#3d3d3f;line-height:1.5em}@media (max-width:320px){.post-list .post-item .post-summary{display:none}}.home{padding-top:48px}@media (max-width:768px){.home{padding-top:0}}.home section{padding-bottom:96px}.home section .section-inner{max-width:800px}.home section .section-inner .section-title a{text-decoration:none}.tag-page .tag-item .tag-title-link{text-decoration:none;color:#cd5554;font-family:SF Mono,Menlo,Courier,Lucida Console,monospace}.tag-page .tag-item ul.post-list{padding-left:20px}.tag-page .tag-item ul.post-list li.post-item{margin-bottom:8px}.tag-page .tag-item ul.post-list li.post-item a.post-title{text-decoration:none;color:#3d3d3f}.tag-page .tag-item ul.post-list li.post-item a.post-title:focus,.tag-page .tag-item ul.post-list li.post-item a.post-title:hover{text-decoration:underline}.post-toc{border-left:2px solid #e7e9ee}.post-toc ul{padding-left:16px;list-style:none;margin:0}.post-toc ul li{margin-bottom:4px}.post-toc ul li p{margin:0}.post-toc ul li a{text-decoration:none;color:#a3a3a5;font-size:14px}.post-toc ul li a:focus,.post-toc ul li a:hover{color:#3d3d3f}.post-toc ul li a.active{color:#313d4b}.post-video a{display:block;position:relative;overflow:hidden}.post-video a img{width:100%;transition:all .3s ease}.post-video a:hover img{transform:scale(1.2)}.post-video a .post-video-overlay{position:absolute;top:0;right:0;bottom:0;left:0;display:flex;flex-direction:column}.post-video a .post-video-overlay .video-icon-wrapper{flex:1 1;display:flex;align-items:center;justify-content:center}.post-video a .post-video-overlay .video-icon-wrapper .video-icon{background:url(/assets/imgs/icons/icon-video-2.png) no-repeat;background-position:50%;background-size:50px 50px;opacity:.7;width:100px;height:100px;border-radius:50%;background-color:rgba(0,0,0,.3)}.post-video a .post-video-overlay .post-video-title{background:rgba(0,0,0,.3);color:#fff;padding:8px;text-align:center;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:14px}.series-nav{border-left:2px solid #e7e9ee}.series-nav .series-title{font-weight:700}.series-nav .series-title:before{content:"\C5F0\C7AC\BB3C";display:block;font-size:14px;color:#a3a3a5;font-weight:400}.series-nav .series-order .active{font-weight:700}.series-nav .next,.series-nav .prev{display:inline-block;flex:1 0 50%}.series-nav a{color:#91684a;text-decoration:none}.series-navigator{border-top:2px solid #e7e9ee;border-bottom:2px solid #e7e9ee}.series-navigator .flex{flex-flow:row}.series-navigator .controls{flex:0 0 100px;text-align:right}.series-navigator .controls a{text-decoration:none}.series-navigator .series-title{margin-top:8px}.series-navigator .series-title:before{content:"\C774   \C5F0\C7AC\BB3C   \B354\BCF4\AE30";display:block;font-size:14px;color:#a3a3a5;font-weight:400}.series-navigator .post-list{line-height:1.5em}.series-navigator .post-list a{display:inline-block;width:100%;text-decoration:none}.series-navigator .post-list a:focus,.series-navigator .post-list a:hover{text-decoration:underline}.series-navigator .post-list li{list-style:circle}.series-navigator .post-list li.active{list-style:unset;font-weight:700}.post{padding-top:160px}@media (max-width:768px){.post{padding-top:80px}}@media (max-width:320px){.post{padding-top:40px}}.post>.flex{align-items:flex-start}.post>.flex .post-aside{order:1}.post>.flex .post-container{order:0}.post .post-aside{flex:0 0 250px;position:-webkit-sticky;position:sticky;max-height:100vh;overflow-y:scroll;top:8px;margin-left:32px;padding-bottom:8px}@media (max-width:1023px){.post .post-aside{display:none}}.post .footer-container,.post .post-container{max-width:800px;margin-left:auto;margin-right:auto}.post .post-container{overflow-x:hidden}.post .post-header .post-title{color:#3d3d3f;font-size:42px}.post .post-header .post-meta .date{color:#a3a3a5}.post .post-content{font-size:18px;line-height:1.5em;font-family:Helvetica Neue,Helvetica,Arial,sans-serif}.post .post-content h1{font-size:200%;padding-top:20px}.post .post-content h2{font-size:180%;padding-top:18px}.post .post-content h3{font-size:160%;padding-top:16px}.post .post-content h4{font-size:140%;padding-top:14px}.post .post-content h5{font-size:120%;padding-top:12px}.post .post-content h1,.post .post-content h2,.post .post-content h3,.post .post-content h4,.post .post-content h5,.post .post-content h6{color:#cd5554;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;line-height:1em}.post .post-content img{border-radius:4px;display:block;margin:16px auto;max-width:93%;transition:transform .3s ease}.post .post-content img:hover{transform:scale(1.03)}.post .post-content blockquote{color:#6f6f73;position:relative}.post .post-content blockquote:before{content:"\201C";position:absolute;left:-24px;font-size:40px;color:#d6d6d8}.post .post-content .highlight{border-radius:4px;overflow-x:scroll}.post .post-content pre.highlight{padding:16px 24px;margin:0}.post .social-share-btns{align-items:flex-start;min-height:50px;box-sizing:content-box;padding-top:64px}</style><meta name="generator" content="Gatsby 2.23.12"/><title data-react-helmet="true">프론트엔드 개발환경의 이해: 웹팩(기본) | 김정환 블로그</title><meta data-react-helmet="true" name="description" content="주로 웹 기술에 대해 이야기 합니다"/><meta data-react-helmet="true" property="og:title" content="프론트엔드 개발환경의 이해: 웹팩(기본)"/><meta data-react-helmet="true" property="og:description" content="주로 웹 기술에 대해 이야기 합니다"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="김정환"/><meta data-react-helmet="true" name="twitter:title" content="프론트엔드 개발환경의 이해: 웹팩(기본)"/><meta data-react-helmet="true" name="twitter:description" content="주로 웹 기술에 대해 이야기 합니다"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="icon" href="/favicon-32x32.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#663399"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link as="script" rel="preload" href="/webpack-runtime-ce4be6f530f27c0f2791.js"/><link as="script" rel="preload" href="/framework-f600a0dcdbbe2ab3be17.js"/><link as="script" rel="preload" href="/app-7e7fd85447226af9207b.js"/><link as="script" rel="preload" href="/styles-89fd2ae28bdf06750a71.js"/><link as="script" rel="preload" href="/commons-a0a7d383b72c92281b17.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-index-tsx-c9526f1df2fcd6ef9a12.js"/><link as="fetch" rel="preload" href="/page-data/series/2019/12/10/frontend-dev-env-webpack-basic.html/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="site-header"><div class="flex container"><h1 class="flex-1 site-title"><a class="site-logo" href="/">김정환 블로그</a></h1><nav class="site-navs"><ul class="flex ml-1"><li class="site-nav"><a class="flex" href="/series/2019/12/10/frontend-dev-env-webpack-basic.html/#"><i class="icon icon-3x icon-article"></i><span class="nav-title">POSTS</span></a></li><li class="site-nav"><a class="flex" href="/#videos"><i class="icon icon-3x icon-video"></i><span class="nav-title">VIDEOS</span></a></li><li class="site-nav"><a class="flex" href="/tags/"><i class="icon icon-3x icon-tag"></i><span class="nav-title">TAGS</span></a></li></ul></nav></div></header><main><article id="post" class="post container" itemscope="" itemType="http://schema.org/BlogPosting"><div class="flex"><aside class="post-aside"><div class="post-toc"><ul>
+<li>
+<p><a href="#1-%EB%B0%B0%EA%B2%BD">1. 배경</a></p>
+<ul>
+<li><a href="#11-iife-%EB%B0%A9%EC%8B%9D%EC%9D%98-%EB%AA%A8%EB%93%88">1.1 IIFE 방식의 모듈</a></li>
+<li><a href="#12-%EB%8B%A4%EC%96%91%ED%95%9C-%EB%AA%A8%EB%93%88-%EC%8A%A4%ED%8E%99">1.2 다양한 모듈 스펙</a></li>
+<li><a href="#13-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%B8%EC%9D%98-%EB%AA%A8%EB%93%88-%EC%A7%80%EC%9B%90">1.3 브라우져의 모듈 지원</a></li>
+</ul>
+</li>
+<li><a href="#2-%EC%97%94%ED%8A%B8%EB%A6%AC%EC%95%84%EC%9B%83%ED%92%8B">2. 엔트리/아웃풋</a></li>
+<li>
+<p><a href="#3-%EB%A1%9C%EB%8D%94">3. 로더</a></p>
+<ul>
+<li><a href="#31-%EB%A1%9C%EB%8D%94%EC%9D%98-%EC%97%AD%ED%95%A0">3.1 로더의 역할</a></li>
+<li><a href="#32-%EC%BB%A4%EC%8A%A4%ED%85%80-%EB%A1%9C%EB%8D%94-%EB%A7%8C%EB%93%A4%EA%B8%B0">3.2 커스텀 로더 만들기</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#4-%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%A1%9C%EB%8D%94">4. 자주 사용하는 로더</a></p>
+<ul>
+<li><a href="#41-css-loader">4.1 css-loader</a></li>
+<li><a href="#42-style-loader">4.2 style-loader</a></li>
+<li><a href="#43-file-loader">4.3 file-loader</a></li>
+<li><a href="#44-url-loader">4.4 url-loader</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#5-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8">5. 플러그인</a></p>
+<ul>
+<li><a href="#51-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%9D%98-%EC%97%AD%ED%95%A0">5.1 플러그인의 역할</a></li>
+<li><a href="#52-%EC%BB%A4%EC%8A%A4%ED%85%80-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0">5.2 커스텀 플러그인 만들기</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#6-%08%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8">6. 자주 사용하는 플러그인</a></p>
+<ul>
+<li><a href="#61-bannerplugin">6.1 BannerPlugin</a></li>
+<li><a href="#62-defineplugin">6.2 DefinePlugin</a></li>
+<li><a href="#63-htmlwebpackplugin">6.3 HtmlWebpackPlugin</a></li>
+<li><a href="#64-cleanwebpackplugin">6.4 CleanWebpackPlugin</a></li>
+<li><a href="#65-minicssextractplugin">6.5 MiniCssExtractPlugin</a></li>
+</ul>
+</li>
+<li><a href="#7-%EC%A0%95%EB%A6%AC">7. 정리</a></li>
+</ul></div><div class="series-nav mb-2 py-3 px-2"><div class="mb-1"><span class="series-title">프론트엔드 개발환경의 이해</span><span class="series-order">(<span class="active">2</span>/<!-- -->5<!-- -->)</span></div><div class="series-controls flex"><span class="prev align-left"><a class="btn btn-secondary" href="/series/2019/12/09/frontend-dev-env-npm.html">« 이전</a></span><span class="next align-right"><a class="btn btn-secondary" href="/series/2019/12/22/frontend-dev-env-babel.html">다음 »</a></span></div></div><div class="post-video"><a id="post-video" href="https://www.inflearn.com/course/프론트엔드-개발환경"><img src="https://cdn.inflearn.com/public/courses/324671/course_cover/638eee1a-6381-402d-a17b-3724751414f1/frontend-env-eng.png"/><div class="post-video-overlay"><div class="video-icon-wrapper"><div class="video-icon"></div></div><div class="post-video-title">프론트엔드 개발환경의 이해와 실습<!-- --> »</div></div></a></div></aside><main class="post-container flex-1"><header class="mb-7 post-header"><h1 class="mt-0 mb-1 post-title" itemProp="name headline">프론트엔드 개발환경의 이해: 웹팩(기본)</h1><div class="post-meta"><time class="date" itemProp="datePublished" dateTime="2019년 12월 10일">2019년 12월 10일</time></div></header><div class="post-content" itemProp="articleBody"><h1 id="1-배경" style="position:relative;"><a href="#1-%EB%B0%B0%EA%B2%BD" aria-label="1 배경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. 배경</h1>
+<p>먼저 모듈에 대해 이야기 해보자.
+문법 수준에서 모듈을 지원하기 시작한 것은 ES2015부터다.
+import/export 구문이 없었던 모듈 이전 상황을 살펴보는 것이 웹팩 등장 배경을 설명하는데 수월할 것 같다.</p>
+<p>아래 덧셈 함수를 보자.</p>
+<p>math.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">// 전역 공간에 sum이 노출</span></code></pre></div>
+<p>app.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span></code></pre></div>
+<p>위 코드는 모두 하나의 HTML 파일 안에서 로딩해야만 실행된다.
+math.js가 로딩되면 app.js는 이름 공간에서 'sum'을 찾은 뒤 이 함수를 실행한다.
+문제는 'sum'이 전역 공간에 노출된다는 것.
+다른 파일에서도 'sum'이란 이름을 사용한다면 충돌한다.</p>
+<h2 id="11-iife-방식의-모듈" style="position:relative;"><a href="#11-iife-%EB%B0%A9%EC%8B%9D%EC%9D%98-%EB%AA%A8%EB%93%88" aria-label="11 iife 방식의 모듈 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.1 IIFE 방식의 모듈</h2>
+<p>이러한 문제를 예방하기 위해 스코프를 사용한다.
+함수 스코프를 만들어 외부에서 안으로 접근하지 못하도록 공간을 격리하는 것이다.
+스코프 안에서는 자신만의 이름 공간이 존재하므로 스코프 외부와 이름 충돌을 막을 수 있다.</p>
+<p>math.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">var</span> math <span class="token operator">=</span> math <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// math 네임스페이스</span>
+
+<span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+  math<span class="token punctuation">.</span>sum <span class="token operator">=</span> sum<span class="token punctuation">;</span> <span class="token comment">// 네이스페이스에 추가</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>같은 코드를 즉시실행함수로 감쌌기 때문에 다른 파일에서 이 안으로 접근할 수가 없다.
+심지어 같은 파일일지라도 말이다.
+자바스크립트 함수 스코프의 특징이다.
+'sum'이란 이름은 즉시실행함수 안에 감추어졌기 때문에 외부에서는 같은 이름을 사용해도 괜찮다.
+전역에 등록한 'math'라는 이름 공간만 잘 활용하면 된다.</p>
+<h2 id="12-다양한-모듈-스펙" style="position:relative;"><a href="#12-%EB%8B%A4%EC%96%91%ED%95%9C-%EB%AA%A8%EB%93%88-%EC%8A%A4%ED%8E%99" aria-label="12 다양한 모듈 스펙 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.2 다양한 모듈 스펙</h2>
+<p>이러한 방식으로 자바스크립트 모듈을 구현하는 대표적인 명세가 AMD와 CommonJS다.</p>
+<p><strong><a href="http://www.commonjs.org/">CommonJS</a></strong>는 자바스크립트를 사용하는 모든 환경에서 모듈을 하는 것이 목표다.
+exports 키워드로 모듈을 만들고 require() 함수로 불러 들이는 방식이다.
+대표적으로 서버 사이드 플래폼인 Node.js에서 이를 사용한다.</p>
+<p>math.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">exports <span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre></div>
+<p>app.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> math <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./math.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+math<span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span></code></pre></div>
+<p><strong><a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD</a></strong>(Asynchronous Module Definition)는 비동기로 로딩되는 환경에서 모듈을 사용하는 것이 목표다.
+주로 브라우져 환경이다.</p>
+<p><strong><a href="https://github.com/umdjs/umd">UMD</a></strong>(Universal Module Definition)는 AMD기반으로 CommonJS 방식까지 지원하는 통합 형태다.</p>
+<p>이렇게 각 커뮤니티에서 각자의 스펙을 제안하다가 <strong><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">ES2015에서 표준 모듈 시스템</a></strong>을 내 놓았다.
+지금은 바벨과 웹팩을 이용해 모듈 시스템을 사용하는 것이 일반적이다.
+ES2015 모듈 시스템의 모습을 살펴보자.</p>
+<p>math.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre></div>
+<p>app.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> math <span class="token keyword">from</span> <span class="token string">'./math.js'</span><span class="token punctuation">;</span>
+math<span class="token punctuation">.</span><span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 3</span></code></pre></div>
+<p><code class="language-text">export</code> 구문으로 모듈을 만들고 <code class="language-text">import</code> 구문으로 가져올 수 있다.</p>
+<h2 id="13-브라우져의-모듈-지원" style="position:relative;"><a href="#13-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%B8%EC%9D%98-%EB%AA%A8%EB%93%88-%EC%A7%80%EC%9B%90" aria-label="13 브라우져의 모듈 지원 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1.3 브라우져의 모듈 지원</h2>
+<p>안타깝게도 모든 브라우져에서 모듈 시스템을 지원하지는 않는다.
+인터넷 익스플로러를 포함한 몇 몇 브라우져에서는 여전히 모듈을 사용하지 못한다.
+가장 많이 사용하는 크롬 브라우져만 잠시 살펴보자.
+(<a href="https://developers.google.com/web/updates/2017/09/nic61#modules">버전 61부터 모듈시스템을 지원</a> 한다)</p>
+<p>index.html:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
+<p><code class="language-text">&lt;script&gt;</code> 태그로 로딩할 때 <code class="language-text">type=&quot;text/javascript&quot;</code> 대신 <code class="language-text">type=&quot;module&quot;</code>을 사용한다.
+app.js는 모듈을 사용할 수 있다.</p>
+<p>그러나 브라우져에 무관하게 모듈을 사용하고 싶은데...... 이제야 웹팩이 나올 차례다.</p>
+<h1 id="2-엔트리아웃풋" style="position:relative;"><a href="#2-%EC%97%94%ED%8A%B8%EB%A6%AC%EC%95%84%EC%9B%83%ED%92%8B" aria-label="2 엔트리아웃풋 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. 엔트리/아웃풋</h1>
+<p><a href="https://webpack.js.org/">웹팩</a>은 여러개 파일을 하나의 파일로 합쳐주는 번들러(bundler)다.
+하나의 시작점(entry point)으로부터 의존적인 모듈을 전부 찾아내서 하나의 결과물을 만들어 낸다.
+app.js부터 시작해 math.js 파일을 찾은 뒤 하나의 파일로 만드는 방식이다.</p>
+<p>간단히 웹팩으로 번들링 작업을 해보자.</p>
+<p>번들 작업을 하는 <a href="https://github.com/webpack/webpack">webpack</a> 패키지와 웹팩 터미널 도구인 <a href="https://github.com/webpack/webpack-cli">webpack-cli</a>를 설치한다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install -D webpack webpack-cli</code></pre></div>
+<p>설치 완료하면 <code class="language-text">node_modules/.bin</code> 폴더에 실행 가능한 명령어가 몇 개 생긴다.
+webpack과 webpack-cli가 있는데 둘 중 하나를 실행하면 된다.
+<code class="language-text">--help</code> 옵션으로 사용 방법을 확인해 보자.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ node_modules/.bin/webpack --help
+
+  --mode                 Enable production optimizations or development hints.
+                                     [선택: &quot;development&quot;, &quot;production&quot;, &quot;none&quot;]
+  --entry      The entry point(s) of the compilation.                   [문자열]
+  --output, -o                  The output path and file for compilation assets</code></pre></div>
+<p><code class="language-text">--mode</code>, <code class="language-text">--entry</code>, <code class="language-text">--output</code> 세 개 옵션만 사용하면 코드를 묶을 수 있다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ node_modules/.bin/webpack --mode development --entry ./src/app.js --output dist/main.js</code></pre></div>
+<ul>
+<li><code class="language-text">--mode</code>는 웹팩 실행 모드는 의미하는데 개발 버전인 development를 지정한다</li>
+<li><code class="language-text">--entry</code>는 시작점 경로를 지정하는 옵션이다</li>
+<li><code class="language-text">--output</code>은 번들링 결과물을 위치할 경로다</li>
+</ul>
+<p>위 명령어를 실행하면 dist/main.js에 번들된 결과가 저장된다.</p>
+<p><img src="/assets/imgs/2019/12/11/webpack-bundle-result.jpg" alt="웹팩 번들 결과"></p>
+<p>이 코드를 index.html에 로딩하면 번들링 전과 똑같은 결과를 만든다.</p>
+<p>index.html:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dist/main.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
+<p>옵션 중 <code class="language-text">--config</code> 항목을 보자.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ node_modules/.bin/webpack --help
+
+  --config               Path to the config file
+                         [문자열] [기본: webpack.config.js or webpackfile.js]</code></pre></div>
+<p>이 옵션은 웹팩 설정파일의 경로를 지정할 수 있는데 기본 파일명이 webpack.config.js 혹은 webpackfile.js다.
+<code class="language-text">webpack.config.js</code> 파일을 만들어 방금 터미널에서 사용한 옵션을 코드로 구성해 보자.</p>
+<p>webpack.config.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  mode<span class="token operator">:</span> <span class="token string">'development'</span><span class="token punctuation">,</span>
+  entry<span class="token operator">:</span> <span class="token punctuation">{</span>
+    main<span class="token operator">:</span> <span class="token string">'./src/app.js'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  output<span class="token operator">:</span> <span class="token punctuation">{</span>
+    filename<span class="token operator">:</span> <span class="token string">'[name].js'</span><span class="token punctuation">,</span>
+    path<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'./dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>터미널에서 사용한 옵션인 mode, entry, ouput을 설정한다.</p>
+<ul>
+<li><code class="language-text">mode</code>는 'development' 문자열을 사용했다.</li>
+<li><code class="language-text">entry</code>는 어플리케이션 진입점인 src/app.js로 설정한다.</li>
+<li>
+<p><code class="language-text">ouput</code>에 설정한  '[name]'은 entry에 추가한 main이 문자열로 들어오는 방식이다.</p>
+<ul>
+<li><code class="language-text">output.path</code>는 절대 경로를 사용하기 때문에 path 모듈의 resolve() 함수를 사용해서 계산했다. (path는 노드 코어 모듈 중 하나로 경로를 처리하는 기능을 제공한다)</li>
+</ul>
+</li>
+</ul>
+<p>웹팩 실행을 위한 NPM 커스텀 명령어를 추가한다.</p>
+<p>package.json:</p>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"./node_modules/.bin/webpack"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>모든 옵션을 웹팩 설정 파일로 옮겼기 때문에 단순히 webpack 명령어만 실행한다.
+이제부터는 <code class="language-text">npm run build</code>로 웹팩 작업을 지시할 수 있다.</p>
+<h1 id="3-로더" style="position:relative;"><a href="#3-%EB%A1%9C%EB%8D%94" aria-label="3 로더 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3. 로더</h1>
+<h2 id="31-로더의-역할" style="position:relative;"><a href="#31-%EB%A1%9C%EB%8D%94%EC%9D%98-%EC%97%AD%ED%95%A0" aria-label="31 로더의 역할 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.1 로더의 역할</h2>
+<p>웹팩은 모든 파일을 모듈로 바라본다.
+자바스크립트로 만든 모듈 뿐만아니라 스타일시트, 이미지, 폰트까지도 전부 모듈로 보기 때문에 import 구문을 사용하면 자바스크립트 코드 안으로 가져올수 있다.</p>
+<p>이것이 가능한 이유는 웹팩의 <strong>로더</strong> 덕분이다.
+로더는 타입스크립트 같은 다른 언어를 자바스크립트 문법으로 변환해 주거나 이미지를 data URL 형식의 문자열로 변환한다.
+뿐만아니라 CSS 파일을 자바스크립트에서 직접 로딩할수 있도록 해준다.</p>
+<h2 id="32-커스텀-로더-만들기" style="position:relative;"><a href="#32-%EC%BB%A4%EC%8A%A4%ED%85%80-%EB%A1%9C%EB%8D%94-%EB%A7%8C%EB%93%A4%EA%B8%B0" aria-label="32 커스텀 로더 만들기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3.2 커스텀 로더 만들기</h2>
+<p>로더를 사용하기 전에 동작 원리를 이해하기 위해 로더를 직접 만들어 보자.</p>
+<p>myloader.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">myloader</span> <span class="token punctuation">(</span><span class="token parameter">content</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'myloader가 동작함'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> content<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<p>함수로 만들수 있는데 로더가 읽은 파일의 내용이 함수 인자 content로 전달된다.
+로더가 동작하는지 확인하는 용도로 로그만 찍고 곧장 content를 돌려 준다.</p>
+<p>로더를 사용하려면 웹팩 설정파일의 <code class="language-text">module</code> 객체에 추가한다.</p>
+<p>webpack.config.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token operator">:</span> <span class="token punctuation">{</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+    test<span class="token operator">:</span> <span class="token regex">/\.js$/</span><span class="token punctuation">,</span> <span class="token comment">// .js 확장자로 끝나는 모든 파일</span>
+    use<span class="token operator">:</span> <span class="token punctuation">[</span>path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'./myloader.js'</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token comment">// 방금 만든 로더를 적용한다</span>
+  <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><code class="language-text">module.rules</code> 배열에 모듈을 추가하는데 test와 use로 구성된 객체를 전달한다.</p>
+<p><code class="language-text">test</code>에는 로딩에 적용할 파일을 지정한다.
+파일명 뿐만아니라 파일 패턴을 정규표현식으로 지정할수 있는데 위 코드는 .js 확장자를 갖는 모든 파일을 처리하겠다는 의미다.</p>
+<p><code class="language-text">use</code>에는 이 패턴에 해당하는 파일에 적용할 로더를 설정하는 부분이다.
+방금 만든 myloader 함수의 경로를 지정한다.</p>
+<p>이제 <code class="language-text">npm run build</code>로 웹팩을 실행해 보자.</p>
+<p><img src="/assets/imgs/2019/12/11/custom-loader-result.jpg" alt="웹팩 번들 결과"></p>
+<p>터미널에 'myloader가 동작함' 문자열이 찍힌다.
+myloader() 함수가 동작한 것이다.</p>
+<p>빌드결과를 살펴보면 이전과 동일하다.
+로더가 뭔가를 처리하기 위해서 간단한 변환 작업을 추가해 보자.
+소스에 있는 모든 console.log() 함수를 alert() 함수로 변경하도록 말이다.</p>
+<p>myloader.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">myloader</span> <span class="token punctuation">(</span><span class="token parameter">content</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'myloader가 동작함'</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> content<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'console.log('</span><span class="token punctuation">,</span> <span class="token string">'alert('</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// console.log( -> alert( 로 치환</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
+<p>빌드후 확인하면 다음과 같이 console.log() 함수가 alert() 함수로 변경되었다.</p>
+<p><img src="/assets/imgs/2019/12/11/custom-loader-result-2.jpg" alt="웹팩 번들 결과"></p>
+<h1 id="4-자주-사용하는-로더" style="position:relative;"><a href="#4-%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%A1%9C%EB%8D%94" aria-label="4 자주 사용하는 로더 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4. 자주 사용하는 로더</h1>
+<p>로더의 동작 원리를 살펴 보았으니 이번에는 몇몇 자주 사용하는 로더를 소개하겠다.</p>
+<h2 id="41-css-loader" style="position:relative;"><a href="#41-css-loader" aria-label="41 css loader permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.1 css-loader</h2>
+<p>웹팩은 모든것을 모듈로 바라보기 때문에 자바스크립트 뿐만 아니라 스타일시트로 import 구문으로 불러 올수 있다.</p>
+<p>app.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'./style.css'</span></code></pre></div>
+<p>style.css:</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>CSS 파일을 자바스크립트에서 불러와 사용하려면 CSS를 모듈로 변환하는 작업이 필요하다.
+<a href="https://github.com/webpack-contrib/css-loader">css-loader</a>가 그러한 역할을 하는데 우리 코드에서 CSS 파일을 모듈처럼 불러와 사용할 수 있게끔 해준다.</p>
+<p>먼저 로더를 설치 하자.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install -D css-loader</code></pre></div>
+<p>웹팩 설정에 로더를 추가한다.</p>
+<p>webpack.config.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      test<span class="token operator">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span> <span class="token comment">// .css 확장자로 끝나는 모든 파일</span>
+      use<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'css-loader'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// css-loader를 적용한다</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>웹팩은 엔트리 포인트부터 시작해서 모듈을 검색하다가 CSS 파일을 찾으면 css-loader로 처리할 것이다.
+use.loader에 로더 경로를 설정하는 대신 배열에 로더 이름을 문자열로 전달해도 된다.</p>
+<p>빌드 한 결과 CSS코드가 자바스크립트로 변환된 것을 확인할 수 있다.</p>
+<p><img src="/assets/imgs/2019/12/11/css-loader.jpg" alt="웹팩 번들 결과"></p>
+<h2 id="42-style-loader" style="position:relative;"><a href="#42-style-loader" aria-label="42 style loader permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.2 style-loader</h2>
+<p>모듈로 변경된 스타일 시트는 돔에 추가되어야만 브라우져가 해석할 수 있다.
+css-loader로 처리하면 자바스크립트 코드로만 변경되었을 뿐 돔에 적용되지 않았기 때문에 스트일이 적용되지 않았다.</p>
+<p><a href="https://github.com/webpack-contrib/style-loader">style-loader</a>는 자바스크립트로 변경된 스타일을 동적으로 돔에 추가하는 로더이다.
+CSS를 번들링하기 위해서는 css-loader와 style-loader를 함께 사용한다.</p>
+<p>먼저 스타일 로더를 다운로드 한다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install -D style-loader</code></pre></div>
+<p>그리고 웹팩 설정에 로더를 추가한다.</p>
+<p>package.json:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      test<span class="token operator">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
+      use<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'style-loader'</span><span class="token punctuation">,</span> <span class="token string">'css-loader'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// style-loader를 앞에 추가한다</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>배열로 설정하면 뒤에서부터 앞으로 순서대로 로더가 동작한다.
+위 설정은 모든 .css 확장자로 끝나는 모듈을 읽어 들여 css-loader를 적용하고 그 다음 style-loader를 적용한다.</p>
+<p><img src="/assets/imgs/2019/12/11/style-loader.jpg" alt="웹팩 번들 결과"></p>
+<h2 id="43-file-loader" style="position:relative;"><a href="#43-file-loader" aria-label="43 file loader permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.3 file-loader</h2>
+<p>CSS 뿐만 아니라 소스코드에서 사용하는 모든 파일을 모듈로 사용하게끔 할 수 있다.
+파일을 모듈 형태로 지원하고 웹팩 아웃풋에 파일을 옮겨주는 것이 <a href="https://github.com/webpack-contrib/file-loader">file-loader</a>가 하는 일이다.
+가령 CSS에서 url() 함수에 이미지 파일 경로를 지정할 수 있는데 웹팩은 file-loader를 이용해서 이 파일을 처리한다.</p>
+<p>style.css:</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span>bg.png<span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>배경 이미지를 bg.png 파일로 지정했다.</p>
+<p>웹팩은 엔트리 포인트인 app.js가 로딩하는 style.css 파일을 읽을 것이다.
+그리고 이 스타일시트는 url() 함수로 bg.png를 사용하는데 이때 로더를 동작시킨다.</p>
+<p>webpack.config.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      test<span class="token operator">:</span> <span class="token regex">/\.png$/</span><span class="token punctuation">,</span> <span class="token comment">// .png 확장자로 마치는 모든 파일</span>
+      loader<span class="token operator">:</span> <span class="token string">'file-loader'</span><span class="token punctuation">,</span> <span class="token comment">// 파일 로더를 적용한다</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>웹팩이 .png 파일을 발견하면 file-loader를 실행할 것이다.
+로더가 동작하고 나면 아웃풋에 설정한 경로로 이미지 파일을 복사된다.
+아래 그림처럼 파일명이 해쉬코드로 변경 되었다.
+캐쉬 갱신을 위한 처리로 보인다.</p>
+<p><img src="/assets/imgs/2019/12/11/file-loader.jpg" alt="웹팩 번들 결과"></p>
+<p>하지만 이대로 index.html 파일을 브라우져에 로딩하면 이미지를 제대로 로딩하지 못할 것이다.
+CSS를 로딩하면 background-image: url(bg.png) 코드에 의해 동일 폴더에서 이미지를 찾으려고 시도할 것이다.
+그러나 웹팩으로 빌드한 이미지 파일은 output인 dist 폴더 아래로 이동했기 때문에 이미지 로딩에 실패할 것이다.</p>
+<p>file-loader 옵션을 조정해서 경로를 바로 잡아 주어야 한다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      test<span class="token operator">:</span> <span class="token regex">/\.png$/</span><span class="token punctuation">,</span> <span class="token comment">// .png 확장자로 마치는 모든 파일</span>
+      loader<span class="token operator">:</span> <span class="token string">'file-loader'</span><span class="token punctuation">,</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        publicPath<span class="token operator">:</span> <span class="token string">'./dist/'</span><span class="token punctuation">,</span> <span class="token comment">// prefix를 아웃풋 경로로 지정</span>
+        name<span class="token operator">:</span> <span class="token string">'[name].[ext]?[hash]'</span><span class="token punctuation">,</span> <span class="token comment">// 파일명 형식</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p><code class="language-text">publicPath</code> 옵션은 file-loader가 처리하는 파일을 모듈로 사용할 때 경로 앞에 추가되는 문자열이다.
+output에 설정한 'dist' 폴더에 이미지 파일을 옮길 것이므로 publicPath 값을 이것으로로 지정했다.
+파일을 사용하는 측에서는 'bg.png'를 'dist/bg.png'로 변경하여 사용할 것이다.</p>
+<p>또한 <code class="language-text">name</code> 옵션을 사용했는데 이것은 로더가 파일을 아웃풋에 복사할때 사용하는 파일 이름이다.
+기본적으로 설정된 해쉬값을 쿼리스트링으로 옮겨서 'bg.png?6453a9c65953c5c28aa2130dd437bbde' 형식으로 파일을 요청하도록 변경했다.</p>
+<p><img src="/assets/imgs/2019/12/11/file-loader-2.jpg" alt="파일로더 결과 2"></p>
+<p>이렇게 스타일시트에서 불러온 파일이 동작한다.</p>
+<p><img src="/assets/imgs/2019/12/11/file-loader-3.jpg" alt="파일로더 결과 3"></p>
+<h2 id="44-url-loader" style="position:relative;"><a href="#44-url-loader" aria-label="44 url loader permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>4.4 url-loader</h2>
+<p>사용하는 이미지 갯수가 많다면 네트웍 리소스를 사용하는 부담이 있고 사이트 성능에 영향을 줄 수도 있다.
+만약 한 페이지에서 작은 이미지를 여러 개 사용한다면 <a href="https://en.wikipedia.org/wiki/Data_URI_scheme">Data URI Scheme</a>을 이용하는 방법이 더 나은 경우도 있다.
+이미지를 Base64로 인코딩하여 문자열 형태로 소스코드에 넣는 형식이다.</p>
+<p><a href="https://github.com/webpack-contrib/url-loader">url-loader</a>는 이러한 처리를 자동화해주는 녀석이다.</p>
+<p>먼저 로더를 설치한다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install -D url-loader</code></pre></div>
+<p>그리고 웹팩 설정을 추가한다.
+webpack.config.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
+  test<span class="token operator">:</span> <span class="token regex">/\.png$/</span><span class="token punctuation">,</span>
+  use<span class="token operator">:</span> <span class="token punctuation">{</span>
+    loader<span class="token operator">:</span> <span class="token string">'url-loader'</span><span class="token punctuation">,</span> <span class="token comment">// url 로더를 설정한다</span>
+    options<span class="token operator">:</span> <span class="token punctuation">{</span>
+      publicPath<span class="token operator">:</span> <span class="token string">'./dist/'</span><span class="token punctuation">,</span> <span class="token comment">// file-loader와 동일</span>
+      name<span class="token operator">:</span> <span class="token string">'[name].[ext]?[hash]'</span><span class="token punctuation">,</span> <span class="token comment">// file-loader와 동일</span>
+      limit<span class="token operator">:</span> <span class="token number">5000</span> <span class="token comment">// 5kb 미만 파일만 data url로 처리</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>file-loader와 옵션 설정이 거의 비슷하고 마지막 <code class="language-text">limit</code> 속성만 추가했다.
+모듈로 사용한 파일중 크기가 5kb 미만인 파일만 url-loader를 적용하는 설정이다.
+만약 이보다 크면 file-loader가 처리하는데 옵션 중 <a href="https://github.com/webpack-contrib/url-loader#options">fallback</a> 기본값이 file-loader이기 때문이다.</p>
+<p>빌드 결과를 보면 small.png 파일이 문자열로 변경되어 있는 것을 확인 할 수 있다.
+반면 5kb 이상인 bg.png는 여전히 파일로 존재한다.</p>
+<p><img src="/assets/imgs/2019/12/11/url-loader-1.jpg" alt="url 로더 결과 1"></p>
+<p>브라우저에서도 확인하면 스타일스트에 small.png가 Data url형태로 변환되어 있다.</p>
+<p><img src="/assets/imgs/2019/12/11/url-loader-2.jpg" alt="url 로더 결과 2"></p>
+<p>아이콘처럼 용량이 작거나 사용 빈도가 높은 이미지는 파일을 그대로 사용하기 보다는 Data URI Scheeme을 적용하기 위해 url-loader를 사용하면 좋겠다.</p>
+<h1 id="5-플러그인" style="position:relative;"><a href="#5-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8" aria-label="5 플러그인 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5. 플러그인</h1>
+<h2 id="51-플러그인의-역할" style="position:relative;"><a href="#51-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8%EC%9D%98-%EC%97%AD%ED%95%A0" aria-label="51 플러그인의 역할 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.1 플러그인의 역할</h2>
+<p>웹팩에서 알아야 할 마지막 기본 개념이 플러그인이다.
+로더가 파일 단위로 처리하는 반면 플러그인은 번들된 결과물을 처리한다.
+번들된 자바스크립트를 난독화 한다거나 특정 텍스트를 추출하는 용도로 사용한다.</p>
+<p>이것도 사용하기에 앞서 동작 원리를 이해하기 위해 플러그인을 직접 만들어 보자.</p>
+<h2 id="52-커스텀-플러그인-만들기" style="position:relative;"><a href="#52-%EC%BB%A4%EC%8A%A4%ED%85%80-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0" aria-label="52 커스텀 플러그인 만들기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>5.2 커스텀 플러그인 만들기</h2>
+<p>웹팩 문서의 <a href="https://webpack.js.org/contribute/writing-a-plugin/">Writing a plugin</a>을 보면 클래스로 플러그인을 정의 하도록 한다.
+<a href="https://webpack.js.org/contribute/writing-a-plugin/#basic-plugin-architecture">헬로월드 코드</a>를 가져다 그대로 실행 붙여보자.</p>
+<p>myplugin.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">MyPlugin</span> <span class="token punctuation">{</span>
+  <span class="token function">apply</span><span class="token punctuation">(</span><span class="token parameter">compiler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    compiler<span class="token punctuation">.</span>hooks<span class="token punctuation">.</span>done<span class="token punctuation">.</span><span class="token function">tap</span><span class="token punctuation">(</span><span class="token string">'My Plugin'</span><span class="token punctuation">,</span> <span class="token parameter">stats</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'MyPlugin: done'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> MyPlugin<span class="token punctuation">;</span></code></pre></div>
+<p>로더와 다르게 플러그인은 클래스로 제작한다.
+apply 함수를 구현하면 되는데 이 코드에서는 인자로 받은 compiler 객체 안에 있는 tap() 함수를 사용하는 코드다.
+플러그인 작업이 완료되는(done) 시점에 로그를 찍는 코드인것 같다.</p>
+<p>플러그인을 웹팩 설정에 추가한다.</p>
+<p>webpack.config.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> MyPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./myplugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">MyPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>웹팩 설정 객체의 <code class="language-text">plugins</code> 배열에 설정한다.
+클래스로 제공되는 플러그인의 생성자 함수를 실행해서 넘기는 방식이다.</p>
+<p>웹팩으로 빌드해 보자.</p>
+<p><img src="/assets/imgs/2019/12/11/myplugin.jpg" alt="myplugin"></p>
+<p>로그가 찍힌걸 보니 플러그인이 동작했다.</p>
+<p>그런데 파일이 여러 개인데 로그는 한 번만 찍혔다.
+모듈이 파일 하나 혹은 여러 개에 대해 동작하는 반면 플러그인은 하나로 번들링된 결과물을 대상으로 동작 한다.
+우리 예제에서는 main.js로 결과물이 하나이기 때문에 플러그인이 한 번만 동작한 것이라 추측할 수 있다.</p>
+<p>그러면 어떻게 번들 결과에 접근할 수 있을까?
+웹팩 내장 플러그인 <a href="https://github.com/lcxfs1991/banner-webpack-plugin/blob/master/index.js">BannerPlugin 코드</a>를 참고하자.</p>
+<p>myplugin.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">MyPlugin</span> <span class="token punctuation">{</span>
+  <span class="token function">apply</span><span class="token punctuation">(</span><span class="token parameter">compiler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    compiler<span class="token punctuation">.</span>hooks<span class="token punctuation">.</span>done<span class="token punctuation">.</span><span class="token function">tap</span><span class="token punctuation">(</span><span class="token string">'My Plugin'</span><span class="token punctuation">,</span> <span class="token parameter">stats</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'MyPlugin: done'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// compiler.plugin() 함수로 후처리한다</span>
+    compiler<span class="token punctuation">.</span><span class="token function">plugin</span><span class="token punctuation">(</span><span class="token string">'emit'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">compilation<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> source <span class="token operator">=</span> compilation<span class="token punctuation">.</span>assets<span class="token punctuation">[</span><span class="token string">'main.js'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">source</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>compiler.plugin() 함수의 두번재 인자 콜백함수는 emit 이벤트가 발생하면 실행되는 녀석인 모양이다.
+번들된 결과가 compilation 객체에 들어 있는데 compilation.assets['main.js'].source() 함수로 접근할 수 있다.
+실행하면 터미널에 번들링된 결과물을 확인할 수 있다.</p>
+<p><img src="/assets/imgs/2019/12/11/myplugin-2.jpg" alt="myplugin"></p>
+<p>이걸 이용해서 번들 결과 상단에 아래와 같은 배너를 추가하는 플러그인으로 만들어 보자.</p>
+<p>myplugin.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">MyPlugin</span> <span class="token punctuation">{</span>
+  <span class="token function">apply</span><span class="token punctuation">(</span><span class="token parameter">compiler</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    compiler<span class="token punctuation">.</span><span class="token function">plugin</span><span class="token punctuation">(</span><span class="token string">'emit'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">compilation<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> source <span class="token operator">=</span> compilation<span class="token punctuation">.</span>assets<span class="token punctuation">[</span><span class="token string">'main.js'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">source</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      compilation<span class="token punctuation">.</span>assets<span class="token punctuation">[</span><span class="token string">'main.js'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function-variable function">source</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> banner <span class="token operator">=</span> <span class="token punctuation">[</span>
+          <span class="token string">'/**'</span><span class="token punctuation">,</span>
+          <span class="token string">' * 이것은 BannerPlugin이 처리한 결과입니다.'</span><span class="token punctuation">,</span>
+          <span class="token string">' * Build Date: 2019-10-10'</span><span class="token punctuation">,</span>
+          <span class="token string">' */'</span>
+          <span class="token string">''</span>
+        <span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> banner <span class="token operator">+</span> <span class="token string">'\n'</span> <span class="token operator">+</span> source<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+
+      <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>번들 소스를 얻어오는 함수 source()를 재정의 했다.
+배너 문자열과 기존 소스 코드를 합친 문자열을 반환하도록 말이다.</p>
+<p>빌드하고 결과물을 확인해 보면 다음과 같다.</p>
+<p><img src="/assets/imgs/2019/12/11/myplugin-3.jpg" alt="myplugin 3"></p>
+<h1 id="6-자주-사용하는-플러그인" style="position:relative;"><a href="#6-%08%EC%9E%90%EC%A3%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8" aria-label="6 자주 사용하는 플러그인 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6. 자주 사용하는 플러그인</h1>
+<p>개발하면서 플러그인을 직접 작성할 일은 거의 없었다.
+웹팩에서 직접 제공하는 플러그인을 사용하거나 써드파티 라이브러리를 찾아 사용하는데 자주 사용하는 플러그인에 대해 알아보자.</p>
+<h2 id="61-bannerplugin" style="position:relative;"><a href="#61-bannerplugin" aria-label="61 bannerplugin permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6.1 BannerPlugin</h2>
+<p>MyPlugin와 비슷한 것이 <a href="https://webpack.js.org/plugins/banner-plugin/">BannerPlugin</a>이다.
+결과물에 빌드 정보나 커밋 버전같은 걸 추가할 수 있다.</p>
+<p>webpack.config.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>BannerPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      banner<span class="token operator">:</span> <span class="token string">'이것은 배너 입니다'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span></code></pre></div>
+<p>생성자 함수에 전달하는 옵션 객체의 banner 속성에 문자열을 전달한다.
+웹팩 컴파일 타임에 얻을 수 있는 정보, 가령 빌드 시간이나 커밋정보를 전달하기위해 함수로 전달할 수도 있다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>BannerPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function-variable function">banner</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">빌드 날짜: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<p>배너 정보가 많다면 별로 파일로 분리하자.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> banner <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./banner.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>BannerPlugin</span><span class="token punctuation">(</span>banner<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>빌드 날짜 외에서 커밋 해쉬와 빌드한 유저 정보까지 추가해 보자.</p>
+<p>banner.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> childProcess <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'child_process'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">banner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> commit <span class="token operator">=</span> childProcess<span class="token punctuation">.</span><span class="token function">execSync</span><span class="token punctuation">(</span><span class="token string">'git rev-parse --short HEAD'</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> user <span class="token operator">=</span> childProcess<span class="token punctuation">.</span><span class="token function">execSync</span><span class="token punctuation">(</span><span class="token string">'git config user.name'</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">commitVersion: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>commit<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span>
+    <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Build Date: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>date<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">\n</span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span>
+    <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Author: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>user<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>빌드한뒤 플러그인이 처리한 결과는 다음과 같다.</p>
+<p><img src="/assets/imgs/2019/12/11/banner-plugin.jpg" alt="BannerPlugin"></p>
+<h2 id="62-defineplugin" style="position:relative;"><a href="#62-defineplugin" aria-label="62 defineplugin permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6.2 DefinePlugin</h2>
+<p>어플리케이션은 개발환경과 운영환경으로 나눠서 운영한다.
+가령 환경에 따라 API 서버 주소가 다를 수 있다.
+같은 소스 코드를 두 환경에 배포하기 위해서는 이러한 환경 의존적인 정보를 소스가 아닌 곳에서 관리하는 것이 좋다.
+배포할 때마다 코드를 수정하는 것은 곤란하기 때문이다.</p>
+<p>웹팩은 이러한 환경 정보를 제공하기 위해 <a href="https://webpack.js.org/plugins/define-plugin/">DefinePlugin</a>을 제공한다.</p>
+<p>webpack.config.js</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>빈 객체를 전달해도 기본적으로 넣어주는 값이 있다.
+노드 환경정보인 process.env.NODE<em>ENV 인데 웹팩 설정의 mode에 설정한 값이 여기에 들어간다.
+"development"를 설정했기 때문에 어플리케이션 코드에서 process.env.NODE</em>ENV 변수로 접근하면 "development" 값을 얻을 수 있다.</p>
+<p>app.js</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span><span class="token punctuation">)</span> <span class="token comment">// "development"</span></code></pre></div>
+<p>이 외에도 웹팩 컴파일 시간에 결정되는 값을 전역 상수 문자열로 어플리케이션에 주입할 수 있다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token constant">TWO</span><span class="token operator">:</span> <span class="token string">'1+1'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<p>TWO라는 전역 변수에 <code class="language-text">1+1</code> 이란 코드 조각을 넣었다.
+실제 어플리케이션 코드에서 이것을 출력해보면 2가 나올 것이다.</p>
+<p>app.js</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">TWO</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span></code></pre></div>
+<p>코드가 아닌 값을 입력하려면 문자열화 한 뒤 넘긴다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token constant">VERSION</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token string">'v.1.2.3'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token constant">PRODUCTION</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token constant">MAX_COUNT</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token number">999</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token string">'api.domain'</span><span class="token operator">:</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token string">'http://dev.api.domain.com'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<p>app.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">VERSION</span><span class="token punctuation">)</span> <span class="token comment">// 'v.1.2.3'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">PRODUCTION</span><span class="token punctuation">)</span> <span class="token comment">// true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">MAX_COUNT</span><span class="token punctuation">)</span> <span class="token comment">// 999</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>api<span class="token punctuation">.</span>domain<span class="token punctuation">)</span> <span class="token comment">// 'http://dev.api.domain.com'</span></code></pre></div>
+<p>빌드 타임에 결정된 값을 어플리이션에 전달할 때는 이 플러그인을 사용하자.</p>
+<h2 id="63-htmlwebpackplugin" style="position:relative;"><a href="#63-htmlwebpackplugin" aria-label="63 htmlwebpackplugin permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6.3 HtmlWebpackPlugin</h2>
+<p>이번엔 써드 파티 패키지에 대해 알아보자.
+<a href="https://github.com/jantimon/html-webpack-plugin/">HtmlWebpackPlugin</a>은 HTML 파일을 후처리하는데 사용한다.
+빌드 타임의 값을 넣거나 코드를 압축할수 있다.</p>
+<p>먼저 패키지를 다운로드 한다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install -D html-webpack-plugin</code></pre></div>
+<p>이 플러그인으로 빌드하면 HTML파일로 아웃풋에 생성될 것이다.
+index.html 파일을 src/index.html로 옮긴뒤 다음과 같이 작성해 보자.</p>
+<p>src/index.html:</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>타이틀&lt;%= env %><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token comment">&lt;!-- 로딩 스크립트 제거 --></span>
+    <span class="token comment">&lt;!-- &lt;script src="dist/main.js">&lt;/script> --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre></div>
+<p>타이틀 부분에 ejs 문법을 이용하는데 <code class="language-text">&lt;%= env %&gt;</code> 는 전달받은 env 변수 값을 출력한다.
+HtmlWebpackPlugin은 이 변수에 데이터를 주입시켜 동적으로 HTML 코드를 생성한다.</p>
+<p>뿐만 아니라 웹팩으로 빌드한 결과물을 자동으로 로딩하는 코드를 주입해 준다.
+때문에 스크립트 로딩 코드도 제거했다.</p>
+<p>webpack.config.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> HtmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'html-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      template<span class="token operator">:</span> <span class="token string">'./src/index.html'</span><span class="token punctuation">,</span> <span class="token comment">// 템플릿 경로를 지정</span>
+      templateParameters<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">// 템플릿에 주입할 파라매터 변수 지정</span>
+        env<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'development'</span> <span class="token operator">?</span> <span class="token string">'(개발용)'</span> <span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>환경 변수에 따라 타이틀 명 뒤에 "(개발용)" 문자열을 붙이거나 떼거나 하도록 했다.
+NODE<em>ENV=development 로 설정해서 빌드하면 빌드결과 "타이틀(개발용)"으로 나온다.
+NODE</em>ENV=production 으로 설정해서 빌드하면 빌드결과 "타이틀"로 나온다.</p>
+<p><img src="/assets/imgs/2019/12/11/html-template-plugin.jpg" alt="HtmlWebpackPlugin"></p>
+<p>개발 환경과 달리 운영 환경에서는 파일을 압축하고 불필요한 주석을 제거하는 것이 좋다.</p>
+<p>webpack.config.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  minify<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span> <span class="token operator">?</span> <span class="token punctuation">{</span>
+    collapseWhitespace<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 빈칸 제거</span>
+    removeComments<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 주석 제거</span>
+  <span class="token punctuation">}</span> <span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>(<a href="https://github.com/jantimon/html-webpack-plugin/issues/1094">문서에는 minifiy 옵션이 웹팩 버전 3 기준으로 되어 있다</a>)</p>
+<p>환경변수에 따라 minify 옵션을 켰다.
+<code class="language-text">NOE_ENV=production npm run build</code>로 빌드하면 아래처럼 코드가 압축된다.
+물론 주석도 제거 되었다.</p>
+<p><img src="/assets/imgs/2019/12/11/html-template-plugin-2.jpg" alt="HtmlWebpackPlugin 2"></p>
+<p>정적파일을 배포하면 즉각 브라우져에 반영되지 않는 경우가 있다.
+브라우져 캐쉬가 원인일 경우가 있는데 이를 위한 예방 옵션도 있다.</p>
+<p>webpack.config.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  hash<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 정적 파일을 불러올때 쿼리문자열에 웹팩 해쉬값을 추가한다</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<p><code class="language-text">hash: true</code> 옵션을 추가하면 빌드할 시 생성하는 해쉬값을 정적파일 로딩 주소의 쿼리 문자열로 붙여서 HTML을 생성한다.</p>
+<p><img src="/assets/imgs/2019/12/11/html-template-plugin-3.jpg" alt="HtmlWebpackPlugin 3"></p>
+<h2 id="64-cleanwebpackplugin" style="position:relative;"><a href="#64-cleanwebpackplugin" aria-label="64 cleanwebpackplugin permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6.4 CleanWebpackPlugin</h2>
+<p><a href="https://github.com/johnagan/clean-webpack-plugin">CleanWebpackPlugin</a>은 빌드 이전 결과물을 제거하는 플러그인이다.
+빌드 결과물은 아웃풋 경로에 모이는데 과거 파일이 남아 있을수 있다.
+이전 빌드내용이 덮여 씌여지면 상관없지만 그렇지 않으면 아웃풋 폴더에 여전히 남아 있을 수 있다.</p>
+<p>임시로 아웃풋 폴더에 foo.js 파일을 만든 후 다시 빌드해 보자...... 파일이 남아 있다.</p>
+<p><img src="/assets/imgs/2019/12/11/clean-webpack-plugin.jpg" alt="CleanWebpackPlugin"></p>
+<p>이러한 현상을 CleanWebpackPlugin으로 해결해 보자.
+먼저 패키지를 설치한다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install -D clean-webpack-plugin</code></pre></div>
+<p>웹팩 설정을 추가한다.</p>
+<p>webpack.config.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> CleanWebpackPlugin <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'clean-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">CleanWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>빌드 결과 foo.js가 깨끗히 사라졌다.
+아웃풋 폴더인 dist 폴더가 모두 삭제된후 결과물이 생성되었기 때문이다.</p>
+<h2 id="65-minicssextractplugin" style="position:relative;"><a href="#65-minicssextractplugin" aria-label="65 minicssextractplugin permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>6.5 MiniCssExtractPlugin</h2>
+<p>스타일시트가 점점 많아지면 하나의 자바스크립트 결과물로 만드는 것이 부담일 수 있다.
+번들 결과에서 스트일시트 코드만 뽑아서 별도의 CSS 파일로 만들어 역할에 따라 파일을 분리하는 것이 좋다.
+브라우져에서 큰 파일 하나를 내려받는 것 보다, 여러 개의 작은 파일을 동시에 다운로드하는 것이 더 빠르다.</p>
+<p>개발 환경에서는 CSS를 하나의 모듈로 처리해도 상관없지만 프로덕션 환경에서는 분리하는 것이 효과적이다.
+<a href="https://github.com/webpack-contrib/mini-css-extract-plugin">MiniCssExtractPlugin</a>은 CSS를 별로 파일로 뽑아내는 플러그인이다.</p>
+<p>먼저 패키지를 설치한다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install -D mini-css-extract-plugin</code></pre></div>
+<p>웹팩 설정을 추가한다.</p>
+<p>webpack.config.js:</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> MiniCssExtractPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mini-css-extract-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token operator">...</span><span class="token punctuation">(</span>
+      process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span>
+      <span class="token operator">?</span> <span class="token punctuation">[</span> <span class="token keyword">new</span> <span class="token class-name">MiniCssExtractPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>filename<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">[name].css</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">]</span>
+      <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>프로덕션 환경일 경우만 이 플러그인을 추가했다.
+<code class="language-text">filename</code>에 설정한 값으로 아웃풋 경로에 CSS 파일이 생성될 것이다.</p>
+<p>개발 환경에서는 css-loader에의해 자바스크립트 모듈로 변경된 스타일시트를 적용하기위해 style-loader를 사용했다.
+반면 프로덕션 환경에서는 별도의 CSS 파일으로 추출하는 플러그인을 적용했으므로 다른 로더가 필요하다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    rules<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      test<span class="token operator">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
+      use<span class="token operator">:</span> <span class="token punctuation">[</span>
+        process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'production'</span>
+        <span class="token operator">?</span> MiniCssExtractPlugin<span class="token punctuation">.</span>loader  <span class="token comment">// 프로덕션 환경</span>
+        <span class="token operator">:</span> <span class="token string">'style-loader'</span><span class="token punctuation">,</span>  <span class="token comment">// 개발 환경</span>
+        <span class="token string">'css-loader'</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>플러그인에서 제공하는 MiniCssExtractPlugin.loader 로더를 추가한다.</p>
+<p><code class="language-text">NODE_ENV=production npm run build</code>로 결과를 확인해보자.</p>
+<p><img src="/assets/imgs/2019/12/11/mini-css-extract-plugin.jpg" alt="MiniCssExtractPlugin"></p>
+<p>dist/main.css가 생성되었고 index.html에 이 파일을 로딩하는 코드가 추가되었다.</p>
+<h1 id="7-정리" style="position:relative;"><a href="#7-%EC%A0%95%EB%A6%AC" aria-label="7 정리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>7. 정리</h1>
+<p>ECMAScript2015 이전에는 모듈을 만들기 위해 즉시실행함수와 네임스페이스 패턴을 사용했다.
+이후 각 커뮤니티에서 모듈 시스템 스펙이 나왔고 웹팩은 ECMAScript2015 모듈시스템을 쉽게 사용하도록 돕는 역할을 한다.</p>
+<p>엔트리포인트를 시작으로 연결되어 었는 모든 모듈을 하나로 합쳐서 결과물을 만드는 것이 웹팩의 역할이다.
+자바스크립트 모듈 뿐만 아니라 스타일시트, 이미지 파일까지도 모듈로 제공해 주기 때문에 일관적으로 개발할 수 있다.</p>
+<p>웹팩의 로더와 플러그인의 원리에 대해 살펴보았고 자주 사용하는 것들의 기본적인 사용법에 대해 익혔다.</p></div><div class="mt-7"><span class="post-tags"><a class="btn btn-secondary" data-tag-name="webpack" href="/tags/#webpack">#<!-- -->webpack</a> </span></div><div class="flex social-share-btns"><div class="mr-1"><button aria-label="twitter" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#00aced"></circle><path d="M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z" fill="white"></path></svg></button></div><div class="mr-1"><button aria-label="facebook" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#3b5998"></circle><path d="M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z" fill="white"></path></svg></button></div><div class="mr-1"><button aria-label="pocket" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#EF3F56"></circle><path d="M41.084 29.065l-7.528 7.882a2.104 2.104 0 0 1-1.521.666 2.106 2.106 0 0 1-1.522-.666l-7.528-7.882c-.876-.914-.902-2.43-.065-3.384.84-.955 2.228-.987 3.1-.072l6.015 6.286 6.022-6.286c.88-.918 2.263-.883 3.102.071.841.938.82 2.465-.06 3.383l-.015.002zm6.777-10.976C47.463 16.84 46.361 16 45.14 16H18.905c-1.2 0-2.289.82-2.716 2.044-.125.363-.189.743-.189 1.125v10.539l.112 2.096c.464 4.766 2.73 8.933 6.243 11.838.06.053.125.102.19.153l.04.033c1.882 1.499 3.986 2.514 6.259 3.014a14.662 14.662 0 0 0 6.13.052c.118-.042.235-.065.353-.087.03 0 .065-.022.098-.042a15.395 15.395 0 0 0 6.011-2.945l.039-.045.18-.153c3.502-2.902 5.765-7.072 6.248-11.852L48 29.674v-10.52c0-.366-.041-.728-.161-1.08l.022.015z" fill="white"></path></svg></button></div></div></main></div><footer class="post-footer footer-container py-10 mt-8"><div class="series-navigator px-2 pt-3 pb-2"><h3 class="series-title">프론트엔드 개발환경의 이해</h3><div class="post-list"><ul><li class=""><a href="/series/2019/12/09/frontend-dev-env-npm.html">프론트엔드 개발환경의 이해: NPM</a></li><li class="active"><div class="active">프론트엔드 개발환경의 이해: 웹팩(기본)</div></li><li class=""><a href="/series/2019/12/22/frontend-dev-env-babel.html">프론트엔드 개발환경의 이해: Babel</a></li><li class=""><a href="/series/2019/12/30/frontend-dev-env-lint.html">프론트엔드 개발환경의 이해: 린트</a></li><li class=""><a href="/series/2020/01/02/frontend-dev-env-webpack-intermediate.html">프론트엔드 개발환경의 이해: 웹팩(심화)</a></li></ul></div></div><div id="disqus_thread"></div></footer></article></main><footer class="site-footer mb-0 py-5"><ul class="footer-navs  mb-4"><li class="mr-3"><a href="/category/">POSTS</a></li><li class="mr-3"><a href="/#videos">VIDEOS</a></li><li><a href="/tags/">TAGS</a></li></ul><ul class="mb-10"><li class="mr-2"><a class="icon icon-5x icon-rss" title="rss" href="/feed.xml"></a></li><li class="mr-2"><a class="icon icon-5x icon-email" href="mailto:ej88ej@gmail.com" title="email"></a></li><li><a href="https://github.com/jeonghwan-kim" class="icon icon-5x icon-github" title="github"></a></li></ul><div class="footer-copyright"><div class="mr-1">© <!-- -->김정환<!-- --> <!-- -->2020</div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/series/2019/12/10/frontend-dev-env-webpack-basic.html";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-7e7fd85447226af9207b.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-5ddcf91263ffd8eeacf3.js"],"component---src-pages-category-dev-tsx":["/component---src-pages-category-dev-tsx-6634212b9390a2b3c6f6.js"],"component---src-pages-category-index-tsx":["/component---src-pages-category-index-tsx-c56fee75faaf89a0586f.js"],"component---src-pages-category-series-tsx":["/component---src-pages-category-series-tsx-97974f1913329643941b.js"],"component---src-pages-category-think-tsx":["/component---src-pages-category-think-tsx-ee9a2f0e88fcba46e57f.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-9494a8ff990a959207d8.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-a9b4e14db30ca6f5a93f.js"],"component---src-templates-blog-post-index-tsx":["/component---src-templates-blog-post-index-tsx-c9526f1df2fcd6ef9a12.js"]};/*]]>*/</script><script src="/component---src-templates-blog-post-index-tsx-c9526f1df2fcd6ef9a12.js" async=""></script><script src="/commons-a0a7d383b72c92281b17.js" async=""></script><script src="/styles-89fd2ae28bdf06750a71.js" async=""></script><script src="/app-7e7fd85447226af9207b.js" async=""></script><script src="/framework-f600a0dcdbbe2ab3be17.js" async=""></script><script src="/webpack-runtime-ce4be6f530f27c0f2791.js" async=""></script></body></html>
