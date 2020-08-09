@@ -22,14 +22,10 @@
     }
   }
   .site-navs {
-    ul {
-      position: relative;
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-      font-size: 16px;
-
-    }
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    height: 100%;
   }
 }
 

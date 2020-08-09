@@ -36,7 +36,7 @@ HTML5 명세를 따르는 일명 모던 브라우져의 폼 동작 방식을 정
 사용자가 올바로 입력하고 제출하기 버튼을 클릭한다면 기대한 것처럼 서버로 폼을 전송한다.
 반면 아무것도 입력하지 않고 제출하기 버튼을 클릭하면 다음과 같은 결과를 보여준다.
 
-![result1](/assets/imgs/2020/06/03/result1.jpg)
+![result1](./result1.jpg)
 
 버튼을 클릭하면 브라우져의 검증 로직이 실행되고 요소에 추가한 `required` 규칙과 맞지 않기 때문에 폼을 전송하지 않는 것이다.
 게다가 "이 입력란을 작성하세요"라는 오류 메세지도 요소 근처에 보여줌으로써 사용자로 하여금 올바른 입력을 유도한다.
@@ -68,7 +68,7 @@ input:invalid {
 요소에 입력한 값이 규칙에 어긋날 경우 붉은색 테두리로 표시하도록 했다.
 트위터 부트스트랩 등 여러 라이브러리에서 이런 방식의 UI를 사용한다.
 
-![result2](/assets/imgs/2020/06/03/result2.jpg)
+![result2](./result2.jpg)
 
 정리하면 HTML5 스펙을 따르는 모던 브라우져는 아래 방식으로 폼 입력 값을 처리한다.
 
@@ -117,15 +117,15 @@ form.was-validated input:invalid {
 화면이 로딩되고 제출 버튼을 클릭하기 전까지 폼 요소에는 `.was-validated` 클래스가 없다.
 입력 컨트롤에 검증 가상 클래스가 있더라도 이를 표시하지 않을 것이다.
 
-![result3](/assets/imgs/2020/06/03/result3.jpg)
+![result3](./result3.jpg)
 
 제출한 뒤에는 오류 메세지가 표시되고,
 
-![result4](/assets/imgs/2020/06/03/result4.jpg)
+![result4](./result4.jpg)
 
 요소에 붉은 색으로 테두리가 표시된다.
 
-![result5](/assets/imgs/2020/06/03/result5.jpg)
+![result5](./result5.jpg)
 
 # Constraint Validation API
 
@@ -135,7 +135,7 @@ form.was-validated input:invalid {
 
 만약 브라우져 로케일이 한글이 아니라면 오류 메세지는 해당 언어로 번역되어 표시된다.
 
-![message-i18n](/assets/imgs/2020/06/03/message-i18n.jpg)
+![message-i18n](./message-i18n.jpg)
 
 이러한 브라우져의 기본 동작을 잘만 활용한다면 일이 무척 단순해진다.
 하지만 이걸 사용할 수 있었던 적은 거의 없었다.
@@ -246,10 +246,10 @@ input.addEventListener('invalid', () => {
 `setCustomeValidity(message)` 메소드는 오류가 있으면 문자열을 전달해 브라우져 오류 메시지를 표시한다.
 그렇지 않으면 빈 문자열을 전달해 입력이 유효하다고 설정한다.
 
-![result6](/assets/imgs/2020/06/03/result6.jpg)
+![result6](./result6.jpg)
 (requred 규칙에 대한 커스텀 오류 메세지)
 
-![result7](/assets/imgs/2020/06/03/result7.jpg)
+![result7](./result7.jpg)
 (minlength 규칙에 대한 커스텀 오류 메세지)
 
 검증 이후 요소 값이 바뀔 때도 오류 메세지를 표시하기 위해 input 이벤트에도 추가하자.
@@ -265,10 +265,10 @@ input.addEventListener('input', () => {
 
 오류 메세지를 표현하는 방식은 여전히 브라우져 의존적이다.
 
-![firefox](/assets/imgs/2020/06/03/firefox.jpg)
+![firefox](./firefox.jpg)
 (파이어폭스 브라우져)
 
-![safari](/assets/imgs/2020/06/03/safari.jpg)
+![safari](./safari.jpg)
 (사파리 브라우져)
 
 
@@ -304,7 +304,7 @@ input.addEventListener('invalid', (e) => {
 
 이제 브라우져 기본 오류 메세지 스타일 대신 커스텀 스타일로 보여줄 수 있다.
 
-![result8](/assets/imgs/2020/06/03/result8.jpg)
+![result8](./result8.jpg)
 
 # 결론
 

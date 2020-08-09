@@ -70,7 +70,7 @@ module.exports = {
         id: 6,
         // id: 'youtube_20200407',
         url: 'https://www.youtube.com/watch?v=_QCNqV_EfzE',
-        thumb: '/assets/imgs/2020/04/07/youtube_20200407.jpg',
+        thumb: '/assets/imgs/youtube_20200407.jpg',
         title: '알아두면 쓸데있는 VSCode 노하우'
       },
     ]
@@ -99,7 +99,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 726,
             },
           },
         //   {

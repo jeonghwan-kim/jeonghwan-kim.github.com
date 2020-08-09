@@ -200,7 +200,7 @@ const myRole = {
 
 `<RouteIf>` 컴포넌트는 role 값이 권한 없음(NONE) 임을 확인하고 `<ForbiddenPage>`를 렌더링할 것이다.
 
-![none](/assets/imgs/2020/03/20/none.jpg)
+![none](./imgs/none.jpg)
 
 ## 읽기 권한
 
@@ -216,7 +216,7 @@ role 값을 읽기 권한(READ)으로 바꿔보면 어떨까?
 ```
 role 값이 권한없음(NONE)이 아니므로 component 속성에 연결한 `UserManagePage` 화면을 그릴것이다.
 
-![read](/assets/imgs/2020/03/20/read.jpg)
+![read](./imgs/read.jpg)
 
 이 화면에는 데이터를 수정할 수 있는 요소가 있는데 이 녀석들은 쓰기 권한이 없기 때문에 비활성화 된다.
 
@@ -258,7 +258,7 @@ const UserManagePage = ({ role }) => {
 
 `<RouteIf>`는 role이 NONE 이 아니므로 화면 접근은 허용한다.
 
-![write](/assets/imgs/2020/03/20/write.jpg)
+![write](./imgs/write.jpg)
 
 그리고 화면에서는 쓰기권한(WRITE)이기 때문에 요소의 disabled 속성이 해제되어 요소가 활성화 되었다.
 

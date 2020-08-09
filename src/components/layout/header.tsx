@@ -4,6 +4,7 @@ import './header.scss';
 import Nav from "./nav";
 import Modal from "../modal";
 import CategorySelectModal from "./category-select-modal";
+import Icon from "../icon";
 
 interface P {
   siteTitle: string;
@@ -17,11 +18,15 @@ const Header: React.FC<P> = ({ siteTitle }) => {
       <Link className="site-logo" to="/">{siteTitle}</Link>
     </h1>
     <nav className="site-navs">
-      <ul className="flex ml-1">
-        <Nav title="POSTS" icon="article" onClick={()=> Modal.open(<CategorySelectModal />)}/>
-        <Nav title="VIDEOS" icon="video" to="/#videos" />
-        <Nav title="TAGS" icon="tag" to="/tags/"/>
-      </ul>
+        <Nav onClick={()=> Modal.open(<CategorySelectModal />)}>
+          <Icon type="article" size={3} />POSTS
+        </Nav>
+        <Nav to="/#videos">
+          <Icon type="video" size={3} />VIDEOS
+        </Nav>
+        <Nav to="/tags/">
+          <Icon type="tag" size={3} />TAGS
+        </Nav>
     </nav>
   </div>
 </header>

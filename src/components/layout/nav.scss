@@ -1,24 +1,29 @@
-@import '../../sass/variables.scss';
+@import "../../sass/variables.scss";
 
-li.site-nav {
-    margin-right: $spacing-unit;
-    a {
-      padding: $spacing-unit $spacing-unit / 2;
-      appearance: none;
-      background: transparent;
-      border: none;
-      color: white;
-      &:hover,
-      &:focus {
-        cursor: pointer;
-      }
-    }
-    &:last-child {
-      margin-right: 0;
-    }
-    @media (max-width: $tablet-width - 1) {
-      .nav-title {
-        display: none;
-      }
+.site-nav {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a {
+    padding: $spacing-unit $spacing-unit;
+    appearance: none;
+    background: transparent;
+    border: none;
+    color: white;
+    height: 100%;
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      background: rgba(0,0,0,0.3);
     }
   }
+  &:last-child {
+    margin-right: 0;
+  }
+  @media (max-width: $tablet-width - 1) {
+    .nav-title {
+      display: none;
+    }
+  }
+}
