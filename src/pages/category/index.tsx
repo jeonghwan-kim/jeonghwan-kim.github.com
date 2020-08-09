@@ -33,7 +33,7 @@ export const pageQuery = graphql`
   allMarkdownRemark(sort: { fields: fields___date, order: DESC }) {
     edges {
       node {
-        excerpt
+        excerpt(pruneLength: 200, format: PLAIN, truncate: true)
         fields {
           slug
           date(formatString: "YYYY년 MM월 DD일")

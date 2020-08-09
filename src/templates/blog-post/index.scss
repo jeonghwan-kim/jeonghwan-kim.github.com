@@ -93,6 +93,7 @@
       border-radius: $spacing-unit / 2;
       display: block;
       margin: $spacing-unit * 2 auto;
+      max-width: 100%;
     }
     blockquote {
       color: lighten($black-color, 20%);
