@@ -1,0 +1,70 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: 0.3s forwards backdropFadeIn;
+  &.hide {
+    animation: 0.3s forwards backdropFadeOut;
+  }
+  .modal {
+    background: white;
+    min-width: 300px;
+    box-shadow: 0px 4px -1px rgba(0,0,0, 0.9);
+    animation: 0.3s forwards modalFadeIn;
+    &.hide {
+      animation: 0.3s forwards modalFadeOut;
+    }
+  }
+}
+
+@keyframes modalFadeIn {
+	0% {
+		opacity: 0;
+		transform: scale(0.98);
+	}
+	50% {
+		transform: scale(1.02);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes modalFadeOut {
+  0% {
+    opacity: 1;
+    transform: none;
+  }
+	30% {
+    opacity: 0.3;
+    transform: scale(1.05);
+	}
+  to {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes backdropFadeOut {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+@keyframes backdropFadeOut {
+  from {
+    opacity: 100%;
+  }
+  to {
+    opacity: 0;
+  }
+}

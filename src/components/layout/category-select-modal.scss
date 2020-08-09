@@ -1,0 +1,23 @@
+@import '../../sass/variables.scss';
+
+.category-select-modal {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;;
+    li {
+      a {
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        padding: $spacing-unit * 2 $spacing-unit * 3;
+        color: $black-color;
+        border-bottom: solid 1px $light-gray-color;
+        &:hover,
+        &:focus {
+          background: rgba(0,0,0,0.1);
+        }
+      }
+    }
+  }
+}

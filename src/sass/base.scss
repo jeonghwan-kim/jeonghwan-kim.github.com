@@ -1,0 +1,127 @@
+@import './variables.scss';
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: $base-font-family;
+  color: $black-color;
+  min-width: 320px;
+}
+a {
+  color: $black-color;
+}
+.container {
+  max-width: $site-width;
+  min-width: $mobile-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 $spacing-unit;
+  height: 100%;
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.flex-1 {
+  flex: 1;
+  overflow: auto;
+}
+.flex-0 {
+  flex: 0;
+  overflow: auto;
+}
+
+.align-left {
+  text-align: left;
+}
+.align-right {
+  text-align: right;
+}
+
+@include spacing('padding', 'p');
+@include spacing('margin', 'm');
+
+.icon {
+  display: inline-block;
+  width: $spacing-unit * 3;
+  height: $spacing-unit * 3;
+  background-repeat: no-repeat;
+  background-position-x: 0;
+  background-position-y: 0;
+  background-size: contain;
+}
+
+@for $x from 1 to 10 {
+  .icon-#{$x}x {
+    width: #{$spacing-unit * $x};
+    height: #{$spacing-unit * $x};
+  }
+}
+.icon-rss {
+  background-image: url(/assets/imgs/icons/icon-rss.png);
+}
+.icon-github {
+  background-image: url(/assets/imgs/icons/icon-github.png);
+}
+.icon-email {
+  background-image: url(/assets/imgs/icons/icon-email.png);
+}
+.icon-article {
+  background-image: url(/assets/imgs/icons/icon-article.png);
+}
+.icon-video {
+  background-image: url(/assets/imgs/icons/icon-video.png);
+}
+.icon-tag {
+  background-image: url(/assets/imgs/icons/icon-tag.png);
+}
+
+
+.btn {
+  display: inline-block;
+  padding: $spacing-unit * 1 $spacing-unit * 2;
+  border-radius: $spacing-unit / 2;
+  background-color: $white-color;
+  text-decoration: none;
+  color: $black-color;
+  border: solid 1px $black-color
+}
+
+@mixin btn($color) {
+  color: $color;
+  border-color: $color;
+  &:focus,
+  &:hover {
+    background-color: $color !important;
+    color: $white-color !important;
+  }
+}
+
+.btn-primary {
+  @include btn($primary-color);
+}
+.btn-secondary {
+  @include btn($secondary-color);
+}
+.btn-text {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+
+.post-meta {
+  .date {
+    color: lighten($black-color, 40%);
+  }
+}
+
+.gatsby-highlight {
+  font-size: 14px;
+  line-height: 1.5em;
+}

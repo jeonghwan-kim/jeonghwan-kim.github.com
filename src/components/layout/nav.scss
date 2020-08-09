@@ -1,0 +1,24 @@
+@import '../../sass/variables.scss';
+
+li.site-nav {
+    margin-right: $spacing-unit;
+    a {
+      padding: $spacing-unit $spacing-unit / 2;
+      appearance: none;
+      background: transparent;
+      border: none;
+      color: white;
+      &:hover,
+      &:focus {
+        cursor: pointer;
+      }
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+    @media (max-width: $tablet-width - 1) {
+      .nav-title {
+        display: none;
+      }
+    }
+  }

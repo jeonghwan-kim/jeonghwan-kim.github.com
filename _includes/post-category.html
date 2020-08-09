@@ -1,9 +1,0 @@
-{% if page %}
-  {% assign post = page %}
-{% endif %}
-
-{% if post.category %}
-  <span class="category">
-    분류:<a href="/category/{{post.category}}.html">{{ post.category | upcase }}</a>
-</span>
-{% endif %}

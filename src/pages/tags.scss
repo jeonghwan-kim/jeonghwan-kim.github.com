@@ -1,0 +1,26 @@
+
+@import '../sass/variables.scss';
+
+.tag-page {
+  .tag-item {
+    .tag-title-link {
+      text-decoration: none;
+      color: $primary-color;
+      font-family: $fixed-font-family;
+    }
+    ul.post-list {
+      padding-left: 20px;
+      li.post-item {
+        margin-bottom: $spacing-unit;
+        a.post-title {
+          text-decoration: none;
+          color: $black-color;
+          &:hover,
+          &:focus {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

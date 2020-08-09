@@ -1,0 +1,17 @@
+@import '../../sass/variables.scss';
+
+.home {
+  padding-top: $spacing-unit * 6;
+  @media (max-width: $tablet-width) {
+    padding-top: 0;
+  }
+  section {
+    padding-bottom: $spacing-unit * 12;
+    .section-inner {
+      max-width: $content-width;
+      .section-title a {
+        text-decoration: none;
+      }
+    }
+  }
+}

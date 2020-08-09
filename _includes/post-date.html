@@ -1,7 +1,0 @@
-{% if page %}
-  {% assign post = page %}
-{% endif %}
-
-{% if post.date %}
-  <time class="date" itemprop="datePublished" datetime="{{post.date | date_to_xmlschema }}">{{ post.date | date : "%Y년 %m월 %d일" }}</time>
-{% endif %}
