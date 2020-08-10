@@ -102,16 +102,8 @@ module.exports = {
               maxWidth: 726,
             },
           },
-        //   {
-        //     resolve: `gatsby-remark-responsive-iframe`,
-        //     options: {
-        //       wrapperStyle: `margin-bottom: 1.0725rem`,
-        //     },
-        //   },
           `gatsby-remark-prismjs`, // 코드 하일라이팅, npm i prismjs 해야 함.
           `gatsby-remark-autolink-headers`, // 헤딩 링크 추가
-        //   `gatsby-remark-copy-linked-files`,
-        //   `gatsby-remark-smartypants`,
         ],
       },
     },
@@ -145,5 +137,55 @@ module.exports = {
         trackingId: `UA-31588166-2`,
       },
     },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                url
+              }
+            }
+          }
+        `,
+        feeds:[{
+          output: "/feed.xml",
+          serialize: ({ query: { site, allMarkdownRemark } }) => {
+            return allMarkdownRemark.edges.map(edge => {
+              return Object.assign({}, edge.node.frontmatter, {
+                description: edge.node.excerpt,
+                date: edge.node.fields.date,
+               url: site.siteMetadata.url + edge.node.fields.slug,
+               guid: site.siteMetadata.url + edge.node.fields.slug,
+              })
+            })
+          },
+          query: `{
+              allMarkdownRemark(
+                sort: { order: DESC, fields: [fields___date] },
+              ) {
+                edges {
+                  node {
+                    excerpt
+                    fields {
+                      slug
+                      date
+                    }
+                    frontmatter {
+                      title
+                    }
+                  }
+                }
+              }
+            }
+          `,
+          title: "김정환 블로그 RSS Feed",
+        }
+        ]
+      }
+    }
   ],
 }
