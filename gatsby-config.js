@@ -138,6 +138,12 @@ module.exports = {
         shortname: `whatilearncom`
       }
 
-    }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-31588166-2`,
+      },
+    },
   ],
 }
