@@ -3,7 +3,7 @@ title: '[Node.js코드랩] 12.포스트 조회 API'
 layout: post
 summary: 포스트 조회 API를 구현합니다
 category: series
-seriesId: 20181201
+seriesId: "555b6438-4a71-51d0-9156-a1d5ca4d5eab"
 tags: [lecture]
 ---
 

@@ -2,7 +2,7 @@
 title: '앵귤러로 Todo앱 만들기 5 - 새로운 투두 추가하기'
 layout: post
 category: series
-seriesId: 20160611
+seriesId: "377d51fb-3cab-5e79-a4e0-8e08a79bbe02"
 tags: [angularjs, lecture]
 permalink: /lectures/todomvc-angular/5/
 featured_image: /assets/imgs/2016/todomvc-logo.png

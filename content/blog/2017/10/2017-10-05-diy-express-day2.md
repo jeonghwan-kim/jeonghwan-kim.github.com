@@ -2,7 +2,7 @@
 title: 익스프레스 만들기 Day 2
 layout: post
 category: series
-seriesId: 20171002
+seriesId: "f301d537-b1a9-5ed7-8175-0ea58ee80a70"
 permalink: 2017/10/05/diy-express-day2.html
 tags: [expressjs]
 summary: 노드 기본모듈만 사용해 익스프레스 프레임웍를 만들어 보자

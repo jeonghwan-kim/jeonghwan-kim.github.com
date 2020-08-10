@@ -11,7 +11,7 @@ AGLBIsDisabled:
 category: dev
 tags: [sequelize]
 featured_image: /assets/imgs/2016/sequelize-icon.png
-videoId: 4
+videoId: "a3385ae2-3c3c-585d-b4ee-fe73484ece62"
 ---
 ORM을 써보기 시작했다. <a href="http://sequelize.readthedocs.org/en/latest/">Sequeilize</a>.
 

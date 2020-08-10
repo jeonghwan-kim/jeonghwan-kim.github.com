@@ -4,7 +4,7 @@ layout: post
 summary: serve-static 모듈을 만듭니다
 category: series
 tags: [lecture]
-seriesId: 20181201
+seriesId: "555b6438-4a71-51d0-9156-a1d5ca4d5eab"
 ---
 
 ## 🌳목표

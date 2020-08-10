@@ -3,8 +3,8 @@ title: '프론트엔드 개발환경의 이해: 웹팩(심화)'
 layout: post
 category: series
 tags: [webpack]
-seriesId: 20200102
-videoId: 1
+seriesId: "46a6066f-809e-52ed-949b-553de74d1f3a"
+videoId: "59f0bdf2-e898-50db-8800-52a3fa758f04"
 ---
 
 이전글 [웹팩(기본편)](/series/2019/12/10/frontend-dev-env-webpack-basic.html)에서는 웹팩의 개념과 간단한 사용법에 대해 살펴보았다.

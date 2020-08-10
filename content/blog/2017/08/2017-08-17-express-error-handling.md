@@ -5,7 +5,7 @@ category: dev
 permalink: node/2017/08/17/express-error-handling.html
 tags: [expressjs, 번역 ]
 summary: async/await을 활용해서 익스프레스 에러 미들웨어를 개발하는 방법을 설명합니다
-videoId: 4
+videoId: "a3385ae2-3c3c-585d-b4ee-fe73484ece62"
 ---
 
 > 원문: http://thecodebarbarian.com/80-20-guide-to-express-error-handling.html

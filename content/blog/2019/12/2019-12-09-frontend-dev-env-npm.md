@@ -3,8 +3,8 @@ title: '프론트엔드 개발환경의 이해: NPM'
 layout: post
 category: series
 tags: [nodejs]
-seriesId: 20200102
-videoId: 1
+seriesId: "46a6066f-809e-52ed-949b-553de74d1f3a"
+videoId: "59f0bdf2-e898-50db-8800-52a3fa758f04"
 ---
 
 몇 년 전부터 프론트엔드 개발자 채용 공고에 Node.js 기술이 우대 사항 항목으로로 추가 되었다.

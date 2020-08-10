@@ -3,8 +3,8 @@ title: "프론트엔드 개발환경의 이해: 린트"
 layout: post
 category: series
 tags: [lint]
-seriesId: 20200102
-videoId: 1
+seriesId: "46a6066f-809e-52ed-949b-553de74d1f3a"
+videoId: "59f0bdf2-e898-50db-8800-52a3fa758f04"
 ---
 
 ## 1. 배경

@@ -2,7 +2,7 @@ import { graphql, Link } from "gatsby";
 import React, { FC } from "react";
 import Layout from "../../components/layout/layout";
 import { MarkdownRemark } from "../../models/markdown-remark";
-import { Site } from "../../models/site";
+import { Site, Series, Video } from "../../models/site";
 import SEO from '../../components/seo'
 import PostComment from "./post-comment";
 import PostShare from "./post-share";
@@ -10,17 +10,17 @@ import PostToc from "./post-toc";
 import PostVideo from "./post-video";
 import SeriesNav from "./series-nav";
 
-import './index.scss';
+import './blog-post.scss';
 
 interface P {
   data: {
     site: Site;
     markdownRemark: MarkdownRemark;
     allMarkdownRemark: {
-      edges: {
-        node: MarkdownRemark;
-      }[]
+      nodes: MarkdownRemark[];
     }
+    series: Series;
+    video: Video;
   }
   pageContext: {
     previous: MarkdownRemark;
@@ -32,57 +32,54 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext}) => {
 
   console.log('data', data)
 
-  const post = data.markdownRemark
+  const {markdownRemark, series, video} = data
 
   // todo 이전글, 다음글
   const { previous, next } = pageContext
 
   return (
     <Layout>
-      <SEO  title={post.frontmatter.title}/>
+      <SEO  title={markdownRemark.frontmatter.title}/>
       <article id="post" className="post container" itemScope itemType="http://schema.org/BlogPosting">
         <div className="flex">
-          {(post.tableOfContents || post.frontmatter.seriesId || post.frontmatter.videoId) && (
+          {(markdownRemark.tableOfContents || series || video) && (
             <aside className="post-aside">
-              {post.tableOfContents && (
-                <PostToc tableOfContents={post.tableOfContents} />
+              {markdownRemark.tableOfContents && (
+                <PostToc tableOfContents={markdownRemark.tableOfContents} />
               )}
-              {post.frontmatter.seriesId && (
-                <SeriesNav lite nodeId={post.id} series={data.site.siteMetadata.series.filter(s => s.id === post.frontmatter.seriesId)[0]} posts={data.allMarkdownRemark.edges.map(e => e.node)} />
+              {series && (
+                <SeriesNav lite series={series} nodeId={markdownRemark.id} posts={data.allMarkdownRemark.nodes} />
               )}
-              {post.frontmatter.videoId && (
-                <PostVideo videoId={post.frontmatter.videoId} videos={data.site.siteMetadata.videos} />
-
-              )}
+              {video && <PostVideo video={video} />}
             </aside>
           )}
           <main className="post-container flex-1">
             <header className="mb-7 post-header">
-              <h1 className="mt-0 mb-1 post-title" itemProp="name headline">{post.frontmatter.title}</h1>
+              <h1 className="mt-0 mb-1 post-title" itemProp="name headline">{markdownRemark.frontmatter.title}</h1>
               <div className="post-meta">
-                <time className="date" itemProp="datePublished" dateTime={post.fields.date}>{post.fields.date}</time>
+                <time className="date" itemProp="datePublished" dateTime={markdownRemark.fields.date}>{markdownRemark.fields.date}</time>
               </div>
             </header>
-            <div className="post-content" itemProp="articleBody" dangerouslySetInnerHTML={{ __html: post.html }}></div>
-            {post.frontmatter.tags && post.frontmatter.tags.length > 0 && (
+            <div className="post-content" itemProp="articleBody" dangerouslySetInnerHTML={{ __html: markdownRemark.html }}></div>
+            {markdownRemark.frontmatter.tags && markdownRemark.frontmatter.tags.length > 0 && (
               <div className="mt-7">
-                <span className="post-tags">{post.frontmatter.tags.map(tag => {
+                <span className="post-tags">{markdownRemark.frontmatter.tags.map(tag => {
                   return <><Link className="btn btn-secondary" data-tag-name={tag} to={`/tags/#${tag}`}>#{tag}</Link>{' '}</>
                 })}</span>
               </div>
             )}
-            <PostShare markdownRemark={post} siteMetadata={data.site.siteMetadata} />
+            <PostShare markdownRemark={markdownRemark} siteMetadata={data.site.siteMetadata} />
           </main>
         </div>
         <footer className="post-footer footer-container py-10 mt-8">
-          {post.frontmatter.seriesId && (
-            <SeriesNav nodeId={post.id} series={data.site.siteMetadata.series.filter(s => s.id === post.frontmatter.seriesId)[0]} posts={data.allMarkdownRemark.edges.map(e => e.node)} />
-          )}
-          <PostComment markdownRemark={post} site={data.site} />
+          {series && (
+            <SeriesNav series={series} nodeId={markdownRemark.id}  posts={data.allMarkdownRemark.nodes} />
+            )}
+          {/* {previous && <Link to={previous.fields.slug}>← {previous.frontmatter.title}</Link>}
+          {next && <Link to={next.fields.slug}>{next.frontmatter.title} →</Link>} */}
+          <PostComment markdownRemark={markdownRemark} site={data.site} />
         </footer>
       </article>
-      {/* {previous && <Link to={previous.fields.slug}>이전: {previous.frontmatter.title}</Link>}
-      {next && <Link to={next.fields.slug}>다음: {next.frontmatter.title}</Link>} */}
     </Layout>
   )
 }
@@ -90,21 +87,11 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext}) => {
 export default BlogPostTemplate;
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!, $seriesId: Int = 0) {
+  query BlogPostBySlug($slug: String!, $seriesId: String, $videoId: String) {
     site {
       siteMetadata {
         title
         url
-        series {
-          id
-          title
-        }
-        videos {
-          id
-          url
-          thumb
-          title
-        }
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
@@ -128,18 +115,26 @@ export const pageQuery = graphql`
         heading: null
       )
     }
+    series(id: {eq: $seriesId}) {
+      id
+      title
+    }
+    video(id: {eq: $videoId}) {
+      id
+      title
+      thumb
+      url
+    }
     allMarkdownRemark(filter: {frontmatter: {seriesId: {eq: $seriesId}}}, sort: {order: ASC, fields: fields___date}) {
-      edges {
-        node {
-          id
-          fields {
-            slug
-            date
-          }
-          frontmatter {
-            title
-            seriesId
-          }
+      nodes {
+        id
+        fields {
+          slug
+          date
+        }
+        frontmatter {
+          title
+          seriesId
         }
       }
     }

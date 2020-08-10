@@ -3,7 +3,7 @@ title: '[Node.js코드랩] 2.기본 모듈 http'
 layout: post
 summary: 헬로월드 서버를 만들어 봅니다
 category: series
-seriesId: 20181201
+seriesId: "555b6438-4a71-51d0-9156-a1d5ca4d5eab"
 tags: [lecture]
 ---
 

@@ -7,7 +7,7 @@ layout: post
 guid: http://whatilearn.com/?p=192
 permalink: /hapi-logging-good/
 category: series
-seriesId: 20150222
+seriesId: "f390bf73-face-589a-be3e-5d38fc5f704b"
 tags: [hapijs]
 ---
 익스프레스에 winton 로깅 모듈이 있듯이 Hapi에서는 <a href="https://github.com/hapijs/good">Good</a>이라는 좋은 로깅 모듈이 있다. 이번 글에서는 Hapi 프레임웍에서의 로깅 방법에 대해 알아보자.

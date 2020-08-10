@@ -4,7 +4,7 @@ title: Hapi Api 서버 스캐폴드
 date: 2015-02-22T12:00:26+00:00
 author: Chris
 category: series
-seriesId: 20150222
+seriesId: "f390bf73-face-589a-be3e-5d38fc5f704b"
 guid: http://whatilearn.com/?p=216
 permalink: /hapi-api-server-scaffold/
 layout: post

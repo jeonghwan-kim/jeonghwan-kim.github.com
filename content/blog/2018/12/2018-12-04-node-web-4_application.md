@@ -3,7 +3,7 @@ title: '[Node.js코드랩] 4.어플리케이션'
 layout: post
 summary: 어플리케이션 모듈을 만듭니다.
 category: series
-seriesId: 20181201
+seriesId: "555b6438-4a71-51d0-9156-a1d5ca4d5eab"
 tags: [lecture]
 ---
 

@@ -17,13 +17,13 @@ export interface SiteMetadata {
 }
 
 export interface Video {
-  id: string | number;
+  id: string;
   thumb: string;
   url: string;
   title: string;
 }
 
 export interface Series {
-  id: number;
+  id: string;
   title: string;
 }

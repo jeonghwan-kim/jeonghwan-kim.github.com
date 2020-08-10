@@ -16,7 +16,7 @@ export interface Fields {
 export interface Frontmatter {
   title: string;
   description: string;
-  seriesId?: string | number;
-  videoId?: string  | number;
+  seriesId?: string;
+  videoId?: string;
   tags?: string[]
 }

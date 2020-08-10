@@ -2,7 +2,7 @@
 title: 익스프레스 만들기 Day 3
 layout: post
 category: series
-seriesId: 20171002
+seriesId: "f301d537-b1a9-5ed7-8175-0ea58ee80a70"
 permalink: 2017/10/06/diy-express-day3.html
 tags: [expressjs]
 summary: pug와 비슷한 뷰 엔진을 만들어 본다

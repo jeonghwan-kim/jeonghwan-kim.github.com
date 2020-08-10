@@ -4,14 +4,10 @@ import { Video } from '../../models/site';
 import {trackCustomEvent} from 'gatsby-plugin-google-analytics'
 
 interface P {
-  videos: Video[];
-  videoId: string | number;
+  video: Video;
 }
 
-const PostVideo: React.FC<P> = ({videos, videoId}) => {
-  const video = videos.filter(v => v.id === videoId)[0]
-  if (!video) return;
-
+const PostVideo: React.FC<P> = ({video}) => {
   return (
     <div className="post-video">
       <a id="post-video" href={video.url} onClick={e => {

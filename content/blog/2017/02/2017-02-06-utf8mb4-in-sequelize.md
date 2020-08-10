@@ -4,7 +4,7 @@ layout: post
 category: dev
 permalink: node/2017/02/06/utf8mb4-in-sequelize.html
 tags: [sequelize]
-videoId: 4
+videoId: "a3385ae2-3c3c-585d-b4ee-fe73484ece62"
 ---
 
 ## utf8과 utf8mb4

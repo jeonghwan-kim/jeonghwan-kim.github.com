@@ -3,7 +3,7 @@ title: '[Node.js코드랩] 16. body-parser'
 layout: post
 summary: 요청 바디를 다룹니다
 category: series
-seriesId: 20181201
+seriesId: "555b6438-4a71-51d0-9156-a1d5ca4d5eab"
 tags: [lecture]
 ---
 

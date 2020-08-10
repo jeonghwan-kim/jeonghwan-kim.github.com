@@ -3,7 +3,7 @@ title: '[Node.js코드랩] 17. Express.js'
 layout: post
 summary: Express.js 프레임웍으로 다시 구현합니다
 category: series
-seriesId: 20181201
+seriesId: "555b6438-4a71-51d0-9156-a1d5ca4d5eab"
 tags: [lecture]
 ---
 

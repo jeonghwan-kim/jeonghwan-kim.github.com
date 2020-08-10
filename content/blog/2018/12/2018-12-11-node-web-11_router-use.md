@@ -3,7 +3,7 @@ title: '[Node.js코드랩] 11.라우터 use'
 layout: post
 summary: 라우터 기능을 하는 use 메소드를 만듭니다
 category: series
-seriesId: 20181201
+seriesId: "555b6438-4a71-51d0-9156-a1d5ca4d5eab"
 tags: [lecture]
 ---
 

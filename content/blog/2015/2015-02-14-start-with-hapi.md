@@ -7,7 +7,7 @@ layout: post
 guid: http://whatilearn.com/?p=143
 permalink: /start-with-hapi/
 category: series
-seriesId: 20150222
+seriesId: "f390bf73-face-589a-be3e-5d38fc5f704b"
 tags: [hapijs]
 ---
 Node.js에서 서버 구현은 대부분 Express.js 프레임웍으로 개발했다. Express.js 3.x에서 4.x대로 업그레이드 되면서 개선된 성능과 사용 편의성에서 만족하고 있었다. 이제 막 익스프레스 프레임웍이 손에 익을 무렵 <a href="http://hapijs.com/" target="_blank">Hapi</a>라는 신규 노드 페레임웍에 대한 글을 접한게 되었다. (<a href="http://blog.recopick.com/69" target="_blank">Hapi.js로 Node.js를 시작하세요. - 1부 Why Hapi.js</a>)

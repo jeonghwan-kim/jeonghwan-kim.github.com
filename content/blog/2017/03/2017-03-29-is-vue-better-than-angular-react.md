@@ -5,7 +5,7 @@ category: dev
 permalink: vue/2017/03/29/is-vue-better-than-angular-react.html
 tags: [vuejs, 번역]
 summary: 이 문서는 Vue.js Is Good, But Is It Better Than Angular Or React? 를 번역한 내용입니다.
-videoId: 3
+videoId: "d9fc8cbd-f8ca-508b-b500-4cedc895595c"
 ---
 
 > 이 문서는 [Vue.js Is Good, But Is It Better Than Angular Or React?](http://www.valuecoders.com/blog/technology-and-apps/vue-js-comparison-angular-react/) 를 번역한 내용입니다.
