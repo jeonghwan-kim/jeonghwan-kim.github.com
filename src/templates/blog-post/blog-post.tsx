@@ -11,6 +11,7 @@ import PostVideo from "./post-video";
 import SeriesNav from "./series-nav";
 
 import './blog-post.scss';
+import Button from "../../components/button";
 
 interface P {
   data: {
@@ -33,8 +34,6 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext}) => {
   console.log('data', data)
 
   const {markdownRemark, series, video} = data
-
-  // todo 이전글, 다음글
   const { previous, next } = pageContext
 
   return (
@@ -72,11 +71,15 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext}) => {
           </main>
         </div>
         <footer className="post-footer footer-container py-10 mt-8">
+          {(previous || next) && (
+            <div className="sibling-nav mb-4">
+              {previous && <Button link type="secondary" to={previous.fields.slug}>« {previous.frontmatter.title}</Button>}
+              {next && <Button link type="secondary" to={next.fields.slug}>{next.frontmatter.title} »</Button>}
+            </div>
+          )}
           {series && (
             <SeriesNav series={series} nodeId={markdownRemark.id}  posts={data.allMarkdownRemark.nodes} />
             )}
-          {/* {previous && <Link to={previous.fields.slug}>← {previous.frontmatter.title}</Link>}
-          {next && <Link to={next.fields.slug}>{next.frontmatter.title} →</Link>} */}
           <PostComment markdownRemark={markdownRemark} site={data.site} />
         </footer>
       </article>

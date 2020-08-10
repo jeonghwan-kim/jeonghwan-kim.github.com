@@ -121,7 +121,12 @@
     box-sizing: content-box;
     padding-top: $spacing-unit * 8;
   }
-  .post-footer {
+  .sibling-nav {
+    display: flex;
+    justify-content: space-between;
+    >* {
+      max-width: 48%;
+    }
   }
 }
 

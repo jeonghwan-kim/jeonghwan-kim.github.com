@@ -1,0 +1,33 @@
+@import '../sass/variables.scss';
+
+.btn {
+  display: inline-block;
+  padding: $spacing-unit * 1 $spacing-unit * 2;
+  border-radius: $spacing-unit / 2;
+  background-color: $white-color;
+  text-decoration: none;
+  color: $black-color;
+  border: solid 1px $black-color
+}
+
+@mixin btn($color) {
+  color: $color;
+  border-color: $color;
+  &:focus,
+  &:hover {
+    background-color: $color !important;
+    color: $white-color !important;
+  }
+}
+
+.btn-primary {
+  @include btn($primary-color);
+}
+.btn-secondary {
+  @include btn($secondary-color);
+}
+.btn-text {
+  border: none;
+  background: none;
+  padding: 0;
+}

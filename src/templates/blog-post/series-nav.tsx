@@ -3,6 +3,7 @@ import React from 'react';
 import './series-nav.scss'
 import { Series } from '../../models/site';
 import { MarkdownRemark } from '../../models/markdown-remark';
+import Button from '../../components/button';
 
 interface P {
   series: Series;
@@ -37,13 +38,13 @@ const SeriesNav: React.FC<P> = ({series, posts, nodeId, lite}) => {
         <div className="series-controls flex">
           {prev && (
             <span className="prev align-left">
-              <Link className="btn btn-secondary" to={prev.fields.slug}>« 이전</Link>
+              <Button link type="secondary" to={prev.fields.slug}>« 이전</Button>
             </span>
 
           )}
           {next && (
             <span className="next align-right">
-              <Link className="btn btn-secondary" to={next.fields.slug}>다음 »</Link>
+              <Button link type="secondary" to={next.fields.slug}>다음 »</Button>
             </span>
           )}
         </div>
