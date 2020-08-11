@@ -1,15 +1,23 @@
 @import '../sass/variables.scss';
 
-.post-list {
+ul.post-list {
   list-style: none;
   padding: 0;
-  .post-item {
+  li.post-item {
+    a {
+      text-decoration: none;
+    }
+    margin: $spacing-unit * 7 0;
     text-decoration: none;
     display: block;
     .post-item-title {
       color: $primary-color;
+      margin-bottom: $spacing-unit;
     }
-    .post-summary {
+    .post-item-meta {
+      color: $gray-color;
+    }
+    .post-item-summary {
       color: $black-color;
       line-height: 1.5em;;
       @media (max-width: $mobile-width) {

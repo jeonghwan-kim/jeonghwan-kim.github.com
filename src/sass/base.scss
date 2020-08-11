@@ -16,8 +16,13 @@ a {
   min-width: $mobile-width;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 $spacing-unit;
+  padding-left: $spacing-unit;
+  padding-right: $spacing-unit;
   height: 100%;
+}
+.container-sm {
+  @extend .container;
+  max-width: $content-width;
 }
 .flex {
   display: flex;
@@ -39,22 +44,15 @@ a {
   text-align: right;
 }
 
-@include spacing('padding', 'p');
-@include spacing('margin', 'm');
-
-
 .hidden {
   display: none;
-}
-
-
-.post-meta {
-  .date {
-    color: lighten($black-color, 40%);
-  }
 }
 
 .gatsby-highlight {
   font-size: 14px;
   line-height: 1.5em;
 }
+
+@include spacing('padding', 'p');
+@include spacing('margin', 'm');
+

@@ -1,34 +1,43 @@
-import React, { FC } from "react";
-import { MarkdownRemark } from "../models/markdown-remark";
+import React, { FC, ReactNode } from "react";
+import { MarkdownRemark, Frontmatter, Fields } from "../models/markdown-remark";
 import { Link } from "gatsby";
 
 import './post-list.scss'
 
-interface P {
-  posts: MarkdownRemark[]
+export interface PostItemType {
+  title: ReactNode;
+  slug: string;
+  meta?: ReactNode;
+  excerpt?: string;
+}
+export interface P {
+  posts: PostItemType[]
 }
 
 const PostList: FC<P> = ({posts}) => {
   return(
     <ul id="post-list" className="post-list">
-      {posts.map(({frontmatter, fields, excerpt}) => {
-          const title = frontmatter.title || fields.slug;
+      {posts.map(({title, slug, meta, excerpt}) => {
+        return (
+          <li key={slug} className="post-item" >
+            <Link to={slug}>
+              <h2 className="post-item-title">{title}</h2>
+              {meta && (
+                <div className="post-item-meta">{meta}</div>
 
-          return (
-            <li key={fields.slug}>
-              <Link className="post-item my-7" to={fields.slug}>
-                <h2 className="post-item-title mb-0">{title}</h2>
-                <p className="post-meta mt-1">{fields.date}</p>
+              )}
+              {excerpt && (
                 <p
-                  className="post-summary"
-                  dangerouslySetInnerHTML={{
-                    __html: frontmatter.description || excerpt,
-                  }}
-                ></p>
-              </Link>
-            </li>
-          )
-        })}
+                className="post-item-summary"
+                dangerouslySetInnerHTML={{
+                  __html: excerpt,
+                }}
+              ></p>
+              )}
+            </Link>
+          </li>
+        )
+      })}
     </ul>
   )
 }

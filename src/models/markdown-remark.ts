@@ -9,6 +9,7 @@ export interface MarkdownRemark {
 
 export interface Fields {
   date: string;
+  dateStr?: string;
   slug: string;
   beforeGatsby: boolean;
 }

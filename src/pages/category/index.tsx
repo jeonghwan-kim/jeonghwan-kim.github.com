@@ -19,7 +19,12 @@ export const CateogryPosts: FC<CateogryPostsProps> = ({title, posts}) => (
         <section className="posts">
           <div className="section-inner container">
             <h2>{title}</h2>
-            <PostList posts={posts} />
+            <PostList posts={posts.map(p => ({
+              slug: p.fields.slug,
+              title: p.frontmatter.title,
+              meta: <time dateTime={p.fields.date}>{p.fields.dateStr}</time>,
+              excerpt: p.excerpt
+            }))} />
           </div>
         </section>
       </div>
@@ -36,7 +41,8 @@ export const pageQuery = graphql`
         excerpt(pruneLength: 200, format: PLAIN, truncate: true)
         fields {
           slug
-          date(formatString: "YYYY년 MM월 DD일")
+          dateStr: date(formatString: "YYYY년 MM월 DD일")
+          date
         }
         frontmatter {
           title

@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import { graphql, useStaticQuery, Link } from "gatsby"
 
 import './tags.scss'
+import Content, { Section } from "../components/content"
 
 const TagPage = () => {
   const data = useStaticQuery(graphql`query {
@@ -57,27 +58,31 @@ const TagPage = () => {
   return (
     <Layout>
       <SEO title="태그" />
-      <div className="tag-page container">
-        <h1 className="my-10">태그</h1>
-        {d2.map(item => {
-          return <div className="tag-item mb-5">
-            <h2 id={item.tag}>
-              <Link to={`#${item.tag}`} className="tag-title-link">#{item.tag}</Link>
-            </h2>
-            <ul className="post-list">
-              {item.node
-                .sort((a, b) => {
-                  return a.date > b.date ? -1 : 1;
-                })
-                .map(node => {
-                  return <li className="post-item" key={node.link}>
-                      <Link className="post-title" to={node.link}>{node.title}</Link>
-                  </li>
-                })}
-            </ul>
+      <Content className="container-sm">
+        <Section title="태그" >
+          <div className="tag-list">
+            {d2.map(item => {
+              return <div className="tag-item">
+                <h2 id={item.tag}>
+                  <Link to={`#${item.tag}`} className="tag-title-link">#{item.tag}</Link>
+                </h2>
+                <ul className="post-list">
+                  {item.node
+                    .sort((a, b) => {
+                      return a.date > b.date ? -1 : 1;
+                    })
+                    .map(node => {
+                      return <li key={node.link}>
+                          <Link to={node.link}>{node.title}</Link>
+                      </li>
+                    })}
+                </ul>
+              </div>
+            })}
+
           </div>
-        })}
-      </div>
+        </Section>
+      </Content>
     </Layout>
 
   )

@@ -1,18 +1,20 @@
 
 @import '../sass/variables.scss';
 
-.tag-page {
+.tag-list {
   .tag-item {
-    .tag-title-link {
-      text-decoration: none;
-      color: $primary-color;
-      font-family: $fixed-font-family;
+    h2 {
+      a {
+        text-decoration: none;
+        color: $primary-color;
+        font-family: $fixed-font-family;
+      }
     }
-    ul.post-list {
+    ul {
       padding-left: 20px;
-      li.post-item {
+      li {
         margin-bottom: $spacing-unit;
-        a.post-title {
+        a {
           text-decoration: none;
           color: $black-color;
           &:hover,

@@ -1,5 +1,5 @@
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-// $article-font-family: Georgia, Cambria, "Times New Roman", Times, serif; // 미디엄 스타일 
+// $article-font-family: Georgia, Cambria, "Times New Roman", Times, serif; // 미디엄 스타일
 $article-font-family: $base-font-family;
 $fixed-font-family: "SF Mono", "Menlo", Courier, "Lucida Console", monospace;
 
@@ -23,27 +23,28 @@ $white-color: #f9f8fd;
 $gray-color: lighten($black-color, 40%);
 $light-gray-color: #e7e9ee;
 
+
 @mixin spacing($target, $shortcut) {
   @for $i from 0 to 21 {
-    .#{$shortcut}t-#{$i} { 
-      #{$target}-top: #{$i * $spacing-unit}; 
+    .#{$shortcut}t-#{$i} {
+      #{$target}-top: #{$i * $spacing-unit};
     }
-    .#{$shortcut}r-#{$i} { 
-      #{$target}-right: #{$i * $spacing-unit}; 
+    .#{$shortcut}r-#{$i} {
+      #{$target}-right: #{$i * $spacing-unit};
     }
-    .#{$shortcut}b-#{$i} { 
-      #{$target}-bottom: #{$i * $spacing-unit}; 
+    .#{$shortcut}b-#{$i} {
+      #{$target}-bottom: #{$i * $spacing-unit};
     }
     .#{$shortcut}l-#{$i} {
-      #{$target}-left: #{$i * $spacing-unit}; 
+      #{$target}-left: #{$i * $spacing-unit};
     }
     .#{$shortcut}x-#{$i} {
-      #{$target}-left: #{$i * $spacing-unit}; 
-      #{$target}-right: #{$i * $spacing-unit}; 
+      #{$target}-left: #{$i * $spacing-unit};
+      #{$target}-right: #{$i * $spacing-unit};
     }
-    .#{$shortcut}y-#{$i} { 
-      #{$target}-top: #{$i * $spacing-unit}; 
-      #{$target}-bottom: #{$i * $spacing-unit}; 
+    .#{$shortcut}y-#{$i} {
+      #{$target}-top: #{$i * $spacing-unit};
+      #{$target}-bottom: #{$i * $spacing-unit};
     }
   }
 }
