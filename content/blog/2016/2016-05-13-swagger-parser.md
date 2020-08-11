@@ -1,8 +1,8 @@
 ---
-title: '스웨거 문서 문법 체크하기'
+title: "스웨거 문서 문법 체크하기"
 layout: post
 category: dev
-summary: 'swagger-parser로 스웨거 문법을 체크하는 방법'
+summary: "swagger-parser로 스웨거 문법을 체크하는 방법"
 tags: [swagger]
 featured_image: /assets/imgs/2016/swagger-logo.png
 permalink: /2016/05/13/swagger-parser.html
@@ -30,9 +30,8 @@ permalink: /2016/05/13/swagger-parser.html
 
 ![swagger-parser-001](/assets/imgs/2016/swagger-parser-001.png)
 
-작성한 문서의 주소(url)나 텍스트를 폼에 입력한 뒤  "Validate it"을 클릭하면 문법 체크를 수행한다.
+작성한 문서의 주소(url)나 텍스트를 폼에 입력한 뒤 "Validate it"을 클릭하면 문법 체크를 수행한다.
 문서에서 문법 에러를 발견하면 결과를 보여 준다.
-
 
 ## 노드용 모듈
 
@@ -49,31 +48,29 @@ $ npm install swagger-parser --save
 모듈을 로딩한다.
 
 ```javascript
-const SwaggerParser = require('swagger-parser');
+const SwaggerParser = require("swagger-parser")
 ```
 
 스웨거 문서를 JSON 형식으로 응답하는 API에 검증 로직을 추가한다.
 참고로 익스프레스(Express.js)를 사용했다.
 
 ```javascript
-app.get('/swagger-document', (req, res) => {
-  let document = '' // 여기에 스웨거 문서를 로딩한다
+app.get("/swagger-document", (req, res) => {
+  let document = "" // 여기에 스웨거 문서를 로딩한다
 
   SwaggerParser.validate(document, (err, api) => {
-
     // 문법 에러
     if (err) {
-      console.error(err);
-      res.json({ error: err }); // 에러 메세지를 보낸다
+      console.error(err)
+      res.json({ error: err }) // 에러 메세지를 보낸다
     }
 
     // 문법 검증 통과
     else {
-      res.json(api); // 문서를 보낸다
+      res.json(api) // 문서를 보낸다
     }
   })
-});
-
+})
 ```
 
 swagger-parser로 검증된 경우에만 스웨거 문서를 응답하고 그렇지 않을 경우 에러 메세지를 응답하도록 했다.

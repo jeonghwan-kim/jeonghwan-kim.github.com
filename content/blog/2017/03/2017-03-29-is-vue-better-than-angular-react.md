@@ -10,7 +10,7 @@ videoId: "d9fc8cbd-f8ca-508b-b500-4cedc895595c"
 
 > 이 문서는 [Vue.js Is Good, But Is It Better Than Angular Or React?](http://www.valuecoders.com/blog/technology-and-apps/vue-js-comparison-angular-react/) 를 번역한 내용입니다.
 
-Vue.js는 웹 인터페이스를 만들기 위한 자바스크립트 라이브러입니다. 다른 도구를 함께 사용하면 "프레임웍"이 될수 있는 녀석이죠. 우리가 작성한 최근 블로그를 통해 여러분은 이미 Vue.js가 최고의 자바스크립트 프레임웍이고 앵귤러와 리엑트를  대체한다는 것을 알았을 겁니다.
+Vue.js는 웹 인터페이스를 만들기 위한 자바스크립트 라이브러입니다. 다른 도구를 함께 사용하면 "프레임웍"이 될수 있는 녀석이죠. 우리가 작성한 최근 블로그를 통해 여러분은 이미 Vue.js가 최고의 자바스크립트 프레임웍이고 앵귤러와 리엑트를 대체한다는 것을 알았을 겁니다.
 
 이전에 Vue.js를 한번도 들어보지 않았다면 아마도 이렇게 생각할지도 모르겠네요.
 
@@ -22,14 +22,15 @@ Vue.js는 웹 인터페이스를 만들기 위한 자바스크립트 라이브�
 
 ![](http://www.valuecoders.com/blog/wp-content/uploads/2016/11/Vuejs-downloads2.png)
 
-보셨죠? 뷰는 새롭다거나 인기가 없는 프레임웍이 아니랍니다. 이제 Vue.js가  왜 좋지 살펴볼까요?
+보셨죠? 뷰는 새롭다거나 인기가 없는 프레임웍이 아니랍니다. 이제 Vue.js가 왜 좋지 살펴볼까요?
 
 ## 뷰js는 왜 특별한가?
-Vue의 가장  좋은 점은 계보가 없는 점입니다. 매우 신선하고 가볍죠. 리엑트와 앵귤러의 실패나 성공으로부터 배운 녀석입니다. 우리는 Vue를 가볍고 쉽게 배울수 있죠.
+
+Vue의 가장 좋은 점은 계보가 없는 점입니다. 매우 신선하고 가볍죠. 리엑트와 앵귤러의 실패나 성공으로부터 배운 녀석입니다. 우리는 Vue를 가볍고 쉽게 배울수 있죠.
 
 ![](http://www.valuecoders.com/blog/wp-content/uploads/2016/11/Lightweight-vuejs.jpg)
 
-Vue의 기본문서는 상당히 좋아요. 앵귤러처럼 많은 노력을 들이지 않아도 되죠. PageKit, Python China는 Vue를 사용하는 프로젝트 중 두가지 입니다. [여기 리스트](https://github.com/vuejs/awesome-vue#projects-using-vuejs) )를 확인해 보세요.  Vue는 앵귤러의 양방향 데이터 바인딩과 리엑트의 가상돔을 가지고 있습니다.
+Vue의 기본문서는 상당히 좋아요. 앵귤러처럼 많은 노력을 들이지 않아도 되죠. PageKit, Python China는 Vue를 사용하는 프로젝트 중 두가지 입니다. [여기 리스트](https://github.com/vuejs/awesome-vue#projects-using-vuejs) )를 확인해 보세요. Vue는 앵귤러의 양방향 데이터 바인딩과 리엑트의 가상돔을 가지고 있습니다.
 
 ![](http://www.valuecoders.com/blog/wp-content/uploads/2016/11/Virtual-DOM-vuejs.jpg)
 
@@ -46,6 +47,7 @@ Vue.js의 기본 개념이 좀 확실해 졌으면 하는데...... 앵귤러, �
 이제 몇 가지 기본적인 영감을 주는 코드를 살펴 보겠습니다.
 
 ### 모듈과 컴포넌트
+
 ```js
 // 앵귤러 모듈
 angular.module('myModule', [...])
@@ -113,17 +115,17 @@ return function(value) { ... };
 {% raw %}{{ myVar }}{% endraw %}
 ```
 
-객체나 배열은 인터폴레이션이 안됩니다. ([Object] 가 표시될거에요)  앵귤러에서 저는 디버깅할 때 잘 사용했습니다. 뷰에서도 동일하게 빌트인 제이슨 필터가 있습니다.
+객체나 배열은 인터폴레이션이 안됩니다. ([Object] 가 표시될거에요) 앵귤러에서 저는 디버깅할 때 잘 사용했습니다. 뷰에서도 동일하게 빌트인 제이슨 필터가 있습니다.
 
 ### 모델 바인딩
 
 ```html
 <!-- 앵귤러 -->
-<input type="text" ng-model="myVar">
+<input type="text" ng-model="myVar" />
 <p ng-bind="myVar"></p>
 
 <!-- 뷰 -->
-<input type="text" v-model="myVar">
+<input type="text" v-model="myVar" />
 <p v-bind="myVar"></p>
 ```
 
@@ -132,12 +134,12 @@ return function(value) { ... };
 ```html
 <!-- 앵귤러 -->
 <li ng-repeat="item in items" class="item-{% raw %}{{$index}}{% endraw %}">
-{% raw %}{{item.myProperty}}{% endraw %}
+  {% raw %}{{item.myProperty}}{% endraw %}
 </li>
 
 <!-- 뷰 -->
 <li v-repeat="item in items" class="item-{% raw %}{{$index}}{% endraw %}">
-{% raw %}{{item.myProperty}}{% endraw %}
+  {% raw %}{{item.myProperty}}{% endraw %}
 </li>
 ```
 
@@ -154,6 +156,7 @@ return function(value) { ... };
 ```
 
 ### 조건 클래스
+
 ```html
 <!-- 앵귤러 -->
 <div ng-class="{'active': myVar}"></div>
@@ -163,6 +166,7 @@ return function(value) { ... };
 ```
 
 ### 이벤트 바인딩
+
 ```html
 <!-- 앵귤러 -->
 <div ng-click="myMethod($event)"></div>
@@ -174,14 +178,16 @@ return function(value) { ... };
 v-on 디렉티브는 앵귤러보다 더 일관된 방법인것 같은데 이건 개인 취향인 듯 싶네요.
 
 ### Vue.js와 앵귤러의 결론
+
 앵귤러에는 [많은 도구](http://www.valuecoders.com/blog/technology-and-apps/top-20-angularjs-developer-tools/) 와 복잡한 신택스가 있는데 가끔 헷갈립니다. 반면 Vue.js가 훨씬 간단하고 낫다고 봅니다. 만약 이 프레임웍에 대해 걱정스럽다면 그러지 않아도 되는데 앞으로 2 년간은 지속될 것이기 때문입니다.
 
 ## 리엑트 vs 뷰
+
 리엑트와 뷰는 아래 비슷한 특징이 있어요.
 
 1. 가상돔을 사용한다.
 2. 리엑티브(reactive)하고 컴포져블(compose-able)한 뷰 컴포넌트를 제공한다.
-3.  핵심 라이브러리에 집중한다. (라우팅과 상태관리를 포함)
+3. 핵심 라이브러리에 집중한다. (라우팅과 상태관리를 포함)
 
 관련글: [5 reasons to choose Facebook’s ReactJS
 ](http://www.valuecoders.com/blog/technology-and-apps/5-reasons-choose-facebooks-reactjs/)
@@ -194,36 +200,37 @@ v-on 디렉티브는 앵귤러보다 더 일관된 방법인것 같은데 이건
 <!-- 리엑트 -->
 <div id="greeting"></div>
 <script type="text/babel">
-var Greeting = React.createClass({
-render: function(){
-return (
-  <p>Hello form React</p>
-)
-}
-});
-ReactDOM.render(
-<Greeting />,
-document.getElementById('greeting');
-);
+  var Greeting = React.createClass({
+  render: function(){
+  return (
+    <p>Hello form React</p>
+  )
+  }
+  });
+  ReactDOM.render(
+  <Greeting />,
+  document.getElementById('greeting');
+  );
 </script>
 
 <!-- 뷰 -->
 <div id="app">
-{% raw %}{{message}}{% endraw %}
+  {% raw %}{{message}}{% endraw %}
 </div>
 <script>
-new Vue({
-el: '#app',
-data: {
-message: 'Hello from Vue'
-}
-});
+  new Vue({
+    el: "#app",
+    data: {
+      message: "Hello from Vue",
+    },
+  })
 </script>
 ```
 
-심플합니다.  아무런 학습이나 새로운 기술 없이도 뷰를 사용할 수 있습니다.
+심플합니다. 아무런 학습이나 새로운 기술 없이도 뷰를 사용할 수 있습니다.
 
 ### 양방향 데이터 바인딩
+
 ```js
 // 리엑트
 var Message = React.createClass({
@@ -293,12 +300,14 @@ data: { array: [1,2,3,4] }
 
 ### 뷰와 리엑트 결론
 
-이러한 예제 코드는 뷰가 배우기 쉽고 바로 프로덕션에서 사용할 수 있다는 사실을 보여줍니다.  또한 대규모 코드베이스 관리를 위해 새로운 도구와 패턴을 간단하게 사용하는 방법을 제공합니다. 뷰는 당신의 지식과 함께 확장할 수 있어서 업데이트된 도구와 베스트 프랙티스를 바로 배울수 있습니다.
+이러한 예제 코드는 뷰가 배우기 쉽고 바로 프로덕션에서 사용할 수 있다는 사실을 보여줍니다. 또한 대규모 코드베이스 관리를 위해 새로운 도구와 패턴을 간단하게 사용하는 방법을 제공합니다. 뷰는 당신의 지식과 함께 확장할 수 있어서 업데이트된 도구와 베스트 프랙티스를 바로 배울수 있습니다.
 
 ## 앵귤러, 리액트, 뷰 비교표
+
 ![](http://www.valuecoders.com/blog/wp-content/uploads/2016/11/Angular-react-and-vue-comparision.png)
 
 ## 결론
+
 현재 뷰는 페이스북의 리액트나 구글의 앵귤러2 만큼 인기 있는건 아닙니다. 하지만 많은 개발자들이 뷰로 옮기고 있죠. 라라벨(Laravel) 커뮤니티도 그 친구들이 선호하는 프론트엔드 프레임웍으로써 뷰를 고려하고 있다고 합니다.
 
 > 전반적으로 뷰는 리엑트와 앵귤러의 이슈들에대한 해답을 가지고 있다. 그리고 더 간단하고 쉬운 코드를 제공한다.

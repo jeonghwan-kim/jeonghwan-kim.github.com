@@ -1,5 +1,5 @@
 ---
-title: '프론트엔드 개발환경의 이해: 웹팩(기본)'
+title: "프론트엔드 개발환경의 이해: 웹팩(기본)"
 layout: post
 category: series
 tags: [webpack]
@@ -16,13 +16,17 @@ import/export 구문이 없었던 모듈 이전 상황을 살펴보는 것이 �
 아래 덧셈 함수를 보자.
 
 math.js:
+
 ```js
-function sum(a, b) { return a + b; } // 전역 공간에 sum이 노출
+function sum(a, b) {
+  return a + b
+} // 전역 공간에 sum이 노출
 ```
 
 app.js:
+
 ```js
-sum(1, 2); // 3
+sum(1, 2) // 3
 ```
 
 위 코드는 모두 하나의 HTML 파일 안에서 로딩해야만 실행된다.
@@ -37,13 +41,16 @@ math.js가 로딩되면 app.js는 이름 공간에서 'sum'을 찾은 뒤 이 �
 스코프 안에서는 자신만의 이름 공간이 존재하므로 스코프 외부와 이름 충돌을 막을 수 있다.
 
 math.js:
-```js
-var math = math || {}; // math 네임스페이스
 
-(function() {
-  function sum(a, b) { return a + b; }
-  math.sum = sum; // 네이스페이스에 추가
-})();
+```js
+var math = math || {} // math 네임스페이스
+
+;(function () {
+  function sum(a, b) {
+    return a + b
+  }
+  math.sum = sum // 네이스페이스에 추가
+})()
 ```
 
 같은 코드를 즉시실행함수로 감쌌기 때문에 다른 파일에서 이 안으로 접근할 수가 없다.
@@ -61,14 +68,16 @@ exports 키워드로 모듈을 만들고 require() 함수로 불러 들이는 �
 대표적으로 서버 사이드 플래폼인 Node.js에서 이를 사용한다.
 
 math.js:
+
 ```js
 exports function sum(a, b) { return a + b; }
 ```
 
 app.js:
+
 ```js
-const math = require('./math.js');
-math.sum(1, 2); // 3
+const math = require("./math.js")
+math.sum(1, 2) // 3
 ```
 
 **[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)**(Asynchronous Module Definition)는 비동기로 로딩되는 환경에서 모듈을 사용하는 것이 목표다.
@@ -81,14 +90,18 @@ math.sum(1, 2); // 3
 ES2015 모듈 시스템의 모습을 살펴보자.
 
 math.js:
+
 ```js
-export function sum(a, b) { return a + b; }
+export function sum(a, b) {
+  return a + b
+}
 ```
 
 app.js:
+
 ```js
-import * as math from './math.js';
-math.sum(1, 2); // 3
+import * as math from "./math.js"
+math.sum(1, 2) // 3
 ```
 
 `export` 구문으로 모듈을 만들고 `import` 구문으로 가져올 수 있다.
@@ -101,6 +114,7 @@ math.sum(1, 2); // 3
 ([버전 61부터 모듈시스템을 지원](https://developers.google.com/web/updates/2017/09/nic61#modules) 한다)
 
 index.html:
+
 ```html
 <script type="module" src="app.js"></script>
 ```
@@ -143,9 +157,9 @@ $ node_modules/.bin/webpack --help
 $ node_modules/.bin/webpack --mode development --entry ./src/app.js --output dist/main.js
 ```
 
-* `--mode`는 웹팩 실행 모드는 의미하는데 개발 버전인 development를 지정한다
-* `--entry`는 시작점 경로를 지정하는 옵션이다
-* `--output`은 번들링 결과물을 위치할 경로다
+- `--mode`는 웹팩 실행 모드는 의미하는데 개발 버전인 development를 지정한다
+- `--entry`는 시작점 경로를 지정하는 옵션이다
+- `--output`은 번들링 결과물을 위치할 경로다
 
 위 명령어를 실행하면 dist/main.js에 번들된 결과가 저장된다.
 
@@ -154,6 +168,7 @@ $ node_modules/.bin/webpack --mode development --entry ./src/app.js --output dis
 이 코드를 index.html에 로딩하면 번들링 전과 똑같은 결과를 만든다.
 
 index.html:
+
 ```html
 <script src="dist/main.js"></script>
 ```
@@ -171,31 +186,33 @@ $ node_modules/.bin/webpack --help
 `webpack.config.js` 파일을 만들어 방금 터미널에서 사용한 옵션을 코드로 구성해 보자.
 
 webpack.config.js:
+
 ```js
-const path = require('path');
+const path = require("path")
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   entry: {
-    main: './src/app.js'
+    main: "./src/app.js",
   },
   output: {
-    filename: '[name].js',
-    path: path.resolve('./dist'),
+    filename: "[name].js",
+    path: path.resolve("./dist"),
   },
 }
 ```
 
 터미널에서 사용한 옵션인 mode, entry, ouput을 설정한다.
 
-* `mode`는 'development' 문자열을 사용했다.
-* `entry`는 어플리케이션 진입점인 src/app.js로 설정한다.
-* `ouput`에 설정한  '[name]'은 entry에 추가한 main이 문자열로 들어오는 방식이다.
-  * `output.path`는 절대 경로를 사용하기 때문에 path 모듈의 resolve() 함수를 사용해서 계산했다. (path는 노드 코어 모듈 중 하나로 경로를 처리하는 기능을 제공한다)
+- `mode`는 'development' 문자열을 사용했다.
+- `entry`는 어플리케이션 진입점인 src/app.js로 설정한다.
+- `ouput`에 설정한 '[name]'은 entry에 추가한 main이 문자열로 들어오는 방식이다.
+  - `output.path`는 절대 경로를 사용하기 때문에 path 모듈의 resolve() 함수를 사용해서 계산했다. (path는 노드 코어 모듈 중 하나로 경로를 처리하는 기능을 제공한다)
 
 웹팩 실행을 위한 NPM 커스텀 명령어를 추가한다.
 
 package.json:
+
 ```json
 {
   "scripts": {
@@ -223,11 +240,12 @@ package.json:
 로더를 사용하기 전에 동작 원리를 이해하기 위해 로더를 직접 만들어 보자.
 
 myloader.js:
+
 ```js
-module.exports = function myloader (content) {
-  console.log('myloader가 동작함');
-  return content;
-};
+module.exports = function myloader(content) {
+  console.log("myloader가 동작함")
+  return content
+}
 ```
 
 함수로 만들수 있는데 로더가 읽은 파일의 내용이 함수 인자 content로 전달된다.
@@ -236,6 +254,7 @@ module.exports = function myloader (content) {
 로더를 사용하려면 웹팩 설정파일의 `module` 객체에 추가한다.
 
 webpack.config.js:
+
 ```js
 module: {
   rules: [{
@@ -265,11 +284,12 @@ myloader() 함수가 동작한 것이다.
 소스에 있는 모든 console.log() 함수를 alert() 함수로 변경하도록 말이다.
 
 myloader.js:
+
 ```js
-module.exports = function myloader (content) {
-  console.log('myloader가 동작함')
-  return content.replace('console.log(', 'alert('); // console.log( -> alert( 로 치환
-};
+module.exports = function myloader(content) {
+  console.log("myloader가 동작함")
+  return content.replace("console.log(", "alert(") // console.log( -> alert( 로 치환
+}
 ```
 
 빌드후 확인하면 다음과 같이 console.log() 함수가 alert() 함수로 변경되었다.
@@ -285,11 +305,13 @@ module.exports = function myloader (content) {
 웹팩은 모든것을 모듈로 바라보기 때문에 자바스크립트 뿐만 아니라 스타일시트로 import 구문으로 불러 올수 있다.
 
 app.js:
+
 ```js
-import './style.css'
+import "./style.css"
 ```
 
 style.css:
+
 ```css
 body {
   background-color: green;
@@ -308,14 +330,17 @@ $ npm install -D css-loader
 웹팩 설정에 로더를 추가한다.
 
 webpack.config.js:
+
 ```js
 module.exports = {
   module: {
-    rules: [{
-      test: /\.css$/, // .css 확장자로 끝나는 모든 파일
-      use: ['css-loader'], // css-loader를 적용한다
-    }]
-  }
+    rules: [
+      {
+        test: /\.css$/, // .css 확장자로 끝나는 모든 파일
+        use: ["css-loader"], // css-loader를 적용한다
+      },
+    ],
+  },
 }
 ```
 
@@ -343,14 +368,17 @@ $ npm install -D style-loader
 그리고 웹팩 설정에 로더를 추가한다.
 
 package.json:
+
 ```js
 module.exports = {
   module: {
-    rules: [{
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader'], // style-loader를 앞에 추가한다
-    }]
-  }
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"], // style-loader를 앞에 추가한다
+      },
+    ],
+  },
 }
 ```
 
@@ -366,6 +394,7 @@ CSS 뿐만 아니라 소스코드에서 사용하는 모든 파일을 모듈로 
 가령 CSS에서 url() 함수에 이미지 파일 경로를 지정할 수 있는데 웹팩은 file-loader를 이용해서 이 파일을 처리한다.
 
 style.css:
+
 ```css
 body {
   background-image: url(bg.png);
@@ -378,14 +407,17 @@ body {
 그리고 이 스타일시트는 url() 함수로 bg.png를 사용하는데 이때 로더를 동작시킨다.
 
 webpack.config.js:
+
 ```js
 module.exports = {
   module: {
-    rules: [{
-      test: /\.png$/, // .png 확장자로 마치는 모든 파일
-      loader: 'file-loader', // 파일 로더를 적용한다
-    }]
-  }
+    rules: [
+      {
+        test: /\.png$/, // .png 확장자로 마치는 모든 파일
+        loader: "file-loader", // 파일 로더를 적용한다
+      },
+    ],
+  },
 }
 ```
 
@@ -405,15 +437,17 @@ file-loader 옵션을 조정해서 경로를 바로 잡아 주어야 한다.
 ```js
 module.exports = {
   module: {
-    rules: [{
-      test: /\.png$/, // .png 확장자로 마치는 모든 파일
-      loader: 'file-loader',
-      options: {
-        publicPath: './dist/', // prefix를 아웃풋 경로로 지정
-        name: '[name].[ext]?[hash]', // 파일명 형식
-      }
-    }]
-  }
+    rules: [
+      {
+        test: /\.png$/, // .png 확장자로 마치는 모든 파일
+        loader: "file-loader",
+        options: {
+          publicPath: "./dist/", // prefix를 아웃풋 경로로 지정
+          name: "[name].[ext]?[hash]", // 파일명 형식
+        },
+      },
+    ],
+  },
 }
 ```
 
@@ -439,12 +473,14 @@ output에 설정한 'dist' 폴더에 이미지 파일을 옮길 것이므로 pub
 [url-loader](https://github.com/webpack-contrib/url-loader)는 이러한 처리를 자동화해주는 녀석이다.
 
 먼저 로더를 설치한다.
+
 ```
 $ npm install -D url-loader
 ```
 
 그리고 웹팩 설정을 추가한다.
 webpack.config.js:
+
 ```js
 {
   test: /\.png$/,
@@ -472,7 +508,6 @@ file-loader와 옵션 설정이 거의 비슷하고 마지막 `limit` 속성만 
 
 ![url 로더 결과 2](/assets/imgs/2019/12/11/url-loader-2.jpg)
 
-
 아이콘처럼 용량이 작거나 사용 빈도가 높은 이미지는 파일을 그대로 사용하기 보다는 Data URI Scheeme을 적용하기 위해 url-loader를 사용하면 좋겠다.
 
 # 5. 플러그인
@@ -491,16 +526,17 @@ file-loader와 옵션 설정이 거의 비슷하고 마지막 `limit` 속성만 
 [헬로월드 코드](https://webpack.js.org/contribute/writing-a-plugin/#basic-plugin-architecture)를 가져다 그대로 실행 붙여보자.
 
 myplugin.js:
+
 ```js
 class MyPlugin {
   apply(compiler) {
-    compiler.hooks.done.tap('My Plugin', stats => {
-      console.log('MyPlugin: done');
+    compiler.hooks.done.tap("My Plugin", stats => {
+      console.log("MyPlugin: done")
     })
   }
 }
 
-module.exports = MyPlugin;
+module.exports = MyPlugin
 ```
 
 로더와 다르게 플러그인은 클래스로 제작한다.
@@ -510,13 +546,12 @@ apply 함수를 구현하면 되는데 이 코드에서는 인자로 받은 comp
 플러그인을 웹팩 설정에 추가한다.
 
 webpack.config.js:
+
 ```js
-const MyPlugin = require('./myplugin');
+const MyPlugin = require("./myplugin")
 
 module.exports = {
-  plugins: [
-    new MyPlugin(),
-  ]
+  plugins: [new MyPlugin()],
 }
 ```
 
@@ -537,18 +572,19 @@ module.exports = {
 웹팩 내장 플러그인 [BannerPlugin 코드](https://github.com/lcxfs1991/banner-webpack-plugin/blob/master/index.js)를 참고하자.
 
 myplugin.js:
+
 ```js
 class MyPlugin {
   apply(compiler) {
-    compiler.hooks.done.tap('My Plugin', stats => {
-      console.log('MyPlugin: done');
+    compiler.hooks.done.tap("My Plugin", stats => {
+      console.log("MyPlugin: done")
     })
 
     // compiler.plugin() 함수로 후처리한다
-    compiler.plugin('emit', (compilation, callback) => {
-      const source = compilation.assets['main.js'].source();
-      console.log(source);
-      callback();
+    compiler.plugin("emit", (compilation, callback) => {
+      const source = compilation.assets["main.js"].source()
+      console.log(source)
+      callback()
     })
   }
 }
@@ -563,6 +599,7 @@ compiler.plugin() 함수의 두번재 인자 콜백함수는 emit 이벤트가 �
 이걸 이용해서 번들 결과 상단에 아래와 같은 배너를 추가하는 플러그인으로 만들어 보자.
 
 myplugin.js:
+
 ```js
 class MyPlugin {
   apply(compiler) {
@@ -603,6 +640,7 @@ MyPlugin와 비슷한 것이 [BannerPlugin](https://webpack.js.org/plugins/banne
 결과물에 빌드 정보나 커밋 버전같은 걸 추가할 수 있다.
 
 webpack.config.js:
+
 ```js
 const webpack = require('webpack');
 
@@ -619,34 +657,33 @@ module.exports = {
 
 ```js
 new webpack.BannerPlugin({
-  banner: () => `빌드 날짜: ${new Date().toLocaleString()}`
+  banner: () => `빌드 날짜: ${new Date().toLocaleString()}`,
 })
 ```
 
 배너 정보가 많다면 별로 파일로 분리하자.
 
 ```js
-const banner = require('./banner.js');
+const banner = require("./banner.js")
 
-new webpack.BannerPlugin(banner);
+new webpack.BannerPlugin(banner)
 ```
 
 빌드 날짜 외에서 커밋 해쉬와 빌드한 유저 정보까지 추가해 보자.
 
 banner.js:
+
 ```js
-const childProcess = require('child_process');
+const childProcess = require("child_process")
 
 module.exports = function banner() {
-  const commit = childProcess.execSync('git rev-parse --short HEAD')
-  const user = childProcess.execSync('git config user.name')
-  const date = new Date().toLocaleString();
+  const commit = childProcess.execSync("git rev-parse --short HEAD")
+  const user = childProcess.execSync("git config user.name")
+  const date = new Date().toLocaleString()
 
   return (
-    `commitVersion: ${commit}` +
-    `Build Date: ${date}\n` +
-    `Author: ${user}`
-  );
+    `commitVersion: ${commit}` + `Build Date: ${date}\n` + `Author: ${user}`
+  )
 }
 ```
 
@@ -664,13 +701,12 @@ module.exports = function banner() {
 웹팩은 이러한 환경 정보를 제공하기 위해 [DefinePlugin](https://webpack.js.org/plugins/define-plugin/)을 제공한다.
 
 webpack.config.js
+
 ```js
-const webpack = require('webpack');
+const webpack = require("webpack")
 
 export default {
-  plugins: [
-    new webpack.DefinePlugin({}),
-  ]
+  plugins: [new webpack.DefinePlugin({})],
 }
 ```
 
@@ -679,6 +715,7 @@ export default {
 "development"를 설정했기 때문에 어플리케이션 코드에서 process.env.NODE_ENV 변수로 접근하면 "development" 값을 얻을 수 있다.
 
 app.js
+
 ```js
 console.log(process.env.NODE_ENV) // "development"
 ```
@@ -687,7 +724,7 @@ console.log(process.env.NODE_ENV) // "development"
 
 ```js
 new webpack.DefinePlugin({
-  TWO: '1+1',
+  TWO: "1+1",
 })
 ```
 
@@ -695,21 +732,24 @@ TWO라는 전역 변수에 `1+1` 이란 코드 조각을 넣었다.
 실제 어플리케이션 코드에서 이것을 출력해보면 2가 나올 것이다.
 
 app.js
+
 ```js
-console.log(TWO); // 2
+console.log(TWO) // 2
 ```
 
 코드가 아닌 값을 입력하려면 문자열화 한 뒤 넘긴다.
+
 ```js
 new webpack.DefinePlugin({
-  VERSION: JSON.stringify('v.1.2.3'),
+  VERSION: JSON.stringify("v.1.2.3"),
   PRODUCTION: JSON.stringify(false),
   MAX_COUNT: JSON.stringify(999),
-  'api.domain': JSON.stringify('http://dev.api.domain.com'),
+  "api.domain": JSON.stringify("http://dev.api.domain.com"),
 })
 ```
 
 app.js:
+
 ```js
 console.log(VERSION) // 'v.1.2.3'
 console.log(PRODUCTION) // true
@@ -735,6 +775,7 @@ $ npm install -D html-webpack-plugin
 index.html 파일을 src/index.html로 옮긴뒤 다음과 같이 작성해 보자.
 
 src/index.html:
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -755,6 +796,7 @@ HtmlWebpackPlugin은 이 변수에 데이터를 주입시켜 동적으로 HTML �
 때문에 스크립트 로딩 코드도 제거했다.
 
 webpack.config.js:
+
 ```js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -779,6 +821,7 @@ NODE_ENV=production 으로 설정해서 빌드하면 빌드결과 "타이틀"로
 개발 환경과 달리 운영 환경에서는 파일을 압축하고 불필요한 주석을 제거하는 것이 좋다.
 
 webpack.config.js:
+
 ```js
 new HtmlWebpackPlugin({
   minify: process.env.NODE_ENV === 'production' ? {
@@ -787,6 +830,7 @@ new HtmlWebpackPlugin({
   } : false,
 }
 ```
+
 ([문서에는 minifiy 옵션이 웹팩 버전 3 기준으로 되어 있다](https://github.com/jantimon/html-webpack-plugin/issues/1094))
 
 환경변수에 따라 minify 옵션을 켰다.
@@ -799,6 +843,7 @@ new HtmlWebpackPlugin({
 브라우져 캐쉬가 원인일 경우가 있는데 이를 위한 예방 옵션도 있다.
 
 webpack.config.js:
+
 ```js
 new HtmlWebpackPlugin({
   hash: true, // 정적 파일을 불러올때 쿼리문자열에 웹팩 해쉬값을 추가한다
@@ -829,13 +874,12 @@ $ npm install -D clean-webpack-plugin
 웹팩 설정을 추가한다.
 
 webpack.config.js:
+
 ```js
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 
 module.exports = {
-  plugins: [
-    new CleanWebpackPlugin(),
-  ]
+  plugins: [new CleanWebpackPlugin()],
 }
 ```
 
@@ -860,19 +904,19 @@ $ npm install -D mini-css-extract-plugin
 웹팩 설정을 추가한다.
 
 webpack.config.js:
+
 ```js
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
   plugins: [
-    ...(
-      process.env.NODE_ENV === 'production'
-      ? [ new MiniCssExtractPlugin({filename: `[name].css`}) ]
-      : []
-    ),
+    ...(process.env.NODE_ENV === "production"
+      ? [new MiniCssExtractPlugin({ filename: `[name].css` })]
+      : []),
   ],
 }
 ```
+
 프로덕션 환경일 경우만 이 플러그인을 추가했다.
 `filename`에 설정한 값으로 아웃풋 경로에 CSS 파일이 생성될 것이다.
 
@@ -882,16 +926,18 @@ module.exports = {
 ```js
 module.exports = {
   module: {
-    rules: [{
-      test: /\.css$/,
-      use: [
-        process.env.NODE_ENV === 'production'
-        ? MiniCssExtractPlugin.loader  // 프로덕션 환경
-        : 'style-loader',  // 개발 환경
-        'css-loader'
-      ],
-    }]
-  }
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          process.env.NODE_ENV === "production"
+            ? MiniCssExtractPlugin.loader // 프로덕션 환경
+            : "style-loader", // 개발 환경
+          "css-loader",
+        ],
+      },
+    ],
+  },
 }
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: '프론트엔드 개발환경의 이해: NPM'
+title: "프론트엔드 개발환경의 이해: NPM"
 layout: post
 category: series
 tags: [nodejs]
@@ -46,8 +46,8 @@ React.js의 CRA(create-react-app), Vuejs 의 vue-cli를 사용한다면 말이�
 
 두 가지 버전을 선택하여 설치할 수 있다. 왼쪽 짝수 버전, 오른쪽이 홀수 버전이다. 안정적이고 장기간 지원하는 것이 짝수 버전이고, 불안정할 수 있지만 최신 기능을 지원하는 것이 홀수 버전이다. 리눅스 배포버전과 비슷한 관례를 따른다.
 
-* 짝수 버전: 안정적, 신뢰도 높음 (LTS)
-* 홀수 버전: 최신 기능
+- 짝수 버전: 안정적, 신뢰도 높음 (LTS)
+- 홀수 버전: 최신 기능
 
 이왕이면 오른쪽에 있는 최신 버전을 선택해서 다운받자. 개발 환경이니깐 말이다.(만약 Node.js로 서버를 구성하는 경우라면 어떤 버전을 사용할지 신중하게 선택해야 한다)
 
@@ -59,8 +59,8 @@ React.js의 CRA(create-react-app), Vuejs 의 vue-cli를 사용한다면 말이�
 
 버튼을 몇 번 클릭하면 아래 경로에 Node.js 와 NPM이 설치된다.(운영체제에 따라 경로는 다를 수 있다)
 
-* Node.js: `/usr/local/bin/node`
-* NPM: `/usr/local/bin/npm`
+- Node.js: `/usr/local/bin/node`
+- NPM: `/usr/local/bin/npm`
 
 설치를 마친 뒤 터미널을 열어 각 명령어를 확인해 보자. 먼저 Node.js부터 실행한다.
 
@@ -127,13 +127,13 @@ license:
 
 Node.js는 package.json 파일에 프로젝트의 모든 정보를 기록한다. 각 항목의 의미는 다음과 같다.
 
-* name: 프로젝트 이름
-* version: 프로젝트 버전 정보
-* description: 프로젝트 설명
-* main: 노드 어플리케이션일 경우 진입점 경로. 프론트엔드 프로젝트일 경우 사용하지 않는다.
-* scripts: 프로젝트 명령어를 등록할 수 있다.초기화시 test 명령어가 샘플로 등록되어 있다
-* author: 프로그램 작성자
-* license: 라이센스
+- name: 프로젝트 이름
+- version: 프로젝트 버전 정보
+- description: 프로젝트 설명
+- main: 노드 어플리케이션일 경우 진입점 경로. 프론트엔드 프로젝트일 경우 사용하지 않는다.
+- scripts: 프로젝트 명령어를 등록할 수 있다.초기화시 test 명령어가 샘플로 등록되어 있다
+- author: 프로그램 작성자
+- license: 라이센스
 
 # 4. 프로젝트 명령어
 
@@ -148,6 +148,7 @@ npm ERR! Test failed.  See above for more details.
 에러 메세지를 출력하고 그 다음 줄에 npm 에러가 발생한다. 이것은 npm 스크립트에 등록된 쉘 스크립트 코드를 실행했기 때문이다.
 
 package.json:
+
 ```json
 {
   "scripts": {
@@ -179,14 +180,15 @@ where <command> is one of:
 
 무척 많다. 보통 사용하는 것들이 start, test, install, uninstall이다.
 
-* start: 어플리케이션 실행
-* test: 테스트
-* install: 패키지 설치
-* uninstall: 패키지 삭제
+- start: 어플리케이션 실행
+- test: 테스트
+- install: 패키지 설치
+- uninstall: 패키지 삭제
 
 명령어를 추가할 수도 있다. 가령 빌드를 위한 build 스크립트는 package.json의 scripts 부분에 build 키를 추가하고 쉘 스크립트를 문자열로 등록하면 된다.
 
 package.json:
+
 ```json
 {
   "scripts": {
@@ -203,9 +205,8 @@ $ npm run build
 
 프론트엔드 개발 환경을 구축하기 위해 추가할 스크립트는 build, lint 정도가 있겠다.
 
-* build: 소스 빌드
-* lint: 소스 컨벤션 검사
-
+- build: 소스 빌드
+- lint: 소스 컨벤션 검사
 
 # 5. 패키지 설치
 
@@ -220,7 +221,6 @@ $ npm run build
 
 CDN 서버 장애로 인해 외부 라이브러리를 사용할 수 없다면 어떻게 될까?
 아무리 우리 어플리케이션 서버가 정상이더라도 필수 라이브러리를 가져오지 못한다면 웹 어플리케이션은 정상적으로 동작하지 않을 것이다.
-
 
 ## 5.2 직접 다운로드하는 방법
 
@@ -243,6 +243,7 @@ $ npm install react
 package.json에는 설치한 패키지 정보를 기록한다.
 
 package.json:
+
 ```json
 {
   "dependencies": {
@@ -271,9 +272,9 @@ package.json:
 
 각 버전을 변경하는 기준은 다음과 같다
 
-* 주 버전(Major Version): 기존 버전과 호환되지 않게 변경한 경우
-* 부 버전(Minor version): 기존 버전과 호환되면서 기능이 추가된 경우
-* 수 버전(Patch version): 기존 버전과 호환되면서 버그를 수정한 경우
+- 주 버전(Major Version): 기존 버전과 호환되지 않게 변경한 경우
+- 부 버전(Minor version): 기존 버전과 호환되면서 기능이 추가된 경우
+- 수 버전(Patch version): 기존 버전과 호환되면서 버그를 수정한 경우
 
 ## 5.5 버전의 범위
 

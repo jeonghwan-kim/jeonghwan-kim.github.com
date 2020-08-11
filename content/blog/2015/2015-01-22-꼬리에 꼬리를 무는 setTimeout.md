@@ -9,6 +9,7 @@ permalink: /%ea%bc%ac%eb%a6%ac%ec%97%90-%ea%bc%ac%eb%a6%ac%eb%a5%bc-%eb%ac%b4%eb
 category: dev
 tags: [javascript]
 ---
+
 자바스크립트에서 타이머 설정은  <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers.setTimeout">setTimeout()</a>과 <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers.setInterval">setInterval()</a> 두 가지 함수로 구현할 수 있다. 전자는 시간 경과후 동작하게 하는 것이고 후자는 동일 시간마다 동작을 반복하는 것이다.
 
 재생 시간이 다른 여러개 동영상을 연속해서 재생한다고 생각해 보자. 같은 시간이 아니기 때문에 <code>setInterval()</code>로는 힘들겠다. <code>setTimeout()</code>으로 구현할 수 있을 것 같다. 각 1번 동영상을 재생 하면서 1번 동영상의 재생시간 후에 2번 동영상이 재생되도록 타이머를 맞추면 된다. 단 자바스크립트에서 타이머는 정확한 시간을 보장할 수 없다는 것은 유념해 두자.

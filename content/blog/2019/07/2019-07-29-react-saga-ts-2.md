@@ -1,12 +1,11 @@
 ---
-title: '리덕스 사가 사용하기 (타입스크립트 버전) - 2편'
+title: "리덕스 사가 사용하기 (타입스크립트 버전) - 2편"
 layout: post
 category: dev
 tags: [react, TypeScript]
 ---
 
 [이전 글](/dev/2019/07/22/react-saga-ts-1.html)에 이어서 리덕스 사가 예제를 몇 가지 만들어 보자.
-
 
 ## 메모 추가: 버튼 상태와 리다이렉션
 
@@ -16,22 +15,21 @@ tags: [react, TypeScript]
 
 여기에 메모 추가하는 로직을 아래처럼 작성하고 싶다.
 
-* 저장 버튼을 클릭하면
-* 메모 추가 버튼을 비활성화해서 추가 입력을 막는다
-* 메모 추가 API 요청이 발생하고
-* API 응답을 받으면 스토어에 저장한다
-* 유저에게 추가한 메모 조회 화면으로 이동함을 피드백 한 뒤
-* 추가한 메모 조회 화면으로 이동한다
+- 저장 버튼을 클릭하면
+- 메모 추가 버튼을 비활성화해서 추가 입력을 막는다
+- 메모 추가 API 요청이 발생하고
+- API 응답을 받으면 스토어에 저장한다
+- 유저에게 추가한 메모 조회 화면으로 이동함을 피드백 한 뒤
+- 추가한 메모 조회 화면으로 이동한다
 
 전부 비동기 로직이다. 이를 어떻게 사가로 제어하는지 알아보자.
-
 
 먼저 세 가지 액션을 정의한다. actions/types.ts
 
 ```ts
-export const ADD_MEMO_REQUEST = 'ADD_MEMO_REQUEST'
-export const ADD_MEMO_SUCCESS = 'ADD_MEMO_SUCCESS'
-export const ADD_MEMO_FAILURE = 'ADD_MEMO_FAILURE'
+export const ADD_MEMO_REQUEST = "ADD_MEMO_REQUEST"
+export const ADD_MEMO_SUCCESS = "ADD_MEMO_SUCCESS"
+export const ADD_MEMO_FAILURE = "ADD_MEMO_FAILURE"
 ```
 
 컴포넌트에서 `ADD_MEMO_REQUEST` 액션을 디스패치 할 수 있도록 액션 생성자 함수를 만든다.
@@ -45,7 +43,7 @@ export interface AddMemoAction {
 ㅍ
 export const addMemo = (memo: Memo): AddMemoAction => ({
   type: types.ADD_MEMO_REQUEST,
-  payload: memo
+  payload: memo,
 })
 ```
 
@@ -71,8 +69,8 @@ function addMemo$(action: AddMemoAction) {
 
 ```ts
 function* addMemo$(action: AddMemoAction) {
-  const { payload } = action;
-  if (!payload) return;
+  const { payload } = action
+  if (!payload) return
 
   try {
     // 메모 추가 api 호출
@@ -82,10 +80,13 @@ function* addMemo$(action: AddMemoAction) {
     yield put({ type: ADD_MEMO_SUCCESS, payload: memo })
 
     // 얼럿창으로 유저에게 피드백
-    yield put({ type: SHOW_DIALOG, payload: {
-      type: 'alert',
-      text: '메모가 생성되었습니다. 메뉴 수정 화면으로 이동합니다.'
-    }})
+    yield put({
+      type: SHOW_DIALOG,
+      payload: {
+        type: "alert",
+        text: "메모가 생성되었습니다. 메뉴 수정 화면으로 이동합니다.",
+      },
+    })
 
     // 얼럿을 닫을 때까지 대기
     yield take(CONFIRM_DIALOG)
@@ -141,19 +142,19 @@ Api 호출 상태를 나타내는 `apiCalling` 과 `ADD_MEMO_REQUEST` 액션을 
 
 ```ts
 const mapStateToProps = (state: RootState) => ({
-  apiCalling: state.app.apiCalling
+  apiCalling: state.app.apiCalling,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
-  return bindActionCreators({
-    addMemo,
-  }, dispatch)
+  return bindActionCreators(
+    {
+      addMemo,
+    },
+    dispatch
+  )
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddMemoContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(AddMemoContainer)
 ```
 
 `connect()` 함수로 스태이트의 `apiCalling` 값을 주입하고 `addMemo()` 액션 생성자 함수를 디스패치 하도록 연결했다.
@@ -226,7 +227,6 @@ class AddMemoPage extends React.Component<Props> {
 ![add05](/assets/imgs/2019/07/29/add05.png)
 새로 만든 메모 조회 화면(/memos/3) 으로 이동했다.
 
-
 ## 비동기 처리 실패 피드백: 토스트 띄우기
 
 지금까지 사가함수에서 실패처리는 비어있는 `catch` 구문으로 남겨 두었다. 모두 api 통신을 다루는 함수 였는데 실패한다면 어떻게 처리하는 것이 좋을까?
@@ -240,8 +240,8 @@ models/index.ts
 
 ```ts
 export interface Toast {
-  id: number;
-  text: string;
+  id: number
+  text: string
 }
 ```
 
@@ -253,8 +253,8 @@ export interface Toast {
 
 ```ts
 export interface AppState {
-  apiCalling: boolean,
-  toasts: Toast[], // 토스트 배열을 상태로 추가한다
+  apiCalling: boolean
+  toasts: Toast[] // 토스트 배열을 상태로 추가한다
 }
 
 const initialState: AppState = {
@@ -265,9 +265,9 @@ const initialState: AppState = {
 
 토스트 상태를 관리한 세 가지 액션 타입을 정의한다.
 
-* `SHOW_TOAST`: 토스트를 보여준다
-* `ADD_TOAST`: 스토어 상태에 토스트를 추가한다
-* `REMOVE_TOAST`: 스토어 상태에서 토스트를 제거한다
+- `SHOW_TOAST`: 토스트를 보여준다
+- `ADD_TOAST`: 스토어 상태에 토스트를 추가한다
+- `REMOVE_TOAST`: 스토어 상태에서 토스트를 제거한다
 
 상태를 갱신하는 리듀서부터 추가해 보자.
 reducers/app.ts
@@ -302,7 +302,7 @@ const appReducer = (
 sagas/index.ts
 
 ```ts
-import { takeEvery } from 'redux-saga/effects'
+import { takeEvery } from "redux-saga/effects"
 
 export default function* rootSaga() {
   // 모든 SHOW_TOAST 액션을 감시한다
@@ -310,7 +310,7 @@ export default function* rootSaga() {
 }
 
 export interface ShowToastAction {
-  type: typeof types.SHOW_TOAST,
+  type: typeof types.SHOW_TOAST
   payload: string
 }
 
@@ -332,19 +332,19 @@ function* showToast$(action: ShowToastAction) {
 let _id: number = 0
 
 function* showToast$(action: ShowToastAction) {
-  const nextId: number = _id + 1;
-  _id = nextId;
+  const nextId: number = _id + 1
+  _id = nextId
 
   const text: string = action.payload
 
   // 토스트를 상태에 추가한다
-  yield put({ type: ADD_TOAST, payload: {id: nextId, text}})
+  yield put({ type: ADD_TOAST, payload: { id: nextId, text } })
 
   // 3초 대기한다
   yield delay(3000)
 
   // 토스트를 상태에서 제거한다
-  yield put({ type: REMOVE_TOAST, payload: nextId})
+  yield put({ type: REMOVE_TOAST, payload: nextId })
 }
 ```
 
@@ -366,7 +366,7 @@ export default function* rootSaga() {
 
   // 모든 실패 액션을 처리한다
   yield takeEvery((action: any) => {
-    return action.type.endsWith('_FAILURE')
+    return action.type.endsWith("_FAILURE")
   }, handleFailure$)
 }
 ```
@@ -375,8 +375,8 @@ export default function* rootSaga() {
 `_FAILURE` 로 끝나는 액션타입을 모두 감지해서 `handleFailure$()` 제네레이터를 실행하도록 했다.
 
 ```ts
-function* handleFailure$(action: {payload: any}) {
-  const {payload} = action;
+function* handleFailure$(action: { payload: any }) {
+  const { payload } = action
 
   if (isString(payload)) {
     yield put({ type: SHOW_TOAST, payload })
@@ -396,7 +396,7 @@ function* addMemo$(action: AddMemoAction) {
   } catch (err) {
     yield put({
       type: ADD_MEMO_FAILURE,
-      payload: '메모 추가에 실패했습니다.'
+      payload: "메모 추가에 실패했습니다.",
     })
   }
 }
@@ -428,16 +428,16 @@ interface Props {
 
 class ToastListContainer extends React.Component<Props> {
   render() {
-    return <ToastList {...this.props}/>
+    return <ToastList {...this.props} />
   }
 }
 
 export default connect(
   (state: RootState) => ({
     // 스토어에 있는 toasts 상태를 컨테이너 속성으로 연결한다
-    toasts: state.app.toasts
+    toasts: state.app.toasts,
   }),
-  { }
+  {}
 )(ToastListContainer)
 ```
 
@@ -452,7 +452,7 @@ interface Props {
 }
 
 const ToastList: React.FC<Props> = props => {
-  <div>
+  ;<div>
     {props.toasts.map((toast, idx) => {
       return <ToastItem toast={toast} key={idx} />
     })}
@@ -479,7 +479,6 @@ const ToastList: React.FC<Props> = props => {
 ![toast05](/assets/imgs/2019/07/29/toast05.png)
 설정한 3초 경과후 `REMOVE_TOAST` 액션이 발행되어 상태에서 토스트가 제거되고 화면에서도 사라진다.
 
-
 ## 사가 모듈화
 
 지금까지 작성한 사가 모듈을 한 번 보자.
@@ -489,13 +488,12 @@ sagas/index.ts
 export default function* rootSaga() {
   // 메모 사가
   yield takeLatest(FETCH_MEMO_LIST_REQUEST, fetchMemoList$),
-  yield takeLatest(ADD_MEMO_REQUEST, addMemo$),
-
-  // 어플리케이션 사가
-  yield takeEvery(SHOW_TOAST, showToast$),
-  yield takeEvery((action: any) => {
-    return action.type.endsWith('_FAILURE')
-  }, handleFailure$)
+    yield takeLatest(ADD_MEMO_REQUEST, addMemo$),
+    // 어플리케이션 사가
+    yield takeEvery(SHOW_TOAST, showToast$),
+    yield takeEvery((action: any) => {
+      return action.type.endsWith("_FAILURE")
+    }, handleFailure$)
 }
 ```
 
@@ -514,7 +512,7 @@ export default function* memoSaga() {
 모두 `yield` 할 것이 아니라 `all()` 이펙트로 동시에 처리하자.
 
 ```ts
-import { all } from 'redux-saga/effects'
+import { all } from "redux-saga/effects"
 
 export default function* memoSaga() {
   yield all([
@@ -529,10 +527,10 @@ export default function* memoSaga() {
 ```ts
 export default function* appSaga() {
   yield all([
-   takeEvery(SHOW_TOAST, showToast$),
-   takeEvery((action: any) => {
-     return action.type.endsWith('_FAILURE')
-    }, handleFailure$)
+    takeEvery(SHOW_TOAST, showToast$),
+    takeEvery((action: any) => {
+      return action.type.endsWith("_FAILURE")
+    }, handleFailure$),
   ])
 }
 ```
@@ -541,15 +539,12 @@ export default function* appSaga() {
 sagas/index.ts
 
 ```ts
-import { all, fork } from 'redux-saga/effects'
-import memoSaga from './memo'
-import appSaga from './app'
+import { all, fork } from "redux-saga/effects"
+import memoSaga from "./memo"
+import appSaga from "./app"
 
 export default function* rootSaga() {
-  yield all([
-    memoSaga(),
-    appSaga(),
-  ])
+  yield all([memoSaga(), appSaga()])
 }
 ```
 
@@ -557,10 +552,7 @@ export default function* rootSaga() {
 
 ```ts
 export default function* rootSaga() {
-  yield all([
-    fork(memoSaga),
-    fork(appSaga),
-  ])
+  yield all([fork(memoSaga), fork(appSaga)])
 }
 ```
 
@@ -573,11 +565,11 @@ export default function* rootSaga() {
 사가 함수를 이용한 예제를 살펴 보았다.
 비동기 제어를 담당하는 사가는 다양한 함수를 통해 마치 동기 코드처럼 관리할 수 있는데 이를 이펙터라고 부른다.
 
-* `put()`: 액션을 발행한다
-* `call()`: 함수를 실행한다
-* `take()`: 액션 발행을 대기한다
-* `delay()`: 실행을 지연한다
-* `all()`: 사가 함수를 동시에 실행한다
+- `put()`: 액션을 발행한다
+- `call()`: 함수를 실행한다
+- `take()`: 액션 발행을 대기한다
+- `delay()`: 실행을 지연한다
+- `all()`: 사가 함수를 동시에 실행한다
 
 Api 통신과 유저 인터렉션 코드를 사가로 작성하면 비교적 쉽게 로직을 작성할 수 있다.
 

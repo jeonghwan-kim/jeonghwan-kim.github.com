@@ -1,5 +1,5 @@
 ---
-title: '앵귤러로 Todo앱 만들기 11 - Static Files'
+title: "앵귤러로 Todo앱 만들기 11 - Static Files"
 layout: post
 category: series
 seriesId: "377d51fb-3cab-5e79-a4e0-8e08a79bbe02"
@@ -27,16 +27,16 @@ express 사이트에 [static file 설정하는 방법](http://expressjs.com/en/s
 그래서 path 모듈과 `__dirname` 글로벌 변수를 사용하여 절대 경로를 계산한다.
 
 ```javascript
-app.use('/', express.static(path.join(__dirname, '../client')));
+app.use("/", express.static(path.join(__dirname, "../client")))
 ```
 
 그리고 "hello world!"" 문자열을 보내줬던 라우팅 설정도 변경한다.
 `sendfile()` 함수롤 index.html 파일을 보내도록 설정한다.
 
 ```javascript
-app.get('/', function (req, res) {
-  res.sendfile('index.html');
-});
+app.get("/", function (req, res) {
+  res.sendfile("index.html")
+})
 ```
 
 이 코드를 추가하고 서버를 재구동한 뒤 브라우져로 접속해 보자.
@@ -50,7 +50,10 @@ index.html은 보이는것 같지만 뭔가 깨져 보인다.
 따라서 node_moudles 폴더도 정적파일로 설정해 주어야 한다.
 
 ```javascript
-app.use('/node_modules', express.static(path.join(__dirname, '../node_modules')));
+app.use(
+  "/node_modules",
+  express.static(path.join(__dirname, "../node_modules"))
+)
 ```
 
 서버를 재구동하고 다시 접속해서 확인해보자.

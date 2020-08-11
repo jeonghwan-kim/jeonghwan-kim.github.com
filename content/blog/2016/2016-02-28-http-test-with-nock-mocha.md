@@ -1,8 +1,8 @@
 ---
-title: 'Nock, Mocha로 HTTP 테스트하기'
+title: "Nock, Mocha로 HTTP 테스트하기"
 layout: post
 category: dev
-tags: [nodejs ,test]
+tags: [nodejs, test]
 permalink: /2016/02/28/http-test-with-nock-mocha.html
 videoId: "a3385ae2-3c3c-585d-b4ee-fe73484ece62"
 ---
@@ -18,7 +18,6 @@ API 서버를 개발할 때 유닛테스트를 꼼꼼히 작성하는 편이다.
 1. 외부 API가 수시로 변경되는 경우가 발생할 수 있다.
 2. 전체 테스트 속도가 느려진다.
 
-
 ## Sinon vs Nock
 
 그동안 http 요청을 사용하는 프로그램을 테스트할 때 [Sinon](http://sinonjs.org)를 사용했다.
@@ -28,7 +27,6 @@ Sinon은 자바스크립트용 라이브러리라서 HTTP MOCK 외에도 다양�
 NodeJS에서 사용하는 것 중 [Nock](https://github.com/pgte/nock)을 발견했다.
 이것은 HTTP 요청에 대해 Mock 데이터를 정의하는 용도다.
 NodeJS 테스트 도구인 Mocha를 이용해서 외부 HTTP 요청을 테스트하는 방법에 대해 알아보자.
-
 
 ## Nock으로 HTTP 테스트하기
 
@@ -42,18 +40,18 @@ $ npm install nock --save-dev
 이 API는 페이스북 인증 API를 사용하여 인증 로직을 구현하는 기능을 한다.
 
 ```javascript
-describe('POST /auth/facebook', function () {
-  it('should login by facebook', function (done) {
+describe("POST /auth/facebook", function () {
+  it("should login by facebook", function (done) {
     request(app)
-      .post('/auth/facebook')
+      .post("/auth/facebook")
       .expect(200)
       .end(function (err, res) {
-        if (err) throw err;
-        res.body.should.be.type('object').and.have.property(/*...*/);
-        done();
-      });
-  });
-});
+        if (err) throw err
+        res.body.should.be.type("object").and.have.property(/*...*/)
+        done()
+      })
+  })
+})
 ```
 
 내부적으로 페이스북 인증 API를 사용하기 때문에 HTTP 요청이 발생할 것이다.
@@ -91,23 +89,21 @@ Mock 데이터로 응답할 것이다. 테스트가 종료되면 `nock.cleanAll(
 
 이제 테스트 케이스에서 nock으로 설정한 HTTP Mock 데이터를 가지고 검증할 수 있다
 
-
 ```javascript
-it('should login by facebook', function (done) {
+it("should login by facebook", function (done) {
   request(app)
-    .post('/auth/facebook')
+    .post("/auth/facebook")
     .expect(200)
     .end(function (err, res) {
-      if (err) throw err;
-      res.body.should.be.type('object')
-      res.body.should.have.property('username', 'Facebook User Name');
-      res.body.should.have.property('id', 'Facebook User Id');
-      res.body.should.have.property('profile', 'Facebook User Profile Image');
-      done();
-    });
-});
+      if (err) throw err
+      res.body.should.be.type("object")
+      res.body.should.have.property("username", "Facebook User Name")
+      res.body.should.have.property("id", "Facebook User Id")
+      res.body.should.have.property("profile", "Facebook User Profile Image")
+      done()
+    })
+})
 ```
-
 
 ## 에러 테스트
 
@@ -115,7 +111,5 @@ it('should login by facebook', function (done) {
 `replayWithError()` 함수로 에러 응답을 흉내낼 수 있다
 
 ```javascript
-nock('https://facebook')
-    .post('/auth/api')
-    .replayWithError();
+nock("https://facebook").post("/auth/api").replayWithError()
 ```

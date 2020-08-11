@@ -21,32 +21,31 @@ ES6+ 뿐만 아니라 타입스크립트를 사용하려면 이것 없이는 쉽
 webpack-dev-middleware는 웹팩으로 빌드한 정적파일을 처리하는 익스프레스 스타일 미들웨어다.
 webpack-dev-server도 익스프레스와 이 미들웨어를 사용한다(https://github.com/webpack/webpack-dev-server/blob/master/package.json#L68).
 
-
 웹팩 패키지가 제공하는 함수를 실행하면 Compiler 타입의 인스턴스를 반환해 준다.
 웹팩 설정 객체를 함수 인자로 전달하는데 보통은 설정 파일(webpack.config.js)에 있는 코드를 가져다 사용한다.
 
 ```js
-const webpack = require('webpack');
+const webpack = require("webpack")
 
 // 웹팩 옵션을 webpack() 함수 인자로 넘겨 compiler를 얻는다
 const compiler = webpack(
   // webpack options
-  require('./webpack.config.js')
-);
+  require("./webpack.config.js")
+)
 ```
 
 이렇게 만단 compiler 객체를 webpack-dev-middleware 함수 인자로 전달하는데, 미들웨어 안에서 빌드하려는 의도인 것 같다.
 그리고 이 미들웨어를 익스프레스 어플리케이션에 추가한다.
 
 ```js
-const middleware = require('webpack-dev-middleware');
+const middleware = require("webpack-dev-middleware")
 
 // webpack-dev-middleware에 컴파일러를 절달하고 이걸 익스프레스 미들웨어로 설정한다.
 app.use(
   middleware(compiler, {
     // webpack-dev-middleware options
   })
-);
+)
 ```
 
 이 코드를 실행하면 마침내 webpack-dev-server와 비슷한 개발 서버를 만들 수 있게 된다.
@@ -72,23 +71,22 @@ app.use(
 - 모바일일 경우: mobile.html을 제공한다
 - 데스크탑일 경우: desktop.html을 제공한다
 
-
 ```js
-const device = require('express-device');
+const device = require("express-device")
 
 //  유저에이전트에서 디바이스 정보를 추출한다. req.device에 기록해 둔다.
-app.use(device.capture());
+app.use(device.capture())
 
 // 요청한 유저 에이전트(User Agent)를 분석해 브라우져 타입에 따라 최적화된 화면을 내보낸다.
-app.get('*', (req, res) => {
+app.get("*", (req, res) => {
   // 디바이스가 desktop일 경우 desktop.html을 제공한다.
-  if (req.device.type === 'desktop') {
-    res.sendFile(path.resolve(__dirname, `../public/desktop.html`));
-    return;
+  if (req.device.type === "desktop") {
+    res.sendFile(path.resolve(__dirname, `../public/desktop.html`))
+    return
   }
 
   // 그렇지 않으면 모바일 버전 mobile.html을 제공한다.
-  res.sendFile(path.resolve(__dirname, '../public/mobile.html'))
+  res.sendFile(path.resolve(__dirname, "../public/mobile.html"))
 })
 ```
 
@@ -110,17 +108,17 @@ webpack-dev-middleware를 이용하면 서버 하나로 통합해 개발 환경�
 
 ```js
 // 노드 환경변수로 개발/운영 환경을 식별한다(기본값: development).
-process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+process.env.NODE_ENV = process.env.NODE_ENV || "development"
 
 // 개발환경일 경우 웹팩이 빌드한 결과물을 정적파일로 제공한다
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   // 웹팩 설정
   app.use(
-    '/dist',
+    "/dist",
     middleware(compiler, {
       // webpack-dev-middleware options
     })
-);
+  )
 }
 ```
 
@@ -129,16 +127,16 @@ if (process.env.NODE_ENV === 'development') {
 
 ```js
 // 운영환경일 경우 이미 빌드한 결과물인 public 폴더를 정적파일로 제공한다.
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.resolve(__dirname, '../public')))
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.resolve(__dirname, "../public")))
 }
 ```
 
 이후에 API 라우팅 등 서버의 고유 역할을 계속 진행할 수 있다.
 
 ```js
-app.get('/api/greeting', (req, res) => {
-  res.json({ data: 'Hello world!' });
+app.get("/api/greeting", (req, res) => {
+  res.json({ data: "Hello world!" })
 })
 ```
 
@@ -155,27 +153,28 @@ webpack() 함수가 반환한 compiler 객체는 outputFileSystem이란 객체�
 
 ```js
 // 개발 환경일 경우,
-if (process.env.NODE_ENV === 'development')  {
+if (process.env.NODE_ENV === "development") {
   // 웹팩이 처리한 html 경로를 찾는다.
-  const filename = path.join(compiler.outputPath, 'index.html');
+  const filename = path.join(compiler.outputPath, "index.html")
   // 그 경로에에서 html 파일을 읽는다.
   compiler.outputFileSystem.readFile(filename, (err, result) => {
-    if (err) return next(err);
-    res.set('content-type','text/html').end(result);
-  });
-  return;
+    if (err) return next(err)
+    res.set("content-type", "text/html").end(result)
+  })
+  return
 }
 
 // 운영 환경일 경우,
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   // 이미 빌드한 html를 제공한다.
-  res.sendFile(path.join(__dirname, "../public/index.html"));
+  res.sendFile(path.join(__dirname, "../public/index.html"))
 }
 ```
 
 # 정리
 
 간단한 샘플 코드를 정리해 두었다.
+
 - 코드 참고: https://github.com/jeonghwan-kim/post_webpack-dev-middleware
 
 사실 회사에서는 웹서버로 스프링을 더 많이 사용한다.

@@ -1,5 +1,5 @@
 ---
-title: '앵귤러로 Todo앱 만들기 3 - 컨트롤러'
+title: "앵귤러로 Todo앱 만들기 3 - 컨트롤러"
 layout: post
 category: series
 seriesId: "377d51fb-3cab-5e79-a4e0-8e08a79bbe02"
@@ -18,7 +18,6 @@ date: 2016-06-12 09:00:03
 앵귤러에서 `ngController`는 `ng-controller`와 동일하다.
 `ngModel`이 `ng-model`과 같은 것도 동일한 규칙이다.
 
-
 ## 컨트롤러 정의
 
 그럼 컨트롤러 함수를 만들어보자.
@@ -27,12 +26,9 @@ js/controllers/TodomvcController.js 파일을 만들자.
 js/controllers/TodomvcController:
 
 ```javascript
-angular.module('todomvc')
-    .controller('TodomvcCtrl', function ($scope) {
-
-      $scope.message = 'Hello world!';
-
-    });
+angular.module("todomvc").controller("TodomvcCtrl", function ($scope) {
+  $scope.message = "Hello world!"
+})
 ```
 
 컨트롤러는 앵귤러에서 제공하는 `controller()` 함수로 정의한다.
@@ -53,7 +49,6 @@ angular.module('todomvc')
 이것도 앵귤러에서 제공하는 함수이다.
 **컨트롤러** 는 자신의 `$scope` 변수를 템플릿(여기서는 index.html)과 데이터를 교환할 수 있다.
 
-
 ## 컨트롤러어 템플릿 연결
 
 index.html에 컨트롤러를 주입해 보자.
@@ -61,13 +56,16 @@ index.html에 컨트롤러를 주입해 보자.
 index.html:
 
 {% raw %}
+
 ```html
 <body ng-app="todomvc">
-<div ng-controller="TodomvcCtrl">
-  <h1>{{ message }}</h1> <!-- "Hello world!" -->
-</div>
+  <div ng-controller="TodomvcCtrl">
+    <h1>{{ message }}</h1>
+    <!-- "Hello world!" -->
+  </div>
 </body>
 ```
+
 {% endraw %}
 
 ![](/assets/imgs/2016/lecture-todomvc-angular-2-result3.png)

@@ -9,16 +9,17 @@ permalink: /docker-usage/
 category: dev
 tags: [docker]
 ---
+
 도커를 활용한 예제입니다.
 우분투 서버에 노드를 설치하고 익스프레스 엔진으로 서버를 구현하는 방법에 대해 설명합니다.
 우리는 포에버를 이용해 서버를 구동할 것입니다.
 
 서버 구성은 아래와 같습니다.
 
-* Ubuntu 14.04
-* Node.js 0.12
-* Exoress.js
-* Forever
+- Ubuntu 14.04
+- Node.js 0.12
+- Exoress.js
+- Forever
 
 다음은 위 환경을 도커로 구성하는 방법에 대해 설명합니다.
 
@@ -43,22 +44,22 @@ $ npm init
 ```javascript
 // indxe.js
 
-var express = require('express');
-var app = express();
+var express = require("express")
+var app = express()
 
-app.get('/', function (req, res) {
-  console.log('GET /');
-  res.send('Hello world');
-});
+app.get("/", function (req, res) {
+  console.log("GET /")
+  res.send("Hello world")
+})
 
 // 포에버 동작을 확인하기 위한 코드
-app.get('/exit', function(req, res) {
-  process.exit(1); // Uncaught Fatal Exception
-});
+app.get("/exit", function (req, res) {
+  process.exit(1) // Uncaught Fatal Exception
+})
 
 app.listen(3000, function () {
-  console.log('Server is running at 3000 port.');
-});
+  console.log("Server is running at 3000 port.")
+})
 ```
 
 ## 도커 파일
@@ -134,7 +135,7 @@ boot2docker를 이용해 계속 진행합니다.
 $ boot2docker
 ```
 
-쉘 모양이 변경되면서 'docker@boot2docker$' 로 변경 됩니다.
+쉘 모양이 변경되면서 'docker@boot2docker\$' 로 변경 됩니다.
 작성한 샘플 코드가 있는 경로로 이동합니다.
 
 도커 파일이 있는 폴더에서 도커 이미지를 생서합니다.
@@ -166,9 +167,9 @@ forever-sample 이미지로 컨테이너를 구동합니다.
 docker@boot2docker$ docker run -d -p 3000:3000 --name forever-sample forever-sample:1.0
 ```
 
-* `-d`: 컨테이너를 백그라운드로 구동합니다.
-* `-p 3000:3000`: 외부의 3000 포트와 컨테이너의 3000번 포트를 연결(bind)합니다.
-* `--name forever-sample`: 컨테이너 이름을 지정합니다.
+- `-d`: 컨테이너를 백그라운드로 구동합니다.
+- `-p 3000:3000`: 외부의 3000 포트와 컨테이너의 3000번 포트를 연결(bind)합니다.
+- `--name forever-sample`: 컨테이너 이름을 지정합니다.
 
 컨테이너가 생성되었는지 확인합니다.
 
@@ -191,8 +192,8 @@ CONTAINER ID        IMAGE                NAMES
 docker@boot2docker$ docker logs -f -t forever-sample
 ```
 
-* `-f`: follow output
-* `-t`: timestamp
+- `-f`: follow output
+- `-t`: timestamp
 
 서버 구동 메세지가 보입니다.
 
@@ -226,4 +227,5 @@ $ boot2docker ip
 서버가 재 구동되는 것을 확인할 수 있습니다.
 
 ## 참고
-* 소스코드: [https://github.com/jeonghwan-kim/docker-forever-sample](https://github.com/jeonghwan-kim/docker-forever-sample)
+
+- 소스코드: [https://github.com/jeonghwan-kim/docker-forever-sample](https://github.com/jeonghwan-kim/docker-forever-sample)

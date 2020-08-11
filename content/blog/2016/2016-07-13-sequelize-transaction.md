@@ -1,5 +1,5 @@
 ---
-title: 'Sequelize Transaction 사용할때 주의할 점'
+title: "Sequelize Transaction 사용할때 주의할 점"
 layout: post
 category: dev
 tags: [sequelize]
@@ -11,8 +11,9 @@ permalink: /2016/07/13/sequelize-transaction.html
 성능상의 단점이 있지만 개발 속도와 가독성을 생각해 대부분 프로젝트에서 사용하는 편이다.
 사실 그동안 트랜젝션 처리해야할 부분을 많이 놓쳐서 이번엔 제대로 트랜젝션을 걸어서 사용해 보기로 했다.
 예를 들어 회원가입 API를 만든다고 생각해 보자.
-1) 사용자 정보를 테이블에 추가하고 2) 추가된 사용자 정보와 몇가지 관련된 테이블의 데이터까지 조회하여 응답하는 로직을 만들 것이다.
-그래서 아래와 같은 코드를 작성했다.
+
+1. 사용자 정보를 테이블에 추가하고 2) 추가된 사용자 정보와 몇가지 관련된 테이블의 데이터까지 조회하여 응답하는 로직을 만들 것이다.
+   그래서 아래와 같은 코드를 작성했다.
 
 ```javascript
 exports.register = (req, res) => {
@@ -49,7 +50,7 @@ exports.register = (req, res) => {
 modles.Group.findOne({id: user.GroupId}, {transaction: t}))
 ```
 
-findOne()  함수의 두번째 파라매터로 트랜젝션 변수를 넘겨줬다.
+findOne() 함수의 두번째 파라매터로 트랜젝션 변수를 넘겨줬다.
 여전히 문제를 해결하지 못했다.
 Sequelize의 데이터 조회/삭제 함수에 트랜젝션을 넘겨줄땐 첫번째 파라매터로 넘겨줘야 하는데 문제를 제대로 읽지 않은 탓이다.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Yeoman 제너레이터 만들기'
+title: "Yeoman 제너레이터 만들기"
 layout: post
 category: dev
 tags: [yeoman]
@@ -70,47 +70,55 @@ generator-generator를 사용하면 기본적으로 위 필드들이 자동으�
 생성된 폴더중에 generator 폴더가 실제로 코드를 생성하는 역할을 하는 부분이다. generator/app/index.js를 보면 사용자 입력를 받는 부분과 파일을 생성하는 부분 그리고 npm 패키지를 설치하는 부분으로 구성되어 있다.
 
 ```javascript
-'use strict';
-var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
+"use strict"
+var yeoman = require("yeoman-generator")
+var chalk = require("chalk")
+var yosay = require("yosay")
 
 module.exports = yeoman.Base.extend({
   prompting: function () {
     // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the super-duper ' + chalk.red('generator-weplajs') + ' generator!'
-    ));
+    this.log(
+      yosay(
+        "Welcome to the super-duper " +
+          chalk.red("generator-weplajs") +
+          " generator!"
+      )
+    )
 
-    var prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
+    var prompts = [
+      {
+        type: "confirm",
+        name: "someAnswer",
+        message: "Would you like to enable this option?",
+        default: true,
+      },
+    ]
 
-    return this.prompt(prompts).then(function (props) {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    }.bind(this));
+    return this.prompt(prompts).then(
+      function (props) {
+        // To access props later use this.props.someAnswer;
+        this.props = props
+      }.bind(this)
+    )
   },
 
   writing: function () {
     this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
+      this.templatePath("dummyfile.txt"),
+      this.destinationPath("dummyfile.txt")
+    )
   },
 
   install: function () {
-    this.installDependencies();
-  }
-});
+    this.installDependencies()
+  },
+})
 ```
 
 제너레이터는 기본적으로 `yeoman.Base.extend()` 메소드를 이용해 설정한다.
 
-사용자의 입력을 받는 부분이 `prompting`에 설정한 코드다. `type: 'confirm'`은 사용자에게 yes/no 의 답변을 얻기위한 질문을 하는 것이고 `name`은 사용자가 입력한 정보가 담기는 변수 이름이다.` message`는 사용자에게 물어볼 질문이고 마지막으로 `default`는 답변에 대한 기본값이다.
+사용자의 입력을 받는 부분이 `prompting`에 설정한 코드다. `type: 'confirm'`은 사용자에게 yes/no 의 답변을 얻기위한 질문을 하는 것이고 `name`은 사용자가 입력한 정보가 담기는 변수 이름이다.`message`는 사용자에게 물어볼 질문이고 마지막으로 `default`는 답변에 대한 기본값이다.
 
 `writing`에서는 템플릿 파일을 이용해 코드를 생성해 내는 부분이다. prompting에서 사용자입력을 `this.props`에 저장했기 때문에 여기서도 사용자 입력 값을 활용할수 있지만 지금 코드에는 그런 부분은 없다. 단순히 dummyfile.txt를 그대로 복사하는 일만 한다.
 
@@ -120,8 +128,8 @@ module.exports = yeoman.Base.extend({
 
 generator-weplajs에서 원하는 제너레이터의 기능은 두 가지다.
 
-* ExpressJS, Sequelize, MySQL로 구성된 API 서버 코드를 생성
-* 리소스 이름을 입력하여 CRUD API를 위한 코드를 생성
+- ExpressJS, Sequelize, MySQL로 구성된 API 서버 코드를 생성
+- 리소스 이름을 입력하여 CRUD API를 위한 코드를 생성
 
 ### ExpressJS, Sequelize, MySQL로 구성된 API 서버 코드를 생성
 
@@ -203,7 +211,6 @@ writing: function () {
 
 파일을 복사하기위해서 두 가지 함수를 사용한다. `this.fs.copy()`는 단순히 파일을 복사하는 기능이고 `this.fs.copyTpl()` 은 파일을 복사하면서 파일 내용을 수정할 수 있다. `fs.copyTpl(origin, target, data)` 함수에 첫번째 파라매터가 복사할 원본 파일 즉 템플릿 파일이나 템플릿 파일을 포함한 폴더이고 두 번째가 생성될 타겟 경로명이다. 마지막 data가 템플릿에 넣을 데이터인데 템플릿 파일에서 "<%= name =>" 문자열을 찾아 data.name 값으로 대채하는 방식이다.
 
-
 ### 리소스 이름을 입력하면 CRUD API가 자동으로 생성됨
 
 지금까지는 `yo weplajs` 명령어를 통해 초기 파일들을 자동으로 생성하는 제너레이터를 만들었다. 이번에 만들 기능은 제너레이터를 이용해 이미 생성된 폴더 내에서 `yo weplajs:api` 로 생성되는 기능인데 이것을 서브 제너레이터라고 부른다. 서브 제너레이터를 만들기 위해서는 generator-generator의 도움을 받을 수 있다.
@@ -247,47 +254,52 @@ prompting: function () {
 prompting에 리소스 명을 입력받기 위한 데이터를 컬렉션에 추가했다. 이 코드를 참고해서 util.js 파일을 만들었다.
 
 ```javascript
-"use strict";
+"use strict"
 
-const fs = require('fs');
+const fs = require("fs")
 
 const rewrite = args => {
-  let lines = args.haystack.split('\n');
+  let lines = args.haystack.split("\n")
 
-  let otherwiseLineIndex = -1;
+  let otherwiseLineIndex = -1
   lines.forEach((line, i) => {
-
-    console.log('line:', line);
+    console.log("line:", line)
 
     if (line.indexOf(args.needle) !== -1) {
-      otherwiseLineIndex = i;
+      otherwiseLineIndex = i
     }
-  });
-  if(otherwiseLineIndex === -1) return lines.join('\n');
+  })
+  if (otherwiseLineIndex === -1) return lines.join("\n")
 
-  let spaces = 0;
-  while (lines[otherwiseLineIndex].charAt(spaces) === ' ') {
-    spaces += 1;
+  let spaces = 0
+  while (lines[otherwiseLineIndex].charAt(spaces) === " ") {
+    spaces += 1
   }
 
-  let spaceStr = '';
+  let spaceStr = ""
   while ((spaces -= 1) >= 0) {
-    spaceStr += ' ';
+    spaceStr += " "
   }
 
-  lines.splice(otherwiseLineIndex + 1, 0, args.splicable.map(function(line) {
-    return spaceStr + line;
-  }).join('\n'));
+  lines.splice(
+    otherwiseLineIndex + 1,
+    0,
+    args.splicable
+      .map(function (line) {
+        return spaceStr + line
+      })
+      .join("\n")
+  )
 
-  return lines.join('\n');
-};
+  return lines.join("\n")
+}
 
 exports.rewrite = args => {
-  args.haystack = fs.readFileSync(args.file, 'utf8');
-  const body = rewrite(args);
+  args.haystack = fs.readFileSync(args.file, "utf8")
+  const body = rewrite(args)
 
-  fs.writeFileSync(args.file, body);
-};
+  fs.writeFileSync(args.file, body)
+}
 ```
 
 /generator/api/index.js의 end 부분에서 `rewrite()` 함수를 이용해서 기존의 routes.js 파일을 수정할 수 있었다.

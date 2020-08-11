@@ -24,9 +24,10 @@ VueJS도 마찬가지인데 이번 글에서는 **VueJS로 폼 검증하는 방�
 ## 가장 손쉬운 방법
 
 Vue 인스턴만 이용해 간단히 폼을 검증해 볼 수 있다. 이름 입력 필드를 만드는 것으로 시작하자.
+
 ```html
 <form @submit.prevent="onSubmit">
-  <input v-model="name">
+  <input v-model="name" />
   <p v-if="errorBag.name">{{errorBag.name[0]}}</p>
   <button type="submit">Submit</button>
 </form>
@@ -37,35 +38,37 @@ errorBag.name 키가 있을 경우, 즉 입력 에러가 있을 경우 첫번째
 그리고 제출 버튼을 클릭하면 `onSubmit()` 메소스를 실행한다.
 
 Vue 인스턴스를 살펴볼까?
+
 ```js
 export default {
-  data () {
+  data() {
     return {
-      name: '',
-      errorBag: { name: [] }
+      name: "",
+      errorBag: { name: [] },
     }
   },
   watch: {
-     name (val) {
-       this.errorBag.name = validator.validate('name', val)
-     }
-   },
+    name(val) {
+      this.errorBag.name = validator.validate("name", val)
+    },
+  },
   methods: {
-     onSubmit () {
-       this.errorBag.name = validator.validate('name', this.name)
-     }
-  }
+    onSubmit() {
+      this.errorBag.name = validator.validate("name", this.name)
+    },
+  },
 }
 ```
 
-입력 필드와 양방향 연결되어 있는 `name()` 감시자를 만들었다. validator.validate() 메소드로 입력한 값을  검증한다.
+입력 필드와 양방향 연결되어 있는 `name()` 감시자를 만들었다. validator.validate() 메소드로 입력한 값을 검증한다.
 
 마찬가지로 폼을 제출할때 실행할 `onSubmit()` 메소드에서도 동일하게 검증하고 결과를 errorBag.name에 저장한다.
 
 validator 객체는 어떻게 구현할수 있을까?
+
 ```js
 export default {
-  validate (key, val) {
+  validate(key, val) {
     const errors = []
 
     if (!val) {
@@ -77,15 +80,16 @@ export default {
     }
 
     return errors
-  }
+  },
 }
 ```
 
 검증을 수행하는 `validate()` 메소드는 필드명 key와 입력값 val 변수를 인자로 받는다.
 
 두 단계의 검증 절차가 있는데
-* 먼저는 값 입력 여부를 체크한다. 입력값이 없을 경우 에러 문자열을 배열에 추가한다
-* 그리고나서 입력 문자열의 길이를 체크한다. 3자 미만이면 에러 문자열을 배열에 추가한다
+
+- 먼저는 값 입력 여부를 체크한다. 입력값이 없을 경우 에러 문자열을 배열에 추가한다
+- 그리고나서 입력 문자열의 길이를 체크한다. 3자 미만이면 에러 문자열을 배열에 추가한다
 
 마지막엔 이 에러 문자열이 담긴 배열을 반환하는 로직이다. <br />
 (전체 코드는 [깃헙의 watch 브랜치](https://github.com/jeonghwan-kim/blog-vue-validate/tree/watch)를 참고)
@@ -106,9 +110,10 @@ export default {
 폼 검증을 재활용할수 있도록 코드 개선해 보자. 입력 엘러멘트에 접근하기 때문에 **Vue 디렉티브**로 제공되면 좋을 것 같다.
 
 이런식으로 사용할 생각이다.
+
 ```html
 <form @submit.prevent="onSubmit">
-  <input name="name" v-model="name" v-validate="'required|minLen3'">
+  <input name="name" v-model="name" v-validate="'required|minLen3'" />
   <p v-if="errorBag.name">{{ errorBag.name[0] }}</p>
   <button type="submit">Submit</button>
 </form>
@@ -117,14 +122,15 @@ export default {
 `v-validate` 디렉티브에 검증자 정보를 문자열 `"required|minLen3"` 형태로 전달하면 선언적 마크업의 모습과 어울린다.
 
 곧장 디렉티브 코드를 작성해 보자.
+
 ```js
 export default {
   validate: {
-    bind (el, binding, vnode) {
+    bind(el, binding, vnode) {
       validator.setup(el.name, binding.expression, vnode.context)
     },
 
-    update (el, binding, vnode) {
+    update(el, binding, vnode) {
       const key = el.name
       const errors = validator.validate(key, el.value)
       const s = JSON.stringify
@@ -136,8 +142,8 @@ export default {
       } else {
         vnode.context.$delete(vnode.context.errorBag, key)
       }
-    }
-  }
+    },
+  },
 }
 ```
 
@@ -148,54 +154,56 @@ export default {
 순으로 호출되는데 각 포인트마다 폼 검증을 위한 작업을 추가해서 넣어 봤다.
 
 `bind()` 함수에서는 입력한 검증자 문자열을 파싱하여 사용하기 편하도록 준비한다.
-validator.setup()  메소드가 그 역할을 하는데
-* 필드 이름인 el.name("name")
-* 검증 문자열 binding.expression("required`|`min3")
-* 입력한 문자열 el.value
+validator.setup() 메소드가 그 역할을 하는데
+
+- 필드 이름인 el.name("name")
+- 검증 문자열 binding.expression("required`|`min3")
+- 입력한 문자열 el.value
 
 를 인자로 전달한다.
 
 뷰 인스턴스의 데이터의 변화에 컴포넌트 라이브사이클이 구동되고 그 안에 사용한 디렉티브도 갱신되는데, 이때 실행되는 훅이 `update()` 함수다.
 아이디어는 이 시점에 입력 값을 검증하는 것이다.
 
-* validateor.validate(key, el.value) 실행 결과, 에러 문자열이 담긴 배열이 반환되는데 이 결과를 뷰 인스턴스의 데이터에 갱신한다
-* 물론 에러가 없을 경우는 해당 객체를 삭제한다
-* 만약 기존 에러 객체와 같은 경우는 무시한다
+- validateor.validate(key, el.value) 실행 결과, 에러 문자열이 담긴 배열이 반환되는데 이 결과를 뷰 인스턴스의 데이터에 갱신한다
+- 물론 에러가 없을 경우는 해당 객체를 삭제한다
+- 만약 기존 에러 객체와 같은 경우는 무시한다
 
 검증 역할을 하는 validator 객체도 조금 바꿔야 한다.
+
 ```js
 const validateFns = {
-  required (key, val) {
+  required(key, val) {
     if (!val) {
       return `${key} is required`
     }
   },
-  minLen3 (key, val) {
+  minLen3(key, val) {
     if (!val || val.length < 3) {
       return `${key} should have more than 3 letters`
     }
-  }
+  },
 }
 
 const validator = {
-  init () {
+  init() {
     this.errors = {}
     this.validates = new Map()
     return this
   },
 
-  setup (key, expression) {
-    const validates = expression.replace(/'/g, '').split('|')
+  setup(key, expression) {
+    const validates = expression.replace(/'/g, "").split("|")
     this.validates.set(key, validates)
   },
 
-  validate (key, value) {
+  validate(key, value) {
     const validates = this.validates.get(key)
     const errors = validates
-        .map(v => validateFns[v](key, value))
-        .filter(v => !!v)
+      .map(v => validateFns[v](key, value))
+      .filter(v => !!v)
     return errors
-  }
+  },
 }
 
 export default validator.init()
@@ -205,33 +213,34 @@ export default validator.init()
 
 validator 객체에는 메소드 두 개를 더 추가했다.
 
-* `init()` 은 검증결과를 저장한 errors 객체와 검증자를 관리할 validates를 맵으로 초기화하는 코드다
-* 디렉티브 생성시 `setup()`을 호출하는데 디렉티브에 전달한 검증자 문자열을 파싱하여 validates 맵에 준비해 놓는 역할을 한다
+- `init()` 은 검증결과를 저장한 errors 객체와 검증자를 관리할 validates를 맵으로 초기화하는 코드다
+- 디렉티브 생성시 `setup()`을 호출하는데 디렉티브에 전달한 검증자 문자열을 파싱하여 validates 맵에 준비해 놓는 역할을 한다
 
 required와 minLen3만 검증하는 기존의 제한적인 validate() 메소드를 좀 더 유연하게 개선했다.
 validates 맵에서 검증자를 가져와 해당하는 검증함수를 validateFn에서 찾아 호출하고 에러 문자열을 배열로 반환한다.
 
 이를 사용하기 위한 컴포넌트 코드를 살펴보자.
+
 ```js
-import directives from './MyDirectives'
-import validator from './validator'
+import directives from "./MyDirectives"
+import validator from "./validator"
 
 export default {
   directives,
-  data () {
-    return { name: '', errorBag: {} }
+  data() {
+    return { name: "", errorBag: {} }
   },
   methods: {
     onSubmit() {
-      const errors = validator.validate('name', this.name)
+      const errors = validator.validate("name", this.name)
 
       if (errors) {
-        this.$set(this.errorBag, 'name', errors)
+        this.$set(this.errorBag, "name", errors)
       } else {
-        this.$delete(this.errorBag, 'name')
+        this.$delete(this.errorBag, "name")
       }
-    }
-  }
+    },
+  },
 }
 ```
 
@@ -250,22 +259,26 @@ errorBag의 name 은 초기화 되어 있지 않기 때문에 단순히 `this.er
 ## 플러그인으로 만드는 방법
 
 디렉티브로 개선했음에도 불구하고 몇 가지 눈에 거슬리는 코드가 보인다.
-* errorBag은 폼 검증을 위한 v-validate 디렉티브와 더 관련 있어 보인다. 컴포넌트 코드와는 다른 분위기다
-* onSubmit() 함수도 마찬가지. errorBag을 갱신하는 코드를 다른 곳으로 옮겨야하지 않을까?
+
+- errorBag은 폼 검증을 위한 v-validate 디렉티브와 더 관련 있어 보인다. 컴포넌트 코드와는 다른 분위기다
+- onSubmit() 함수도 마찬가지. errorBag을 갱신하는 코드를 다른 곳으로 옮겨야하지 않을까?
 
 **Vue 플러그인**은 이러한 역할을 수행하는데 안성맞춤이다. 이 부분을 플러그인 코드로 옮겨보자.
+
 ```js
-import MyDirectives from './MyDirectives'
-import validator from './validator'
+import MyDirectives from "./MyDirectives"
+import validator from "./validator"
 
 export default {
-  install (Vue) {
-    Vue.directive('validate', MyDirectives.validate)
+  install(Vue) {
+    Vue.directive("validate", MyDirectives.validate)
 
     Vue.mixin({
-      data() { return { errorBag: {} } }
+      data() {
+        return { errorBag: {} }
+      },
     })
-  }
+  },
 }
 ```
 
@@ -274,6 +287,7 @@ export default {
 믹스인(mixin)은 컴포넌트에 옵션 객체를 추가할수 있는 방법이다. 컴포넌트 생성시 데이터나 계산된 속성 따위를 여기서 정의할 수 있는데, 여기서는 errorBag 데이터를 옮겨놨다.
 
 이어서 계산된 속성도 추가한다.
+
 ```js
 computed: {
   $errors () {
@@ -309,47 +323,57 @@ $errors와 $validator 계산된 속성을 추가했다.
 한편 `$validator` 속성은 `validateAll()` 함수를 갖는 객체를 반환하는데 이건 입력 폼을 모두 검증해서 errorBag에 결과를 저장한다. validator 객체를 통해 검증 대상과 검증자를 모두 가져와 에러를 체크한다. 결과는 errorBag에 담아둔다.
 
 플러그인은 루트 컴포넌트 생성시 설정한다.
+
 ```js
-import Vue from 'vue'
-import MyPlugin from './MyPlugin'
-import App from './App.vue'
+import Vue from "vue"
+import MyPlugin from "./MyPlugin"
+import App from "./App.vue"
 
 Vue.use(MyPlugin)
 
 new Vue({
-  el: '#app',
-  render: h => h(App)
+  el: "#app",
+  render: h => h(App),
 })
 ```
 
 `Vue.use(MyPlugin)` 하나의 코드로 줄었다. 이것으로
-* v-validate 디렉티브를 등록하고
-* 에러를 담는 errorBag 데이터를 만들고
-* 템플릿 출력을 위한 $errors와 onSubmit()에서 호출할 $validator 계산된 속성을 추가한다
+
+- v-validate 디렉티브를 등록하고
+- 에러를 담는 errorBag 데이터를 만들고
+- 템플릿 출력을 위한 $errors와 onSubmit()에서 호출할 $validator 계산된 속성을 추가한다
 
 결국 컴포넌트 코드를 이렇게 절약할 수 있다.
+
 ```html
 <template>
   <div id="app">
     <form @submit.prevent="onSubmit">
-      <input type="text" name="name" v-model="name" v-validate="'required|minLen3'">
-      <p v-if="$errors.has('name')">{%raw%}{{ $errors.first('name') }}{%endraw%}</p>
+      <input
+        type="text"
+        name="name"
+        v-model="name"
+        v-validate="'required|minLen3'"
+      />
+      <p v-if="$errors.has('name')">
+        {%raw%}{{ $errors.first('name') }}{%endraw%}
+      </p>
       <button type="submit">Submit</button>
     </form>
   </div>
 </template>
 
 <script>
-export default {
-  data () {
-    return { name: '' }
-  },
-  methods: {
-    onSubmit() {
-      this.$validator.validateAll()
-    }
+  export default {
+    data() {
+      return { name: "" }
+    },
+    methods: {
+      onSubmit() {
+        this.$validator.validateAll()
+      },
+    },
   }
-}
 </script>
 ```
 
@@ -357,7 +381,7 @@ export default {
 
 에러 문구는 errors 계산된 속성의 반환 객체를 이용해 has()로 에러 여부를 체크하고 first() 로 첫번째 에러 메세지를 출력한다.
 
-마지막으로 폼제출시 실행되는 onSubmit()에서는 $validator 계산된 속성의 validateAll() 함수로 입력 필드 검증을 수행한다.
+마지막으로 폼제출시 실행되는 onSubmit()에서는 \$validator 계산된 속성의 validateAll() 함수로 입력 필드 검증을 수행한다.
 
 어떤가? 훨씬 읽기 쉬운 코드다. (전체 코드는 [깃헙의 plugin 브랜치](https://github.com/jeonghwan-kim/blog-vue-validate/tree/plugin) 참고)
 
@@ -369,19 +393,26 @@ export default {
 ![vee-validate](/assets/imgs/2018/05/31/vee-validate.jpg)
 
 Vue에서 폼 검증시 가장 많이 사용하는 이 툴은 플러그인 형태로 제공되기 때문에 `Vue.use()`로 설치한다.
+
 ```js
-import Vue from 'vue'
-import VeeValidator from 'vee-validate'
+import Vue from "vue"
+import VeeValidator from "vee-validate"
 
 Vue.use(VeeValidator)
 ```
 
 그리고 나서 컴포넌트에서는 이렇게 사용할 수 있다.
+
 ```html
 <template>
   <div id="app">
     <form @submit.prevent="onSubmit">
-      <input type="text" name="name" v-model="name" v-validate="'required|min:3'">
+      <input
+        type="text"
+        name="name"
+        v-model="name"
+        v-validate="'required|min:3'"
+      />
       <p v-if="errors.has('name')">{%raw%}{{errors.first('name')}}{%endraw%}</p>
       <button type="submit">Submit</button>
     </form>
@@ -389,16 +420,16 @@ Vue.use(VeeValidator)
 </template>
 
 <script>
-export default {
-  data () {
-    return { name: '' }
-  },
-  methods: {
-    onSubmit() {
-      this.$validator.validateAll()
-    }
+  export default {
+    data() {
+      return { name: "" }
+    },
+    methods: {
+      onSubmit() {
+        this.$validator.validateAll()
+      },
+    },
   }
-}
 </script>
 ```
 
@@ -412,6 +443,6 @@ export default {
 
 사용자 입력을 직접 처리하는 부분인 폼은 입력 데이터에 대한 검증을 선제적으로 체크해야 하는 부분이다. 지금까지 VueJS를 이용한 입력 필드 검증 방법에 대해 단계적으로 살펴 보았다.
 
-* 매우 단순한 입력 필드라면 **뷰 인스턴스만을 이용해서 데이터 기반으로 구현**할 수 있다.
-* 복잡한 입력 필드와 검증 조건이 필요하다면 **디렉티브와 플러그인 형태**로 구현해서 사용할 수 있다. 이러한 방법이 코드를 재사용하는 DRY한 방법이기 때문이다.
-* 뿐만아니라 이미 이러한 형태로 구현해 놓은 **써드파티 라이브러리**를 찾는 것이 더 효율적일수 있는데 vee-validate 가 대표적이다.
+- 매우 단순한 입력 필드라면 **뷰 인스턴스만을 이용해서 데이터 기반으로 구현**할 수 있다.
+- 복잡한 입력 필드와 검증 조건이 필요하다면 **디렉티브와 플러그인 형태**로 구현해서 사용할 수 있다. 이러한 방법이 코드를 재사용하는 DRY한 방법이기 때문이다.
+- 뿐만아니라 이미 이러한 형태로 구현해 놓은 **써드파티 라이브러리**를 찾는 것이 더 효율적일수 있는데 vee-validate 가 대표적이다.

@@ -12,7 +12,7 @@ videoId: "d73823e3-7d80-5997-8f06-4b92baa8a040"
 
 ## 뷰JS의 간단한 라우팅
 
-단일 페이지 어플리케이션(SPA)에서 가장 먼저 처리해야 할 것이 바로 라우팅이다. 서버에서 라우팅은 URI에 따라  해당하는
+단일 페이지 어플리케이션(SPA)에서 가장 먼저 처리해야 할 것이 바로 라우팅이다. 서버에서 라우팅은 URI에 따라 해당하는
 정적파일을 내려주는 방식이다. 이를 브라우져에서 구현해야 하는것이 SPA 개발의 핵심이다.
 
 아이디어는 간단하다. 요청 URI에 따라 브라우져에서 돔을 변경하는 방식이다.
@@ -22,17 +22,17 @@ Vue.js 공식 문서의 [Scaling Up 섹션](https://kr.vuejs.org/v2/guide/routin
 라우팅 별로 세 개의 컴포넌트를 만든다.
 
 ```js
-const Home = { template: '<p>home page</p>' }
-const About = { template: '<p>about page</p>' }
-const NotFound = { template: '<p>Page not found</p>' }
+const Home = { template: "<p>home page</p>" }
+const About = { template: "<p>about page</p>" }
+const NotFound = { template: "<p>Page not found</p>" }
 ```
 
 경로에 따라 위 세개 컴포넌트를 바꿔가면서 렌더링 해주려고 한다. 그럼 경로와 컴포넌트 딕셔너리가 필요하겠다.
 
 ```js
 const routes = {
-  '/': Home,
-  '/about': About
+  "/": Home,
+  "/about": About,
 }
 ```
 
@@ -48,7 +48,9 @@ const routes = {
 new Vue({
   /* 생략 */
 
-  render (h) { return h(this.ViewComponent) }
+  render(h) {
+    return h(this.ViewComponent)
+  },
 })
 ```
 
@@ -59,16 +61,16 @@ new Vue({
   /* 생략 */
 
   computed: {
-    ViewComponent () {
+    ViewComponent() {
       return routes[window.location.pathname] || NotFound
-    }
+    },
   },
 
   /* 생략 */
 })
 ```
 
-VueComponent는 현재 경로로 routes 디셔너리에서 컴포넌트를  찾아 반환한다. 정의되지 않은 경로일 경우 NotFound 컴포넌트를 반환한다.
+VueComponent는 현재 경로로 routes 디셔너리에서 컴포넌트를 찾아 반환한다. 정의되지 않은 경로일 경우 NotFound 컴포넌트를 반환한다.
 
 [전체코드](https://kr.vuejs.org/v2/guide/routing.html)를 읽어보면 라우팅 동작을 이해하는데 수월할 것이다.
 
@@ -80,8 +82,8 @@ VueComponent는 현재 경로로 routes 디셔너리에서 컴포넌트를  찾�
 
 ![vue-router logo](/assets/imgs/2018/04/07/vue-router-logo.jpg)
 
-* Github: [https://github.com/vuejs/vue-router](https://github.com/vuejs/vue-router)
-* 문서: [https://router.vuejs.org/kr/](https://router.vuejs.org/kr/)
+- Github: [https://github.com/vuejs/vue-router](https://github.com/vuejs/vue-router)
+- 문서: [https://router.vuejs.org/kr/](https://router.vuejs.org/kr/)
 
 간단한 스케폴딩 위에서 뷰 라우터의 기본적인 사용법을 간단히 학습해 보자.
 vue-cli의 [webpack-simple](https://github.com/vuejs-templates/webpack-simple) 템플릿으로 시작한다.
@@ -93,16 +95,16 @@ vue-cli의 [webpack-simple](https://github.com/vuejs-templates/webpack-simple) �
 ```js
 // main.js
 
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+import Vue from "vue"
+import App from "./App.vue"
+import router from "./router"
 
 new Vue({
-  el: '#app',
+  el: "#app",
   render: h => h(App),
 
   // 라우터 객체를 넘겨준다
-  router
+  router,
 })
 ```
 
@@ -113,8 +115,8 @@ new Vue({
 ```js
 // router/index.js
 
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue"
+import VueRouter from "vue-router"
 
 // 뷰 어플리케이션에 라우터 플러그인을 추가한다.
 Vue.use(VueRouter)
@@ -126,8 +128,8 @@ Vue.use(VueRouter)
 // router/index.js
 
 /* 생략 */
-const Home = { template: '<div>Home</div>'}
-const NotFound = { template: '<div>Not Found</div>'}
+const Home = { template: "<div>Home</div>" }
+const NotFound = { template: "<div>Not Found</div>" }
 ```
 
 마지막으로 `VueRouter` 클래스 함수로 라우터 객체를 생성한다.
@@ -137,11 +139,11 @@ const NotFound = { template: '<div>Not Found</div>'}
 
 /* 생략 */
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes: [
-    { path: '/', component: Home },
-    { path: '*', component: NotFound }
-  ]
+    { path: "/", component: Home },
+    { path: "*", component: NotFound },
+  ],
 })
 
 export default router
@@ -198,10 +200,10 @@ export default router
 
 라우터에 등록된 링크는 `<a>` 태그 보다는 `<router-link>` 태그를 사용하길 권장하는데 이유는 다음과 같다.
 
-* 히스토리모드와 해쉬뱅 모드에서는 주소 체계가 달라서 `<a>` 태그를 사용할 경우 모드 변경시 주소값을 일일이 변경해 줘야한다.
-하지만 `<router-link>`는 변경할 필요가 없다.
-* `<a>` 태그를 클릭하면 화면을 갱신하는데 `<router-link>`는 이를 차단해준다. 갱신 없이 화면을 이동할 수 있다.
-* 자세한 내용은 [문서](https://router.vuejs.org/kr/api/router-link.html)를 참고하자.
+- 히스토리모드와 해쉬뱅 모드에서는 주소 체계가 달라서 `<a>` 태그를 사용할 경우 모드 변경시 주소값을 일일이 변경해 줘야한다.
+  하지만 `<router-link>`는 변경할 필요가 없다.
+- `<a>` 태그를 클릭하면 화면을 갱신하는데 `<router-link>`는 이를 차단해준다. 갱신 없이 화면을 이동할 수 있다.
+- 자세한 내용은 [문서](https://router.vuejs.org/kr/api/router-link.html)를 참고하자.
 
 ![router-link-01](/assets/imgs/2018/04/07/router-link-01.jpg)
 
@@ -209,12 +211,12 @@ export default router
 
 이제 본격적으로 블로그 예제를 위한 라우트들을 설계해 보자. 아래 6개 경로를 선정했다.
 
-* / 홈
-* /login 로그인
-* /logout 로그아웃
-* /posts 포스트 목록
-* /posts/detail 포스트 상세
-* /posts/new 포스트 추가
+- / 홈
+- /login 로그인
+- /logout 로그아웃
+- /posts 포스트 목록
+- /posts/detail 포스트 상세
+- /posts/new 포스트 추가
 
 라우터 객체 생성시 사용하는 `routes` 속성에 경로 문자열과 각 컴포넌트들을 배열로 추가한다.
 
@@ -249,18 +251,21 @@ export default new VueRouter({
   routes: [
     // 생략
 
-    { path: '/posts',
-      component: { template: '<div>Posts <br/><router-view></router-view></div>' },
+    {
+      path: "/posts",
+      component: {
+        template: "<div>Posts <br/><router-view></router-view></div>",
+      },
 
       // 중첩된 라우트는 children 속성으로 하위 라우트를 정의할 수 있다.
       children: [
-        { path: 'new', component: { template: '<div>New Post</div>' } },
-        { path: 'detail', component: { template: '<div>Post Detail</div>' } }
-      ]
-    }
+        { path: "new", component: { template: "<div>New Post</div>" } },
+        { path: "detail", component: { template: "<div>Post Detail</div>" } },
+      ],
+    },
 
     // 생략
-  ]
+  ],
 })
 ```
 
@@ -296,14 +301,14 @@ template 부분에 `<router-view>` 태그를 삽입했다.
 </template>
 ```
 
-* /posts 라우팅:
-![nested-route-01](/assets/imgs/2018/04/07/nested-route-01.jpg)
+- /posts 라우팅:
+  ![nested-route-01](/assets/imgs/2018/04/07/nested-route-01.jpg)
 
-* /posts/new 라우팅:
-![nested-route-02](/assets/imgs/2018/04/07/nested-route-02.jpg)
+- /posts/new 라우팅:
+  ![nested-route-02](/assets/imgs/2018/04/07/nested-route-02.jpg)
 
-* /posts/detail 라우팅:
-![nested-route-03](/assets/imgs/2018/04/07/nested-route-03.jpg)
+- /posts/detail 라우팅:
+  ![nested-route-03](/assets/imgs/2018/04/07/nested-route-03.jpg)
 
 가만히 보면 **중첩된 라우팅**이 **중첩된 화면**을 구성하는데 적합하다는 것을 알수 있다.
 /posts/new 라우트의 경우 /posts 라우트에 설정한 컴포넌트(빨간색)를 사용하되 `<route-view>` 부분만
@@ -314,8 +319,8 @@ template 부분에 `<router-view>` 태그를 삽입했다.
 /posts/detail 은 포스트 상세 화면을 조회하기 위한 화면으로 설계했다. 상세화면은 포스트 아이디(id)에
 따라 내용이 달라지는데 이를 라우트 경로에 추가한다면 화면을 그릴때 단서가 될수 있을 것이다.
 
-* /posts/**1**
-* /posts/**2**
+- /posts/**1**
+- /posts/**2**
 
 이런식으로 detail 대신 **아이디 값**이 온다면 어떨까?
 
@@ -349,6 +354,7 @@ template 부분에 `<router-view>` 태그를 삽입했다.
   }
 },
 ```
+
 ![dynamic-route-maching-01](/assets/imgs/2018/04/07/dynamic-route-maching-01.jpg)
 
 ### 라우터 링크 스타일
@@ -358,25 +364,25 @@ template 부분에 `<router-view>` 태그를 삽입했다.
 /posts/new 경로에서는 `<router-link to="/posts/new">` 링크에 클래스 명이 추가되는데
 .router-link-active와 .router-link-exact-active 클래스다.
 
-* `.router-link-active`: 경로 앞부분만 일치해서 추가되는 클래스
-* `.router-link-exact-active`: 모든 경로가 일치해야만 추가되는 클래스
+- `.router-link-active`: 경로 앞부분만 일치해서 추가되는 클래스
+- `.router-link-exact-active`: 모든 경로가 일치해야만 추가되는 클래스
 
-뷰js가 알아서 CSS  클래스명을 추가하기 때문에 개발자는 클래스 정의만 추가하면 된다.
+뷰js가 알아서 CSS 클래스명을 추가하기 때문에 개발자는 클래스 정의만 추가하면 된다.
 루트 어플리케이션에 CSS를 추가한다.
 
 ```html
 // App.vue
 
 <style>
-.router-link-active {
-  color: white;
-  background-color: red;
-}
+  .router-link-active {
+    color: white;
+    background-color: red;
+  }
 
-.router-link-exact-active {
-  color: white;
-  background-color: blue;
-}
+  .router-link-exact-active {
+    color: white;
+    background-color: blue;
+  }
 </style>
 ```
 
@@ -474,8 +480,8 @@ SPA 개발에서는 로그인 후 서버에서 발급받은 액세스 토큰(acc
 const requireAuth = (to, from, next) => {
   if (Auth.loggedIn()) return next()
   next({
-    path: '/login',
-    query: { redirect: to.fullPath }
+    path: "/login",
+    query: { redirect: to.fullPath },
   })
 }
 ```
@@ -510,8 +516,8 @@ beforeEnter() 훅에 사용할 함수다.<br />
   <div>
     <h2>Login</h2>
     <form @submit.prevent="login">
-      <input type="text" v-model="email" >
-      <input type="password" v-model="password">
+      <input type="text" v-model="email" />
+      <input type="password" v-model="password" />
       <button type="submit">Login</button>
     </form>
   </div>
@@ -543,11 +549,11 @@ redirect 문자열을 인자로 하여 `this.$router.replace()` 함수를 호출
 `$router.replace()` 함수는 `push()` 와 같은 역할을 하지만 유일한 차이는 히스토리 항목에 추가하지
 않고 라우트를 변경한다는 점이다. replace() 함수를 사용하면 뒤로가기를 해도 이전 페이지인 /login 으로 이동하지 않는걸 확인했다.
 
-* 글쓰기를 위한 로그인 화면:
-![login-flow-01](/assets/imgs/2018/04/07/login-flow-01.jpg)
+- 글쓰기를 위한 로그인 화면:
+  ![login-flow-01](/assets/imgs/2018/04/07/login-flow-01.jpg)
 
-* 로그인 후 글쓰기 화면:
-![login-flow-02](/assets/imgs/2018/04/07/login-flow-02.jpg)
+- 로그인 후 글쓰기 화면:
+  ![login-flow-02](/assets/imgs/2018/04/07/login-flow-02.jpg)
 
 ### 로그아웃
 
@@ -572,10 +578,11 @@ redirect 문자열을 인자로 하여 `this.$router.replace()` 함수를 호출
 
 뷰JS는 경로명에 따라 컴포넌트를 변경하는 방식으로 간단한 SPA 라우팅 기능을 구현할 수 있다.
 본격적인 SPA 개발을 위해서 뷰 라우터 라이브러리를 사용할 수 있는데 중첩 라우팅, 라우터 링크,
-동적 라우트 매칭, 그리고  네이게이션 가드를 이용해 인증 플로우까지 구현해 봤다.
+동적 라우트 매칭, 그리고 네이게이션 가드를 이용해 인증 플로우까지 구현해 봤다.
 
 [전체 샘플 코드](https://github.com/jeonghwan-kim/vue-router-sample)를 찬찬히 읽어보면 좀더 수월하게 이해할 수 있을 것이다.
 
 참고
-* 공식문서: [https://router.vuejs.org/kr](https://router.vuejs.org/kr)
-* 예제 코드: [https://github.com/vuejs/vue-router/blob/dev/examples/index.html](https://github.com/vuejs/vue-router/blob/dev/examples/index.html)
+
+- 공식문서: [https://router.vuejs.org/kr](https://router.vuejs.org/kr)
+- 예제 코드: [https://github.com/vuejs/vue-router/blob/dev/examples/index.html](https://github.com/vuejs/vue-router/blob/dev/examples/index.html)

@@ -1,5 +1,5 @@
 ---
-title: '[Node.js코드랩] 9.미들웨어 활용'
+title: "[Node.js코드랩] 9.미들웨어 활용"
 layout: post
 summary: 미들웨어를 활용합니다
 category: series
@@ -27,21 +27,21 @@ $ git checkout -f application/use-spec
 src/Application.spec.js 파일을 봅니다.
 
 ```js
-  describe('use()', () => {
-    it('Middleware 모듈 인스턴스의 add() 메소드를 실행한다', () => {
-      const spy = sinon.spy();
-      app._middleware.add = spy;
-      const mw1 = () => null;
+describe("use()", () => {
+  it("Middleware 모듈 인스턴스의 add() 메소드를 실행한다", () => {
+    const spy = sinon.spy()
+    app._middleware.add = spy
+    const mw1 = () => null
 
-      app.use(mw1);
+    app.use(mw1)
 
-      should(spy.called).be.equal(true);
-    })
+    should(spy.called).be.equal(true)
   })
+})
 ```
 
 use() 메소드는 "Middleware의 add() 메소드를 실행한다"는 테스트 케이스 입니다.
-어플리케이션 내부 변수인 _middleware의 add에 스파이를 심었습니다.
+어플리케이션 내부 변수인 \_middleware의 add에 스파이를 심었습니다.
 
 그리고 app.use()를 실행한 결과 이 스파이 함수가 실행되는지 점검하는 것이죠.
 
@@ -57,24 +57,24 @@ const Application = () => {
 Middleware 모듈을 가져옵니다. 그리고 Application 클로져 변수에 Middleware 인스턴스를 하나 만들었습니다. 이 코드는 어플리케이션이 구동되는 동안 딱 한 번만 실행 되겠죠?
 
 ```js
-  const _server = http.createServer((req, res) => {
-    _middleware.run(req, res);
-   });
+const _server = http.createServer((req, res) => {
+  _middleware.run(req, res)
+})
 
-  const use = fn => _middleware.add(fn);
+const use = fn => _middleware.add(fn)
 ```
 
-함수타입 fn를 인자로 받는 use() 메소드 입니다. 클로져 변수 _middleware의 add 함수를 실행해서 인자로 받은 함수를 미들웨어 배열에 추가합니다.
+함수타입 fn를 인자로 받는 use() 메소드 입니다. 클로져 변수 \_middleware의 add 함수를 실행해서 인자로 받은 함수를 미들웨어 배열에 추가합니다.
 
-그리고 요청이 올때마다 _middleware.run() 메소드를 실행해 모든 미들웨어 함수를 실행시킵니다.
+그리고 요청이 올때마다 \_middleware.run() 메소드를 실행해 모든 미들웨어 함수를 실행시킵니다.
 
 ```js
-   return {
-     _milldeware, // 테스트용
-     _server,
-     use, // use 노출
-     listen
-   }
+return {
+  _milldeware, // 테스트용
+  _server,
+  use, // use 노출
+  listen,
+}
 ```
 
 마지막으로 클로져 변수와 use 메소드를 노출해서 외부에서 사용하도록 처리합니다.
@@ -95,7 +95,7 @@ src/serve-static.js를 middlewares/serve-static.js 파일로 옮겨 미들웨어
 $ git checkout -f application/use
 ```
 
-*힌트: 미들웨어 함수 인터페이스는 (req, res, next) => { /* ... */}*
+_힌트: 미들웨어 함수 인터페이스는 (req, res, next) => { /_ ... _/}_
 
 ## 🐤풀이
 
@@ -129,7 +129,7 @@ app.js는 어떻게 달라 질까요?
 
 ```js
 const app = App()
-const serveStatic = require('./middlewares/serve-static')
+const serveStatic = require("./middlewares/serve-static")
 
 app.use(serveStatic())
 ```
@@ -147,24 +147,24 @@ app.js에서 바로 코딩할게요.
 
 ```js
 // ...
-const app = App();
-const path = require('path')
-const fs = require('fs')
+const app = App()
+const path = require("path")
+const fs = require("fs")
 
 const index = (req, res, next) => {
-  const publicPath = path.join(__dirname, './public')
+  const publicPath = path.join(__dirname, "./public")
 
   fs.readFile(`${publicPath}/index.html`, (err, data) => {
     if (err) throw err
 
     res.statusCode = 200
-    res.setHeader('Content-Type', 'text/html')
+    res.setHeader("Content-Type", "text/html")
     res.end(data)
   })
 }
 
-app.use(serveStatic());
-app.use(index);
+app.use(serveStatic())
+app.use(index)
 ```
 
 에러 처리 미들웨어도 추가하겠습니다.
@@ -172,7 +172,7 @@ app.use(index);
 ```js
 const error404 = (req, res, next) => {
   res.statusCode = 404
-  res.end('Not Found')
+  res.end("Not Found")
 }
 
 const error = (err, req, res, next) => {
@@ -188,6 +188,6 @@ app.use(error)
 
 ## 정리
 
-* 미들웨어를 이용해서 serve-static과 기본적인 라우팅을 구현했습니다.
+- 미들웨어를 이용해서 serve-static과 기본적인 라우팅을 구현했습니다.
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)

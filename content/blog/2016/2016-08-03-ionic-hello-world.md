@@ -1,5 +1,5 @@
 ---
-title: 'Ionic으로 Hello world 시작하기'
+title: "Ionic으로 Hello world 시작하기"
 layout: post
 category: dev
 tags: [ionic]
@@ -16,7 +16,7 @@ permalink: /2016/08/03/ionic-hello-world.html
 
 모든 언어와 프레임웍의 학습 시작이 그렇듯이 이번에도 아이오닉을 사용해 Hello world를 찍어보는 과정을 정리해 보겠다.
 
-##  개발환경 구성
+## 개발환경 구성
 
 Npm으로 아이오닉과 코르도바(cordova)를 설치한다.
 
@@ -30,15 +30,15 @@ $ sudo npm install -g ionic cordova
 
 아래 링크는 아이오닉과 코르도바의 차이에 대한 설명이다.
 
-* [Ionic vs. Pure Cordova: Three Reasons Ionic Wins](http://www.noupe.com/development/ionic-vs-pure-cordova-97503.html)
-* [Quora. What is the difference between Cordova and Ionic?](https://www.quora.com/What-is-the-difference-between-Cordova-and-Ionic)
+- [Ionic vs. Pure Cordova: Three Reasons Ionic Wins](http://www.noupe.com/development/ionic-vs-pure-cordova-97503.html)
+- [Quora. What is the difference between Cordova and Ionic?](https://www.quora.com/What-is-the-difference-between-Cordova-and-Ionic)
 
 코르도바로 빌드하게되면 네이티브 앱이 만들어지기는 하지만 플랫폼에 어울리는 디자인은 아니다.
 iOS나 안드로이드 스타일의 컴포넌트 디자인이 아니라는 것이다.
 하지만 아이오닉은 각 플랫폼에 맞는 스타일의 컴포넌트를 미리 제공하기 때문에 쉽게 UI를 개발할 수 있다.
 또한 `ionic serve` 명령어로 편리하게 개발할수 있고 결과물이 코르도바에 비해 뛰어난 성능을 보장한다.
 
-이러한 장점에 더해 앵귤러가 제공하는 MV* 패턴으로 견고한 어플리케이션을 설계할 수 있는 장점이 있다고 생각한다.
+이러한 장점에 더해 앵귤러가 제공하는 MV\* 패턴으로 견고한 어플리케이션을 설계할 수 있는 장점이 있다고 생각한다.
 
 ```
 $ ionic --version
@@ -46,7 +46,6 @@ $ ionic --version
 ```
 
 현재 v1.7.16 버전을 설치했다.
-
 
 ## 프로젝트 생성
 
@@ -71,7 +70,6 @@ $ ionic serve
 
 ![ionic hello world empty](/assets/imgs/2016/ionic-hello-world-empty.png)
 
-
 ## 코드 수정
 
 생성된 폴더를 에디터로 열어보면 아래와 같다.
@@ -86,7 +84,6 @@ index.html을 열고 간단히 타이틀만 "Hello world"로 변경하고 저장
 
 ![ionic hello world edit code 2](/assets/imgs/2016/ionic-hello-world-edit2.png)
 
-
 아이오닉의 장점은 하나의 코드로 멀티 플랫폼을 지원하는 것이다.
 아래 명령어를 사용하면 각 플랫폼에서의 결과물을 테스트할 수 있다.
 
@@ -95,7 +92,6 @@ $ ionic serve --lab
 ```
 
 ![ionic hello world lab](/assets/imgs/2016/ionic-hello-world-lab.png)
-
 
 ## 빌드
 
@@ -114,7 +110,6 @@ helloWorld.xcodeproj 파일을 xocde로 연다.
 몇가지 워닝이 뜨긴하지만 Xcode로 빌드는 된다.
 Object-C를 좀 알면 워닝을 수정하고 싶은데 좀 아쉽다.
 이후는 Xcode로 iOS 개발 과정과 동일하게 진행할 수 있다.
-
 
 ## 배포
 

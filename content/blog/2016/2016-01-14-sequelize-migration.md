@@ -13,8 +13,8 @@ summary: 데이터베이스 마이크레이션 방법에 대해 알아본다.
 featured_image: /assets/imgs/2016/sequelize-icon.png
 videoId: "a3385ae2-3c3c-585d-b4ee-fe73484ece62"
 ---
-Sequelize ORM을 사용하면서 편리한 점은 마이그레이션 지원이다. 특히 운영중인 서비스의 데이터베이스를 변경할 때 편리하다. 개발 단계에서는 매번 `sync({force: true})`로 데이터베이스를 갱신할 수 있겠지만 운영중인 서비스에서는 불가능하다. 그렇다고 데이터베이스 스키마를 직접 수정하고 Sequelize 모델링 코드를 변경한다는 것은 번거럽기도 할 뿐만아니라 까딱 잘못하면 돌이킬수 없는 결과를 낳을 수도 있다. 이번 포스팅에서는 Sequelize 마이그레이션 방법에 대해 알아보겠다.
 
+Sequelize ORM을 사용하면서 편리한 점은 마이그레이션 지원이다. 특히 운영중인 서비스의 데이터베이스를 변경할 때 편리하다. 개발 단계에서는 매번 `sync({force: true})`로 데이터베이스를 갱신할 수 있겠지만 운영중인 서비스에서는 불가능하다. 그렇다고 데이터베이스 스키마를 직접 수정하고 Sequelize 모델링 코드를 변경한다는 것은 번거럽기도 할 뿐만아니라 까딱 잘못하면 돌이킬수 없는 결과를 낳을 수도 있다. 이번 포스팅에서는 Sequelize 마이그레이션 방법에 대해 알아보겠다.
 
 ## 마이그레이션 생성
 
@@ -30,7 +30,7 @@ $ sequelize migration:create
 파일은 실행한 명령어가 만든 코드 템플릿으로 구성되어 있다.
 
 ```javascript
-'use strict';
+"use strict"
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
@@ -51,26 +51,26 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-  }
-};
+  },
+}
 ```
 
 이 모듈은 `up()`과 `down()` 메소드를 노출하는데 각 각 마이그레이션과 롤백을 담당한다. `up()` 함수에 새로운 컬럼을 추가하는 코드를 작성하면, `down()` 함수에는 추가한 컬럼을 삭제하는 코드를 작성하는 식이다. 간단히 User 테이블에 nickname 컬럼을 추가하는 코드를 작성해 보자.
 
 ```javascript
-'use strict';
+"use strict"
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    return queryInterface.addColumn('User', 'nickname', {
-      type: Sequelize.STRING
-    });
+    return queryInterface.addColumn("User", "nickname", {
+      type: Sequelize.STRING,
+    })
   },
 
   down: function (queryInterface, Sequelize) {
-    return queryInterface.removeColumn('User', 'nickname');
-  }
-};
+    return queryInterface.removeColumn("User", "nickname")
+  },
+}
 ```
 
 ## 마이그레이션 진행
@@ -99,7 +99,6 @@ mysql> describe SequelizeMeta;
 
 마이그레이션 파일이 여러개 있더라도 신규 마이그레이션만 동작하는 이유가 이것 때문이다. 마이그레이션 명령이 실행되면 SequelizeMeta 테이블을 확인하여 이미 수행한 마이그레이션은 제외하고 신규 마이그레이션만 진행하는 것이다. 만약 마이그레이션 롤백이 안되는 등 예외 사항이 발생한다면 이 테이블에 저장된 값을 삭제/추가하면서 문제를 해결할 수 있다.
 
-
 ## 마이그레이션 취소
 
 아래 명령어로 간단히 롤백할 수 있다.
@@ -109,7 +108,6 @@ $ sequelize db:migrate:undo --env development
 ```
 
 롤백은 한 단계씩 수행되며, 원하는만큼 실행 하면된다.
-
 
 ## 다중 마이그레이션
 
@@ -121,22 +119,22 @@ $ sequelize db:migrate:undo --env development
 module.exports = {
   up: function (queryInterface, Sequelize) {
     return [
-      queryInterface.addColumn('User', 'name', {
-        type: Sequelize.STRING
-      }),
-      queryInterface.addColumn('User', 'nickname', {
+      queryInterface.addColumn("User", "name", {
         type: Sequelize.STRING,
-      })
-    ];
+      }),
+      queryInterface.addColumn("User", "nickname", {
+        type: Sequelize.STRING,
+      }),
+    ]
   },
 
   down: function (queryInterface, Sequelize) {
     return [
-      queryInterface.removeColumn('Challenges', 'name'),
-      queryInterface.removeColumn('Challenges', 'nickname')
-    ];
-  }
-};
+      queryInterface.removeColumn("Challenges", "name"),
+      queryInterface.removeColumn("Challenges", "nickname"),
+    ]
+  },
+}
 ```
 
 물론 다른 방법도 있다. 직접 로우(raw) 쿼리를 실행할 수도 있다.
@@ -144,19 +142,19 @@ module.exports = {
 ```javascript
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    var sql = 'ALTER TABLE User ADD COLUMN nickname varchar(255) NOT NULL';
+    var sql = "ALTER TABLE User ADD COLUMN nickname varchar(255) NOT NULL"
 
     return queryInterface.sequelize.query(sql, {
-      type: Sequelize.QueryTypes.RAW
-    });
+      type: Sequelize.QueryTypes.RAW,
+    })
   },
 
   down: function (queryInterface, Sequelize) {
-    var sql = 'ALTER TABLE User DROP COLUMN nickname';
+    var sql = "ALTER TABLE User DROP COLUMN nickname"
 
     return queryInterface.sequelize.query(sql, {
-      type: Sequelize.QueryTypes.RAW
-    });
-  }
-};
+      type: Sequelize.QueryTypes.RAW,
+    })
+  },
+}
 ```

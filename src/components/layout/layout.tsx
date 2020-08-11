@@ -14,9 +14,7 @@ import Footer from "./footer"
 import "../../sass/main.scss"
 import layoutStore from "./layout-store"
 
-interface P {
-
-}
+interface P {}
 
 const Layout: FC<P> = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -34,22 +32,26 @@ const Layout: FC<P> = ({ children }) => {
     }
   `)
 
-  const [modals, setModals] = useState([]);
+  const [modals, setModals] = useState([])
 
-  useEffect(()=> {
-    layoutStore.on('modalChanged', modals => {
+  useEffect(() => {
+    layoutStore.on("modalChanged", modals => {
       setModals([...modals])
     })
   }, [])
 
-  const {author, title, social} = data.site.siteMetadata
+  const { author, title, social } = data.site.siteMetadata
   return (
     <>
       <Header siteTitle={title} />
       <main>{children}</main>
-      <Footer author={author} githubUsername={social.githubUsername} email={social.email} />
+      <Footer
+        author={author}
+        githubUsername={social.githubUsername}
+        email={social.email}
+      />
 
-      {modals.map((modal) => React.cloneElement(modal))}
+      {modals.map(modal => React.cloneElement(modal))}
     </>
   )
 }

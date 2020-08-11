@@ -1,5 +1,5 @@
 ---
-title: '[Node.js코드랩] 17. Express.js'
+title: "[Node.js코드랩] 17. Express.js"
 layout: post
 summary: Express.js 프레임웍으로 다시 구현합니다
 category: series
@@ -35,7 +35,7 @@ $ npm install express
 먼저 서버 구동파일인 bin.js를 수정하지요.
 
 ```js
-const debug = require('debug')('bin') // debug 모듈 교체
+const debug = require("debug")("bin") // debug 모듈 교체
 // ...
 ```
 
@@ -44,13 +44,13 @@ const debug = require('debug')('bin') // debug 모듈 교체
 다음으로 어플리케이션 시작점인 app.js를 수정합니다.
 
 ```js
-const debug = require('debug')('app') // debug 모듈 교체
-const express = require('express') // Application 모듈 교체
+const debug = require("debug")("app") // debug 모듈 교체
+const express = require("express") // Application 모듈 교체
 const app = express()
 
-debug('App is initiated')
+debug("App is initiated")
 
-module.exports = app;
+module.exports = app
 ```
 
 debug 모듈 뿐만 아니라 Application 모듈도 다운받은 express로 바꾸었습니다.
@@ -81,7 +81,7 @@ $ DEBUG=* npm start
 app.js에 바로 코딩해 볼까요?
 
 ```js
-app.use(express.static('public'))
+app.use(express.static("public"))
 ```
 
 express.static() 메소드를 이용하면 바로 정적파일 제공기능을 활성화 할 수 있어요.
@@ -102,9 +102,9 @@ $ npm install morgan
 이것도 미들웨어니깐 app.js에서 어플리케이션에 등록합니다.
 
 ```js
-const logger = require('morgan')
+const logger = require("morgan")
 
-app.use(logger('dev'))
+app.use(logger("dev"))
 ```
 
 "dev" 인자를 전달하는데요 이것은 로깅 형식을 지정한 것입니다.
@@ -117,9 +117,9 @@ GET 메소드를 이용한 포스트 조회 API를 express 기능으로 바꿔�
 라우트 등록을 위해 app.js로 갑니다.
 
 ```js
-const apiPost = require('./routes/api/post')
+const apiPost = require("./routes/api/post")
 
-app.get('/api/posts', apiPost.index())
+app.get("/api/posts", apiPost.index())
 ```
 
 익스프레스 객체인 app도 우리가 만든것 처럼 get() 메소드를 지원합니다.
@@ -139,7 +139,7 @@ $ npm install body-parser
 역시 미들웨어 함수이므로 app.js에서 등록합니다.
 
 ```js
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser")
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -153,7 +153,7 @@ app.use(bodyParser.json())
 라우트 등록을 위해 app.js에 아래 코드를 추가합니다.
 
 ```js
-app.post('/api/posts', apiPost.create())
+app.post("/api/posts", apiPost.create())
 ```
 
 이상으로 express를 이용해서 기능 기능을 모두 대체했습니다.
@@ -162,6 +162,6 @@ app.post('/api/posts', apiPost.create())
 
 ## 정리
 
-* 익스프레스JS를 이용해 기존 서버를 다시 작성했습니다.
+- 익스프레스JS를 이용해 기존 서버를 다시 작성했습니다.
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)

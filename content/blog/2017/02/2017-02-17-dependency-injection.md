@@ -11,7 +11,7 @@ summary: 프론트엔드에서 의존성 주입에 대해 설명하는 글입니
 
 의존성 주입(Dependency Injection, DI)을 처음 접한 것은 앵귤러JS를 사용하면서부터다.
 앵귤러 컨트롤러 함수에서는 의존성 객체(대부분 서비스)를 함수 매개변수로 받은 뒤 사용한다.
-대표적인 것이 $scope라고 하는 스코프 객체다.
+대표적인 것이 \$scope라고 하는 스코프 객체다.
 앵귤러 컨트롤러 함수는 템플릿과 데이터를 연결하는 역할을 하는데 스코프 객체가 그 역할을 한다.
 이 때 컨트롤러는 스코프 객체를 사용하여 데이터 바인딩 기능을 구현하기 때문에 "컨트롤러는 스코프 객체에 의존성이 있다”라고 하는 것이다.
 
@@ -20,9 +20,9 @@ summary: 프론트엔드에서 의존성 주입에 대해 설명하는 글입니
 아래 코드처럼 말이다.
 
 ```js
-app.controller('myapp', function($scope) {
+app.controller("myapp", function ($scope) {
   // 주입된 $scope 객체를 사용한다
-});
+})
 ```
 
 앵귤러 프레임웍에서는 이렇게 의존성 목록을 파라매터로 선언하기만하면 내부적으로 의존성 객체들을 찾아서 함수의 파라매터로 넘겨준다.
@@ -31,9 +31,9 @@ app.controller('myapp', function($scope) {
 아래 코드를 보자.
 
 ```js
-di.register('main', ['dep1', 'dep2'], function(dep1, dep2) {
+di.register("main", ["dep1", "dep2"], function (dep1, dep2) {
   // dep1과 dep2 객체 혹은 함수를 사용할 수 있다.
-});
+})
 ```
 
 main이라는 함수를 네임스페이스에 등록하는 과정인데 내부적으로 dep1, dep2를 사용한다.
@@ -43,12 +43,12 @@ main 함수는 dep1, dep2에 의존성을 갖고 있기 때문에 이를 함수 
 
 ## 의존성 주입 구현
 
-의존성 주입을  DI 클래스로 구현해 보겠다.
+의존성 주입을 DI 클래스로 구현해 보겠다.
 
 ```js
 class DI {
   constructor() {
-   this.registrations = [];
+    this.registrations = []
   }
 }
 ```
@@ -61,7 +61,7 @@ class DI {
 ```js
 class DI {
   register(name, deps, func) {
-    this.registrations[name] = {deps, func}
+    this.registrations[name] = { deps, func }
   }
 }
 ```
@@ -77,28 +77,28 @@ class DI {
 여기까지 구현하면 아래와 같은 의존성 주입을 이용한 함수 정의가 가능하다.
 
 ```js
-const di = new Di();
+const di = new Di()
 
-di.register('dep1', [], function() {
-  return function() {
+di.register("dep1", [], function () {
+  return function () {
     /* dep1 함수 본문 */
-    return 1;
-  };
-});
-
-di.register('dep2', [], function() {
-  return function() {
-    /* dep2 함수 본문 */
-    return 2;
-  };
-});
-
-di.register('main', ['dep1', 'dep2'], function(dep1, dep2) {
-  return function() {
-    /* main 함수 본문 */
-    return dep1() + dep2();
+    return 1
   }
-});
+})
+
+di.register("dep2", [], function () {
+  return function () {
+    /* dep2 함수 본문 */
+    return 2
+  }
+})
+
+di.register("main", ["dep1", "dep2"], function (dep1, dep2) {
+  return function () {
+    /* main 함수 본문 */
+    return dep1() + dep2()
+  }
+})
 ```
 
 dep1, dep2는 의존성이 없고 main은 이미 등록한 dep1, dep2에 의존하는 함수다.
@@ -108,8 +108,8 @@ dep1, dep2는 의존성이 없고 main은 이미 등록한 dep1, dep2에 의존�
 그럼 등록한 main 함수는 어떻게 사용할 수 있을까?
 
 ```js
-const main = di.get('main');
-main();
+const main = di.get("main")
+main()
 ```
 
 di 객체로부터 등록한 main 함수를 가져오기 위한 get 메소드를 구현해 보자.
@@ -117,9 +117,11 @@ di 객체로부터 등록한 main 함수를 가져오기 위한 get 메소드를
 ```js
 class Di {
   get(name) {
-    const registration = this.registrations[name];
-    const deps = [];
-    if (registration === undefined) { return undefined; }
+    const registration = this.registrations[name]
+    const deps = []
+    if (registration === undefined) {
+      return undefined
+    }
   }
 }
 ```
@@ -141,8 +143,8 @@ class DI {
 
     registration.deps.forEach(depName => {
       deps.push(this.get(depName))
-    });
-    return registration.func.apply(undefined, deps);
+    })
+    return registration.func.apply(undefined, deps)
   }
 }
 ```
@@ -175,8 +177,8 @@ main 함수와는 다르게 의존성 배열이 비어있기 때문에 의존성
 그리고 아래 함수를 실행한다.
 
 ```js
-return registration.func.apply(undefined, []);
-  // function() { return 1; }
+return registration.func.apply(undefined, [])
+// function() { return 1; }
 ```
 
 그럼 다시 get('main') 으로 돌아와서 ...
@@ -185,16 +187,20 @@ main 함수의 의존성 객체를 담는 deps 배열에 get('dep1')의 결과�
 마찬가지로 get('dept2')의 결과도 deps 배열에 추가되어 결국 dept 배열은 아래 값으로 채워진다.
 
 ```js
-[
-  function() { return 1; },
-  function() { return 2; }
+;[
+  function () {
+    return 1
+  },
+  function () {
+    return 2
+  },
 ]
 ```
 
 마지막으로 아래 코드가 실행되는데
 
 ```js
-return registration.func.apply(undefined, deps);
+return registration.func.apply(undefined, deps)
 ```
 
 registration.func에는 main 함수의 본체를 담은 성크가 있고 apply 함수로 deps를 매개변수로 넘겨준다.
@@ -218,22 +224,24 @@ register로 함수를 등록할 때 왜 성크로 등록했는지 이제 이해�
 ```js
 class DI {
   constructor() {
-    this.registrations = [];
+    this.registrations = []
   }
   register(name, deps, func) {
-    this.registrations[name] = {deps, func}
+    this.registrations[name] = { deps, func }
   }
   get(name) {
-    const registration = this.registrations[name];
-    const deps = [];
+    const registration = this.registrations[name]
+    const deps = []
 
-    if (registration === undefined) { return undefined; }
+    if (registration === undefined) {
+      return undefined
+    }
 
     registration.deps.forEach(depName => {
       deps.push(this.get(depName))
-    });
+    })
 
-    return registration.func.apply(undefined, deps);
+    return registration.func.apply(undefined, deps)
   }
 }
 ```
@@ -245,9 +253,9 @@ DI 없이 main 함수를 구현해보자. (dep1과 dep2 타입을 좀 변경했�
 
 ```js
 function main() {
-  const dep1 = new Dep1();
-  const dep2 = new Dep2();
-  return dep1.get() + dep2.calculate();
+  const dep1 = new Dep1()
+  const dep2 = new Dep2()
+  return dep1.get() + dep2.calculate()
 }
 ```
 
@@ -261,12 +269,11 @@ main 함수는 dep1, dep2 객체를 소비하기만 하면 되는데 생성하�
 
 ```js
 function main(dep1, dep2) {
-  return dep1.get() + dep2.calculate();
+  return dep1.get() + dep2.calculate()
 }
 ```
 
 dep1, dep2를 생성하고 main 함수에 주입해 주는 역할이 바로 우리가 만든 DI.get 메소드의 역할이다.
-
 
 ## DI는 테스트를 명확하게 한다
 
@@ -282,25 +289,25 @@ main 함수에서는 이 객체들을 소비하는 로직만 테스트하면 그
 실제 dep1, dep2 객체를 넣지 않아도 된다.
 main 함수에서 사용할 객체의 메소드만 정의한 [덕 타이핑](https://ko.wikipedia.org/wiki/%EB%8D%95_%ED%83%80%EC%9D%B4%ED%95%91) 객체를 넣을 수도 있다.
 
-아래는  main 함수가 dep1, dep2를 소비하는 테스트 코드다.
+아래는 main 함수가 dep1, dep2를 소비하는 테스트 코드다.
 
 ```js
-describe('main은', () => {
-  it('dep1.get과 dep2.calculate를 호출한다', ()=> {
+describe("main은", () => {
+  it("dep1.get과 dep2.calculate를 호출한다", () => {
     // 스파이 함수를 만든다.
-    const spy1 = createSpy();
-    const spy2 = createSpy();
+    const spy1 = createSpy()
+    const spy2 = createSpy()
 
     // 생성한 스파이 함수를 의존 객체의 get, calculate 메소드로 바인딩한다.
-    const dep1 = {get: spy1};
-    const dep2 = {calculate: spy2};
+    const dep1 = { get: spy1 }
+    const dep2 = { calculate: spy2 }
 
     // 테스트 대상을 실행한다.
-    main(dep1, dep2);
+    main(dep1, dep2)
 
     // 의존 객체 사용 결과를 검증한다.
-    expect(spy1).toHaveBeenCalled();
-    expect(spy2).toHaveBeenCalled();
+    expect(spy1).toHaveBeenCalled()
+    expect(spy2).toHaveBeenCalled()
   })
 })
 ```

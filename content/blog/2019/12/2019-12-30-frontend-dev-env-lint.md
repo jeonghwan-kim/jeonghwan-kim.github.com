@@ -16,7 +16,7 @@ videoId: "59f0bdf2-e898-50db-8800-52a3fa758f04"
 보프라기 있는 옷을 입을 수는 있듯이 이러한 코드로 만든 어플리케이션도 동작은 한다.
 그러나 코드의 가독성이 떨어지고 점점 유지보수하기 어려운 애물단지가 되어버리기 일쑤다.
 
-보푸라기를 제거하는 린트 롤러(Lint roller)처럼 코드의 오류나 버그, 스타일 따위를 점검하는 것을 [린트(Lint) 혹은 린터(Linter)](https://en.wikipedia.org/wiki/Lint_(software))라고 부른다.
+보푸라기를 제거하는 린트 롤러(Lint roller)처럼 코드의 오류나 버그, 스타일 따위를 점검하는 것을 [린트(Lint) 혹은 린터(Linter)](<https://en.wikipedia.org/wiki/Lint_(software)>)라고 부른다.
 
 ### 1.1 린트가 필요한 상황
 
@@ -24,16 +24,16 @@ videoId: "59f0bdf2-e898-50db-8800-52a3fa758f04"
 console.log() 함수를 실행하고 다음 줄에서 즉시 실행함수를 실행하려는 코드다.
 
 ```js
-console.log()
-(function() {})()
+console.log()(function () {})()
 ```
 
 하지만 이 코드를 브라우져에서 실행해 보면 TypeError가 발생한다.
 브라우져는 코드에 세미콜론를 자동으로 넣는 과정(ASI)을 수행하는데, 위와 같은 경우는 우리의 의도대로 해석하지 못하고 아래 코드로 해석한다([Rules of Automatic Semicolon Insertion](http://www.ecma-international.org/ecma-262/7.0/index.html#sec-rules-of-automatic-semicolon-insertion)을 참고).
 
 ```js
-console.log()(function(){})();
+console.log()(function () {})()
 ```
+
 console.log()가 반환하는 값이 함수가 아닌데 함수 호출을 시도했기 때문에 타입에러가 발생할 것이다.
 모든 문장에 세미콜론을 붙였다면, 혹은 즉시 함수호출 앞에 세미콜론을 붙였다면 예방할 수 있는 버그다.
 
@@ -96,8 +96,8 @@ ESLint는 검사 규칙을 미리 정해 놓았다.
 // .eslintrc.js
 module.exports = {
   rules: {
-    "no-unexpected-multiline": "error"
-  }
+    "no-unexpected-multiline": "error",
+  },
 }
 ```
 
@@ -130,7 +130,7 @@ npx eslint app.js
 
 ```js
 // app.js
-console.log();; // 세미콜론 연속 두 개 붙임
+console.log() // 세미콜론 연속 두 개 붙임
 ```
 
 린트 설정에 no-extra-semi 규칙을 추가하고,
@@ -140,7 +140,7 @@ console.log();; // 세미콜론 연속 두 개 붙임
 module.exports = {
   rules: {
     "no-extra-semi": "error",
-  }
+  },
 }
 ```
 
@@ -215,7 +215,6 @@ npx eslint --init
 대화식 명령어로 진행되는데 모듈 시스템을 사용하는지, 어떤 프레임웍을 사용하는지, 어플리케이션이 어떤 환경에서 동작하는지 등에 답하면 된다.
 답변에 따라 .eslintrc 파일을 자동으로 만들 수 있다.
 
-
 ## 3. Prettier
 
 프리티어는 코드를 **"더"** 예쁘게 만든다.
@@ -234,7 +233,7 @@ npm i -D prettier
 
 ```js
 // app.js
-console.log('hello world')
+console.log("hello world")
 ```
 
 Prettier로 검사해 보자.
@@ -249,7 +248,7 @@ npx prettier app.js --write
 
 ```js
 // app.js
-console.log("Hello world");
+console.log("Hello world")
 ```
 
 작은 따옴표를 큰 따옴표로 변경했다. 문장 뒤에 세미콜론도 추가했다.
@@ -261,7 +260,9 @@ console.log("Hello world");
 
 ```js
 // app.js
-console.log('----------------매 우 긴 문 장 입 니 다 80자가 넘 는 코 드 입 니 다.----------------')
+console.log(
+  "----------------매 우 긴 문 장 입 니 다 80자가 넘 는 코 드 입 니 다.----------------"
+)
 ```
 
 ESLint는 [max-len](https://eslint.org/docs/rules/max-len) 규칙을 이용해 위 코드를 검사하고 결과만 알려 줄 뿐 수정하는 것은 개발자의 몫이다.
@@ -271,13 +272,18 @@ ESLint는 [max-len](https://eslint.org/docs/rules/max-len) 규칙을 이용해 �
 // app.js
 console.log(
   "----------------매 우 긴 문 장 입 니 다 80자가 넘 는 코 드 입 니 다.----------------"
-);
+)
 ```
 
 아래 코드는 어떻게 변환할까?
 
 ```js
-foo(reallyLongArg(), omgSoManyParameters(), IShouldRefactorThis(), isThereSeriouslyAnotherOne());
+foo(
+  reallyLongArg(),
+  omgSoManyParameters(),
+  IShouldRefactorThis(),
+  isThereSeriouslyAnotherOne()
+)
 ```
 
 프리티어는 코드를 문맥을 어느 정도 파악하고 상황에 따라 최적의 모습으로 스타일을 수정한다.
@@ -288,7 +294,7 @@ foo(
   omgSoManyParameters(),
   IShouldRefactorThis(),
   isThereSeriouslyAnotherOne()
-);
+)
 ```
 
 더 멋진 예제도 있는데 프리티어를 만든 [James Long의 글](https://jlongster.com/A-Prettier-Formatter)을 참고하자.
@@ -324,8 +330,8 @@ npm i -D eslint-config-prettier
 따라서 어느 한쪽에서는 규칙을 꺼야하는데 eslint-config-prettier를 extends 하면 중복되는 ESLint 규칙을 비활성화 한다.
 
 ```js
-var foo = '' // 사용하지 않은 변수. ESLint가 검사
-console.log();;;;;;; // 중복 세미콜론 사용. 프리티어가 자동 수정
+var foo = "" // 사용하지 않은 변수. ESLint가 검사
+console.log() // 중복 세미콜론 사용. 프리티어가 자동 수정
 ```
 
 ESLint는 중복된 포매팅 규칙을 프리티어에게 맞기고 나머지 코드 품질에 관한 검사만 한다.
@@ -342,8 +348,8 @@ npx prettier app.js --write && npx eslint app.js --fix
 프리터에서 의해 코드가 아래과 같이 포매팅 되었고
 
 ```js
-var foo = "";
-console.log();
+var foo = ""
+console.log()
 ```
 
 ESlint에 의해 코드 품질과 관련된 오류(no-unused-vars)를 리포팅한다.
@@ -410,6 +416,7 @@ npm i -D husky
 허스키는 패키지 파일에 설정을 추가한다.
 
 package.json:
+
 ```json
 {
   "husky": {
@@ -433,6 +440,7 @@ pre-commit에 설정한 내용이 출력되었다.
 출력 대신에 린트 명령어로 대체하면 커밋 메세지 작성 전에 린트를 수행할 수 있겠다.
 
 package.json:
+
 ```json
 {
   "husky": {
@@ -459,6 +467,7 @@ npm i -D lint-staged
 패키지 파일에 설정을 추가한다.
 
 package.json:
+
 ```json
 {
   "lint-staged": {
@@ -472,13 +481,14 @@ package.json:
 pre-commit 훅도 아래처럼 변경한다.
 
 package.json:
+
 ```json
 {
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  },
+  }
 }
 ```
 
@@ -499,9 +509,10 @@ vs-code의 eslint와 prettier 익스텐션이 그러한 기능을 제공한다.
 설치를 마친 뒤 eslint를 활성화 설정을 추가한다.
 
 .vscode/settings.json:
+
 ```json
 {
-  "eslint.enable": true,
+  "eslint.enable": true
 }
 ```
 
@@ -514,6 +525,7 @@ vs-code의 eslint와 prettier 익스텐션이 그러한 기능을 제공한다.
 에디터 설정중 저장시 액션을 추가할 수 있는데 ESLint로 코드를 정정할 수 있다.
 
 .vscode/settings.json:
+
 ```json
 {
   "editor.codeActionsOnSave": {

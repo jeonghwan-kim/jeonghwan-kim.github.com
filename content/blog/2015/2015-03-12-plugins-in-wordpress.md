@@ -9,6 +9,7 @@ permalink: /plugins-in-wordpress/
 category: dev
 tags: [wordpress]
 ---
+
 워드프레스로 홈페이지 개발을 처음으로 진행했다. 50불짜리 유료테마를 구입하고 부족한 기능은 무료 플러그인을 사용하거나 직적 소스를 수정하는 방법으로 진행했다. 사용자 인증, 게시판 등 사용한 플러그인을 정리해보자.
 
 <h2>폼(Form)</h2>

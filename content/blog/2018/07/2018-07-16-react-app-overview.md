@@ -56,14 +56,14 @@ ReactDom.render(
 )
 ```
 
-코드 하단에 보면 JSX 문법을 사용하는데 리액트 라이브러리를 로딩하면 이를 해석할 수 있다. 루트 컴포넌트 App을 돔에 마운트하기 위해서는 react-dom 라이브러리의 redner() 함수를 사용한다.  index.css 는 css-loader에 의해 처리되는데 이 모든 것이 create-react-app이 제공해 주는 환경이다. 👍
+코드 하단에 보면 JSX 문법을 사용하는데 리액트 라이브러리를 로딩하면 이를 해석할 수 있다. 루트 컴포넌트 App을 돔에 마운트하기 위해서는 react-dom 라이브러리의 redner() 함수를 사용한다. index.css 는 css-loader에 의해 처리되는데 이 모든 것이 create-react-app이 제공해 주는 환경이다. 👍
 
 루트 컴포넌트로 넘어가 보자.
 
 ```js
 // src/components/App.js
 
-import React, { Component } from 'react'
+import React, { Component } from "react"
 
 class App extends Component {
   render() {
@@ -91,7 +91,7 @@ create-react-app은 복잡한 웹팩 설정을 감춰주기 때문에 프로젝�
 ```js
 // config-overrides.js
 
-const rewireLess = require('react-app-rewire-less')
+const rewireLess = require("react-app-rewire-less")
 module.exports = (config, env) => rewireLess(config, env)
 ```
 
@@ -126,11 +126,11 @@ src
 ```js
 // src/components/App.js
 
-import React, { Component } from 'react'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
-import Home from './Home'
-import About from './About'
-import Topics from './Topics'
+import React, { Component } from "react"
+import { BrowserRouter, Route, Link } from "react-router-dom"
+import Home from "./Home"
+import About from "./About"
+import Topics from "./Topics"
 
 class App extends Component {
   render() {
@@ -138,9 +138,15 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/topics">Topics</Link></li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/topics">Topics</Link>
+            </li>
           </ul>
           <hr />
           <Route exact path="/" component={Home} />
@@ -166,18 +172,18 @@ Lint 컴포는트는 라우트 링크를 만드는 역할을 하는데 to 속성
 
 세번째 메뉴를 클릭하면 보여주는 Topics 컴포넌트는 다른 컴포넌트와 달리 하위 경로를 가지고 있다.
 
-* /topics/rendering
-* /topics/components
-* /topics/props-v-state
+- /topics/rendering
+- /topics/components
+- /topics/props-v-state
 
 루트 컴포넌트에서 이미 라우팅을 선언했지만, /topics 경로에서 렌더링되는 Topics 컴포넌트에 추가로 라우팅을 선언할 수 있다.
 
 ```js
 // src/components/Topics.js
 
-import React from 'react'
-import { Route, Link } from 'react-router-dom'
-import Topic from './Topic';
+import React from "react"
+import { Route, Link } from "react-router-dom"
+import Topic from "./Topic"
 
 const Topics = ({ match }) => (
   <div>
@@ -195,7 +201,10 @@ const Topics = ({ match }) => (
     </ul>
 
     <Route path={`${match.url}/:topicId`} component={Topic} />
-    <Route exact path={match.url} render={() => <h3>Please select a topic.</h3>}
+    <Route
+      exact
+      path={match.url}
+      render={() => <h3>Please select a topic.</h3>}
     />
   </div>
 )
@@ -222,7 +231,7 @@ Topic 컴포넌트는 다음과 같이 topicId 값을 출력하는 단순한 동
 ```js
 // src/components/Topic.js
 
-import React from 'react'
+import React from "react"
 
 const Topic = ({ match }) => <h3>{match.params.topicId}</h3>
 
@@ -236,7 +245,6 @@ export default Topic
 ![react-router-result-5](/assets/imgs/2018/07/16/react-router-result-5.png)
 ![react-router-result-6](/assets/imgs/2018/07/16/react-router-result-6.png)
 ![react-router-result-7](/assets/imgs/2018/07/16/react-router-result-7.png)
-
 
 ## Redux
 
@@ -256,18 +264,20 @@ npm i redux react-redux
 ```js
 // src/index.js
 
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import App from './components/App'
-import dashboardApp from './store'
+import { createStore } from "redux"
+import { Provider } from "react-redux"
+import App from "./components/App"
+import dashboardApp from "./store"
 
 const store = createStore(dashboardApp) // 스토어 생성
 
 ReactDom.render(
-  <Provider store={store}> // 리액트 어플리케이션에 스토어를 연결한다
+  <Provider store={store}>
+    {" "}
+    // 리액트 어플리케이션에 스토어를 연결한다
     <App />
   </Provider>,
-  document.querySelector('#root')
+  document.querySelector("#root")
 )
 ```
 
@@ -290,7 +300,7 @@ store 폴더에 적당한 기준으로 파일을 만들어 관련 코드를 넣�
 // src/store/user.js
 
 // 액션 타입
-export const FETCH_USER = 'user/FETCH_USER'
+export const FETCH_USER = "user/FETCH_USER"
 // ...
 
 // 액션 생성자
@@ -301,12 +311,12 @@ export const fetchUser = () => ({ type: FETCH_USER })
 const initialSatate = {
   users: [],
   isEditing: false,
-  editingUser: {}
+  editingUser: {},
 }
 
 // 리듀서
 export default (state = initialSatate, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case FETCH_USER: // ...
     default:
       return state
@@ -321,8 +331,8 @@ export default (state = initialSatate, action) => {
 ```js
 // src/store/index.js
 
-import { combineReducers } from 'redux'
-import user from './user'
+import { combineReducers } from "redux"
+import user from "./user"
 
 export default combineReducers({
   user,
@@ -353,8 +363,8 @@ src
 ```js
 // src/components/UserList.js
 
-import React, { Component } from 'react'
-import User from './User'
+import React, { Component } from "react"
+import User from "./User"
 
 class UserList extends Component {
   onEdit = user => {
@@ -363,13 +373,16 @@ class UserList extends Component {
   onDelete = user => {
     this.props.onDelete(user)
   }
-  render () {
+  render() {
     const userList = this.props.users.map(user => (
-      <User data={ user } key={ user.id }
-        onEdit={ this.onEdit }
-        onDelete={ this.onDelete } />
+      <User
+        data={user}
+        key={user.id}
+        onEdit={this.onEdit}
+        onDelete={this.onDelete}
+      />
     ))
-    return <div>{ userList }</div>
+    return <div>{userList}</div>
   }
 }
 
@@ -396,13 +409,13 @@ VisibleUserList란 컨테이너 컴포넌트를 만들어 보겠다.
 ```js
 // src/containers/VisibleUserList.js
 
-import { connect } from 'react-redux'
-import UserList from '../components/UserList'
-import { setEditUser, deleteUser } from '../store/user'
+import { connect } from "react-redux"
+import UserList from "../components/UserList"
+import { setEditUser, deleteUser } from "../store/user"
 
 const mapStateToProps = state => {
   return {
-    users: state.user.users
+    users: state.user.users,
   }
 }
 
@@ -413,14 +426,11 @@ const mapDispatchToProps = dispatch => {
     },
     onDelete: user => {
       dispatch(deleteUser(user))
-    }
+    },
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UserList)
+export default connect(mapStateToProps, mapDispatchToProps)(UserList)
 ```
 
 리액트에서 리덕스를 편하게 사용하도록 돕는 react-redux 라이브러리는 connect라는 함수를 제공하는데 이것이 컨테이너 컴포넌트를 생성하는 기능을 한다.
@@ -428,7 +438,7 @@ export default connect(
 코드 마지막 부분에 보면 connect 가 함수 목록을 인자로 받아 함수를 반환하는 고차함수(High Order Function)임을 알수 있다.
 
 스토어의 상태(state)와 dispatch 함수를 프리젠테이셔널 컴포넌트의 속성(props)로 연결시키기 위해 두 개 함수를 인자로 받는다.
-그것이 mapStateToPros와  mapDispatchToProps 함수다.
+그것이 mapStateToPros와 mapDispatchToProps 함수다.
 
 mapStateToProps 는 users 키를 갖는 객체를 반환하기 때문에 UserList에서는 비로소 props.users 속성을 통해 스토어의 유저 데이터에 접근할 수가 있다.
 
@@ -447,13 +457,10 @@ mapDispatchToProps는 onEdit 함수에 setEditUser 리듀서를 동작하는 함
 ```js
 // src/index.js
 
-import { createStore, applyMiddleware } from 'redux'
-import storeLogger from './middlewares/storeLogger'
+import { createStore, applyMiddleware } from "redux"
+import storeLogger from "./middlewares/storeLogger"
 
-const store = createStore(
-  dashboardApp,
-  applyMiddleware(storeLogger)
-)
+const store = createStore(dashboardApp, applyMiddleware(storeLogger))
 ```
 
 redux의 applyMiddleware 함수는 미들웨어를 만들어 주는 함수인데 그 실행 결과값을 createStore 함수의 인자로 넘겨준다.
@@ -477,9 +484,9 @@ sotreLogger.js를 구현해 보자.
 ```js
 const logger = store => next => action => {
   console.group(action.type)
-  console.info('dispatch', action)
+  console.info("dispatch", action)
   next(action)
-  console.log('next state', store.getState())
+  console.log("next state", store.getState())
   console.groupEnd(action.type)
 }
 
@@ -515,12 +522,9 @@ redux-thunk는 리덕스 미들웨어이기 때문에 사용하려면 스토어�
 ```js
 // src/index.js
 
-import thunk from 'redux-thunk'
+import thunk from "redux-thunk"
 
-const store = createStore(
-  dashboardApp,
-  applyMiddleware(thunk, storeLogger)
-)
+const store = createStore(dashboardApp, applyMiddleware(thunk, storeLogger))
 ```
 
 서버와 HTTP 통신으로 유저 목록을 받아오는 fetchUserApi 함수를 미리 만들어 뒀다. 이 함수가 반환하는 프라미스가 resolve 되어 API 호출을 완료하면, 유저 데이터 수신을 알리는 user/RECEIVE_USER 액션을 디스패치 하는 코드다.
@@ -540,13 +544,13 @@ export const fetchUserAsync = () => dispatch => {
 ```js
 // src/containers/VisibleUserList.js
 
-import { fetchUserAsync } from '../store/user'
+import { fetchUserAsync } from "../store/user"
 
 const mapDispatchToProps = dispatch => {
   return {
     fetch: () => {
       dispatch(fetchUserAsync())
-    }
+    },
   }
 }
 ```
@@ -565,15 +569,12 @@ const mapDispatchToProps = dispatch => {
 ```js
 // src/index.js
 
-import createSagaMiddleware from 'redux-saga'
-import rootSaga from './sagas'
+import createSagaMiddleware from "redux-saga"
+import rootSaga from "./sagas"
 
 const sagaMw = createSagaMiddleware()
 
-const store = createStore(
-  dashboardApp,
-  applyMiddleware(sagaMw)
-)
+const store = createStore(dashboardApp, applyMiddleware(sagaMw))
 
 sagaMw.run(rootSaga)
 ```
@@ -601,24 +602,22 @@ src
 ```js
 // src/sagas/index.js
 
-import { takeEvery, call, put } from 'redux-saga/effects'
-import { FETCH_USER, RECEIVE_USER, REQEUST_USER } from '../store/user'
-import { fetchUserApi } from '../api'
+import { takeEvery, call, put } from "redux-saga/effects"
+import { FETCH_USER, RECEIVE_USER, REQEUST_USER } from "../store/user"
+import { fetchUserApi } from "../api"
 
 export function* takeFetchUser() {
   yield takeEvery(FETCH_USER, fetchUserAsync)
 }
 
 function* fetchUserAsync(action) {
-  yield put({type: REQEUST_USER})
+  yield put({ type: REQEUST_USER })
   const users = yield call(fetchUserApi)
-  yield put({type: RECEIVE_USER, users})
+  yield put({ type: RECEIVE_USER, users })
 }
 
 export default function* rootSaga() {
-  yield [
-    takeFetchUser()
-  ]
+  yield [takeFetchUser()]
 }
 ```
 
@@ -639,19 +638,16 @@ put은 리덕스 액션을 디스패치할 때 사용한다. 그래서 REQUEST_U
 
 마지막으로 rootSaga 제너레이터를 반환하는데 takeFetchUser 제너레이터를 실행한 결과를 배열에 담아 yield한다.
 
-||Redux|Vuex|
-|-|-|-|
-|상태 갱신|dispatch	|mutation (commit)|
-|비동기 상태 갱신|redux-saga|action (dispatch)|
+|                  | Redux      | Vuex              |
+| ---------------- | ---------- | ----------------- |
+| 상태 갱신        | dispatch   | mutation (commit) |
+| 비동기 상태 갱신 | redux-saga | action (dispatch) |
 
 <br />
 
 Vue.js 진영에서 사용하는 상태관리 솔루션인 Vuex에도 동기/비동기 로직을 처리하는 개념이 있다. 동기적으로 상태를 변경하는 것이 mutation이라는 개념이고 commit 함수로 제공한다. API 통신같은 비동기 로직은 action 이라는 개념이 담당하는데 dispatch 함수로 구현할 수 있다.
 
-액션을 보내 동기적으로 상태를 변경하는 리액트의 dispatch 가 Vuex의  mutation 같고, 비동기 로직을 처리하는 redux-saga가 Vuex의 action과 유사하다는 느낌을 받았다.
-
-
-
+액션을 보내 동기적으로 상태를 변경하는 리액트의 dispatch 가 Vuex의 mutation 같고, 비동기 로직을 처리하는 redux-saga가 Vuex의 action과 유사하다는 느낌을 받았다.
 
 ## 결론
 

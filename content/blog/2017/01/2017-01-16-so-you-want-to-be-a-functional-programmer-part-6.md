@@ -9,11 +9,9 @@ summary: FEDevelopers에서 번역에 참여한 글입니다.
 
 > 이 문서는 https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-6-db502830403#.lmm1riwt1 를 번역한 내용입니다.
 
-
 함수형 프로그래밍 개념을 처음으로 접해본다는 것 자체가 중요하다. 그리고 이 단계가 가장 어렵기도 하다. 하지만, 올바른 관점으로 접근한다면 그렇게 어렵진 않다.
 
-
-지난 글: [파트1](https://github.com/FEDevelopers/tech.description/wiki/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EA%B0%80-%EB%90%98%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EA%B3%A0%3F-(Part-1)), [파트2](https://github.com/FEDevelopers/tech.description/wiki/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EA%B0%80-%EB%90%98%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EA%B3%A0%3F-(Part-2)), [파트3](https://github.com/FEDevelopers/tech.description/wiki/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EA%B0%80-%EB%90%98%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EA%B3%A0%3F-(Part-3)), [파트4](https://github.com/FEDevelopers/tech.description/wiki/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EA%B0%80-%EB%90%98%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EA%B3%A0%3F-(Part-4)), [파트5](https://github.com/FEDevelopers/tech.description/wiki/함수형-프로그래머가-되고-싶다고%3F-(Part-5))
+지난 글: [파트1](<https://github.com/FEDevelopers/tech.description/wiki/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EA%B0%80-%EB%90%98%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EA%B3%A0%3F-(Part-1)>), [파트2](<https://github.com/FEDevelopers/tech.description/wiki/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EA%B0%80-%EB%90%98%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EA%B3%A0%3F-(Part-2)>), [파트3](<https://github.com/FEDevelopers/tech.description/wiki/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EA%B0%80-%EB%90%98%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EA%B3%A0%3F-(Part-3)>), [파트4](<https://github.com/FEDevelopers/tech.description/wiki/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EA%B0%80-%EB%90%98%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EA%B3%A0%3F-(Part-4)>), [파트5](<https://github.com/FEDevelopers/tech.description/wiki/함수형-프로그래머가-되고-싶다고%3F-(Part-5)>)
 
 ![functinoal](https://cdn-images-1.medium.com/max/800/1*AM83LP9sGGjIul3c5hIsWg.png)
 
@@ -42,9 +40,9 @@ summary: FEDevelopers에서 번역에 참여한 글입니다.
 첫번째로 고려할 것이 불변성이다. ES2015(ES6라고 불렀던)에는 const라는 새로운 키워드가 있다. 이것은 한 번 변수가 설정되면 다시 설정될수 없다는 의미이다.
 
 ```javascript
-const a = 1;
-a = 2; // 크롬, 파이어폭스, 노드에서 TypeError를 던진다
-       // 하지만 사파리는 잘된다 (circa 10/2016)
+const a = 1
+a = 2 // 크롬, 파이어폭스, 노드에서 TypeError를 던진다
+// 하지만 사파리는 잘된다 (circa 10/2016)
 ```
 
 위에서 a는 상수로 정의했고 일단 설정하면 변경할 수가 없다. a = 2가 예외를 던지는 이유가 이때문이다. (사파리는 제외)
@@ -53,11 +51,11 @@ a = 2; // 크롬, 파이어폭스, 노드에서 TypeError를 던진다
 
 ```javascript
 const a = {
-    x: 1,
-    y: 2
-};
-a.x = 2;  // 예외 아님!
-a = {};   // TypeError 예외!
+  x: 1,
+  y: 2,
+}
+a.x = 2 // 예외 아님!
+a = {} // TypeError 예외!
 ```
 
 a.x = 2가 어떻게 예외를 던지지 않는지 주목하자. 오직 변수 a만 const 키워드를 통해 불변성을 가질 뿐이고, a가 가리키는 어떤 것도 변경될 수 있다.
@@ -81,7 +79,7 @@ const f = a => b => c => d => a + b + c + d
 그리고 f를 호출하기 위해 우리는 이렇게 작성한다.
 
 ```javascript
-console.log(f(1)(2)(3)(4)); // 10 출력
+console.log(f(1)(2)(3)(4)) // 10 출력
 ```
 
 리습(Lisp) 프로그래머를 울릴만큼 괄호가 너무 많다.
@@ -91,26 +89,26 @@ console.log(f(1)(2)(3)(4)); // 10 출력
 람다를 이용해서 우리는 이제 이렇게 작성한다.
 
 ```javascript
-const f = R.curry((a, b, c, d) => a + b + c + d);
-console.log(f(1, 2, 3, 4)); // 10 출력
-console.log(f(1, 2)(3, 4)); // 역시 10 출력
-console.log(f(1)(2)(3, 4)); // 역시 10 출력
+const f = R.curry((a, b, c, d) => a + b + c + d)
+console.log(f(1, 2, 3, 4)) // 10 출력
+console.log(f(1, 2)(3, 4)) // 역시 10 출력
+console.log(f(1)(2)(3, 4)) // 역시 10 출력
 ```
 
 함수 정의부는 개선 되지 않았지만 모든 괄호를 넣을 필요는 없게 되었다. 우리가 f를 호출할 때마다 원하는 만큼의 매개변수를 적용할 수 있음에 주목하라.
 
-람다를 사용함으로서 [파트3](https://github.com/FEDevelopers/tech.description/wiki/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EA%B0%80-%EB%90%98%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EA%B3%A0%3F-(Part-3))과 [파트4](https://github.com/FEDevelopers/tech.description/wiki/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EA%B0%80-%EB%90%98%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EA%B3%A0%3F-(Part-4))의 `mult5AfterAdd10` 함수를 다시 작성할 수 있다.
+람다를 사용함으로서 [파트3](<https://github.com/FEDevelopers/tech.description/wiki/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EA%B0%80-%EB%90%98%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EA%B3%A0%3F-(Part-3)>)과 [파트4](<https://github.com/FEDevelopers/tech.description/wiki/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EA%B0%80-%EB%90%98%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EA%B3%A0%3F-(Part-4)>)의 `mult5AfterAdd10` 함수를 다시 작성할 수 있다.
 
 ```javascript
-const add = R.curry((x, y) => x + y);
-const mult5 = value => value * 5;
-const mult5AfterAdd10 = R.compose(mult5, add(10));
+const add = R.curry((x, y) => x + y)
+const mult5 = value => value * 5
+const mult5AfterAdd10 = R.compose(mult5, add(10))
 ```
 
 람다에는 이러한 코드를 작성하기 위한 많은 헬퍼 함수들을 제공한다. 예를 들어 코드를 적게 작성할 수 있는 R.add 와 R.multiply다.
 
 ```javascript
-const mult5AfterAdd10 = R.compose(R.multiply(5), R.add(10));
+const mult5AfterAdd10 = R.compose(R.multiply(5), R.add(10))
 ```
 
 ### 맵, 필터, 리듀스
@@ -118,14 +116,14 @@ const mult5AfterAdd10 = R.compose(R.multiply(5), R.add(10));
 람다는 자체 버전의 맵(map), 필터(filter), 리듀스(reduce) 함수를 가지고 있다. 비록 바닐라 자바스크립트의 Array.prototype에 이러한 함수가 있긴 하지만 람다에서 제공하는 것은 커링된 버젼이다.
 
 ```javascript
-const isOdd = R.flip(R.modulo)(2);
-const onlyOdd = R.filter(isOdd);
-const isEven = R.complement(isOdd);
-const onlyEven = R.filter(isEven);
+const isOdd = R.flip(R.modulo)(2)
+const onlyOdd = R.filter(isOdd)
+const isEven = R.complement(isOdd)
+const onlyEven = R.filter(isEven)
 
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
-console.log(onlyEven(numbers)); // prints [2, 4, 6, 8]
-console.log(onlyOdd(numbers)); // prints [1, 3, 5, 7]
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+console.log(onlyEven(numbers)) // prints [2, 4, 6, 8]
+console.log(onlyOdd(numbers)) // prints [1, 3, 5, 7]
 ```
 
 R.modulo는 2개 파라매터를 취한다. 하나는 나눠지는 수(피제수)이고 두번째는 나누는 수(제수)이다.

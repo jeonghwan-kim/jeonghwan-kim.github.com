@@ -10,6 +10,7 @@ category: series
 seriesId: "f390bf73-face-589a-be3e-5d38fc5f704b"
 tags: [hapijs]
 ---
+
 익스프레스에 winton 로깅 모듈이 있듯이 Hapi에서는 <a href="https://github.com/hapijs/good">Good</a>이라는 좋은 로깅 모듈이 있다. 이번 글에서는 Hapi 프레임웍에서의 로깅 방법에 대해 알아보자.
 
 Good 모듈로 로깅시 리포터 모듈을 함께 추가해야한다. Good 모듈은 hapi 프레임웍에서 내뿜는 이벤트를 감지하는 역할을 하는 것 같다. 실제 출력(콘솔이나 파일 등)은 리포터 모듈을 통해 동작하는 것이다. 출력 방식에 따라 아래와 같은 리포터 모듈을 사용할 수 있다.
@@ -25,47 +26,58 @@ Good 모듈로 로깅시 리포터 모듈을 함께 추가해야한다. Good 모
 <a href="https://github.com/hapijs/good">예제</a>에 나온 코드를 app/components/logHelper/index.js 모듈로 분리해 보자.
 
 ```js
-'use strict';
+"use strict"
 
-var path = require('path');
+var path = require("path")
 
 var opts = {
   opsInterval: 1000,
-  reporters  : [{
-    reporter: require('good-console'),
-    args    : [{
-      request: '*',
-      response: '*',
-      log: '*',
-      error: '*'
-    }]
-  }, {
-    reporter: require('good-file'),
-    args    : [{
-      path     : path.join(__dirname, '../../../logs'),
-      format   : 'YYYYMMDD-hhmmss',
-      prefix   : 'hapi',
-      extension: 'log',
-      rotate   : 'daily'
-    }, {
-      request: '*',
-      response: '*',
-      log: '*',
-      error: '*'
-    }]
-  }]
-};
+  reporters: [
+    {
+      reporter: require("good-console"),
+      args: [
+        {
+          request: "*",
+          response: "*",
+          log: "*",
+          error: "*",
+        },
+      ],
+    },
+    {
+      reporter: require("good-file"),
+      args: [
+        {
+          path: path.join(__dirname, "../../../logs"),
+          format: "YYYYMMDD-hhmmss",
+          prefix: "hapi",
+          extension: "log",
+          rotate: "daily",
+        },
+        {
+          request: "*",
+          response: "*",
+          log: "*",
+          error: "*",
+        },
+      ],
+    },
+  ],
+}
 
 module.exports = function (server) {
-  server.register({
-    register: require('good'),
-    options : opts
-  }, function (err) {
-    if (err) {
-      throw err;
+  server.register(
+    {
+      register: require("good"),
+      options: opts,
+    },
+    function (err) {
+      if (err) {
+        throw err
+      }
     }
-  });
-};
+  )
+}
 ```
 
 파일과 콘솔에 로그를 출력하도록 설정했다. 설정한 로그타입은 총 네 가지.
@@ -89,13 +101,13 @@ console.log()로 출력하면 로그 메세지가 제대로 출력되지 않는�
 
 ```js
 exports.insert = function (req, reply) {
-  users.push(req.payload.name);
+  users.push(req.payload.name)
 
   // 로깅 예제
-  req.log('info', req.payload.name + ' is inserted.');
+  req.log("info", req.payload.name + " is inserted.")
 
-  reply({users: users});
-};
+  reply({ users: users })
+}
 ```
 
 /users (post) 라우팅 로직 안에 위와 같이 로그를 뿌리도록 설정한다. 아래는 콘솔에선 보는 로그 화면이다. 파일도 동일하게 동작한다.
@@ -106,4 +118,3 @@ exports.insert = function (req, reply) {
 ```
 
 전체 코드: <a href="https://github.com/jeonghwan-kim/hapi_study/tree/07_good">https://github.com/jeonghwan-kim/hapi_study/tree/07_good</a>
-

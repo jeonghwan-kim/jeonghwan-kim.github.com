@@ -1,16 +1,15 @@
-import React from 'react';
-import { Disqus } from 'gatsby-plugin-disqus';
-import { MarkdownRemark } from '../../models/markdown-remark';
-import { Site } from '../../models/site';
+import React from "react"
+import { Disqus } from "gatsby-plugin-disqus"
+import { MarkdownRemark } from "../../models/markdown-remark"
+import { Site } from "../../models/site"
 
 interface P {
-  markdownRemark: MarkdownRemark;
-  site: Site;
+  markdownRemark: MarkdownRemark
+  site: Site
 }
 
-const PostComment: React.FC<P> = ({markdownRemark, site}) => {
-
-  const config: {url: string, title: string, identifier?: string} = {
+const PostComment: React.FC<P> = ({ markdownRemark, site }) => {
+  const config: { url: string; title: string; identifier?: string } = {
     url: `${site.siteMetadata.url + markdownRemark.fields.slug}`,
     title: markdownRemark.frontmatter.title,
   }
@@ -19,9 +18,7 @@ const PostComment: React.FC<P> = ({markdownRemark, site}) => {
     config.identifier = markdownRemark.id
   }
 
-  return (
-    <Disqus config={config} />
-  )
+  return <Disqus config={config} />
 }
 
-export default PostComment;
+export default PostComment

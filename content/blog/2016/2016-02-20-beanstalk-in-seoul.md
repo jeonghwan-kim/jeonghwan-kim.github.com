@@ -1,10 +1,10 @@
 ---
-title: '서울에서 Elastic Beanstalk 사용하기'
+title: "서울에서 Elastic Beanstalk 사용하기"
 layout: post
 category: dev
 tags:
   - aws
-summary: 'AWS 한국 리젼이 추가되면서 빈스톡도 서울에 설치해봤다'
+summary: "AWS 한국 리젼이 추가되면서 빈스톡도 서울에 설치해봤다"
 featured_image: /assets/imgs/2016/elastic_beanstalk_logo.png
 permalink: /2016/02/20/beanstalk-in-seoul.html
 ---
@@ -24,7 +24,7 @@ Select a default region
 
 ```bash
 $ eb --version
-// EB CLI 2.x.x (Python 2.7.1)  
+// EB CLI 2.x.x (Python 2.7.1)
 ```
 
 가장 최근 버전이 v3.7이다. 파이썬 패키지 툴로 업그레이드 한다.
@@ -39,8 +39,7 @@ PIP로 업그레이드가 안된다.
 3 버전으로 업그레이드 했던것이 문제다. 다시 다운그레이드를 한다.
 ([참고](http://stackoverflow.com/questions/5621952/uninstall-python-3-2-on-mac-os-x-10-6-7))
 
-
-다시 업데이트 후 빈스톡을 초기화 하면  9번에 서울 리즌을 확인할 수 있다.  
+다시 업데이트 후 빈스톡을 초기화 하면 9번에 서울 리즌을 확인할 수 있다.
 
 ```bash
 $ eb init

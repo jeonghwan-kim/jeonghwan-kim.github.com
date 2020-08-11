@@ -20,12 +20,11 @@ Cannot fetch index base URL https://pypi.python.org/simple/
 
 아래 몇가지 시도를 했으나 문제는 여전하다.
 
-* pip 최신버전(7.1)을 설치
-* 파이선 최신버전(3.x)을 사용
-* apt-get 으로 설치. 장고 구버전이 설치됨.
+- pip 최신버전(7.1)을 설치
+- 파이선 최신버전(3.x)을 사용
+- apt-get 으로 설치. 장고 구버전이 설치됨.
 
 pip 명령중 --proxy 옵션을 사용해 프록시서버를 거치라고 한다. 아마도 실서버에 뭔가 네트웍 제한이 있는가 보다. 그러나 프록시 서버를 사용할 환경도 아니고 솔직히 잘 모르겠다.
-
 
 ## Django 설치
 
@@ -68,5 +67,5 @@ $ sudo apt-get install libmysqlclient-dev
 
 ## 참고
 
-* [https://github.com/django/django/releases](https://github.com/django/django/releases)
-* [https://github.com/farcepest/MySQLdb1/blob/master/INSTALL](https://github.com/farcepest/MySQLdb1/blob/master/INSTALL)
+- [https://github.com/django/django/releases](https://github.com/django/django/releases)
+- [https://github.com/farcepest/MySQLdb1/blob/master/INSTALL](https://github.com/farcepest/MySQLdb1/blob/master/INSTALL)

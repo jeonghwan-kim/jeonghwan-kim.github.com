@@ -52,33 +52,40 @@ exports.handler = event => {
 ![create-subscription](/assets/imgs/2018/10/22/create-subscription.png)
 
 프로토콜을 AWS Lambda로 선택하면 엔드포인트 메뉴가 보이는데 방금 만든 람다 함수를 선택하면 된다. 구독 생성 버튼을 클릭한 뒤, 빈스톡에 배포 이벤트를 발생하면 람다 함수가 로그를 찍는데 아래와 같은 형식이다.
+
 ```json
 {
-  "Records": [{
-    "EventSource": "aws:sns",
-    "EventVersion": "1.0",
-    "EventSubscriptionArn": "arn:aws:sns:ap-northeast-2:151095201970:ElasticBeanstalkNotifications-Environment-APP-ENV:1111-1111-1111-1111",
-    "Sns": {
-      "Type": "Notification",
-      "MessageId": "1111-1111-1111-1111",
-      "TopicArn": "arn:aws:sns:ap-northeast-2:111111:ElasticBeanstalkNotifications-Environment-APP-ENV",
-      "Subject": "AWS Elastic Beanstalk Notification - Environment health has transitioned from Ok to Info. Applica......",
-      "Message": "Timestamp: Tue Sep 18 01:53:46 UTC 2018\nMessage: Environment health has transitioned from Ok to Info. Application update in progress on 1 instance. 0 out of 1 instance completed (running for 19 seconds).\n\nEnvironment: APP-ENV\nApplication: APP\n\nEnvironment URL: http://APP-ENV.ap-northeast-2.elasticbeanstalk.com\nNotificationProcessId: ed05c426-fe75-46c9-9ca2-c03d53d85e25",
-      "Timestamp": "2018-09-18T01:54:04.516Z",
-      "SignatureVersion": "1",
-      "Signature": "VaxT10......",
-      "SigningCertUrl": "https://sns.ap-northeast-2.amazonaws.com/SimpleNotificationService-111111.pem",
-      "UnsubscribeUrl": "https://sns.ap-northeast-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:ap-northeast-2:151095201970:ElasticBeanstalkNotifications-Environment-APP-ENV:......",
-      "MessageAttributes": {}
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:ap-northeast-2:151095201970:ElasticBeanstalkNotifications-Environment-APP-ENV:1111-1111-1111-1111",
+      "Sns": {
+        "Type": "Notification",
+        "MessageId": "1111-1111-1111-1111",
+        "TopicArn": "arn:aws:sns:ap-northeast-2:111111:ElasticBeanstalkNotifications-Environment-APP-ENV",
+        "Subject": "AWS Elastic Beanstalk Notification - Environment health has transitioned from Ok to Info. Applica......",
+        "Message": "Timestamp: Tue Sep 18 01:53:46 UTC 2018\nMessage: Environment health has transitioned from Ok to Info. Application update in progress on 1 instance. 0 out of 1 instance completed (running for 19 seconds).\n\nEnvironment: APP-ENV\nApplication: APP\n\nEnvironment URL: http://APP-ENV.ap-northeast-2.elasticbeanstalk.com\nNotificationProcessId: ed05c426-fe75-46c9-9ca2-c03d53d85e25",
+        "Timestamp": "2018-09-18T01:54:04.516Z",
+        "SignatureVersion": "1",
+        "Signature": "VaxT10......",
+        "SigningCertUrl": "https://sns.ap-northeast-2.amazonaws.com/SimpleNotificationService-111111.pem",
+        "UnsubscribeUrl": "https://sns.ap-northeast-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:ap-northeast-2:151095201970:ElasticBeanstalkNotifications-Environment-APP-ENV:......",
+        "MessageAttributes": {}
+      }
     }
-  }]
+  ]
 }
 ```
+
 필요한건 `Records[0].Sns.Message` 값이다.
+
 ```json
 "Timestamp: Tue Sep 18 01:53:46 UTC 2018\nMessage: Environment health has transitioned from Ok to Info. Application update in progress on 1 instance. 0 out of 1 instance completed (running for 19 seconds).\n\nEnvironment: APP-ENV\nApplication: R2\n\nEnvironment URL: http://APP-ENV.ap-northeast-2.elasticbeanstalk.com\nNotificationProcessId: ed05c426-fe75-46c9-9ca2-c03d53d85e25"
 ```
+
 개행문자로 구분된 문자열인데 잘라서 보면 이렇다.
+
 ```json
   "Timestamp": "Tue Sep 18 01:53:46 UTC 2018"
   "Message": "Environment health has transitioned from Ok to Info. Application update in progress on 1 instance. 0 out of 1 instance completed (running for 19 seconds)."
@@ -86,6 +93,7 @@ exports.handler = event => {
   "Application": "APP"
   "Environment URL": "http://APP-ENV.ap-northeast-2.elasticbeanstalk.com\nNotificationProcessId: ed05c426-fe75-46c9-9ca2-c03d53d85e25"
 ```
+
 빈스톡 환경 이름이 `Environment` 키에 문자열로 담겨있고, 자세한 내용은 `Message`에 문장으로 담겨있다. 이 정보만 이용해서 슬랙에 메세지를 보내면 충분하겠다.
 
 SNS가 보내는 메세지 형식과 슬랙으로 보낼 정보를 정했으니 람다 함수 로직작성만 남았다.
@@ -93,17 +101,21 @@ SNS가 보내는 메세지 형식과 슬랙으로 보낼 정보를 정했으니 
 ## 환경 변수
 
 슬랙 웹훅 주소(`SLACK_WEBHOOOK_PATH`)와 채널명(`SLACK_CHANNEL`)을 환경 변수로 뺐다. 슬랙 메세지에서 사용할 아이콘, 사용자 이름도 환경변수로 만들었다. 빈스톡에 문제가 발생할때 보내는 메세지에는 특정 단어가 포함되는데 그것도 환경 변수로 빼서 나중에 쉽게 추가할 수 있도록 변경의 여지를 뒀다.
+
 ```js
-  const webhookPath = process.env.SLACK_WEBHOOK_PATH
-  const channel = process.env.SLACK_CHANNEL
-  const icon_emoji = process.env.ICON_EMOJI || ':robot_face:'
-  const username = process.env.USERNAME || 'AWS'
-  const errorKeywords = process.env.ERROR_KEYWORDS || 'Unsuccessful command, to Degraded, Failed'
+const webhookPath = process.env.SLACK_WEBHOOK_PATH
+const channel = process.env.SLACK_CHANNEL
+const icon_emoji = process.env.ICON_EMOJI || ":robot_face:"
+const username = process.env.USERNAME || "AWS"
+const errorKeywords =
+  process.env.ERROR_KEYWORDS || "Unsuccessful command, to Degraded, Failed"
 ```
+
 혹시 몰라서 필수 환경 변수 체크하는 함수도 만들었다. 람다 개발환경이 그렇게 편하지는 않았기 때문이다.
+
 ```js
 const validateEnvVars = _ => {
-  const tag = '[ENVIRONMENT VARIABLE ERROR]'
+  const tag = "[ENVIRONMENT VARIABLE ERROR]"
   if (!webhookPath) throw Error(`${tag} SLACK_WEBHOOK_PATH is required`)
   if (!channel) throw Error(`${tag} SLACK_CHANNEL is required`)
 }
@@ -112,9 +124,11 @@ exports.handler = event => {
   validateEnvVars()
 }
 ```
+
 ## 슬랙 메세지 생성
 
 환경 변수 검증을 마치고 본격적으로 슬랙 메세지를 만든다.
+
 ```js
 const postData = JSON.stringify({
   channel,
@@ -123,55 +137,60 @@ const postData = JSON.stringify({
   attachments: buildAttachments(event),
 })
 ```
+
 channel, icon_emoji, username은 모두 환경 변수를 그대로 사용했다. attachments를 만드는 `buildAttachements()` 함수에 SNS로 부터 받은 `event`를 전달해 실행한다.
 
 attachment 를 만드는 로직으로 넘어가자.
+
 ```js
 const buildAttachments = event => {
   const msgMap = parseSnsMsg(event.Records[0].Sns)
-  if (!msgMap) return ''
+  if (!msgMap) return ""
 
   const { Message, Environment } = msgMap
 
-  const color = isErrorMessage(Message) ? 'danger' : 'good'
+  const color = isErrorMessage(Message) ? "danger" : "good"
   return [
     {
       author_name: Environment,
       text: highlightMessage(Message),
-      color
-    }
+      color,
+    },
   ]
 }
 ```
+
 이벤트를 받아서 Sns 메세지를 파싱한 후 키/밸류의 맵으로 만든뒤 `msgMap` 변수에 저장했다. (구현 전이지만) 이 맵에는 우리가 최종적으로 원하는 `Message`와 `Environment` 정보가 있을 것이다.
 
-슬랙 메세지는 "danger", "good" 문자열로 메세지에 색상을 추가할수 있는데 메세지에 에러문구가 있는지 확인(`isErrorMessage(Message)`)한 뒤 색상 값을 `color`변수에 저장했다. 그리고 나서 `author_name`, `text`, `color` 로 이뤄진 객체 배열을  반환한다.
+슬랙 메세지는 "danger", "good" 문자열로 메세지에 색상을 추가할수 있는데 메세지에 에러문구가 있는지 확인(`isErrorMessage(Message)`)한 뒤 색상 값을 `color`변수에 저장했다. 그리고 나서 `author_name`, `text`, `color` 로 이뤄진 객체 배열을 반환한다.
 
 text를 만들때 첫 문장만 `highlightMessage()` 함수로 강조했다.
+
 ```js
 const highlightMessage = msg => {
-  const sentences = msg.split('.')
+  const sentences = msg.split(".")
   sentences[0] = `*${sentences[0]}*`
-  return sentences.join('.')
+  return sentences.join(".")
 }
 ```
 
 ## SNS 메세지 파싱
 
 SNS 메세지를 파싱하는 `parseSnsMsg()` 함수를 더 살펴보자.
+
 ```js
 const parseSnsMsg = ({ Message }) => {
   try {
-    const isPlainText = !Message.includes('\n')
+    const isPlainText = !Message.includes("\n")
     if (isPlainText) return Message
 
-    const parts = Message.split('\n')
+    const parts = Message.split("\n")
     const data = {}
     parts.forEach(part => {
       part = part.trim()
       if (!part) return
-      if (!part.includes(':')) return
-      let [key, value] = part.split(':')
+      if (!part.includes(":")) return
+      let [key, value] = part.split(":")
       key = key.trim()
       value = value.trim()
       if (!key || !value) return
@@ -191,23 +210,23 @@ const parseSnsMsg = ({ Message }) => {
 슬랙 웹 훅은 https 프로토콜을 사용하기 때문에 노드의 `https` 모듈을 이용해 호출한다.
 
 ```js
-const https = require('https')
+const https = require("https")
 
 const options = {
   port: 443,
-  method: 'POST',
-  hostname: 'hooks.slack.com',
+  method: "POST",
+  hostname: "hooks.slack.com",
   path: webhookPath,
   headers: {
-    'Content-Type': 'application/json',
-    'Content-Length': postData.length
-  }
+    "Content-Type": "application/json",
+    "Content-Length": postData.length,
+  },
 }
 
 const req = https.request(options, res => {
-  res.on('data', d => process.stdout.write(d))
+  res.on("data", d => process.stdout.write(d))
 })
-req.on('error', e => console.error(e))
+req.on("error", e => console.error(e))
 req.write(postData)
 req.end()
 ```

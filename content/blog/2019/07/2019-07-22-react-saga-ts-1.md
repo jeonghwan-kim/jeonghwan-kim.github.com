@@ -1,11 +1,12 @@
 ---
-title: '리덕스 사가 사용하기 (타입스크립트 버전) - 1편'
+title: "리덕스 사가 사용하기 (타입스크립트 버전) - 1편"
 layout: post
 category: dev
 tags: [react, TypeScript]
 ---
 
 [지난 글](/dev/2019/07/15/react-redux-ts.html)에서 정리한 것 처럼 리덕스는 다음 순서로 상태를 관리한다.
+
 1. 액션 객체 생성
 1. 스토어로 전달
 1. 리듀서가 액션 객체를 수신
@@ -19,7 +20,6 @@ tags: [react, TypeScript]
 
 이번 글에서는 리덕스 사가로 비동기 처리하는 방법에 대해 정리해 보겠다.
 
-
 ## 설치
 
 리덕스 사가와 타입 패키지를 프로젝트에 설치한다.
@@ -32,8 +32,8 @@ $ npm i redux-saga @types/redux-saga
 먼저 기존의 스토어 생성 코드를 보자.
 
 ```ts
-import { createStore } from 'redux';
-import rootReducer from "../reducers";
+import { createStore } from "redux"
+import rootReducer from "../reducers"
 
 const configureStore = () => {
   const store = createStore(rootReducer)
@@ -47,18 +47,15 @@ export default configureStore
 아래 코드와 비교해서 보자.
 
 ```ts
-import { createStore, applyMiddleware } from 'redux';
-import rootReducer from "../reducers";
-import createSagaMiddleware from 'redux-saga';
-import rootSaga from '../sagas'
+import { createStore, applyMiddleware } from "redux"
+import rootReducer from "../reducers"
+import createSagaMiddleware from "redux-saga"
+import rootSaga from "../sagas"
 
 const sagaMiddleware = createSagaMiddleware()
 
 const configureStore = () => {
-  const store = createStore(
-    rootReducer,
-    appliyMiddleware(sagaMiddleware)
-  )
+  const store = createStore(rootReducer, appliyMiddleware(sagaMiddleware))
 
   sagaMiddleware.run(rootSaga)
   return store
@@ -76,7 +73,7 @@ export default configureStore
 
 ```ts
 function* rootSaga() {
-  yield console.log('hello world')
+  yield console.log("hello world")
 }
 
 export default rootSaga
@@ -84,7 +81,6 @@ export default rootSaga
 
 제너레이터로 `rootSaga()` 함수를 만들었다.
 어플리케이션을 구동하면 실행되어 "hello world" 문자열이 콘솔에 기록될 것이다.
-
 
 ## 비동기 작업을 세분화 (요청, 성공, 실패)
 
@@ -102,23 +98,23 @@ export default rootSaga
 
 하지만 비동기는 세 단계로 나눠 볼수 있겠다.
 
-* `*_REQUEST`: 비동기 요청
-* `*_SUCCESS`: 비동기 요청 성공
-* `*_FAILURE`: 비동기 요청 실패
+- `*_REQUEST`: 비동기 요청
+- `*_SUCCESS`: 비동기 요청 성공
+- `*_FAILURE`: 비동기 요청 실패
 
 이렇게 분류한 기준은 유저 피드백이다.
 
-* `*_REQUEST` 액션타입은 비동기 요청이 시작됨을 보여준다. 데이터 로딩시까지 화면에 로딩중 메세지를 보여줄수 있을 것이다.
-* `*_SUCCESS` 액션타입은 비동기 요청이 성공한 경우다. 데이터를 화면에 보여줄수 있는 단계다.
-* `*_FAILURE` 액션타입은 비동기 요청이 실패한 경우다. 실패 원인이나 다음 행동을 유저에게 안내할 수 있을 것이다.
+- `*_REQUEST` 액션타입은 비동기 요청이 시작됨을 보여준다. 데이터 로딩시까지 화면에 로딩중 메세지를 보여줄수 있을 것이다.
+- `*_SUCCESS` 액션타입은 비동기 요청이 성공한 경우다. 데이터를 화면에 보여줄수 있는 단계다.
+- `*_FAILURE` 액션타입은 비동기 요청이 실패한 경우다. 실패 원인이나 다음 행동을 유저에게 안내할 수 있을 것이다.
 
 이러한 기준으로 기존 액션을 쪼개보자.
 actions/types.ts 파일에 있는 `FETCH_MEMO_LIST` 액션을 다음과 같이 세 개 액션으로 재정의 한다.
 
 ```ts
-export const FETCH_MEMO_LIST_REQUEST = 'FETCH_MEMO_LIST_REQUEST'
-export const FETCH_MEMO_LIST_SUCCESS = 'FETCH_MEMO_LIST_SUCCESS'
-export const FETCH_MEMO_LIST_FAILURE = 'FETCH_MEMO_LIST_FAILURE'
+export const FETCH_MEMO_LIST_REQUEST = "FETCH_MEMO_LIST_REQUEST"
+export const FETCH_MEMO_LIST_SUCCESS = "FETCH_MEMO_LIST_SUCCESS"
+export const FETCH_MEMO_LIST_FAILURE = "FETCH_MEMO_LIST_FAILURE"
 ```
 
 메모 목록 조회 요청을 위한 액션 생성자를 만든다.
@@ -195,15 +191,14 @@ const memoReducer = (state = initialState, action: MemoActionTypes): MemoState =
 여기까지가 리덕스에서 비동처리의 한 사이클이다.
 좀 복잡해 보이니깐 중간 정리해보자.
 
-* **컴포넌트**는 요청 액션을 디스패치해서 스토어에게 비동기 요청을 알린다
-* **사가**는 스토어로 들어오는 액션을 감시하고 있다가 요청 액션을 발견하면 특정 함수를 실행한다
-  * 이 함수는 비동기 로직을 제아하는 제네레이터다
-  * `call()` 함수로 API를 호출하고 결과를 받는다
-  * `put()` 함수로 받은 데이터를 저장하는 액션을 발행한다
-* **리듀서**는 이 액션을 받아 스토어를 갱신한다
+- **컴포넌트**는 요청 액션을 디스패치해서 스토어에게 비동기 요청을 알린다
+- **사가**는 스토어로 들어오는 액션을 감시하고 있다가 요청 액션을 발견하면 특정 함수를 실행한다
+  - 이 함수는 비동기 로직을 제아하는 제네레이터다
+  - `call()` 함수로 API를 호출하고 결과를 받는다
+  - `put()` 함수로 받은 데이터를 저장하는 액션을 발행한다
+- **리듀서**는 이 액션을 받아 스토어를 갱신한다
 
 기본 흐름을 머리에 딱 붙잡고, 예제 몇 가지를 살펴보면서 리덕스 사가 사용법을 익혀보자.
-
 
 ## 메모 조회: 데이터 로딩 피드백
 
@@ -219,7 +214,7 @@ export interface AppState {
 }
 
 const initialState: AppState = {
-  apiCalling: false
+  apiCalling: false,
 }
 ```
 
@@ -227,7 +222,7 @@ const initialState: AppState = {
 Api 통신이 끝나면 `apiCalling`을 `false`로 변경해야하는데 이것은 `CLEAR_API_CALL_STATUS` 액션 타입을 별도로 사용하겠다. actions/types.ts
 
 ```ts
-export const CLEAR_API_CALL_STATUS = 'CLEAR_API_CALL_STATUS'
+export const CLEAR_API_CALL_STATUS = "CLEAR_API_CALL_STATUS"
 ```
 
 다시 recuers/app.ts로 돌아와 앱 리듀서 함수 본체를 다음과 같이 만든다.
@@ -239,20 +234,19 @@ const appReducer = (
   state: AppState = initialState,
   action: AppActionTypes
 ): AppState => {
-
   switch (action.type) {
     // 메모 목록 요청시: apiCalling=true 설정
     case types.FETCH_MEMO_LIST_REQUEST:
       return {
         ...state,
-        apiCalling: true
+        apiCalling: true,
       }
 
     // API 호출 상태 해제시: apiCalling=false 설정
     case types.CLEAR_API_CALL_STATUS:
       return {
         ...state,
-        apiCalling: false
+        apiCalling: false,
       }
   }
 }
@@ -297,7 +291,7 @@ interface Props {
 
 class MemoListContainer extends React.Component<Props> {
   componentDidMount() {
-    const {fetchMemoList} = this.props;
+    const { fetchMemoList } = this.props
     fetchMemoList()
   }
 
@@ -309,25 +303,25 @@ class MemoListContainer extends React.Component<Props> {
 
 `apiCalling`과 `memos`배열, 그리고 `fetchMemoList()` 액션 생성자를 속성으로 받는다.
 컴포넌트 마운트 후에는 이 액션을 발행해서 스토어가 메모 목록을 불러오도록 한다.
-그러면 리듀서에 의해 `apiCalling` 상태가 설정될 것이고 사가에 의해 `fetchMemoList$()` 제네레이터 함수가  api 호출을 시작할 것이다.
+그러면 리듀서에 의해 `apiCalling` 상태가 설정될 것이고 사가에 의해 `fetchMemoList$()` 제네레이터 함수가 api 호출을 시작할 것이다.
 
 다음은 이 컨테이너를 스토어와 연결한다.
 
 ```ts
 const mapStateToProps = (state: RootState) => ({
   memos: state.memo.memos,
-  apiCalling: state.app.apiCalling
+  apiCalling: state.app.apiCalling,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
-  bindActionCreators({
-    fetchMemoList
-  }, dispatch)
+  bindActionCreators(
+    {
+      fetchMemoList,
+    },
+    dispatch
+  )
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MemoListContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(MemoListContainer)
 ```
 
 변경된 `apiCalling` 상태는 `connect()` 함수에 전달한 `mapStateToProps()` 함수에 의해 컴포넌트에 연결될 것이다.
@@ -366,8 +360,9 @@ export default MemoListPage
 
 메모가 있을 경우 메모 목록을 출력한다.
 그렇지 않을 경우는 두 가지 인데
-* Api 요청중이라면 요청 중임을 나타내는 `<Skellon />` 을 출력한다
-* 아니면 데이터가 없을 경우이므로 null을 반환해서 출력하지 않도록한다
+
+- Api 요청중이라면 요청 중임을 나타내는 `<Skellon />` 을 출력한다
+- 아니면 데이터가 없을 경우이므로 null을 반환해서 출력하지 않도록한다
 
 결과를 보자.
 
@@ -384,7 +379,6 @@ Api 조회응답이 오면 `FETCH_MEMO_LIST_SUCCESS`가 디스패치되어 스�
 ![](/assets/imgs/2019/07/22/fetch03.png)
 
 최종적으로 api 요청을 완료하는 `CLEAR_API_CALL_STATUS`가 발행되고 `apiCalling` 상태가 해제된다.
-
 
 ## 정리
 

@@ -5,13 +5,12 @@ category: dev
 tags: [nodejs, test]
 ---
 
-
-토이프로젝트를 하면서 테스트 코드를 어떻게 작성할까 고민이다. 
-보통은 1) 함수나 클래스 단위의 유닛 테스트나 2)기능 단위의 통합 테스트를 한다. 
+토이프로젝트를 하면서 테스트 코드를 어떻게 작성할까 고민이다.
+보통은 1) 함수나 클래스 단위의 유닛 테스트나 2)기능 단위의 통합 테스트를 한다.
 이번에는 유닛 테스트 보다는 통합 테스트를 먼저 시작했다.
 학습 목표에 따라 여러가지 대체 기술을 사용하려면 탄탄한 통합테스트가 준비되어 있어야하기 때문이다.
 
-화면을 검증하는 방법에는 마땅히 좋은 아이디어가 떠오르지 않는다. 
+화면을 검증하는 방법에는 마땅히 좋은 아이디어가 떠오르지 않는다.
 대신 브라우져에서 서버로 호출하는 **API에 대한 통합 테스트**는 바로 시작할 수 있었다.
 요청에 대한 응답이 제대로 나오는지, 그리고 데이터베이스에 예상하는 데이터가 남아있는지 검증하는 방식으로 진행했다.
 
@@ -19,18 +18,18 @@ API 서버를 만들때 HTTP 검증 도구로 슈퍼테스트([supertest](https:
 
 # 슈퍼 테스트(supertest)
 
-HTTP 라이브러리는 각 프레임웍이 제공하는 기본 모듈을 사용해서 구현할 수 있다. 
-노드js의 http, 브라우져의 XMLHttpRequest 클래스가 그것이다. 
+HTTP 라이브러리는 각 프레임웍이 제공하는 기본 모듈을 사용해서 구현할 수 있다.
+노드js의 http, 브라우져의 XMLHttpRequest 클래스가 그것이다.
 
 이걸 직접 사용하기 보다는 한꺼풀 추상화한 라이브러리를 활용하는 편이다.
 
 - 노드로 백엔드 개발을 할때는 request 모듈을
-- 브라우져에서는 제이쿼리나 앵귤러가 자체적으로 제공하는 $http 서비스를
-- 최근 vue.js나 react.js를 사용하면서부터는 axios, superagent를 
+- 브라우져에서는 제이쿼리나 앵귤러가 자체적으로 제공하는 \$http 서비스를
+- 최근 vue.js나 react.js를 사용하면서부터는 axios, superagent를
 
 사용한다.
 
-슈퍼 테스트는 바로 이 슈퍼 에이전트(superagent)를 기반으로한 HTTP 검증 라이브러리다. 
+슈퍼 테스트는 바로 이 슈퍼 에이전트(superagent)를 기반으로한 HTTP 검증 라이브러리다.
 
 > HTTP assertions made easy via superagent.
 
@@ -49,19 +48,19 @@ module.exports = function(app) {
 예제코드에 보면 단순히 익스프레스 객체만 전달하는데 바로 이러한 동작이 있기 때문이다.
 
 ```js
-const request = require('supertest'); // 1번
-const express = require('express');
+const request = require("supertest") // 1번
+const express = require("express")
 
-const app = express();
-app.get('/user', (req, res) => res.json({name: 'alice'}));
+const app = express()
+app.get("/user", (req, res) => res.json({ name: "alice" }))
 
 request(app) // 2번
-  .get('/user') // 3번
-  .expect(200, { name: 'alice' }) // 4번
+  .get("/user") // 3번
+  .expect(200, { name: "alice" }) // 4번
 ```
 
-1번. 슈퍼 테스트 모듈을 가져와서 request 변수에 담았다. 
-슈퍼에이전트 라이브러리의 영향을 받은 모양이다. 
+1번. 슈퍼 테스트 모듈을 가져와서 request 변수에 담았다.
+슈퍼에이전트 라이브러리의 영향을 받은 모양이다.
 
 익스프레스에 GET /users 라우팅만 추가하고 HTTP 검증 로직을 작성했다.
 
@@ -109,19 +108,21 @@ expect(res => {
 위와 같이 API 오류가 문자열 메세지를 가진 본문 형태라고 가정하고 이를 검증하는 헬퍼 함수를 만들어 보자.
 
 ```js
-function hasError(status, message) { // 1번
-  return (res) => { // 2번
-    assert.equal(res.status, status); // 3번
+function hasError(status, message) {
+  // 1번
+  return res => {
+    // 2번
+    assert.equal(res.status, status) // 3번
 
-    assert.euqal(res.body.hasOwnProperty('error'), true); // 4번
-    assert.euqal(res.body.error.hasOwnProperty('message'), true);
+    assert.euqal(res.body.hasOwnProperty("error"), true) // 4번
+    assert.euqal(res.body.error.hasOwnProperty("message"), true)
 
-    assert.equal(res.body.error.message, message); // 5번
+    assert.equal(res.body.error.message, message) // 5번
   }
 }
 ```
 
-1번. hasError()는 에러 응답인지 검증하는 함수다. 
+1번. hasError()는 에러 응답인지 검증하는 함수다.
 기대하는 http 상태코드와 오류 메세지를 인자로 받는다.
 
 2번. 곧장 함수를 반환하는데 expect() 함수의 인자로 넣을 값이다.
@@ -145,18 +146,20 @@ function hasError(status, message) { // 1번
 위와 같은 API 성공시 오브젝트 형식의 data를 키로 갖는다고 가정하고 이를 검증하는 헬퍼 함수를 만들어 보자.
 
 ```js
-function hasData(status, callback) { // 1번
-  return (res) => { // 2번
-    assert.equal(res.status, status); // 3번 
+function hasData(status, callback) {
+  // 1번
+  return res => {
+    // 2번
+    assert.equal(res.status, status) // 3번
 
-    if (!body.hasOwnProperty('data')) throw new Error("missing data key"); // 4번
-    
-    callback(res.body.data); // 5번 
-  };
+    if (!body.hasOwnProperty("data")) throw new Error("missing data key") // 4번
+
+    callback(res.body.data) // 5번
+  }
 }
 ```
 
-1번. hasData()는 성공 응답인지 검증하는 함수다. 
+1번. hasData()는 성공 응답인지 검증하는 함수다.
 기대하는 http 상태코드와 응답 데이터를 넘겨 받을 콜백함수를 인자로 받는다.
 
 2번. 곧장 함수를 반환하는데 expect() 함수의 인자로 넣을 값이다.
@@ -172,26 +175,28 @@ function hasData(status, callback) { // 1번
 사용할때는 이런식으로 사용할 수 있다.
 
 ```js
-request(app) 
-  .get('/user') 
-  .expect(hasData(200, data => {
-    // 이미 hasData()로 상태코드 200과 본문에 data 키가 있음을 검증했다.
-    // 여기서는 데이터의 모습만 검증한다.
-    assert.equal(data.hasOwnProperty('name'), true);
-    assert.equal(data.name, 'alice')
-    // ...
-  })) 
+request(app)
+  .get("/user")
+  .expect(
+    hasData(200, data => {
+      // 이미 hasData()로 상태코드 200과 본문에 data 키가 있음을 검증했다.
+      // 여기서는 데이터의 모습만 검증한다.
+      assert.equal(data.hasOwnProperty("name"), true)
+      assert.equal(data.name, "alice")
+      // ...
+    })
+  )
 ```
 
 # 요청을 지속시키는 방법: agent()
 
 토이 프로젝트에서는 세션과 쿠키를 이용한 인증 방식을 사용하고 있다.
-로그인을 통해 인증되면 서버에서는 세션 아이디를 만들고 이것를 요청한 브라우져 쿠키에 저장한다. 
+로그인을 통해 인증되면 서버에서는 세션 아이디를 만들고 이것를 요청한 브라우져 쿠키에 저장한다.
 그리고 이후 브라우저에서 서버로 보내는 모든 요청에서는 쿠키 값을 같이 전송하는 구조다.
 
 따라서 어떤 API는 테스트하기 전에 인증을 선행해야만 한다.
 테스트 코드에서 인증을 완료한 뒤 다음 요청을 보내면 인증이 안되어있는 현상이 발생하는데(가령 서버에서 401 UnAuthrized를 응답하는 경우)
-**브라우저의 기본 동작을 잘 모르고 있었던 탓**이다. 
+**브라우저의 기본 동작을 잘 모르고 있었던 탓**이다.
 
 브라우져는 요청한 응답 헤더에 set-cookie가 있으면 쿠키에 값을 저장하고 있다가 다음 요청부터는 이 값을 전달한다.
 반면 curl이나 슈퍼테스트의 request() 로 요청할때는 매번 모든 요청이 새롭게 생성된다.

@@ -1,7 +1,7 @@
 import React from "react"
 import Button from "../../components/button"
 
-import './post-tag.scss';
+import "./post-tag.scss"
 
 interface P {
   tags: string[]

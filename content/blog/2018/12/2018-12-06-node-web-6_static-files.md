@@ -1,5 +1,5 @@
 ---
-title: '[Node.js코드랩] 6.정적 파일'
+title: "[Node.js코드랩] 6.정적 파일"
 layout: post
 summary: 정적파일을 처리할 수 있습니다
 category: series
@@ -40,7 +40,7 @@ public
 
 클라이언트 요청시 "Hello world" 문자열 대신 public/index.html 파일을 응답하는 기능을 구현하세요.
 
-*힌트: file system 기본 모듈로 파일을 읽고 응답할 수 있습니다.*
+_힌트: file system 기본 모듈로 파일을 읽고 응답할 수 있습니다._
 
 ## 🐤풀이
 
@@ -51,24 +51,24 @@ fs (file system) 모듈을 처음 써 보는데요, 쉽게 해결하셨나요?
 이 파일을 수정해 보겠습니다.
 
 ```js
-const path = require('path')
-const fs = require('fs')
+const path = require("path")
+const fs = require("fs")
 
 const Application = () => {
   const server = http.createServer((req, res) => {
     // ...
 
-    const filePath = path.join(__dirname, '../public/index.html')
+    const filePath = path.join(__dirname, "../public/index.html")
     fs.readFile(filePath, (err, data) => {
       if (err) throw err
 
       res.end(data)
     })
-  });
+  })
 }
 ```
 
-path 모듈의 join을 이용해서 현재경로(__dirname)와 파일이 위치한 상대 경로(../public/index.html)을 계산합니다.
+path 모듈의 join을 이용해서 현재경로(\_\_dirname)와 파일이 위치한 상대 경로(../public/index.html)을 계산합니다.
 filePath에는 index.html의 절대 경로가 저장 되겠지요.
 
 그리고 나서 fs 모듈의 readFile 함수로 경로의 파일을 읽습니다.
@@ -85,8 +85,8 @@ HTML 마크업이 그대로 출력되었습니다. 우리가 원하는건 웹페
 이 문제를 해결하려면 HTTP 헤더값 중 하나를 변경해야 합니다.
 
 ```js
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'text/html')
+res.statusCode = 200
+res.setHeader("Content-Type", "text/html")
 ```
 
 파일 내용을 응답하기 전에 Content-Type 헤더를 text/plain 에서 text/html로 설정합니다.
@@ -110,7 +110,7 @@ index.html은 내부 코드에서 css, js, image 파일을 추가로 요청합�
 
 index.html에서 추가로 요청하는 정적 리소스인 JS, CSS, IMAGE도 제공하는 기능을 구현하세요.
 
-*힌트: mineType, content-type으로 검색해 보세요. req.url로 요청 주소에 접근할 수 있습니다. path.parse().ext로 확장자를 알 수 있습니다.*
+_힌트: mineType, content-type으로 검색해 보세요. req.url로 요청 주소에 접근할 수 있습니다. path.parse().ext로 확장자를 알 수 있습니다._
 
 ## 🐤풀이
 
@@ -118,14 +118,14 @@ index.html에서 추가로 요청하는 정적 리소스인 JS, CSS, IMAGE도 �
 
 ```js
 const mimeType = {
-  '.ico': 'image/x-icon',
-  '.html': 'text/html',
-  '.js': 'text/javascript',
-  '.css': 'text/css',
-  '.png': 'image/png',
-  '.jpg': 'image/jpeg',
-  '.eot': 'appliaction/vnd.ms-fontobject',
-  '.ttf': 'aplication/font-sfnt'
+  ".ico": "image/x-icon",
+  ".html": "text/html",
+  ".js": "text/javascript",
+  ".css": "text/css",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".eot": "appliaction/vnd.ms-fontobject",
+  ".ttf": "aplication/font-sfnt",
 }
 ```
 
@@ -133,8 +133,8 @@ const mimeType = {
 요청 주소를 파싱해서 확장자에 따라 content-type 헤더 값을 동적으로 설정하려고 합니다.
 
 ```js
-const ext = path.parse(req.url).ext;
-const publicPath = path.join(__dirname, '../public')
+const ext = path.parse(req.url).ext
+const publicPath = path.join(__dirname, "../public")
 ```
 
 req.url을 통해 요청 주소에 접근할 수 있습니다. 이걸 path.parse() 함수의 인자로 넘기면 주소를 파싱하는데 그 결과 ext 키에 확장자 정보가 담겨 있습니다. 이것을 ext 상수에 저장했구요.
@@ -172,8 +172,7 @@ publicPath와 req.url를 합쳐 정적 파일을 읽습니다.
 
 ## 정리
 
-* HTML, CSS, JS, IMAGE 처럼 브라우져에서 렌더링 되는 자원을 정적파일이라고 합니다.
-* MineType을 설정하여 정적 파일 제공 기능을 구현했습니다.
-
+- HTML, CSS, JS, IMAGE 처럼 브라우져에서 렌더링 되는 자원을 정적파일이라고 합니다.
+- MineType을 설정하여 정적 파일 제공 기능을 구현했습니다.
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)

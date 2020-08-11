@@ -1,36 +1,50 @@
-import React from 'react';
-import { TwitterShareButton, TwitterIcon, FacebookShareButton, FacebookIcon, FacebookShareCount, PocketShareButton, PocketIcon } from 'react-share';
-import { MarkdownRemark } from '../../models/markdown-remark';
-import { SiteMetadata } from '../../models/site';
+import React from "react"
+import {
+  TwitterShareButton,
+  TwitterIcon,
+  FacebookShareButton,
+  FacebookIcon,
+  FacebookShareCount,
+  PocketShareButton,
+  PocketIcon,
+} from "react-share"
+import { MarkdownRemark } from "../../models/markdown-remark"
+import { SiteMetadata } from "../../models/site"
 
-import './post-share.scss';
+import "./post-share.scss"
 
 interface P {
-  markdownRemark: MarkdownRemark;
-  siteMetadata: SiteMetadata;
+  markdownRemark: MarkdownRemark
+  siteMetadata: SiteMetadata
 }
 
-const PostShare: React.FC<P> = ({markdownRemark, siteMetadata}) => {
+const PostShare: React.FC<P> = ({ markdownRemark, siteMetadata }) => {
   const iconProps = {
     round: true,
-    size: 8 * 6
+    size: 8 * 6,
   }
 
   const url = siteMetadata.url + markdownRemark.fields.slug
 
-  return(
+  return (
     <ul className="post-share">
       <li>
         <TwitterShareButton
           url={url}
-          hashtags={[...(markdownRemark.frontmatter.tags || []), siteMetadata.title.replace(/\s/g, '')] }
-        ><TwitterIcon {...iconProps} /></TwitterShareButton>
+          hashtags={[
+            ...(markdownRemark.frontmatter.tags || []),
+            siteMetadata.title.replace(/\s/g, ""),
+          ]}
+        >
+          <TwitterIcon {...iconProps} />
+        </TwitterShareButton>
       </li>
       <li>
         <FacebookShareButton
           url={url}
-          hashtag={'#' + siteMetadata.title.replace(/\s/g, '')}>
-          <FacebookIcon {...iconProps}/>
+          hashtag={"#" + siteMetadata.title.replace(/\s/g, "")}
+        >
+          <FacebookIcon {...iconProps} />
         </FacebookShareButton>
       </li>
       <li>
@@ -42,4 +56,4 @@ const PostShare: React.FC<P> = ({markdownRemark, siteMetadata}) => {
   )
 }
 
-export default PostShare;
+export default PostShare

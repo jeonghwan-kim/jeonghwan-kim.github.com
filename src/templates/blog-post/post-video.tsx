@@ -1,29 +1,33 @@
-import React from 'react';
-import './post-video.scss';
-import { Video } from '../../models/site';
-import {trackCustomEvent} from 'gatsby-plugin-google-analytics'
+import React from "react"
+import "./post-video.scss"
+import { Video } from "../../models/site"
+import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 
 interface P {
-  video: Video;
+  video: Video
 }
 
-const PostVideo: React.FC<P> = ({video}) => {
+const PostVideo: React.FC<P> = ({ video }) => {
   return (
     <div className="post-video">
-      <a id="post-video" href={video.url} onClick={e => {
-        trackCustomEvent({
-          category: '포스트/관련영상',
-          action: 'click',
-          label: video.title,
-        })
-      }}>
-        <img src={ video.thumb} />
+      <a
+        id="post-video"
+        href={video.url}
+        onClick={e => {
+          trackCustomEvent({
+            category: "포스트/관련영상",
+            action: "click",
+            label: video.title,
+          })
+        }}
+      >
+        <img src={video.thumb} />
         <div className="post-video-overlay">
           <div className="video-icon-wrapper">
             <div className="video-icon"></div>
           </div>
           <div className="post-video-title">
-            {video.title ? video.title : '영상 더보기'} &raquo;
+            {video.title ? video.title : "영상 더보기"} &raquo;
           </div>
         </div>
       </a>
@@ -31,4 +35,4 @@ const PostVideo: React.FC<P> = ({video}) => {
   )
 }
 
-export default PostVideo;
+export default PostVideo

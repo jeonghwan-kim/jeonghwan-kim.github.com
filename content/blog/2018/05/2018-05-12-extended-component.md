@@ -50,31 +50,33 @@ OOP를 충분히 지원할 수 없는 자바스크립트에서 장황한 클래�
 // mobile/postsView.js
 
 const postsView = {
-  init (el) {
-    if (!el) throw Error('el')
+  init(el) {
+    if (!el) throw Error("el")
     this.el = el
     this.data = []
     return this
   },
-  setData (data) {
+  setData(data) {
     this.data = data
     return this
   },
-  render () {
+  render() {
     this.el.innerHTML = this.html()
   },
-  html () {
-    return this.data.reduce((html, post) => {
-      html += `
+  html() {
+    return (
+      this.data.reduce((html, post) => {
+        html += `
         <h2>${post.title}</h2>
         <article>${this.text(post.text)}</article>
        `
-      return html
-    }, '<div>') + '</div>'
+        return html
+      }, "<div>") + "</div>"
+    )
   },
-  text (post) {
-    return post.substring(0, 100) + '...'
-  }
+  text(post) {
+    return post.substring(0, 100) + "..."
+  },
 }
 
 export default postsView
@@ -103,14 +105,14 @@ api.fetch().then(data => {
 
 ```js
 // pc/postsView.js
-import postsViewMobile from '../mobile/postsView.js'
+import postsViewMobile from "../mobile/postsView.js"
 
 const postsView = Object.create(postsViewMobile)
 
 // 오버라이딩: 포스트 문자열을 반환하는 text() 함수로
 // 모바일은 100문자를 반환했지만 PC 버번은 300문자를 반환한다.
 postsView.text = function (post) {
-  return post.substring(0, 300) + '...'
+  return post.substring(0, 300) + "..."
 }
 
 export default postsView
@@ -127,7 +129,6 @@ PC에서는 로직은 같고 화면 출력 부분만 다르기 때문에 이 역
 <small>- PC 결과화면 -</small>
 
 모바일에서는 100자만 출력한 반면 PC에서는 300자를 출력한 것이 다르다.
-
 
 ## 컴포넌트 확장
 
@@ -146,11 +147,10 @@ Vue.js에서는 믹스인과 컴포넌트 생성 옵션을 이용해 컴포넌�
 
 ```js
 // vue-mobile/PostComponent.js
-import api from '../api.js'
+import api from "../api.js"
 
 export default {
-  template:
-    `<div>
+  template: `<div>
     <small v-if="fetching">Loginding...</small>
     <section v-else v-for="post in posts">
       <h2>{{post.title}}</h2>
@@ -158,22 +158,22 @@ export default {
     </section>
   </div>`,
 
-  data () {
+  data() {
     return {
       posts: [],
-      fetching: false
+      fetching: false,
     }
   },
 
-  created () {
+  created() {
     this.fetch()
   },
 
   filters: {
-    excerpt (val) {
-      console.log('mobile:filter:exceprt')
-      return val.substring(0, 100) + '...'
-    }
+    excerpt(val) {
+      console.log("mobile:filter:exceprt")
+      return val.substring(0, 100) + "..."
+    },
   },
 
   methods: {
@@ -184,7 +184,7 @@ export default {
         this.posts = data
       })
     },
-  }
+  },
 }
 ```
 
@@ -226,14 +226,14 @@ PostsList 컴포넌트는 아래와 같이 사용할 수 있다.
 
 ```js
 // vue-pc/PostsComponent.js
-import PostsComponent from '../vue-mobile/PostsComponent.js'
+import PostsComponent from "../vue-mobile/PostsComponent.js"
 
 export default {
-  extends: PostsComponent
+  extends: PostsComponent,
 }
 ```
 
-모바일 버전의  PostsComponent 를 확장한 PC 버전의 컴포넌트를 만들었다.
+모바일 버전의 PostsComponent 를 확장한 PC 버전의 컴포넌트를 만들었다.
 
 이걸 그대로 사용하면 모바일 버전과 똑같은 결과가 나온다.
 위에서 했던 것과 마찬가지로 Mobile에서 글자수를 100자만 보여줬던 것을 PC에서는 글자수 300개를 보여주려고 한다.
@@ -250,7 +250,7 @@ filters: {
 
 ## 컴포넌트 병합 전략
 
-**데이터,  컴퓨티드, 메소드, 필터는 완벽히 오버라이딩 된다.**
+**데이터, 컴퓨티드, 메소드, 필터는 완벽히 오버라이딩 된다.**
 즉 확장된 컴포넌트에서 동일한 이름으로 함수를 재정의하면 기존 함수가 가려져 덮어 씌워지는 효과가 있다.
 로그를 찍어 확인해 보자.
 
@@ -304,8 +304,9 @@ pc:created
 이러한 컴포넌트 확장 특징을 어떻게 적용해 볼 수 있을가?
 
 위 리스트 예제를 계속 이어가는게 좋겠다.
-* 모바일의 경우 아래로 스크롤 하면 추가로 목록을 로딩 해보자.
-* 반면 데스크탑은 페이제네이션을 이용해 추가 목록을 확인할 수 있다.
+
+- 모바일의 경우 아래로 스크롤 하면 추가로 목록을 로딩 해보자.
+- 반면 데스크탑은 페이제네이션을 이용해 추가 목록을 확인할 수 있다.
 
 코드를 재활용하는 방법을 유지하면서 컴포넌트 확장 방법으로 구현해 보자.
 
@@ -368,7 +369,7 @@ template:
 
 `created()` 훅은 모든 두 컴포넌트에서 순서대로 호출된다.
 모바일 컴포넌트에서 실행한 `fetch()`와 `enableScroll()` 함수가 모두 실행될 것이다.
-하지만 PC 컴포넌트에서 `enableScroll()`  함수는 불필요하다.
+하지만 PC 컴포넌트에서 `enableScroll()` 함수는 불필요하다.
 우리는 스크롤 감지로 추가 패치를 하는 것이 아니기 때문이다.
 
 따라서 이 함수를 빈 함수로 오버라이딩한다.
@@ -381,7 +382,6 @@ template:
 
 ![결과 화면](/assets/imgs/2018/05/12/vue-pc-result-1.jpg)<br />
 <small>- Vue - PC 결과화면 -</small>
-
 
 ## 결론
 
@@ -403,7 +403,8 @@ Vue의 이러한 특징을 적절히 사용하면 적은 코드로 두 가지 �
 적은 코드인 만큼 유지보수에도 적잖은 도움이 될수 있었다.
 
 참고 문서
-* [Vue Mixins](https://kr.vuejs.org/v2/guide/mixins.html)
-* [Vue extends](https://kr.vuejs.org/v2/api/#extends)
-* [Extending VueJS Components](https://medium.com/js-dojo/extending-vuejs-components-42fefefc688b)
-* [Extending Vue Components with Mixins](https://scotch.io/tutorials/extending-vue-components-with-mixins)
+
+- [Vue Mixins](https://kr.vuejs.org/v2/guide/mixins.html)
+- [Vue extends](https://kr.vuejs.org/v2/api/#extends)
+- [Extending VueJS Components](https://medium.com/js-dojo/extending-vuejs-components-42fefefc688b)
+- [Extending Vue Components with Mixins](https://scotch.io/tutorials/extending-vue-components-with-mixins)

@@ -43,7 +43,7 @@ HTML5 명세를 따르는 일명 모던 브라우져의 폼 동작 방식을 정
 
 이처럼 HTML5의 입력 요소는 `required`를 포함해 7가지 검증 속성([validation attributes](https://developer.moz5illa.org/en-US/docs/Learn/Forms/Form_validation))을 제공한다.
 
-- `required`  : 필수
+- `required` : 필수
 - `minlength` / `maxlength`: 최소/최대 길이
 - `min` / `max`: 최소/최대 정수
 - `type`: 타입(이메일 등)
@@ -96,10 +96,10 @@ input:invalid {
 폼 요소에 클래스명을 추가하는 방식을 사용해 보자.
 
 ```js
-document.querySelectorAll('input').forEach(input => {
-  input.addEventListener('invalid', () => {
+document.querySelectorAll("input").forEach(input => {
+  input.addEventListener("invalid", () => {
     // 검증 후 폼 요소에 was-validated 클래스로 표시해 둔다
-    document.forms[0].classList.add('was-validated')
+    document.forms[0].classList.add("was-validated")
   })
 })
 ```
@@ -141,7 +141,7 @@ form.was-validated input:invalid {
 하지만 이걸 사용할 수 있었던 적은 거의 없었다.
 오류 메세지와 스타일, 그리고 언어가 브라우져 의존적이다보니 일관적이지 못하다는 의견이 대부분이다.
 
-[Constraint Validation API](https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation)를 활용한다면 HTML5만으로도 오류 메시지를 요구사항에 맞게  커스터마이징할 수 있는 방법이 생긴다.
+[Constraint Validation API](https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation)를 활용한다면 HTML5만으로도 오류 메시지를 요구사항에 맞게 커스터마이징할 수 있는 방법이 생긴다.
 
 API의 인터페이스는 다음 두 가지 모습을 갖추어야 한다.
 
@@ -175,7 +175,7 @@ API의 인터페이스는 다음 두 가지 모습을 갖추어야 한다.
 검증 상태를 나타내는 validity 객체를 더 들여다 보자.
 
 ```js
-input.addEventListener('invalid', () => {
+input.addEventListener("invalid", () => {
   /**
    * ValidityState {
    *   badInput: false,  // 잘못된 입력
@@ -191,7 +191,7 @@ input.addEventListener('invalid', () => {
    *   valueMissing: true // 필수값 오류
    * }
    */
-  console.log(input.validity);
+  console.log(input.validity)
 })
 ```
 
@@ -203,15 +203,15 @@ input.addEventListener('invalid', () => {
 ```js
 // 오류 메세지 사전을 만든다
 const validityMessage = {
-  badInput: '[커스텀 메세지] 잘못된 입력입니다.',
-  patternMismatch: '[커스텀 메세지] 패턴에 맞게 입력하세요',
-  rangeOverflow: '[커스텀 메세지] 범위를 초과하였습니다',
-  rangeUnderflow: '[커스텀 메세지] 범위에 미달하였습니다',
-  stepMismatch: '[커스텀 메세지] 간격에 맞게 입력하세요',
-  tooLong: '[커스텀 메세지] 최대 글자 미만으로 입력하세요',
-  tooShort: '[커스텀 메세지] 최소 글자 미만으로 입력하세요',
-  typeMismatch: '[커스텀 메세지] 형식에 맞게 입력하세요',
-  valueMissing: '[커스텀 메세지] 이 필드를 반드시 입력하세요',
+  badInput: "[커스텀 메세지] 잘못된 입력입니다.",
+  patternMismatch: "[커스텀 메세지] 패턴에 맞게 입력하세요",
+  rangeOverflow: "[커스텀 메세지] 범위를 초과하였습니다",
+  rangeUnderflow: "[커스텀 메세지] 범위에 미달하였습니다",
+  stepMismatch: "[커스텀 메세지] 간격에 맞게 입력하세요",
+  tooLong: "[커스텀 메세지] 최대 글자 미만으로 입력하세요",
+  tooShort: "[커스텀 메세지] 최소 글자 미만으로 입력하세요",
+  typeMismatch: "[커스텀 메세지] 형식에 맞게 입력하세요",
+  valueMissing: "[커스텀 메세지] 이 필드를 반드시 입력하세요",
 }
 
 // validity 객체를 받아 메세지 맵에서 오류 메세지를 찾는다
@@ -229,17 +229,17 @@ function getMessage(validity) {
 ```js
 function showError(input) {
   /**
-    * 커스텀 메세지: setCustomValidity()
-    * https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/setCustomValidity
-    * - 오류가 있으면 문자열 전달
-    * - 오류가 없으면 빈 문자열 전달
-    */
-  input.setCustomValidity(getMessage(input.validity) || '');
+   * 커스텀 메세지: setCustomValidity()
+   * https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/setCustomValidity
+   * - 오류가 있으면 문자열 전달
+   * - 오류가 없으면 빈 문자열 전달
+   */
+  input.setCustomValidity(getMessage(input.validity) || "")
 }
 
-input.addEventListener('invalid', () => {
+input.addEventListener("invalid", () => {
   // 커스텀 에러메세지 설정
-  showError(input);
+  showError(input)
 })
 ```
 
@@ -255,9 +255,9 @@ input.addEventListener('invalid', () => {
 검증 이후 요소 값이 바뀔 때도 오류 메세지를 표시하기 위해 input 이벤트에도 추가하자.
 
 ```js
-input.addEventListener('input', () => {
+input.addEventListener("input", () => {
   // 커스텀 에러메세지 설정
-  showError(input);
+  showError(input)
 })
 ```
 
@@ -271,12 +271,11 @@ input.addEventListener('input', () => {
 ![safari](./safari.jpg)
 (사파리 브라우져)
 
-
 메시지 UI의 일관성을 지켜야 한다면 각 브라우져의 스타일을 무시하고 직접 만들어야 할 것 같다.
 인풋 요소 근처 적당한 곳에 오류 메세지를 보여줄만한 요소부터 추가하자.
 
 ```html
-<input name="email" placeholder="email" required type="email" minlength="6"/>
+<input name="email" placeholder="email" required type="email" minlength="6" />
 <!-- 오류 메세지를 보여줄 요소 -->
 <span id="error"></span>
 ```
@@ -286,7 +285,7 @@ input.addEventListener('input', () => {
 ```js
 function showError(input) {
   // 커스텀 오류 메시지 UI
-  document.querySelector('#error').textContent = getMessage(input.validity);
+  document.querySelector("#error").textContent = getMessage(input.validity)
 }
 ```
 
@@ -296,9 +295,9 @@ function showError(input) {
 이벤트가 발생하면 브라우져 검증 메세지를 표시하는 것이 기본 동작인데 이것을 차단하는 코드다.
 
 ```js
-input.addEventListener('invalid', (e) => {
+input.addEventListener("invalid", e => {
   // 브라우져 툴팁 숨김
-  e.preventDefault();
+  e.preventDefault()
 })
 ```
 
@@ -313,6 +312,7 @@ input.addEventListener('invalid', (e) => {
 오류 메세지나 스타일을 커스터마이징 하는 것도 그렇게 부담스러운 작업은 아니다.
 
 하지만 검증하는 로직에 있어서는 한계가 있는 것 같다.
+
 - 서버 API를 이용하는 것처럼 비동기로 검증하는 경우
 - 규칙이 요소간 의존적일 경우(가령 옵션을 선택시 색상이 필수)
 
@@ -320,6 +320,7 @@ input.addEventListener('invalid', (e) => {
 어쩌면 라이브러리를 찾는 것이 답이 될 수도 있겠다.
 
 참고
-* [전체 코드](https://github.com/jeonghwan-kim/post_form-validation)
-* [Client-side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
-* [Why you should be using HTML5 form validation: a tour](https://pageclip.co/blog/2018-02-20-you-should-use-html5-form-validation.html)
+
+- [전체 코드](https://github.com/jeonghwan-kim/post_form-validation)
+- [Client-side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
+- [Why you should be using HTML5 form validation: a tour](https://pageclip.co/blog/2018-02-20-you-should-use-html5-form-validation.html)

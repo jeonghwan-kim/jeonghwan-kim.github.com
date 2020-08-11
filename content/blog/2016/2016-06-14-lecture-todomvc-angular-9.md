@@ -1,5 +1,5 @@
 ---
-title: '앵귤러로 Todo앱 만들기 9 - Service'
+title: "앵귤러로 Todo앱 만들기 9 - Service"
 layout: post
 category: series
 seriesId: "377d51fb-3cab-5e79-a4e0-8e08a79bbe02"
@@ -22,7 +22,6 @@ date: 2016-06-14 09:00:09
 1. 그리고 todos 배열에서 투두를 제거하거나 추가하는 역할, 즉 **데이터를 핸들링 하는 부분**
 
 우리는 1번 로직은 컨트롤러에 남겨두고 2번 로직을 **서비스** 라는 개념으로 분리할 것이다.
-
 
 ## 컨트롤러에서 서비스를 분리하자
 
@@ -64,13 +63,13 @@ angular.module('todomvc')
 js/controllers/TodomvcCtrl.js:
 
 ```javascript
-angular.module('todomvc')
-    .controller('TodomvcCtrl', function ($scope, todomvcStorage) {
-
-      $scope.todos = todomvcStorage.get();
-
-    });
+angular
+  .module("todomvc")
+  .controller("TodomvcCtrl", function ($scope, todomvcStorage) {
+    $scope.todos = todomvcStorage.get()
+  })
 ```
+
 `todomvcStorage` 서비스를 주입하고 기존 `$scope.todos`에 설정했던 배열을 제거했다.
 대신 서비스에서 정의한 `get()` 함수를 통해 투두 목록 데이터를 가져왔다.
 
@@ -80,54 +79,55 @@ angular.module('todomvc')
 js/services/todoStorage.js:
 
 ```javascript
-angular.module('todomvc')
-    .factory('todomvcStorage', function () {
+angular.module("todomvc").factory("todomvcStorage", function () {
+  var storage = {
+    todos: [
+      {
+        id: 1,
+        title: "요가 수행하기",
+        completed: false,
+      },
+      {
+        id: 2,
+        title: "어머니 용돈 드리기",
+        completed: true,
+      },
+    ],
 
-      var storage = {
-        todos: [{
-          id: 1,
-          title: '요가 수행하기',
-          completed: false
-        }, {
-          id: 2,
-          title: '어머니 용돈 드리기',
-          completed: true
-        }],
+    get: function () {
+      return storage.todos
+    },
 
-        get: function () {
-          return storage.todos;
-        },
-
-        post: function (todoTitle) {
-          var newId = !storage.todos.length ?
-              1 : storage.todos[storage.todos.length - 1].id + 1;
-          var newTodo = {
-            id: newId,
-            title: todoTitle,
-            completed: false
-          };
-          storage.todos.push(newTodo);
-        },
-
-        delete: function (id) {
-          var deleltedTodoIdx = storage.todos.findIndex(function (todo) {
-            return todo.id === id;
-          });
-          if (deleltedTodoIdx === -1) return;
-          storage.todos.splice(deleltedTodoIdx, 1);
-        },
-
-        deleteCompleted: function () {
-          var incompleteTodos = storage.todos.filter(function (todo) {
-            return !todo.completed;
-          });
-          angular.copy(incompleteTodos, storage.todos);
-        }
+    post: function (todoTitle) {
+      var newId = !storage.todos.length
+        ? 1
+        : storage.todos[storage.todos.length - 1].id + 1
+      var newTodo = {
+        id: newId,
+        title: todoTitle,
+        completed: false,
       }
+      storage.todos.push(newTodo)
+    },
 
-      return storage;
-    })
+    delete: function (id) {
+      var deleltedTodoIdx = storage.todos.findIndex(function (todo) {
+        return todo.id === id
+      })
+      if (deleltedTodoIdx === -1) return
+      storage.todos.splice(deleltedTodoIdx, 1)
+    },
 
+    deleteCompleted: function () {
+      var incompleteTodos = storage.todos.filter(function (todo) {
+        return !todo.completed
+      })
+      angular.copy(incompleteTodos, storage.todos)
+    },
+  }
+
+  return storage
+})
 ```
 
 `post()` 함수는 새로운 투두를 추가하고 `delete()`는 기존 투두목록에서 삭제하는 함수다.
@@ -136,43 +136,41 @@ angular.module('todomvc')
 js/controllers/TodomvcCtrl.js:
 
 ```javascript
-angular.module('todomvc')
-    .controller('TodomvcCtrl', function ($scope, todomvcStorage) {
+angular
+  .module("todomvc")
+  .controller("TodomvcCtrl", function ($scope, todomvcStorage) {
+    $scope.todos = todomvcStorage.get()
 
-      $scope.todos = todomvcStorage.get();
+    $scope.addTodo = function (todoTitle) {
+      todoTitle = todoTitle.trim()
+      if (!todoTitle) return
+      todomvcStorage.post(todoTitle)
+    }
 
-      $scope.addTodo = function (todoTitle) {
-        todoTitle = todoTitle.trim();
-        if (!todoTitle) return;
-        todomvcStorage.post(todoTitle)
-      };
+    $scope.remove = function (id) {
+      if (!id) return
+      todomvcStorage.delete(id)
+    }
 
-      $scope.remove = function (id) {
-        if (!id) return;
-        todomvcStorage.delete(id);
+    $scope.$watch("status", function () {
+      if ($scope.status === "completed") {
+        $scope.statusFilter = { completed: true }
+      } else if ($scope.status === "active") {
+        $scope.statusFilter = { completed: false }
+      } else {
+        $scope.statusFilter = {}
       }
+    })
 
-      $scope.$watch('status', function () {
-        if ($scope.status === 'completed') {
-          $scope.statusFilter = {completed: true}
-        } else if ($scope.status === 'active') {
-          $scope.statusFilter = {completed: false}
-        } else {
-          $scope.statusFilter = {}
-        }
-      });
-
-      $scope.clearCompleted = function () {
-        todomvcStorage.deleteCompleted();
-      }
-
-    });
+    $scope.clearCompleted = function () {
+      todomvcStorage.deleteCompleted()
+    }
+  })
 ```
 
 데이터 변수와 이를 조작하는 함수는 모두 `todomvcStorage` 서비스로 위임했다.
 컨트롤러는 템플릿과 연결된 기능만 있다.
 이렇게 기능별로 코드를 모듈화 하는 것이 코드 읽기에 편할 뿐만 아니라 유지보수 하는데도 훨씬 좋다.
-
 
 ## 중간 정리
 
@@ -186,4 +184,3 @@ angular.module('todomvc')
 `server` 폴더에는 앞으로 작성할 노드 코드를 추가할 예정이다.
 
 ![](/assets/imgs/2016/lecture-todomvc-angular-12-result1.png)
-

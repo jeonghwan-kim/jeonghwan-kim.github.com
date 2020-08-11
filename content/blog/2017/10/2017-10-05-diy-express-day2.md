@@ -27,7 +27,7 @@ logger.js:
 const logger = (req, res, next) => {
   const log = `${req.method} ${req.url}`
   console.log(log)
-  next();
+  next()
 }
 
 module.exports = () => logger
@@ -70,7 +70,7 @@ const logger = (req, res, next) => {
 app.js:
 
 ```js
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   app.use(logger())
 }
 ```
@@ -87,8 +87,8 @@ if (process.env.NODE_ENV === 'development') {
 app.js:
 
 ```js
-app.use('/', require('./middleware/index'))
-app.use('/hello-world', require('./middleware/hello-world'))
+app.use("/", require("./middleware/index"))
+app.use("/hello-world", require("./middleware/hello-world"))
 ```
 
 역할을 분담하자는 거지.
@@ -99,44 +99,43 @@ application.js:
 
 ```js
 const use = (path, fn) => {
-  if (typeof path === 'string' && typeof fn === 'function') {
+  if (typeof path === "string" && typeof fn === "function") {
     fn.__path = path
-  } else if (typeof path == 'function') {
+  } else if (typeof path == "function") {
     fn = path
   } else {
-    throw Error('Usage: use(path, fn) or use(fn)')
+    throw Error("Usage: use(path, fn) or use(fn)")
   }
 
   middlewares.push(fn)
 }
 ```
 
-미들웨어 함수에 __path 속성을 추가해서 여기에 설정한 경로 정보를 저장해 뒀다. 나중에 미들웨어 함수를
-한번에 돌릴때 이 __path와 클라이언트 요청에 req.url 을 비교해서 미들웨어 함수를 실행할려는 의도다.
+미들웨어 함수에 **path 속성을 추가해서 여기에 설정한 경로 정보를 저장해 뒀다. 나중에 미들웨어 함수를
+한번에 돌릴때 이 **path와 클라이언트 요청에 req.url 을 비교해서 미들웨어 함수를 실행할려는 의도다.
 
 ```js
 const runMw = (middlewares, i, err) => {
-  if (i < 0 || i >= middlewares.length) return;
+  if (i < 0 || i >= middlewares.length) return
 
   const nextMw = middlewares[i]
 
   const next = () => e => runMw(middlewares, i + 1, e)
-  if (err) // ..
+  if (err)
+    if (nextMw.__path) {
+      // ..
 
-  if (nextMw.__path) {
-    // 요청한 url과 미들웨어에 설정한 경로가 같으면 미들웨어를 실행한다
-    if (req.url === nextMw.__path) return nextMw(req, res, next())
-
-    // 경로가 다르면 다음 미들웨어를 시도한다
-    else return runMw(middlewares, i + 1)
-  }
+      // 요청한 url과 미들웨어에 설정한 경로가 같으면 미들웨어를 실행한다
+      if (req.url === nextMw.__path) return nextMw(req, res, next())
+      // 경로가 다르면 다음 미들웨어를 시도한다
+      else return runMw(middlewares, i + 1)
+    }
 
   return nextMw(req, res, next())
 }
 ```
 
 잘 돌아간다.
-
 
 ## index.html
 
@@ -148,21 +147,21 @@ index.html
 
 ```html
 <body>
-    <div class="posts"><!-- 여기에 돔을 추가할거야 --></div>
+  <div class="posts"><!-- 여기에 돔을 추가할거야 --></div>
 </body>
 ```
 
 여기여 연결되 스크립트는:
 
 ```js
-post.list().
-    then(data => renderPosts(data)).
-    catch(err => console.log(err))
+post
+  .list()
+  .then(data => renderPosts(data))
+  .catch(err => console.log(err))
 ```
 
 post.list()로 ajax 요청을 보내고 응답된 데이터는 renderPosts() 함수에 인자로 전달된다.
 그리고 기존 돔에 post 돔을 만들어 추가한다.
-
 
 ajax 요청시 404 응답되는 것 까지는 확인되는군.
 이제는 `GET /api/posts` 요청에 대한 라우팅 로직을 추가하고 응답만 목업 데이터를 보내도록 하자.
@@ -171,20 +170,20 @@ ajax 요청시 404 응답되는 것 까지는 확인되는군.
 app.js:
 
 ```js
-app.use('/api/posts', require('./routes/api/post').index)
+app.use("/api/posts", require("./routes/api/post").index)
 ```
 
 post.js:
 
 ```js
 const posts = [
-  {title: 'post 3', body: 'this is post 3'},
-  {title: 'post 2', body: 'this is post 2'},
-  {title: 'post 1', body: 'this is post 1'},
+  { title: "post 3", body: "this is post 3" },
+  { title: "post 2", body: "this is post 2" },
+  { title: "post 1", body: "this is post 1" },
 ]
 
 const index = (req, res, next) => {
-  res.setHeader('Content-Type', 'application/json')
+  res.setHeader("Content-Type", "application/json")
   res.end(JSON.stringify(posts))
 }
 ```
@@ -213,12 +212,14 @@ response.js:
 
 ```js
 const response = res => {
-  if (!res) throw Error('res is required')
+  if (!res) throw Error("res is required")
 
-  res.json = res.json || (data => {
-    res.setHeader('Content-Type', 'application/json')
-    res.end(JSON.stringify(data))
-  })
+  res.json =
+    res.json ||
+    (data => {
+      res.setHeader("Content-Type", "application/json")
+      res.end(JSON.stringify(data))
+    })
 
   return res
 }
@@ -230,29 +231,37 @@ module.exports = response
 
 ```js
 const respose = res => {
-  if (!res) throw Error('res is required')
+  if (!res) throw Error("res is required")
 
-  res.status = res.status || (code => {
-    res.statusCode = code
-    return res
-  })
+  res.status =
+    res.status ||
+    (code => {
+      res.statusCode = code
+      return res
+    })
 
-  res.set = res.set || ((key, value) => {
-    res.setHeader(key, value)
-    return res
-  })
+  res.set =
+    res.set ||
+    ((key, value) => {
+      res.setHeader(key, value)
+      return res
+    })
 
-  res.send = res.send || (text => {
-    if (!res.getHeader('Content-Type')) {
-      res.setHeader('Content-Type', 'text/plain')
-    }
-    res.end(text)
-  })
+  res.send =
+    res.send ||
+    (text => {
+      if (!res.getHeader("Content-Type")) {
+        res.setHeader("Content-Type", "text/plain")
+      }
+      res.end(text)
+    })
 
-  res.json = res.json || (data => {
-    res.setHeader('Content-Type', 'application/json')
-    res.end(JSON.stringify(data))
-  })
+  res.json =
+    res.json ||
+    (data => {
+      res.setHeader("Content-Type", "application/json")
+      res.end(JSON.stringify(data))
+    })
 
   return res
 }
@@ -261,10 +270,10 @@ const respose = res => {
 사용할 때는:
 
 ```js
-res.send('hello world')
-res.set('Content-Type', 'text/html').send(data)
+res.send("hello world")
+res.set("Content-Type", "text/html").send(data)
 res.json(posts)
-res.status(404).send('Not Found')
+res.status(404).send("Not Found")
 res.status(500).send()
 ```
 
@@ -291,12 +300,12 @@ request.js:
 
 ```js
 const request = req => {
-  if (!req) throw Error('req is required')
+  if (!req) throw Error("req is required")
 
-  const partials = req.url.split('?')
+  const partials = req.url.split("?")
   const path = partials[0]
-  const qs = partials[1].split('&').reduce((obj, p) => {
-    const frag = p.split('=')
+  const qs = partials[1].split("&").reduce((obj, p) => {
+    const frag = p.split("=")
     obj[frag[0]] = frag[1]
     return obj
   }, {})
@@ -374,10 +383,10 @@ application.js:
 
 ```js
 const get = (path, fn) => {
-  if (!path || !fn) throw Error('path and fn is required')
-  fn.__method = 'get'
+  if (!path || !fn) throw Error("path and fn is required")
+  fn.__method = "get"
   use(path, fn)
-};
+}
 ```
 
 그리고 미들웨어 함수를 실해하는 부분에서 미들웨어에 설정한 메소드와 요청 메도스를 비교하여
@@ -385,8 +394,9 @@ const get = (path, fn) => {
 
 ```js
 if (nextMw.__path) {
-  const isMatched = req.path === nextMw.__path &&
-    req.method.toLowerCase() === (nextMw.__method || 'get')
+  const isMatched =
+    req.path === nextMw.__path &&
+    req.method.toLowerCase() === (nextMw.__method || "get")
   if (isMatched) return nextMw(req, res, next())
   else return runMw(middlewares, i + 1)
 }
@@ -397,8 +407,8 @@ if (nextMw.__path) {
 올지. 그럼 `app.js`에는 이렇게 설정할수 있다
 
 ```js
-app.get('/api/posts', require('./routes/api/post').index)
-app.post('/api/posts', require('./routes/api/post').create)
+app.get("/api/posts", require("./routes/api/post").index)
+app.post("/api/posts", require("./routes/api/post").create)
 ```
 
 좋군. 이제 `create()` 메소드를 만들어보자
@@ -407,7 +417,7 @@ post.js:
 
 ```js
 const create = (req, res, next) => {
-  debug('create() req.body:', req.body) // undefined
+  debug("create() req.body:", req.body) // undefined
 }
 ```
 
@@ -428,14 +438,14 @@ body-parser.js:
 ```js
 const bodyParser = (req, res, next) => {
   let data = []
-  req.on('data', chunk => {
+  req.on("data", chunk => {
     data.push(chunk)
-    debug('data', chunk)
+    debug("data", chunk)
   })
 
-  req.on('end', () => {
-    data = Buffer.concat(data).toString();
-    debug('end', data)
+  req.on("end", () => {
+    data = Buffer.concat(data).toString()
+    debug("end", data)
   })
 }
 ```
@@ -450,10 +460,10 @@ const bodyParser = (req, res, next) => {
 const bodyParser = (req, res, next) => {
   // ...
 
-  req.on('end', () => {
-    const body = data.split('&').reduce((body, pair) => {
+  req.on("end", () => {
+    const body = data.split("&").reduce((body, pair) => {
       if (!pair) return body
-      const frg = pair.split('=')
+      const frg = pair.split("=")
       body[frg[0]] = frg[1]
       return body
     }, {})
@@ -474,11 +484,11 @@ post.js:
 const create = (req, res, next) => {
   const post = {
     title: req.body.title,
-    body: req.body.body
+    body: req.body.body,
   }
 
   if (!post.title || !post.body) {
-    return res.status(400).send('parameter error')
+    return res.status(400).send("parameter error")
   }
 
   posts = [post].concat(posts)

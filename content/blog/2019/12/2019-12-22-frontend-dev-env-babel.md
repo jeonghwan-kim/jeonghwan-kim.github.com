@@ -1,5 +1,5 @@
 ---
-title: '프론트엔드 개발환경의 이해: Babel'
+title: "프론트엔드 개발환경의 이해: Babel"
 layout: post
 category: series
 tags: [babel]
@@ -38,7 +38,7 @@ ECMAScript2015+로 작성한 코드를 모든 브라우져에서 동작하도록
 
 ```js
 // src/app.js:
-const alert = msg => window.alert(msg);
+const alert = msg => window.alert(msg)
 ```
 
 먼저 바벨 최신 버전를 설치한다.
@@ -75,7 +75,7 @@ const alert = msg => window.alert(msg);
 바벨 함수를 정의한다면 이런 모습이 될 것이다.
 
 ```js
-const babel = code => code;
+const babel = code => code
 ```
 
 바벨은 파싱과 출력만 담당하고 변환 작업은 다른 녀석이 처리하데 이것을 **"플러그인"** 이라고 부른다.
@@ -91,19 +91,16 @@ module.exports = function myplugin() {
   return {
     visitor: {
       Identifier(path) {
-        const name = path.node.name;
+        const name = path.node.name
 
         // 바벨이 만든 AST 노드를 출력한다
-        console.log('Identifier() name:', name)
+        console.log("Identifier() name:", name)
 
         // 변환작업: 코드 문자열을 역순으로 변환한다
-        path.node.name = name
-          .split("")
-          .reverse()
-          .join("");
-      }
+        path.node.name = name.split("").reverse().join("")
+      },
     },
-  };
+  }
 }
 ```
 
@@ -147,14 +144,14 @@ module.exports = function myplugin() {
     visitor: {
       // https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-block-scoping/src/index.js#L26
       VariableDeclaration(path) {
-        console.log('VariableDeclaration() kind:', path.node.kind); // const
+        console.log("VariableDeclaration() kind:", path.node.kind) // const
 
-        if (path.node.kind === 'const') {
-          path.node.kind = 'var'
+        if (path.node.kind === "const") {
+          path.node.kind = "var"
         }
       },
     },
-  };
+  }
 }
 ```
 
@@ -224,7 +221,7 @@ module.exports = {
     "@babel/plugin-transform-block-scoping",
     "@babel/plugin-transform-arrow-functions",
     "@babel/plugin-transform-strict-mode",
-  ]
+  ],
 }
 ```
 
@@ -277,9 +274,7 @@ plugins 배열에 사용한 세 개 플러그인을 담았다.
 ```js
 // babel.config.js
 module.exports = {
-  presets: [
-    './mypreset.js'
-  ],
+  presets: ["./mypreset.js"],
 }
 ```
 
@@ -290,10 +285,10 @@ module.exports = {
 
 이처럼 바벨은 목적에 따라 몇 가지 [프리셋](https://babeljs.io/docs/en/presets)을 제공한다.
 
-* preset-env
-* preset-flow
-* preset-react
-* preset-typescript
+- preset-env
+- preset-flow
+- preset-react
+- preset-typescript
 
 preset-env는 ECMAScript2015+를 변환할 때 사용한다.
 바벨 7 이전 버전에는 연도별로 각 프리셋을 제공했지만(babel-reset-es2015, babel-reset-es2016, babel-reset-es2017, babel-reset-latest) 지금은 env 하나로 합쳐졌다.
@@ -313,9 +308,7 @@ npm install -D @babel/preset-env
 ```js
 // babel.config.js:
 module.exports = {
-  presets: [
-    '@babel/preset-env'
-  ]
+  presets: ["@babel/preset-env"],
 }
 ```
 
@@ -349,14 +342,14 @@ var alert = function alert(msg) {
 module.exports = {
   presets: [
     [
-      '@babel/preset-env',
+      "@babel/preset-env",
       {
         targets: {
-          chrome: '79', // 크롬 79까지 지원하는 코드를 만든다
-        }
-      }
-    ]
-  ]
+          chrome: "79", // 크롬 79까지 지원하는 코드를 만든다
+        },
+      },
+    ],
+  ],
 }
 ```
 
@@ -376,15 +369,15 @@ const alert = msg => window.alert(msg);
 module.exports = {
   presets: [
     [
-      '@babel/preset-env',
+      "@babel/preset-env",
       {
         targets: {
-          chrome: '79',
-          ie: '11' // ie 11까지 지원하는 코드를 만든다
-        }
-      }
-    ]
-  ]
+          chrome: "79",
+          ie: "11", // ie 11까지 지원하는 코드를 만든다
+        },
+      },
+    ],
+  ],
 }
 ```
 
@@ -396,7 +389,7 @@ ECMASCript2015의 Promise 객체를 사용하는 코드다.
 
 ```js
 // app.js:
-new Promise();
+new Promise()
 ```
 
 바벨로 처리하면 어떤 결과가 나올까?
@@ -435,16 +428,17 @@ env 프리셋은 폴리필을 지정할 수 있는 옵션을 제공한다.
 module.exports = {
   presets: [
     [
-      '@babel/preset-env',
+      "@babel/preset-env",
       {
-        useBuiltIns: 'usage', // 폴리필 사용 방식 지정
-        corejs: { // 폴리필 버전 지정
-          version: 2
-        }
+        useBuiltIns: "usage", // 폴리필 사용 방식 지정
+        corejs: {
+          // 폴리필 버전 지정
+          version: 2,
+        },
       },
     ],
   ],
-};
+}
 ```
 
 `useBuiltIns`는 어떤 방식으로 폴리필을 사용할지 설정하는 옵션이다.
@@ -493,9 +487,9 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader', // 바벨 로더를 추가한다
+        loader: "babel-loader", // 바벨 로더를 추가한다
       },
-    ]
+    ],
   },
 }
 ```
@@ -507,8 +501,8 @@ module.exports = {
 웹팩은 바벨 로더가 만든 아래 코드를 만나면 core-js를 찾을 것이기 때문이다.
 
 ```js
-require("core-js/modules/es6.promise");
-require("core-js/modules/es6.object.to-string");
+require("core-js/modules/es6.promise")
+require("core-js/modules/es6.object.to-string")
 ```
 
 버전 2로 패키지를 추가하자.
@@ -560,4 +554,3 @@ new Promise();
 바벨이 변환하지 못하는 코드는 폴리필이라 부르는 코드조각을 불러와 결과물에 로딩해서 해결한다.
 
 babel-loader로 웹팩과 함께 사용하면 훨씬 단순하고 자동화된 프론트엔드 개발환경을 갖출 수 있다.
-

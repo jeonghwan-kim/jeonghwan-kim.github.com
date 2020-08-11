@@ -1,5 +1,5 @@
 ---
-title: '[Node.js코드랩] 5.커스텀 모듈 Debug'
+title: "[Node.js코드랩] 5.커스텀 모듈 Debug"
 layout: post
 summary: Debug 모듈을 만듭니다
 seriesId: "555b6438-4a71-51d0-9156-a1d5ca4d5eab"
@@ -15,14 +15,15 @@ category: series
 [Debug](https://github.com/visionmedia/debug) 모듈은 노드에서 가장 많이 사용하는 디버깅 모듈입니다.
 로그를 구조적으로 기록할 수 있다는 점에서 console.log 보다 뛰어납니다.
 Debug가 갖고 있는 장점은 아래 두 가지입니다.
+
 - 태그를 지정한 로그 함수를 만들 수 있다
 - 태그별로 색상을 줘서 로그 식별이 수월하다
 
 사용 방법은 아래처럼 간단합니다.
 
 ```js
-const debug = require('debug')('my_tag')
-debug('my_log') // "my_tag my_log"
+const debug = require("debug")("my_tag")
+debug("my_log") // "my_tag my_log"
 ```
 
 이것을 직접 만들어 보겠습니다.
@@ -84,7 +85,7 @@ debug 모듈의 생성 시점의 기능을 테스트하는 코드인데 태그�
 이것은 반환된 함수를 테스트하는 코드입니다.
 
 모카 프레임웍에서 제공하는 beforeEach() 함수는 테스트 케이스(it) 실행 전마다 동작합니다.
- 매 테스트케이스에서 debug 객체를 만들기 때문에 중복 코드를 이곳에 모아논 것이죠.
+매 테스트케이스에서 debug 객체를 만들기 때문에 중복 코드를 이곳에 모아논 것이죠.
 DRY함은 테스트 코드에서도 예외일 수 없습니다.
 
 반환한 함수에 메세지(msg)를 전달해 실행하면 tag + msg 문자열이 반환되는지 점검하는 코드입니다.
@@ -115,7 +116,7 @@ utils/debug.js 파일을 새로 만들어 같이 확인해 보겠습니다.
 
 ```js
 const debug = tag => {
-  if (!tag) throw Error('tag should be required')
+  if (!tag) throw Error("tag should be required")
 }
 
 module.exports = debug
@@ -162,7 +163,7 @@ debug
 
 태크 문자 색상을 랜덤으로 출력하도록 debug 모듈을 개선해 보세요.
 
-*힌트: [스택오버플로우 How to change node.js's console font color](https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color?answertab=active#tab-top)*
+_힌트: [스택오버플로우 How to change node.js's console font color](https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color?answertab=active#tab-top)_
 
 ## 🐤풀이
 
@@ -178,13 +179,13 @@ debug
 
 ```js
 const colors = [
-  {name: 'cyan',     value: '\x1b[36m'},
-  {name: 'yellow',   value: '\x1b[33m'},
-  {name: 'red',      value: '\x1b[31m'},
-  {name: 'green',    value: '\x1b[32m'},
-  {name: 'magenta',  value: '\x1b[35m'},
+  { name: "cyan", value: "\x1b[36m" },
+  { name: "yellow", value: "\x1b[33m" },
+  { name: "red", value: "\x1b[31m" },
+  { name: "green", value: "\x1b[32m" },
+  { name: "magenta", value: "\x1b[35m" },
 ]
-const resetColor = '\x1b[0m'
+const resetColor = "\x1b[0m"
 ```
 
 힌트에서 언급한 것 처럼 색상 코드를 딕셔너리로 만들었습니다.
@@ -200,11 +201,11 @@ const debug = tag => {
 마지막 color 상수에는 name, value를 가지는 컬러 객체가 랜덤으로 저장 되겠지요.
 
 ```js
-  return msg => {
-    const logString = `${color.value}[${tag}]${resetColor} ${msg}`;
-    console.log(logString);
-    return logString;
-  }
+return msg => {
+  const logString = `${color.value}[${tag}]${resetColor} ${msg}`
+  console.log(logString)
+  return logString
+}
 ```
 
 반환된 함수에서 이 랜덤 색상 객체를 사용합니다.
@@ -216,10 +217,10 @@ logString을 만들때 태그 문자열만 색상을 지정했습니다.
 
 ```js
 // app.js
-const debug = require('../utils/debug')('app')
+const debug = require("../utils/debug")("app")
 // ...
 
-debug('app is initiated')
+debug("app is initiated")
 ```
 
 ```js
@@ -233,13 +234,13 @@ app.listen(port, hostname, () => {
 
 ```js
 // src/Application.js
-const debug = require('../utils/debug')('Application')
+const debug = require("../utils/debug")("Application")
 // ...
 
-  const listen = (port = 3000, hostname = '127.0.0.1', fn) => {
-    _server.listen(port, hostname, fn)
-    debug('server is listening')
-  }
+const listen = (port = 3000, hostname = "127.0.0.1", fn) => {
+  _server.listen(port, hostname, fn)
+  debug("server is listening")
+}
 ```
 
 서버를 실행하면 다음과 같이 예쁜 모양의 로그가 색상 별로 나오는 걸 확인할수 있습니다.
@@ -254,12 +255,9 @@ Debug 모듈은 아래 써드 파티 라이브러리 부분입니다.
 
 ![](/assets/imgs/2018/12/05/struct.png)
 
-
-
 ## 정리
 
-* 커스텀 모듈인 debug를 만들었습니다.
-* 태그와 색상으로 로깅 기능을 개선하였습니다.
-
+- 커스텀 모듈인 debug를 만들었습니다.
+- 태그와 색상으로 로깅 기능을 개선하였습니다.
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)

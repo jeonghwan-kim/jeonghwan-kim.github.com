@@ -1,8 +1,7 @@
 ---
-title: 'Go encoding/json 패키지'
+title: "Go encoding/json 패키지"
 layout: post
-summary:
-  "소프트웨어는 바이트 단위로 데이터를 인식한다. 97이란 바이트 값을 정수로 보면 97이지만 문자로 보면 a다. 메모리 바이트는 해석하는 틀에 따라 달라지는데 이러한 변환을 인코딩s 또는 마샬링s이라고 한다. Go의 encoding이 이를 담당하는 기본 패키지다. 실제로는 인터페이스 타입만 정의 되어 있고 데이터 형태에 따라 서브 패키지로 기능을 제공한다. 그 중 컴퓨터간 통신을 위한 테이터 포맷인 encoding/json 패키지에 대해 살펴 보겠다. 마지막엔 에코 웹프레임웍에서 이를 어떻게 사용하는지 확인하고 글을 마무리하겠다."
+summary: "소프트웨어는 바이트 단위로 데이터를 인식한다. 97이란 바이트 값을 정수로 보면 97이지만 문자로 보면 a다. 메모리 바이트는 해석하는 틀에 따라 달라지는데 이러한 변환을 인코딩s 또는 마샬링s이라고 한다. Go의 encoding이 이를 담당하는 기본 패키지다. 실제로는 인터페이스 타입만 정의 되어 있고 데이터 형태에 따라 서브 패키지로 기능을 제공한다. 그 중 컴퓨터간 통신을 위한 테이터 포맷인 encoding/json 패키지에 대해 살펴 보겠다. 마지막엔 에코 웹프레임웍에서 이를 어떻게 사용하는지 확인하고 글을 마무리하겠다."
 category: dev
 tags: [go]
 ---
@@ -48,7 +47,7 @@ fmt.Prinln(b)          // [123 34 78 97 109 101 34 58 34 ...]
 fmt.Println(string(b)) // {"Name":"Gopher","Age":7}
 ```
 
-JSON 키는 보통 소문자로 시작한다. 구조체로 타입을 정의할 때 태그를 이용하면 프로퍼티명을 변경할 수  있다.
+JSON 키는 보통 소문자로 시작한다. 구조체로 타입을 정의할 때 태그를 이용하면 프로퍼티명을 변경할 수 있다.
 
 ```go
 type User struct {
@@ -228,7 +227,7 @@ input.txt에 기록된 JSON 문자열을 스트림으로 받아서 User 타입�
 
 Go에서 유명한 웹 프레임웍인 [에코(Echo)](https://github.com/labstack/echo)에서는 내부적으로 encoding/json 패키지를 사용해 이를 구현한다.
 
-서버가 요청을 받으면 요청바디를 Go 밸류로 변경하는데 스트림 방식을 사용하고 있다.  DefaultBinder의 [Bind](https://github.com/labstack/echo/blob/master/bind.go#L31) 메소드를 보자
+서버가 요청을 받으면 요청바디를 Go 밸류로 변경하는데 스트림 방식을 사용하고 있다. DefaultBinder의 [Bind](https://github.com/labstack/echo/blob/master/bind.go#L31) 메소드를 보자
 
 ```go
 func (b *DefaultBinder) Bind(i interface{}, c Context) (err error) {
@@ -261,6 +260,6 @@ io.Writer 인터페이스를 구현한 c.Response를 이용해 스트림 기반 
 
 encoding/json 패키지는 JSON 문자열(혹은 바이트 슬라이스)과 타입간의 변환시 사용한다.
 
-문자열을 다룰 때는  json.Marshal, json.Unmashal 함수를 사용한다. json.Marshal은 Go 밸류를 JSON 문자열로 변환하고 json.Unmashal은 그 반대 방향으로 동작한다.
+문자열을 다룰 때는 json.Marshal, json.Unmashal 함수를 사용한다. json.Marshal은 Go 밸류를 JSON 문자열로 변환하고 json.Unmashal은 그 반대 방향으로 동작한다.
 
 스트림 방식으로 데이터를 다룰 때는 json.Encoder, json.Decoder 타입을 사용한다. json.Encoder는 Go 밸류를 JSON 문자열로 변환하고 json.Decoder는 그 반대 방향일 때 사용한다.

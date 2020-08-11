@@ -1,5 +1,5 @@
 ---
-title: '앵귤러로 Todo앱 만들기 4 - 투두 목록 출력하기'
+title: "앵귤러로 Todo앱 만들기 4 - 투두 목록 출력하기"
 layout: post
 category: series
 seriesId: "377d51fb-3cab-5e79-a4e0-8e08a79bbe02"
@@ -9,7 +9,6 @@ featured_image: /assets/imgs/2016/todomvc-logo.png
 summary: Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자
 date: 2016-06-12 09:00:04
 ---
-
 
 ## 컨트롤러에 배열 데이터 만들기
 
@@ -21,20 +20,20 @@ date: 2016-06-12 09:00:04
 js/controllers/TodomvcCtrl.js:
 
 ```javascript
-angular.module('todomvc')
-    .controller('TodomvcCtrl', function ($scope) {
-
-      $scope.todos = [{
-        id: 1,
-        title: '요가 수행하기',
-        completed: false
-      }, {
-        id: 2,
-        title: '어머니 용돈 드리기',
-        completed: true
-      }];
-
-    });
+angular.module("todomvc").controller("TodomvcCtrl", function ($scope) {
+  $scope.todos = [
+    {
+      id: 1,
+      title: "요가 수행하기",
+      completed: false,
+    },
+    {
+      id: 2,
+      title: "어머니 용돈 드리기",
+      completed: true,
+    },
+  ]
+})
 ```
 
 스코프변수에 할당된 todos 배열을 템플릿에 어떻게 출력할 수 있을까?
@@ -45,16 +44,17 @@ angular.module('todomvc')
 index.html:
 
 {% raw %}
+
 ```html
 <div ng-controller="TodomvcCtrl">
-      <h1>Todos</h1>
-      <pre>{{todos | json}}</pre>
+  <h1>Todos</h1>
+  <pre>{{todos | json}}</pre>
 </div>
 ```
+
 {% endraw %}
 
 ![](/assets/imgs/2016/lecture-todomvc-angular-2-result4.png)
-
 
 ## ngRepeat으로 배열 출력하기
 
@@ -66,9 +66,9 @@ index.html:
 ```html
 <ul ng-repeat="todo in todos track by $index">
   <li>
-      <input type="checkbox" ng-model="todo.completed">
-      <input type="text" ng-model="todo.title">
-      <button type="button">Remove</button>
+    <input type="checkbox" ng-model="todo.completed" />
+    <input type="text" ng-model="todo.title" />
+    <button type="button">Remove</button>
   </li>
 </ul>
 ```
@@ -104,14 +104,15 @@ index.html:
 ```html
 <ul ng-repeat="todo in todos">
   <li>
-      <input type="checkbox" ng-model="todo.completed">
-      <input type="text" ng-model="todo.title">
+    <input type="checkbox" ng-model="todo.completed" />
+    <input type="text" ng-model="todo.title" />
 
-      <!-- ng-click 디렉티브로 컨트롤러의 remove() 함수와 연결했다. -->
-      <button type="button" ng-click="remove(todo.id)">Remove</button>
+    <!-- ng-click 디렉티브로 컨트롤러의 remove() 함수와 연결했다. -->
+    <button type="button" ng-click="remove(todo.id)">Remove</button>
   </li>
 </ul>
 ```
+
 `ng-click` 디렉티브로 컨트롤러의 `remove()` 함수와 연결했다.
 그리고 삭제할 투두의 `id`를 파라메터로 넘겨 줬다.
 여기서 `todo.id`에 접근할 수 있는 것은 `ng-repeat` 반복문 안에 있기 때문이다.
@@ -120,23 +121,19 @@ index.html:
 그리고 템플릿에서 사용할 수 있으려면 todos 배열과 마찬가지고 스코프 변수에 추가해야 한다.
 
 ```javascript
-angular.module('todomvc')
-    .controller('TodomvcCtrl', function ($scope) {
+angular.module("todomvc").controller("TodomvcCtrl", function ($scope) {
+  $scope.remove = function (id) {
+    if (!id) return
 
-      $scope.remove = function (id) {
-        if (!id) return;
+    // 배열에서 제거할 인덱스를 검색
+    var deleltedTodoIdx = $scope.todos.findIndex(function (todo) {
+      return todo.id === id
+    })
 
-        // 배열에서 제거할 인덱스를 검색
-        var deleltedTodoIdx = $scope.todos.findIndex(function (todo) {
-          return todo.id === id;
-        });
+    if (deleltedTodoIdx === -1) return
 
-        if (deleltedTodoIdx === -1) return;
-
-        // 배열에서 제거
-        $scope.todos.splice(deleltedTodoIdx, 1);
-      }
-
-    });
-
+    // 배열에서 제거
+    $scope.todos.splice(deleltedTodoIdx, 1)
+  }
+})
 ```

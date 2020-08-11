@@ -1,9 +1,9 @@
 ---
-title: '앵귤러로 Todo앱 만들기 1 - 노드설치'
+title: "앵귤러로 Todo앱 만들기 1 - 노드설치"
 layout: post
 category: series
 seriesId: "377d51fb-3cab-5e79-a4e0-8e08a79bbe02"
-tags: [angularjs ,nodejs ,lecture]
+tags: [angularjs, nodejs, lecture]
 permalink: /lectures/todomvc-angular/1/
 featured_image: /assets/imgs/2016/todomvc-logo.png
 summary: Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자
@@ -14,7 +14,6 @@ date: 2016-06-12 09:00:01
 본 시리즈는 총 20개의 포스트로 구성되어 있고 앵귤러와 노드 초심자를 위한 내용이다.
 하나씩 따라해 보면 어느덧 백엔드 기능을 갖춘 풀스텍 웹 서비스 코드를 작성하는 본인을 발견하게 될 것이다.
 
-
 ## 노드 설치
 
 잠시만!
@@ -22,7 +21,6 @@ date: 2016-06-12 09:00:01
 웹서비스를 만들어야 하기 때문이다.
 우문우답 같지 들릴지 모르겠다.
 그러면 간단히 웹서비스의 구조에 대해 알아본뒤 다시 돌아오자.
-
 
 ## 웹서버의 기능
 
@@ -60,7 +58,6 @@ json을 어떻게 보내줄까?
 웹서버는 앵귤러 파일을 비롯한 정적파일들을 웹프라우저로 보내줄 것인데 이것이 노드서버의 기능 중 하나이다.
 그리고 다운로드한 앵귤러 파일은 서버로 추가적인 api 요청을 할 것인데 노드는 이 api 기능을 제공할 것이다.
 그래서 우리는 노드드부터 시작하는 것이다.
-
 
 ## 진짜 노드 설치
 
@@ -113,7 +110,6 @@ hello world!
 
 name이 상수로 선언되었기 때문에 처음 할당한 값 "Chris"가 "Mars"로 변경되지 않는다.
 노드는 제대로 설치 된것 같다.
-
 
 ## NPM
 

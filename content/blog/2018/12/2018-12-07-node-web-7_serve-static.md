@@ -1,5 +1,5 @@
 ---
-title: '[Node.js코드랩] 7.커스텀 모듈 serve-static'
+title: "[Node.js코드랩] 7.커스텀 모듈 serve-static"
 layout: post
 summary: serve-static 모듈을 만듭니다
 category: series
@@ -50,21 +50,21 @@ module.exports = serveStatic;
 그럼 src/Application.js에서 이 모듈을 가져다 사용하겠습니다.
 
 ```js
-const serveStatic = require('./serve-static')
+const serveStatic = require("./serve-static")
 
 const _server = http.createServer((req, res) => {
   serveStatic(req, res) // serve-static 모듈 사용
 
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/html');
+  res.statusCode = 200
+  res.setHeader("Content-Type", "text/html")
 
-  const filePath = path.join(__dirname, '../public/index.html')
+  const filePath = path.join(__dirname, "../public/index.html")
   fs.readFile(filePath, (err, data) => {
-    if (err) throw err;
+    if (err) throw err
 
-    res.end(data);
+    res.end(data)
   })
-});
+})
 ```
 
 요청이 오는 즉시 serveStatic 모듈에 req, res 인자를 넘겨서 실행했습니다.

@@ -19,12 +19,12 @@ summary: 자바스크립트의 네 가지 컨텍스트 바인딩에 대한 우�
 
 ```js
 function hello() {
-  console.log(this.name);
+  console.log(this.name)
 }
 
-var name = 'chris';
+var name = "chris"
 
-hello(); // "chris"
+hello() // "chris"
 ```
 
 기본적인 함수 실행이다.
@@ -42,15 +42,15 @@ hello(); // "chris"
 
 ```js
 function hello() {
-  console.log(this.name);
+  console.log(this.name)
 }
 
-var name = 'chris';
+var name = "chris"
 
-(function() {
-  'use strict';
-  hello(); // "chris"
-})();
+;(function () {
+  "use strict"
+  hello() // "chris"
+})()
 ```
 
 엄격모드에서 `hello()` 함수를 호출했더라도 함수 실행부가 비엄격 모드라면 컨텍스트는 전역 객체에 바인딩된다.
@@ -70,15 +70,15 @@ var name = 'chris';
 
 ```js
 function hello() {
-  console.log(this.name);
+  console.log(this.name)
 }
 
 var obj = {
-  name: 'chris',
-  hello: hello
-};
+  name: "chris",
+  hello: hello,
+}
 
-obj.hello(); // 'chris'
+obj.hello() // 'chris'
 ```
 
 `obj` 객체의 `hello` 프로퍼티에 `hello()` 함수의 레퍼런스를 할당했다.
@@ -89,19 +89,19 @@ obj.hello(); // 'chris'
 
 ```js
 function hello() {
-  console.log(this.name);
+  console.log(this.name)
 }
 
 var obj = {
-  name: 'chris',
-  hello: hello
-};
+  name: "chris",
+  hello: hello,
+}
 
-helloFn = obj.hello;
+helloFn = obj.hello
 
-name = 'global context!'
+name = "global context!"
 
-helloFn(); // 'chris'일까 'global context!'일까?
+helloFn() // 'chris'일까 'global context!'일까?
 ```
 
 `obj` 객체의 프로퍼티에 `hello()` 함수를 할당했지만, `helloFn`에 레퍼런스를 저장하는 순간 이것은 일반 함수가 된다.
@@ -114,17 +114,17 @@ helloFn(); // 'chris'일까 'global context!'일까?
 
 ```js
 function hello() {
-  console.log(this.name);
+  console.log(this.name)
 }
 
 var obj = {
-  name: 'chris',
-  hello: hello
-};
+  name: "chris",
+  hello: hello,
+}
 
-setTimeout(obj.hello, 1000); // 1초 후에 hello 함수가 동작하면 this는?
+setTimeout(obj.hello, 1000) // 1초 후에 hello 함수가 동작하면 this는?
 
-name = 'global context!';
+name = "global context!"
 ```
 
 `setTimeout()` 함수에 콜백함수로 `obj.hello`를 넘겨줬다.
@@ -145,15 +145,15 @@ name = 'global context!';
 
 ```js
 function hello() {
-  console.log(this.name);
+  console.log(this.name)
 }
 
 var obj = {
-  name: 'chris',
-};
+  name: "chris",
+}
 
-name = 'global context!';
-hello.call(obj); // "chris"
+name = "global context!"
+hello.call(obj) // "chris"
 ```
 
 `call()`는 Function.prototype 객체의 프로퍼티 중의 하나다.
@@ -169,16 +169,16 @@ hello.call(obj); // "chris"
 
 ```js
 function hello() {
-  console.log(this.name);
+  console.log(this.name)
 }
 
 var obj = {
-  name: 'chris'
-};
+  name: "chris",
+}
 
-setTimeout(obj.hello.bind(obj), 1000); // 1초 후에 hello 함수가 동작하면 this는?
+setTimeout(obj.hello.bind(obj), 1000) // 1초 후에 hello 함수가 동작하면 this는?
 
-name = 'global context!';
+name = "global context!"
 ```
 
 `obj.hello`를 넘겨줄 때는 글로벌 컨택스트가 바인딩되는 반면, `obj.hello.bind(obj)`를 넘겨주면 `obj` 객체가 `hello()` 함수 실행시 this 컨택스트로 바인딩해서 실행하라는 의미다.
@@ -191,16 +191,16 @@ name = 'global context!';
 
 ```js
 function hello() {
-  console.log(this.name);
+  console.log(this.name)
 }
 
 var obj = {
-  name: 'chris',
-  hello: hello
-};
+  name: "chris",
+  hello: hello,
+}
 
-obj.hello(); // 'chris'
-obj.hello.call({name: 'alice'}); // 'alice
+obj.hello() // 'chris'
+obj.hello.call({ name: "alice" }) // 'alice
 ```
 
 `obj.hello()`는 암시적 바인딩 규칙이 적용되어 `obj` 객체가 바인딩된다.
@@ -219,8 +219,8 @@ obj.hello.call({name: 'alice'}); // 'alice
 
 자바스크립트 함수 앞에 new를 붙여서 실행하며 다음과 같은 일이 일어난다.
 
-* 새로운 객체를 반환한다
-* 새로운 객체는 객체의 메소드 호출시 this로 바인딩 된다
+- 새로운 객체를 반환한다
+- 새로운 객체는 객체의 메소드 호출시 this로 바인딩 된다
 
 아래 `Person()` 함수를 `new` 키워드로 호출하면 어떤 일이 일어날까?
 
@@ -251,15 +251,15 @@ function hello(name) {
 }
 
 var obj1 = {
-  hello: hello
-};
+  hello: hello,
+}
 
-obj1.hello('chris');
-console.log(obj1.name); // chris
+obj1.hello("chris")
+console.log(obj1.name) // chris
 
-var obj2 = new obj.hello('alice')
-console.log(obj1.name); // chris
-console.log(obj2.name); // alice
+var obj2 = new obj.hello("alice")
+console.log(obj1.name) // chris
+console.log(obj2.name) // alice
 ```
 
 `obj1.hello('chris')`를 실행하면 암시적 바인딩 규칙에 의해 `obj1` 객체가 컨택스트로 바인딩된다.
@@ -285,16 +285,15 @@ function hello(name) {
   this.name = name
 }
 
-var obj1 = {
-};
+var obj1 = {}
 
-var helloFn = hello.bind(obj1);
-helloFn('chris');
-console.log(obj1.name); // chris
+var helloFn = hello.bind(obj1)
+helloFn("chris")
+console.log(obj1.name) // chris
 
-var obj2 = new helloFn('alice')
-console.log(obj1.name); // chris
-console.log(obj2.name); // alice
+var obj2 = new helloFn("alice")
+console.log(obj1.name) // chris
+console.log(obj2.name) // alice
 ```
 
 `hello.bind(obj1)`를 이용해 `obj1` 객체를 `hello()` 함수의 컨택스트로 하드 바인딩 처리했다.
@@ -319,7 +318,7 @@ console.log(obj2.name); // alice
 **1) new로 함수를 호출했는가? 그럼 실행결과 반환되는 값이 this다.**
 
 ```js
-var obj = new hello(); // this === obj
+var obj = new hello() // this === obj
 ```
 
 **2) call, apply, bind로 함수를 호출했는가? 그럼 인자로 넘겨준 객체가 this다.**
@@ -334,7 +333,7 @@ hello.bind(obj)() // this === obj
 **3) 객체 프로퍼티로 접근하여 함수를 실행했는가? 그럼 이 객체가 this다.**
 
 ```js
-obj.hello(); // this === obj
+obj.hello() // this === obj
 ```
 
 **4) 이외의 경우는 this는 전역 객체다.**
@@ -358,9 +357,9 @@ function hello() {
   console.log(this.name)
 }
 
-var name = 'chris'
+var name = "chris"
 
-hello.call(null); // "chris"
+hello.call(null) // "chris"
 ```
 
 `hello.call(null)`로 `hello()` 함수를 실행하면 this는 전역객체를 바라본다.
@@ -370,11 +369,11 @@ hello.call(null); // "chris"
 
 ```js
 function sum(a, b) {
-  return a + b;
+  return a + b
 }
 
 var add5 = sum.bind(null, 5)
-add5(2); // 7
+add5(2) // 7
 ```
 
 `sum.bind(null, 5)`는 `sum()` 함수 실행시 컨택스트를 명시하지 않았다.
@@ -409,19 +408,21 @@ ES6부터 사용할수 있는 화살표 함수(arrow function)는 기존의 컨�
 
 ```js
 function hello() {
-  setTimeout(function callback(){ console.log(this.name) })
+  setTimeout(function callback() {
+    console.log(this.name)
+  })
 }
 
 var obj = {
-  name: 'chris',
-  hello: hello
-};
+  name: "chris",
+  hello: hello,
+}
 
-var name = 'global contenxt!'
+var name = "global contenxt!"
 
-hello(); // 'global contenxt!'
-obj.hello(); // 'global contenxt!'
-hello.call({name: 'chris'}); // 'global contenxt!'
+hello() // 'global contenxt!'
+obj.hello() // 'global contenxt!'
+hello.call({ name: "chris" }) // 'global contenxt!'
 ```
 
 흔히 발생할 수 있는 실수다.
@@ -441,14 +442,14 @@ function hello() {
   })
 }
 var obj = {
-  name: 'chris',
-  hello: hello
-};
-var name = 'global contenxt!'
+  name: "chris",
+  hello: hello,
+}
+var name = "global contenxt!"
 
-hello(); // 'global contenxt!'
-obj.hello(); // 'chris'
-hello.call({name: 'alice'}); // 'alice'
+hello() // 'global contenxt!'
+obj.hello() // 'chris'
+hello.call({ name: "alice" }) // 'alice'
 ```
 
 화살표 함수는 상위 블록의 컨텍스트를 this로 사용한다고 했다.

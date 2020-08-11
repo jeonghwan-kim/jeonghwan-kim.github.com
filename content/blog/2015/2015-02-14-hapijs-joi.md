@@ -10,6 +10,7 @@ category: series
 seriesId: "f390bf73-face-589a-be3e-5d38fc5f704b"
 tags: [hapijs]
 ---
+
 <a title="Hapi 시작하기" href="http://whatilearn.com/start-with-hapi/">지난 포스트</a>에서 Hapi 프레임웍을 이용한 라우팅을 구현하였고 파라메터를 얻는 방법을 잠깐 언급하였다. REST Api에서 파라메터를 입력받는 것은 비지니스 로직을 처리하기 위한 첫 단계다. 파라메터를 제대로 검증하는 것이 로직 구현에 있어 안정적이다. 익스프레스 모듈을 사용할 때는 별도로 파라메터 검증 모듈을 만들어서 사용했다. 실제 익스프레스용 검증 모듈이 있는지는 모르겠으만, 비지니스 로직과 파라메터 검증 로직이 결합(cohesion)되어 있었다는 생각이 든다. Hapi에서는 이러한 검증로직을 완전히 분리할 수 있다. 즉 프로토콜 로직에 들어가지 전에 파라매터를 검증하자는 것이다.
 
 <a href="https://github.com/hapijs/joi">Joi</a>는 Hapi에서 검증용도로 사용하는 모듈이다. 사이트에서는 'Object schema description language and validator for JavaScript objects.'라고 설명되어 있다. 자바스크립트 객체를 검증하는 것이고 스키마를 모델링할 수 있는 언어(?)라고 설명한다. 이번 포스트에서는 Hapi 라우팅에서 파라매터 검증과 추상화된 서버 자원의 모델을 Joi 모듈을 통해 구현해 보자.
@@ -43,24 +44,24 @@ server.route({
 /users/{id} (GET)에 대한 라우팅으로 서버자원 중 user id에 해당하는 유저 정보를 조회하는 프로토콜이다. 여기서 파라메터인 {id}는 req.params.id로 값을 읽을 수 있다. 위 코드에서는 라우팅의 핸들러 함수에서 파라메터를 검증 로직과 서버 자원을 조회하는 로직이 섞여있다. Hapi는 route() 함수에서 handler 속성 뿐만 아니라 <code>config</code> 속성을 통해 파라매터를 검증할 수 있다. 다음 코드를 보자.
 
 ```js
-var Joi = require('joi');
+var Joi = require("joi")
 
 server.route({
-  method: 'GET',
-  path:'/users/{id}',
+  method: "GET",
+  path: "/users/{id}",
   handler: function (req, reply) {
-    reply({user: users[req.params.id]});
+    reply({ user: users[req.params.id] })
   },
 
   // config.validate 속성에 검증 로직을 추가한다. 일종의 스키마 형태
   config: {
     validate: {
       params: {
-        id: Joi.number().integer().min(0).max(users.length)
-      }
-    }
-  }
-});
+        id: Joi.number().integer().min(0).max(users.length),
+      },
+    },
+  },
+})
 ```
 
 <code>config.validate</code> 속성에 자바스크립트 객체를 설정했다. 위에 설정한 것을 해석해 보면 params 중에 id라는 값을 받고 이것은 숫자형태이고 정수이며 0보다 크고 users 배열의 길이보다 작은 것이어야 한다. handler 함수는 훨씬 간결해졌다. 만약 Joi 스키마로 설정한 값과 다른 값을 입력할 경우 Hapi는 아래와 같이 에러 메세지로 응답한다. '/users/12'로 프로토콜 호출한 경우다.
@@ -92,37 +93,36 @@ User 모델을 Joi 로 구현해 보자.
 ```js
 /* app/models/User.js */
 
-'use strict';
+"use strict"
 
-var Joi = require('joi');
+var Joi = require("joi")
 
-exports.getSchema = function() {
+exports.getSchema = function () {
   return {
     id: Joi.number().integer().min(0).max(4),
-    name: Joi.string().min(2).max(20)
-  };
-};
+    name: Joi.string().min(2).max(20),
+  }
+}
 ```
 
 기존 라우팅 함수에서는 이 스키마를 가져다 사용한다.
 
 ```js
 server.route({
-  method: 'GET',
-  path:'/users/{id}',
+  method: "GET",
+  path: "/users/{id}",
   handler: function (req, reply) {
-    reply({user: users[req.params.id]});
+    reply({ user: users[req.params.id] })
   },
   config: {
     validate: {
       params: {
-
         // 미리 정의한 Joi 스키마를 활용한다.
-        id: UserSchema.id.required()
-      }
-    }
-  }
-});
+        id: UserSchema.id.required(),
+      },
+    },
+  },
+})
 ```
 
 # 로직과 검증 모듈화
@@ -132,55 +132,55 @@ server.route({
 ```js
 /* users.ctrl.js */
 
-var users = ['Chris', 'Mod', 'Daniel', 'JT', 'Justin'];
+var users = ["Chris", "Mod", "Daniel", "JT", "Justin"]
 
 exports.find = function (req, reply) {
-  reply({users: users});
-};
+  reply({ users: users })
+}
 
 exports.query = function (req, reply) {
-  reply({user: users[req.params.id]});
-};
+  reply({ user: users[req.params.id] })
+}
 
 exports.insert = function (req, reply) {
-  users.push(req.payload.name);
-  reply({users: users});
-};
+  users.push(req.payload.name)
+  reply({ users: users })
+}
 
 exports.remove = function (req, reply) {
-  users.splice(req.query.id, 1);
-  reply({users: users});
-};
+  users.splice(req.query.id, 1)
+  reply({ users: users })
+}
 ```
 
 ```js
 /* users.valid */
 
-var UserSchema = require('../../models/User').getSchema();
+var UserSchema = require("../../models/User").getSchema()
 
 exports.query = function () {
   return {
     params: {
-      id: UserSchema.id.required()
-    }
-  };
-};
+      id: UserSchema.id.required(),
+    },
+  }
+}
 
 exports.insert = function () {
   return {
     payload: {
-      name: UserSchema.name.required()
-    }
-  };
-};
+      name: UserSchema.name.required(),
+    },
+  }
+}
 
 exports.remove = function () {
   return {
     query: {
-      id: UserSchema.id.required()
-    }
-  };
-};
+      id: UserSchema.id.required(),
+    },
+  }
+}
 ```
 
 컨트롤과 검증로직을 위 두개의 모듈로 분리할 수 있다. 라우팅 모듈은 아래와 같이 간결함을 유지할 수 있다.
@@ -188,39 +188,37 @@ exports.remove = function () {
 ```js
 /* index.js */
 
-var ctrl = require('./users.ctrl.js');
-var valid = require('./users.valid.js');
+var ctrl = require("./users.ctrl.js")
+var valid = require("./users.valid.js")
 
 module.exports = function (server) {
+  server.route({
+    method: "GET",
+    path: "/users",
+    handler: ctrl.find,
+  })
 
   server.route({
-    method: 'GET',
-    path:'/users',
-    handler: ctrl.find
-  });
-
-  server.route({
-    method: 'GET',
-    path:'/users/{id}',
+    method: "GET",
+    path: "/users/{id}",
     handler: ctrl.query,
-    config: { validate: valid.query() }
-  });
+    config: { validate: valid.query() },
+  })
 
   server.route({
-    method: 'POST',
-    path:'/users',
+    method: "POST",
+    path: "/users",
     handler: ctrl.insert,
-    config: { validate: valid.insert() }
-  });
+    config: { validate: valid.insert() },
+  })
 
   server.route({
-    method: 'DELETE',
-    path:'/users',
+    method: "DELETE",
+    path: "/users",
     handler: ctrl.remove,
-    config: { validate: valid.remove() }
-  });
-
-};
+    config: { validate: valid.remove() },
+  })
+}
 ```
 
 이제는 자원에 해당하는 각 라우팅 폴더에 세 가지 파일을 만들자.

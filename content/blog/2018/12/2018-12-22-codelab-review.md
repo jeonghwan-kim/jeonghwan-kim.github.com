@@ -1,5 +1,5 @@
 ---
-title: '코드랩 시리즈를 마치고 느낀점'
+title: "코드랩 시리즈를 마치고 느낀점"
 layout: post
 summary: 코딩 강의 활동에 대한 이런 저런 생각
 category: think
@@ -7,7 +7,7 @@ category: think
 
 지난달 노드JS 강의는 난이도 조절 실패로 모두가 어려워했다. 종료시간은 다가오고 준비해온 것은 절반도 못해고. 초초하다. 결국에는 나중에 글로 정리해서 공유하겠다고 약속했다. 한 달이 지나서야 블로그에 정리해서 올렸다.
 
-* [🌳[Node.js 코드랩] 소개 및 목차](/series/2018/12/01/node-web-0_index.html)
+- [🌳[Node.js 코드랩] 소개 및 목차](/series/2018/12/01/node-web-0_index.html)
 
 ## 발표의 두려움
 
@@ -15,7 +15,7 @@ category: think
 
 ![in university](/assets/imgs/2018/12/24/in_university.jpg)
 
-첫 직장에서 보안인증심사(ISO27001) 준비를 위한 담당자였다. 경력 2년이 안된 신입사원이  대리, 과장 20여명을 회의실에 모아 놓고 일정과 업무 분장을 지시했다. '내가 제대로 하는건가?', '저들이 내 계획에 딴지라도 걸면 어떻게 하지?' 불안한 생각이 들었고 실수하지 않으려 바짝 긴장해 있었다. 그렇게 남들 앞에서 발표하는 것은 무척 두렵고 스트레스 받는 일이었다.
+첫 직장에서 보안인증심사(ISO27001) 준비를 위한 담당자였다. 경력 2년이 안된 신입사원이 대리, 과장 20여명을 회의실에 모아 놓고 일정과 업무 분장을 지시했다. '내가 제대로 하는건가?', '저들이 내 계획에 딴지라도 걸면 어떻게 하지?' 불안한 생각이 들었고 실수하지 않으려 바짝 긴장해 있었다. 그렇게 남들 앞에서 발표하는 것은 무척 두렵고 스트레스 받는 일이었다.
 
 ## 첫 강의
 
@@ -23,7 +23,7 @@ category: think
 
 코드랩 반응은 의외로 좋았다. 모인 분들은 앵귤러라는 신기술을 실무에서 어떻게 썼는지 꽤나 궁금해 했는데 당시엔 자료가 충분치 않았다. 질문도 많았고 도움이 되서 고맙다는 피드백도 들었다. 무척 뿌듯했다.
 
-* [[양재동 코드랩] AngularJS 강좌](https://www.youtube.com/watch?v=EklH54kysps&list=PLs_XsVQJKaBk_JN5RctLmmVrGwEzpzqaj)
+- [[양재동 코드랩] AngularJS 강좌](https://www.youtube.com/watch?v=EklH54kysps&list=PLs_XsVQJKaBk_JN5RctLmmVrGwEzpzqaj)
 
 ![angular codelab](/assets/imgs/2018/12/24/angular_codelab.jpg)
 
@@ -35,11 +35,11 @@ category: think
 
 요 몇년 사이 유데미와 비슷한 국산 교육 플래폼이 우후죽순으로 생겨나기 시작했다. 난 인프런이란 사이트에 강의 영상을 올리기 시작했다. 이미 익숙한 앵귤러를 시작으로 노드JS와 프론트 엔드 기술 강의 영상을 제작했다.
 
-* [AngularJS 기본 개념과 To-Do 앱 만들기 실습 - 앵귤러 강좌](https://www.inflearn.com/course/angular-앵귤러-강좌/)
-* [테스트주도개발(TDD)로 만드는 NodeJS API 서버](https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api/)
-* [실습 UI 개발로 배워보는 순수 javascript 와 VueJS 개발](https://www.inflearn.com/course/순수js-vuejs-개발-강좌/)
-* [견고한 JS 소프트웨어 만들기](https://www.inflearn.com/course/tdd-견고한-소프트웨어-만들기/)
-* [트렐로 개발을 통한 Vuejs, Vuex, Vue-Router 프론트엔드 실전 기술](https://www.inflearn.com/course/vuejs/)
+- [AngularJS 기본 개념과 To-Do 앱 만들기 실습 - 앵귤러 강좌](https://www.inflearn.com/course/angular-앵귤러-강좌/)
+- [테스트주도개발(TDD)로 만드는 NodeJS API 서버](https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api/)
+- [실습 UI 개발로 배워보는 순수 javascript 와 VueJS 개발](https://www.inflearn.com/course/순수js-vuejs-개발-강좌/)
+- [견고한 JS 소프트웨어 만들기](https://www.inflearn.com/course/tdd-견고한-소프트웨어-만들기/)
+- [트렐로 개발을 통한 Vuejs, Vuex, Vue-Router 프론트엔드 실전 기술](https://www.inflearn.com/course/vuejs/)
 
 온라인의 특징은 명확했다. 시간과 장소의 제약 없는 인터넷 공간 특성 때문에 수강자 수가 비교할 수 없이 많았다. 질문과 피드백도 넘쳐났다. 질문을 보면 사람들이 내 강의의 어떤 부분을 어려워하는지 알 수 있었다. 도움이 되었다는 리뷰를 통해 결과물의 가치를 인정받았다.
 
@@ -47,7 +47,7 @@ category: think
 
 물론 인프런 서비스가 편한것 만은 아니다. 강사와 학생간의 커뮤니케이션 방식이 다소 불편하다. 그럼에도 불구하고 사용자들은 질문하고 도움을 구한다. 불편한 부분은 시간이 해결해 줄 것이라고 본다.
 
-* [교육 플랫폼 인프런, 본엔젤스로부터 5억 투자 유치](https://www.venturesquare.net/767776)
+- [교육 플랫폼 인프런, 본엔젤스로부터 5억 투자 유치](https://www.venturesquare.net/767776)
 
 ## 전문 교육 기관
 

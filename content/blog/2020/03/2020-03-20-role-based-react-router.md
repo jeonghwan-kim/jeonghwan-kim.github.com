@@ -37,9 +37,11 @@ MDN 문서에 보면 의미상 "비인증"을 의미한다라고 나와 있다.
 
 ```ts
 export interface RouteProps {
-  component?: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>;
-  render?: (props: RouteComponentProps<any>) => React.ReactNode;
-  path?: string | string[];
+  component?:
+    | React.ComponentType<RouteComponentProps<any>>
+    | React.ComponentType<any>
+  render?: (props: RouteComponentProps<any>) => React.ReactNode
+  path?: string | string[]
   // 생략
 }
 ```
@@ -83,19 +85,19 @@ const RouteIf = ({ component: Component, ...rest }) => {
       render={props => {
         /* 권한이 없을 경우 */
         if (true) {
-          return <FobiddenPage />;
+          return <FobiddenPage />
         }
 
         /* 권한이 있을 경우 */
         if (Component) {
-          return <Component {...props} />;
+          return <Component {...props} />
         }
 
-        return null;
+        return null
       }}
     />
-  );
-};
+  )
+}
 ```
 
 render() 함수가 시작할때 권한없는 경우를 먼저 검사해서 `<ForbiddenPage>` 컴포넌트를 반환해 버리는 것이다.
@@ -107,8 +109,8 @@ render() 함수가 시작할때 권한없는 경우를 먼저 검사해서 `<For
 const ROLE = {
   NONE: "NONE", // 권한 없음
   READ: "READ", // 읽기 권한
-  WRITE: "WRITE" // 쓰기 권한
-};
+  WRITE: "WRITE", // 쓰기 권한
+}
 ```
 
 권한 없음을 의미하는 "NONE"은 페이지 진입이 안된다.
@@ -129,19 +131,19 @@ const RouteIf = ({ role, component: Component, ...rest }) => {
       render={props => {
         // 권한 체크
         if (role === ROLE.NONE) {
-          return <FobiddenPage />;
+          return <FobiddenPage />
         }
 
         if (Component) {
           // role을 컴포넌트에 전달
-          return <Component {...props} role={role} />;
+          return <Component {...props} role={role} />
         }
 
-        return null;
+        return null
       }}
     />
-  );
-};
+  )
+}
 ```
 
 간단하다. 권한이 없으면 `<ForbiddenPage>` 컴포넌를 반환하고 로직을 종료한다.
@@ -168,8 +170,7 @@ const myRole = {
   productsPage: ROLE.READ, // 상품 관리 화면
   adPage: ROLE.WRITE, // 광고 관리 화면
   // ...
-};
-
+}
 ```
 
 화면에 따른 권한값으로 구성된 객체다.
@@ -207,13 +208,9 @@ const myRole = {
 role 값을 읽기 권한(READ)으로 바꿔보면 어떨까?
 
 ```js
-<RouteIf
-  path="/users"
-  exact
-  component={UserManagePage}
-  role={ROLE.READ}
-/>
+<RouteIf path="/users" exact component={UserManagePage} role={ROLE.READ} />
 ```
+
 role 값이 권한없음(NONE)이 아니므로 component 속성에 연결한 `UserManagePage` 화면을 그릴것이다.
 
 ![read](./imgs/read.jpg)
@@ -223,7 +220,7 @@ role 값이 권한없음(NONE)이 아니므로 component 속성에 연결한 `Us
 이렇게 할수 있는 것은 `<RouteIf>`가 role 정보를 확용한 덕택이다.
 
 ```jsx
-return <Component {...props} role={role} />;
+return <Component {...props} role={role} />
 ```
 
 role 정보를 받은 `<UserManagePage>`는 role 값이 읽기권한(READ)이면 데이터를 수정할 수 있는 컨트롤러를 모두 비활성화 한다.
@@ -246,14 +243,8 @@ const UserManagePage = ({ role }) => {
 
 라우트에서 전달한 role 값이 쓰기 권한(WRITE)일 경우에만 비로소 인풋 요소를 활성화 한다.
 
-
 ```jsx
-<RouteIf
-  path="/users"
-  exact
-  component={UserManagePage}
-  role={ROLE.WRITE}
-/>
+<RouteIf path="/users" exact component={UserManagePage} role={ROLE.WRITE} />
 ```
 
 `<RouteIf>`는 role이 NONE 이 아니므로 화면 접근은 허용한다.
@@ -262,5 +253,4 @@ const UserManagePage = ({ role }) => {
 
 그리고 화면에서는 쓰기권한(WRITE)이기 때문에 요소의 disabled 속성이 해제되어 요소가 활성화 되었다.
 
-
-* 전체코드: [https://github.com/jeonghwan-kim/react-route-sample](https://github.com/jeonghwan-kim/react-route-sample)
+- 전체코드: [https://github.com/jeonghwan-kim/react-route-sample](https://github.com/jeonghwan-kim/react-route-sample)

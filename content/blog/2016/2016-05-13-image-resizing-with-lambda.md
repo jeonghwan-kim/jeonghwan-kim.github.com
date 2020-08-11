@@ -1,8 +1,8 @@
 ---
-title: '람다를 이용해 이미지 리사이징 서버 만들기'
+title: "람다를 이용해 이미지 리사이징 서버 만들기"
 layout: post
 category: dev
-summary: 'AWS 람다(Lambda)와 S3를 이용해 이미지 리사이징 서버를 만들어 보자'
+summary: "AWS 람다(Lambda)와 S3를 이용해 이미지 리사이징 서버를 만들어 보자"
 tags: [aws]
 featured_image: /assets/imgs/2016/lambda-002.png
 permalink: /2016/05/13/image-resizing-with-lambda.html
@@ -19,7 +19,6 @@ permalink: /2016/05/13/image-resizing-with-lambda.html
 
 이번에는 그동안 미루어왔던 AWS 람다서비스의 사용방법에 대해 알아보자.
 람다를 이용해 S3에 업로드한 이미지를 리사이징하여 복제하는 예제로 진행할 것이다.
-
 
 ## Hello World 람다 함수
 
@@ -47,17 +46,17 @@ AWS 콘솔의 람다 서비스 페이지에서 시작하자.
 코드는 간단히 콘솔로그를 찍는 것이었기 때문에 콘솔 로그를 확인하면 함수가 동작한다는 것을 확인할 수 있다.
 
 ```javascript
-'use strict';
-console.log('Loading function');
+"use strict"
+console.log("Loading function")
 
 exports.handler = (event, context, callback) => {
-    //console.log('Received event:', JSON.stringify(event, null, 2));
-    console.log('value1 =', event.key1);
-    console.log('value2 =', event.key2);
-    console.log('value3 =', event.key3);
-    callback(null, event.key1);  // Echo back the first key value
-    // callback('Something went wrong');
-};
+  //console.log('Received event:', JSON.stringify(event, null, 2));
+  console.log("value1 =", event.key1)
+  console.log("value2 =", event.key2)
+  console.log("value3 =", event.key3)
+  callback(null, event.key1) // Echo back the first key value
+  // callback('Something went wrong');
+}
 ```
 
 상단의 "Test"를 클릭하면 함수가 동작할 것이다.
@@ -65,7 +64,6 @@ exports.handler = (event, context, callback) => {
 
 ![](/assets/imgs/2016/lambda-004.png)
 ![](/assets/imgs/2016/lambda-005.png)
-
 
 ## S3 이미지를 복제하는 람다 함수
 
@@ -159,7 +157,6 @@ exports.handler = (event, context, callback) => {
 트리거 기준을 "images/original"로 변경해서 해결했다.
 제대로 돌아간다.
 
-
 ## S3 이미지를 리사이징하는 람다 함수
 
 람다에서 써드파티 라이브러리를 사용하려면 라이브러리 코드를 함께 올려야 한다.
@@ -170,104 +167,110 @@ ImageMagic은 이미지 크기를 변경하는 라이브러리인데 기본 라�
 이번 섹션에서는 ImageMagic으로 이미지 리사이징 잡을 수행하는 람다함수를 만들어보자.
 
 ```javascript
-'use strict';
-console.log('Loading function...');
+"use strict"
+console.log("Loading function...")
 
-const im = require('imagemagick')
-    , aws = require('aws-sdk')
-    , s3 = new aws.S3({ apiVersion: '2006-03-01', region: 'ap-northeast-1' }) // Setup S3 region
-    , sizes = [300, 600, 900] // Add more image size to resize
-    , originalImageKeyPrefix = 'images' // Original image folder
-    , resizedImageKeyPrefix = 'copy' // Resized image folder
-    , debug = true; // Turn off debug flag on production mode
-
+const im = require("imagemagick"),
+  aws = require("aws-sdk"),
+  s3 = new aws.S3({ apiVersion: "2006-03-01", region: "ap-northeast-1" }), // Setup S3 region
+  sizes = [300, 600, 900], // Add more image size to resize
+  originalImageKeyPrefix = "images", // Original image folder
+  resizedImageKeyPrefix = "copy", // Resized image folder
+  debug = true // Turn off debug flag on production mode
 
 if (!debug) {
-    console.log = () => {};
-    console.error = () => {};
+  console.log = () => {}
+  console.error = () => {}
 }
 
 function getObject(params) {
-    console.log('getObject() params', params);
-    return new Promise((resolve, reject) => {
-        s3.getObject(params, (err, data) => {
-            if (err)  reject(err);
-            else {
-                return resolve({
-                    Bucket: params.Bucket,
-                    Key: params.Key,
-                    ContentType: data.ContentType,
-                    Body: data.Body
-                });
-            }
-        });
-    });
+  console.log("getObject() params", params)
+  return new Promise((resolve, reject) => {
+    s3.getObject(params, (err, data) => {
+      if (err) reject(err)
+      else {
+        return resolve({
+          Bucket: params.Bucket,
+          Key: params.Key,
+          ContentType: data.ContentType,
+          Body: data.Body,
+        })
+      }
+    })
+  })
 }
 
 function resize(params) {
-    console.log('resize() params', params);
-    let tasks = sizes.map(size => {
-        return new Promise((resolve, reject) => {
-            const p = {
-                srcData: params.Body,
-                width: size
-            };
-            im.resize(p, (err, stdout, stderr) => {
-                if (err) reject(err);
-                else {
-                    const key = `${resizedImageKeyPrefix}/${params.Key.replace(`${originalImageKeyPrefix}/`, '')}.${p.width}`;
-                    resolve({
-                        Bucket: params.Bucket,
-                        Key: key,
-                        ContentType: params.ContentType,
-                        ACL: 'public-read',
-                        Body: ( Buffer.isBuffer(stdout) ) ? stdout : new Buffer(stdout, "binary")
-                    });
-                }
-            });
-        });
-    });
+  console.log("resize() params", params)
+  let tasks = sizes.map(size => {
+    return new Promise((resolve, reject) => {
+      const p = {
+        srcData: params.Body,
+        width: size,
+      }
+      im.resize(p, (err, stdout, stderr) => {
+        if (err) reject(err)
+        else {
+          const key = `${resizedImageKeyPrefix}/${params.Key.replace(
+            `${originalImageKeyPrefix}/`,
+            ""
+          )}.${p.width}`
+          resolve({
+            Bucket: params.Bucket,
+            Key: key,
+            ContentType: params.ContentType,
+            ACL: "public-read",
+            Body: Buffer.isBuffer(stdout)
+              ? stdout
+              : new Buffer(stdout, "binary"),
+          })
+        }
+      })
+    })
+  })
 
-    console.log('resize() tasks', tasks);
-    return Promise.all(tasks);
+  console.log("resize() tasks", tasks)
+  return Promise.all(tasks)
 }
 
 function putObject(params) {
-    console.log('putObject() params', params);
-    let tasks = params.map(param => {
-        return new Promise((resolve, reject) => {
-           s3.putObject(param, (err, data) => {
-               if (err)  reject(err);
-               else resolve(data);
-           });
-        });
-    });
-    console.log('putObject() tasks', tasks)
-    return Promise.all(tasks);
+  console.log("putObject() params", params)
+  let tasks = params.map(param => {
+    return new Promise((resolve, reject) => {
+      s3.putObject(param, (err, data) => {
+        if (err) reject(err)
+        else resolve(data)
+      })
+    })
+  })
+  console.log("putObject() tasks", tasks)
+  return Promise.all(tasks)
 }
 
 exports.handler = (event, context, callback) => {
-    console.log('Received event:', JSON.stringify(event, null, 2));
+  console.log("Received event:", JSON.stringify(event, null, 2))
 
-    // Get the object from the event and show its content type
-    const bucket = event.Records[0].s3.bucket.name;
-    const key = decodeURIComponent(event.Records[0].s3.object.key.replace(/\+/g, ' '));
-    const params = {Bucket: bucket, Key: key};
-    console.log('params', params);
+  // Get the object from the event and show its content type
+  const bucket = event.Records[0].s3.bucket.name
+  const key = decodeURIComponent(
+    event.Records[0].s3.object.key.replace(/\+/g, " ")
+  )
+  const params = { Bucket: bucket, Key: key }
+  console.log("params", params)
 
-    Promise.resolve(params)
-        .then(getObject)
-        .then(resize)
-        .then(putObject)
-        .then(result => {
-            console.log(result);
-            callback(null, result);
-        })
-        .catch(err => {
-            console.error(err);
-            callback(err);
-        });
-};
+  Promise.resolve(params)
+    .then(getObject)
+    .then(resize)
+    .then(putObject)
+    .then(result => {
+      console.log(result)
+      callback(null, result)
+    })
+    .catch(err => {
+      console.error(err)
+      callback(err)
+    })
+}
 ```
 
 [imageMagic 참고 소스](https://github.com/ysugimoto/aws-lambda-image

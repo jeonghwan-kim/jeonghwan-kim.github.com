@@ -1,5 +1,5 @@
 ---
-title: '앵귤러로 Todo앱 만들기 2 - 앵귤러 로딩'
+title: "앵귤러로 Todo앱 만들기 2 - 앵귤러 로딩"
 layout: post
 category: series
 seriesId: "377d51fb-3cab-5e79-a4e0-8e08a79bbe02"
@@ -9,7 +9,6 @@ featured_image: /assets/imgs/2016/todomvc-logo.png
 summary: Angular.js, Node.js를 이용해서 Todo앱을 만들어 보자
 date: 2016-06-12 09:00:02
 ---
-
 
 ## index.html
 
@@ -24,14 +23,15 @@ index.html:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1, user-scalable=yes">
-  <title>Angular | TodoMVC</title>
-</head>
-<body>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=yes"
+    />
+    <title>Angular | TodoMVC</title>
+  </head>
+  <body></body>
 </html>
 ```
 
@@ -46,7 +46,6 @@ index.html:
 그럼 앵귤러는 어디서 다운받아야할까?
 물론 제이쿼리처럼 CDN을 제공하기는 하나 우리는 NPM을 통해 직접 프로젝트 폴더에 다운받아 볼 셈이다.
 
-
 ## 앵귤러 설치
 
 ```bash
@@ -54,9 +53,10 @@ $ npm install angular --save
 ```
 
 npm 명령어를 이렇게 사용하면
-1) 앵귤러 라이브러리가 node_modules 폴더 아래에 다운로드 되고,
-2) package.json 파일에 관련 정보가 추가된다. (--save 옵션 때문)
-1에서 다운받은 앵귤러는 index.html에 추가하면 될것인데 package.json 파일에 추가한 이유는 뭘까?
+
+1. 앵귤러 라이브러리가 node_modules 폴더 아래에 다운로드 되고,
+2. package.json 파일에 관련 정보가 추가된다. (--save 옵션 때문)
+   1에서 다운받은 앵귤러는 index.html에 추가하면 될것인데 package.json 파일에 추가한 이유는 뭘까?
 
 만약 이 프로젝트 소스를 다른 개발자와 함께 개발한다고 가정해 보자.
 보통 소스코드에는 추가한 라이브러리 코드는 넣지 않는다.
@@ -71,7 +71,6 @@ npm 명령어를 이렇게 사용하면
 $ npm install
 ```
 
-
 ## 앵귤러 로딩
 
 다운받은 앵귤러 라이브러리는 html 파일에서 로딩한다.
@@ -81,11 +80,10 @@ index.html:
 ```html
 <!-- ng-app으로 todomvc 앵귤러 모듈 사용을 브라우저에게 알린다 -->
 <body ng-app="todomvc">
+  <!-- 앵귤러 로딩 -->
+  <script src="node_modules/angular/angular.js"></script>
 
-<!-- 앵귤러 로딩 -->
-<script src="node_modules/angular/angular.js"></script>
-
-<script src="js/app.js"></script>
+  <script src="js/app.js"></script>
 </body>
 ```
 
@@ -97,7 +95,7 @@ index.html:
 js/app.js:
 
 ```javascript
-angular.module('todoapp', []);
+angular.module("todoapp", [])
 ```
 
 브라우져에서 index.html 파일을 띄우면 angular.js와 app.js 파일이 함께 다운로드되는 것을 확인할 수 있다.

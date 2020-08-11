@@ -52,14 +52,16 @@ grep.pipe(wc)
 먼저 큰 파일을 만들어 보죠.
 
 ```js
-const fs = require('fs');
-const file = fs.createWriteStream('./big.file');
+const fs = require("fs")
+const file = fs.createWriteStream("./big.file")
 
-for(let i=0; i<= 1e6; i++) {
-  file.write('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n');
+for (let i = 0; i <= 1e6; i++) {
+  file.write(
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n"
+  )
 }
 
-file.end();
+file.end()
 ```
 
 제가 큰 파일을 만들기 위해 무엇을 사용했는지 보세요. 쓰기 가능한 스트림이죠!
@@ -71,18 +73,18 @@ file.end();
 아래는 `big.file`만 제공하도록 디자인된 간단한 노드 웹 서버입니다.
 
 ```js
-const fs = require('fs');
-const server = require('http').createServer();
+const fs = require("fs")
+const server = require("http").createServer()
 
-server.on('request', (req, res) => {
-  fs.readFile('./big.file', (err, data) => {
-    if (err) throw err;
+server.on("request", (req, res) => {
+  fs.readFile("./big.file", (err, data) => {
+    if (err) throw err
 
-    res.end(data);
-  });
-});
+    res.end(data)
+  })
+})
 
-server.listen(8000);
+server.listen(8000)
 ```
 
 요청을 받은 서버는 비동기 메소드인 `fs.readFile`로 큰 파일을 제공할 것입니다. 하지만 여러분, 이벤트 루프를 막는 것이 좋은 방법은 아닌것 같은데...... 모든 것이 훌륭한가요? 그런가요?
@@ -106,15 +108,15 @@ HTTP 응답 객체(위 코드의 `res`)는 쓰기 가능한 객체이기도 합�
 노드의 `fs` 모듈은 어떠한 파일에 대해서도 `createReadStream` 메소드를 이용하면 읽기 가능한 스트림을 제공해 줍니다.
 
 ```js
-const fs = require('fs');
-const server = require('http').createServer();
+const fs = require("fs")
+const server = require("http").createServer()
 
-server.on('request', (req, res) => {
-  const src = fs.createReadStream('./big.file');
-  src.pipe(res);
-});
+server.on("request", (req, res) => {
+  const src = fs.createReadStream("./big.file")
+  src.pipe(res)
+})
 
-server.listen(8000);
+server.listen(8000)
 ```
 
 이제 다시 서버에 접속하면 마법이 일어납니다! (아래 메모리 사용량을 보세요).

@@ -19,7 +19,6 @@ Uncaught TypeError: Object prototype may only be an Object or null: undefined
 
 > 웬지 서큘라 디펜던시 냄시가 난다ㅠㅠㅠ
 
-
 # 모듈 의존성
 
 코드를 파일로 분리하고 이것을 다른 파일이 불러와 사용하기 위해 우리는 모듈시스템을 사용한다.
@@ -37,11 +36,11 @@ A.js 모듈에 있는 A 클래스를 보자.
 ```js
 // A.js
 
-import B from "./B.js";
+import B from "./B.js"
 
 export default class A extends B {
-  constructor () {
-    super();
+  constructor() {
+    super()
   }
 }
 ```
@@ -52,11 +51,9 @@ A 클래스는 B 클래스를 상속하기 때문에 B.js 모듈을 가져와야
 // B.js
 
 export default class B {
-  constructor() {
-  }
+  constructor() {}
 }
 ```
-
 
 # 순환 참조(Circular Dependancy)
 
@@ -68,13 +65,13 @@ A,B,C 순으로 모듈 의존성이 있는 와중에 마지막 C 모듈이 A모�
 꼬리를 무는 형태의 원이 생기는 것이고 이것을 **"순환 참조"**, **"Circualr dependancy"** 라고 말한다.
 프로젝트가 커지고 개발자가 많아지다 보니 이런 경우가 생긴 것 같다.
 
-
 ```js
 // B.js
 
-import A from "./A.js";
+import A from "./A.js"
 
-export default class B extends A { // 순환 참조 발생 !
+export default class B extends A {
+  // 순환 참조 발생 !
   constructor() {
     super()
   }
@@ -116,22 +113,21 @@ Uncaught ReferenceError: Cannot access 'A' before initialization
 ```js
 // a.js
 
-import {b} from "/b.js"
+import { b } from "/b.js"
 
-export const a = "a";
-console.log(b);
+export const a = "a"
+console.log(b)
 ```
 
 a 모듈은 b 모듈을 가져온다.
 
-
 ```js
 // b.js
 
-import {a} from "./a.js"
+import { a } from "./a.js"
 
-export const b = "b";
-console.log(a);
+export const b = "b"
+console.log(a)
 ```
 
 b 모듈도 a 모듈을 가져온다.
@@ -162,8 +158,8 @@ Uncaught ReferenceError: Cannot access 'a' before initialization
 하지만 이 모든 것이 문제를 일으키지는 않는다.
 모두 해결할 필요는 없을 것 같고 순환 참조라고 의심 될만한 문제가 발생했을 때 진단 도구로 사용하는 정도면 충분할 듯 하다.
 
-
 # 참고
+
 - [[번역] 자바스크립트 & 타입스크립트의 순환 참조를 한방에 해결하는 방법](https://rinae.dev/posts/fix-circular-dependency-kr)
 - [Circular dependencies in JavaScript a.k.a. Coding is not a rock-paper-scissors game](https://medium.com/content-uneditable/circular-dependencies-in-javascript-a-k-a-coding-is-not-a-rock-paper-scissors-game-9c2a9eccd4bc)
 - [[영상]Circular dependencies in JavaScript](https://www.youtube.com/watch?v=JQQX62cUaYw)

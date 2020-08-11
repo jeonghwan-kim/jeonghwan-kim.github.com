@@ -9,6 +9,7 @@ permalink: /%ea%b8%b0%ec%a1%b4-%ed%94%84%eb%a1%9c%ec%a0%9d%ed%8a%b8%ec%99%80-swa
 category: dev
 tags: [swagger]
 ---
+
 모바일 API를 개발하면서 클라이언트 개발자와 협업하기 위해 API 문서를 작성한다. 보통은 깃헙 위키를 사용하는데 쉽게 편집하고 공개할수 있는게 장점이 다. 한 때는 [APIDOC](http://apidocjs.com/)을 사용하기도 했다. 코드에 주석으로 문서를 작성하면 html 파일로 문서를 생성한다. 이를 서버에 올려 호스팅하는 방식으로 사용했다. 모바일 개발자 입장에서는 문서를 보면서 포스트맨(Postman)으로 API를 테스트했다.
 
 스웨거([Swagger](http://swagger.io/))는 문서와 포스트맨을 합쳐놓은 것이라고 볼 수 있다. 여러 툴이 있지만 [Swagger-ui](https://github.com/swagger-api/swagger-ui)에 대해 알아보자. 이것은 자바스크립트와 스타일시트를 사용하는 html 파일이다. 서버에 올려서 호스팅하면 웹 브라우져로 문서를 볼 수 있다. 하지만 문서를 표현할 데이터가 없기때문에 껍떼기만 보일 뿐이다. 실제 문서 데이터는 json 형식으로 어디선가 불러와야 하는데 이를 [Swagger-spec](https://github.com/swagger-api/swagger-spec)이라고 한다. 스웨거는 이렇게 Swagger-spec 이라는 형식의 문서 데이터를 Swagger-ui라는 툴로 보여주는 구조다.
@@ -17,8 +18,8 @@ tags: [swagger]
 
 여기 ExpressJS로 만들어 놓은 API 서버가 있다. 이 위에 스웨거를 적용해보자. 두 가지 순서로 진행한다.
 
-* Swagger-ui 설치
-* Sqggeer-spec API 개발
+- Swagger-ui 설치
+- Sqggeer-spec API 개발
 
 ## Swagger-ui 설치
 
@@ -30,7 +31,10 @@ Swagger-ui를 설치하면 `node_modules/swagger-ui/dist` 폴더에 html 파일�
 
 ```javascript
 // app.js
-app.use('/swagger-ui', express.static(path.join(__dirname, './node_modules/swagger-ui/dist')));
+app.use(
+  "/swagger-ui",
+  express.static(path.join(__dirname, "./node_modules/swagger-ui/dist"))
+)
 ```
 
 웹 브라우져를 열고 http://localhost:3000/swagger-ui에 접속해보자.
@@ -79,5 +83,6 @@ app.use('/swagger', function (req, res) {
 ```
 
 ## 참고
-* 예제 코드: [https://github.com/jeonghwan-kim/swagger-on-the-express](https://github.com/jeonghwan-kim/swagger-on-the-express)
-* [http://stackoverflow.com/questions/27724803/serve-out-swagger-ui-from-nodejs-express-project](http://stackoverflow.com/questions/27724803/serve-out-swagger-ui-from-nodejs-express-project)
+
+- 예제 코드: [https://github.com/jeonghwan-kim/swagger-on-the-express](https://github.com/jeonghwan-kim/swagger-on-the-express)
+- [http://stackoverflow.com/questions/27724803/serve-out-swagger-ui-from-nodejs-express-project](http://stackoverflow.com/questions/27724803/serve-out-swagger-ui-from-nodejs-express-project)

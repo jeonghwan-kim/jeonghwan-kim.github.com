@@ -1,5 +1,5 @@
 ---
-title: '앵귤러로 Todo앱 만들기 5 - 새로운 투두 추가하기'
+title: "앵귤러로 Todo앱 만들기 5 - 새로운 투두 추가하기"
 layout: post
 category: series
 seriesId: "377d51fb-3cab-5e79-a4e0-8e08a79bbe02"
@@ -11,7 +11,6 @@ date: 2016-06-12 09:00:05
 ---
 
 이번에는 `ngSubmit` 디렉티브를 이용해 투두를 추가하는 방법에 대해 알아보자.
-
 
 ## 템플릿 작성
 
@@ -28,7 +27,7 @@ date: 2016-06-12 09:00:05
 
 ```html
 <form ng-submit="addTodo(newTodo)">
-  <input type="text" ng-model="newTodo" placeholder="Type todos" autofocus>
+  <input type="text" ng-model="newTodo" placeholder="Type todos" autofocus />
   <button type="submit">Add</button>
 </form>
 ```
@@ -41,7 +40,6 @@ date: 2016-06-12 09:00:05
 
 ![](/assets/imgs/2016/lecture-todomvc-angular-2-result6.png)
 
-
 ## 컨트롤러 작성
 
 컨트롤러에서 투두를 추가하는 함수를 만들어 보자.
@@ -49,29 +47,27 @@ date: 2016-06-12 09:00:05
 `$scope.addTodo` 함수를 정의해보자.
 
 ```javascript
-angular.module('todomvc')
-    .controller('TodomvcCtrl', function ($scope) {
+angular.module("todomvc").controller("TodomvcCtrl", function ($scope) {
+  $scope.addTodo = function (todoTitle) {
+    todoTitle = todoTitle.trim()
+    if (!todoTitle) return
 
-        $scope.addTodo = function (todoTitle) {
-          todoTitle = todoTitle.trim();
-          if (!todoTitle) return;
+    var newId = !$scope.todos.length
+      ? 1
+      : $scope.todos[$scope.todos.length - 1].id + 1
 
-          var newId = !$scope.todos.length ?
-              1 : $scope.todos[$scope.todos.length - 1].id + 1;
+    var newTodo = {
+      id: newId,
+      title: todoTitle,
+      completed: false,
+    }
 
-          var newTodo = {
-            id: newId,
-            title: todoTitle,
-            completed: false
-          };
-
-          $scope.todos.push(newTodo);
-        };
-      });
+    $scope.todos.push(newTodo)
+  }
+})
 ```
 
 기존 투두목록에서 새로운 식별자 `newId`를 만들어 투두를 추가하는 간단한 로직이다.
 결과를 확인해 보자!
-
 
 ![](/assets/imgs/2016/lecture-todomvc-angular-2-result7.png)

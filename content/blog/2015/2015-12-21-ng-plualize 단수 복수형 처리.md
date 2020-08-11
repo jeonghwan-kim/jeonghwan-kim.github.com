@@ -10,6 +10,7 @@ category: dev
 tags: [angularjs]
 summary: ngPlualize는 영어 문법에서 드러나는 단수, 복수 문자 표현을 위한 앵귤러 디렉티브다
 ---
+
 제목 정하기가 쉽지 않다. 영어에는 단수, 복수에 대한 문법이 확연하게 드러난다. "an apple"과 "two apples". 그러나 한국어로는 사과가 몇개이든 그냥 뒤에 사과를 붙인다. 사과 2개라고 하지 사과들 2개라고 하지 않는다.
 
 [ng-plualize](https://docs.angularjs.org/api/ng/directive/ngPluralize)는 영어 문법에서 드러나는 단수, 복수 문자 표현을 위한 앵귤러 디렉티브다. 하나의 변수에 대해 그 변수가 0이거나 값이 없을 때, 1일 때, 그 이상일 때에 따라 문자열을 다르게 표현할 수 있다.
@@ -17,7 +18,8 @@ summary: ngPlualize는 영어 문법에서 드러나는 단수, 복수 문자 �
 ```html
 <ng-pluralize
   count="remainingCount"
-  when="{ 0: 'No item', one: 'a item', other: '{} items' }">
+  when="{ 0: 'No item', one: 'a item', other: '{} items' }"
+>
 </ng-pluralize>
 ```
 

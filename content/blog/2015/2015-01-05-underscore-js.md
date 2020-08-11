@@ -9,6 +9,7 @@ permalink: /underscore-js/
 category: dev
 tags: [javascript]
 ---
+
 자바스크립트 코딩시 구 버전 웹브라우져까지 고려한다면 ECMAScript 스펙을 기준으로 한 깔끔한 코딩을 유지하기 어렵다. 자바스크립트 배열을 체크하는 코드를 살펴보자.
 
 <pre class="lang:js decode:true" title="Kangax의 타입체크 ">function isArray (val) {
@@ -19,7 +20,7 @@ tags: [javascript]
 
 <h1>Underscore.js</h1>
 
-사용법은 간단한다. underscore.js 로딩 후 예약어 <code>_</code>를 사용한다. (JQuery의 <code>$</code> 예약어와 유사) NodeJS를 서버로 사용한다면 정확히 같은 방식으로 사용할 수 있다. 수십가지 함수들은 카테고리별로 분류되어있고 <a href="http://underscorejs.org">홈페이지</a>와 몇몇 블로그에 잘 설명 되어있다. 몇가지 빈번히 사용되는 함수를 살펴보자.
+사용법은 간단한다. underscore.js 로딩 후 예약어 <code>\_</code>를 사용한다. (JQuery의 <code>\$</code> 예약어와 유사) NodeJS를 서버로 사용한다면 정확히 같은 방식으로 사용할 수 있다. 수십가지 함수들은 카테고리별로 분류되어있고 <a href="http://underscorejs.org">홈페이지</a>와 몇몇 블로그에 잘 설명 되어있다. 몇가지 빈번히 사용되는 함수를 살펴보자.
 
 <h1>유용한 함수</h1>
 

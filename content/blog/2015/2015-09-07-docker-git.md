@@ -9,8 +9,9 @@ permalink: /docker-git/
 AGLBIsDisabled:
   - 0
 category: dev
-tags: [docker ,git]
+tags: [docker, git]
 ---
+
 도커랑 깃이랑 연동해서 사용해 보자. 그전에 빈스톡에서 개발한 경험을 되새겨 보자.
 
 1. 코딩
@@ -21,8 +22,7 @@ tags: [docker ,git]
 
 도커 관련들을 살펴보니 위와 비슷한 개발 환경을 꾸밀수 있었다. (참고) 생각해보니 빈스톡에서도 커밋을 푸시하고 깃 서버에서는 훅을 걸어서 서버 재구동 작업을 수행한 모양이다. 이쪽 서버 재구동 작업을 도커 작업으로 변경해서 처리해 보자.
 
-서버코드 작성
-===========
+# 서버코드 작성
 
 간단히 익스프레스로 설치
 
@@ -47,8 +47,7 @@ RUN npm install
 CMD nodejs ./bin/www
 ```
 
-도커, 깃 설치
-=============
+# 도커, 깃 설치
 
 개발 서버에 도커 설치.
 
@@ -80,8 +79,7 @@ $ git init docker-app
 $ git config receive.denycurrentbranch ignore // 로컬 푸시를 받기위해
 ```
 
-ssh key 설정
-===========
+# ssh key 설정
 
 로컬의 ssh key를 서버에 저장하여 비빌번호 없이 깃을 사용한다. 우선 로컬 환경에서 키 파일을 만든다. 기존에 있으면 스킵.
 
@@ -91,7 +89,6 @@ $ scp ~/.ssh/id_rsa.pub ubuntu@remote.com:id_rsa.pub
 ```
 
 서버에 접속하여 인증서 파일을 git 유저 폴더에 이동한다.
-
 
 <pre>
 $ cat /home/ubuntu/id_rsa.pub > /home/git/.ssh/authorized_keys
@@ -105,8 +102,7 @@ $ ssh git@remote.com
 
 접속 성공
 
-깃 후커
-======
+# 깃 후커
 
 깃 후커를 이용해 커밋 되었을때 도커 관련 작업을 설정 한다. /home/git/docker-app/.git/hooks/post-recieve를 아래와 같이 작성.
 
@@ -126,12 +122,12 @@ docker run -d --name $APP_NAME -p 3000:3000 $APP_NAME:$REVISION
 ```
 
 파일에 실행 권한 추가
+
 ```
 $ chmod +x /home/git/docker-app/.git/hooks/post-receive
 ```
 
-커밋, 푸시
-=========
+# 커밋, 푸시
 
 소스 커밋
 

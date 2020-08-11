@@ -1,5 +1,5 @@
 ---
-title: '[Node.js코드랩] 2.기본 모듈 http'
+title: "[Node.js코드랩] 2.기본 모듈 http"
 layout: post
 summary: 헬로월드 서버를 만들어 봅니다
 category: series
@@ -25,21 +25,23 @@ tags: [lecture]
 [노드 기본 모듈 목록](https://nodejs.org/dist/latest-v10.x/docs/api/)
 
 자주 사용하는 것만 짚어 볼게요.
-* Console: 콘솔 로깅
-* Crypto: 암호화
-* Events: 이벤트 관리
-* File System: 파일 관리
-* **Http: 네트웍 기능**
-* OS: 운영체제 정보
-* Path: 경로 관리
-* Stream: 스트림 관리
+
+- Console: 콘솔 로깅
+- Crypto: 암호화
+- Events: 이벤트 관리
+- File System: 파일 관리
+- **Http: 네트웍 기능**
+- OS: 운영체제 정보
+- Path: 경로 관리
+- Stream: 스트림 관리
 
 우리가 사용할 http 모듈에 대해 더 알아 봅시다.
 
 [http 기본 모듈](https://nodejs.org/dist/latest-v10.x/docs/api/http.html)
-* http.createServer(): 서버 인스턴스를 만들어 반환
-* http.server: 서버 클래스
-* server.listen(): 서버를 클라이언트 요청 대기 상태(listen)로 만듬
+
+- http.createServer(): 서버 인스턴스를 만들어 반환
+- http.server: 서버 클래스
+- server.listen(): 서버를 클라이언트 요청 대기 상태(listen)로 만듬
 
 위 세 개 API만으로 간단한 헬로월드 서버를 만들수 있습니다.
 아래 링크에서 확인해 볼까요?
@@ -61,23 +63,25 @@ $ git checkout -f scaffolding/unittest
 링크에 있는 코드를 복사해서 우리 프로젝트의 server.js에 붙여 넣어 봅시다.
 
 ```js
-const http = require('http'); // 노드 모듈을 가져온다
+const http = require("http") // 노드 모듈을 가져온다
 
-const hostname = '127.0.0.1'; // 사용할 서버 호스트네임
-const port = 3000; // 사용할 서버 포트
+const hostname = "127.0.0.1" // 사용할 서버 호스트네임
+const port = 3000 // 사용할 서버 포트
 
 // 서버를 만든다
-const server = http.createServer((req, res) => { // 요청이 오면 실행되는 콜백 함수
-  res.statusCode = 200; // 응답 상태값 설정
-  res.setHeader('Content-Type', 'text/plain'); // 응답 헤더 중 Content-Type 설정
-  res.end('Hello, World!\n'); // 응답 데이터 전송
-});
+const server = http.createServer((req, res) => {
+  // 요청이 오면 실행되는 콜백 함수
+  res.statusCode = 200 // 응답 상태값 설정
+  res.setHeader("Content-Type", "text/plain") // 응답 헤더 중 Content-Type 설정
+  res.end("Hello, World!\n") // 응답 데이터 전송
+})
 
 // 서버를 요청 대기 상태로 만든다
-server.listen(port, hostname, () => { // 요청 대기가 완료되면 실행되는 콜백 함수
+server.listen(port, hostname, () => {
+  // 요청 대기가 완료되면 실행되는 콜백 함수
   // 터미널에 로그를 기록한다
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+  console.log(`Server running at http://${hostname}:${port}/`)
+})
 ```
 
 추가로 달아놓은 주석을 자세히 읽어보세요. 충분히 이해할 수 있을 겁니다.
@@ -127,7 +131,7 @@ Hello, World!
 
 ## 정리
 
-* 노드 기본 모듈인 http를 살펴 봤습니다.
-* http로 헬로월드 서버를 만들었습니다.
+- 노드 기본 모듈인 http를 살펴 봤습니다.
+- http로 헬로월드 서버를 만들었습니다.
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)

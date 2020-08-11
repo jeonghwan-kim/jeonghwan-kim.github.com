@@ -9,6 +9,7 @@ permalink: /resource%ec%99%80-service/
 category: dev
 tags: [angularjs]
 ---
+
 $resource는 $http에 리소스 주소를 설정하여 추상화해 놓은 앵귤러 서비스다. 이것을 한번더 앵귤러 Service()로 감싸면 백엔드 자원에 대해 한단계 더 추상화 할 수 있다. 결과만 놓고 보면  User 서비스로 간단하게 백엔드 자원을 다룰 수있다.
 
 <pre class="lang:js decode:true">$scope.user = User.get({ userId: 123 }); // 유저 데이터를 얻는다.

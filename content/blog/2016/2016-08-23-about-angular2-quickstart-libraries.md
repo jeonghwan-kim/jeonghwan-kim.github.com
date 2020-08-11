@@ -1,5 +1,5 @@
 ---
-title: 'Angular2 Quickstart에서 사용하는 라이브러리는 왜 이렇게 많을까?'
+title: "Angular2 Quickstart에서 사용하는 라이브러리는 왜 이렇게 많을까?"
 layout: post
 category: dev
 tags: [angularjs]
@@ -8,7 +8,6 @@ permalink: /2016/08/23/about-angular2-quickstart-libraries.html
 ---
 
 앵귤러2 공식 문서를 보기 시작했다. [퀵스타트](https://angular.io/docs/ts/latest/quickstart.html#!#index)를 하나씩 따라하고 있는데 아무래도 [index.html](https://angular.io/docs/ts/latest/quickstart.html#!#index)에서 로딩하는 외부 라이브러리의 쓰임새를 모르고서는 학습을 진행하기가 여간 껄끄럽지 않다. 대충 각 라이브러리가 어떤 역할을 하는지 그 사용 목적을 파악해야 겠다는 생각에 좀 조사해 보았다.
-
 
 ## core-js/shim
 
@@ -35,7 +34,6 @@ permalink: /2016/08/23/about-angular2-quickstart-libraries.html
 
 그러면 이렇게 정리해 볼 수 있겠다. 폴리필은 브라우져간의 차이를 매꾸는 것을 말하고 이 기능을 사용하기 위해 이 프로젝트에서는 core-js 라이브러리의 shim.js 파일을 이용한다.
 
-
 ## zone.js
 
 ```html
@@ -54,7 +52,6 @@ permalink: /2016/08/23/about-angular2-quickstart-libraries.html
 
 결국 zone.js를 사용하면 `ngClick` 뿐만 아니라 `click`를 사용할 수 있고, `$http` 서비스 뿐만 아니라 jQuery의 `ajax()` 함수를 사용할 수 있고, `$timeout` 서비스 뿐만 아니라 자바스크립트의 `setTimeout()` 함수까지 사용할 수 있다는 의미가 된다. 개인적으로는 이게 좋은 점인지는 잘 모르겠다.
 
-
 ## reflect-metadata
 
 ```html
@@ -70,7 +67,6 @@ reflect-metadata(https://github.com/rbuckton/ReflectDecorators)는 ECMAScript 7�
 })
 ```
 
-
 ## systemjs
 
 ```html
@@ -82,12 +78,13 @@ reflect-metadata(https://github.com/rbuckton/ReflectDecorators)는 ECMAScript 7�
 ```html
 <script src="systemjs.config.js"></script>
 <script>
-  System.import('app').catch(function(err){ console.error(err); });
+  System.import("app").catch(function (err) {
+    console.error(err)
+  })
 </script>
 ```
 
 전체 파일에 대해선 systemjs.config.js 에서 설정하고 그 다음 코드에서는 위에서 설정한 정보를 바탕으로 모든 자바스크립트 코드를 한번에 로딩하는 것으로 추측할 수 있다.
-
 
 ## 결론
 

@@ -42,22 +42,22 @@ $ kill 70645
 노드몬에서는 여기서 셧다운 처리를 하라고 안내한다([Controlling shutdown of your script](https://github.com/remy/nodemon#controlling-shutdown-of-your-script)).
 
 ```js
-process.once('SIGUSR2', function () {
+process.once("SIGUSR2", function () {
   gracefulShutdown(function () {
-    process.kill(process.pid, 'SIGUSR2');
-  });
-});
+    process.kill(process.pid, "SIGUSR2")
+  })
+})
 ```
 
 노드몬 포트 충돌 이슈를 찾다보니 이 시그널을 사용하기도 하나 보다([Nodemon fails to restart process with EADDRINUSE #1473](https://github.com/remy/nodemon/issues/1473#issuecomment-458727883)).
 `SIGUSR2` 시그널을 받을 때 디비 컨넥션 같은 리소스를 정리하면 노드몬에서 서버 어플리케이션을 온전히 셧다운 할 수 있다는 것 같다.
 
 ```js
-process.once('SIGUSR2', function () {
+process.once("SIGUSR2", function () {
   server.close(function () {
-    process.kill(process.pid, 'SIGUSR2');
-  });
-});
+    process.kill(process.pid, "SIGUSR2")
+  })
+})
 ```
 
 # 재시작 지연하기(`--delay`)
@@ -81,12 +81,11 @@ express-generator는 익스프레스 프레임워크의 코드 스캐폴딩을 �
 이 코드는 1) http 모듈로 서버를 실행한다는 점과 2) 실행한 서버에 EventEmitter.prototype.on() 메서드로 이벤트 핸들링을 한다는 것이 내 코드와 달랐다.
 
 ```js
-const server = app.listen(port);
+const server = app.listen(port)
 
-server.on('error', onError);
-server.on('listening', onListening);
+server.on("error", onError)
+server.on("listening", onListening)
 ```
 
 그래서 똑같이 이부분을 코드에 적용했더니 포트 충돌이 발생하지 않았다.
 문제는 해결했지만 아직 원인은 잘 모르겠다.
-

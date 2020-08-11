@@ -1,5 +1,5 @@
 ---
-title: '앵귤러로 Todo앱 만들기 8 - Directive'
+title: "앵귤러로 Todo앱 만들기 8 - Directive"
 layout: post
 category: series
 seriesId: "377d51fb-3cab-5e79-a4e0-8e08a79bbe02"
@@ -23,7 +23,6 @@ date: 2016-06-14 09:00:08
 이번 포스트에서는 index.html 파일을 모듈화하여 디렉티브로 분리해 내는 방법에 대해 알아보겠다.
 그리고 다음 포스트는 서비스를 이용하여 콘트롤러를 분리하는 방법을 진행할 것이다.
 
-
 ## 투두 템플릿을 디렉티브로 분리
 
 `ngRepeat`으로 투두 목록을 출력하는 코드를 `<todo-item>`으로 바꿔보자.
@@ -33,15 +32,21 @@ index.html:
 ```html
 <ul ng-repeat="todo in todos | filter:statusFilter" class="list-unstyled">
   <li class="todo-item">
-
     <!-- 1. 이 부분이 하나의 todo 를 출력하는 부분이다. -->
     <div class="input-group">
       <span class="input-group-addon">
-        <input type="checkbox" aria-label="..." ng-model="todo.completed">
+        <input type="checkbox" aria-label="..." ng-model="todo.completed" />
       </span>
-      <input type="text" class="form-control" aria-label="..." ng-model="todo.title">
+      <input
+        type="text"
+        class="form-control"
+        aria-label="..."
+        ng-model="todo.title"
+      />
       <div class="input-group-btn">
-        <button class="btn btn-danger" ng-click="remove(todo.id)">Remove</button>
+        <button class="btn btn-danger" ng-click="remove(todo.id)">
+          Remove
+        </button>
       </div>
     </div>
 
@@ -57,13 +62,12 @@ index.html:
 js/directives/todoItem.js:
 
 ```javascript
-angular.module('todomvc')
-    .directive('todoItem', function () {
-      return {
-        restrict: 'E',
-        template: '<div>todoItem</div>'
-      };
-    });
+angular.module("todomvc").directive("todoItem", function () {
+  return {
+    restrict: "E",
+    template: "<div>todoItem</div>",
+  }
+})
 ```
 
 `TodomvcCtrl` 컨트롤러를 만든것과 비슷한 방법으로 디렉티브를 만들 수 있다.
@@ -94,27 +98,27 @@ angular.module('todomvc')
 js/directives/todoItem.js:
 
 ```javascript
-angular.module('todomvc')
-    .directive('todoItem', function (){
-      return {
-        restrict: 'E',
-        scope: {        // 디렉티브 스코프 설정
-          todo: '=',    // 양방향 바인딩
-          remove: '&'   // 참고 바인딩. 함수 설정시 사용함
-        },
-        template:
-        '<div class="input-group">' +
-          '<span class="input-group-addon">' +
-            '<input type="checkbox" aria-label="..." ng-model="todo.completed" ng-click="update(todo)">' +
-          '</span>' +
-          '<input type="text" class="form-control" aria-label="..."' +
-            'ng-model="todo.title" ng-blur="update(todo)">' +
-          '<div class="input-group-btn">' +
-            '<button class="btn btn-danger" ng-click="remove(todo)">Remove</button>' +
-          '</div>' +
-        '</div>'
-      }
-    })
+angular.module("todomvc").directive("todoItem", function () {
+  return {
+    restrict: "E",
+    scope: {
+      // 디렉티브 스코프 설정
+      todo: "=", // 양방향 바인딩
+      remove: "&", // 참고 바인딩. 함수 설정시 사용함
+    },
+    template:
+      '<div class="input-group">' +
+      '<span class="input-group-addon">' +
+      '<input type="checkbox" aria-label="..." ng-model="todo.completed" ng-click="update(todo)">' +
+      "</span>" +
+      '<input type="text" class="form-control" aria-label="..."' +
+      'ng-model="todo.title" ng-blur="update(todo)">' +
+      '<div class="input-group-btn">' +
+      '<button class="btn btn-danger" ng-click="remove(todo)">Remove</button>' +
+      "</div>" +
+      "</div>",
+  }
+})
 ```
 
 디렉티브를 정의할때 `scope` 객체에 사용할 스코프 변수를 설정할 수 있다.

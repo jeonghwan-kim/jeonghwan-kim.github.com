@@ -7,8 +7,9 @@ layout: post
 guid: http://whatilearn.com/?p=774
 permalink: /git-push-%ec%9d%b4%eb%b2%a4%ed%8a%b8%eb%a5%bc-slack-%ec%b1%84%eb%84%90%eb%a1%9c-%eb%b3%b4%eb%82%b4%ea%b8%b0/
 category: dev
-tags : [git,slack]
+tags: [git, slack]
 ---
+
 회사에 슬랙을 도입하면서 모든 알람을 이곳에서 확인할 수 있다. 깃(Git) 훅을 이용해 서버를 재가동하는 구조라면 서버 재가동시마다 이벤트를 슬랙의 특정 채널로 보낼수 있다. 이번 글에서는 슬랙 API를 깃 훅커에 적용하는 방법에 대해 알아보자.
 
 슬랙 그룹 페이지 좌측 상단에 Menu를 클릭. Integrations 페이지로 이동한다. All Services 에서 incoming webhooks 를 검색하여 페이지로 이동한다.

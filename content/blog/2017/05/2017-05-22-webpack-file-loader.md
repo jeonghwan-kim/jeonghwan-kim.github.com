@@ -33,7 +33,7 @@ backgorund-image를 동일폴더에 있는 bg.svg 파일로 설정했다.
 main.js:
 
 ```js
-require('./style.css')
+require("./style.css")
 ```
 
 웹팩에서는 main.js를 읽은 뒤 style.css 파일을 읽을 것이다. 그리고 url에 설정한 파일인 bg.svg를 발견하는데 이때 로더 설정에 svg 파일 규칙을 추가할 수 있다. 아래처럼 말이다.
@@ -43,12 +43,14 @@ webpack.config.js:
 ```js
 module.exports = {
   module: {
-    rules: [{
-      test: /\.svg$/,
-      loader: 'file-loader'
-    }]
-  }
-};
+    rules: [
+      {
+        test: /\.svg$/,
+        loader: "file-loader",
+      },
+    ],
+  },
+}
 ```
 
 확장자가 svg인 파일을 발견하면 file-loader를 적용하라는 의미다. 웹펙으로 빌드하면 기본적으로 `output`에 설정한 'dist' 경로로 이미지 파일을 복사한다. 아래 그림처럼 파일명을 해쉬코드로 대체한다. 캐쉬 갱신을 위한 처리로 보인다.
@@ -77,8 +79,7 @@ file-loader 옵션을 조정해서 경로를 바로 잡아 주어야 한다.
 
 전체 코드는 다음 링크에서 확인할 수 있다.
 
-* [https://github.com/jeonghwan-kim/study.webpack/tree/blog-webpack-file-loader/file-loader](https://github.com/jeonghwan-kim/study.webpack/tree/blog-webpack-file-loader/file-loader)
-
+- [https://github.com/jeonghwan-kim/study.webpack/tree/blog-webpack-file-loader/file-loader](https://github.com/jeonghwan-kim/study.webpack/tree/blog-webpack-file-loader/file-loader)
 
 ## url-loader
 
@@ -86,7 +87,7 @@ file-loader 옵션을 조정해서 경로를 바로 잡아 주어야 한다.
 
 코드를 보면 `toString("base64")` 함수 호출결과를 모듈로 익스포트하는 것을 할 수 있다.
 
-*  [https://github.com/webpack-contrib/url-loader/blob/master/index.js#L16](https://github.com/webpack-contrib/url-loader/blob/master/index.js#L16)
+- [https://github.com/webpack-contrib/url-loader/blob/master/index.js#L16](https://github.com/webpack-contrib/url-loader/blob/master/index.js#L16)
 
 10Kb 미만인 svg 파일을 url-loader로 처리하도록 변경했다.
 
@@ -118,4 +119,4 @@ webpack.config.js:
 
 전체 코드는 다음 링크를 참고하자.
 
-* [https://github.com/jeonghwan-kim/study.webpack/tree/blog-webpack-url-loader/file-loader](https://github.com/jeonghwan-kim/study.webpack/tree/blog-webpack-url-loader/file-loader)
+- [https://github.com/jeonghwan-kim/study.webpack/tree/blog-webpack-url-loader/file-loader](https://github.com/jeonghwan-kim/study.webpack/tree/blog-webpack-url-loader/file-loader)

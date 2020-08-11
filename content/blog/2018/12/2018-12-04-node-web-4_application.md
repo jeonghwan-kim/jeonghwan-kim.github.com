@@ -1,5 +1,5 @@
 ---
-title: '[Node.js코드랩] 4.어플리케이션'
+title: "[Node.js코드랩] 4.어플리케이션"
 layout: post
 summary: 어플리케이션 모듈을 만듭니다.
 category: series
@@ -54,28 +54,30 @@ describe('Application', () => {
 이 메소드는 "server 객체의 listen 함수를 실행한다"라는 테스트인 것이죠.
 
 ```js
-  // arrange
-  const app = App(); // const App = require('./Application') 으로 가져왔다고 가정
-  const spy = sinon.spy();
-  app._server.listen = spy
+// arrange
+const app = App() // const App = require('./Application') 으로 가져왔다고 가정
+const spy = sinon.spy()
+app._server.listen = spy
 ```
+
 유닛 테스트는 보통 세 단계로 나눕니다.
+
 - 준비(arragne) -> 실행(act) -> 검증(assert)
 
 위 코드는 첫 번째 준비 단계를 정의하는 코드입니다.
-어플리케이션 객체와 스파이를 만들었습니다. 그리고 app._server 객체의 listen 속성에 스파이를 심어 두었죠.
+어플리케이션 객체와 스파이를 만들었습니다. 그리고 app.\_server 객체의 listen 속성에 스파이를 심어 두었죠.
 스파이를 심은 이유는 검증할때 listen 함수가 호출되었지는 스파이로 확인하기 위해서 입니다.
 
 ```js
-  // act
-  app.listen()
+// act
+app.listen()
 ```
 
 실제 테스트 해야할 메소드를 실행합니다.
 
 ```js
-  // assert
-  should(spy.called).be.equal(true);
+// assert
+should(spy.called).be.equal(true)
 ```
 
 listen 메소드가 실행되었는지 스파이를 통해 검사하는 코드입니다.
@@ -101,15 +103,13 @@ Application 모듈을 구현해 보세요. Application은 listen 메소드를 �
 자 그럼 같이 풀어 볼까요? 세 단계로 나눠 설명하겠습니다.
 
 ```js
-const http = require('http')
+const http = require("http")
 
 const Application = () => {
-  const listen = () => {
-
-  }
+  const listen = () => {}
 
   return {
-    listen
+    listen,
   }
 }
 
@@ -123,34 +123,33 @@ module.exports = Application
 마지막 줄에 Application을 모듈로 만들어서 외부에서 사용하도록 했습니다.
 
 ```js
- const _server = http.createServer((req, res) => {
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'text/plain')
-    res.end('Hello World\n')
-  });
+const _server = http.createServer((req, res) => {
+  res.statusCode = 200
+  res.setHeader("Content-Type", "text/plain")
+  res.end("Hello World\n")
+})
 
-  // ...
+// ...
 
-  return {
-    _server,
-    listen
-  }
+return {
+  _server,
+  listen,
+}
 ```
 
 테스트 코드에 보면 _server 객체를 통해 스파이를 심어두고 있죠.
 이건 테스트 용도로 노출하는 것이라 변수 이름 앞에 언더스코어(`_`)를 붙였습니다.
-http.createServer() 함수로 서버를 만들어 _server에 저장했고 외부로 노출하였습니다.
-
+http.createServer() 함수로 서버를 만들어 \_server에 저장했고 외부로 노출하였습니다.
 
 ```js
-  const listen = (port = 3000, hostname = '127.0.0.1', fn) => {
-    _server.listen(port, hostname, fn)
-  }
+const listen = (port = 3000, hostname = "127.0.0.1", fn) => {
+  _server.listen(port, hostname, fn)
+}
 ```
 
-생성한 _server 객체를 통해 listen 함수 코드를 채워 넣었습니다.
+생성한 \_server 객체를 통해 listen 함수 코드를 채워 넣었습니다.
 포트 번호와 호스트명 기본 인자값을 설정해서 방어 코드를 만들었구요.
-테스트 코드에서 listen 함수 호출여부를 체크했기 때문에 _server.listen()을 호출했습니다.
+테스트 코드에서 listen 함수 호출여부를 체크했기 때문에 \_server.listen()을 호출했습니다.
 
 이제 테스트를 실행해 볼까요?
 
@@ -171,10 +170,10 @@ server.js를 app.js로 이름을 바꾸겠습니다.
 app.js 코드를 볼까요?
 
 ```js
-const App = require('./src/Application');
-const app = App();
+const App = require("./src/Application")
+const app = App()
 
-module.exports = app;
+module.exports = app
 ```
 
 Application 모듈을 가져와 객체를 만들어 app에 저장했죠. 곧장 모듈로 노출했습니다.
@@ -182,13 +181,13 @@ Application 모듈을 가져와 객체를 만들어 app에 저장했죠. 곧장 
 bin.js도 볼까요?
 
 ```js
-const app  = require('./app');
-const hostname = '127.0.0.1';
-const port = 3000;
+const app = require("./app")
+const hostname = "127.0.0.1"
+const port = 3000
 
 app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+  console.log(`Server running at http://${hostname}:${port}/`)
+})
 ```
 
 "server" 대신 "app" 모듈을 가져온 것만 달라졌습니다.
@@ -208,7 +207,6 @@ Application 모듈은 아래 초록색 부분입니다.
 
 ## 정리
 
-* http를 직접 사용하지 않고 Application 객체로 추상화 하였습니다.
-
+- http를 직접 사용하지 않고 Application 객체로 추상화 하였습니다.
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)

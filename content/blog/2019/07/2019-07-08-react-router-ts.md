@@ -1,7 +1,7 @@
 ---
-title: '리액트 라우터 사용하기 (타입스크립트 버전) '
+title: "리액트 라우터 사용하기 (타입스크립트 버전) "
 layout: post
-summary: '타입스크립트로 리액트 라우터 사용하는 방법을 정리합니다. 지난 에 이어 타입스크립트로 리액트 라우터를 어떻게 사용하는지 정리해 보자. 패키지의 기본 사용법 위주의 설명 보다는 메모장 예제를 보면서 웹 어플리케이션에 라우터를 어떤 방식으로 적용해야 하는지 알아보겠다.'
+summary: "타입스크립트로 리액트 라우터 사용하는 방법을 정리합니다. 지난 에 이어 타입스크립트로 리액트 라우터를 어떻게 사용하는지 정리해 보자. 패키지의 기본 사용법 위주의 설명 보다는 메모장 예제를 보면서 웹 어플리케이션에 라우터를 어떤 방식으로 적용해야 하는지 알아보겠다."
 category: dev
 tags: [react, TypeScript]
 ---
@@ -34,10 +34,10 @@ export default Root;
 
 리액트 라우터에서 제공하는 몇 가지 기본 컴포넌트의 역할은 다음과 같다.
 
-* `<BrowserRouter />`: HTML5 히스토리 API를 사용하여 주소를 관리하는 라우터(해쉬뱅 모드 사용 안함)
-* `<Route />`: 요청 경로와 렌더링할 컴포넌트를 설정한다
-* `<Switch />`: 하위에 라우터 중 하나를 선택한다
-* `<Redirect />`: 요청 경로를 다른 경로로 리다이렉션한다
+- `<BrowserRouter />`: HTML5 히스토리 API를 사용하여 주소를 관리하는 라우터(해쉬뱅 모드 사용 안함)
+- `<Route />`: 요청 경로와 렌더링할 컴포넌트를 설정한다
+- `<Switch />`: 하위에 라우터 중 하나를 선택한다
+- `<Redirect />`: 요청 경로를 다른 경로로 리다이렉션한다
 
 이상 네 개 컴포넌트를 이용해서 루트 라우터를 만들어 보자.
 
@@ -57,21 +57,20 @@ const Root: React.FC = () => (
 최상단에 **BrowerRouter**를 선언하고 요청에 따라 하위 컴포넌트들 중 하나를 선택하기 위해 **Swich** 컴포넌트로 감쌌다.
 **Route**와 **Redirect** 컴포넌트로 설정한 라우팅 규칙은 다음과 같다.
 
-* **/ 요청으로 들어오면**: Home 컴포넌트를 렌더링 한다
-* **/memo 요청으로 들어오면**: Memo 컴포넌트를 렌더링 한다
-* **/trash 요청으로 들어오면**: Trash 컴포넌트를 렌더링 한다
-* **위 세 개 규칙을 벗어나면**: 루트(/) 요청으로 리다이렉션 한다
+- **/ 요청으로 들어오면**: Home 컴포넌트를 렌더링 한다
+- **/memo 요청으로 들어오면**: Memo 컴포넌트를 렌더링 한다
+- **/trash 요청으로 들어오면**: Trash 컴포넌트를 렌더링 한다
+- **위 세 개 규칙을 벗어나면**: 루트(/) 요청으로 리다이렉션 한다
 
 위 라우팅 규칙을 통해 샘플로 만들 메모장 어플리케이션의 동작을 가늠할 수 있겠는가?
 
-* 루트 경로로 접속하면 홈페이지 화면을 보여준다
-* 이 화면에는 두 개의 링크가 있는데 /memo와 /trash 링크다
-* /memo는 메모장 화면을, /trash는 휴지통 화면으로 이동하는 링크다
-* 메모장 화면에서는 보유한 메모 목록을 보여준다
-* 삭제한 메모는 휴지통 화면에서 확인할 수 있다
+- 루트 경로로 접속하면 홈페이지 화면을 보여준다
+- 이 화면에는 두 개의 링크가 있는데 /memo와 /trash 링크다
+- /memo는 메모장 화면을, /trash는 휴지통 화면으로 이동하는 링크다
+- 메모장 화면에서는 보유한 메모 목록을 보여준다
+- 삭제한 메모는 휴지통 화면에서 확인할 수 있다
 
 어플리케이션 진입점인 홈 페이지 컴포넌트 부터 만들어 보자.
-
 
 ## 홈 페이지(HomePage) 컴포넌트 제작
 
@@ -101,8 +100,9 @@ export default HomePage;
 
 어플리케이션 레이아웃을 잡는 Layout, Sidebar, Main 컴포넌트를 미리 만들어 두었다.
 화면은 크게 좌/우로 나뉘는데
-* **좌측**에는 메뉴나 목록 컴포넌트를
-* **우측**에는 메모 생성버튼이나 메모 내용 같은 컴포넌트를 위치시킨다.
+
+- **좌측**에는 메뉴나 목록 컴포넌트를
+- **우측**에는 메모 생성버튼이나 메모 내용 같은 컴포넌트를 위치시킨다.
 
 어플리케이션 진입점인 HomePage 컴포넌트에서는 **메뉴 목록**(좌측)과 **메모 생성 버튼**(우측)을 만든다.
 
@@ -140,23 +140,21 @@ pages/memo/index.tsx 파일을 만들어 MemoPage 컴포넌트 틀을 짠다.
 
 ```tsx
 interface MemoPageState {
-  memos: Memo[];
+  memos: Memo[]
 }
 
 class MemoPage extends React.Component<RouteComponentProps, MemoPageState> {
   render() {
     return (
       <Layout>
-        <Sidebar>
-        </Sidebar>
-        <Main>
-        </Main>
+        <Sidebar></Sidebar>
+        <Main></Main>
       </Layout>
-    );
+    )
   }
 }
 
-export default MemoPage;
+export default MemoPage
 ```
 
 HomePage 컴포넌트와 동일한 화면 구성으로 레이아웃을 만들었다.
@@ -167,13 +165,13 @@ HomePage 컴포넌트와 동일한 화면 구성으로 레이아웃을 만들었
 
 ```ts
 interface MemoPageState {
-  memos: Memo[];
+  memos: Memo[]
 }
 
 interface Memo {
-  id?: number;
-  content: string;
-  createdAt?: number;
+  id?: number
+  content: string
+  createdAt?: number
 }
 ```
 
@@ -251,7 +249,6 @@ renderMemoList(memos: Memo[]) {
 
 이 링크를 클릭하면 메모 상세 주소(/memo/:id)로 이동하게 될 것이다.
 
-
 ## 서브 라우터
 
 MemoPage 컴포넌트는 Root 라우터가 /memo 경로에 등록한 컴포넌트다.
@@ -268,8 +265,8 @@ MemoPage 컴포넌트 내부에 라우터를 선언하는 방식으로 해결했
 
 여기까지 설정하면 어플리케이션은 다음과 같이 동작한다.
 
-* **/memo 요청이 들어오면**: 좌측에 메모 목록을 보여준다
-* **/memo/* 요청이 들어오면**: 우측에 뭔가를 표시한다. 이는 **MemoRouter**가 제어한다
+- **/memo 요청이 들어오면**: 좌측에 메모 목록을 보여준다
+- **/memo/\* 요청이 들어오면**: 우측에 뭔가를 표시한다. 이는 **MemoRouter**가 제어한다
 
 routers/memo/index.tsx 파일을 만들어 우측 화면을 담당할 MemoRouter를 만들어 보자.
 
@@ -279,37 +276,32 @@ import {
   Route,
   RouteComponentProps,
   withRouter,
-} from 'react-router-dom';
+} from "react-router-dom"
 
 const MemoRouter: React.FC<RouteComponentProps> = props => {
-  const { match } = props;
+  const { match } = props
 
   return (
     <Switch>
-      <Route
-        exact
-        path={`${match.url}/add`}
-        component={AddMemo} />
-      <Route
-        exact
-        path={`${match.url}/:id`}
-        component={Memo} />
+      <Route exact path={`${match.url}/add`} component={AddMemo} />
+      <Route exact path={`${match.url}/:id`} component={Memo} />
       <Route
         exact
         path={`${match.url}/`}
-        component={() => <div>메모가 없습니다</div>} />
+        component={() => <div>메모가 없습니다</div>}
+      />
     </Switch>
   )
 }
 
-export default withRouter(MemoRouter);
+export default withRouter(MemoRouter)
 ```
 
 루트 라우터와 비슷하게 Switch, Route 컴포넌트로 라우팅 규칙을 설정했다.
 
-* **/memo/add 요청시**: AddMemo 컴포넌트를 렌더링 한다
-* **/memo/:id 요청시**: Memo 컴포넌트를 렌더링 한다
-* **/ 요청시**: '메모가 없습니다'를 렌더링 한다
+- **/memo/add 요청시**: AddMemo 컴포넌트를 렌더링 한다
+- **/memo/:id 요청시**: Memo 컴포넌트를 렌더링 한다
+- **/ 요청시**: '메모가 없습니다'를 렌더링 한다
 
 코드 하단에 보면 **withRouter** 고차함수로 MemoRouter를 감쌌다.
 이렇게 하면 MemoRouter 컴포넌트는 RoueComponentProps 정보를 갖게 된다.
@@ -320,10 +312,10 @@ export interface RouteComponentProps<
   C extends StaticContext = StaticContext,
   S = H.LocationState
 > {
-  history: H.History;
-  location: H.Location<S>;
-  match: match<Params>;
-  staticContext?: C;
+  history: H.History
+  location: H.Location<S>
+  match: match<Params>
+  staticContext?: C
 }
 ```
 
@@ -332,7 +324,6 @@ export interface RouteComponentProps<
 **props.match** 개체를 이용하면 요청 경로와 매칭된 라우트 정보를 얻어낼수 있다.
 여기에서 사용한 **match.url**은 현재 컴포넌트에 설정된 경로 값인데 '/memo' 문자열이다.
 값을 사용하지 않고 match.url 변수를 사용하면 비교적 유연한 코드를 만들 수 있을 것이다.
-
 
 ## 컴포넌트에 주입된 라우트 정보 활용
 
@@ -455,7 +446,6 @@ class MemoComponent extends React.Component<
 
 변경된 프롭스 정보를 받는 시점(componentWillReceiveProps)에서 이 정보를 비교하여 주소가 변경되면(urlChanged) 메모 데이터를 새로 불러오는(fetchData) 로직이 위 코드다.
 
-
 ## 정리
 
 타입스크립트에서 리액트 라우터를 사용하려면 react-router-dom 뿐만아니라 타입정보가 있는 @types/react-router-dom 패키지도 필요하다.
@@ -467,4 +457,5 @@ Route의 component 속성에 연결한 컴포넌트는 라우트 정보를 전�
 라우터에 연결되지 않은 컴포넌는 withRouter 고차함수로 직접 RouteComponentProps 값이 주입할 수 있다.
 
 메모장 예제의 완성본은 아래 코드에서 확인할 수 있다.
-* [https://github.com/jeonghwan-kim/study-react-ts/tree/master/router](https://github.com/jeonghwan-kim/study-react-ts/tree/master/router)
+
+- [https://github.com/jeonghwan-kim/study-react-ts/tree/master/router](https://github.com/jeonghwan-kim/study-react-ts/tree/master/router)

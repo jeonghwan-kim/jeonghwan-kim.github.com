@@ -1,5 +1,5 @@
 ---
-title: '앵귤러로 Todo앱 만들기 13 - $http로 앵귤러 서비스 개선하기'
+title: "앵귤러로 Todo앱 만들기 13 - $http로 앵귤러 서비스 개선하기"
 layout: post
 category: series
 seriesId: "377d51fb-3cab-5e79-a4e0-8e08a79bbe02"
@@ -18,49 +18,52 @@ date: 2016-06-16 09:00:13
 
 각각의 인터페이스를 모두 작성했고 api와 서비스 간의 연결만 구현하면 된다.
 
-
-## $http
+## \$http
 
 자바스크립트에서는 XMLHttpRequest 객체를 이용해 http 요청을 한다.
 제이쿼리는 $ajax 함수를 이용한다.
 마찬가지로 앵귤러도 ajax를 위한 서비스를 제공하는데 $http와 $resource가 있다.
 이 포스트에서는 기본적인 $http를 이용해 백엔드 api와 통신하는 서비스를 만들어 볼 참이다.
-이후에 $resource를 이용해 좀 더 추상화된 api 통신을 사용하는 것도 도전적인 일이 될 것이다.
+이후에 \$resource를 이용해 좀 더 추상화된 api 통신을 사용하는 것도 도전적인 일이 될 것이다.
 
-$http의 사용법은 제이쿼리와 유사하다.
+\$http의 사용법은 제이쿼리와 유사하다.
 
 js/services/todomvcStorage.js:
 
 ```javascript
-angular.module('todomvc')
-    .factory('todomvcStorage', function ($http) {
-      var storage = {
+angular.module("todomvc").factory("todomvcStorage", function ($http) {
+  var storage = {
+    todos: [],
 
-        todos: [],
-
-        get: function (callback) {
-          $http.get('/api/todos')                 // GET /api/todos 요청
-              .then(function success(response) {  // 성공
-                console.log(response);
-                callback(null, angular.copy(response.data, storage.todos));
-              }, function error(err) {            // 실패
-                console.error(err);
-                callback(err);
-              });
-        },
-      };
-    });
+    get: function (callback) {
+      $http
+        .get("/api/todos") // GET /api/todos 요청
+        .then(
+          function success(response) {
+            // 성공
+            console.log(response)
+            callback(null, angular.copy(response.data, storage.todos))
+          },
+          function error(err) {
+            // 실패
+            console.error(err)
+            callback(err)
+          }
+        )
+    },
+  }
+})
 ```
 
-$http 는 메쏘드에 따라 `get()`, `post()`, `put()`, `delete()` 함수를 제공한다.
+\$http 는 메쏘드에 따라 `get()`, `post()`, `put()`, `delete()` 함수를 제공한다.
 첫번째 파라메터는 요청 url을 입력한다.
 post와 put함수는 두번째 파라메터로 요청 바디를 추가할 수 있는데 다음과 같은 형시으로 객체를 넘겨준다.
 
 ```javascript
-$http.post('/api/todos', {title: 'new todo'});
+$http.post("/api/todos", { title: "new todo" })
 ```
 
-$http는 기본적으로 프라미스를 지원한다.
+\$http는 기본적으로 프라미스를 지원한다.
 따라서 각 함수를 실행하면 프라미스를 리턴하기 때문에 then 함수를 이용해 결과 처리를 할수 있다.
 `then`의 첫번째 파라매터는 성공시 함수이고 둘째 파라매터는 실패시 파라메터다.
 우리는 성공시 응답 데이터를 서비스의 `todos` 변수에 복사했다.
@@ -72,17 +75,15 @@ http 요청은 비동기 요청이기 때문에 이러한 콜백 구조가 필�
 js/controllers/TodomvcCtrl.js:
 
 ```javascript
-angular.module('todomvc')
-    .controller('TodomvcCtrl', function ($scope, todomvcStorage) {
-
-      // 비동기 함수이미로 콜백 함수를 파라매터로 넘겼다.
-      todomvcStorage.get(function (err, todos) {
-        if (err) return;
-        $scope.todos = todos;
-      });
-
-    });
-
+angular
+  .module("todomvc")
+  .controller("TodomvcCtrl", function ($scope, todomvcStorage) {
+    // 비동기 함수이미로 콜백 함수를 파라매터로 넘겼다.
+    todomvcStorage.get(function (err, todos) {
+      if (err) return
+      $scope.todos = todos
+    })
+  })
 ```
 
 기존에는 서비스에 있는 데이터를 바로 받았다.
@@ -91,7 +92,6 @@ angular.module('todomvc')
 
 보통 콜백함수는 두 개의 파라매터를 사용하도록 구현한다. 첫번째는 에러, 둘째는 성공시 응답이다.
 그래서 콜백 함수 결과를 확인할때 에러를 체크한 뒤 성공 응답을 확인하는 것이 일반적이다.
-
 
 ## 나머지는 직접 구현해보자
 

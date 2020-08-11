@@ -2,11 +2,11 @@ import React, { ReactNode, CSSProperties } from "react"
 import { Link } from "gatsby"
 import { MarkdownRemark } from "../../models/markdown-remark"
 
-import './sibling-nav.scss';
+import "./sibling-nav.scss"
 
 interface SiblingNavItemProps {
   label: string
-  align: 'left' | 'right'
+  align: "left" | "right"
   icon: string
   text: string
   url: string
@@ -16,16 +16,20 @@ const SiblingNavItem: React.FC<SiblingNavItemProps> = p => {
   const labelStyle: CSSProperties = {
     textAlign: p.align,
   }
-  p.align === 'left' ? labelStyle.marginLeft = 16 : labelStyle.marginRight = 16
+  p.align === "left"
+    ? (labelStyle.marginLeft = 16)
+    : (labelStyle.marginRight = 16)
 
   return (
     <div className="sibling-nav-item">
-      <div className="label" style={labelStyle}>{p.label}</div>
+      <div className="label" style={labelStyle}>
+        {p.label}
+      </div>
       <Link to={p.url}>
         <div className="flex">
-          {p.align === 'left' && <i style={{marginRight: 8}}>{p.icon}</i>}
-          <h3 style={{textAlign: p.align}}>{p.text}</h3>
-          {p.align === 'right' && <i style={{marginLeft: 8}}>{p.icon}</i>}
+          {p.align === "left" && <i style={{ marginRight: 8 }}>{p.icon}</i>}
+          <h3 style={{ textAlign: p.align }}>{p.text}</h3>
+          {p.align === "right" && <i style={{ marginLeft: 8 }}>{p.icon}</i>}
         </div>
       </Link>
     </div>

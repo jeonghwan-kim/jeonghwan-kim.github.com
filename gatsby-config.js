@@ -3,11 +3,11 @@ module.exports = {
     title: `김정환 블로그`,
     description: `주로 웹 기술에 대해 이야기 합니다`,
     author: `김정환`,
-    url: 'https://jeonghwan-kim.github.io',
+    url: "https://jeonghwan-kim.github.io",
     social: {
-      email: 'ej88ej@gmail.com',
-      twitterUsername: 'jeonghwan0424',
-      githubUsername: 'jeonghwan-kim'
+      email: "ej88ej@gmail.com",
+      twitterUsername: "jeonghwan0424",
+      githubUsername: "jeonghwan-kim",
     },
   },
   plugins: [
@@ -62,9 +62,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
-        shortname: `whatilearncom`
-      }
-
+        shortname: `whatilearncom`,
+      },
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
@@ -86,19 +85,20 @@ module.exports = {
             }
           }
         `,
-        feeds:[{
-          output: "/feed.xml",
-          serialize: ({ query: { site, allMarkdownRemark } }) => {
-            return allMarkdownRemark.edges.map(edge => {
-              return Object.assign({}, edge.node.frontmatter, {
-                description: edge.node.excerpt,
-                date: edge.node.fields.date,
-               url: site.siteMetadata.url + edge.node.fields.slug,
-               guid: site.siteMetadata.url + edge.node.fields.slug,
+        feeds: [
+          {
+            output: "/feed.xml",
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.fields.date,
+                  url: site.siteMetadata.url + edge.node.fields.slug,
+                  guid: site.siteMetadata.url + edge.node.fields.slug,
+                })
               })
-            })
-          },
-          query: `{
+            },
+            query: `{
               allMarkdownRemark(
                 sort: { order: DESC, fields: [fields___date] },
               ) {
@@ -117,10 +117,10 @@ module.exports = {
               }
             }
           `,
-          title: "김정환 블로그 RSS Feed",
-        }
-        ]
-      }
-    }
+            title: "김정환 블로그 RSS Feed",
+          },
+        ],
+      },
+    },
   ],
 }

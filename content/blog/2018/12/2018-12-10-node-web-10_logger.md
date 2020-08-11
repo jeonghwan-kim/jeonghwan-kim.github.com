@@ -1,5 +1,5 @@
 ---
-title: '[Node.js코드랩] 10.커스텀 모듈 logger'
+title: "[Node.js코드랩] 10.커스텀 모듈 logger"
 layout: post
 summary: 미들웨어를 활용합니다
 category: series
@@ -23,7 +23,7 @@ tags: [lecture]
 $ git checkout -f module/logger-spec
 ```
 
-*힌트: req 객체를 살펴보세요*
+_힌트: req 객체를 살펴보세요_
 
 ## 🐤풀이
 
@@ -48,7 +48,7 @@ logger도 요청에서 응답 사이에 실행되는 미들웨어 함수이므�
 
 ```js
 // ...
-const logger = require('./middlewares/logger');
+const logger = require("./middlewares/logger")
 
 app.use(logger()) // 로그 미들웨어 추가
 app.use(serveStatic())
@@ -67,11 +67,12 @@ GET /js/script.js
 GET /imgs/twitter.png
 GET /favicon.ico
 ```
+
 브라우져에서 index.html을 요청한뒤 순차적으로 정적 파일 요청 내용이 로그로 찍혀 나옵니다.
 
 ## 🐤실습 - 메소드명에 색상도 추가해 보세요
 
-*힌트: debug모듈 참고*
+_힌트: debug모듈 참고_
 
 ## 🐤 풀이
 
@@ -81,11 +82,11 @@ debug 모듈에서 색상 출력을 위해 생삭 값을 사용했지요?
 
 ```js
 const colors = {
-  green: '\x1b[32m',
-  cyan: '\x1b[36m',
-  red: '\x1b[31m',
-  yellow: '\x1b[33m',
-  reset: '\x1b[0m',
+  green: "\x1b[32m",
+  cyan: "\x1b[36m",
+  red: "\x1b[31m",
+  yellow: "\x1b[33m",
+  reset: "\x1b[0m",
 }
 ```
 
@@ -96,7 +97,7 @@ const methodColorMap = {
   get: colors.green,
   post: colors.cyan,
   put: colors.yellow,
-  delete: colors.red
+  delete: colors.red,
 }
 ```
 
@@ -104,13 +105,13 @@ const methodColorMap = {
 
 ```js
 const logger = () => (req, res, next) => {
-  const coloredMethod = (method = '') => {
+  const coloredMethod = (method = "") => {
     return `${methodColorMap[method.toLowerCase()]}${method}${colors.reset}`
   }
 
   const log = `${coloredMethod(req.method)} ${req.url}`
-  console.log(log);
-  next();
+  console.log(log)
+  next()
 }
 ```
 
@@ -127,7 +128,6 @@ logger는 우측 하단의 써드 파티 라이브러리로 분류할 수 있습
 
 ## 정리
 
-* 요청 정보를 로깅하는 logger 미들웨어를 만들었습니다.
-
+- 요청 정보를 로깅하는 logger 미들웨어를 만들었습니다.
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)

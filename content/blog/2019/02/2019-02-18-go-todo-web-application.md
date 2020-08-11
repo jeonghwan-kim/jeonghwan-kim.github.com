@@ -1,8 +1,7 @@
 ---
-title: 'Go로 투두 웹 어플리케이션 만들기'
+title: "Go로 투두 웹 어플리케이션 만들기"
 layout: post
-summary:
-  "기본 모듈만 이용해 웹 어플리케이션을 만들어 봅니다.
+summary: "기본 모듈만 이용해 웹 어플리케이션을 만들어 봅니다.
   지금까지 [Go 기본 패키지에 대해 정리했던 것](/tags.html#go)을 기반으로 웹 어플리케이션을 만들어보는건 어떨까?
   SPA 구조의 프론트엔드를 공부할 때 종종 둘러보는 [TodoMVC](http://todomvc.com/)를 이용하고,
   Go 언어로 백엔드를 만들어 가는 과정을 정리해 보면 웹 어플리케이션 개발을 이해하는데 도움이 되지 않을까 생각한다."
@@ -26,7 +25,7 @@ $ git init
 폴더로 이동해서 깃 트래킹을 초기화했다.
 
 이미 구현해 놓은 Todo 어플리케이션 코드를 가져오자.
-깃헙 tastejs 계정의 todomvc 저장소에서 가져올 것이므로 "front" 라는  이름 원격 저장소로 등록한 뒤 패치한다.
+깃헙 tastejs 계정의 todomvc 저장소에서 가져올 것이므로 "front" 라는 이름 원격 저장소로 등록한 뒤 패치한다.
 
 ```
 $ git remote add front git@github.com:tastejs/todomvc.git
@@ -64,7 +63,6 @@ $ tree ./
             └── SpecRunner.htmlfr
 ```
 
-
 ## 정적 파일 처리
 
 프론트엔드 코드는 js, html, css 등으로 이루어진 정적 파일이다.
@@ -92,7 +90,6 @@ $ go run .
 ```
 
 ![Todo 어플리케이션](/assets/imgs/2019/02/18/todo-app.png)
-
 
 ## 로컬 스토리지를 API로 변경
 
@@ -151,27 +148,27 @@ Store.prototype.remove = function (id, callback) { };
 
 우리가 만들 Go 서버는 정적 파일 뿐만아니라 API도 제공할 것이기 때문에 로컬 스토리지 사용하는 부분을 Ajax 요청으로 변경하겠다.
 
-매 요청시마다 사용될 XMLHttpRequest 객체를 래핑한 $http 모듈을 전역에 등록한다.
+매 요청시마다 사용될 XMLHttpRequest 객체를 래핑한 \$http 모듈을 전역에 등록한다.
 helpers.js 파일을 열고 아래 코드를 추가한다.
 
 ```js
 window.$http = function (path, method, data, callback) {
-  var req = new XMLHttpRequest();
+  var req = new XMLHttpRequest()
 
-  req.open(method, path, true);
+  req.open(method, path, true)
 
   req.onreadystatechange = () => {
     if (req.readyState === 4) {
       if (req.status === 200) {
         try {
-          req.data = JSON.parse(req.responseText);
-          callback(null, req);
+          req.data = JSON.parse(req.responseText)
+          callback(null, req)
         } catch (err) {
           console.log(err)
-          callback(Error('$http response parse error'));
+          callback(Error("$http response parse error"))
         }
       } else {
-        callback(Error('$http request error'));
+        callback(Error("$http request error"))
       }
     }
   }
@@ -183,22 +180,21 @@ window.$http = function (path, method, data, callback) {
 요청 경로(path), 메소드(method), 바디 데이터(data)를 인자로 받는다.
 Ajax 요청이 비동기로 마친 뒤 응답 데이터를 콜백(callback)의 함수 인자로 전달해 호출하는 방식이다.
 
-이 $http 함수를 이용하여 전체 데이터를 조회하는 findAll 메소드부터 Ajax 요청으로 바꾸어 보자.
+이 \$http 함수를 이용하여 전체 데이터를 조회하는 findAll 메소드부터 Ajax 요청으로 바꾸어 보자.
 
 ```js
 Store.prototype.findAll = function (callback) {
-  $http('/api/todos', 'get', null, function (err, res) {
+  $http("/api/todos", "get", null, function (err, res) {
     if (err) {
-      throw err;
+      throw err
     }
 
     callback.call(this, res.data)
   })
-};
+}
 ```
 
-$http 헬퍼 함수로 "GET /api/todos" 요청을 보내고 응답을 기존 콜백 함수로 전달했다.
-
+\$http 헬퍼 함수로 "GET /api/todos" 요청을 보내고 응답을 기존 콜백 함수로 전달했다.
 
 ## API 엔드포인트 만들기
 
@@ -246,7 +242,6 @@ http.ListenAndServe(":3000", nil)
 
 ![get todo api](/assets/imgs/2019/02/18/get-todo-api.png)
 
-
 ## Application 타입 정의
 
 조회시 "GET /api/todos" API를 사용한것 처럼 데이터 생성 API는 메소드만 POST로 바꾼 "POST /api/todos"가 필요하다.
@@ -257,7 +252,7 @@ http.ListenAndServe(":3000", nil)
 Store.prototype.save = function (updateData, callback, id) {
   // 업데이트
   if (id) {
-    $http('/api/todos', 'put', {...updateData, id}, function (err, res) {
+    $http("/api/todos", "put", { ...updateData, id }, function (err, res) {
       if (err) {
         throw err
       }
@@ -269,9 +264,9 @@ Store.prototype.save = function (updateData, callback, id) {
   // 추가
   else {
     // Generate an ID
-    updateData.id = new Date().getTime();
+    updateData.id = new Date().getTime()
 
-    $http('/api/todos', 'post', updateData, function (err, res) {
+    $http("/api/todos", "post", updateData, function (err, res) {
       if (err) {
         throw err
       }
@@ -279,10 +274,11 @@ Store.prototype.save = function (updateData, callback, id) {
       callback.call(this, [res.data])
     })
   }
-};
+}
 ```
 
 save 메소드는 id 인자에 따라 데이터를 추가하거나 업데이트하도록 오버로딩하였다.
+
 - id가 있을 경우: "PUT /api/todos" 요청
 - id가 없을 경우: "POST /api/todos" 요청
 
@@ -344,7 +340,7 @@ func (a *Application) Get(path string, handler func(rw http.ResponseWriter, r *h
 ```
 
 메소드 인자를 미리 정의된 MethodGet 상수로 고정하여 AddFunc를 호출하는 부분함수 패턴을 사용했다.
-**Post**, **Put**, **Delete**  메소드도 같은 방식으로 만들 수 있다.
+**Post**, **Put**, **Delete** 메소드도 같은 방식으로 만들 수 있다.
 
 ```go
 func (a *Application) Post(path string, handler func(rw http.ResponseWriter, r *http.Request)) {
@@ -388,7 +384,6 @@ for문으로 슬라이스를 순회하면서 요청주소(r.URL.Path)와 등록�
 
 만약 요청이 등록되어 있지 않을 경우 NotFound 함수로 404 처리를 하도록 했다.
 
-
 ## Application 역할 추가
 
 이왕에 몇 가지 역할을 Application에게 위임해 보자.
@@ -424,7 +419,6 @@ func NewApplication() *Application {
 }
 ```
 
-
 ## Application으로 기존 코드 개선
 
 지금까지 Application 코드를 꽤나 길게 작성했는데 이번엔 이것을 이용해 기존 코드를 개선해 보겠다.
@@ -450,7 +444,6 @@ func main() {
 
 NewApplication() 으로 어플리케이션을 생성했다.
 기존 구현했던 "GET /api/todos" 엔드포인트를 Get 메소드로 만들고, 정적파일 제공을 Static 메소드로 간단히 구현했다. 마지막으로 Start 메소드로 서버를 리슨상태로 만들었다.
-
 
 ## POST 메소드 엔드포인트 추가
 
@@ -480,7 +473,6 @@ a.Post("/api/todos", func(rw http.ResponseWriter, r *http.Request) {
 ![add todo 2](/assets/imgs/2019/02/18/add-todo-2.png)
 
 잘 동작한다.
-
 
 ## PUT, DELTE 메소드 엔드포인트 만들기
 
@@ -544,7 +536,6 @@ a.Delete("/api/todos", func(rw http.ResponseWriter, r *http.Request) {
 
 데이터를 찾아 삭제한뒤 전체 투두 데이터를 응답하는 로직이다.
 
-
 ## 요청, 응답 전용 함수
 
 가만 보면 요청 데이터를 읽는 부분과 Json 응답부분이 중복 코드다.
@@ -581,7 +572,6 @@ func NewStore() *Store {
 ```
 
 기존에 있던 db를 Store 구조체로 만들었다. 스토어 생성함수도 만들었다.
-
 
 데이터 CRUD 작업을 위한 메소드를 아래와 같이 추가하자.
 
@@ -661,7 +651,6 @@ func main() {
   a.Start(":3000")
 }
 ```
-
 
 ## 정리
 

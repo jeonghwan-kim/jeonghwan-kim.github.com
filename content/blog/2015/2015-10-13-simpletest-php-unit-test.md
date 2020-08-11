@@ -1,6 +1,6 @@
 ---
 id: 786
-title: 'SimpleTest &#8211; php unit test'
+title: "SimpleTest &#8211; php unit test"
 date: 2015-10-13T17:17:22+00:00
 author: Chris
 layout: post
@@ -9,6 +9,7 @@ permalink: /simpletest-php-unit-test/
 category: dev
 tags: [test]
 ---
+
 Php 유닛 테스트 라이브러 중 하나이다. [PHPUnit](https://phpunit.de)과 [SimpleTest](http://www.simpletest.org) 중 후자가 바로 사용하기 간단해 보임.
 
 ## 라이브러리 다운로드
@@ -69,7 +70,6 @@ function add($a, $b) {
 ```
 
 다시 테스트하면 통과한다.
-
 
 ```bash
 php ./test/math.php

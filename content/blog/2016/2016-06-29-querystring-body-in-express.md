@@ -1,10 +1,10 @@
 ---
-title: '노드에서는 쿼리스트링 인코딩을 어떻게 처리할까?'
+title: "노드에서는 쿼리스트링 인코딩을 어떻게 처리할까?"
 layout: post
 category: dev
 tags: [expressjs]
 featured_image:
-summary: 'Nodejs, Expressjs, Request모듈에서 쿼리스트링 인코딩을 어떻게 처리하고 있을까? 그리고 어떻게 사용해야 할까?'
+summary: "Nodejs, Expressjs, Request모듈에서 쿼리스트링 인코딩을 어떻게 처리하고 있을까? 그리고 어떻게 사용해야 할까?"
 permalink: /2016/06/29/querystring-body-in-express.html
 videoId: "a3385ae2-3c3c-585d-b4ee-fe73484ece62"
 ---
@@ -20,7 +20,6 @@ videoId: "a3385ae2-3c3c-585d-b4ee-fe73484ece62"
 할머니에게 설명할 수 있을 정도가 되어야 제대로 알고 있는 것이라고 했는데......
 난 url 인코딩에 대해 정확히 모르고 있었다.
 
-
 ## URL 인코딩하는 이유
 
 주소를 인코딩 이유는 [regularmotion 블로그](http://regularmotion.kr/url-encoding-url/)에 잘 설명되어 있다.
@@ -30,11 +29,11 @@ videoId: "a3385ae2-3c3c-585d-b4ee-fe73484ece62"
 노드에서도 [querystring](https://nodejs.org/dist/latest-v4.x/docs/api/querystring.html)모듈에서 제공하는 함수 중에는 `escape()`, `unescape()`가 있어 문자열을 인코딩/디코딩할 수 있다.
 
 ```javascript
-var qs = require('querystring');
-var str = 'apple 쥬스';
-var encodedStr = qs.escape(str);          // 'apple%20%EC%A5%AC%EC%8A%A4'
-var decodedStr = qs.unescape(encodedStr); // 'apple 쥬스'
-assert.equal(str, decodedStr);
+var qs = require("querystring")
+var str = "apple 쥬스"
+var encodedStr = qs.escape(str) // 'apple%20%EC%A5%AC%EC%8A%A4'
+var decodedStr = qs.unescape(encodedStr) // 'apple 쥬스'
+assert.equal(str, decodedStr)
 ```
 
 자 그럼 몇 가지 궁금한게 생겼다.
@@ -47,19 +46,20 @@ assert.equal(str, decodedStr);
 
 자주 사용하는 라이브러리이기 때문에 이번 기회에 다시한번 짚어보자.
 
-
 ## http 모듈의 쿼리스트링
 
 노드 [http](https://nodejs.org/dist/latest-v4.x/docs/api/http.html) 모듈은 어떻게 url을 처리할까?
 간단하게 서버를 구동하여 curl로 테스트 해보자.
 
 ```javascript
-require('http').createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end(`${req.url}\n`);
-}).listen(3000, 'localhost', () => {
-  console.log('server is listening 3001 port');
-});
+require("http")
+  .createServer((req, res) => {
+    res.writeHead(200, { "Content-Type": "text/plain" })
+    res.end(`${req.url}\n`)
+  })
+  .listen(3000, "localhost", () => {
+    console.log("server is listening 3001 port")
+  })
 ```
 
 http 모듈은 `createServer()` 함수의 첫번째 파라매터 `req`를 통해 클라이언트의 요청 정보에 접근할 수 있다.
@@ -86,8 +86,8 @@ http 모듈은 인코딩한 쿼리스트링에 대해 아무런 작업을 하지
 **따라서 http 모듈은 요청 데이터를 사용할 때 이를 디코딩해서 사용해야 한다.**
 
 ```javascript
-var qs = require('querystring');
-var decodedUrl = qs.unescape(req.url);
+var qs = require("querystring")
+var decodedUrl = qs.unescape(req.url)
 ```
 
 ## express 모듈의 쿼리스트링
@@ -95,15 +95,15 @@ var decodedUrl = qs.unescape(req.url);
 익스프레스 모듈에서는 쿼리스트링을 어떻게 처리할까?
 
 ```javascript
-var express = require('express');
-var app = express();
+var express = require("express")
+var app = express()
 
-app.get('/', (req, res) => {
-  console.log(req.url);
-  console.log(req.query);
+app.get("/", (req, res) => {
+  console.log(req.url)
+  console.log(req.query)
 })
 
-app.listen(3001, () => console.log('express server is listening 3001'));
+app.listen(3001, () => console.log("express server is listening 3001"))
 ```
 
 위 서버를 구동하여 동일하게 curl 요청을 해보자.
@@ -117,7 +117,6 @@ express는 http 모듈을 내부적으로 사용하고 있기 때문에 `req.url
 그러나 이를 디코딩하고 파싱하여 `req.query` 변수에 객체를 할당해 준다.
 **express 프레임웍에서는 별도의 디코딩 작업 없이 `req.query` 변수를 통해서 요청값에 접근하면 된다.**
 
-
 ## request 모듈의 쿼리스트링
 
 그럼 반대로 서버에서 다른 서버로 요청을 할때는 쿼리스트링을 어떻게 처리해야 할까?
@@ -126,14 +125,14 @@ express는 http 모듈을 내부적으로 사용하고 있기 때문에 `req.url
 우선 쿼리스트링 인코딩없이 리퀘스트를 날려보자.
 
 ```javascript
-const request = require('request');
-const qs = require('querystring');
-let url = 'http://localhost:3001?q=apple 쥬스';
+const request = require("request")
+const qs = require("querystring")
+let url = "http://localhost:3001?q=apple 쥬스"
 
 request.get(url, (err, res) => {
-    if (err) throw err;
-    console.log(res.body); // {"q":"apple l¤"}
-});
+  if (err) throw err
+  console.log(res.body) // {"q":"apple l¤"}
+})
 ```
 
 http 모듈에서는 이러한 요청에 대해 깨진 문자열로 받는다.
@@ -149,14 +148,14 @@ req.query = {
 이번에 쿼리스트링 인코딩 후 리퀘스트를 날려보자.
 
 ```javascript
-const request = require('request');
-const qs = require('querystring');
-let url = `http://localhost:3001?q=${qs.escape('apple 쥬스')}`; // 쿼리스트링 인코딩 처리
+const request = require("request")
+const qs = require("querystring")
+let url = `http://localhost:3001?q=${qs.escape("apple 쥬스")}` // 쿼리스트링 인코딩 처리
 
 request.get(url, (err, res) => {
-    if (err) throw err;
-    console.log(res.body); // {"q":"apple 쥬스"}
-});
+  if (err) throw err
+  console.log(res.body) // {"q":"apple 쥬스"}
+})
 ```
 
 "%" 문자와 16진수 문자로 디코딩되어 제대로 전달되었다.

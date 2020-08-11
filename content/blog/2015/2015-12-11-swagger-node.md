@@ -7,11 +7,11 @@ layout: post
 guid: http://whatilearn.com/?p=564
 permalink: /swagger-node/
 category: dev
-tags: [expressjs ,swagger]
+tags: [expressjs, swagger]
 summary: 이번에는 노드 익스프레스(Express.js)로 프로젝트를 시작할때 스웨거 툴을 이용해서 개발하는 방법에 대해 알아보겠다.
 ---
-스웨거 개념을 잡느라 상당한 시간을 소요하고 있다. 이전 포스트에서는 기존프로젝트에 스웨거를 적용하는 방법에 대해 정리하였다. 이번에는 노드 익스프레스(Express.js)로 프로젝트를 시작할때 스웨거 툴을 이용해서 개발하는 방법에 대해 알아보겠다.
 
+스웨거 개념을 잡느라 상당한 시간을 소요하고 있다. 이전 포스트에서는 기존프로젝트에 스웨거를 적용하는 방법에 대해 정리하였다. 이번에는 노드 익스프레스(Express.js)로 프로젝트를 시작할때 스웨거 툴을 이용해서 개발하는 방법에 대해 알아보겠다.
 
 ## swaager 커맨드라인 툴 설치
 
@@ -33,7 +33,6 @@ swagger project test
 
 노드 프로젝트를 생성(`create`)하고 swagger-edit 도구로 스웨거 문서를 편집(`edit`)할수 있다. 작성한 스웨거 문서의 문법도 체크(`verify`)할 수 있다. 생성한 노드 프로젝트를 시작(`start`)하며 유닛 테스트(`test`)도 실행한다.
 
-
 ## 프로젝트 생성
 
 ```
@@ -53,7 +52,6 @@ $ swagger project create hello-swagger
   /node_modules
   /test
 ```
-
 
 ## API 디자인
 
@@ -80,19 +78,18 @@ paths:
 
 ```javascript
 module.exports = {
-  hello: hello
-};
+  hello: hello,
+}
 
 function hello(req, res) {
-  var name = req.swagger.params.name.value || 'stranger';
-  var hello = util.format('Hello, %s!', name);
+  var name = req.swagger.params.name.value || "stranger"
+  var hello = util.format("Hello, %s!", name)
 
-  res.json(hello);
+  res.json(hello)
 }
 ```
 
 `operationId: hello`는 hello() 메소드와 연결된다.
-
 
 ## swagger-ui 연동
 
@@ -101,17 +98,15 @@ function hello(req, res) {
 app.js:
 
 ```javascript
-var SwaggerUi = require('swagger-tools/middleware/swagger-ui');
+var SwaggerUi = require("swagger-tools/middleware/swagger-ui")
 
-SwaggerExpress.create(config, function(err, swaggerExpress) {
-
+SwaggerExpress.create(config, function (err, swaggerExpress) {
   // add swagger-ui (/docs)
-  app.use(SwaggerUi(swaggerExpress.runner.swagger));
+  app.use(SwaggerUi(swaggerExpress.runner.swagger))
 
   // install middleware
-  swaggerExpress.register(app);
-
-});
+  swaggerExpress.register(app)
+})
 ```
 
 브라우져로 /docs 경로에 접근하면 swagger-ui를 확인할 수 있다.
@@ -133,17 +128,17 @@ var config = {
   swaggerSecurityHandlers: {
     api_key: function (req, authOrSecDef, scopesOrApiKey, cb) {
       // your security code
-      if ('1234' === scopesOrApiKey) {
-        cb();
+      if ("1234" === scopesOrApiKey) {
+        cb()
       } else {
-        cb(new Error('access denied!'));
+        cb(new Error("access denied!"))
       }
-    }
-  }
-};
+    },
+  },
+}
 ```
 
-간단히 api_key를 '1234' 문자열로 설정했다.  swagger-edit 툴을 이용해 스웨거 문서에 api_key를 정의하고 설정한다. 만약 각 API별로 설정할 경우에는 해당 프로토콜에 security를 추가하면 된다.
+간단히 api_key를 '1234' 문자열로 설정했다. swagger-edit 툴을 이용해 스웨거 문서에 api_key를 정의하고 설정한다. 만약 각 API별로 설정할 경우에는 해당 프로토콜에 security를 추가하면 된다.
 
 ```yaml
 securityDefinitions:
@@ -152,7 +147,7 @@ securityDefinitions:
     in: query
     name: api_key
 security:
-  - api_key: [  ]
+  - api_key: []
 ```
 
 이제 다시 API를 호출해 보자.
@@ -160,7 +155,6 @@ security:
 api_key 없이 호출한 경우 에러를 응답한다.
 
 ![](/assets/imgs/2015/swagger3.png)
-
 
 ## Dynamic host
 

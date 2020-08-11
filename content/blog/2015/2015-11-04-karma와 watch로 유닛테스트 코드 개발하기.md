@@ -9,6 +9,7 @@ permalink: /karma%ec%99%80-watch%eb%a1%9c-%ec%9c%a0%eb%8b%9b%ed%85%8c%ec%8a%a4%e
 category: dev
 tags: [test]
 ---
+
 [Karma](https://github.com/karma-runner/karma)는 프로론트엔드 유닛테스를 위한 라이브러리다. Grunt와 함께 사용하는 방법에 대해 살펴보자.
 
 Grunt에서 사용할 Karma를 설치한다.
@@ -50,80 +51,64 @@ module.exports = function (grunt) {
 
 Gruntfile에서는 먼저 karma 작업에 대한 설정을 한다. configFile을 karma.conf.js로 설정한다. 그리고 서브 테스크 unit을 정의하여 `singleRun: true` 옵션을 추가한다. 그럼 테스트를 한번만 구동하고 마치는 것이다. 그 다음 default 태스크를 정의하여 `karma:unit` 태스크를 수행하도록 한다. 커맨드창에 `grunt` 명령을 수행하면 karma 러너가 동작할 것이다.
 
-
 ## karma.conf.js
 
 그전에 karma.conf.js 파일을 작성해야 한다. 이 파일은 Karma 구동시 필요한 정보들을 담고 있다.
 
 ```javascript
-
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
-
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
-
+    basePath: "",
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
-
+    frameworks: ["jasmine"],
 
     // list of files / patterns to load in the browser
     files: [
-      'bower_components/angular/angular.js',
-      'bower_components/angular-mocks/angular-mocks.js',
-      'bower_components/jquery/dist/jquery.js',
-      'src/app.js',
-      'src/**/*.js',
-      'src/**/*.spec.js'
+      "bower_components/angular/angular.js",
+      "bower_components/angular-mocks/angular-mocks.js",
+      "bower_components/jquery/dist/jquery.js",
+      "src/app.js",
+      "src/**/*.js",
+      "src/**/*.spec.js",
     ],
-
 
     // list of files to exclude
-    exclude: [
-    ],
-
+    exclude: [],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
-
+    preprocessors: {},
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
-
+    reporters: ["progress"],
 
     // web server port
     port: 9876,
 
-
     // enable / disable colors in the output (reporters and logs)
     colors: true,
-
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
-
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
-
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
-
+    browsers: ["Chrome"],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
-  });
-};
+    singleRun: false,
+  })
+}
 ```
 
 여러가지 옵션 중 몇가지만 살펴 보자. frameworks에는 어떤 밸리데이터를 사용할지 설정한다. 우리는 jasmine을 사용한다. files 에는 테스트를 위해 브라우저가 로딩해야할 자바스크립트 파일 들이다. 프로넥트에서 사용한 라이브러리를 모두 로딩하면 된다. 마지막의 singleRun 옵션은 Gurntfile과 중복되지만 문제 없다.

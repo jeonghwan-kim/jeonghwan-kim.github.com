@@ -9,7 +9,8 @@ permalink: /angular-form/
 category: dev
 tags: [angularjs]
 ---
-앵귤러에서는 폼작성을 위한 클래스와 스콥 변수를 지원한다. 이를 통해 폼 데이터와 화면을 제어할 수 있다. <code>&lt;form name="myForm"&gt;</code> 을 설정하면 컨트롤러에서 <code>$scope.myForm</code>으로 폼에 속한 인풋 엘레먼트에 접근할 수 있다. 또한 <code>$scope.myForm.$dirty</code> 등으로 폼 유효성에 대한 검증을 할수 있으며 이는 <code>ng-dirty</code>와 같이 클래스명으로 설정된다. 앵귤러 폼의 기본 사용법과 몇가지 팁에 대해 정리해보자.
+
+앵귤러에서는 폼작성을 위한 클래스와 스콥 변수를 지원한다. 이를 통해 폼 데이터와 화면을 제어할 수 있다. <code>&lt;form name="myForm"&gt;</code> 을 설정하면 컨트롤러에서 <code>$scope.myForm</code>으로 폼에 속한 인풋 엘레먼트에 접근할 수 있다. 또한 <code>$scope.myForm.\$dirty</code> 등으로 폼 유효성에 대한 검증을 할수 있으며 이는 <code>ng-dirty</code>와 같이 클래스명으로 설정된다. 앵귤러 폼의 기본 사용법과 몇가지 팁에 대해 정리해보자.
 
 <h1>데이터 바인딩</h1>
 
@@ -31,7 +32,7 @@ tags: [angularjs]
 
 $valid, $invalid 속성을 좀더 살펴보자. 입력값을 검증하는 기준은 뭘까? html5 태그 속성과 앵귤러 디렉티브로 검증 기준을 설정할 수 있다.
 
-&lt;input type="text" required="true" ng-minlength="3" pattern="/^<span class="pl-c1">&#92;</span>d*$/" /&gt;
+&lt;input type="text" required="true" ng-minlength="3" pattern="/^<span class="pl-c1">&#92;</span>d\*\$/" /&gt;
 
 <ul>
     <li>required="true": 반드시 입력해야할 필드</li>
@@ -60,6 +61,6 @@ $valid, $invalid 속성을 좀더 살펴보자. 입력값을 검증하는 기준
 <code>&lt;input type="text" ng-trim /&gt;</code>
 
 엔터키에 대해 이벤트를 걸고 싶다면 <code>ng-keyup</code>을 사용할 수 있다.
-<code>&lt;input type="text" ng-keyup="$event.keyCode === 13 &amp;&amp; search()" /&gt;</code>
+<code>&lt;input type="text" ng-keyup="\$event.keyCode === 13 &amp;&amp; search()" /&gt;</code>
 
 &nbsp;

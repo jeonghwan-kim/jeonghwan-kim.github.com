@@ -11,6 +11,7 @@ AGLBIsDisabled:
 category: dev
 tags: [authentication]
 ---
+
 <h1>구글 개발자 콘솔 설정</h1>
 구글 인증을 사용하기 위해서는 <a href="https://console.developers.google.com/project">구글 웹 콘솔</a>에 접속하여 콜백 주소 등의 정보를 입력한 뒤 클라이언트 아이디와 클라이언트 시크릿을 받아야한다. 프로젝트를 생성하고 아이디/시크릿을 받는 과정까지 알아보자.
 
@@ -23,6 +24,7 @@ tags: [authentication]
 (4) 정보를 입력하고 클라이언트 ID 만들기 버튼을 클릭하면 클라이언트 ID와 클라이언트 보안 비밀을 확인할 수 있는데 이것이 각각 <code>clientId</code>와 <code>clientSecret</code>이다.
 
 (5) 마지막으로API 메뉴로 들어가 Google + API를 활성화 한다.
+
 <h1>모듈 설치</h1>
 두 가지 모듈이 필요하다. <code>npm install passport passport-google-oauth</code>
 <h1>폴더구조</h1>
@@ -35,6 +37,7 @@ tags: [authentication]
 <code>/auth/passport/config.json</code>: 구글 웹콘솔에서 생성한 클라이언트 아이디와 시크릿 정보를 저장한다.
 
 이렇게 auth 폴더에 패스포트를 포함한 인증모듈을 담아둔 뒤, 서버 구동하는 app.js에서 이를 로딩하는 구조로 작성한다. 이를 호출하는 app.js 파일 내부를 살펴보자.
+
 <pre class="lang:js decode:true" title="app.js">var express = require('express');
 var app = express();
 
@@ -46,7 +49,9 @@ app.use('/', require('./routes/index'));
 
 module.exports = app;
 </pre>
+
 중간 중간 설명에 필요없는 코드 생략을 유념하고 보자. <code>require('./auth/passport.js').setup(app);</code>로 패스포트 모듈을 설정한다.  실제 패스포트 모듈 설정을 살펴보자.
+
 <pre class="lang:js decode:true" title="/auth/passport.js">'use strict';
 
 var passport = require('passport');
@@ -110,6 +115,7 @@ var setup = function (app) {
 
 exports.setup = setup;
 </pre>
+
 인증페이지인 <code>/login</code>에 접속하면 사용자는 로그인 링크를 클릭한다.
 
 ![login](/assets/imgs/2015/login2.png)
@@ -123,6 +129,7 @@ exports.setup = setup;
 ![](/assets/imgs/2015/login3.png)
 
 /account에는 인증된 사용자만 접근하도록 설정해보자. <code>/auth/index.js</code> 모듈을 호출해서 라우팅 중간에 미들웨어로 끼어 넣으면 된다.
+
 <pre class="lang:js decode:true " title="routes/index.js">var auth = require('../auth');
 
 router.get('/account', auth.ensureAuthenticated, function(req, res, next) {
@@ -132,16 +139,19 @@ router.get('/account', auth.ensureAuthenticated, function(req, res, next) {
     user: JSON.stringify(req.user)
   });
 });</pre>
+
 이렇게 설정하면 인증된 요청만 <code>/account</code> 페이지에 접근할수 있게된다.
 
 ![](/assets/imgs/2015/login4.png)
 
 <code>ensureAuthenicated()</code> 를 구현해 보자.
+
 <pre class="lang:js decode:true " title="auth/index.js">var ensureAuthenticated = function (req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login');
 };
 exports.ensureAuthenticated = ensureAuthenticated;</pre>
+
 패스포트 모듈을 통해 리퀘스트 객체는 <code>isAuthenticated()</code> 함수를 호출할수 있는데 이 값이 true를 반환하면 다음 스텝을 진행한다. 그렇지 않을 경우 로그인 페이지로 리다이렉팅 하도록한다.
 
 <a href="https://github.com/jeonghwan-kim/passport-google-oauth">소스코드</a>

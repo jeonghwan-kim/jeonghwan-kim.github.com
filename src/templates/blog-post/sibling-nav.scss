@@ -1,4 +1,4 @@
-@import '../../sass/variables.scss';
+@import "../../sass/variables.scss";
 
 .sibling-nav {
   display: flex;
@@ -16,14 +16,11 @@
       text-decoration: none;
       color: $primary-color;
       i {
-
       }
       h3 {
         margin-top: $spacing-unit;
         margin-bottom: $spacing-unit;
       }
-
     }
-
   }
 }

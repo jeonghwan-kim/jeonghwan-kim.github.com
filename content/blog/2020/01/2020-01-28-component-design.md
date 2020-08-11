@@ -30,16 +30,16 @@ tags: [react]
 
 ```js
 // FooterSaveButton.js
-import './FooterSaveButton.css';
+import "./FooterSaveButton.css"
 
-export default class FooterSaveButton  extends React.Component {
+export default class FooterSaveButton extends React.Component {
   constructor() {
-    super();
-    this.state = { fetching: false };
+    super()
+    this.state = { fetching: false }
   }
 
   render() {
-    const { fetching } = this.state;
+    const { fetching } = this.state
 
     return (
       <button
@@ -53,12 +53,12 @@ export default class FooterSaveButton  extends React.Component {
   }
 
   onClick() {
-    this.setState({ fetching: true });
-    this.save(() => this.setState({ fetching: false }));
+    this.setState({ fetching: true })
+    this.save(() => this.setState({ fetching: false }))
   }
 
   save(callback) {
-    setTimeout(callback, 1000);
+    setTimeout(callback, 1000)
   }
 }
 ```
@@ -89,14 +89,15 @@ UI를 담당하는 세 번째 역할을 FooterButton 컴포넌트로 분리해 �
 
 ```js
 // FooterButton.js
-import './FooterButton.css';
+import "./FooterButton.css"
 
-const FooterButton = props =>
+const FooterButton = props => (
   <button className="FooterButton" {...props}>
     {props.children}
   </button>
+)
 
-export default FooterButton;
+export default FooterButton
 ```
 
 보여지는 것을 담당하기 때문에 스타일 시트를 가져오고 컴포넌트에 CSS 클래스명을 지정한다.
@@ -109,31 +110,31 @@ export default FooterButton;
 
 ```js
 // SaveButton.js
-import FooterButton from './FooterButton';
+import FooterButton from "./FooterButton"
 
 export default class SaveButton extends React.Component {
   constructor() {
-    super();
-    this.state = { fetching: false };
+    super()
+    this.state = { fetching: false }
   }
 
   render() {
-    const { fetching } = this.state;
+    const { fetching } = this.state
 
     return (
       <FooterButton disabled={fetching} onClick={this.onClick.bind(this)}>
-        {fetching ? '저장중...' : '저장'}
+        {fetching ? "저장중..." : "저장"}
       </FooterButton>
     )
   }
 
   onClick() {
-    this.setState({ fetching: true });
-    this.save(() => this.setState({ fetching: false }));
+    this.setState({ fetching: true })
+    this.save(() => this.setState({ fetching: false }))
   }
 
   save(callback) {
-    setTimeout(callback, 1000);
+    setTimeout(callback, 1000)
   }
 }
 ```
@@ -155,7 +156,6 @@ UI 버그라면 프리젠터인 FooterButton를 보면되고 기능 버그라면
 SaveFooterButton은 버튼 이름이 정해져 있고 상태와 이벤트를 제어하는 로직이 하나의 컴포넌트로 강하게 엮여 있어서 재활용할 수 없었다.
 하지만 disabled와 onClick 그리고 children을 컴포넌트 외부에서 제어하도록 여지를 주었기 대문에 푸터에 위치할 버튼은 모두 이것을 재활용해서 만들 수 있다.
 
-
 # 게시판 페이지 예제
 
 버튼처럼 작은 규모는 이렇게 수월하게 나눌 수 있을 거다.
@@ -165,7 +165,6 @@ SaveFooterButton은 버튼 이름이 정해져 있고 상태와 이벤트를 제
 각 게시물을 클릭하면 모달이 떠서 상세 내용을 출력한다.
 
 ![BoardPage 컴포넌트 결과](/assets/imgs/2020/01/27/BoardPage.gif)
-
 
 ## 단일 컴포넌트로 만들기
 
@@ -287,7 +286,7 @@ fetching 상태를 활성화하고 api로 가져온 뒤 응답 데이터로 상�
 }
 ```
 
-렌더 함수가 좀 길지만  총 3개로 나눠 볼 수 있다.
+렌더 함수가 좀 길지만 총 3개로 나눠 볼 수 있다.
 목록을 출력하는 부분과 페이지네이션을 출력하는 부분 모달을 띄우는 부분이 있는데 모두 컴포넌트 상태에 따라서 렌더링한다.
 
 마지막으로 모달을 토글하는 toogleModal() 함수는 모달 관련 상태를 갱신한다.
@@ -321,17 +320,18 @@ fetching 상태를 활성화하고 api로 가져온 뒤 응답 데이터로 상�
 
 ```js
 // Pagination.js
-import './Pagination.css';
+import "./Pagination.css"
 
-const Pagination = ({pagination, disabled, onPaginate}) => {
+const Pagination = ({ pagination, disabled, onPaginate }) => {
   return (
-    <ul className={`Pagination ${disabled ? 'disabled' : ''}`}>
+    <ul className={`Pagination ${disabled ? "disabled" : ""}`}>
       {new Array(pagination.totalPages).fill(1).map((_, idx) => {
-        const page = idx + 1;
+        const page = idx + 1
 
         return (
-          <li key={idx}
-            className={`${page === pagination.page ? 'active' : ''} `}
+          <li
+            key={idx}
+            className={`${page === pagination.page ? "active" : ""} `}
             onClick={() => onPaginate(page)}
           >
             {page}
@@ -342,7 +342,7 @@ const Pagination = ({pagination, disabled, onPaginate}) => {
   )
 }
 
-export default Pagination;
+export default Pagination
 ```
 
 기존에 BoardPage.css 하나로 관리하던 스타일 코드를 Pagination.css로 분리했다.
@@ -359,27 +359,28 @@ Pagination 컴포넌트는 단순히 페이징과 관련된 UI만 그리는 컴�
 
 ```js
 // Modal.js
-import './Modal.css';
+import "./Modal.css"
 
-const Modal = ({children, onClose}) => {
-
-  React.useEffect(()=> {
-    document.body.style.overflowY = 'hidden';
-    return () => document.body.style.overflowY = 'auto';
-  }, []);
+const Modal = ({ children, onClose }) => {
+  React.useEffect(() => {
+    document.body.style.overflowY = "hidden"
+    return () => (document.body.style.overflowY = "auto")
+  }, [])
 
   return (
     <>
       <div className="Modal-backdrop" onClick={onClose}></div>
       <div className="Modal">
         <div className="Modal-body">{children}</div>
-        <div className="Modal-footer"><button onClick={onClose}>닫기</button></div>
+        <div className="Modal-footer">
+          <button onClick={onClose}>닫기</button>
+        </div>
       </div>
     </>
   )
 }
 
-export default Modal;
+export default Modal
 ```
 
 마찬가지로 BoardPage.css로 관리하던 스타일 코드를 Modal.css로 분리해 냈다.
@@ -397,18 +398,22 @@ export default Modal;
 
 ```js
 // BoardPage.js
-import Pagination from './Pagination';
-import './BoardPage.css'
+import Pagination from "./Pagination"
+import "./BoardPage.css"
 
 const BoardPage = props => {
-  const { posts, fetching, onClickPost } = props;
+  const { posts, fetching, onClickPost } = props
 
   return (
     <div className="BoardPage">
       <h1>게시글</h1>
       <ul className="posts">
         {posts.map((post, idx) => {
-          return <li key={idx} onClick={() => onClickPost(post)}>{post}</li>
+          return (
+            <li key={idx} onClick={() => onClickPost(post)}>
+              {post}
+            </li>
+          )
         })}
       </ul>
       <Pagination {...props} disabled={fetching} />
@@ -416,7 +421,7 @@ const BoardPage = props => {
   )
 }
 
-export default BoardPage;
+export default BoardPage
 ```
 
 이미 두 개의 CSS로 분리하고 남은 코드인 BoardPage.css를 가져와 컴포넌트의 스타일에 적용했다.
@@ -434,13 +439,13 @@ export default BoardPage;
 
 ```js
 // BoardContainer.js
-import { fetchPosts } from '../before/api'
-import BoardPage from './BoardPage';
-import Modal from './Modal';
+import { fetchPosts } from "../before/api"
+import BoardPage from "./BoardPage"
+import Modal from "./Modal"
 
 export default class BoardContainer extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       posts: [],
       pagination: {
@@ -458,19 +463,19 @@ export default class BoardContainer extends React.Component {
   }
 
   fetchData(page) {
-    this.setState({ fetching: true });
+    this.setState({ fetching: true })
 
     fetchPosts(page || 1).then(data => {
       this.setState({
         posts: [...data.posts],
-        pagination: {...data.pagination},
+        pagination: { ...data.pagination },
         fetching: false,
       })
     })
   }
 
   render() {
-    const { modalShown, post } = this.state;
+    const { modalShown, post } = this.state
 
     return (
       <>
@@ -524,7 +529,6 @@ export default class BoardContainer extends React.Component {
 그러한 이유는 모든 값과 동작을 프롭스로 넘기거나 children으로 전달하기 때문이다.
 onPaginate에 이미지 목록 조회 함수를 넘기면 이미지 게시판의 페이지네이션이 될 수도 있다.
 Modal 컴포넌트로 이미지나 동영상 엘레먼트를 감싸면 갤러리 모달이 될 수도 있는건 당연하다.
-
 
 # 지금도 유효할까?
 

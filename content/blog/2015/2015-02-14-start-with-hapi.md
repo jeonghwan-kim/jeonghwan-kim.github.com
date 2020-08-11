@@ -10,6 +10,7 @@ category: series
 seriesId: "f390bf73-face-589a-be3e-5d38fc5f704b"
 tags: [hapijs]
 ---
+
 Node.js에서 서버 구현은 대부분 Express.js 프레임웍으로 개발했다. Express.js 3.x에서 4.x대로 업그레이드 되면서 개선된 성능과 사용 편의성에서 만족하고 있었다. 이제 막 익스프레스 프레임웍이 손에 익을 무렵 <a href="http://hapijs.com/" target="_blank">Hapi</a>라는 신규 노드 페레임웍에 대한 글을 접한게 되었다. (<a href="http://blog.recopick.com/69" target="_blank">Hapi.js로 Node.js를 시작하세요. - 1부 Why Hapi.js</a>)
 
 Hapi를 스터디한 동기는 코드의 간격함이다. <a href="http://hapijs.com/tutorials#creating-a-server" target="_blank">튜터리얼</a>에 보면 단 네 문장으로 서버를 설정하고 구동할수 있다. 익스프레스 보다는 코드가 간결하고 모듈화하기 쉽다는 것을 실감한다. 라우팅을 별도로 모듈화할 수 있다는 점, 프로토콜 파라메터 검증이 용이한 점(Joi), 로깅(Good) 등.
@@ -163,7 +164,7 @@ exports.route = function(server, _path) {
   });
 };</pre>
 
-<code>server</code>객체를 첫번째 파라매터로 받고, 두번째 파라매터인 <code>_path</code>에 호출 측 경로를 전달 받는다. 이것을 통해 하위 폴더에 라우팅을 위한 server 객체를 전달할 수 있다. 아래는 routeHelper로 대체한 코드다.
+<code>server</code>객체를 첫번째 파라매터로 받고, 두번째 파라매터인 <code>\_path</code>에 호출 측 경로를 전달 받는다. 이것을 통해 하위 폴더에 라우팅을 위한 server 객체를 전달할 수 있다. 아래는 routeHelper로 대체한 코드다.
 
 <pre class="theme:github lang:js decode:true">/* index.js */
 // 서버 객체 생성 및 컨넥션 정보 설정 ...
@@ -201,5 +202,3 @@ module.exports = function (server) {
 };</pre>
 
 전체 코드: <a href="https://github.com/jeonghwan-kim/hapi_study/tree/05_routeHelper" target="_blank">https://github.com/jeonghwan-kim/hapi_study/tree/05_routeHelper</a>
-
-

@@ -25,23 +25,26 @@ Model 클래스를 확장하면 init()이라는 정적 메소드 사용할 수 �
 ```js
 class User extends Model {}
 
-User.init({
-  // 컬럼 속성
-  firstName: {
-    type: DataTypes.STRING,
-    allowNull: false
+User.init(
+  {
+    // 컬럼 속성
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+    },
   },
-  lastName: {
-    type: DataTypes.STRING
+  {
+    // 기타 옵션
+    sequelize, // 데이터베이스 컨넥션
+    modelName: "User", // 모델(테이블) 이름
   }
-}, {
-  // 기타 옵션
-  sequelize, // 데이터베이스 컨넥션
-  modelName: 'User' // 모델(테이블) 이름
-});
+)
 
 // 클래스 자체가 정의한 모델이다
-console.log(User === sequelize.models.User); // true
+console.log(User === sequelize.models.User) // true
 ```
 
 스키마 생성을 위해 init() 메소드를 호출하는 코드다.
@@ -60,10 +63,19 @@ class User extends Model {
   // 초기화하는 정적 메소드
   static initialize(sequelize, DataTypes) {
     // 클래스 외부에서 호출했던 init() 메소드를 클래스 안으로 옮겼다
-    super.init({
-      firstName: { /* ... */ },
-      lastName: { /* ... */ }
-    }, { /* ... */ })
+    super.init(
+      {
+        firstName: {
+          /* ... */
+        },
+        lastName: {
+          /* ... */
+        },
+      },
+      {
+        /* ... */
+      }
+    )
   }
 }
 ```
@@ -76,7 +88,7 @@ class User extends Model {
 Model 클래스로 확장한 모델은 belongsTo() 따위의 메소드로 모델 간의 관계를 정의할 수 있다.
 
 ```js
-User.belongsTo(Group);
+User.belongsTo(Group)
 ```
 
 이러한 코드도 클래스 정의부 안으로 넣어 버리면 좋겠다.
@@ -103,21 +115,23 @@ class User extends Model {
 
 ```js
 // 시퀄라이즈 인스턴스를 만든다
-const sequelize = new Sequelize("sqlite::memory:");
+const sequelize = new Sequelize("sqlite::memory:")
 
 fs
   // models 폴더의 모든 파일을 읽는다
   .readdirSync(__dirname)
   // 모델 정의 파일만 필터링한다
-  .filter(file =>
-    (file.indexOf('.') !== 0) && (file !== path.basename(__filename)) && (file.slice(-3) === '.js')
+  .filter(
+    file =>
+      file.indexOf(".") !== 0 &&
+      file !== path.basename(__filename) &&
+      file.slice(-3) === ".js"
   )
   // 모델 초기화 함수를 호출한다
   .forEach(file => {
-    const Model = require(path.join(__dirname, file));
-    Model['initialize'](sequelize);
+    const Model = require(path.join(__dirname, file))
+    Model["initialize"](sequelize)
   })
-
 ```
 
 models 안에 있는 모델 정의 파일을 읽어서 initialize 메소드를 호출한다.
@@ -127,7 +141,7 @@ models 안에 있는 모델 정의 파일을 읽어서 initialize 메소드를 �
 // sequelize 객체에 등록된 모델 목록을 가져온다
 Object.values(sequelize.models)
   // associate 함수가 있는 모델만 필터링한다.
-  .filter(model => typeof model.associate === 'function')
+  .filter(model => typeof model.associate === "function")
   // associate() 함수를 실행하여 테이블간 관계를 설정한다
   .filter(model => model.associate(sequelize.models))
 ```
@@ -148,7 +162,7 @@ Model은 간편한 쿼리를 위한 여러 정적 메소드를 제공한다([참
 class User extends Model {
   // 그룹 기준으로 조회한다
   static findByGroup(GroupId) {
-    return this.findAll({where: {GroupId}})
+    return this.findAll({ where: { GroupId } })
   }
 }
 ```
@@ -159,7 +173,7 @@ class User extends Model {
 테이블을 모델링 할 때 init() 메소드로 컬럼을 정의했는데 바로 인스턴스 멤버 변수로 접근할 수 있다.
 
 ```js
-const user = new User({name: 'user1'})
+const user = new User({ name: "user1" })
 console.log(user.name) // 'user1'
 ```
 
@@ -169,12 +183,12 @@ console.log(user.name) // 'user1'
 class User extends Model {
   // 전체 이름을 계산한다
   get fullname() {
-    return this.firstname + ' ' + this.lastname
+    return this.firstname + " " + this.lastname
   }
 }
 
-const user = new User({firstname: 'user1', lastname: 'kim'})
-console.log(user.fullname); // 'user1 kim'
+const user = new User({ firstname: "user1", lastname: "kim" })
+console.log(user.fullname) // 'user1 kim'
 ```
 
 # 결론
@@ -185,4 +199,5 @@ define()을 사용하면 function 키워드로 클래스를 사용하듯 시퀄�
 class 문법이 단일 블록 스코프 안에서 관련된 로직을 모아 놓을 수 있기 때문이다.
 
 참고
+
 - 소스 코드: https://github.com/jeonghwan-kim/post_sequelize-model

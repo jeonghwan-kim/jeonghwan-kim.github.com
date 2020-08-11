@@ -3,7 +3,7 @@ title: 프론트엔드 개발을 위한 Gulp
 layout: post
 category: dev
 permalink: tool/2017/09/16/gulp-workflow-for-frentend-development.html
-tags: [gulp, 번역 ]
+tags: [gulp, 번역]
 summary: Gulp를 이용한 프론트엔드 개발 자동화에 대한 번역글입니다
 ---
 
@@ -32,7 +32,7 @@ summary: Gulp를 이용한 프론트엔드 개발 자동화에 대한 번역글�
 
 우리가 만들고 있는 웹사이트는 스타일과 내용이 각각 다릅니다. 하지만 추상적인 수준에서는 모두 같은 "것"을 포함하고 있는데 그것들은 최종적으로 웹사이트를 만들기 위해 개발되고 조립됩니다.
 
-개념적인 수준으로부터 이런 유형의 "디지털 조립 라인"은 1976년 스튜어트 펠드만(Stuart Feldman)이 [Make](https://en.wikipedia.org/wiki/Make_(software)) 도구를 제작한 이후로 사용되었죠. 프로젝트가 어떤한 복잡도 수준에 도달할 때마다 워크 플로우 자동화를 구축하데 사용한 시간이 당신의 시간을 절약해 주는 거죠.
+개념적인 수준으로부터 이런 유형의 "디지털 조립 라인"은 1976년 스튜어트 펠드만(Stuart Feldman)이 [Make](<https://en.wikipedia.org/wiki/Make_(software)>) 도구를 제작한 이후로 사용되었죠. 프로젝트가 어떤한 복잡도 수준에 도달할 때마다 워크 플로우 자동화를 구축하데 사용한 시간이 당신의 시간을 절약해 주는 거죠.
 
 모던 웹사이트는 얼마 전에 그러한 복잡도 수준까지 도달했습니다. [Frontend Dev Best Practices for 2017](https://nystudio107.com/blog/frontend-dev-best-practices-for-2017) 아티클처럼 "온전한 정신을 유지하고 싶으면 프론트엔드 워크플로우 자동화가 필요합니다."
 
@@ -40,26 +40,26 @@ summary: Gulp를 이용한 프론트엔드 개발 자동화에 대한 번역글�
 
 자 그래서 Gulp 프론트엔드 워크플로우 자동화는 정확히 무엇을 할 수 있을까요?
 
-* CSS 처리
-  * 모든 SCSS를 CSS로 컴파일. 캐쉬를 이용해 더 빠르게 처리하죠
-  * 브라우저 지원을 위해 자동 접두사(auto-prefies)를 추가
-  * 편리한 디버깅을 위한 목적으로 CSS [소스맵](https://medium.com/@toolmantim/getting-started-with-css-sourcemaps-and-in-browser-sass-editing-b4daab987fb0)을 생성
-  * 사용하는 써드파티 모듈/패키지로부터 CSS를 가져옴
-  * CSS를 하나로 합치고 최소화
-* 자바스크립트 처리
-  * ES6로 작성한 모든 자바스크립트를 브라우져 지원을 위해 트랜스파일.
-  * 써드파티 모듈/패키지로부터 자바스크립트를 가져옴
-  * 자바스크립트 난독화
-  * HTML별로 인라인해야할 자바스크립트를 가져옴
-* 라이브 리로딩 처리
-  * CSS/SCSS가 변경되면 곧장 브라우져는 페이지 로드 없이 화면을 다시 그림
-  * 자바스크립트가 변경되면 브라우져가 페이지를 다시 로딩
-  * Twig/HTML 템플릿이 변경되면 브라우져는 페이지를 다시 로딩
-* 웹사이트를 위해 [CriticalCSS](https://nystudio107.com/blog/implementing-critical-css)를 생성
-* [웹 접근성 검사](https://nystudio107.com/blog/making-websites-accessible-americans-with-disabilities-act-ada)
-* [Fontello](http://fontello.com/)를 통해 사용하는 glyphs만을 통해 커스텀 아이콘 글꼴을 생성
-* 하나의 소스 이미지로부터 웹사이트를 위한 다양한 파비콘(그리고 HTML 코드)을 생성
-* `imagemin`을 통해 웹사이트에서 사용하는 이미지를 무손실 압축
+- CSS 처리
+  - 모든 SCSS를 CSS로 컴파일. 캐쉬를 이용해 더 빠르게 처리하죠
+  - 브라우저 지원을 위해 자동 접두사(auto-prefies)를 추가
+  - 편리한 디버깅을 위한 목적으로 CSS [소스맵](https://medium.com/@toolmantim/getting-started-with-css-sourcemaps-and-in-browser-sass-editing-b4daab987fb0)을 생성
+  - 사용하는 써드파티 모듈/패키지로부터 CSS를 가져옴
+  - CSS를 하나로 합치고 최소화
+- 자바스크립트 처리
+  - ES6로 작성한 모든 자바스크립트를 브라우져 지원을 위해 트랜스파일.
+  - 써드파티 모듈/패키지로부터 자바스크립트를 가져옴
+  - 자바스크립트 난독화
+  - HTML별로 인라인해야할 자바스크립트를 가져옴
+- 라이브 리로딩 처리
+  - CSS/SCSS가 변경되면 곧장 브라우져는 페이지 로드 없이 화면을 다시 그림
+  - 자바스크립트가 변경되면 브라우져가 페이지를 다시 로딩
+  - Twig/HTML 템플릿이 변경되면 브라우져는 페이지를 다시 로딩
+- 웹사이트를 위해 [CriticalCSS](https://nystudio107.com/blog/implementing-critical-css)를 생성
+- [웹 접근성 검사](https://nystudio107.com/blog/making-websites-accessible-americans-with-disabilities-act-ada)
+- [Fontello](http://fontello.com/)를 통해 사용하는 glyphs만을 통해 커스텀 아이콘 글꼴을 생성
+- 하나의 소스 이미지로부터 웹사이트를 위한 다양한 파비콘(그리고 HTML 코드)을 생성
+- `imagemin`을 통해 웹사이트에서 사용하는 이미지를 무손실 압축
 
 그리고 몇 가지가 더 있있죠. 이건 워크플로우 자동화가 할수 있는 요약 뿐이에요. 그리고 다른 프로젝트마다 사용할 수 있는데 그건 `package.json` 파일로 데이터를 옮기는 방법으로 관심사를 분리했기 때문이죠.
 
@@ -170,11 +170,11 @@ vagrant@homestead:~/sites/nystudio107$ tree -a -L 2 -I "node_modules|.git|script
 
 몇 개의 디렉토리들 언급할 필요가 있겠네요. (아래 경로들은 전부 `package.json`에 정의되어 있어요):
 
-* `src/` - 작성한 모든것이 위치하는 곳으로 개발하기 위해 필요한 소스 파일. 여기서 디렉토리 구조는 `public/`을 반영함
-* `build/` - 빌드 시스템에 의해 빌드된 임된 파일을 위한 중간단계 디렉토리
-* `public/js/` - 빌드 시스템이 공개 배포용 자바스크립트를 기록하는 위치
-* `public/css/` - 빌드 시스템이 공개 배포용 CSS를 기록하는 위치
-* `node_modules/` - `npm`/`yarn`으로 `package.json`에 나열된 NPM 패키지들을 다운로드. 빌드 시스템 자체를 위해 사용되는 NPM 패키지 뿐만아니라 프론트엔드에서 사용되는 써드파트 CSS/JS를 포함
+- `src/` - 작성한 모든것이 위치하는 곳으로 개발하기 위해 필요한 소스 파일. 여기서 디렉토리 구조는 `public/`을 반영함
+- `build/` - 빌드 시스템에 의해 빌드된 임된 파일을 위한 중간단계 디렉토리
+- `public/js/` - 빌드 시스템이 공개 배포용 자바스크립트를 기록하는 위치
+- `public/css/` - 빌드 시스템이 공개 배포용 CSS를 기록하는 위치
+- `node_modules/` - `npm`/`yarn`으로 `package.json`에 나열된 NPM 패키지들을 다운로드. 빌드 시스템 자체를 위해 사용되는 NPM 패키지 뿐만아니라 프론트엔드에서 사용되는 써드파트 CSS/JS를 포함
 
 ## Gulp 이용하기
 
@@ -182,7 +182,7 @@ vagrant@homestead:~/sites/nystudio107$ tree -a -L 2 -I "node_modules|.git|script
 
 **주의**: 여기서는 상당히 많은 내용을 빨리 진행합니다. 만약 Gulp에 대해 전혀 생소하다면, [Gulp for Beginners](https://css-tricks.com/gulp-for-beginners/)를 먼저 읽어 보세요.
 
-이글에서 작성하는 `gulpfile.js`는 여러분이 지금 보시고 있는 웹사이트를 빌드하기 위해 사용되었습니다. `package.json`파일과 함께 사용하면 *어떤* 프로젝트에서라도 바로 시작할수 있는 좋은 기반이 될거에요.
+이글에서 작성하는 `gulpfile.js`는 여러분이 지금 보시고 있는 웹사이트를 빌드하기 위해 사용되었습니다. `package.json`파일과 함께 사용하면 _어떤_ 프로젝트에서라도 바로 시작할수 있는 좋은 기반이 될거에요.
 
 이미 Node.js와 NPM(이나 [Yarn](https://yarnpkg.com/en/)), 그리고 [Gulp](https://gulpjs.com/)를 전역으로 개발 환경에 설치했다고 가정할께요.
 
@@ -194,39 +194,45 @@ vagrant@homestead:~/sites/nystudio107$ tree -a -L 2 -I "node_modules|.git|script
 
 ```js
 // 패키지 변수
-const pkg = require("./package.json");
+const pkg = require("./package.json")
 
 // gulp
-const gulp = require("gulp");
+const gulp = require("gulp")
 
 // devDependencies에 있는 모든 플러그인을 $ 변수에 로딩합니다
 const $ = require("gulp-load-plugins")({
-    pattern: ["*"],
-    scope: ["devDependencies"]
-});
+  pattern: ["*"],
+  scope: ["devDependencies"],
+})
 
-const onError = (err) => console.log(err);
+const onError = err => console.log(err)
 
 const banner = [
-    "/**",
-    " * @project        <%= pkg.name %>",
-    " * @author         <%= pkg.author %>",
-    " * @build          " + $.moment().format("llll") + " ET",
-    " * @release        " + $.gitRevSync.long() + " [" + $.gitRevSync.branch() + "]",
-    " * @copyright      Copyright (c) " + $.moment().format("YYYY") + ", <%= pkg.copyright %>",
-    " *",
-    " */",
-    ""
-].join("\n");
+  "/**",
+  " * @project        <%= pkg.name %>",
+  " * @author         <%= pkg.author %>",
+  " * @build          " + $.moment().format("llll") + " ET",
+  " * @release        " +
+    $.gitRevSync.long() +
+    " [" +
+    $.gitRevSync.branch() +
+    "]",
+  " * @copyright      Copyright (c) " +
+    $.moment().format("YYYY") +
+    ", <%= pkg.copyright %>",
+  " *",
+  " */",
+  "",
+].join("\n")
 ```
 
 이것의 대부분을 [A Better package.json for the Frontend](https://nystudio107.com/blog/a-better-package-json-for-the-frontend) 글에서 설명하고 있지만, 간단히 요약하면 이래요.
 
-* 먼저 `package.json`을 `pkg` 상수 할당. 그후 `gulpfile.js`로 부터 편리하게 `package.json`에서 선언된 모든 것에 접근 가능
-* 다음으로 `gulp`를 `require`해서 스트림 API로의 접근을 가질 수 있고 다양한 Gulp 모듈을 활용할 수 있음
-* 그리고 [gulp-load-plugin](https://www.npmjs.com/package/gulp-load-plugins) 모듈을 사용해서 `devDependencies` 목록에 있는 `npm`모듈을 전부 로딩한 뒤 `$` 변수 아래에 둠. 이것은 우리가 사용하는 모든 모듈을 위해 많은 `require()` 구문을 사용하지 않으면서 `package.json`을 간단하게 유지
-* `onError` 상수를  익명 함수로 설정하여 편의상 다시 에러를 콘솔에 로깅
-* 마지막으로, `banner` 상수를 설정하여 빌드 될때 자바스크립트/CSS 최상단에 멋진 배너를 생성
+- 먼저 `package.json`을 `pkg` 상수 할당. 그후 `gulpfile.js`로 부터 편리하게 `package.json`에서 선언된 모든 것에 접근 가능
+- 다음으로 `gulp`를 `require`해서 스트림 API로의 접근을 가질 수 있고 다양한 Gulp 모듈을 활용할 수 있음
+- 그리고 [gulp-load-plugin](https://www.npmjs.com/package/gulp-load-plugins) 모듈을 사용해서 `devDependencies` 목록에 있는 `npm`모듈을 전부 로딩한 뒤 `$` 변수 아래에 둠. 이것은 우리가 사용하는 모든 모듈을 위해 많은 `require()` 구문을 사용하지 않으면서 `package.json`을 간단하게 유지
+- `onError` 상수를 익명 함수로 설정하여 편의상 다시 에러를 콘솔에 로깅
+- 마지막으로, `banner` 상수를 설정하여 빌드 될때 자바스크립트/CSS 최상단에 멋진 배너를 생성
 
 만약 프론트엔드 세상에 익숙하다면 `$`를 변수처럼 사용하는 것을 헷갈리지 마세요. 제이쿼리 스타일처럼 보이지만 이건 어떤 이름으로도 사용할수 있는 변수일 뿐이랍니다.
 
@@ -237,19 +243,27 @@ const banner = [
 ```js
 // 기본 작업
 gulp.task("default", ["css", "js"], () => {
-    $.livereload.listen();
-    gulp.watch([pkg.paths.src.scss + "**/*.scss"], ["css"]);
-    gulp.watch([pkg.paths.src.css + "**/*.css"], ["css"]);
-    gulp.watch([pkg.paths.src.js + "**/*.js"], ["js"]);
-    gulp.watch([pkg.paths.templates + "**/*.{html,htm,twig}"], () => {
-        gulp.src(pkg.paths.templates)
-            .pipe($.plumber({errorHandler: onError}))
-            .pipe($.livereload());
-    });
-});
+  $.livereload.listen()
+  gulp.watch([pkg.paths.src.scss + "**/*.scss"], ["css"])
+  gulp.watch([pkg.paths.src.css + "**/*.css"], ["css"])
+  gulp.watch([pkg.paths.src.js + "**/*.js"], ["js"])
+  gulp.watch([pkg.paths.templates + "**/*.{html,htm,twig}"], () => {
+    gulp
+      .src(pkg.paths.templates)
+      .pipe($.plumber({ errorHandler: onError }))
+      .pipe($.livereload())
+  })
+})
 
 // 프로덕션 빌드
-gulp.task("build", ["download", "default", "favicons", "imagemin", "fonts", "criticalcss"]);
+gulp.task("build", [
+  "download",
+  "default",
+  "favicons",
+  "imagemin",
+  "fonts",
+  "criticalcss",
+])
 ```
 
 이 두 개 작업이 프론트엔드 자동화를 설정하는데 기본이에요. 대충 두 개로 구분할 수 있는데..
@@ -268,51 +282,56 @@ gulp.task("build", ["download", "default", "favicons", "imagemin", "fonts", "cri
 ```js
 // scss = paths를 포함한 build 폴더로 scss를 빌드하고 소스맵을 만듭니다
 gulp.task("scss", () => {
-    $.fancyLog("-> Compiling scss");
-    return gulp.src(pkg.paths.src.scss + pkg.vars.scssName)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.sourcemaps.init({loadMaps: true}))
-        .pipe($.sass({
-                includePaths: pkg.paths.scss
-            })
-            .on("error", $.sass.logError))
-        .pipe($.cached("sass_compile"))
-        .pipe($.autoprefixer())
-        .pipe($.sourcemaps.write("./"))
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.build.css));
-});
+  $.fancyLog("-> Compiling scss")
+  return gulp
+    .src(pkg.paths.src.scss + pkg.vars.scssName)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe($.sourcemaps.init({ loadMaps: true }))
+    .pipe(
+      $.sass({
+        includePaths: pkg.paths.scss,
+      }).on("error", $.sass.logError)
+    )
+    .pipe($.cached("sass_compile"))
+    .pipe($.autoprefixer())
+    .pipe($.sourcemaps.write("./"))
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.build.css))
+})
 
 // css 작업 - 배포용 CSS를 public css 폴더로 하나로 합치고 최소화하고 여기에 배너를 추가합니다
 gulp.task("css", ["scss"], () => {
-    $.fancyLog("-> Building css");
-    return gulp.src(pkg.globs.distCss)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.newer({dest: pkg.paths.dist.css + pkg.vars.siteCssName}))
-        .pipe($.print())
-        .pipe($.sourcemaps.init({loadMaps: true}))
-        .pipe($.concat(pkg.vars.siteCssName))
-        .pipe($.cssnano({
-            discardComments: {
-                removeAll: true
-            },
-            discardDuplicates: true,
-            discardEmpty: true,
-            minifyFontValues: true,
-            minifySelectors: true
-        }))
-        .pipe($.header(banner, {pkg: pkg}))
-        .pipe($.sourcemaps.write("./"))
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.dist.css))
-        .pipe($.filter("**/*.css"))
-        .pipe($.livereload());
-});
+  $.fancyLog("-> Building css")
+  return gulp
+    .src(pkg.globs.distCss)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe($.newer({ dest: pkg.paths.dist.css + pkg.vars.siteCssName }))
+    .pipe($.print())
+    .pipe($.sourcemaps.init({ loadMaps: true }))
+    .pipe($.concat(pkg.vars.siteCssName))
+    .pipe(
+      $.cssnano({
+        discardComments: {
+          removeAll: true,
+        },
+        discardDuplicates: true,
+        discardEmpty: true,
+        minifyFontValues: true,
+        minifySelectors: true,
+      })
+    )
+    .pipe($.header(banner, { pkg: pkg }))
+    .pipe($.sourcemaps.write("./"))
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.dist.css))
+    .pipe($.filter("**/*.css"))
+    .pipe($.livereload())
+})
 ```
 
-`gulp.task()` 메소드의 첫 파라매터는 태스크 이름이에요. 두번째 파라메터는 *의존성(dependencies)* (혹은 deps) 이구요. 의존성은 이 태스크를 실행하기 전에 실행해야하는 작업입니다. 이런 방법으로 태스크를 연결(chain)할 수 있구요.
+`gulp.task()` 메소드의 첫 파라매터는 태스크 이름이에요. 두번째 파라메터는 _의존성(dependencies)_ (혹은 deps) 이구요. 의존성은 이 태스크를 실행하기 전에 실행해야하는 작업입니다. 이런 방법으로 태스크를 연결(chain)할 수 있구요.
 
-그래서 첫번째 `css` 태스크에서 하는 일은 `scss` 태스크로 모든 SCSS를 컴파일 하는 것입니다. `scss` 태스크는  CSS 소스맵을 초기화하고 SCSS를 경로와 함께 컴파일한뒤 결과를 캐쉬합니다. 변경해야할 게 없다면 SCSS를 재컴파일할 필요가 없는거죠.
+그래서 첫번째 `css` 태스크에서 하는 일은 `scss` 태스크로 모든 SCSS를 컴파일 하는 것입니다. `scss` 태스크는 CSS 소스맵을 초기화하고 SCSS를 경로와 함께 컴파일한뒤 결과를 캐쉬합니다. 변경해야할 게 없다면 SCSS를 재컴파일할 필요가 없는거죠.
 
 만약 뭔가 변경되었다면 프로젝트 루트에 있는 `browserlist` 파일을 보고 있는 자동 전처리(autoprefixer)를 실행합니다.
 
@@ -336,74 +355,76 @@ iOS >= 8
 ```js
 // Prism js 작업 - prismjs(번역주: 소스코드 하이라이트) 자바스크립트와 컨피그 파일을 하나의 번들로 합칩니다
 gulp.task("prism-js", () => {
-    $.fancyLog("-> Building prism.min.js...");
-    return gulp.src(pkg.globs.prismJs)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.newer({dest: pkg.paths.build.js + "prism.min.js"}))
-        .pipe($.concat("prism.min.js"))
-        .pipe($.uglify())
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.build.js));
-});
+  $.fancyLog("-> Building prism.min.js...")
+  return gulp
+    .src(pkg.globs.prismJs)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe($.newer({ dest: pkg.paths.build.js + "prism.min.js" }))
+    .pipe($.concat("prism.min.js"))
+    .pipe($.uglify())
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.build.js))
+})
 
 // 바벨 js 작업 - 자바스크립트를 빌드 폴더로 트랜스파일 합니다
 gulp.task("js-babel", () => {
-    $.fancyLog("-> Transpiling Javascript via Babel...");
-    return gulp.src(pkg.globs.babelJs)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.newer({dest: pkg.paths.build.js}))
-        .pipe($.babel())
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.build.js));
-});
+  $.fancyLog("-> Transpiling Javascript via Babel...")
+  return gulp
+    .src(pkg.globs.babelJs)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe($.newer({ dest: pkg.paths.build.js }))
+    .pipe($.babel())
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.build.js))
+})
 
 // 인라인 js 작업 - 인라인 자바스크립트로 템플릿 경로의 _inlinejs 로 최소화 합니다
 gulp.task("js-inline", () => {
-    $.fancyLog("-> Copying inline js");
-    return gulp.src(pkg.globs.inlineJs)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.if(["*.js", "!*.min.js"],
-            $.newer({dest: pkg.paths.templates + "_inlinejs", ext: ".min.js"}),
-            $.newer({dest: pkg.paths.templates + "_inlinejs"})
-        ))
-        .pipe($.if(["*.js", "!*.min.js"],
-            $.uglify()
-        ))
-        .pipe($.if(["*.js", "!*.min.js"],
-            $.rename({suffix: ".min"})
-        ))
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.templates + "_inlinejs"));
-});
+  $.fancyLog("-> Copying inline js")
+  return gulp
+    .src(pkg.globs.inlineJs)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe(
+      $.if(
+        ["*.js", "!*.min.js"],
+        $.newer({ dest: pkg.paths.templates + "_inlinejs", ext: ".min.js" }),
+        $.newer({ dest: pkg.paths.templates + "_inlinejs" })
+      )
+    )
+    .pipe($.if(["*.js", "!*.min.js"], $.uglify()))
+    .pipe($.if(["*.js", "!*.min.js"], $.rename({ suffix: ".min" })))
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.templates + "_inlinejs"))
+})
 
 // js 작업 - public js 폴더로 배포 자바스크립트를 최소화하고 여기에 배너를 추가합니다
 gulp.task("js", ["js-inline", "js-babel", "prism-js"], () => {
-    $.fancyLog("-> Building js");
-    return gulp.src(pkg.globs.distJs)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.if(["*.js", "!*.min.js"],
-            $.newer({dest: pkg.paths.dist.js, ext: ".min.js"}),
-            $.newer({dest: pkg.paths.dist.js})
-        ))
-        .pipe($.if(["*.js", "!*.min.js"],
-            $.uglify()
-        ))
-        .pipe($.if(["*.js", "!*.min.js"],
-            $.rename({suffix: ".min"})
-        ))
-        .pipe($.header(banner, {pkg: pkg}))
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.dist.js))
-        .pipe($.filter("**/*.js"))
-        .pipe($.livereload());
-});
+  $.fancyLog("-> Building js")
+  return gulp
+    .src(pkg.globs.distJs)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe(
+      $.if(
+        ["*.js", "!*.min.js"],
+        $.newer({ dest: pkg.paths.dist.js, ext: ".min.js" }),
+        $.newer({ dest: pkg.paths.dist.js })
+      )
+    )
+    .pipe($.if(["*.js", "!*.min.js"], $.uglify()))
+    .pipe($.if(["*.js", "!*.min.js"], $.rename({ suffix: ".min" })))
+    .pipe($.header(banner, { pkg: pkg }))
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.dist.js))
+    .pipe($.filter("**/*.js"))
+    .pipe($.livereload())
+})
 ```
 
 js 작업은 우선 의존성 있는 작업을 먼저 실행합니다.
 
-* **js-inline** - 특정 자바스크립트를 가져와 Craft 템플릿 폴더에 저장하여 그것을 [source](https://twig.symfony.com/doc/2.x/functions/source.html) 또는 [include](https://twig.symfony.com/doc/2.x/functions/include.html)할 수 있도록 합니다. 이것은 다른 것들을 로드하는 자바스크립트 이거나 (그래서 HTML에서 인라인 하길 원합니다) Twig 템플릿으로 파싱할 필요가 있습니다
-* **js-babel** - `pkg.globs.babelJs`에 있는 자바스크립트를 바벨로 트랜스파일하여 `pkg.paths.build.js` 폴더로 이동해 나중에 처리하도록 합니다
-* **Prims-js** - 이 태스크를 모든 프로젝트에 사용하는 건 아닙니다. 필요할 때만 [PrismJS](http://prismjs.com/)를 위한 커스텀 자바스크립트를 빌드하죠. 웹사이트에서 멋진 코드 샘플을 보여주기 위해 사용합니다
+- **js-inline** - 특정 자바스크립트를 가져와 Craft 템플릿 폴더에 저장하여 그것을 [source](https://twig.symfony.com/doc/2.x/functions/source.html) 또는 [include](https://twig.symfony.com/doc/2.x/functions/include.html)할 수 있도록 합니다. 이것은 다른 것들을 로드하는 자바스크립트 이거나 (그래서 HTML에서 인라인 하길 원합니다) Twig 템플릿으로 파싱할 필요가 있습니다
+- **js-babel** - `pkg.globs.babelJs`에 있는 자바스크립트를 바벨로 트랜스파일하여 `pkg.paths.build.js` 폴더로 이동해 나중에 처리하도록 합니다
+- **Prims-js** - 이 태스크를 모든 프로젝트에 사용하는 건 아닙니다. 필요할 때만 [PrismJS](http://prismjs.com/)를 위한 커스텀 자바스크립트를 빌드하죠. 웹사이트에서 멋진 코드 샘플을 보여주기 위해 사용합니다
 
 바벨이 정확하게 동작하는 것이 중요한데요, 어떤 것을 트랜스 파일할지 말해주는 `.babelrc` 파일이 필요합니다. 제건 아래와 같아요.
 
@@ -427,8 +448,11 @@ js 작업은 우선 의존성 있는 작업을 먼저 실행합니다.
 ```js
 // 파비콘 생성 작업
 gulp.task("favicons-generate", () => {
-    $.fancyLog("-> Generating favicons");
-    return gulp.src(pkg.paths.favicon.src).pipe($.favicons({
+  $.fancyLog("-> Generating favicons")
+  return gulp
+    .src(pkg.paths.favicon.src)
+    .pipe(
+      $.favicons({
         appName: pkg.name,
         appDescription: pkg.description,
         developerName: pkg.author,
@@ -444,62 +468,69 @@ gulp.task("favicons-generate", () => {
         html: pkg.paths.build.html + "favicons.html",
         replace: true,
         icons: {
-            android: false, // 안드로이드 홈스크린 아이콘 생성. 불리언
-            appleIcon: true, // 애플 터치 아이콘 생성. 불리언
-            appleStartup: false, // 에플 시작 이미지 생성. 불리언
-            coast: true, // 오페라 Coast 아이콘 생성. 불리언
-            favicons: true, // 기본 파비콘 생성. 불리언
-            firefox: true, // 파이어폭스 운영체제 아이콘 생성. 불리언
-            opengraph: false, // 페이스북 오픈 그래프 이미지 생성. 불리언
-            twitter: false, // 트위터 써머리 카드 이미지 생성. 불리언
-            windows: true, // 윈도우즈 8 타이틀 아이콘 생성. 불리언
-            yandex: true // Yandex 브라우져 아이콘 생성. 불리언
-        }
-    })).pipe(gulp.dest(pkg.paths.favicon.dest));
-});
+          android: false, // 안드로이드 홈스크린 아이콘 생성. 불리언
+          appleIcon: true, // 애플 터치 아이콘 생성. 불리언
+          appleStartup: false, // 에플 시작 이미지 생성. 불리언
+          coast: true, // 오페라 Coast 아이콘 생성. 불리언
+          favicons: true, // 기본 파비콘 생성. 불리언
+          firefox: true, // 파이어폭스 운영체제 아이콘 생성. 불리언
+          opengraph: false, // 페이스북 오픈 그래프 이미지 생성. 불리언
+          twitter: false, // 트위터 써머리 카드 이미지 생성. 불리언
+          windows: true, // 윈도우즈 8 타이틀 아이콘 생성. 불리언
+          yandex: true, // Yandex 브라우져 아이콘 생성. 불리언
+        },
+      })
+    )
+    .pipe(gulp.dest(pkg.paths.favicon.dest))
+})
 
 // 파비콘 복사 태스크
 gulp.task("favicons", ["favicons-generate"], () => {
-    $.fancyLog("-> Copying favicon.ico");
-    return gulp.src(pkg.globs.siteIcon)
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.dist.base));
-});
+  $.fancyLog("-> Copying favicon.ico")
+  return gulp
+    .src(pkg.globs.siteIcon)
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.dist.base))
+})
 ```
+
 `favicons` 태스크는 하나의 소스 이미지로부터 수많은 웹사이트 파비콘을 생성합니다. 또한 이 파비콘을 포함/출력하는 HTML을 생성하기도 하지요. 이것은 다양한 파비콘 형식을 지원하기에 좋습니다.
 
 ```js
 // imagemin 태스크
 gulp.task("imagemin", () => {
-    return gulp.src(pkg.paths.dist.img + "**/*.{png,jpg,jpeg,gif,svg}")
-        .pipe($.imagemin({
-            progressive: true,
-            interlaced: true,
-            optimizationLevel: 7,
-            svgoPlugins: [{removeViewBox: false}],
-            verbose: true,
-            use: []
-        }))
-        .pipe(gulp.dest(pkg.paths.dist.img));
-});
+  return gulp
+    .src(pkg.paths.dist.img + "**/*.{png,jpg,jpeg,gif,svg}")
+    .pipe(
+      $.imagemin({
+        progressive: true,
+        interlaced: true,
+        optimizationLevel: 7,
+        svgoPlugins: [{ removeViewBox: false }],
+        verbose: true,
+        use: [],
+      })
+    )
+    .pipe(gulp.dest(pkg.paths.dist.img))
+})
 ```
 
-`imagemin` 태스크는 `pkg.paths.dist.img`에 있는 모든 이미지들을 *곧 바로(in situ)* 최적화 합니다. 사이트 자체의 이미지이고 깃 저장소에 들어가는 이미지입니다. 클라이언트가 업로드하는 이미지는 서버 사이트에서 최적화해야 하죠. [Creating Optimized Images in Craft CMS](https://nystudio107.com/blog/creating-optimized-images-in-craft-cms) 아티클 처럼 말이죠.
+`imagemin` 태스크는 `pkg.paths.dist.img`에 있는 모든 이미지들을 _곧 바로(in situ)_ 최적화 합니다. 사이트 자체의 이미지이고 깃 저장소에 들어가는 이미지입니다. 클라이언트가 업로드하는 이미지는 서버 사이트에서 최적화해야 하죠. [Creating Optimized Images in Craft CMS](https://nystudio107.com/blog/creating-optimized-images-in-craft-cms) 아티클 처럼 말이죠.
 
 ```js
 // fontello 생성 태스크
 gulp.task("generate-fontello", () => {
-    return gulp.src(pkg.paths.src.fontello + "config.json")
-        .pipe($.fontello())
-        .pipe($.print())
-        .pipe(gulp.dest(pkg.paths.build.fontello))
-});
+  return gulp
+    .src(pkg.paths.src.fontello + "config.json")
+    .pipe($.fontello())
+    .pipe($.print())
+    .pipe(gulp.dest(pkg.paths.build.fontello))
+})
 
 // 서체 복사 태스크
 gulp.task("fonts", ["generate-fontello"], () => {
-    return gulp.src(pkg.globs.fonts)
-        .pipe(gulp.dest(pkg.paths.dist.fonts));
-});
+  return gulp.src(pkg.globs.fonts).pipe(gulp.dest(pkg.paths.dist.fonts))
+})
 ```
 
 `fonts` 태스크는 먼저 필요한 glyps만 포함하는 `config.json`파일의 [fontello](http://fontello.com/)에 의해 커스텀 아이콘 폰트를 생성합니다. 여섯가지 소셜 아이콘만 사용할 때는 큰 `294k` 폰트어썸(FontAwesome)을 포함시키지 마세요.
@@ -510,61 +541,68 @@ gulp.task("fonts", ["generate-fontello"], () => {
 // 배열에 있는 데이터를 순차적으로 처리합니다
 // nths 아이템 콜벡이후에 n_1 아이템을 이동하면서 말이죠
 function doSynchronousLoop(data, processData, done) {
-    if (data.length > 0) {
-        const loop = (data, i, processData, done) => {
-            processData(data[i], i, () => {
-                if (++i < data.length) {
-                    loop(data, i, processData, done);
-                } else {
-                    done();
-                }
-            });
-        };
-        loop(data, 0, processData, done);
-    } else {
-        done();
+  if (data.length > 0) {
+    const loop = (data, i, processData, done) => {
+      processData(data[i], i, () => {
+        if (++i < data.length) {
+          loop(data, i, processData, done)
+        } else {
+          done()
+        }
+      })
     }
+    loop(data, 0, processData, done)
+  } else {
+    done()
+  }
 }
 
 // 한번에 criticla path CSS 처리합니다
 function processCriticalCSS(element, i, callback) {
-    const criticalSrc = pkg.urls.critical + element.url;
-    const criticalDest = pkg.paths.templates + element.template + "_critical.min.css";
+  const criticalSrc = pkg.urls.critical + element.url
+  const criticalDest =
+    pkg.paths.templates + element.template + "_critical.min.css"
 
-    let criticalWidth = 1200;
-    let criticalHeight = 1200;
-    if (element.template.indexOf("amp_") !== -1) {
-        criticalWidth = 600;
-        criticalHeight = 19200;
+  let criticalWidth = 1200
+  let criticalHeight = 1200
+  if (element.template.indexOf("amp_") !== -1) {
+    criticalWidth = 600
+    criticalHeight = 19200
+  }
+  $.fancyLog(
+    "-> Generating critical CSS: " +
+      $.chalk.cyan(criticalSrc) +
+      " -> " +
+      $.chalk.magenta(criticalDest)
+  )
+  $.critical.generate(
+    {
+      src: criticalSrc,
+      dest: criticalDest,
+      inline: false,
+      ignore: [],
+      base: pkg.paths.dist.base,
+      css: [pkg.paths.dist.css + pkg.vars.siteCssName],
+      minify: true,
+      width: criticalWidth,
+      height: criticalHeight,
+    },
+    (err, output) => {
+      if (err) {
+        $.fancyLog($.chalk.magenta(err))
+      }
+      callback()
     }
-    $.fancyLog("-> Generating critical CSS: " + $.chalk.cyan(criticalSrc) + " -> " + $.chalk.magenta(criticalDest));
-    $.critical.generate({
-        src: criticalSrc,
-        dest: criticalDest,
-        inline: false,
-        ignore: [],
-        base: pkg.paths.dist.base,
-        css: [
-            pkg.paths.dist.css + pkg.vars.siteCssName,
-        ],
-        minify: true,
-        width: criticalWidth,
-        height: criticalHeight
-    }, (err, output) => {
-        if (err) {
-            $.fancyLog($.chalk.magenta(err));
-        }
-        callback();
-    });
+  )
 }
 
 // 크리티컬 CSS 태스크
-gulp.task("criticalcss", ["css"], (callback) => {
-    doSynchronousLoop(pkg.globs.critical, processCriticalCSS, () => {
-        // 모두 완료
-        callback();
-    });
-});
+gulp.task("criticalcss", ["css"], callback => {
+  doSynchronousLoop(pkg.globs.critical, processCriticalCSS, () => {
+    // 모두 완료
+    callback()
+  })
+})
 ```
 
 `criticalcss` 태스크는 "스크롤없이 볼 수 있는 부분(above the fold content)"를 렌더하기 위해 필요한 스타일을 가지고 있는 크리티컬 CSS를 생성합니다. [Implementing Critical CSS on your website](https://nystudio107.com/blog/implementing-critical-css) 아티클에서 자세한 설명을 읽어 보세요.
@@ -572,32 +610,30 @@ gulp.task("criticalcss", ["css"], (callback) => {
 ```js
 // Run pa11y accessibility tests on each template
 function processAccessibility(element, i, callback) {
-    const accessibilitySrc = pkg.urls.critical + element.url;
-    const cliReporter = require('./node_modules/pa11y/reporter/cli.js');
-    const options = {
-        log: cliReporter,
-        ignore:
-                [
-                    'notice',
-                    'warning'
-                ],
-        };
-    const test = $.pa11y(options);
+  const accessibilitySrc = pkg.urls.critical + element.url
+  const cliReporter = require("./node_modules/pa11y/reporter/cli.js")
+  const options = {
+    log: cliReporter,
+    ignore: ["notice", "warning"],
+  }
+  const test = $.pa11y(options)
 
-    $.fancyLog("-> Checking Accessibility for URL: " + $.chalk.cyan(accessibilitySrc));
-    test.run(accessibilitySrc, (error, results) => {
-        cliReporter.results(results, accessibilitySrc);
-        callback();
-    });
+  $.fancyLog(
+    "-> Checking Accessibility for URL: " + $.chalk.cyan(accessibilitySrc)
+  )
+  test.run(accessibilitySrc, (error, results) => {
+    cliReporter.results(results, accessibilitySrc)
+    callback()
+  })
 }
 
 // accessibility task
-gulp.task("a11y", (callback) => {
-    doSynchronousLoop(pkg.globs.critical, processAccessibility, () => {
-        // all done
-        callback();
-    });
-});
+gulp.task("a11y", callback => {
+  doSynchronousLoop(pkg.globs.critical, processAccessibility, () => {
+    // all done
+    callback()
+  })
+})
 ```
 
 `a11y` 태스크는 웹사이트 모든 템플릿의 접근성 검사(accessibility audit)를 실행합니다. 여기서 더 깊게 가지는 않을게요. 자세한 내용은 [Making Websites Better through Accessibility](https://nystudio107.com/blog/making-websites-accessible-americans-with-disabilities-act-ada) 아티클에 있으니까요.
@@ -605,22 +641,26 @@ gulp.task("a11y", (callback) => {
 ```js
 // 한번에 하나씩 다운로드를 처리합니다
 function processDownload(element, i, callback) {
-    const downloadSrc = element.url;
-    const downloadDest = element.dest;
+  const downloadSrc = element.url
+  const downloadDest = element.dest
 
-    $.fancyLog("-> Downloading URL: " + $.chalk.cyan(downloadSrc) + " -> " + $.chalk.magenta(downloadDest));
-    $.download(downloadSrc)
-        .pipe(gulp.dest(downloadDest));
-    callback();
+  $.fancyLog(
+    "-> Downloading URL: " +
+      $.chalk.cyan(downloadSrc) +
+      " -> " +
+      $.chalk.magenta(downloadDest)
+  )
+  $.download(downloadSrc).pipe(gulp.dest(downloadDest))
+  callback()
 }
 
 // 다운로드 태스크
-gulp.task("download", (callback) => {
-    doSynchronousLoop(pkg.globs.download, processDownload, () => {
-        // all done
-        callback();
-    });
-});
+gulp.task("download", callback => {
+  doSynchronousLoop(pkg.globs.download, processDownload, () => {
+    // all done
+    callback()
+  })
+})
 ```
 
 다운로드 태스크는 자체적으로 제공할 써드파티 자바스크립트(예를들어 Google Analytics)를 다운로드하므로 `expreies` 헤더를 제어할 수 있습니다. This is getting a bit off in the weeds, 써드파티 자바스크립트를 사용하는 것 사이에서 좋은 균형을 유지합니다. 컨텐츠를 제공하고 전달하는 방법을 여전히 제어하면서 말이죠.
@@ -631,8 +671,8 @@ gulp.task("download", (callback) => {
 
 아직 프론트엔드 워크풀로우 몇 개가 더 남았습니다. 아마 몇몇 분들은 기대하고 있을 거에요.
 
-* **CSS/SCSS 린팅** - 저는 [PhpStorm](https://www.jetbrains.com/phpstorm/)을 에디터로 사용하는데요, 에디터에 이 기능이 있어요. 만약 따로 원하신다면 `css` 태스크에 CSS/SCSS 린팅 스텝을 쉽게 추가할 수 있습니다
-* **Browsersync** - 저는 livereload를 사용하지만 멀티 디바이스 테스트를 위해 [Browsersync](https://www.browsersync.io/)를 선호한다면 `default` 태스크에서 변경 것은 어려운 일이 아닙니다.
+- **CSS/SCSS 린팅** - 저는 [PhpStorm](https://www.jetbrains.com/phpstorm/)을 에디터로 사용하는데요, 에디터에 이 기능이 있어요. 만약 따로 원하신다면 `css` 태스크에 CSS/SCSS 린팅 스텝을 쉽게 추가할 수 있습니다
+- **Browsersync** - 저는 livereload를 사용하지만 멀티 디바이스 테스트를 위해 [Browsersync](https://www.browsersync.io/)를 선호한다면 `default` 태스크에서 변경 것은 어려운 일이 아닙니다.
 
 다른 사람들이 빌드 프로세스를 위해 사용하는 좋은게 있을 것입니다. 제가 일하는 최소한의 세트만 보여드린 거에요.
 
@@ -646,263 +686,289 @@ gulp.task("download", (callback) => {
 
 ```js
 // 패키지 변수
-const pkg = require("./package.json");
+const pkg = require("./package.json")
 
 // gulp
-const gulp = require("gulp");
+const gulp = require("gulp")
 
 // devDependencies에 있는 모든 플러그인을 $ 변수에 로딩합니다
 const $ = require("gulp-load-plugins")({
-    pattern: ["*"],
-    scope: ["devDependencies"]
-});
+  pattern: ["*"],
+  scope: ["devDependencies"],
+})
 
-const onError = (err) => {
-    console.log(err);
-};
+const onError = err => {
+  console.log(err)
+}
 
 const banner = [
-    "/**",
-    " * @project        <%= pkg.name %>",
-    " * @author         <%= pkg.author %>",
-    " * @build          " + $.moment().format("llll") + " ET",
-    " * @release        " + $.gitRevSync.long() + " [" + $.gitRevSync.branch() + "]",
-    " * @copyright      Copyright (c) " + $.moment().format("YYYY") + ", <%= pkg.copyright %>",
-    " *",
-    " */",
-    ""
-].join("\n");
+  "/**",
+  " * @project        <%= pkg.name %>",
+  " * @author         <%= pkg.author %>",
+  " * @build          " + $.moment().format("llll") + " ET",
+  " * @release        " +
+    $.gitRevSync.long() +
+    " [" +
+    $.gitRevSync.branch() +
+    "]",
+  " * @copyright      Copyright (c) " +
+    $.moment().format("YYYY") +
+    ", <%= pkg.copyright %>",
+  " *",
+  " */",
+  "",
+].join("\n")
 
 // scss - paths를 포함한 build 폴더로 scss를 빌드하고 소스맵을 만듭니다
 gulp.task("scss", () => {
-    $.fancyLog("-> Compiling scss");
-    return gulp.src(pkg.paths.src.scss + pkg.vars.scssName)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.sourcemaps.init({loadMaps: true}))
-        .pipe($.sass({
-                includePaths: pkg.paths.scss
-            })
-            .on("error", $.sass.logError))
-        .pipe($.cached("sass_compile"))
-        .pipe($.autoprefixer())
-        .pipe($.sourcemaps.write("./"))
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.build.css));
-});
+  $.fancyLog("-> Compiling scss")
+  return gulp
+    .src(pkg.paths.src.scss + pkg.vars.scssName)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe($.sourcemaps.init({ loadMaps: true }))
+    .pipe(
+      $.sass({
+        includePaths: pkg.paths.scss,
+      }).on("error", $.sass.logError)
+    )
+    .pipe($.cached("sass_compile"))
+    .pipe($.autoprefixer())
+    .pipe($.sourcemaps.write("./"))
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.build.css))
+})
 
 // css 작업 - 배포용 CSS를 public css 폴더로 하나로 합치고 최소화하고 여기에 배너를 추가합니다
 gulp.task("css", ["scss"], () => {
-    $.fancyLog("-> Building css");
-    return gulp.src(pkg.globs.distCss)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.newer({dest: pkg.paths.dist.css + pkg.vars.siteCssName}))
-        .pipe($.print())
-        .pipe($.sourcemaps.init({loadMaps: true}))
-        .pipe($.concat(pkg.vars.siteCssName))
-        .pipe($.cssnano({
-            discardComments: {
-                removeAll: true
-            },
-            discardDuplicates: true,
-            discardEmpty: true,
-            minifyFontValues: true,
-            minifySelectors: true
-        }))
-        .pipe($.header(banner, {pkg: pkg}))
-        .pipe($.sourcemaps.write("./"))
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.dist.css))
-        .pipe($.filter("**/*.css"))
-        .pipe($.livereload());
-});
+  $.fancyLog("-> Building css")
+  return gulp
+    .src(pkg.globs.distCss)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe($.newer({ dest: pkg.paths.dist.css + pkg.vars.siteCssName }))
+    .pipe($.print())
+    .pipe($.sourcemaps.init({ loadMaps: true }))
+    .pipe($.concat(pkg.vars.siteCssName))
+    .pipe(
+      $.cssnano({
+        discardComments: {
+          removeAll: true,
+        },
+        discardDuplicates: true,
+        discardEmpty: true,
+        minifyFontValues: true,
+        minifySelectors: true,
+      })
+    )
+    .pipe($.header(banner, { pkg: pkg }))
+    .pipe($.sourcemaps.write("./"))
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.dist.css))
+    .pipe($.filter("**/*.css"))
+    .pipe($.livereload())
+})
 
 // Prism js 작업 - prismjs(번역주: 소스코드 하이라이트) 자바스크립트와 컨피그 파일을 하나의 번들로 합칩니다
 gulp.task("prism-js", () => {
-    $.fancyLog("-> Building prism.min.js...");
-    return gulp.src(pkg.globs.prismJs)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.newer({dest: pkg.paths.build.js + "prism.min.js"}))
-        .pipe($.concat("prism.min.js"))
-        .pipe($.uglify())
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.build.js));
-});
+  $.fancyLog("-> Building prism.min.js...")
+  return gulp
+    .src(pkg.globs.prismJs)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe($.newer({ dest: pkg.paths.build.js + "prism.min.js" }))
+    .pipe($.concat("prism.min.js"))
+    .pipe($.uglify())
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.build.js))
+})
 
 // 바벨 js 작업 - 자바스크립트를 빌드 폴더로 트랜스파일 합니다
 gulp.task("js-babel", () => {
-    $.fancyLog("-> Transpiling Javascript via Babel...");
-    return gulp.src(pkg.globs.babelJs)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.newer({dest: pkg.paths.build.js}))
-        .pipe($.babel())
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.build.js));
-});
+  $.fancyLog("-> Transpiling Javascript via Babel...")
+  return gulp
+    .src(pkg.globs.babelJs)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe($.newer({ dest: pkg.paths.build.js }))
+    .pipe($.babel())
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.build.js))
+})
 
 // 컴포넌트 - VueJS 컴포넌트인 .vue 파일 빌드
 gulp.task("components", () => {
-    $.fancyLog("-> Compiling Vue Components");
-    return gulp.src(pkg.globs.components)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.newer({dest: pkg.paths.build.js, ext: ".js"}))
-        .pipe($.vueify({}))
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.build.js));
-});
+  $.fancyLog("-> Compiling Vue Components")
+  return gulp
+    .src(pkg.globs.components)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe($.newer({ dest: pkg.paths.build.js, ext: ".js" }))
+    .pipe($.vueify({}))
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.build.js))
+})
 
 // 인라인 js 작업 - 인라인 자바스크립트로 템플릿 경로의 _inlinejs 로 최소화 합니다
 gulp.task("js-inline", () => {
-    $.fancyLog("-> Copying inline js");
-    return gulp.src(pkg.globs.inlineJs)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.if(["*.js", "!*.min.js"],
-            $.newer({dest: pkg.paths.templates + "_inlinejs", ext: ".min.js"}),
-            $.newer({dest: pkg.paths.templates + "_inlinejs"})
-        ))
-        .pipe($.if(["*.js", "!*.min.js"],
-            $.uglify()
-        ))
-        .pipe($.if(["*.js", "!*.min.js"],
-            $.rename({suffix: ".min"})
-        ))
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.templates + "_inlinejs"))
-        .pipe($.filter("**/*.js"))
-        .pipe($.livereload());
-});
+  $.fancyLog("-> Copying inline js")
+  return gulp
+    .src(pkg.globs.inlineJs)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe(
+      $.if(
+        ["*.js", "!*.min.js"],
+        $.newer({ dest: pkg.paths.templates + "_inlinejs", ext: ".min.js" }),
+        $.newer({ dest: pkg.paths.templates + "_inlinejs" })
+      )
+    )
+    .pipe($.if(["*.js", "!*.min.js"], $.uglify()))
+    .pipe($.if(["*.js", "!*.min.js"], $.rename({ suffix: ".min" })))
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.templates + "_inlinejs"))
+    .pipe($.filter("**/*.js"))
+    .pipe($.livereload())
+})
 
 // js 작업 - public js 폴더로 배포 자바스크립트를 최소화하고 여기에 배너를 추가합니다
 gulp.task("js", ["js-inline", "js-babel", "prism-js"], () => {
-    $.fancyLog("-> Building js");
-    return gulp.src(pkg.globs.distJs)
-        .pipe($.plumber({errorHandler: onError}))
-        .pipe($.if(["*.js", "!*.min.js"],
-            $.newer({dest: pkg.paths.dist.js, ext: ".min.js"}),
-            $.newer({dest: pkg.paths.dist.js})
-        ))
-        .pipe($.if(["*.js", "!*.min.js"],
-            $.uglify()
-        ))
-        .pipe($.if(["*.js", "!*.min.js"],
-            $.rename({suffix: ".min"})
-        ))
-        .pipe($.header(banner, {pkg: pkg}))
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.dist.js))
-        .pipe($.filter("**/*.js"))
-        .pipe($.livereload());
-});
+  $.fancyLog("-> Building js")
+  return gulp
+    .src(pkg.globs.distJs)
+    .pipe($.plumber({ errorHandler: onError }))
+    .pipe(
+      $.if(
+        ["*.js", "!*.min.js"],
+        $.newer({ dest: pkg.paths.dist.js, ext: ".min.js" }),
+        $.newer({ dest: pkg.paths.dist.js })
+      )
+    )
+    .pipe($.if(["*.js", "!*.min.js"], $.uglify()))
+    .pipe($.if(["*.js", "!*.min.js"], $.rename({ suffix: ".min" })))
+    .pipe($.header(banner, { pkg: pkg }))
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.dist.js))
+    .pipe($.filter("**/*.js"))
+    .pipe($.livereload())
+})
 
 // 배열에 있는 데이터를 순차적으로 처리 (n번째 아이템 콜백이후 n+1번째 아이템으로 이동하면서)
 function doSynchronousLoop(data, processData, done) {
-    if (data.length > 0) {
-        const loop = (data, i, processData, done) => {
-            processData(data[i], i, () => {
-                if (++i < data.length) {
-                    loop(data, i, processData, done);
-                } else {
-                    done();
-                }
-            });
-        };
-        loop(data, 0, processData, done);
-    } else {
-        done();
+  if (data.length > 0) {
+    const loop = (data, i, processData, done) => {
+      processData(data[i], i, () => {
+        if (++i < data.length) {
+          loop(data, i, processData, done)
+        } else {
+          done()
+        }
+      })
     }
+    loop(data, 0, processData, done)
+  } else {
+    done()
+  }
 }
 
 // 한번에 하나씩 크리티컬 패스 CSS 처리
 function processCriticalCSS(element, i, callback) {
-    const criticalSrc = pkg.urls.critical + element.url;
-    const criticalDest = pkg.paths.templates + element.template + "_critical.min.css";
+  const criticalSrc = pkg.urls.critical + element.url
+  const criticalDest =
+    pkg.paths.templates + element.template + "_critical.min.css"
 
-    let criticalWidth = 1200;
-    let criticalHeight = 1200;
-    if (element.template.indexOf("amp_") !== -1) {
-        criticalWidth = 600;
-        criticalHeight = 19200;
+  let criticalWidth = 1200
+  let criticalHeight = 1200
+  if (element.template.indexOf("amp_") !== -1) {
+    criticalWidth = 600
+    criticalHeight = 19200
+  }
+  $.fancyLog(
+    "-> Generating critical CSS: " +
+      $.chalk.cyan(criticalSrc) +
+      " -> " +
+      $.chalk.magenta(criticalDest)
+  )
+  $.critical.generate(
+    {
+      src: criticalSrc,
+      dest: criticalDest,
+      inline: false,
+      ignore: [],
+      base: pkg.paths.dist.base,
+      css: [pkg.paths.dist.css + pkg.vars.siteCssName],
+      minify: true,
+      width: criticalWidth,
+      height: criticalHeight,
+    },
+    (err, output) => {
+      if (err) {
+        $.fancyLog($.chalk.magenta(err))
+      }
+      callback()
     }
-    $.fancyLog("-> Generating critical CSS: " + $.chalk.cyan(criticalSrc) + " -> " + $.chalk.magenta(criticalDest));
-    $.critical.generate({
-        src: criticalSrc,
-        dest: criticalDest,
-        inline: false,
-        ignore: [],
-        base: pkg.paths.dist.base,
-        css: [
-            pkg.paths.dist.css + pkg.vars.siteCssName,
-        ],
-        minify: true,
-        width: criticalWidth,
-        height: criticalHeight
-    }, (err, output) => {
-        if (err) {
-            $.fancyLog($.chalk.magenta(err));
-        }
-        callback();
-    });
+  )
 }
 
 // 크리티컬 css 태스크
-gulp.task("criticalcss", ["css"], (callback) => {
-    doSynchronousLoop(pkg.globs.critical, processCriticalCSS, () => {
-        // all done
-        callback();
-    });
-});
+gulp.task("criticalcss", ["css"], callback => {
+  doSynchronousLoop(pkg.globs.critical, processCriticalCSS, () => {
+    // all done
+    callback()
+  })
+})
 
 // 한번에 하나씩 다운로드 처리
 function processDownload(element, i, callback) {
-    const downloadSrc = element.url;
-    const downloadDest = element.dest;
+  const downloadSrc = element.url
+  const downloadDest = element.dest
 
-    $.fancyLog("-> Downloading URL: " + $.chalk.cyan(downloadSrc) + " -> " + $.chalk.magenta(downloadDest));
-    $.download(downloadSrc)
-        .pipe(gulp.dest(downloadDest));
-    callback();
+  $.fancyLog(
+    "-> Downloading URL: " +
+      $.chalk.cyan(downloadSrc) +
+      " -> " +
+      $.chalk.magenta(downloadDest)
+  )
+  $.download(downloadSrc).pipe(gulp.dest(downloadDest))
+  callback()
 }
 
 // 다운로드 태스크
-gulp.task("download", (callback) => {
-    doSynchronousLoop(pkg.globs.download, processDownload, () => {
-        // all done
-        callback();
-    });
-});
+gulp.task("download", callback => {
+  doSynchronousLoop(pkg.globs.download, processDownload, () => {
+    // all done
+    callback()
+  })
+})
 
 // 각 템플릿에 pa11y 접근성 테스트 실행
 function processAccessibility(element, i, callback) {
-    const accessibilitySrc = pkg.urls.critical + element.url;
-    const cliReporter = require('./node_modules/pa11y/reporter/cli.js');
-    const options = {
-        log: cliReporter,
-        ignore:
-                [
-                    'notice',
-                    'warning'
-                ],
-        };
-    const test = $.pa11y(options);
+  const accessibilitySrc = pkg.urls.critical + element.url
+  const cliReporter = require("./node_modules/pa11y/reporter/cli.js")
+  const options = {
+    log: cliReporter,
+    ignore: ["notice", "warning"],
+  }
+  const test = $.pa11y(options)
 
-    $.fancyLog("-> Checking Accessibility for URL: " + $.chalk.cyan(accessibilitySrc));
-    test.run(accessibilitySrc, (error, results) => {
-        cliReporter.results(results, accessibilitySrc);
-        callback();
-    });
+  $.fancyLog(
+    "-> Checking Accessibility for URL: " + $.chalk.cyan(accessibilitySrc)
+  )
+  test.run(accessibilitySrc, (error, results) => {
+    cliReporter.results(results, accessibilitySrc)
+    callback()
+  })
 }
 
 // 접근성 태스크
-gulp.task("a11y", (callback) => {
-    doSynchronousLoop(pkg.globs.critical, processAccessibility, () => {
-        // all done
-        callback();
-    });
-});
+gulp.task("a11y", callback => {
+  doSynchronousLoop(pkg.globs.critical, processAccessibility, () => {
+    // all done
+    callback()
+  })
+})
 
 // 파비콘 생서 태스크
 gulp.task("favicons-generate", () => {
-    $.fancyLog("-> Generating favicons");
-    return gulp.src(pkg.paths.favicon.src).pipe($.favicons({
+  $.fancyLog("-> Generating favicons")
+  return gulp
+    .src(pkg.paths.favicon.src)
+    .pipe(
+      $.favicons({
         appName: pkg.name,
         appDescription: pkg.description,
         developerName: pkg.author,
@@ -918,76 +984,89 @@ gulp.task("favicons-generate", () => {
         html: pkg.paths.build.html + "favicons.html",
         replace: true,
         icons: {
-            android: false, // 안드로이드 홈스크린 아이콘 생성. 불리언
-            appleIcon: true, // 애플 터치 아이콘 생성. 불리언
-            appleStartup: false, // 에플 시작 이미지 생성. 불리언
-            coast: true, // 오페라 Coast 아이콘 생성. 불리언
-            favicons: true, // 기본 파비콘 생성. 불리언
-            firefox: true, // 파이어폭스 운영체제 아이콘 생성. 불리언
-            opengraph: false, // 페이스북 오픈 그래프 이미지 생성. 불리언
-            twitter: false, // 트위터 써머리 카드 이미지 생성. 불리언
-            windows: true, // 윈도우즈 8 타이틀 아이콘 생성. 불리언
-            yandex: true // Yandex 브라우져 아이콘 생성. 불리언
-        }
-    })).pipe(gulp.dest(pkg.paths.favicon.dest));
-});
+          android: false, // 안드로이드 홈스크린 아이콘 생성. 불리언
+          appleIcon: true, // 애플 터치 아이콘 생성. 불리언
+          appleStartup: false, // 에플 시작 이미지 생성. 불리언
+          coast: true, // 오페라 Coast 아이콘 생성. 불리언
+          favicons: true, // 기본 파비콘 생성. 불리언
+          firefox: true, // 파이어폭스 운영체제 아이콘 생성. 불리언
+          opengraph: false, // 페이스북 오픈 그래프 이미지 생성. 불리언
+          twitter: false, // 트위터 써머리 카드 이미지 생성. 불리언
+          windows: true, // 윈도우즈 8 타이틀 아이콘 생성. 불리언
+          yandex: true, // Yandex 브라우져 아이콘 생성. 불리언
+        },
+      })
+    )
+    .pipe(gulp.dest(pkg.paths.favicon.dest))
+})
 
 // 파비콘 복사 태스크
 gulp.task("favicons", ["favicons-generate"], () => {
-    $.fancyLog("-> Copying favicon.ico");
-    return gulp.src(pkg.globs.siteIcon)
-        .pipe($.size({gzip: true, showFiles: true}))
-        .pipe(gulp.dest(pkg.paths.dist.base));
-});
+  $.fancyLog("-> Copying favicon.ico")
+  return gulp
+    .src(pkg.globs.siteIcon)
+    .pipe($.size({ gzip: true, showFiles: true }))
+    .pipe(gulp.dest(pkg.paths.dist.base))
+})
 
 // imagemin 태스크
 gulp.task("imagemin", () => {
-    return gulp.src(pkg.paths.dist.img + "**/*.{png,jpg,jpeg,gif,svg}")
-        .pipe($.imagemin({
-            progressive: true,
-            interlaced: true,
-            optimizationLevel: 7,
-            svgoPlugins: [{removeViewBox: false}],
-            verbose: true,
-            use: []
-        }))
-        .pipe(gulp.dest(pkg.paths.dist.img));
-});
+  return gulp
+    .src(pkg.paths.dist.img + "**/*.{png,jpg,jpeg,gif,svg}")
+    .pipe(
+      $.imagemin({
+        progressive: true,
+        interlaced: true,
+        optimizationLevel: 7,
+        svgoPlugins: [{ removeViewBox: false }],
+        verbose: true,
+        use: [],
+      })
+    )
+    .pipe(gulp.dest(pkg.paths.dist.img))
+})
 
 // fontello 생성 태스크
 gulp.task("generate-fontello", () => {
-    return gulp.src(pkg.paths.src.fontello + "config.json")
-        .pipe($.fontello())
-        .pipe($.print())
-        .pipe(gulp.dest(pkg.paths.build.fontello))
-});
+  return gulp
+    .src(pkg.paths.src.fontello + "config.json")
+    .pipe($.fontello())
+    .pipe($.print())
+    .pipe(gulp.dest(pkg.paths.build.fontello))
+})
 
 // 서체 복사 태스크
 gulp.task("fonts", ["generate-fontello"], () => {
-    return gulp.src(pkg.globs.fonts)
-        .pipe(gulp.dest(pkg.paths.dist.fonts));
-});
+  return gulp.src(pkg.globs.fonts).pipe(gulp.dest(pkg.paths.dist.fonts))
+})
 
 // 기본 테스크
 gulp.task("default", ["css", "js"], () => {
-    $.livereload.listen();
-    gulp.watch([pkg.paths.src.scss + "**/*.scss"], ["css"]);
-    gulp.watch([pkg.paths.src.css + "**/*.css"], ["css"]);
-    gulp.watch([pkg.paths.src.js + "**/*.js"], ["js"]);
-    gulp.watch([pkg.paths.templates + "**/*.{html,htm,twig}"], () => {
-        gulp.src(pkg.paths.templates)
-            .pipe($.plumber({errorHandler: onError}))
-            .pipe($.livereload());
-    });
-});
+  $.livereload.listen()
+  gulp.watch([pkg.paths.src.scss + "**/*.scss"], ["css"])
+  gulp.watch([pkg.paths.src.css + "**/*.css"], ["css"])
+  gulp.watch([pkg.paths.src.js + "**/*.js"], ["js"])
+  gulp.watch([pkg.paths.templates + "**/*.{html,htm,twig}"], () => {
+    gulp
+      .src(pkg.paths.templates)
+      .pipe($.plumber({ errorHandler: onError }))
+      .pipe($.livereload())
+  })
+})
 
 // 프로덕션 빌드
-gulp.task("build", ["download", "default", "favicons", "imagemin", "fonts", "criticalcss"]);
+gulp.task("build", [
+  "download",
+  "default",
+  "favicons",
+  "imagemin",
+  "fonts",
+  "criticalcss",
+])
 ```
 
 ## 더 읽어 볼 것
 
-* [A Better package.json for the Frontend](https://nystudio107.com/blog/a-better-package-json-for-the-frontend0)
-* [Making Websites Better through Accessibility](https://nystudio107.com/blog/making-websites-accessible-americans-with-disabilities-act-ada)
-* [A/B Split Testing with Nginx & Craft CMS](https://nystudio107.com/blog/a-b-split-testing-with-nginx-craft-cms)
-
+- [A Better package.json for the Frontend](https://nystudio107.com/blog/a-better-package-json-for-the-frontend0)
+- [Making Websites Better through Accessibility](https://nystudio107.com/blog/making-websites-accessible-americans-with-disabilities-act-ada)
+- [A/B Split Testing with Nginx & Craft CMS](https://nystudio107.com/blog/a-b-split-testing-with-nginx-craft-cms)

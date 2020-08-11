@@ -57,7 +57,7 @@ yarn dev
 로그인 전이면 "Hello Word"를, 로그인 후면 "Hello {Name}"으로 응답한다.<br />
 인증 여부에 따라 다르게 응답하기 위해서 이렇게 구현했다.
 
-서버가 구동된 상태에서 API  요청을 위해 터미널 창을 하나 더 띄우자.
+서버가 구동된 상태에서 API 요청을 위해 터미널 창을 하나 더 띄우자.
 Curl 명령어로 API를 요청해 보면
 
 ```bash
@@ -166,34 +166,34 @@ vue init simple-webpack client
 ```js
 // router/index.js
 
-import Vue from 'vue'
-import Router from 'vue-router'
-import Home from '../components/Home.vue'
-import Login from '../components/Login.vue'
-import Me from '../components/Me.vue'
+import Vue from "vue"
+import Router from "vue-router"
+import Home from "../components/Home.vue"
+import Login from "../components/Login.vue"
+import Me from "../components/Me.vue"
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-      path: '/',
-      name: 'Home',
-      component: Home
+      path: "/",
+      name: "Home",
+      component: Home,
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: Login
+      path: "/login",
+      name: "Login",
+      component: Login,
     },
     {
-      path: '/me',
-      name: 'Me',
+      path: "/me",
+      name: "Me",
       component: Me,
-      beforeEnter: requireAuth
-    }
-  ]
+      beforeEnter: requireAuth,
+    },
+  ],
 })
 ```
 
@@ -202,38 +202,37 @@ export default new Router({
 ```js
 // store/index.js
 
-import Vue from 'vue'
-import Vuex from 'vuex'
-import axios from 'axios'
+import Vue from "vue"
+import Vuex from "vuex"
+import axios from "axios"
 
 Vue.use(Vuex)
 
-const resourceHost = 'http://localhost:3000'
+const resourceHost = "http://localhost:3000"
 
 export default new Veux.Store({
   state: {
-    accessToken: null
+    accessToken: null,
   },
-  getters: {
-
-  },
+  getters: {},
   mutations: {
-    LOGIN (state, {accessToken}) {
+    LOGIN(state, { accessToken }) {
       state.accessToken = accessToken
     },
-    LOGOUT (state) {
+    LOGOUT(state) {
       state.accessToken = null
-    }
+    },
   },
   actions: {
-    LOGIN ({commit}, {email, password}) {
-      return axios.post(`${resourceHost}/login`, {email, password})
-        .then(({data}) => commit('LOGIN', data))
+    LOGIN({ commit }, { email, password }) {
+      return axios
+        .post(`${resourceHost}/login`, { email, password })
+        .then(({ data }) => commit("LOGIN", data))
     },
-    LOGOUT ({commit}) {
-      commit('LOGOUT')
+    LOGOUT({ commit }) {
+      commit("LOGOUT")
     },
-  }
+  },
 })
 ```
 
@@ -242,18 +241,17 @@ Vue에 추가한다.
 ```js
 // main.js
 
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import App from "./App.vue"
+import router from "./router"
+import store from "./store"
 
 new Vue({
-  el: '#app',
+  el: "#app",
   render: h => h(App),
   store,
-  router
+  router,
 })
 ```
-
 
 ## Home 화면
 
@@ -270,19 +268,20 @@ new Vue({
 </template>
 
 <script>
-import axios from 'axios'
+  import axios from "axios"
 
-export default {
-  data() {
-    return {
-      greeting: ''
-    }
-  },
-  created() {
-    axios.get('http://localhost:3000/home')
-      .then(result => this.greeting = result.data.greeting)
+  export default {
+    data() {
+      return {
+        greeting: "",
+      }
+    },
+    created() {
+      axios
+        .get("http://localhost:3000/home")
+        .then(result => (this.greeting = result.data.greeting))
+    },
   }
-}
 </script>
 ```
 
@@ -329,7 +328,6 @@ beforeEnter 인터셉터는 `from`, `to`, `next` 세 개 인자를 받는 함수
 
 ![로그인 화면](/assets/imgs/2018/03/26/login.jpg)
 
-
 ## Login 화면
 
 로그인 컴포넌트에 로그인 폼을 추가해 보자.
@@ -341,45 +339,45 @@ beforeEnter 인터셉터는 `from`, `to`, `next` 세 개 인자를 받는 함수
   <div>
     <h2>Login</h2>
     <form @submit.prevent="onSubmit(email, password)">
-      <input type="text" v-model="email" placeholder="Email Address">
-      <input type="password" v-model="password" placeholder="Password">
-      <input type="submit" value="Login">
+      <input type="text" v-model="email" placeholder="Email Address" />
+      <input type="password" v-model="password" placeholder="Password" />
+      <input type="submit" value="Login" />
     </form>
     <p><i>{{msg}}</i></p>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      email: '',
-      password: '',
-      msg: ''
-    }
-  },
-  methods: {
-    onSubmit(email, password) {
-
-      // LOGIN 액션 실행
-      this.$store.dispatch('LOGIN', {email, password})
-        .then(() => this.redirect())
-        .catch(({message}) => this.msg = message)
+  export default {
+    data() {
+      return {
+        email: "",
+        password: "",
+        msg: "",
+      }
     },
-    redirect() {
-      const {search} = window.location
-      const tokens = search.replace(/^\?/, '').split('&')
-      const {returnPath} = tokens.reduce((qs, tkn) => {
-        const pair = tkn.split('=')
-        qs[pair[0]] = decodeURIComponent(pair[1])
-        return qs
-      }, {})
+    methods: {
+      onSubmit(email, password) {
+        // LOGIN 액션 실행
+        this.$store
+          .dispatch("LOGIN", { email, password })
+          .then(() => this.redirect())
+          .catch(({ message }) => (this.msg = message))
+      },
+      redirect() {
+        const { search } = window.location
+        const tokens = search.replace(/^\?/, "").split("&")
+        const { returnPath } = tokens.reduce((qs, tkn) => {
+          const pair = tkn.split("=")
+          qs[pair[0]] = decodeURIComponent(pair[1])
+          return qs
+        }, {})
 
-      // 리다이렉트 처리
-      this.$router.push(returnPath)
-    }
+        // 리다이렉트 처리
+        this.$router.push(returnPath)
+      },
+    },
   }
-}
 </script>
 ```
 
@@ -439,26 +437,33 @@ GET /me API를 요청해서 응답 데이터로 Me 화면을 만들어 보자.
     </div>
     <div>
       <label>Access Log:</label>
-      <div v-for="log in accessLog">{%raw%}{{log.userId}}, {{log.createdAt}}{%endraw%}</div>
+      <div v-for="log in accessLog">
+        {%raw%}{{log.userId}}, {{log.createdAt}}{%endraw%}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+  import axios from "axios"
 
-export default {
-  data() {
-    return {
-      user: null,
-      accessLog: []
-    }
-  },
-  created() {
-    axios.get('http://localhost:3000/me')
-      .then(({data}) => (this.user = data.user, this.accessLog = data.accessLog))
+  export default {
+    data() {
+      return {
+        user: null,
+        accessLog: [],
+      }
+    },
+    created() {
+      axios
+        .get("http://localhost:3000/me")
+        .then(
+          ({ data }) => (
+            (this.user = data.user), (this.accessLog = data.accessLog)
+          )
+        )
+    },
   }
-}
 </script>
 ```
 
@@ -501,7 +506,6 @@ actions: {
 
 ![인증 후 마이 페이지](/assets/imgs/2018/03/26/me-after-auth.jpg)
 
-
 마침내 유저 정보와 액세스 로그가 화면에 출력 되었다!
 
 API 요청 헤더에도 토큰 정보가 설정 되어 있다.
@@ -534,9 +538,9 @@ mutations: {
 // store/index.js
 
 const enhanceAccessToeken = () => {
-  const {accessToken} = localStorage
+  const { accessToken } = localStorage
   if (!accessToken) return
-  axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+  axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`
 }
 enhanceAccessToeken()
 ```
@@ -545,12 +549,10 @@ enhanceAccessToeken()
 그리고 리프레시! <br />
 오케이, 로컬스토리지에 저장된 토큰이 API 요청 헤더에 담겨서 전송된다.
 
-
 ## 로그아웃
 
 로그아웃은 비교적 간단하다.
 상단 메뉴의 로그아웃 버튼 클릭시 실행하는 함수 `onClickLogout()`을 만든다.
-
 
 ```html
 // components/Menus.vue
@@ -567,20 +569,20 @@ enhanceAccessToeken()
 </template>
 
 <script>
-  import store from '../store'
+  import store from "../store"
 
   export default {
     computed: {
       isAuthenticated() {
         return store.getters.isAuthenticated
-      }
+      },
     },
     methods: {
       onClickLogout() {
         // LOGOUT 변이 실행 후 리다이렉트
-        store.dispatch('LOGOUT').then(() => this.$router.push('/'))
-      }
-    }
+        store.dispatch("LOGOUT").then(() => this.$router.push("/"))
+      },
+    },
   }
 </script>
 ```
@@ -588,7 +590,6 @@ enhanceAccessToeken()
 `onClickLogout()` 함수는 `LOGOUT` 액션을 실행한뒤 메인 페이지로 라우팅한다.
 
 액션과 변이 함수도 로그아웃 처리를 해 주자.
-
 
 ```js
 actions: {
@@ -628,8 +629,8 @@ Vuex와 Vue-Router 그리고 Axios를 이용해서 SPA 인증을 구현해 봤�
 
 참고
 
-* [깃헙 vuex-router-auth0-example](https://github.com/Ridermansb/vuex-router-auth0-example)
-* [깃헙 vuejs2-authentication-tutorial](https://github.com/auth0-blog/vuejs2-authentication-tutorial)
-* [Persisting user authentication with Vuex in Vue
-]()https://medium.com/front-end-hacking/persisting-user-authentication-with-vuex-in-vue-b1514d5d3278)
-* [Vuejs 2 Authentication Tutorial](https://auth0.com/blog/vuejs2-authentication-tutorial/)
+- [깃헙 vuex-router-auth0-example](https://github.com/Ridermansb/vuex-router-auth0-example)
+- [깃헙 vuejs2-authentication-tutorial](https://github.com/auth0-blog/vuejs2-authentication-tutorial)
+- [Persisting user authentication with Vuex in Vue
+  ]()https://medium.com/front-end-hacking/persisting-user-authentication-with-vuex-in-vue-b1514d5d3278)
+- [Vuejs 2 Authentication Tutorial](https://auth0.com/blog/vuejs2-authentication-tutorial/)

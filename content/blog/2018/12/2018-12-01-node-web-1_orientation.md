@@ -1,5 +1,5 @@
 ---
-title: '[Node.js 코드랩] 1.오리엔테이션'
+title: "[Node.js 코드랩] 1.오리엔테이션"
 layout: post
 summary: 실습 환경을 구성합니다.
 category: series
@@ -79,12 +79,12 @@ server.spec.js란 이름의 파일을 하나 만들겠습니다.
 파일에 아래 코드를 입력해 보세요.
 
 ```js
-const should = require('should')
-const server = require('./server')
+const should = require("should")
+const server = require("./server")
 
-describe('server test suite', () => {
+describe("server test suite", () => {
   it('should return "hello world"', () => {
-    server().should.be.equal('Hello world')
+    server().should.be.equal("Hello world")
   })
 })
 ```
@@ -162,8 +162,8 @@ $ npm test
 
 ## 정리
 
-* NPM으로 노드기반의 프로젝트를 생성했습니다.
-* 자동으로 만들어진 package.json에 프로젝트 관련 정보를 저장하고 스크립트도 등록할수 있습니다.
-* 모카와 슈드로 유닛테스트 환경을 만들었고 NPM에 test 스크립트로 등록했습니다.
+- NPM으로 노드기반의 프로젝트를 생성했습니다.
+- 자동으로 만들어진 package.json에 프로젝트 관련 정보를 저장하고 스크립트도 등록할수 있습니다.
+- 모카와 슈드로 유닛테스트 환경을 만들었고 NPM에 test 스크립트로 등록했습니다.
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)

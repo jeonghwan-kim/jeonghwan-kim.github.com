@@ -14,7 +14,6 @@ tags: [angularjs]
 최근 노드와 몽고디비로 백앤드를 개발하고 앵귤러 프레임웍으로 프론트를 함께 개발하는 <a href="http://en.wikipedia.org/wiki/MEAN">MEAN 스택</a>을 사용하는 추세다.
 이러한 풀스택 개발을 지원해 주는 프레임웍 중 하나가 앵귤러 풀스택(<a href="https://github.com/DaftMonk/generator-angular-fullstack">angular-fullstack</a>)이다.MEAN stack으로 개발시 브라우져단의 성능을 높일 수 있는 방법에 대해 알아보자.
 
-
 ## LAZY LOAD
 
 뷰와 컨트롤러를 분리해 MVC 모델을 구현할 수 있는 것이 앵귤러의 장점이다. 각 페이지 별로 뷰와 컨트롤러 파일을 관리하기 때문에 서비스 규모가 커지더라도 로직 작성시 편리한 이점이 있다. 그러나 파일 갯수가 많아지면서 전체 파일을 로딩해야 하는 부담도 있다. 그래서 보통 <a href="http://www.requirejs.org/">requireJS</a>로 자바스크립트 파일을 동적으로 로딩하여 초기 로딩의 부담을 해결하는 방법을 사용한다.(<a href="http://weblogs.asp.net/dwahlin/dynamically-loading-controllers-and-views-with-angularjs-and-requirejs">참고1</a>, <a href="http://jcf.daewoobrenic.co.kr/blog/?p=237">참고2</a>) 그러나 angular-fullstack 에서는 모든 코드를 하나의 스크립트 파일로 합치고 이를 압축하기 때문에 로딩에 부담되지 않을 것 같다. 또한 이러한 구조를 적용하는 것도 어려울 것 같다.
@@ -32,7 +31,6 @@ page2     6.29s   6.12s
 pgae3     5.81s   5.19s
 average   7.01s   5.82s
 ```
-
 
 ## PAGGING
 
@@ -66,7 +64,6 @@ pgae3    5.81s   5.19s                4.01s
 average  7.01s   5.82s                4.44s</pre>
 ```
 
-
 ## GZIP
 
 이젠 서버쪽에서 속도 개선을 시도해 보자. http에서 사용하는 표준 압축 알고리즘 중 하나인 gzip을 사용해 보자.
@@ -78,7 +75,6 @@ average  7.01s   5.82s                4.44s</pre>
 
 호스트맨 등으로 http 리퀘스트 테스트시 헤더에 <code>Accept-Encoding: gzip, deflate</code>처럼 압축 정보를 입력해 보내면 gzip 동작을 확인 할수 있다.
 
-
 ## 기타
 
-그 밖에도 앵귤러의 $watch 사용을 최소화하는 방법 등도 고려할 수 있다.(<a href="http://nisostech.com/angularjs-performance-improvement/">참고</a>)
+그 밖에도 앵귤러의 \$watch 사용을 최소화하는 방법 등도 고려할 수 있다.(<a href="http://nisostech.com/angularjs-performance-improvement/">참고</a>)

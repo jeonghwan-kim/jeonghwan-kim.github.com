@@ -13,8 +13,8 @@ tags: [TypeScript]
 
 ```ts
 interface User {
-  name: string,
-  email: string,
+  name: string
+  email: string
 }
 ```
 
@@ -22,7 +22,7 @@ interface User {
 타입을 기반으로 코딩하면 대부분의 타입 에러를 예방하고 안전하게 코딩할 수 있었다.
 
 ```ts
-function doSomthing(user: User): User;
+function doSomthing(user: User): User
 ```
 
 # 인터페이스 활용
@@ -33,15 +33,15 @@ function doSomthing(user: User): User;
 
 ```ts
 const user: User = {
-  name: '',
-  email: ''
+  name: "",
+  email: "",
 }
 ```
 
 폼으로 받은 유저 데이터를 검증한다던지
 
 ```ts
-function validateUser(user: User): boolean;
+function validateUser(user: User): boolean
 ```
 
 XHR 호출시 페이로드에 유저 타입을 사용한다던지 말이다.
@@ -89,7 +89,8 @@ routers
 솔직히 이런 구조에서는 코드 관리를 잘 못하겠다.
 
 정리하면, 1) 각 역할자들 사이에서는 인터페이스로 약속하고 개발하면 된다고 생각했지만 귀찮다.
-2) 복잡도가 증가하면 코드 관리가 않된다.
+
+2. 복잡도가 증가하면 코드 관리가 않된다.
 
 # 클래스를 써야할까?
 
@@ -110,8 +111,8 @@ routers
 
 ```ts
 const user1: User = {
-  name: '',
-  emila: ''
+  name: "",
+  emila: "",
 }
 ```
 
@@ -169,7 +170,7 @@ const user: User = new User({user: 'alice'})  // {user: "alice, email: ""}
 
 ```ts
 class User {
-  validate(): boolean;
+  validate(): boolean
 }
 ```
 
@@ -197,7 +198,6 @@ class User {
 
 이런식으로 관심사가 비슷한 데이터와 메소드를 하나의 클래스로 모으면 여기저기 흩어져있는 코드를 정리할 수 있다.
 코드를 찾기 더 쉬워질 뿐만아니라 사고하는 방식도 데이터 중심이라서 기존 방법을 사용했을 때와 확연히 달라진 기분이다.
-
 
 # 결론
 

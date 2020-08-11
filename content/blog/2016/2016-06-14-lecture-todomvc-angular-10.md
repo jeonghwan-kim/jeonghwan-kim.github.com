@@ -1,5 +1,5 @@
 ---
-title: '앵귤러로 Todo앱 만들기 10 - Express.js로 웹서버 만들기'
+title: "앵귤러로 Todo앱 만들기 10 - Express.js로 웹서버 만들기"
 layout: post
 category: series
 seriesId: "377d51fb-3cab-5e79-a4e0-8e08a79bbe02"
@@ -33,31 +33,31 @@ server/app.js:
 
 ```javascript
 // part 1
-var express = require('express');
-var app = express();
+var express = require("express")
+var app = express()
 
 // part 2
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+app.get("/", function (req, res) {
+  res.send("Hello World!")
+})
 
 // part 3
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+  console.log("Example app listening on port 3000!")
+})
 ```
 
- 설명을 위해 코드을 세 부분으로 나눠서 주석을 달았다.
+설명을 위해 코드을 세 부분으로 나눠서 주석을 달았다.
 
- part 1에서 express 모듈을 로딩한다.
- 그리고 인스턴스를 하나 생성해서 `app` 변수에 저장한다.
- 뒤에 `app` 변수를 가지고 서버를 세팅하고 구동시킬 것이다.
+part 1에서 express 모듈을 로딩한다.
+그리고 인스턴스를 하나 생성해서 `app` 변수에 저장한다.
+뒤에 `app` 변수를 가지고 서버를 세팅하고 구동시킬 것이다.
 
- part 2에서는 기본 라우팅 설정을 했다.
- 도메인에 접속하면 "Hello World!" 문자열을 출력하도록 했다
+part 2에서는 기본 라우팅 설정을 했다.
+도메인에 접속하면 "Hello World!" 문자열을 출력하도록 했다
 
- part3에서는 `listen()` 함수로 서버를 구동한다.
- 3000번 포트를 사용할 것이며 서버가 구동되는 동시에 "Express app listeing ..." 문구가 서버측 콘솔에 찍힐 것이다.
+part3에서는 `listen()` 함수로 서버를 구동한다.
+3000번 포트를 사용할 것이며 서버가 구동되는 동시에 "Express app listeing ..." 문구가 서버측 콘솔에 찍힐 것이다.
 
 명령어로 노드 어플리케이션을 실행 시켜보자.
 
@@ -70,7 +70,6 @@ Example app listening on port 3000!
 
 ![](/assets/imgs/2016/lecture-todomvc-angular-13-result1.png)
 
-
 ## NPM으로 간단히 서버 구동하기
 
 이전에 npm의 기능중 서버 구동기능을 언급했다.
@@ -81,7 +80,7 @@ package.json에 npm 명령어를 설정할 수 있다.
 {
   "scripts": {
     "start": "node server/app"
-  },
+  }
 }
 ```
 

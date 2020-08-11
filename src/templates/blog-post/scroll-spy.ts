@@ -1,34 +1,36 @@
 export default class ScrollSpy {
-  public targets: HTMLElement[];
-  public refs: HTMLElement[];
+  public targets: HTMLElement[]
+  public refs: HTMLElement[]
   public sensitivity: number
 
   constructor(target: HTMLElement, refs: HTMLElement[], sensitivity?: number) {
-    this.targets = Array.from(target.querySelectorAll("a"));
-    this.refs = refs;
-    this.sensitivity = sensitivity || -10;
+    this.targets = Array.from(target.querySelectorAll("a"))
+    this.refs = refs
+    this.sensitivity = sensitivity || -10
 
-    window.addEventListener("scroll", () => this.onScroll());
+    window.addEventListener("scroll", () => this.onScroll())
   }
 
   onScroll() {
     if (!this.isOnTopOfDoc(this.refs[0])) {
-      this.deactiveateTarget();
+      this.deactiveateTarget()
     }
 
     this.refs.forEach(ref => {
       if (this.isOnTopOfDoc(ref)) {
-        this.deactiveateTarget();
-        const t = this.findTarget(ref.id);
+        this.deactiveateTarget()
+        const t = this.findTarget(ref.id)
         if (t) {
           this.activate(t)
         }
       }
-    });
+    })
   }
 
   isOnTopOfDoc(ref: HTMLElement): boolean {
-    return document.documentElement.scrollTop - ref.offsetTop >= this.sensitivity;
+    return (
+      document.documentElement.scrollTop - ref.offsetTop >= this.sensitivity
+    )
   }
 
   deactiveateTarget() {
@@ -36,7 +38,10 @@ export default class ScrollSpy {
   }
 
   findTarget(id: string): HTMLElement | undefined {
-    return this.targets.filter(a => decodeURIComponent(a.attributes['href'].value.replace(/^#/, '')) === id)[0];
+    return this.targets.filter(
+      a =>
+        decodeURIComponent(a.attributes["href"].value.replace(/^#/, "")) === id
+    )[0]
   }
 
   activate(el: HTMLElement) {

@@ -13,7 +13,7 @@ summary: 쿠키, 세션 기능을 만들고 인증을 구현해 본다
 ## 쿠키
 
 먼저 쿠키부터 시작하자.
-[문서에 노드의 쿠키설정](https://nodejs.org/dist/latest-v8.x/docs/api/http.html#http_response_setheader_name_value)  방법을 찾았다. `Set-Cookie` 헤더를 설정해 주면 되는군.
+[문서에 노드의 쿠키설정](https://nodejs.org/dist/latest-v8.x/docs/api/http.html#http_response_setheader_name_value) 방법을 찾았다. `Set-Cookie` 헤더를 설정해 주면 되는군.
 
 익스프레스에서는 헤더에 쿠키를 설정하기 위해 응답객체 메소드로 형태로 [req.cookie()](http://expressjs.com/en/4x/api.html#res.cookie) 함수를 제공한다. 그럼 내가 만든 response.js에도 `cookie()`란 이름으로 함수를 추가하면 비슷하게 구현될 것 같다.
 
@@ -21,7 +21,7 @@ response.js:
 
 ```js
 res.cookie = (name, value) => {
-  res.set('Set-Cookie', [`${name}=${value}`])
+  res.set("Set-Cookie", [`${name}=${value}`])
   return res
 }
 ```
@@ -32,10 +32,11 @@ res.cookie = (name, value) => {
 간단하게 뷰 카운터 엔드포인터를 만들어 보자.
 
 ```js
-app.get('/viewCount', (req, res, next) => {
-  res.cookie('viewCount', 3).send()
+app.get("/viewCount", (req, res, next) => {
+  res.cookie("viewCount", 3).send()
 })
 ```
+
 `GET /viewCount` 요청이 들어오면 쿠키에 `"viewCount=3"`이란 문자열을 담아서 응답하는 기능이다.
 
 curl로 요청하면 쿠키 정보가 헤더로 응답되는 것을 확인할 수 있다.
@@ -59,7 +60,7 @@ cookie-parser.js:
 
 ```js
 const cookieParser = (req, res, next) => {
-  console.log(req.headers.cookie); // "viewCount=3"
+  console.log(req.headers.cookie) // "viewCount=3"
 }
 ```
 
@@ -69,7 +70,7 @@ const cookieParser = (req, res, next) => {
 
 ```js
 const cookieParser = (req, res, next) => {
-  console.log(req.headers.cookie); // "viewCount=3; foo=bar"
+  console.log(req.headers.cookie) // "viewCount=3; foo=bar"
 }
 ```
 
@@ -135,9 +136,9 @@ pageview-counter.js:
 ```js
 const pageviewCounter = () => {
   return (req, res, next) => {
-    const views = req.cookies.views ? (req.cookies.views * 1 + 1) : 1
+    const views = req.cookies.views ? req.cookies.views * 1 + 1 : 1
     req.cookies.views = views
-    res.cookie('views', views)
+    res.cookie("views", views)
 
     next()
   }
@@ -148,9 +149,9 @@ module.exports = pageviewCounter
 
 페이지 뷰 카운터 미들웨어를 어플리케이션에 추가하면 매 요청시마다 카운터가 증가하는 것을 확인할 수 있다.
 
-* 첫번째 페이지 접속: ![pageview counter 1](/assets/imgs/2017/10/pageview-counter-1.png)
-* 세번째 페이지 접속: ![pageview counter 3](/assets/imgs/2017/10/pageview-counter-3.png)
-* 일곱번째 페이지 접속: ![pageview counter 7](/assets/imgs/2017/10/pageview-counter-7.png)
+- 첫번째 페이지 접속: ![pageview counter 1](/assets/imgs/2017/10/pageview-counter-1.png)
+- 세번째 페이지 접속: ![pageview counter 3](/assets/imgs/2017/10/pageview-counter-3.png)
+- 일곱번째 페이지 접속: ![pageview counter 7](/assets/imgs/2017/10/pageview-counter-7.png)
 
 ## 세션
 
@@ -172,7 +173,7 @@ const session = () => {
 
   const generateSession = () => {
     const sid = `s${Date.now()}`
-    storage.set(sid, {sid})
+    storage.set(sid, { sid })
     return sid
   }
 
@@ -181,7 +182,7 @@ const session = () => {
 
     if (!storage.has(sid)) {
       sid = generateSession()
-      res.cookie('sid', sid)
+      res.cookie("sid", sid)
     }
 
     req.session = storage.get(sid) || {}
@@ -212,12 +213,11 @@ const pageviewCounter = () => {
 }
 ```
 
-* 요청시 브라우져에는 세션 아이디만 남는다.
-![session result in browser](/assets/imgs/2017/10/session-result-1.png)
+- 요청시 브라우져에는 세션 아이디만 남는다.
+  ![session result in browser](/assets/imgs/2017/10/session-result-1.png)
 
-* 서버의 세션 저장소에는 카운터 데이터가 증가되었다.
-![session result in server](/assets/imgs/2017/10/session-result-2.png)
-
+- 서버의 세션 저장소에는 카운터 데이터가 증가되었다.
+  ![session result in server](/assets/imgs/2017/10/session-result-2.png)
 
 ## 인증 만들기
 
@@ -234,19 +234,19 @@ login.view:
 include 'header.view'
 
 <div class="content">
-    <div class="container">
-        <form id="login-form">
-          <p>
-            <input type="email" name="email" placeholder="Email" autofocus />
-          </p>
-          <p>
-            <input type="password" name="password" placeholder="Password" />
-          </p>
-          <p>
-            <button type="submit">Login</button>
-          </p>
-        </form>
-    </div>
+  <div class="container">
+    <form id="login-form">
+      <p>
+        <input type="email" name="email" placeholder="Email" autofocus />
+      </p>
+      <p>
+        <input type="password" name="password" placeholder="Password" />
+      </p>
+      <p>
+        <button type="submit">Login</button>
+      </p>
+    </form>
+  </div>
 </div>
 
 include 'footer.view'
@@ -281,18 +281,16 @@ loginForm.addEventListener('submit', (e) => {
 먼저는 어플리케이션에 라우팅 로직을 추가해야겠다. app.js:
 
 ```js
-app.post('/api/auth/login', require('./routes/api/auth').login)
+app.post("/api/auth/login", require("./routes/api/auth").login)
 ```
 
 그리고 auth.js 미들웨어를 구현한다. auth.js:
 
 ```js
-const users = [
-  {id: 1, email: 'ej88ej@gmail.com', password: '123'}
-]
+const users = [{ id: 1, email: "ej88ej@gmail.com", password: "123" }]
 
 const login = (req, res, next) => {
-  const {email, password} = req.body
+  const { email, password } = req.body
 
   const user = users.filter(user => {
     return user.email === email && user.password === password
@@ -326,7 +324,7 @@ auth.js
 ```js
 const logout = (req, res, next) => {
   delete req.session.user
-  res.redirect('/')
+  res.redirect("/")
 }
 ```
 
@@ -344,11 +342,11 @@ const logout = (req, res, next) => {
 
 ```js
 const newPost = (req, res, next) => {
-  if (!req.session.user) return res.redirect('/login.html')
+  if (!req.session.user) return res.redirect("/login.html")
 
-  res.render('new', {
-    title: 'New Post',
-    scriptPath: 'js/new.js'
+  res.render("new", {
+    title: "New Post",
+    scriptPath: "js/new.js",
   })
 }
 ```
@@ -371,7 +369,7 @@ HTTP 리다이렉트 관련해서는 [MDM Redirect 문서](https://developer.moz
 
 ```js
 res.redirect = path => {
-  res.status(302).set('Location', path).end()
+  res.status(302).set("Location", path).end()
 }
 ```
 

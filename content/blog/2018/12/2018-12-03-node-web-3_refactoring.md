@@ -1,5 +1,5 @@
 ---
-title: '[Node.js코드랩] 3.리팩토링'
+title: "[Node.js코드랩] 3.리팩토링"
 layout: post
 summary: 헬로월드 코드를 리팩토링 합니다.
 category: series
@@ -13,6 +13,7 @@ tags: [lecture]
 이번 글에서는 이전에 작성한 헬로월드 코드를 리팩토링 해 보겠습니다.
 
 server.js 파일에 작성한 코드는 두 가지 일을 하고 있습니다.
+
 1. 서버 생성 - `createServer()`
 1. 서버 구동 - `listen()`
 
@@ -29,7 +30,7 @@ $ git checkout -f module/http-refactoring-spec
 제가 미리 만들어둔 테스트 코드도 성공적으로 통과해야 합니다.
 테스트 코드 실행은 `npm test`라는 걸 있지 마시고요.
 
-*힌트: server.js는 서버 생성, bin.js는 서버 실행*
+_힌트: server.js는 서버 생성, bin.js는 서버 실행_
 
 ## 🐤풀이
 
@@ -42,13 +43,13 @@ $ git checkout -f module/http-refactoring-spec
 코드는 두 부분으로 나눠서 설명합니다.
 
 ```js
-const http = require('http');
+const http = require("http")
 
 const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello, World!\n');
-});
+  res.statusCode = 200
+  res.setHeader("Content-Type", "text/plain")
+  res.end("Hello, World!\n")
+})
 ```
 
 http 모듈을 가져와 `createServer()` 함수로 **서버를 생성** 하는 코드입니다.
@@ -70,8 +71,8 @@ module.exports = server
 이것도 두 단계로 설명할게요.
 
 ```js
-const server  = require('./server');
-const hostname = '127.0.0.1'
+const server = require("./server")
+const hostname = "127.0.0.1"
 const port = 3000
 ```
 
@@ -81,8 +82,8 @@ const port = 3000
 
 ```js
 server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+  console.log(`Server running at http://${hostname}:${port}/`)
+})
 ```
 
 마지막으로 서버를 요청 대기상태로 만들었습니다.
@@ -108,6 +109,6 @@ $ npm test
 
 ## 정리
 
-* 역할에 따라 모듈을 분리하여 리팩토링 했습니다.
+- 역할에 따라 모듈을 분리하여 리팩토링 했습니다.
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)

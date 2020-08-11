@@ -10,6 +10,7 @@ permalink: /hapi-api-server-scaffold/
 layout: post
 tags: [hapijs]
 ---
+
 Hapi 프레임웍을 이용해 Api 서버를 구현할 때 필요한 최소한의 기능은 이렇다.
 
 <ul>
@@ -62,103 +63,99 @@ app
 ```js
 // userDao 모듈을 로딩한다.
 // 데이터베이스에 유저 관련 데이터에대해 CRUD 작업을 수행한다.
-var userDao = require('../../dao/user');
+var userDao = require("../../dao/user")
 
 exports.find = function (req, reply) {
-
   // 모든 유저 데이터를 조회한다. (/users GET 프로토콜에 대응)
   userDao.find(function (err, users) {
     if (err) {
-      req.error(err);
-      return reply(err).code(400);
+      req.error(err)
+      return reply(err).code(400)
     }
 
-    reply({users: users});
+    reply({ users: users })
   })
-};
+}
 
 exports.query = function (req, reply) {
-
   // 한명의 유저 데이터를 조회한다. (/users/{id} GET 프로토콜에 대응)
   userDao.query(req.params.id, function (err, user) {
     if (err) {
-      req.error(err);
-      return reply(err).code(400);
+      req.error(err)
+      return reply(err).code(400)
     }
 
-    reply({user: user});
+    reply({ user: user })
   })
-};
+}
 
 exports.insert = function (req, reply) {
-
   // 새로운 유저 데이터를 추가한다. (/users POST 프로토콜에 대응)
   userDao.insert(req.payload, function (err, users) {
     if (err) {
-      req.error(err);
-      return reply(err).code(400);
+      req.error(err)
+      return reply(err).code(400)
     }
 
-    req.log('info', req.payload.name + ' is inserted.');
-    reply({users: users}).code(201);
-  });
-
-};
+    req.log("info", req.payload.name + " is inserted.")
+    reply({ users: users }).code(201)
+  })
+}
 
 exports.remove = function (req, reply) {
-
   // 한명의 유저 데이터를 삭제한다. (/users DELETE 프로토콜에 대응)
   userDao.remove(req.query.id, function (err, users) {
     if (err) {
-      req.error(err);
-      return reply(err).code(400);
+      req.error(err)
+      return reply(err).code(400)
     }
 
-    reply({users: users});
-  });
-};
+    reply({ users: users })
+  })
+}
 ```
 
 userDao 모듈을 살펴보자. 각 로직에 해당하는 쿼리를 로딩하여 실행한 결과를 반환한다. 보통 프로토콜은 GET/POST/PUT/DELETE로 구성되고 이에 맞게 find()/query()(id로 조회할 경우 등)/insert()/update()/remove() 함수를 DAO 모듈에 구현한다.
 
 ```js
-var fs = require('fs');
-var path = require('path');
-var db = require('../../components/db');
+var fs = require("fs")
+var path = require("path")
+var db = require("../../components/db")
 
 exports.find = function (callback) {
-
   // 쿼리를 로딩한다.
-  var q = fs.readFileSync(path.join(__dirname, 'get-users.sql'), 'utf8');
+  var q = fs.readFileSync(path.join(__dirname, "get-users.sql"), "utf8")
 
   // 로딩한 쿼리를 실행한다.
   db.query({
-    sql: q, values: null, callback: function (err, data) {
+    sql: q,
+    values: null,
+    callback: function (err, data) {
       if (err) {
-        return callback(err, null);
+        return callback(err, null)
       }
 
       // 실행 결과를 반환한다.
-      callback(null, data);
-    }
-  });
-};
+      callback(null, data)
+    },
+  })
+}
 
 exports.query = function (userId, callback) {
   /* 쿼리 로딩 후 쿼리 실행 결과 반환 */
-};
+}
 
 exports.insert = function (payload, callback) {
   /* 쿼리 로딩 후 쿼리 실행 결과 반환 */
-};
+}
 
 exports.update = function (userId, payload, callback) {
   /* 쿼리 로딩 후 쿼리 실행 결과 반환 */
-};
+}
 
 exports.remove = function (userId, callback) {
   /* 쿼리 로딩 후 쿼리 실행 결과 반환 */
-};
+}
 ```
 
 &nbsp;

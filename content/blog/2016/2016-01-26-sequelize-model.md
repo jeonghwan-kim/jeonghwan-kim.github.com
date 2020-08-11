@@ -12,10 +12,10 @@ tags:
 summary: Sequelize로 모델링하는 방법
 featured_image: /assets/imgs/2016/sequelize-icon.png
 ---
+
 글 순서가 반대로 되었다. 이왕 Sequelize ORM에 대해 정리할 것이라면 개발 순서에 따라 모델링부터 작성했으면 보기 좋았을 것 같다. 이번 글은 Sequelize로 테이블을 정의하는 방법(모델링)에 대해 알아보자
 
 ![](/assets/imgs/2016/sequelize-model-1.png)
-
 
 # Definition
 
@@ -36,7 +36,6 @@ module.exports = function(sequelize, DataTypes) {
 ```
 
 첫번째 파라메터 `'User'`가 테이블 이름인데 기본적으로 복수형 이름을 갖는 테이블이 생성된다. 이 경우 Users 테이블이 생성된다. 두번째 파라메터가 테이블 컬럼을 정의하는 객체다. 여기서 키(key)는 컬럼명, 값(value)은 컬럼 속성을 정의하는데 `DataTypes`에 정의된 데이터 타입을 사용한다.
-
 
 ## Getter, Setter
 
@@ -62,7 +61,6 @@ module.exports = function(sequelize, DataTypes) {
 ```
 
 비밀번호를 받아 저장할 경우 Setter를 통해 암호화 하여 저장하고 비밀번호를 조회할 때는 Getter 함수에서 null을 반환하여 숨김처리를 할 수 있다.
-
 
 ## Validator
 
@@ -119,7 +117,6 @@ function(req, res) {
     });
 }
 ```
-
 
 ## Unique
 

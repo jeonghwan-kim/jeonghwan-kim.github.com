@@ -1,5 +1,5 @@
 ---
-title: '[Node.js코드랩] 16. body-parser'
+title: "[Node.js코드랩] 16. body-parser"
 layout: post
 summary: 요청 바디를 다룹니다
 category: series
@@ -31,13 +31,15 @@ req.body 값을 로그로 출력하는것 까지만 코딩했습니다.
 
 ```js
 let body = []
-request.on('data', (chunk) => {
-  body.push(chunk)
-}).on('end', () => {
-  body = Buffer.concat(body).toString();
-  // 이 시점에 body는 전체 요청 데이터를 문자열 형태로 가지고 있다
-  // (at this point, `body` has the entire request body stored in it as a string)
-});
+request
+  .on("data", chunk => {
+    body.push(chunk)
+  })
+  .on("end", () => {
+    body = Buffer.concat(body).toString()
+    // 이 시점에 body는 전체 요청 데이터를 문자열 형태로 가지고 있다
+    // (at this point, `body` has the entire request body stored in it as a string)
+  })
 ```
 
 API 컨트롤러 함수에서 요청 바디에 쉽게 접근하려면 좋겠는데 매 요청마다 위 코딩을 하는건 미련한 방법처럼 보입니다.
@@ -80,7 +82,7 @@ module.exports = bodyParser;
 미들웨어를 우리 어플리케이션에 추가해 보지요. app.js를 수정합니다.
 
 ```js
-const bodyParser = require('./middlewares/body-parser')
+const bodyParser = require("./middlewares/body-parser")
 
 app.use(logger())
 app.use(bodyParser()) // body-parser를 추가
@@ -101,19 +103,19 @@ app.use(bodyParser()) // body-parser를 추가
 body-parser를 더 개발해 보죠.
 
 ```js
-   req.on('end', () => {
-    body = Buffer.concat(body).toString();
+req.on("end", () => {
+  body = Buffer.concat(body).toString()
 
-    body = body.split('&').reduce((body, pair) => {
-      if (!pair) return body;
-      const frg = pair.split('=');
-      body[frg[0]] = frg[1];
-      return body;
-    }, {});
+  body = body.split("&").reduce((body, pair) => {
+    if (!pair) return body
+    const frg = pair.split("=")
+    body[frg[0]] = frg[1]
+    return body
+  }, {})
 
-    req.body = body;
-    next();
-  })
+  req.body = body
+  next()
+})
 ```
 
 특정 문자를 기준으로 파싱하는 부분은 쿼리스트링 파싱과 같은 로직입니다.
@@ -135,7 +137,7 @@ req.body 데이터를 이용해 POST /api/posts 엔드포인트를 마져 구현
 $ git checkout -f middleware/body-parser
 ```
 
-*힌트: 201 응답, 새로운 데이터를 응답*
+_힌트: 201 응답, 새로운 데이터를 응답_
 
 ## 🐤풀이
 
@@ -179,8 +181,8 @@ const create = () => (req, res, next) => {
 
 ## 정리
 
-* 이벤트를 이용해 스트림 데이터를 처리하였습니다.
-* 요청 바디를 파싱하여 API 컨트롤러에서 손쉽게 사용할수 있도록 하였습니다.
-* 포스트 추가 API를 완성하였습니다.
+- 이벤트를 이용해 스트림 데이터를 처리하였습니다.
+- 요청 바디를 파싱하여 API 컨트롤러에서 손쉽게 사용할수 있도록 하였습니다.
+- 포스트 추가 API를 완성하였습니다.
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)

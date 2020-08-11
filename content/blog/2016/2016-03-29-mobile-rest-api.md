@@ -1,5 +1,5 @@
 ---
-title: '서버 개발자 입장에서 바라본 모바일 API 디자인'
+title: "서버 개발자 입장에서 바라본 모바일 API 디자인"
 layout: post
 category: dev
 tags: [http]
@@ -9,7 +9,6 @@ permalink: /2016/03/29/mobile-rest-api.html
 이 글은 지극히 서버 개발자 입장에서 생각한 모바일 API 디자인 방법이다.
 모바일 앱과의 효과적인 인터페이스를 설계함에 있어서 그 동안의 경험을 공유하고자 한다.
 모르는 부분은 개발하면서 찾아다녔지만 일부는 여전히 잘못된 정보일수 있음을 감안하고 읽어주기 바란다.
-
 
 ## 이름짓기
 
@@ -22,7 +21,7 @@ API 이름을 정하는데도 일정한 규칙없이 주먹구구로 만들다�
 인터넷의 많은 글에서 REST API를 만들때 **리소스 기준**을 얘기한다.
 리소스 이름은 명사만 사용하고 동사는 사용해서는 안된다.
 
-예를 들어 사용자 정보 조회 기능을 만든다고 생각해 보자.  `get_users` 라는 API를 쉽게 떠올릴 것이다.
+예를 들어 사용자 정보 조회 기능을 만든다고 생각해 보자. `get_users` 라는 API를 쉽게 떠올릴 것이다.
 그러나 동사 get과 명사 users로 구성된 API는 동사를 사용했기 때문에 REST API에 합당하지 않다.
 우리는 명사 `users`만 사용해야 한다.
 
@@ -38,7 +37,7 @@ user 테이블을 만들었다면 user API를 사용하는 것이다.
 
 ```html
 <form method="post" action="create_user()">
-  <input type="text" name="user_name">
+  <input type="text" name="user_name" />
 </form>
 ```
 
@@ -46,20 +45,19 @@ user 테이블을 만들었다면 user API를 사용하는 것이다.
 사실 이외에도 HTTP 스펙에는 PUT, DELETE, OPTIONS 등 다양한 메소드가 정의되어 있다.
 모바일 API에서는 아래 4가지 메소드만 사용한다.
 
-* POST: 리소스 추가
-* GET: 리소스 조회
-* PUT: 리소스 변경
-* DELETE: 리소스 삭제
+- POST: 리소스 추가
+- GET: 리소스 조회
+- PUT: 리소스 변경
+- DELETE: 리소스 삭제
 
 동사 역할을 하는 메소드명과 명사역할을 하는 리소스명은 `Method /ResoureName` 형태의 API로 만들수 있다
 user 리소스는 기본적으로 아래 5가지 API를 만들 수 있다.
 
-* `POST /users`: 유저 추가
-* `GET /users`: 유저 목록 조회
-* `GET /users/:id`: 유저 1개 조회
-* `PUT /users/:id`: 유저 1개 수정
-* `DELETE /users/:id`: 유저 1개 삭제
-
+- `POST /users`: 유저 추가
+- `GET /users`: 유저 목록 조회
+- `GET /users/:id`: 유저 1개 조회
+- `PUT /users/:id`: 유저 1개 수정
+- `DELETE /users/:id`: 유저 1개 삭제
 
 ### POST /users
 
@@ -118,7 +116,6 @@ ID로 유저를 찾아 리소스를 수정할때 `PUT /users/:id`를 사용한�
 }
 ```
 
-
 ## 쿼리스트링을 활용하자
 
 `GET /users`에 대해 생각해보자.
@@ -137,10 +134,10 @@ ID로 유저를 찾아 리소스를 수정할때 `PUT /users/:id`를 사용한�
 
 쿼리스트링을 사용하면 하나의 API에 대해 다양한 조건을 설정할수 있다.
 
-* query: 검색어
-* offset, limit: 페이지네이션
-* sort: 정렬
-* fields: 필드값
+- query: 검색어
+- offset, limit: 페이지네이션
+- sort: 정렬
+- fields: 필드값
 
 이 값에 따라 서버에서는 요청한 만큼의 데이터를 정리해서 보내줄 수 있다.
 
@@ -168,7 +165,6 @@ FROM users
 WHERE name like "%chris%";
 ```
 
-
 ## 상태코드를 활용하자
 
 HTTP는 상당수의 정의된 [상태코드](https://ko.wikipedia.org/wiki/HTTP_상태_코드https://ko.wikipedia.org/wiki/HTTP_상태_코드)가 있다.
@@ -176,24 +172,24 @@ HTTP는 상당수의 정의된 [상태코드](https://ko.wikipedia.org/wiki/HTTP
 
 크게보면 2xx, 3xx, 4xx, 5xx가 있다.
 
-* 2xx: 성공
-* 3xx: 미사용
-* 4xx: 요청 오류
-* 5xx: 서버 오류
+- 2xx: 성공
+- 3xx: 미사용
+- 4xx: 요청 오류
+- 5xx: 서버 오류
 
 ### 2xx
 
 API 요청에 대해 정상적으로 로직이 수행된다면 대부분 200번 코드로 응답한다.
 
-* 201(Created): 서버에 신규 리소스 생성시 사용한다.
-* 204(No Content): 응답 바디가 없을 경우 사용한다. 리소스 삭제시 사용.
+- 201(Created): 서버에 신규 리소스 생성시 사용한다.
+- 204(No Content): 응답 바디가 없을 경우 사용한다. 리소스 삭제시 사용.
 
 ### 4xx
 
 클라이어트 단에서 요청 파라매터 등의 오류가 있을 경우 400번 코드로 응답한다.
 
-* 401: Unauthrized
-* 403: Forbbiden
+- 401: Unauthrized
+- 403: Forbbiden
 
 401과 403은 비슷한 성격의 코드다.
 인증이 필요한 API에 대해 인증되지 않은 요청일 경우 401을 응답한다.
@@ -201,8 +197,8 @@ OAuth를 사용할 때 엑세스 토큰(access token)이 유효하지 않을 경
 403은 인증시(로그인시) 사용한다.
 로그인 정보가 일치하지 않을 경우 403으로 응답한다.
 
-* 404: Not found. 없이 페이지 뿐만 아니라 없는 리소스일 경우에도 사용한다.
-* 409: Conflict. 자원 추가시 기존 자원과 중복일 경우 사용한다. 위에서 이미 설명함.
+- 404: Not found. 없이 페이지 뿐만 아니라 없는 리소스일 경우에도 사용한다.
+- 409: Conflict. 자원 추가시 기존 자원과 중복일 경우 사용한다. 위에서 이미 설명함.
 
 ### 5xx
 
@@ -220,7 +216,6 @@ HTTP 스펙에는 다양한 코드들이 정의되어 있지만 서비스 에러
 }
 ```
 
-
 ## 버저닝
 
 모든 API를 만들었고 모바일 서비스도 출시했다.
@@ -233,13 +228,12 @@ HTTP 스펙에는 다양한 코드들이 정의되어 있지만 서비스 에러
 기존에는 `get_user_v1`, `get_user_v2`로 관리했었고 이렇게 해도 동작하는데 문제없다.
 그러나 우리의 포인트는 체계적인 관리다.
 
-* `GET v1/users`
-* `GET v2/users`
+- `GET v1/users`
+- `GET v2/users`
 
 이렇게 정리하면 버전별로 계층구조가 생겨 쉽게 관리할 수 있다.
 구 버전 앱에서는 `GET v1/users`를 여전히 사용하고, 새로 업데이트하는 버전의 앱에서는 `GET v2/users`를 사용하면 된다.
 
-
 ## 참고
 
-* [http://simonguest.com/2013/07/05/designing-a-web-api-for-mobile-apps/](http://simonguest.com/2013/07/05/designing-a-web-api-for-mobile-apps/)
+- [http://simonguest.com/2013/07/05/designing-a-web-api-for-mobile-apps/](http://simonguest.com/2013/07/05/designing-a-web-api-for-mobile-apps/)

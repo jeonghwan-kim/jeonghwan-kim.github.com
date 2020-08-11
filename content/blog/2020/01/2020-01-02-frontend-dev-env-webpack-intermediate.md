@@ -1,5 +1,5 @@
 ---
-title: '프론트엔드 개발환경의 이해: 웹팩(심화)'
+title: "프론트엔드 개발환경의 이해: 웹팩(심화)"
 layout: post
 category: series
 tags: [webpack]
@@ -9,7 +9,6 @@ videoId: "59f0bdf2-e898-50db-8800-52a3fa758f04"
 
 이전글 [웹팩(기본편)](/series/2019/12/10/frontend-dev-env-webpack-basic.html)에서는 웹팩의 개념과 간단한 사용법에 대해 살펴보았다.
 웹팩은 프론트엔드 개발 서버를 제공하고, 몇 가지 방법으로 빌드 결과를 최적화 할 수 있는데 이번 글에서 자세히 살펴 보겠다.
-
 
 ## 1. 웹팩 개발 서버
 
@@ -35,6 +34,7 @@ npm i -D webpack-dev-server
 node_modules/.bin에 있는 webpack-dev-servr 명령어를 바로 실행해도 되지만 npm 스크립트로 등록해서 사용하겠다.
 
 package.json:
+
 ```json
 {
   "scripts": {
@@ -83,7 +83,7 @@ module.exports = {
     port: 8081,
     stats: "errors-only",
     historyApiFallback: true,
-  }
+  },
 }
 ```
 
@@ -105,7 +105,6 @@ module.exports = {
 **historyApiFallBack**: 히스토리 API를 사용하는 SPA 개발시 설정한다.
 404가 발생하면 index.html로 리다이렉트한다.
 
-
 이 외에도 개발 서버를 실행할때 명령어 인자로 `--progress`를 추가하면 빌드 진행율을 보여준다. 빌드 시간이 길어질 경우 사용하면 좋다.
 
 메세지 출력 옵션만 설정한 뒤,
@@ -115,8 +114,8 @@ module.exports = {
 module.exports = {
   devServer: {
     overlay: true,
-    stats: 'errors-only',
-  }
+    stats: "errors-only",
+  },
 }
 ```
 
@@ -155,16 +154,16 @@ devServer.before에 추가하는 것이 바로 미들웨어인 셈이다.
 module.exports = {
   devServer: {
     before: (app, server, compiler) => {
-      app.get('/api/keywords', (req, res) => {
+      app.get("/api/keywords", (req, res) => {
         res.json([
-          { keyword: '이탈리아' },
-          { keyword: '세프의요리' },
-          { keyword: '제철' },
-          { keyword: '홈파티'}
+          { keyword: "이탈리아" },
+          { keyword: "세프의요리" },
+          { keyword: "제철" },
+          { keyword: "홈파티" },
         ])
       })
-    }
-  }
+    },
+  },
 }
 ```
 
@@ -195,7 +194,7 @@ npm i axios
 
 ```js
 // src/model.js:
-import axios from 'axios'
+import axios from "axios"
 
 // const data = [
 //   {keyword: '이탈리아'},
@@ -208,12 +207,12 @@ const model = {
   async get() {
     // return data
 
-    const result = await axios.get('/api/keywords');
-    return result.data;
-  }
+    const result = await axios.get("/api/keywords")
+    return result.data
+  },
 }
 
-export default model;
+export default model
 ```
 
 기존에는 data에 데이터를 관리했는데 이제는 ajax 호출 후 응답된 데이터를 반환하도록 변경했다.
@@ -237,6 +236,7 @@ mocks/api/keywords/GET.json 경로에 API 응답 파일을 만든다.
 GET 메소드를 사용하기때문에 GET.json으로 파일을 만들었다(물론 POST, PUT, DELETE 도 지원).
 
 GET.json:
+
 ```json
 [
   { "keyword": "이탈리아" },
@@ -250,14 +250,14 @@ GET.json:
 
 ```js
 // webpack.config.js:
-const apiMocker = require('connect-api-mocker')
+const apiMocker = require("connect-api-mocker")
 
 module.exports = {
   devServer: {
     before: (app, server, compiler) => {
-      app.use(apiMocker('/api', 'mocks/api'))
+      app.use(apiMocker("/api", "mocks/api"))
     },
-  }
+  },
 }
 ```
 
@@ -287,9 +287,9 @@ const model = {
     // const result = await axios.get('/api/keywords');
 
     // 직접 api 서버로 요청한다.
-    const { data } = await axios.get('http://localhost:8081/api/keywords');
-    return data;
-  }
+    const { data } = await axios.get("http://localhost:8081/api/keywords")
+    return data
+  },
 }
 ```
 
@@ -305,12 +305,12 @@ localhost:8080에서 localhost:8081 로 ajax 호출을 하지 못하는데 이�
 방금같은 경우는 localhost로 같은 도메인이지만 포트번호가 8080, 8081로 달라서 다른 서버로 인식하는 것이다.
 
 해결하는 방법은 두 가지인데 먼저 서버측 솔루션 부터 보자.
-해당 api 응답 헤더에 "Access-Control-Allow-Origiin: *" 헤더를 추가한 뒤 응답하면, 브라우져에서 응답 데이터를 받을 수 있다.
+해당 api 응답 헤더에 "Access-Control-Allow-Origiin: \*" 헤더를 추가한 뒤 응답하면, 브라우져에서 응답 데이터를 받을 수 있다.
 
 ```js
 // server/index.js
-app.get('/api/keywords', (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*"); // 헤더를 추가한다
+app.get("/api/keywords", (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*") // 헤더를 추가한다
   res.json(keywords)
 })
 ```
@@ -323,9 +323,9 @@ app.get('/api/keywords', (req, res) => {
 module.exports = {
   devServer: {
     proxy: {
-      '/api': 'http://localhost:8081', // 프록시
-    }
-  }
+      "/api": "http://localhost:8081", // 프록시
+    },
+  },
 }
 ```
 
@@ -338,14 +338,13 @@ const model = {
   async get() {
     // const { data } = await axios.get('http://localhost:8081/api/keywords');
 
-    const { data } = await axios.get('/api/keywords');
-    return data;
-  }
+    const { data } = await axios.get("/api/keywords")
+    return data
+  },
 }
 ```
 
 확인해보면 정상 동작하는 것을 확인할 수 있다.
-
 
 ## 3. 핫 모듈 리플레이스먼트
 
@@ -376,17 +375,17 @@ view.js를 사용하는 컨트롤러 코드를 잠깐 읽어보자.
 
 ```js
 // src/controller.js
-import model from "./model";
-import view from "./view";
+import model from "./model"
+import view from "./view"
 
 const controller = {
   async init(el) {
     this.el = el
-    view.render(await model.get(), this.el);
-  }
+    view.render(await model.get(), this.el)
+  },
 }
 
-export default controller;
+export default controller
 ```
 
 컨트롤러는 model과 view에 의존성이 있는데 이 둘을 이용해 데이터를 가져와 화면을 렌더한다.
@@ -398,13 +397,13 @@ export default controller;
 // src/controller.js
 
 // 중략
-export default controller;
+export default controller
 
 if (module.hot) {
-  console.log('핫모듈 켜짐')
+  console.log("핫모듈 켜짐")
 
-  module.hot.accept('./view', () => {
-    console.log('view 모듈 변경됨')
+  module.hot.accept("./view", () => {
+    console.log("view 모듈 변경됨")
   })
 }
 ```
@@ -428,8 +427,8 @@ model로 데이터를 부르고 다시 변경된 view 모듈로 렌더 함수를
 // src/controller.js
 
 if (module.hot) {
-  module.hot.accept('./view', async () => {
-    view.render(await model.get(), controller.el); // 변경된 모듈로 교체
+  module.hot.accept("./view", async () => {
+    view.render(await model.get(), controller.el) // 변경된 모듈로 교체
   })
 }
 ```
@@ -437,7 +436,6 @@ if (module.hot) {
 view.js 코드를 변경하고 저장하면 브라우져 갱신 없이 화면이 변경된다.
 
 ![핫 모듈 리플레이스먼트](/assets/imgs/2019/12/28/hot.gif)
-
 
 ### 3.3 핫로딩을 지원하는 로더
 
@@ -449,7 +447,6 @@ view.js 코드를 변경하고 저장하면 브라우져 갱신 없이 화면이
 참고: [style-loader 코드](https://github.com/webpack-contrib/style-loader/blob/master/src/index.js#L34-L37)
 
 이 외에도 리액트를 지원하는 react-hot-loader, 파일을 지원하는 file-loader는 핫 모듈 리플레이스먼트를 지원하는데 [여기](https://webpack.js.org/guides/hot-module-replacement/#other-code-and-frameworks)를 참고하자.
-
 
 ## 4. 최적화
 
@@ -484,7 +481,7 @@ DefinePlugin을 사용한다면 process.env.NODE_ENV 값이 "production" 으로 
 
 ```js
 // webpack.config.js:
-const mode = process.env.NODE_ENV || 'development'; // 기본값을 development로 설정
+const mode = process.env.NODE_ENV || "development" // 기본값을 development로 설정
 
 module.exports = {
   mode,
@@ -494,6 +491,7 @@ module.exports = {
 빌드 시에 이를 운영 모드로 설정하여 실행하도록 npm 스크립트를 추가한다.
 
 package.json:
+
 ```json
 {
   "scripts": {
@@ -530,15 +528,14 @@ npm i -D optimize-css-assets-webpack-plugin
 ```
 
 웹팩 설정을 추가한다.
+
 ```js
 // webpack.config.js:
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
 module.exports = {
   optimization: {
-    minimizer: mode === 'production' ? [
-      new OptimizeCSSAssetsPlugin(),
-    ] : [],
+    minimizer: mode === "production" ? [new OptimizeCSSAssetsPlugin()] : [],
   },
 }
 ```
@@ -549,7 +546,6 @@ module.exports = {
 빌드하뒤 확인하면 css 파일도 압축되었다.
 
 ![css 빌드 결과](/assets/imgs/2019/12/28/compress-css.jpg)
-
 
 `mode=production`일 경우 사용되는 [TerserWebpackPlugin](https://webpack.js.org/plugins/terser-webpack-plugin/)은 자바스크립트 코드를 난독화하고 debugger 구문을 제거한다.
 기본 설정 외에도 [콘솔 로그를 제거하는 옵션](https://github.com/terser/terser#compress-options)도 있는데 배포 버전에는 로그를 감추는 것이 좋을 수도 있기 때문이다.
@@ -564,19 +560,22 @@ optionmization.minimizer 배열에 추가한다.
 
 ```js
 // webpack.config.js:
-const TerserPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin")
 
 module.exports = {
   optimization: {
-    minimizer: mode === 'production' ? [
-      new TerserPlugin({
-        terserOptions: {
-          compress: {
-            drop_console: true, // 콘솔 로그를 제거한다
-          }
-        }
-      }),
-    ] : [],
+    minimizer:
+      mode === "production"
+        ? [
+            new TerserPlugin({
+              terserOptions: {
+                compress: {
+                  drop_console: true, // 콘솔 로그를 제거한다
+                },
+              },
+            }),
+          ]
+        : [],
   },
 }
 ```
@@ -594,7 +593,7 @@ module.exports = {
   entry: {
     main: "./src/app.js",
     controller: "./src/controller.js",
-  }
+  },
 }
 ```
 
@@ -619,7 +618,7 @@ optization.splitChucks 속성을 설정하는 방식이다.
 module.exports = {
   optimization: {
     splitChunks: {
-      chunks: 'all',
+      chunks: "all",
     },
   },
 }
@@ -639,10 +638,10 @@ axios로 검색하면 main.js와 controller.js에서는 없고 vendors~controlle
 기존 컨트롤러 코드를 보면 이렇다.
 
 ```js
-import controller from './controller';
+import controller from "./controller"
 
-document.addEventListener('DOMContentLoaded', () => {
-  controller.init(document.querySelector('#app'))
+document.addEventListener("DOMContentLoaded", () => {
+  controller.init(document.querySelector("#app"))
 })
 ```
 
@@ -652,14 +651,14 @@ import/from으로 컨트롤러 모듈을 가져와서 사용했다.
 
 ```js
 function getController() {
-  return import(/* webpackChunkName: "controller" */ './controller').then(m=> {
+  return import(/* webpackChunkName: "controller" */ "./controller").then(m => {
     return m.default
   })
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   getController().then(controller => {
-    controller.init(document.querySelector('#app'))
+    controller.init(document.querySelector("#app"))
   })
 })
 ```
@@ -680,7 +679,6 @@ import() 함수로 가져올 컨트롤러 모듈 경로를 전달하는데 주�
 엔트리를 분리하지 않아도 controller와 app의 중복코드를 vendors~controller.js 파일로 분리한다.
 다이나믹 임포트로 모듈을 가져오면 단일 엔트리를 유지하면서 코드를 분리할 수 있다.
 
-
 ### 4.4 externals
 
 조금만 더 생각해 보면 최적화해 볼 수 있는 부분이 있다. 바로 axios같은 써드파티 라이브러리다.
@@ -691,7 +689,7 @@ import() 함수로 가져올 컨트롤러 모듈 경로를 전달하는데 주�
 // webpack.config.js:
 module.exports = {
   externals: {
-    axios: 'axios',
+    axios: "axios",
   },
 }
 ```
@@ -711,15 +709,17 @@ npm i -D copy-webpack-plugin
 플러그인을 사용해서 라이브러리를 복사한다.
 
 ```js
-const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin")
 
 module.exports = {
   plugins: [
-    new CopyPlugin([{
-      from: './node_modules/axios/dist/axios.min.js',
-      to: './axios.min.js' // 목적지 파일에 들어간다
-    }])
-  ]
+    new CopyPlugin([
+      {
+        from: "./node_modules/axios/dist/axios.min.js",
+        to: "./axios.min.js", // 목적지 파일에 들어간다
+      },
+    ]),
+  ],
 }
 ```
 
@@ -738,7 +738,7 @@ axios는 이렇게 직접 추가했지만 번들링한 결과물은 htmlwebpacPl
 
 ![externals](/assets/imgs/2019/12/28/optimazation4.jpg)
 
-axios는 빌드하지 않고 복사만 한다. controller와  main이 분리되었다.
+axios는 빌드하지 않고 복사만 한다. controller와 main이 분리되었다.
 이전에는 공통의 코드인 axios가 vender~.js로 분리되었는데 지금은 파일조차 없다.
 만약 써드파티 라이브러리 외에 공통의 코드가 있다면 이 파일로 분리되었을 것이다.
 

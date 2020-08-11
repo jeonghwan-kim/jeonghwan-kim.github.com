@@ -1,6 +1,6 @@
 ---
 id: 972
-title: 'Sequelize Seed - 시드 데이터 관리하기'
+title: "Sequelize Seed - 시드 데이터 관리하기"
 date: 2016-02-03T12:02:53+00:00
 category: dev
 author: Chris
@@ -13,6 +13,7 @@ tags: [sequelize]
 summary: 개발 초기에 Sequelize로 데이터에이스에 샘플 데이터를 넣는 방법 대해 알아본다.
 featured_image: /assets/imgs/2016/sequelize-icon.png
 ---
+
 API 서버를 만들다 보면 테스트가 필요하다. 코드단에서 유닛테스트 따위를 말하는게 아니다.
 서버 개발자가 만든 코드를 개발 서버에 배포한뒤 모바일 개발자가 API 서버를 사용할 때를 말한다.
 서버를 업데이트 할 때마다 데이터베이스가 텅텅 비어있기 때문에, (개발초기에 디비 스키마가 확정되지 않은 상태라면 매번 디비 스키마를 갱신한다) 뭔가 샘플 데이터를 입력해야만 모바일 개발자가 편하다.
@@ -21,21 +22,19 @@ API 서버를 만들다 보면 테스트가 필요하다. 코드단에서 유닛
 
 ```javascript
 // 디비 스키마를 초기화 한다.
-models.sequelize.sync({force: true})
-      .then(function () {
-
-        // 시드 데이터를 입력한다.
-        return require('./seed').insert();
-      })
-      .then(function () {
-
-        // 서버 리슨.
-        server.listen(PORT, IP);
-      });
+models.sequelize
+  .sync({ force: true })
+  .then(function () {
+    // 시드 데이터를 입력한다.
+    return require("./seed").insert()
+  })
+  .then(function () {
+    // 서버 리슨.
+    server.listen(PORT, IP)
+  })
 ```
 
 이제는 [Sequelize-cli](https://github.com/sequelize/cli)로 migration를 한것과 유사하게 seed 데이터를 관리할 수 있다.
-
 
 ## 시더 초기화
 
@@ -45,7 +44,6 @@ Sequelize-cli 로 아래 명령어를 실행하면 `seeders` 폴더가 생성된
 sequelize init:seeders
 // seeders 폴더 생성됨
 ```
-
 
 ## 시더 파일 생성
 
@@ -61,30 +59,37 @@ sequelize seed:create
 ```javascript
 module.exports = {
   up: function (queryInterface, Sequelize) {
-
     // 시드 데이터를 추가한다.
-    return queryInterface.bulkInsert('Users', [{
-      email: 'user1@mail.net',
-      name: 'user1'
-    }, {
-      email: 'user2@mail.net',
-      name: 'user2'
-    }], {});
+    return queryInterface.bulkInsert(
+      "Users",
+      [
+        {
+          email: "user1@mail.net",
+          name: "user1",
+        },
+        {
+          email: "user2@mail.net",
+          name: "user2",
+        },
+      ],
+      {}
+    )
   },
 
   down: function (queryInterface, Sequelize) {
-
     // 추가했던 데이터를 삭제한다.
-    return queryInterface.bulkDelete('Users', {
-      email: {
-        $in: ['user1@mail.net', 'user2@mail.net']
-      }
-    }, {});
-  }
-};
-
+    return queryInterface.bulkDelete(
+      "Users",
+      {
+        email: {
+          $in: ["user1@mail.net", "user2@mail.net"],
+        },
+      },
+      {}
+    )
+  },
+}
 ```
-
 
 ## 시더 실행
 
@@ -100,7 +105,6 @@ Finished 'db:seed' after 71 ms
 ```
 
 마이그레이션을 실행했을 때와 비슷한 결과를 보여준다. 데이터베이스 테이블에는 `SequelizeData` 테이블이 생성되고 방금 실행한 seed 파일명이 기록된다. 입력을 취소할 때는 `db:seed:undo`나 `db:seed:undo:all` 명령어를 사용한다.
-
 
 ## 좀 더 생각할 점
 

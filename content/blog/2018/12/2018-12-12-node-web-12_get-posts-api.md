@@ -1,5 +1,5 @@
 ---
-title: '[Node.js코드랩] 12.포스트 조회 API'
+title: "[Node.js코드랩] 12.포스트 조회 API"
 layout: post
 summary: 포스트 조회 API를 구현합니다
 category: series
@@ -34,9 +34,10 @@ $ git checkout -f route/get-posts-spec
 
 ```js
 const loadTimeline = el => {
-  el.innerHTML = 'Loading...'
+  el.innerHTML = "Loading..."
 
-  api.getPosts()
+  api
+    .getPosts()
     .then(data => {
       // ...
     })
@@ -74,13 +75,13 @@ GET 메소드와 "/api/posts" 주소로 AJAX 요청을 보내는 것을 확인�
 
 "GET /api/posts" 엔드포인트를 구현하세요.
 
-*힌트: route/api/post.js 파일에 구현, 아래 목업 데이터 사용*
+_힌트: route/api/post.js 파일에 구현, 아래 목업 데이터 사용_
 
 ```js
 const posts = [
-  {title: 'post 3', body: 'this is post 3'},
-  {title: 'post 2', body: 'this is post 2'},
-  {title: 'post 1', body: 'this is post 1'},
+  { title: "post 3", body: "this is post 3" },
+  { title: "post 2", body: "this is post 2" },
+  { title: "post 1", body: "this is post 1" },
 ]
 ```
 
@@ -93,9 +94,9 @@ routes/api 폴더에 posts.js 파일을 먼저 만듭니다.
 
 ```js
 const posts = [
-  {title: 'post 3', body: 'this is post 3'},
-  {title: 'post 2', body: 'this is post 2'},
-  {title: 'post 1', body: 'this is post 1'},
+  { title: "post 3", body: "this is post 3" },
+  { title: "post 2", body: "this is post 2" },
+  { title: "post 1", body: "this is post 1" },
 ]
 ```
 
@@ -104,12 +105,12 @@ const posts = [
 
 ```js
 const index = () => (req, res, next) => {
-  res.setHeader('Content-Type', 'application/json')
+  res.setHeader("Content-Type", "application/json")
   res.end(JSON.stringify(posts))
 }
 
 module.exports = {
-  index
+  index,
 }
 ```
 
@@ -126,10 +127,10 @@ API는 JSON 형식을 사용하기 때문에 Content-Type 헤더를 "application
 
 ```js
 // ...
-const apiPost = require('./routes/api/post');
+const apiPost = require("./routes/api/post")
 
-app.use('/', index.listPosts())
-app.use('/api/posts', apiPost.index()) // 라우트 컨트롤러를 추가합니다
+app.use("/", index.listPosts())
+app.use("/api/posts", apiPost.index()) // 라우트 컨트롤러를 추가합니다
 app.use(errors.error404())
 ```
 
@@ -145,11 +146,9 @@ API로 응답받은 데이터를 화면에 잘 뿌려주었습니다.
 
 ![](/assets/imgs/2018/12/12/struct.png)
 
-
 ## 정리
 
-* 포스트 조회 API를 구현했습니다.
-* JSON 형식의 응답을 알아 보았습니다.
-
+- 포스트 조회 API를 구현했습니다.
+- JSON 형식의 응답을 알아 보았습니다.
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)

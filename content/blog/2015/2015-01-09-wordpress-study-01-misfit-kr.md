@@ -1,6 +1,6 @@
 ---
 id: 85
-title: 'WordPress study 01 &#8211; misfit.kr'
+title: "WordPress study 01 &#8211; misfit.kr"
 date: 2015-01-09T21:52:58+00:00
 author: Chris
 layout: post
@@ -9,6 +9,7 @@ permalink: /wordpress-study-01-misfit-kr/
 category: dev
 tags: [wordpress]
 ---
+
 <a href="http://misfits.kr/">Misfits.kr</a> 웹사이트를 따라하면서 학습한 내용을 정리한 글이다.
 
 <a href="https://github.com/jeonghwan-kim/misfits-copy">https://github.com/jeonghwan-kim/misfits-copy</a>

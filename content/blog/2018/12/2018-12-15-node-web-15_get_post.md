@@ -1,5 +1,5 @@
 ---
-title: '[Node.js코드랩] 15.라우터 Get, Post'
+title: "[Node.js코드랩] 15.라우터 Get, Post"
 layout: post
 summary: 메소드에 따라 라우팅 합니다.
 category: series
@@ -45,7 +45,7 @@ submit 이벤트가 발생하면 createPost() 함수가 동작하는데 내부�
 
 ```js
 if (nextMw._path) {
-  const pathMatched = _req.path === nextMw._path;
+  const pathMatched = _req.path === nextMw._path
   return pathMatched ? nextMw(_req, _res, next) : _run(i + 1)
 }
 ```
@@ -61,7 +61,7 @@ if (nextMw._path) {
 
 메소드 정보까지 등록하는 post()와 get() 메소드를 구현해 보세요.
 
-*힌트: 경로 정보를 _path에 저장한 것처럼 _method란 이름으로 저장*
+_힌트: 경로 정보를 \_path에 저장한 것처럼 \_method란 이름으로 저장_
 
 ## 🐤풀이
 
@@ -72,8 +72,8 @@ if (nextMw._path) {
 
 ```js
 const get = (path, fn) => {
-  if (!path || !fn) throw Error('path and fn is required')
-  fn._method = 'get'
+  if (!path || !fn) throw Error("path and fn is required")
+  fn._method = "get"
   use(path, fn)
 }
 ```
@@ -81,20 +81,20 @@ const get = (path, fn) => {
 use() 메소드처럼 경로와 컨트롤러 함수를 인자로 취합니다.
 인자가 필수로 들어왔는지 점검하고 그렇지 않으면 예외를 던져 프로그램을 중지시킵니다.
 
-미들웨어인 컨트롤러 함수의 _method 속성에 'get' 문자열을 할당하여 요청 메소드를 저장합니다.
+미들웨어인 컨트롤러 함수의 \_method 속성에 'get' 문자열을 할당하여 요청 메소드를 저장합니다.
 그리고 경로와 컨트롤러를 라우트 등록 함수인 use() 메소드 인자로 전달해 주었습니다.
 
 ```js
 const post = (path, fn) => {
-  if (!path || !fn) throw Error('path and fn is required')
-  fn._method = 'post'
+  if (!path || !fn) throw Error("path and fn is required")
+  fn._method = "post"
   use(path, fn)
 }
 
 return {
   // ...
-   get,
-   post,
+  get,
+  post,
 }
 ```
 
@@ -104,12 +104,13 @@ post()도 메소드 이름만 다르지 로직은 완전히 동일합니다.
 src/Middleware.js 파일로 이동합니다.
 
 ```js
-  if (nextMw._path) {
-    const pathMatched = _req.path === nextMw._path &&
-      _req.method.toLowerCase() === (nextMw._method || 'get');
+if (nextMw._path) {
+  const pathMatched =
+    _req.path === nextMw._path &&
+    _req.method.toLowerCase() === (nextMw._method || "get")
 
-    return pathMatched ? nextMw(_req, _res, next) : _run(i + 1)
-  }
+  return pathMatched ? nextMw(_req, _res, next) : _run(i + 1)
+}
 ```
 
 등록된 경로가 있을 경우에 그것과 요청 경로를 비교하는 로직을 개선합니다.
@@ -140,9 +141,9 @@ module.exports = {
 app.js에서 이 컨트롤러 함수를 등록하겠습니다.
 
 ```js
-app.get('/api/posts', apiPost.index()) // use() 였던 것을 get() 으로 명확히 등록
-app.post('/api/posts', apiPost.create()); // post()로 등록
-app.use(errors.error404());
+app.get("/api/posts", apiPost.index()) // use() 였던 것을 get() 으로 명확히 등록
+app.post("/api/posts", apiPost.create()) // post()로 등록
+app.use(errors.error404())
 // ...
 ```
 
@@ -151,6 +152,6 @@ use()로 등록했던 포스트 조회 엔드포인트는 get() 메소드로 의
 
 ## 정리
 
-* get(), post() 메소드를 만들어 더 명확하게 엔드포인트를 등록할 수 있습니다.
+- get(), post() 메소드를 만들어 더 명확하게 엔드포인트를 등록할 수 있습니다.
 
 [목차 바로가기](/series/2018/12/01/node-web-0_index.html)
