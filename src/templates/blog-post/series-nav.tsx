@@ -10,9 +10,10 @@ interface P {
   posts: MarkdownRemark[];
   nodeId: string;
   lite?: boolean;
+  className?: string;
 }
 
-const SeriesNav: React.FC<P> = ({series, posts, nodeId, lite}) => {
+const SeriesNav: React.FC<P> = ({series, posts, nodeId, lite, className}) => {
   const curIdx = posts.findIndex(item => {
     return item.id === nodeId
   });
@@ -20,13 +21,11 @@ const SeriesNav: React.FC<P> = ({series, posts, nodeId, lite}) => {
   const prev = curIdx === 0 ? null : posts[curIdx - 1];
   const next = curIdx === posts.length ? null : posts[curIdx + 1]
 
-  console.log(next)
-
   return lite ? renderLite() : renderDefault()
 
   function renderLite() {
     return (
-      <div className="series-nav mb-2 py-3 px-2">
+      <div className={`series-nav py-3 px-2 ${className || ''}`}>
         <div className="mb-1">
           <span className="series-title">
             {series.title}
@@ -54,7 +53,7 @@ const SeriesNav: React.FC<P> = ({series, posts, nodeId, lite}) => {
 
   function renderDefault() {
     return (
-      <div className="series-navigator px-2 pt-3 pb-2">
+      <div className={`series-navigator px-2 pt-3 pb-2 ${className || ''}`}>
         <h3 className="series-title">
           { series.title }
         </h3>

@@ -1,6 +1,6 @@
 @import '../../sass/variables.scss';
 
-.post {
+.blog-post {
   padding-top: $spacing-unit * 20;
   @media (max-width: $tablet-width) {
     padding-top: $spacing-unit * 10;
@@ -8,125 +8,110 @@
   @media (max-width: $mobile-width) {
     padding-top: $spacing-unit * 5;
   }
-  > .flex {
-    align-items: flex-start;
-    .post-aside {
-      order: 1;
-    }
-    .post-container {
-      order: 0;
-    }
-  }
-
-  .post-aside {
-    flex: 0 0 250px;
-    position: sticky;
-    max-height: 100vh;
-    overflow-y: scroll;
-    top: $spacing-unit;
-    margin-left: $spacing-unit * 4;
-    padding-bottom: $spacing-unit;
-    @media (max-width: $desktop-width - 1) {
-      display: none;
-    }
-  }
-
-  .post-container,
-  .footer-container {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  // HACK: 안그러면 우측에 추가공간 생김
-  .post-container {
-    overflow-x: hidden;
-  }
-
-  .post-header {
-    .post-title {
-      color: $black-color;
-      font-size: 42px;
-    }
-    .post-meta {
-      .date {
-        color: $gray-color;
-      }
-    }
-  }
-
-  .post-content {
-    font-size: 18px;
-    line-height: 1.5em;
-    font-family: $article-font-family;
-    h1 {
-      font-size: 200%;
-      padding-top: 20px;
-    }
-    h2 {
-      font-size: 180%;
-      padding-top: 18px;
-    }
-    h3 {
-      font-size: 160%;
-      padding-top: 16px;
-    }
-    h4 {
-      font-size: 140%;
-      padding-top: 14px;
-    }
-    h5 {
-      font-size: 120%;
-      padding-top: 12px;
-    }
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: $primary-color;
-      font-family: $base-font-family;
-      line-height: 1em;
-    }
-    img {
-      border-radius: $spacing-unit / 2;
-      display: block;
-      margin: $spacing-unit * 2 auto;
-      max-width: 100%;
-    }
-    blockquote {
-      color: lighten($black-color, 20%);
-      position: relative;
-      &::before {
-        content: "“";
-        position: absolute;
-        left: -$spacing-unit * 3;
-        font-size: 40px;
-        color: lighten($black-color, 60%);
-      }
-    }
-    .highlight {
-      border-radius: $spacing-unit / 2;
-      overflow-x: scroll;
-    }
-    pre.highlight {
-      padding: $spacing-unit * 2 $spacing-unit * 3;
-      margin: 0;
-    }
-  }
-  .social-share-btns {
-    align-items: flex-start;
-    min-height: 50px; // 나중에 로딩되는 영역이라서 미리 높이 설정(스크롤 이슈와 연관)
-    box-sizing: content-box;
-    padding-top: $spacing-unit * 8;
-  }
-  .sibling-nav {
+  main {
     display: flex;
-    justify-content: space-between;
-    >* {
-      max-width: 48%;
+    align-items: flex-start;
+    aside { order: 1; }
+    article { order: 0; }
+
+    aside {
+      width: 250px;
+      position: sticky;
+      max-height: 100vh;
+      overflow-y: scroll;
+      top: $spacing-unit;
+      margin-left: $spacing-unit * 4;
+      padding-bottom: $spacing-unit;
+      @media (max-width: $desktop-width - 1) {
+        display: none;
+      }
+    }
+
+    article {
+      // HACK: 안그러면 우측에 추가공간 생김
+      overflow-x: hidden;
+      flex: 1;
+      header {
+        margin-bottom: 7 * $spacing-unit;
+        h1 {
+          margin-top: 0;
+          margin-bottom: $spacing-unit;
+          color: $black-color;
+          font-size: 42px;
+        }
+        time {
+          color: $gray-color;
+        }
+      }
+      .post-content {
+        font-size: 18px;
+        line-height: 1.5em;
+        font-family: $article-font-family;
+        h1 {
+          font-size: 200%;
+          padding-top: 20px;
+        }
+        h2 {
+          font-size: 180%;
+          padding-top: 18px;
+        }
+        h3 {
+          font-size: 160%;
+          padding-top: 16px;
+        }
+        h4 {
+          font-size: 140%;
+          padding-top: 14px;
+        }
+        h5 {
+          font-size: 120%;
+          padding-top: 12px;
+        }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          color: $primary-color;
+          font-family: $base-font-family;
+          line-height: 1em;
+        }
+        img {
+          border-radius: $spacing-unit / 2;
+          display: block;
+          margin: $spacing-unit * 2 auto;
+          max-width: 100%;
+        }
+        blockquote {
+          color: lighten($black-color, 20%);
+          position: relative;
+          &::before {
+            content: "“";
+            position: absolute;
+            left: -$spacing-unit * 3;
+            font-size: 40px;
+            color: lighten($black-color, 60%);
+          }
+        }
+        .highlight {
+          border-radius: $spacing-unit / 2;
+          overflow-x: scroll;
+        }
+        pre.highlight {
+          padding: $spacing-unit * 2 $spacing-unit * 3;
+          margin: 0;
+        }
+      }
+      .post-meta {
+        margin-top: $spacing-unit * 4;
+      }
     }
   }
+  footer {
+    margin-top: 8 * $spacing-unit;
+    margin-bottom: 8 * $spacing-unit;
+  }
+
 }
 
