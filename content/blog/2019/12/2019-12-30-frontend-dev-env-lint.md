@@ -504,7 +504,7 @@ vs-code의 eslint와 prettier 익스텐션이 그러한 기능을 제공한다.
 
 먼저 [ESLint 익스텐션](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) 부터 설치해 보자.
 
-![eslint 익스텐션 설치](/assets/imgs/2019/12/21/eslint-extention.jpg)
+![eslint 익스텐션 설치](./img/21/eslint-extention.jpg)
 
 설치를 마친 뒤 eslint를 활성화 설정을 추가한다.
 
@@ -518,7 +518,7 @@ vs-code의 eslint와 prettier 익스텐션이 그러한 기능을 제공한다.
 
 설치하면 자동으로 ESLint 설정파일을 읽고 파일을 검사한다.
 
-![eslint 익스텐션 동작](/assets/imgs/2019/12/21/eslint-extention-result.jpg)
+![eslint 익스텐션 동작](./img/21/eslint-extention-result.jpg)
 
 툴팁 메뉴를 클릭해서 문제를 수정한다.
 

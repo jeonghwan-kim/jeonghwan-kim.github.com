@@ -8,7 +8,7 @@ summary: 뷰JS의 간단한 라우팅 기능을 구현하고 뷰 라우터 (vue-
 videoId: "d73823e3-7d80-5997-8f06-4b92baa8a040"
 ---
 
-![brand image](/assets/imgs/2018/04/07/post-logo.jpg)
+![brand image](./imgs/post-logo.jpg)
 
 ## 뷰JS의 간단한 라우팅
 
@@ -80,7 +80,7 @@ VueComponent는 현재 경로로 routes 디셔너리에서 컴포넌트를 찾�
 중첩 라우팅, 네비게이션 가드 등 SPA 개발시 다양한 상황을 수월하게 처리할수 있기 때문이다.
 공식 문서에서는 **vue-router** 라이브러리를 추천하고 있다.
 
-![vue-router logo](/assets/imgs/2018/04/07/vue-router-logo.jpg)
+![vue-router logo](./imgs/vue-router-logo.jpg)
 
 - Github: [https://github.com/vuejs/vue-router](https://github.com/vuejs/vue-router)
 - 문서: [https://router.vuejs.org/kr/](https://router.vuejs.org/kr/)
@@ -178,9 +178,9 @@ export default router
 라우팅이 경로에 따라 컴포넌트를 바꿔치기해서 렌더링한다고 했는데... 렌더링해주는 부분이 `<router-view>` 태그 부분이다.
 결과를 확인해 보면 Home과 Notfound가 경로에 따라 출력되는 것을 확인할 수 있다.
 
-![router-view-01](/assets/imgs/2018/04/07/router-view-01.jpg)
+![router-view-01](./imgs/router-view-01.jpg)
 
-![router-view-02](/assets/imgs/2018/04/07/router-view-02.jpg)
+![router-view-02](./imgs/router-view-02.jpg)
 
 ### 라우터 링크
 
@@ -205,7 +205,7 @@ export default router
 - `<a>` 태그를 클릭하면 화면을 갱신하는데 `<router-link>`는 이를 차단해준다. 갱신 없이 화면을 이동할 수 있다.
 - 자세한 내용은 [문서](https://router.vuejs.org/kr/api/router-link.html)를 참고하자.
 
-![router-link-01](/assets/imgs/2018/04/07/router-link-01.jpg)
+![router-link-01](./imgs/router-link-01.jpg)
 
 ## 중첩된 라우팅
 
@@ -302,13 +302,13 @@ template 부분에 `<router-view>` 태그를 삽입했다.
 ```
 
 - /posts 라우팅:
-  ![nested-route-01](/assets/imgs/2018/04/07/nested-route-01.jpg)
+  ![nested-route-01](./imgs/nested-route-01.jpg)
 
 - /posts/new 라우팅:
-  ![nested-route-02](/assets/imgs/2018/04/07/nested-route-02.jpg)
+  ![nested-route-02](./imgs/nested-route-02.jpg)
 
 - /posts/detail 라우팅:
-  ![nested-route-03](/assets/imgs/2018/04/07/nested-route-03.jpg)
+  ![nested-route-03](./imgs/nested-route-03.jpg)
 
 가만히 보면 **중첩된 라우팅**이 **중첩된 화면**을 구성하는데 적합하다는 것을 알수 있다.
 /posts/new 라우트의 경우 /posts 라우트에 설정한 컴포넌트(빨간색)를 사용하되 `<route-view>` 부분만
@@ -355,7 +355,7 @@ template 부분에 `<router-view>` 태그를 삽입했다.
 },
 ```
 
-![dynamic-route-maching-01](/assets/imgs/2018/04/07/dynamic-route-maching-01.jpg)
+![dynamic-route-maching-01](./imgs/dynamic-route-maching-01.jpg)
 
 ### 라우터 링크 스타일
 
@@ -388,7 +388,7 @@ template 부분에 `<router-view>` 태그를 삽입했다.
 
 모든 경로가 일치하면 파란색, 일부만 일치하면 빨간색으로 강조된다.
 
-![router-link-class-01](/assets/imgs/2018/04/07/router-link-class-01.jpg)
+![router-link-class-01](./imgs/router-link-class-01.jpg)
 
 .router-link-active 클래스가 왜 필요할까 고민해 봤다. 경로에 따라 메뉴가 단계별로 구성될 경우
 1단계 2단계 ... n단계가 될 것이다. 만약 단계별로 메뉴를 강조해야할 경우 이 클래스를 적절히 활용하면 될 것 같다.
@@ -454,7 +454,7 @@ methods: {
 
 비로소 라우팅이 동작할때마다 데이터를 가져올수 있고 화면도 변경할수 있게 되었다. 아래 결과로 확인하자.
 
-![fetch-data-01](/assets/imgs/2018/04/07/fetch-data-01.gif)
+![fetch-data-01](/assets/imgs/2018/04/08/fetch-data-01.gif)
 
 ## 인증 플로우
 
@@ -550,10 +550,10 @@ redirect 문자열을 인자로 하여 `this.$router.replace()` 함수를 호출
 않고 라우트를 변경한다는 점이다. replace() 함수를 사용하면 뒤로가기를 해도 이전 페이지인 /login 으로 이동하지 않는걸 확인했다.
 
 - 글쓰기를 위한 로그인 화면:
-  ![login-flow-01](/assets/imgs/2018/04/07/login-flow-01.jpg)
+  ![login-flow-01](./imgs/login-flow-01.jpg)
 
 - 로그인 후 글쓰기 화면:
-  ![login-flow-02](/assets/imgs/2018/04/07/login-flow-02.jpg)
+  ![login-flow-02](./imgs/login-flow-02.jpg)
 
 ### 로그아웃
 

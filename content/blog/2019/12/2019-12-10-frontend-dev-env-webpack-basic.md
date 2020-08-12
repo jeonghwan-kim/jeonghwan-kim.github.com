@@ -163,7 +163,7 @@ $ node_modules/.bin/webpack --mode development --entry ./src/app.js --output dis
 
 위 명령어를 실행하면 dist/main.js에 번들된 결과가 저장된다.
 
-![웹팩 번들 결과](/assets/imgs/2019/12/11/webpack-bundle-result.jpg)
+![웹팩 번들 결과](./img/11/webpack-bundle-result.jpg)
 
 이 코드를 index.html에 로딩하면 번들링 전과 똑같은 결과를 만든다.
 
@@ -274,7 +274,7 @@ module: {
 
 이제 `npm run build`로 웹팩을 실행해 보자.
 
-![웹팩 번들 결과](/assets/imgs/2019/12/11/custom-loader-result.jpg)
+![웹팩 번들 결과](./img/11/custom-loader-result.jpg)
 
 터미널에 'myloader가 동작함' 문자열이 찍힌다.
 myloader() 함수가 동작한 것이다.
@@ -294,7 +294,7 @@ module.exports = function myloader(content) {
 
 빌드후 확인하면 다음과 같이 console.log() 함수가 alert() 함수로 변경되었다.
 
-![웹팩 번들 결과](/assets/imgs/2019/12/11/custom-loader-result-2.jpg)
+![웹팩 번들 결과](./img/11/custom-loader-result-2.jpg)
 
 # 4. 자주 사용하는 로더
 
@@ -349,7 +349,7 @@ use.loader에 로더 경로를 설정하는 대신 배열에 로더 이름을 �
 
 빌드 한 결과 CSS코드가 자바스크립트로 변환된 것을 확인할 수 있다.
 
-![웹팩 번들 결과](/assets/imgs/2019/12/11/css-loader.jpg)
+![웹팩 번들 결과](./img/11/css-loader.jpg)
 
 ## 4.2 style-loader
 
@@ -385,7 +385,7 @@ module.exports = {
 배열로 설정하면 뒤에서부터 앞으로 순서대로 로더가 동작한다.
 위 설정은 모든 .css 확장자로 끝나는 모듈을 읽어 들여 css-loader를 적용하고 그 다음 style-loader를 적용한다.
 
-![웹팩 번들 결과](/assets/imgs/2019/12/11/style-loader.jpg)
+![웹팩 번들 결과](./img/11/style-loader.jpg)
 
 ## 4.3 file-loader
 
@@ -426,7 +426,7 @@ module.exports = {
 아래 그림처럼 파일명이 해쉬코드로 변경 되었다.
 캐쉬 갱신을 위한 처리로 보인다.
 
-![웹팩 번들 결과](/assets/imgs/2019/12/11/file-loader.jpg)
+![웹팩 번들 결과](./img/11/file-loader.jpg)
 
 하지만 이대로 index.html 파일을 브라우져에 로딩하면 이미지를 제대로 로딩하지 못할 것이다.
 CSS를 로딩하면 background-image: url(bg.png) 코드에 의해 동일 폴더에서 이미지를 찾으려고 시도할 것이다.
@@ -458,11 +458,11 @@ output에 설정한 'dist' 폴더에 이미지 파일을 옮길 것이므로 pub
 또한 `name` 옵션을 사용했는데 이것은 로더가 파일을 아웃풋에 복사할때 사용하는 파일 이름이다.
 기본적으로 설정된 해쉬값을 쿼리스트링으로 옮겨서 'bg.png?6453a9c65953c5c28aa2130dd437bbde' 형식으로 파일을 요청하도록 변경했다.
 
-![파일로더 결과 2](/assets/imgs/2019/12/11/file-loader-2.jpg)
+![파일로더 결과 2](./img/11/file-loader-2.jpg)
 
 이렇게 스타일시트에서 불러온 파일이 동작한다.
 
-![파일로더 결과 3](/assets/imgs/2019/12/11/file-loader-3.jpg)
+![파일로더 결과 3](./img/11/file-loader-3.jpg)
 
 ## 4.4 url-loader
 
@@ -502,11 +502,11 @@ file-loader와 옵션 설정이 거의 비슷하고 마지막 `limit` 속성만 
 빌드 결과를 보면 small.png 파일이 문자열로 변경되어 있는 것을 확인 할 수 있다.
 반면 5kb 이상인 bg.png는 여전히 파일로 존재한다.
 
-![url 로더 결과 1](/assets/imgs/2019/12/11/url-loader-1.jpg)
+![url 로더 결과 1](./img/11/url-loader-1.jpg)
 
 브라우저에서도 확인하면 스타일스트에 small.png가 Data url형태로 변환되어 있다.
 
-![url 로더 결과 2](/assets/imgs/2019/12/11/url-loader-2.jpg)
+![url 로더 결과 2](./img/11/url-loader-2.jpg)
 
 아이콘처럼 용량이 작거나 사용 빈도가 높은 이미지는 파일을 그대로 사용하기 보다는 Data URI Scheeme을 적용하기 위해 url-loader를 사용하면 좋겠다.
 
@@ -560,7 +560,7 @@ module.exports = {
 
 웹팩으로 빌드해 보자.
 
-![myplugin](/assets/imgs/2019/12/11/myplugin.jpg)
+![myplugin](./img/11/myplugin.jpg)
 
 로그가 찍힌걸 보니 플러그인이 동작했다.
 
@@ -594,7 +594,7 @@ compiler.plugin() 함수의 두번재 인자 콜백함수는 emit 이벤트가 �
 번들된 결과가 compilation 객체에 들어 있는데 compilation.assets['main.js'].source() 함수로 접근할 수 있다.
 실행하면 터미널에 번들링된 결과물을 확인할 수 있다.
 
-![myplugin](/assets/imgs/2019/12/11/myplugin-2.jpg)
+![myplugin](./img/11/myplugin-2.jpg)
 
 이걸 이용해서 번들 결과 상단에 아래와 같은 배너를 추가하는 플러그인으로 만들어 보자.
 
@@ -627,7 +627,7 @@ class MyPlugin {
 
 빌드하고 결과물을 확인해 보면 다음과 같다.
 
-![myplugin 3](/assets/imgs/2019/12/11/myplugin-3.jpg)
+![myplugin 3](./img/11/myplugin-3.jpg)
 
 # 6. 자주 사용하는 플러그인
 
@@ -689,7 +689,7 @@ module.exports = function banner() {
 
 빌드한뒤 플러그인이 처리한 결과는 다음과 같다.
 
-![BannerPlugin](/assets/imgs/2019/12/11/banner-plugin.jpg)
+![BannerPlugin](./img/11/banner-plugin.jpg)
 
 ## 6.2 DefinePlugin
 
@@ -816,7 +816,7 @@ module.exports {
 NODE_ENV=development 로 설정해서 빌드하면 빌드결과 "타이틀(개발용)"으로 나온다.
 NODE_ENV=production 으로 설정해서 빌드하면 빌드결과 "타이틀"로 나온다.
 
-![HtmlWebpackPlugin](/assets/imgs/2019/12/11/html-template-plugin.jpg)
+![HtmlWebpackPlugin](./img/11/html-template-plugin.jpg)
 
 개발 환경과 달리 운영 환경에서는 파일을 압축하고 불필요한 주석을 제거하는 것이 좋다.
 
@@ -837,7 +837,7 @@ new HtmlWebpackPlugin({
 `NOE_ENV=production npm run build`로 빌드하면 아래처럼 코드가 압축된다.
 물론 주석도 제거 되었다.
 
-![HtmlWebpackPlugin 2](/assets/imgs/2019/12/11/html-template-plugin-2.jpg)
+![HtmlWebpackPlugin 2](./img/11/html-template-plugin-2.jpg)
 
 정적파일을 배포하면 즉각 브라우져에 반영되지 않는 경우가 있다.
 브라우져 캐쉬가 원인일 경우가 있는데 이를 위한 예방 옵션도 있다.
@@ -852,7 +852,7 @@ new HtmlWebpackPlugin({
 
 `hash: true` 옵션을 추가하면 빌드할 시 생성하는 해쉬값을 정적파일 로딩 주소의 쿼리 문자열로 붙여서 HTML을 생성한다.
 
-![HtmlWebpackPlugin 3](/assets/imgs/2019/12/11/html-template-plugin-3.jpg)
+![HtmlWebpackPlugin 3](./img/11/html-template-plugin-3.jpg)
 
 ## 6.4 CleanWebpackPlugin
 
@@ -862,7 +862,7 @@ new HtmlWebpackPlugin({
 
 임시로 아웃풋 폴더에 foo.js 파일을 만든 후 다시 빌드해 보자...... 파일이 남아 있다.
 
-![CleanWebpackPlugin](/assets/imgs/2019/12/11/clean-webpack-plugin.jpg)
+![CleanWebpackPlugin](./img/11/clean-webpack-plugin.jpg)
 
 이러한 현상을 CleanWebpackPlugin으로 해결해 보자.
 먼저 패키지를 설치한다.
@@ -945,7 +945,7 @@ module.exports = {
 
 `NODE_ENV=production npm run build`로 결과를 확인해보자.
 
-![MiniCssExtractPlugin](/assets/imgs/2019/12/11/mini-css-extract-plugin.jpg)
+![MiniCssExtractPlugin](./img/11/mini-css-extract-plugin.jpg)
 
 dist/main.css가 생성되었고 index.html에 이 파일을 로딩하는 코드가 추가되었다.
 

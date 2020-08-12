@@ -10,7 +10,7 @@ tags: [react, TypeScript]
 패키지의 기본 사용법 위주의 설명 보다는 [메모장 예제](https://github.com/jeonghwan-kim/study-react-ts/tree/master/router)를 보면서
 웹 어플리케이션에 라우터를 어떤 방식으로 적용해야 하는지 알아보겠다.
 
-![메모장 스크린샷](/assets/imgs/2019/07/08/memo-application.png)
+![메모장 스크린샷](./imgs/memo-application.png)
 
 ## 설치 및 라우터 세팅
 
@@ -130,7 +130,7 @@ export default HomePage;
 메뉴나 버튼은 모두 다른 페이지로 이동하는 하이퍼링크다.
 리액트 라우터의 **Link** 컴포넌트로 만들면 라우터가 해당 경로로 주소를 변경하고 해당하는 컴포넌트를 그려줄 것이다.
 
-![홈 스크릿샷](/assets/imgs/2019/07/08/menu-list.png)
+![홈 스크릿샷](./imgs/menu-list.png)
 
 다음은 메모 링크를 클릭하면 동작하는 메모 페이지 컴포넌트를 만들 차례다.
 
@@ -245,7 +245,7 @@ renderMemoList(memos: Memo[]) {
 메모 목록을 출력하는 용도로 renderMomoList 메소드를 분리했다.
 메모 목록은 메모 타이틀만 출력하고 클릭하면 메모 경로인 /memo/:id 로 이동하는 링크를 설정했다.
 
-![메모 화면 스크릿샷 1](/assets/imgs/2019/07/08/memo-list.png)
+![메모 화면 스크릿샷 1](./imgs/memo-list.png)
 
 이 링크를 클릭하면 메모 상세 주소(/memo/:id)로 이동하게 될 것이다.
 
@@ -366,7 +366,7 @@ render() {
 }
 ```
 
-![메모 화면 스크릿샷 2](/assets/imgs/2019/07/08/memo-detail.png)
+![메모 화면 스크릿샷 2](./imgs/memo-detail.png)
 
 뿐만 아니라 데이터 url 변화를 감지하고 이에 대한 로직이 필요한 경우가 있다.
 가령 /memo/:id 에 연결된 Memo 컴포넌트는 주소의 id 값에 따라 다른 데이터를 패치해서 컴포넌트를 그려야 하는 경우가 그렇다.
