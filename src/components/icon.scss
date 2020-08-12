@@ -1,4 +1,4 @@
-@import '../sass/variables.scss';
+@import "../sass/variables.scss";
 
 .icon {
   display: inline-block;
@@ -18,20 +18,25 @@
 }
 .icon-rss {
   background-image: url(../images/icon-rss.png);
+  filter: invert(1);
 }
 .icon-github {
   background-image: url(../images/icon-github.png);
+  filter: invert(1);
 }
 .icon-email {
   background-image: url(../images/icon-email.png);
+  filter: invert(1);
 }
 .icon-article {
   background-image: url(../images/icon-article.png);
+  filter: invert(1);
 }
 .icon-video {
   background-image: url(../images/icon-video.png);
+  filter: invert(1);
 }
 .icon-tag {
   background-image: url(../images/icon-tag.png);
+  filter: invert(1);
 }
-

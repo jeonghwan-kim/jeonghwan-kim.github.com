@@ -1,7 +1,14 @@
-@import '../sass/variables.scss';
+@import "../sass/variables.scss";
 
 .content {
-  section {
-    padding: $spacing-unit * 6 $spacing-unit;
+}
+
+section {
+  padding: $spacing-unit * 6 $spacing-unit;
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

@@ -7,6 +7,7 @@ import PostList, { PostItemType } from "../components/post-list"
 import "./index.scss"
 import { MarkdownRemark, Frontmatter, Fields } from "../models/markdown-remark"
 import Content, { Section } from "../components/content"
+import Icon from "../components/icon"
 
 const videos: PostItemType[] = [
   {
@@ -83,7 +84,14 @@ const BlogIndex: FC<P> = ({ data }) => {
           />
           <Link to="/category/">더보기</Link>
         </Section>
-        <Section title={<span id="videos">VIDEOS</span>}>
+        <Section
+          title={
+            <>
+              <Icon type="video" size={4} />
+              <span id="videos">VIDEOS</span>
+            </>
+          }
+        >
           <PostList posts={videos} />
         </Section>
       </Content>

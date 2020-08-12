@@ -4,25 +4,32 @@ import { Link } from "gatsby"
 
 interface P {
   to?: string
+  href?: string
   onClick?: () => void
 }
 
-const Nav: React.FC<P> = ({ to, onClick, children }) => {
+const Nav: React.FC<P> = ({ to, href, onClick, children }) => {
+  const linkProps = {
+    style: { overflow: "hidden" },
+    className: "flex",
+    onClick: e => {
+      if (!to && onClick) {
+        e.preventDefault()
+        onClick()
+      }
+    },
+  }
   return (
     <div className="site-nav">
-      <Link
-        style={{ overflow: "hidden" }}
-        className="flex"
-        to={`${to || "#"}`}
-        onClick={e => {
-          if (!to && onClick) {
-            e.preventDefault()
-            onClick()
-          }
-        }}
-      >
-        {children}
-      </Link>
+      {href ? (
+        <a {...linkProps} href={href}>
+          {children}
+        </a>
+      ) : (
+        <Link {...linkProps} to={`${to || "#"}`}>
+          {children}
+        </Link>
+      )}
     </div>
   )
 }

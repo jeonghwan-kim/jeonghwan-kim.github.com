@@ -5,7 +5,7 @@ import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
 
 const NotFoundPage = () => (
-  <Layout>
+  <Layout hasBorder>
     <SEO title="404: Not found" />
     <Content className="container-sm">
       <Section>

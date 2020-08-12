@@ -5,6 +5,7 @@ import Layout from "../../components/layout/layout"
 import PostList from "../../components/post-list"
 import SEO from "../../components/seo"
 import { MarkdownRemark } from "../../models/markdown-remark"
+import Icon from "../../components/icon"
 
 interface CateogryPostsProps {
   title: string
@@ -12,10 +13,17 @@ interface CateogryPostsProps {
 }
 
 export const CateogryPosts: FC<CateogryPostsProps> = ({ title, posts }) => (
-  <Layout>
+  <Layout hasBorder>
     <SEO title={`분류: ${title}`} />
     <Content className="container-sm">
-      <Section title={title}>
+      <Section
+        title={
+          <>
+            <Icon type="article" size={4} />
+            {title}
+          </>
+        }
+      >
         <PostList
           posts={posts.map(p => ({
             slug: p.fields.slug,

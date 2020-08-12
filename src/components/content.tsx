@@ -18,7 +18,7 @@ interface SectionProps {
 
 export const Section: React.FC<SectionProps> = p => {
   return (
-    <section className={p.className || ""}>
+    <section className={p.className ? p.className : ""}>
       {p.title && <h2 className="section-title">{p.title}</h2>}
       {p.children}
     </section>

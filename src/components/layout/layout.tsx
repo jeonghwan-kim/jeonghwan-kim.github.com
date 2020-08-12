@@ -14,9 +14,11 @@ import Footer from "./footer"
 import "../../sass/main.scss"
 import layoutStore from "./layout-store"
 
-interface P {}
+interface P {
+  hasBorder?: boolean
+}
 
-const Layout: FC<P> = ({ children }) => {
+const Layout: FC<P> = p => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -43,8 +45,13 @@ const Layout: FC<P> = ({ children }) => {
   const { author, title, social } = data.site.siteMetadata
   return (
     <>
-      <Header siteTitle={title} />
-      <main>{children}</main>
+      <Header
+        {...p}
+        siteTitle={title}
+        githubUsername={social.githubUsername}
+        email={social.email}
+      />
+      <main>{p.children}</main>
       <Footer
         author={author}
         githubUsername={social.githubUsername}

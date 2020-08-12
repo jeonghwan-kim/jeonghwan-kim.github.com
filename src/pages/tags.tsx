@@ -6,6 +6,7 @@ import { graphql, useStaticQuery, Link } from "gatsby"
 
 import "./tags.scss"
 import Content, { Section } from "../components/content"
+import Icon from "../components/icon"
 
 const TagPage = () => {
   const data = useStaticQuery(graphql`
@@ -58,10 +59,17 @@ const TagPage = () => {
   })
 
   return (
-    <Layout>
+    <Layout hasBorder>
       <SEO title="태그" />
       <Content className="container-sm">
-        <Section title="태그">
+        <Section
+          title={
+            <>
+              <Icon type="tag" size={4} />
+              태그
+            </>
+          }
+        >
           <div className="tag-list">
             {d2.map(item => {
               return (

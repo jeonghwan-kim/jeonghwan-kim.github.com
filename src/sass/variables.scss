@@ -23,6 +23,9 @@ $white-color: #f9f8fd;
 $gray-color: lighten($black-color, 40%);
 $light-gray-color: #e7e9ee;
 
+@mixin border($pos) {
+  border-#{$pos}: 1px solid lighten($gray-color, 30%);
+}
 
 @mixin spacing($target, $shortcut) {
   @for $i from 0 to 21 {

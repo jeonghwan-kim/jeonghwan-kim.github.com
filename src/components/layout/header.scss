@@ -1,11 +1,12 @@
 @import "../../sass/variables.scss";
 
 .site-header {
-  height: 80px;
-  background-color: $brand-color;
-  border-bottom: $spacing-unit / 2 solid darnken($thenary-color, 30%);
+  height: $spacing-unit * 7;
+  &.has-border {
+    border-bottom: 1px solid lighten($gray-color, 30%);
+  }
   a {
-    color: $white-color;
+    color: $black-color;
     text-decoration: none;
   }
   .site-title {
@@ -27,8 +28,9 @@
     align-items: center;
     justify-self: center;
     height: 100%;
+    margin-left: $spacing-unit * 2;
     .nav-text {
-      margin-left: $spacing-unit;
+      margin-left: 1px;
       @media (max-width: $tablet-width - 1) {
         display: none;
       }

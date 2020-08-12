@@ -35,7 +35,7 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
   const { previous, next } = pageContext
 
   return (
-    <Layout>
+    <Layout hasBorder>
       <SEO title={markdownRemark.frontmatter.title} />
       <Content className="blog-post container">
         <div itemScope itemType="http://schema.org/BlogPosting">

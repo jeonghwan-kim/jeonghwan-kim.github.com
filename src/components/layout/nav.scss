@@ -10,13 +10,9 @@
     appearance: none;
     background: transparent;
     border: none;
-    color: white;
+    color: $black-color;
+    font-weight: 300;
     height: 100%;
-    &:hover,
-    &:focus {
-      cursor: pointer;
-      background: rgba(0,0,0,0.3);
-    }
   }
   &:last-child {
     margin-right: 0;
