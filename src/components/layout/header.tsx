@@ -8,19 +8,19 @@ import Icon from "../icon"
 
 interface P {
   siteTitle: string
-  hasBorder?: boolean
+  hasHeaderBorder?: boolean
   githubUsername: string
   email: string
 }
 
 const Header: React.FC<P> = ({
   siteTitle,
-  hasBorder,
+  hasHeaderBorder,
   githubUsername,
   email,
 }) => {
   return (
-    <header className={`site-header ${hasBorder ? "has-border" : ""}`}>
+    <header className={`site-header ${hasHeaderBorder ? "has-border" : ""}`}>
       <div className="flex container">
         <h1 className="site-title">
           <Link className="site-logo" to="/">
@@ -28,7 +28,7 @@ const Header: React.FC<P> = ({
           </Link>
         </h1>
         <nav className="site-navs flex-1">
-          <Nav onClick={() => Modal.open(<CategorySelectModal />)}>
+          <Nav to="/category/">
             <Icon type="article" size={3} />
             <div className="nav-text">POSTS</div>
           </Nav>
@@ -41,7 +41,7 @@ const Header: React.FC<P> = ({
             <div className="nav-text">TAGS</div>
           </Nav>
         </nav>
-        <div className="flex">
+        <div className="contacts flex">
           <Nav to="/feed.xml">
             <Icon type="rss" size={3} style={{ filter: "invert(0.6)" }} />
           </Nav>

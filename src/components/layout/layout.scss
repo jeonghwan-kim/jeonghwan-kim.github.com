@@ -1,0 +1,24 @@
+@import "../../sass/variables.scss";
+
+.layout {
+  .aside-left {
+    align-self: flex-start;
+    min-width: 200px;
+    height: 100vh;
+    overflow-y: hidden;
+    @include border("right");
+    position: sticky;
+    top: 0px;
+    @media (max-width: $tablet-width - 1) {
+      display: none;
+    }
+  }
+  main {
+    &.has-aside {
+      padding-left: $spacing-unit * 4;
+      @media (max-width: $tablet-width - 1) {
+        padding-left: 0;
+      }
+    }
+  }
+}

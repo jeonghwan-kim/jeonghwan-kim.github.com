@@ -5,6 +5,7 @@ import { CateogryPosts } from "."
 export default p => (
   <CateogryPosts
     title="생각"
+    activeCategory={"think"}
     posts={p.data.allMarkdownRemark.edges.map(e => e.node)}
   />
 )

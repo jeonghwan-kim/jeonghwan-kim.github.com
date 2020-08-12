@@ -1,4 +1,4 @@
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import React, { FC } from "react"
 import Content, { Section } from "../../components/content"
 import Layout from "../../components/layout/layout"
@@ -7,15 +7,62 @@ import SEO from "../../components/seo"
 import { MarkdownRemark } from "../../models/markdown-remark"
 import Icon from "../../components/icon"
 
+import "./category.scss"
+
 interface CateogryPostsProps {
   title: string
   posts: MarkdownRemark[]
+  activeCategory?: string
 }
 
-export const CateogryPosts: FC<CateogryPostsProps> = ({ title, posts }) => (
-  <Layout hasBorder>
+export const CateogryPosts: FC<CateogryPostsProps> = ({
+  title,
+  posts,
+  activeCategory,
+}) => (
+  <Layout
+    hasHeaderBorder
+    aside={
+      <div className="category-list">
+        <ul>
+          <li>
+            <label>글분류</label>
+          </li>
+          <li>
+            <Link to="/category" className={!activeCategory ? "active" : ""}>
+              모든글
+            </Link>{" "}
+          </li>
+          <li>
+            <Link
+              to="/category/series"
+              className={activeCategory === "series" ? "active" : ""}
+            >
+              연재물
+            </Link>{" "}
+          </li>
+          <li>
+            <Link
+              className={activeCategory === "dev" ? "active" : ""}
+              to="/category/dev"
+            >
+              개발
+            </Link>{" "}
+          </li>
+          <li>
+            <Link
+              to="/category/think"
+              className={activeCategory === "think" ? "active" : ""}
+            >
+              생각
+            </Link>{" "}
+          </li>
+        </ul>
+      </div>
+    }
+  >
     <SEO title={`분류: ${title}`} />
-    <Content className="container-sm">
+    <Content>
       <Section
         title={
           <>

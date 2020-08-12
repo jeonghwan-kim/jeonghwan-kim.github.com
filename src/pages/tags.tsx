@@ -59,7 +59,7 @@ const TagPage = () => {
   })
 
   return (
-    <Layout hasBorder>
+    <Layout hasHeaderBorder>
       <SEO title="태그" />
       <Content className="container-sm">
         <Section

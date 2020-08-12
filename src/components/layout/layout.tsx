@@ -5,17 +5,19 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { FC, useState, useEffect } from "react"
+import React, { FC, useState, useEffect, ReactNode } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import Footer from "./footer"
 
-import "../../sass/main.scss"
 import layoutStore from "./layout-store"
+import "../../sass/main.scss"
+import "./layout.scss"
 
 interface P {
-  hasBorder?: boolean
+  hasHeaderBorder?: boolean
+  aside?: ReactNode
 }
 
 const Layout: FC<P> = p => {
@@ -44,22 +46,38 @@ const Layout: FC<P> = p => {
 
   const { author, title, social } = data.site.siteMetadata
   return (
-    <>
+    <div className="layout">
       <Header
         {...p}
         siteTitle={title}
         githubUsername={social.githubUsername}
         email={social.email}
       />
-      <main>{p.children}</main>
-      <Footer
-        author={author}
-        githubUsername={social.githubUsername}
-        email={social.email}
-      />
+      {p.aside ? (
+        <div className="container flex">
+          <aside className="aside-left">{p.aside}</aside>
+          <div>
+            <main className="has-aside">{p.children}</main>
+            <Footer
+              author={author}
+              githubUsername={social.githubUsername}
+              email={social.email}
+            />
+          </div>
+        </div>
+      ) : (
+        <>
+          <main className="container">{p.children}</main>
+          <Footer
+            author={author}
+            githubUsername={social.githubUsername}
+            email={social.email}
+          />
+        </>
+      )}
 
       {modals.map(modal => React.cloneElement(modal))}
-    </>
+    </div>
   )
 }
 

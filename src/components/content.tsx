@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react"
+import React, { ReactNode, CSSProperties } from "react"
 import "./content.scss"
 
 interface ContentProps {
@@ -14,11 +14,12 @@ export default Content
 interface SectionProps {
   title?: ReactNode
   className?: string
+  style?: CSSProperties
 }
 
 export const Section: React.FC<SectionProps> = p => {
   return (
-    <section className={p.className ? p.className : ""}>
+    <section className={p.className ? p.className : ""} style={p.style}>
       {p.title && <h2 className="section-title">{p.title}</h2>}
       {p.children}
     </section>
