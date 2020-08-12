@@ -1,4 +1,5 @@
 import React from "react"
+import Content, { Section } from "../components/content"
 
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
@@ -6,8 +7,12 @@ import SEO from "../components/seo"
 const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Not found" />
-    <h1>혹시 찾는 글이 없나요?</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <Content className="container-sm">
+      <Section>
+        <h1>페이지를 찾을 수 없습니다</h1>
+        <p>찾는 페이지가 삭제되었거나 이동되었을 수 있습니다.</p>
+      </Section>
+    </Content>
   </Layout>
 )
 

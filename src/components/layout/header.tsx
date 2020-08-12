@@ -22,15 +22,15 @@ const Header: React.FC<P> = ({ siteTitle }) => {
         <nav className="site-navs">
           <Nav onClick={() => Modal.open(<CategorySelectModal />)}>
             <Icon type="article" size={3} />
-            POSTS
+            <div className="nav-text">POSTS</div>
           </Nav>
           <Nav to="/#videos">
             <Icon type="video" size={3} />
-            VIDEOS
+            <div className="nav-text">VIDEOS</div>
           </Nav>
           <Nav to="/tags/">
             <Icon type="tag" size={3} />
-            TAGS
+            <div className="nav-text">TAGS</div>
           </Nav>
         </nav>
       </div>

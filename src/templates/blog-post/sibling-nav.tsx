@@ -1,7 +1,6 @@
-import React, { ReactNode, CSSProperties } from "react"
 import { Link } from "gatsby"
+import React, { CSSProperties } from "react"
 import { MarkdownRemark } from "../../models/markdown-remark"
-
 import "./sibling-nav.scss"
 
 interface SiblingNavItemProps {
@@ -48,7 +47,6 @@ const SiblingNav: React.FC<P> = p => {
         <SiblingNavItem
           label="이전글"
           align="left"
-          // text={`« ${p.previous.frontmatter.title}`}
           icon="«"
           text={p.previous.frontmatter.title}
           url={p.previous.fields.slug}

@@ -1,4 +1,4 @@
-@import '../../sass/variables.scss';
+@import "../../sass/variables.scss";
 
 .site-header {
   height: 80px;
@@ -12,6 +12,7 @@
     margin: 0;
     font-size: 24px;
     font-weight: lighter;
+    overflow: hidden;
     .site-logo {
       display: inline-block;
       width: 100%;
@@ -26,14 +27,17 @@
     align-items: center;
     justify-self: center;
     height: 100%;
-  }
-}
-
-@media (max-width: $tablet-width - 1) {
-  .icon-article,
-  .icon-video,
-  .icon-tag{
-    width: $spacing-unit * 4;
-    height: $spacing-unit * 4;
+    .nav-text {
+      margin-left: $spacing-unit;
+      @media (max-width: $tablet-width - 1) {
+        display: none;
+      }
+    }
+    @media (max-width: $tablet-width - 1) {
+      .icon {
+        width: $spacing-unit * 4 !important;
+        height: $spacing-unit * 4 !important;
+      }
+    }
   }
 }

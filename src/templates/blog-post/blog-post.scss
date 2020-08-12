@@ -1,18 +1,22 @@
-@import '../../sass/variables.scss';
+@import "../../sass/variables.scss";
 
 .blog-post {
-  padding-top: $spacing-unit * 20;
-  @media (max-width: $tablet-width) {
-    padding-top: $spacing-unit * 10;
-  }
-  @media (max-width: $mobile-width) {
-    padding-top: $spacing-unit * 5;
-  }
   main {
+    margin-top: $spacing-unit * 10;
+    @media (max-width: $tablet-width) {
+      margin-top: $spacing-unit * 5;
+    }
+    @media (max-width: $mobile-width) {
+      margin-top: $spacing-unit * 2;
+    }
     display: flex;
     align-items: flex-start;
-    aside { order: 1; }
-    article { order: 0; }
+    article {
+      order: 0;
+    }
+    aside {
+      order: 1;
+    }
 
     aside {
       width: 250px;
@@ -109,9 +113,5 @@
     }
   }
   footer {
-    margin-top: 8 * $spacing-unit;
-    margin-bottom: 8 * $spacing-unit;
   }
-
 }
-
