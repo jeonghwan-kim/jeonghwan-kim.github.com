@@ -1,9 +1,9 @@
+import { graphql } from "gatsby"
 import React, { FC } from "react"
-import { Link, graphql } from "gatsby"
+import Content, { Section } from "../../components/content"
 import Layout from "../../components/layout/layout"
-import SEO from "../../components/seo"
-import "./index.scss"
 import PostList from "../../components/post-list"
+import SEO from "../../components/seo"
 import { MarkdownRemark } from "../../models/markdown-remark"
 
 interface CateogryPostsProps {
@@ -14,21 +14,18 @@ interface CateogryPostsProps {
 export const CateogryPosts: FC<CateogryPostsProps> = ({ title, posts }) => (
   <Layout>
     <SEO title={`분류: ${title}`} />
-    <div className="home">
-      <section className="posts">
-        <div className="section-inner container">
-          <h2>{title}</h2>
-          <PostList
-            posts={posts.map(p => ({
-              slug: p.fields.slug,
-              title: p.frontmatter.title,
-              meta: <time dateTime={p.fields.date}>{p.fields.dateStr}</time>,
-              excerpt: p.excerpt,
-            }))}
-          />
-        </div>
-      </section>
-    </div>
+    <Content className="container-sm">
+      <Section title={title}>
+        <PostList
+          posts={posts.map(p => ({
+            slug: p.fields.slug,
+            title: p.frontmatter.title,
+            meta: <time dateTime={p.fields.date}>{p.fields.dateStr}</time>,
+            excerpt: p.excerpt,
+          }))}
+        />
+      </Section>
+    </Content>
   </Layout>
 )
 
