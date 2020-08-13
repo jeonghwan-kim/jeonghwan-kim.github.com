@@ -36,7 +36,13 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
 
   return (
     <Layout hasHeaderBorder>
-      <SEO title={markdownRemark.frontmatter.title} />
+      <SEO
+        title={markdownRemark.frontmatter.title}
+        description={markdownRemark.excerpt}
+        date={markdownRemark.fields.date}
+        slug={markdownRemark.fields.slug}
+        image={markdownRemark.frontmatter.featured_image}
+      />
       <Content className="blog-post container">
         <div itemScope itemType="http://schema.org/BlogPosting">
           <Section>

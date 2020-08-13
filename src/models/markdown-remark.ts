@@ -20,4 +20,5 @@ export interface Frontmatter {
   seriesId?: string
   videoId?: string
   tags?: string[]
+  featured_image?: string
 }

@@ -12,16 +12,12 @@ import { useStaticQuery, graphql } from "gatsby"
 interface P {
   title: string
   description?: string
-  lang?: string
-  meta?: { name: string; content: string }[]
+  date?: string
+  slug?: string
+  image?: string
 }
 
-const SEO: React.FC<P> = ({
-  description = ``,
-  lang = `en`,
-  meta = [],
-  title,
-}) => {
+const SEO: React.FC<P> = p => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -30,56 +26,104 @@ const SEO: React.FC<P> = ({
             title
             description
             author
+            url
+            social {
+              twitterUsername
+            }
           }
         }
       }
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const description = p.description || site.siteMetadata.description
+  const image = p.image || `${site.siteMetadata.url}/assets/imgs/me.jpg`
+
+  const meta = [
+    {
+      name: `description`,
+      content: description,
+    },
+    {
+      property: `og:site_name`,
+      content: site.siteMetadata.title,
+    },
+    {
+      property: `og:title`,
+      content: p.title,
+    },
+    {
+      property: `og:description`,
+      content: description,
+    },
+    {
+      property: `og:image`,
+      content: image,
+    },
+    {
+      property: `og:type`,
+      content: `website`,
+    },
+    {
+      property: `og:locale`,
+      content: `ko_KR`,
+    },
+    {
+      property: `og:url`,
+      content: `ko_KR`,
+    },
+    {
+      name: `twitter:card`,
+      content: `summary`,
+    },
+    {
+      name: `twitter:creator`,
+      content: site.siteMetadata.social.twitterUsername,
+    },
+    {
+      name: `twitter:title`,
+      content: p.title,
+    },
+    {
+      name: `twitter:description`,
+      content: description,
+    },
+    {
+      name: `twitter:image`,
+      content: image,
+    },
+  ]
+
+  if (p.date) {
+    meta.push({
+      name: "article:published_time",
+      content: p.date,
+    })
+  }
 
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang: "ko",
       }}
-      title={title}
+      title={p.title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
+      meta={meta}
+    >
+      {p.date && (
+        <script type="application/ld+json">{`
         {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+          "@context": "http://schema.org",
+          "@type": "BlogPosting",
+          "url": "${site.siteMetadata.url + p.slug}",
+          "headline": "${p.title}",
+          "datePublished": "${p.date}",
+          "dateModified": "${p.date}",
+          "image": "${image}"
+        }
+        `}</script>
+      )}
+    </Helmet>
   )
 }
 
