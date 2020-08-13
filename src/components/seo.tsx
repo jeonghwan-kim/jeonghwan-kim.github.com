@@ -123,6 +123,7 @@ const SEO: React.FC<P> = p => {
         }
         `}</script>
       )}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
     </Helmet>
   )
 }

@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 * {
   box-sizing: border-box;
@@ -51,8 +51,20 @@ a {
 .gatsby-highlight {
   font-size: 14px;
   line-height: 1.5em;
+  pre {
+    position: relative;
+    button.copy {
+      position: absolute;
+      top: $spacing-unit;
+      right: $spacing-unit;
+      background-color: transparent;
+      border: none;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
 }
 
-@include spacing('padding', 'p');
-@include spacing('margin', 'm');
-
+@include spacing("padding", "p");
+@include spacing("margin", "m");

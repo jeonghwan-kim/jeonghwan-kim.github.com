@@ -37,7 +37,13 @@ module.exports = {
               maxWidth: 726,
             },
           },
-          `gatsby-remark-prismjs`, // 코드 하일라이팅, npm i prismjs 해야 함.
+          {
+            resolve: `gatsby-remark-prismjs`, // 코드 하일라이팅, npm i prismjs 해야 함.
+            options: {
+              showLineNumbers: false,
+            },
+          },
+
           `gatsby-remark-autolink-headers`, // 헤딩 링크 추가
         ],
       },

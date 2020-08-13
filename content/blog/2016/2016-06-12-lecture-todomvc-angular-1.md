@@ -85,7 +85,7 @@ $ node
 노드가 설치된 경로와 버전을 확인할 수 있다. 마지막에는 노드 쉘을 실행시킨 결과다.
 노드쉡에서는 자바스크립트 코드를 해석하는 인터프리터로서 코드 결과를 바로바로 확인할 수 있다.
 
-```node
+```bash
 > console.log('hello world!')
 hello world!
 
@@ -98,7 +98,7 @@ hello world!
 노드 v4에서 부터는 ES6 문법을 지원한다.
 상수를 정의하는 `const` 키워드를 테스트 해보자.
 
-```node
+```bash
 > const name = 'Chris'
 > name
 'Chris'
