@@ -1,6 +1,5 @@
 ---
 title: React로 만든 프로젝트 톺아보기
-layout: post
 category: dev
 permalink: 2018/07/16/react-app-overview.html
 tags: [react]
@@ -56,7 +55,7 @@ ReactDom.render(
 )
 ```
 
-코드 하단에 보면 JSX 문법을 사용하는데 리액트 라이브러리를 로딩하면 이를 해석할 수 있다. 루트 컴포넌트 App을 돔에 마운트하기 위해서는 react-dom 라이브러리의 redner() 함수를 사용한다. index.css 는 css-loader에 의해 처리되는데 이 모든 것이 create-react-app이 제공해 주는 환경이다. 👍
+코드 하단에 보면 JSX 문법을 사용하는데 리액트 라이브러리를 로딩하면 이를 해석할 수 있다. 루트 컴포넌트 App을 돔에 마운트하기 위해서는 react-dom 라이브러리의 render() 함수를 사용한다. index.css 는 css-loader에 의해 처리되는데 이 모든 것이 create-react-app이 제공해 주는 환경이다. 👍
 
 루트 컴포넌트로 넘어가 보자.
 

@@ -1,6 +1,5 @@
 ---
 title: "[Node.js코드랩] 6.정적 파일"
-layout: post
 summary: 정적파일을 처리할 수 있습니다
 category: series
 seriesId: "555b6438-4a71-51d0-9156-a1d5ca4d5eab"
@@ -78,7 +77,7 @@ filePath에는 index.html의 절대 경로가 저장 되겠지요.
 
 저장하고 한번 브라우져에서 확인해 볼까요?
 
-![](/assets/imgs/2018/12/06/browser_result_1.png)
+![](./img/06/browser_result_1.png)
 
 HTML 마크업이 그대로 출력되었습니다. 우리가 원하는건 웹페이지로 렌더링 되는건데 말이죠.
 
@@ -93,13 +92,13 @@ res.setHeader("Content-Type", "text/html")
 
 저장하고 다시 브라우져로 확인해 볼까요?
 
-![](/assets/imgs/2018/12/06/browser_result_2.png)
+![](./img/06/browser_result_2.png)
 
 이제야 웹페이지처럼 나오는 것을 확인했네요.
 
 하지만 이미지 부분이 깨져서 나오는데요? 크롬 개발자 도구로 자세히 살펴 볼까요?
 
-![](/assets/imgs/2018/12/06/browser_result_3.png)
+![](./img/06/browser_result_3.png)
 
 index.html은 내부 코드에서 css, js, image 파일을 추가로 요청합니다.
 그런데 이 요청에 대한 응답이 전부 index.html 파일의 내용과 똑같네요.
@@ -124,7 +123,7 @@ const mimeType = {
   ".css": "text/css",
   ".png": "image/png",
   ".jpg": "image/jpeg",
-  ".eot": "appliaction/vnd.ms-fontobject",
+  ".eot": "aplication/vnd.ms-fontobject",
   ".ttf": "aplication/font-sfnt",
 }
 ```
@@ -166,7 +165,7 @@ publicPath와 req.url를 합쳐 정적 파일을 읽습니다.
 
 그럼 저장하고 브라우져로 확인해 보겠습니다.
 
-![](/assets/imgs/2018/12/06/browser_result_4.png)
+![](./img/06/browser_result_4.png)
 
 이제야 비로소 웹 페이지가 제대로 보이는군요.
 
