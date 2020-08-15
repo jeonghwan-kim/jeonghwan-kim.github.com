@@ -31,7 +31,7 @@ interface P {
 }
 
 const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
-  const { markdownRemark, series, video } = data
+  const { site, markdownRemark, series, video } = data
   const { previous, next } = pageContext
 
   return (
@@ -40,7 +40,7 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
         title={markdownRemark.frontmatter.title}
         description={markdownRemark.excerpt}
         date={markdownRemark.fields.date}
-        slug={markdownRemark.fields.slug}
+        url={site.siteMetadata.url + markdownRemark.fields.slug}
         image={markdownRemark.frontmatter.featured_image}
       />
       <Content className="blog-post container">

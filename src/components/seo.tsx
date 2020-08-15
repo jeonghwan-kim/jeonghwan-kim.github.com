@@ -13,7 +13,7 @@ interface P {
   title: string
   description?: string
   date?: string
-  slug?: string
+  url?: string
   image?: string
 }
 
@@ -38,19 +38,37 @@ const SEO: React.FC<P> = p => {
 
   const description = p.description || site.siteMetadata.description
   const image = p.image || `${site.siteMetadata.url}/assets/imgs/me.jpg`
+  const { twitterUsername } = site.siteMetadata.social
+  const url = p.url || site.siteMetadata.url
 
-  const meta = [
+  const meta: { property?: string; name?: string; content: string }[] = [
     {
-      name: `description`,
-      content: description,
+      property: `og:locale`,
+      content: `ko_KR`,
+    },
+    {
+      property: `og:locale:alternate`,
+      content: `en_US`,
     },
     {
       property: `og:site_name`,
       content: site.siteMetadata.title,
     },
     {
+      property: `description`,
+      content: description,
+    },
+    {
+      property: `og:url`,
+      content: url,
+    },
+    {
       property: `og:title`,
       content: p.title,
+    },
+    {
+      property: `og:type`,
+      content: `website`,
     },
     {
       property: `og:description`,
@@ -60,43 +78,30 @@ const SEO: React.FC<P> = p => {
       property: `og:image`,
       content: image,
     },
-    {
-      property: `og:type`,
-      content: `website`,
-    },
-    {
-      property: `og:locale`,
-      content: `ko_KR`,
-    },
-    {
-      property: `og:url`,
-      content: `ko_KR`,
-    },
-    {
-      name: `twitter:card`,
-      content: `summary`,
-    },
-    {
-      name: `twitter:creator`,
-      content: site.siteMetadata.social.twitterUsername,
-    },
-    {
-      name: `twitter:title`,
-      content: p.title,
-    },
-    {
-      name: `twitter:description`,
-      content: description,
-    },
-    {
-      name: `twitter:image`,
-      content: image,
-    },
   ]
+
+  if (twitterUsername) {
+    meta.push(
+      ...[
+        {
+          name: `twitter:card`,
+          content: `summary`,
+        },
+        {
+          name: `twitter:site`,
+          content: twitterUsername,
+        },
+        {
+          name: `twitter:creator`,
+          content: twitterUsername,
+        },
+      ]
+    )
+  }
 
   if (p.date) {
     meta.push({
-      name: "article:published_time",
+      property: "article:published_time",
       content: p.date,
     })
   }
@@ -115,7 +120,7 @@ const SEO: React.FC<P> = p => {
         {
           "@context": "http://schema.org",
           "@type": "BlogPosting",
-          "url": "${site.siteMetadata.url + p.slug}",
+          "url": "${url}",
           "headline": "${p.title}",
           "datePublished": "${p.date}",
           "dateModified": "${p.date}",

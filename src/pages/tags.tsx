@@ -11,6 +11,11 @@ import Icon from "../components/icon"
 const TagPage = () => {
   const data = useStaticQuery(graphql`
     query {
+      site {
+        siteMetadata {
+          url
+        }
+      }
       allMarkdownRemark {
         nodes {
           frontmatter {
@@ -60,7 +65,11 @@ const TagPage = () => {
 
   return (
     <Layout hasHeaderBorder>
-      <SEO title="태그" />
+      <SEO
+        title="태그"
+        url={`${data.site.siteMetadata.url}/tags`}
+        description="태그 목록입니다"
+      />
       <Content className="container-sm">
         <Section
           title={
