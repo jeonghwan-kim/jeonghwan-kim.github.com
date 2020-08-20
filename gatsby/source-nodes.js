@@ -78,6 +78,12 @@ exports.createVideoNode = ({ actions, createNodeId, createContentDigest }) => {
       thumb: "/assets/imgs/youtube_20200407.jpg",
       title: "알아두면 쓸데있는 VSCode 노하우",
     },
+    {
+      id: "youtube-20200819-gatsby",
+      url: "https://youtu.be/BpQDmGdl60c",
+      thumb: "/assets/imgs/youtube-20200819-gatsby.png",
+      title: "[Gatsby.js] 개츠비 훑어보기",
+    },
   ]
 
   videos.forEach(v => {
