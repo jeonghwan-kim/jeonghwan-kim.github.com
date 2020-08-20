@@ -149,17 +149,178 @@ module.exports = {
 }
 ```
 
+플러그인을 추가하고 나면 imageSharp 노드가 추가된 것을 확인할 수 있다.
+이것은 파일 노드의 자식노드로도 추가된다. childImageSharp
+
+```graphql
+query {
+  file {
+    childImageSharp {
+      id
+    }
+  }
+  imageSharp {
+    id
+  }
+}
+```
+
 ### gatsby-image
+
+이제 gatsby-image 컴포넌트로 반응형 이미지를 사용할 수 있는 환경이 준비되었다.
+
+logo.png 파일을 그래프큐엘에서 조회하는데 sharp로 처리된 이미지 데이터를 얻을 수 있다.
+file 노드 중에 gatsby-transformer-sharp 플러그인으로 추가된 childImageSharp 노드를 조회하면 gatsby-image 컴포넌트에 전달한 반응형 이미지 데이터를 얻을 수 있다.
+
+그리고 `<Img>` 컴포넌트로 데이터를 렌더링한다.
+
+```ts
+import Img from "gatsby-image"
+
+const SamplePage = () => {
+  // sharp로 처리된 logo.png 이미지 데이터를 조회한다.
+  const data = useStaticQuery(graphql`
+    {
+      placeholderImage: file(relativePath: { eq: "logo.png" }) {
+        childImageSharp(maxSize: 400) {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
+  // 반응형 이미지가 구현된 <Img> 컴포넌트로 이미지 데이터를 렌더링 한다.
+  return <Img fluid={data.mobileImage.childImageSharp.fluid} />
+}
+```
+
+이 코드가 만든 html 코드를 살펴보면 이렇다.
+
+```html
+<div class="gatsby-image-wrapper">
+  <!-- blur up 이미지  -->
+  <img src="data:image/png;base64,iVBORw0K..." />
+  <!-- 반응형 이미지 -->
+  <picture>
+    <source
+      srcset="
+        /static/4a9773549091c227cd2eb82ccd9c5e3a/65e33/logo.png 100w,
+        /static/4a9773549091c227cd2eb82ccd9c5e3a/69585/logo.png 200w,
+        /static/4a9773549091c227cd2eb82ccd9c5e3a/497c6/logo.png 400w,
+        /static/4a9773549091c227cd2eb82ccd9c5e3a/bc59e/logo.png 512w
+      "
+      sizes="(max-width: 400px) 100vw, 400px"
+    />
+    <img
+      sizes="(max-width: 400px) 100vw, 400px"
+      srcset="
+        /static/4a9773549091c227cd2eb82ccd9c5e3a/65e33/logo.png 100w,
+        /static/4a9773549091c227cd2eb82ccd9c5e3a/69585/logo.png 200w,
+        /static/4a9773549091c227cd2eb82ccd9c5e3a/497c6/logo.png 400w,
+        /static/4a9773549091c227cd2eb82ccd9c5e3a/bc59e/logo.png 512w
+      "
+      src="/static/4a9773549091c227cd2eb82ccd9c5e3a/497c6/logo.png"
+      loading="lazy"
+    />
+  </picture>
+</div>
+```
+
+이미지 파일을 가져오기 전까지는 작은 이미지를 번지게 보여준다.
+이를 "blur up" 이라고 하는데 대표적으로 미디엄에서 사용하는 기술이다.
+그래프큐엘로 조회한 이미지 데이터에는 base64로 인코딩된 작은 이미지 문자열이 있다.
+이를 먼저 보여준다.
+
+그리고나서 반응형 이미지를 보여주는데 `<picture>` 와 `<img srcset="" sizes="">`를 사용한걸 보니, 아트디렉션 문제와 해상도 전환 문제 둘을 함께 다루는 것 같다.
+브라우져의 너비를 조절해 가면서 네트웍을 확인하면 너비에 따라 다른 이미지를 요청하는걸 확인 할 수 있다.
+
+그런데 sizee에 정의한 미디어 쿼리에 의해 계산된 이미지 사이즈가 srcset에 있는 이미지 크기와 잘 안맞는것 같았다.
+가령 디바이스 크기를 50w로 조절하면 100w의 이미지를 요청할 것이라 기대했지만 그 두 배인 200w 크기의 이미지를 요청한다.
+디스플레이 해상도가 높아지면서 레티나 대응을 위한 브라우져의 동작인 것 같다(참고: [With srcset, the browser does the work of figuring out which image is best](https://css-tricks.com/responsive-images-youre-just-changing-resolutions-use-srcset/#with-srcset-the-browser-does-the-work-of-figuring-out-which-image-is-best)).
+
+장비 너비에 따른 최적의 이미지를 요청하는 기준은 브라우져별(파이어폭스, 크롬, 사파리)로 다르게 동작했다.
+
+여하튼 이렇게 계산된 최적의 이미지를 찾고 브러우져로 다운로드 완료하면 blur-up 이미지를 대체하여 렌더링 된다.
+
+아트 디랙션도 설정할 수 있다.
+
+```tsx
+const SamplePage = () => {
+  // 데스크탑 이미지와 모바일 이미지를 조회한다
+  const data = useStaticQuery(graphql`
+    query {
+      desktopImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      mobileImage: file(relativePath: { eq: "gatsby-astronaut-mobile.png" }) {
+        childImageSharp {
+          fluid(maxWidth: 400) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
+  // 반응형 이미지를 렌더링한다
+  return (
+    <Img
+      fluid={[
+        data.mobileImage.childImageSharp.fluid,
+        {
+          ...data.desktopImage.childImageSharp.fluid,
+          media: `(min-width: 800px)`,
+        },
+      ]}
+    />
+  )
+}
+```
+
+```html
+<picture>
+  <!-- 가로 해상도가 800px 이상일 경우 gatsby-astronaut.png 파일을 사용   -->
+  <source
+    media="(min-width: 800px)"
+    srcset="
+      /.../69585/gatsby-astronaut.png 200w,
+      /.../497c6/gatsby-astronaut.png 400w,
+      /.../ee604/gatsby-astronaut.png 800w
+    "
+    sizes="(max-width: 800px) 100vw, 800px"
+  />
+  <!-- 그렇지 않으며 (가로 해상도가 800px 미만일 경우) gatsby-astronaut-mobile.png 파일을 사용   -->
+  <source
+    srcset="
+      /.../65e33/gatsby-astronaut-mobile.png 100w,
+      /.../69585/gatsby-astronaut-mobile.png 200w,
+      /.../497c6/gatsby-astronaut-mobile.png 400w,
+      /.../3dd72/gatsby-astronaut-mobile.png 474w
+    "
+    sizes="(max-width: 400px) 100vw, 400px"
+  />
+  <img />
+</picture>
+```
 
 # 마크다운 문서에서의 이미지
 
-gatsby-remark-images
-gatsby-image와 유사.
-아트 디렉션만 없는 듯
+react-image처럼 마크다운 안의 이미지를 처리하려면 [gatsby-remark-images](https://www.gatsbyjs.com/plugins/gatsby-remark-images/) 플러그인을 사용할 수 있다.
+
+blur-up, lazy 로딩, 해상도 전환 문제 등 gatsby-image와 거의 유사한 효과를 낼 수 있다.
 
 # 결론
 
-게츠비에서 이미지 사용하는 방식을 공부해야겠다.
+정적 사이트가 아닐 경우는 어떻게 이미지를 처리해야 할까?
 
-레이지 정도만 구현해봤다.
-나머지 blur-up, 반응형 이미지도 구현해 보자.
+서버가 이미지를 받으면 이모든 버전의 이미지를 가공해 두어야 할 것이다.
+blur-up을 위한 이미지부터 장비 너비별로 대응할 수 있는 이미지를 준비해 두어야 한다.
+
+브라우져에서는 이러한 이미지 정보를 서버로부터 받아서 이미지 태그에 srcset과 sizes 속성을 구성해야 한다.
+그리고 아트 디렉션 문제를 다루려면 `<picture>` 요소도 고려해야할 것이다.
