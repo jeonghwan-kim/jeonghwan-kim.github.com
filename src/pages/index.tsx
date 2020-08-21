@@ -1,13 +1,12 @@
+import { graphql, Link, PageProps } from "gatsby"
 import React, { FC } from "react"
-import { Link, graphql } from "gatsby"
-import Layout from "../components/layout/layout"
-import SEO from "../components/seo"
-import PostList, { PostItemType } from "../components/post-list"
-
-import "./index.scss"
-import { MarkdownRemark, Frontmatter, Fields } from "../models/markdown-remark"
 import Content, { Section } from "../components/content"
 import Icon from "../components/icon"
+import Layout from "../components/layout/layout"
+import PostList, { PostItemType } from "../components/post-list"
+import SEO from "../components/seo"
+import { MarkdownRemark } from "../models/markdown-remark"
+import "./index.scss"
 
 const videos: PostItemType[] = [
   {
@@ -58,15 +57,9 @@ const videos: PostItemType[] = [
   },
 ]
 
-interface P {
-  data: {
-    allMarkdownRemark: {
-      nodes: MarkdownRemark[]
-    }
-  }
-}
+type P = PageProps<{ allMarkdownRemark: { nodes: MarkdownRemark[] } }>
 
-const BlogIndex: FC<P> = ({ data }) => {
+const BlogIndex: FC<P> = ({ data }: P) => {
   return (
     <Layout>
       <SEO title="홈" />
