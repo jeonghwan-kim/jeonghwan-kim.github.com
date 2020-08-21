@@ -33,7 +33,7 @@
 
     article {
       // HACK: 안그러면 우측에 추가공간 생김
-      overflow-x: hidden;
+      // overflow-x: hidden;
       flex: 1;
       header {
         margin-bottom: 7 * $spacing-unit;
@@ -53,23 +53,23 @@
         font-family: $article-font-family;
         h1 {
           font-size: 200%;
-          padding-top: 20px;
+          margin-top: 20px;
         }
         h2 {
           font-size: 180%;
-          padding-top: 18px;
+          margin-top: 18px;
         }
         h3 {
           font-size: 160%;
-          padding-top: 16px;
+          margin-top: 16px;
         }
         h4 {
           font-size: 140%;
-          padding-top: 14px;
+          margin-top: 14px;
         }
         h5 {
           font-size: 120%;
-          padding-top: 12px;
+          margin-top: 12px;
         }
         h1,
         h2,
