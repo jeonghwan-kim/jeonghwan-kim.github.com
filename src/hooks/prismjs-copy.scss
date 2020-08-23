@@ -1,0 +1,7 @@
+@import "../sass/variables.scss";
+
+@media (max-width: $tablet-width - 1) {
+  button.copy {
+    display: none;
+  }
+}

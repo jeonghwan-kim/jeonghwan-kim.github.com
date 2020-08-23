@@ -1,40 +1,20 @@
+import { graphql, Link, PageProps } from "gatsby"
 import React from "react"
-
-import Layout from "../components/layout/layout"
-import SEO from "../components/seo"
-import { graphql, useStaticQuery, Link } from "gatsby"
-
-import "./tags.scss"
 import Content, { Section } from "../components/content"
 import Icon from "../components/icon"
+import Layout from "../components/layout/layout"
+import SEO from "../components/seo"
+import { MarkdownRemark } from "../models/markdown-remark"
+import "./tags.scss"
 
-const TagPage = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          url
-        }
-      }
-      allMarkdownRemark {
-        nodes {
-          frontmatter {
-            tags
-            title
-            permalink
-            category
-          }
-          fields {
-            slug
-            date
-          }
-        }
-      }
-    }
-  `)
+type P = PageProps<{
+  site: any
+  allMarkdownRemark: { nodes: MarkdownRemark[] }
+}>
 
+const TagPage: React.FC<P> = ({ data }) => {
   const d1: {
-    [k in string]: { link: string; title: string; date: Date }[]
+    [k in string]: { link: string; title: string; date: string }[]
   } = {}
 
   data.allMarkdownRemark.nodes.forEach(node => {
@@ -112,3 +92,27 @@ const TagPage = () => {
 }
 
 export default TagPage
+
+export const data = graphql`
+  query {
+    site {
+      siteMetadata {
+        url
+      }
+    }
+    allMarkdownRemark {
+      nodes {
+        frontmatter {
+          tags
+          title
+          permalink
+          category
+        }
+        fields {
+          slug
+          date
+        }
+      }
+    }
+  }
+`
