@@ -98,13 +98,10 @@
             color: lighten($black-color, 60%);
           }
         }
-        .highlight {
+        .gatsby-highlight {
           border-radius: $spacing-unit / 2;
           overflow-x: scroll;
-        }
-        pre.highlight {
-          padding: $spacing-unit * 2 $spacing-unit * 3;
-          margin: 0;
+          max-width: 694px;
         }
       }
       .post-meta {
