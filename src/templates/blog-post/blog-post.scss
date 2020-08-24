@@ -34,7 +34,8 @@
     article {
       // HACK: 안그러면 우측에 추가공간 생김
       // overflow-x: hidden;
-      flex: 1;
+      flex: 1 0 0%;
+      min-width: 0%;
       header {
         margin-bottom: 7 * $spacing-unit;
         h1 {
@@ -99,9 +100,18 @@
           }
         }
         .gatsby-highlight {
-          border-radius: $spacing-unit / 2;
-          overflow-x: scroll;
-          max-width: 694px;
+          // overflow-x: scroll;
+          // width: 100%;
+          // max-width: 694px;
+          // @media (max-width: $mobile-width) {
+          //   max-width: $mobile-width;
+          // }
+          pre {
+            border-radius: $spacing-unit / 2;
+            overflow: auto;
+            word-wrap: normal;
+            white-space: pre;
+          }
         }
       }
       .post-meta {
