@@ -32,7 +32,7 @@ tags: [gatsby, prefetch]
 
 ```html
 <body>
-  <script src="app.js"></script>
+  <script src="page-1.js"></script>
 </body>
 ```
 
@@ -44,16 +44,16 @@ src 속성에 선언한 uri가 있다면 외부 자바스크립트 파일을 다
 
 ```html
 <head>
-  <!-- body에서 사용할 app.js 파일을 미리 다운로드 한다. -->
-  <link rel="preload" href="app.js" as="script" />
+  <!-- body에서 사용할 page-1.js 파일을 미리 다운로드 한다. -->
+  <link rel="preload" href="page-1.js" as="script" />
 </head>
 <body>
-  <script src="app.js"></script>
+  <script src="page-1.js"></script>
 </body>
 ```
 
 rel="preload" 로 선언한 프리로드는 브라우져가 렌더링하기 전에 리소스를 다운로드하기 시작한다.
-그리고 나서 바디 영역의 script 태그에서 app.js 사용하려고 할 때 이미 다운로드 완료한 app.js를 바로 실행할 수 있다.
+그리고 나서 바디 영역의 script 태그에서 page-1.js 사용하려고 할 때 이미 다운로드 완료한 page-1.js를 바로 실행할 수 있다.
 
 이전 코드와 다른르게 이러한 효과가 있다([참고](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content)).
 
@@ -103,16 +103,16 @@ rel="preload" 로 선언한 프리로드는 브라우져가 렌더링하기 전�
 ```
 /public
   /page-data
-    /index
+    /page-1
       page-data.json
     /page-2
       page-data.json
-  /component---src-pages-index-js-c30d7ecfca49b0dee715.js
+  /component---src-pages-page-1-js-c30d7ecfca49b0dee715.js
   /component---src-pages-page-2-js-c30d7ecfca49b0dee715.js
 ```
 
 설명을 위해 결과물을 단순하게 정리했다.
-두 개 페이지 /index, /page-2 가 있는데 각 페이지가 로딩할 자바스크립트가 생성되었다.
+두 개 페이지 /page-1, /page-2 가 있는데 각 페이지가 로딩할 자바스크립트가 생성되었다.
 
 - component---src-pages-{페이지 이름}-js-{해쉬}.js
 
@@ -124,39 +124,39 @@ rel="preload" 로 선언한 프리로드는 브라우져가 렌더링하기 전�
 
 ## 게츠비 프리로드
 
-빌드 결과물 중에 홈 화면인 index.html 파일을 보면 프리로드 관련한 코드를 발견할 수 있다.
+빌드 결과물 중에 홈 화면인 page-1.html 파일을 보면 프리로드 관련한 코드를 발견할 수 있다.
 
 ```html
 <head>
-  <!-- 1. 이 화면에서 사용할 청크 프리로드 -->
+  <!-- 1. 이 화면에서 사용할 청크를 미리 다운로드한다(프리로드). -->
   <link
     as="script"
     rel="preload"
-    href="/component---src-pages-index-js-c30d7ecfca49b0dee715.js"
+    href="/component---src-pages-page-1-js-c30d7ecfca49b0dee715.js"
   />
 </head>
 <body>
-  <!-- 2. 이 화면세ㅓ 사용할 청크 실행 -->
+  <!-- 2. 이 화면에서 사용할 청크를 실행한다. -->
   <script
-    src="/component---src-pages-index-js-c30d7ecfca49b0dee715.js"
+    src="/component---src-pages-page-1-js-c30d7ecfca49b0dee715.js"
     async=""
   ></script>
 </body>
 ```
 
-index 페이지에서 사용할 component---src-pages-index-js-c30d7ecfca49b0dee715.js 파일을 프리로드한다(1번).
+page-1에서 사용할 component---src-pages-page-1-js-{해쉬}.js 파일을 프리로드한다(1번).
 브라우져는 화면 렌더링을 차단하지 않고 파일을 다운로드 할 것이다.
 
-리소를를 사용할 시점(2번)에 가서는 이 파일의 다운로드가 완료되어 있을 것이고, 그래서 바로 실행할 수 있다.
+리소를를 사용할 시점에 가서는 이 파일의 다운로드가 완료되어 있을 것이고, 그래서 바로 실행할 수 있다(2번).
 
 ## 게츠비 프리패치
 
-단순하게 추가된 프리로드와 달리 프리패치는 두 가지 시점에서 발생한다.
+비교적 단순한 프리로드와 달리 프리패치는 두 가지 시점에서 발생한다.
 
 1. 링크 컴포넌트가 마운트 되었을 때
 1. 링크에 hover 이벤트가 발생했을 때
 
-게츠비링크(GatsbyLink) 컴포넌트와 로더(BaseLoader, ProdLoader) 클래스가 주요 인물이다.
+게츠비 프리패치에서는 **게츠비링크(GatsbyLink)** 컴포넌트와 **로더(BaseLoader, ProdLoader)** 클래스가 주요 인물이다.
 
 ### 링크 컴포넌트 마운트 시
 
@@ -164,13 +164,15 @@ index 페이지에서 사용할 component---src-pages-index-js-c30d7ecfca49b0dee
 
 reach-router 패키지의 Link 컴포넌트를 확장한 GatsbyLink는 프리패치를 트리거하는 코드를 두 군데 가지고 있다.
 
-```js
+```jsx
 class GatsbyLink extends React.Component {
   // 1. 컴포넌트가 마운트 되었을 때: 로더에 경로를 추가한다
   // -> prefetch 유도
   componentDidMount() {
     ___loader.enqueue(
-      parsePath(rewriteLinkPath(this.props.to, window.location.pathname)).pathname
+      parsePath(
+        rewriteLinkPath(this.props.to, window.location.pathname)
+      ).pathname
     )
   }
 
@@ -178,7 +180,11 @@ class GatsbyLink extends React.Component {
     // 2. hover 이벤트 발생시: 로더의 hovering() 메소드를 호출한다
     // -> prefetch 유도
     return (
-      <Link onMouseEnter={e => ___loader.hovering(parsePath(prefixedTo).pathname)} />
+      <Link
+        onMouseEnter={e => (
+          ___loader.hovering(parsePath(prefixedTo).pathname)
+        )}
+      />
   }
 }
 ```
@@ -210,34 +216,35 @@ class BaseLoader {
 }
 
 class ProdLoader extends BaseLoader {
-  // 2. prefetch 시작한다
   doPrefetch(pagePath) {
-    // 2.1 page-data.json 경로를 만든다
-    // /page-data/page-2/page-data.json
+    // 2. page-data.json 경로를 만든다
+    //    /page-data/page-2/page-data.json
     const pageDataUrl = createPageDataUrl(pagePath)
 
-    // 2.2 링크 태그를 돔에 추가해 리소스를 다운로드 한다
-    // <link rel="prefetch" herf="page-data.json" as="fetch">
+    // 3. 링크 태그를 돔에 추가해 리소스를 다운로드 한다
+    //    <link rel="prefetch" herf="page-data.json" as="fetch">
     return prefetchHelper(pageDataUrl, { as: `fetch` }).then(result => {
-      // 2.3 page-data에서 받은 청크 이름을 얻는다
-      // /component---src-pages-page-2-js.js
+      // 4. page-data.json에서 청크 이름을 조회한다
+      //    /component---src-pages-page-2-js.js
       const chunkName = result.payload.componentChunkName
 
-      // 2.4 청크 이름과 컴포넌트 매핑테이블로 컴포넌트 리소스 uri를 만든다
-      // /component---src-pages-page-2-js-ef8c063115e3c48e159a.js
+      // 5. 청크 이름과 컴포넌트 매핑테이블로 컴포넌트 리소스 uri를 만든다
+      //    /component---src-pages-page-2-js-ef8c063115e3c48e159a.js
       const componentUrls = createComponentUrls(chunkName)
 
-      // 2.5 링크 태그를 돔에 추가해 리소스를 다운로드 한다
-      // <link rel="prefetch" href="/component---src-pages-page-2-js-ef8c063115e3c48e159a.js">
+      // 6. 링크 태그를 돔에 추가해 리소스를 다운로드 한다
+      //    <link
+      //      rel="prefetch"
+      //      href="/component---src-pages-page-2-js-ef8c063115e3c48e159a.js">
       return Promise.all(componentUrls.map(prefetchHelper))
     })
   }
 }
 ```
 
-게츠비 링크는 로더의 prefetch() 메소드를 호출하는데 이는 걷장 doPrefetch() 메소드를 호출한다(1).
+게츠비 링크는 로더의 prefetch() 메소드를 호출하는데 이는 곧장 doPrefetch() 메소드를 호출한다(1).
 
-프리패치는 링크 경로를 인자로 받는데 이걸로 다음 페이지의 page-data.json 파일의 uri를 계산한다(2.1).
+다음 페이지 링크의 경로를 인자로 받는데 이걸 이용해서 다음 페이지와 관련된 page-data.json 파일의 uri를 계산한다(2).
 
 ```js
 const createPageDataUrl = path => {
@@ -245,8 +252,8 @@ const createPageDataUrl = path => {
 }
 ```
 
-빌드한 public 폴더에 있는 page-2의 파일 이다.
-이걸 프리패치하는데 prefetchHelper() 함수가 하는 역할이다(2.2).
+빌드한 public 폴더를 보면 있는 public/page-data/page-2/page-data.json 이 위치해 있는데 이 파일을 가리키는 주소다.
+이걸 프리패치하는 것이 prefetchHelper() 함수의 역할이다(3).
 이 함수는 문서 head에 link를 동적으로 삽입해서 브라우져가 프리패치하도록 유도한다.
 
 ```js
@@ -275,7 +282,7 @@ const linkPrefetchStrategy = function (url, options) {
 }
 ```
 
-이렇게 해서 받은 json 데이터는 다음과 같은 형식이다.
+이렇게 해서 미리 다운로드한 page-data.json 데이터는 다음과 같은 형식이다.
 
 ```json
 {
@@ -287,21 +294,22 @@ const linkPrefetchStrategy = function (url, options) {
 }
 ```
 
-링크에 연결된 페이지가 사용할 청크 이름(componentChunName)이 있다.
-이걸로 다음 페지이의 청크를 프리패치하면 되겠다.
+page-2 화면이 사용할 청크 이름(componentChunName)을 찾을 수 있다.
+이걸 이용해 다음 화면에서 사용할 청크를 미리 가져오려는 의도다.
 
-하지만 청크이름 형식을 보면 뒤에 해쉬값이 붙어있다.
-이 해쉬값까지 더해 주어야하는데 미리 준비해둔 화면-청크 매핑 테이블을 사용하면 된다(2.4).
+하지만 빌드된 청크이름 형식을 보면 뒤에 맨 마지막에 해쉬값이 따라온다.
+이 해쉬값까지 더해 주어야 비로소 유효한 uri를 완성할 수 있는데 이때 사용하라고 게츠비는 빌드시 매핑 테이블을 미리 준비해 두었다.
+브라우져 개발자 도구로 window.\_\_\_chunkMapping 값을 확인하며 이것이 바로 매핑 테이블이다.
 
 ```js
-// window.___chunkMapping;
-
 {
   "component---src-pages-page-2-js": [
     "/component---src-pages-page-2-js-ef8c063115e3c48e159a.js"
   ]
 }
 ```
+
+이 테이블을 이용해 uri를 구성하는 코드가 createComponentUrls() 함수다(5).
 
 ```js
 const createComponentUrls = componentChunkName =>
@@ -310,60 +318,62 @@ const createComponentUrls = componentChunkName =>
   )
 ```
 
-화면에서 사용할 청크 목록을 가지고 있는데 이 주소를 추출해서 프리패치한다(2.5).
+page-data.json을 프리패치 해온 것 처럼 완성한 청크 uri들을 마지막으로 한 번 더 프리패치 한다(6).
 
-정리하면,
+간단히 정리하면 게츠비링크는 마운트 시점에 이런 순서로 동작한다
 
-- 게츠비링크가 마운트되는 시점에
-- 링크의 페이지 데이터를 가져와 청크 이름을 조회한다
-- 청크 이름으로 청크 uri를 계산하고 리소스를 가져온다
+- 링크의 페이지 데이터(pgae-data.json)를 가져와 청크 이름을 조회한다
+- 맵핑 테이블로 청크 uri(component---src-pages-{페이지 이름}-{해쉬})를 계산하고 이 리소스를 가져온다
 
-이렇게 현재 문서의 링크에 연결된 화면의 리소스를 미리 가져온다.
+### 링크에 hover 이벤트 발생 시
 
-### 링크 hover 시
-
-두번째 hovering() 메소드를 보자
+두 번째, 링크에 마우스를 올려 hover 이벤트가 발생했을 때 실행되는 로더의 hovering() 메소드는 어떻게 동작할까?
 
 ```js
 class BaseLoader {
-  // 1. hovering()
+  // 1.
   hovering(rawPath) {
     this.loadPage(rawPath)
   }
 
-  // 2. loadPage
   loadPage(rawPath) {
     const pagePath = findPath(rawPath)
     const inFlightPromise = Promise.all([
       this.loadAppData(),
 
-      // 3. page-data.json을 가져온다
+      // 2. page-data.json을 가져온다
       this.loadPageDataJson(pagePath),
     ])
     const result = allData[1]
 
-    // 4. 청크 이름을 조회한다
+    // 3. 청크 이름을 조회한다
     const { componentChunkName } = result.payload
 
-    // 5. 청크를 프리패치한다
+    // 4. 청크를 프리패치한다
     const componentChunkPromise = this.loadComponent(componentChunkName).then(
   }
 }
 ```
 
-하이퍼링크에 포커스하면 프리패칭을 시작한다(1, 2).
+외부에 호출된 hovering()은 곧장 loadPage() 메소드를 호출한다(1).
 
-json데이터를 가져온다(3).
+이것도 마찬가지로 다음 페이지에서 사용할 청크 이름을 가져오기 위해 page-data.json을 가져온다(2).
 
-청크 이름을 조회한다(4).
+가져온 데이터에서 청크 이름을 추출한 뒤(3), 청크를 가져온다.
 
-청크를 프리패치한다(5).
-loadComponent는 어떻게 동작하는지 잘 모르겠다.
-
-결과만 보고 추측하자면 마운트와 동일하게 동작한다.
+브라우저에서 동작하는 모습을 보면 이전과 비슷하게 프리패치하는 것 같은데 loadComponent()의 역할인 듯 하다.
+loadComponent()의 정확한 원리는 잘 모르겠다.
 
 # 결론
 
-- 원리 요약
-- 브라우져 성능을 위한 기술을 계속 발전하는 구나
-- 공부 지속해야함.
+게츠비에서 화면 로딩 속도를 끌어 올리기위해 프리로드와 프리패치 두 개를 모두 사용하는 걸 보았다.
+
+MDN 문서에서 나온 기본 원리를 따르고 있지만 게츠비만의 노하우도 있었다.
+화면 별로 사용할 정적 자원을 작은 코드 조각으로 먼저 나누어 두었다.
+그리고나서 페이지를 방문하거나 멀지 않은 미래에 방문할 것이라 판단되면 이 작은 코드 조각들을 미리가져온다.
+다운로드할 파일을 쪼개어 놓았기 때문에 기본적으로 다운로드 속도가 빠르다.
+게다가 미리 미리 자원을 확보해 놓기때문에 화면 로딩도 빠르게 체감된다.
+
+이렇게 브라우져 성능을 위한 기술은 계속 발전하는 것 같다.
+웹 서비스를 만들때 기능 구현하는 것에만 매몰되다보니 성능 관련한 처리는 해볼기회가 많지는 않았다.
+물론 처음부터 이런걸 챙겨갈수 있는 형편은 못되지만 이러한 노력을 미리 알고 준비해 두어야겠다.
