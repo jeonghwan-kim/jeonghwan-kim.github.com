@@ -34,7 +34,8 @@
     article {
       // HACK: 안그러면 우측에 추가공간 생김
       // overflow-x: hidden;
-      flex: 1;
+      flex: 1 0 0%;
+      min-width: 0%;
       header {
         margin-bottom: 7 * $spacing-unit;
         h1 {
@@ -98,13 +99,19 @@
             color: lighten($black-color, 60%);
           }
         }
-        .highlight {
-          border-radius: $spacing-unit / 2;
-          overflow-x: scroll;
-        }
-        pre.highlight {
-          padding: $spacing-unit * 2 $spacing-unit * 3;
-          margin: 0;
+        .gatsby-highlight {
+          // overflow-x: scroll;
+          // width: 100%;
+          // max-width: 694px;
+          // @media (max-width: $mobile-width) {
+          //   max-width: $mobile-width;
+          // }
+          pre {
+            border-radius: $spacing-unit / 2;
+            overflow: auto;
+            word-wrap: normal;
+            white-space: pre;
+          }
         }
       }
       .post-meta {
