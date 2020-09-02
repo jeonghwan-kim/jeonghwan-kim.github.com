@@ -188,7 +188,7 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <h2 id="웹팩-빌드-설정" style="position:relative;"><a href="#%EC%9B%B9%ED%8C%A9-%EB%B9%8C%EB%93%9C-%EC%84%A4%EC%A0%95" aria-label="웹팩 빌드 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>웹팩 빌드 설정</h2>
 <p>타입스크립트로 작성한 코드를 브라우져에서 인식할 수 있는 코드로 변경하기 위해 웹팩으로 빌드 환경을 구성해 보겠다.</p>
 <p>먼저 타입스크립트 로더인 ts-loader와 웹팩 패키지를 설치한다.</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save-dev ts-loader webpack weboack-cli</code></pre></div>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save-dev ts-loader webpack webpack-cli</code></pre></div>
 <p>webpack.config.js 파일을 만들어 아래 내용으로 웹팩 설정을 구성한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   mode<span class="token operator">:</span> <span class="token string">"development"</span><span class="token punctuation">,</span>
@@ -266,7 +266,41 @@ webpack-dev-server를 이용하면 이러한 일련의 과정을 자동화 할 �
 <p>등록한 스크립트로 개발 서버를 실행하면 웹팩 서버가 구동되서 8080 포트에서 확인 할 수 있다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm start</code></pre></div>
 <p>코드가 변경되면 이를 감지해서 웹팩이 실행행되어 타입스크립트 코드가 트랜파일 되고 8080포트에 접속한 브라우져가 자동으로 갱신될 것이다.</p>
-<p><img src="/assets/imgs/2019/06/25/capture.jpg" alt="결과 캡쳐"></p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 726px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/6c9c55903f1faac825d7e5539ef83747/f41ad/capture.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 57.692307692307686%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAEDBAX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHRdgESB//EABkQAAIDAQAAAAAAAAAAAAAAAAABAhQhEv/aAAgBAQABBQKuVkQjwtNEf//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EAB0QAAEEAgMAAAAAAAAAAAAAAAABAxExEDNxkZL/2gAIAQEABj8C2Odm130RKryWXj//xAAcEAACAgIDAAAAAAAAAAAAAAABIQAREHExUaH/2gAIAQEAAT8hFmXdYgRX+TszbNvkBM3P/9oADAMBAAIAAwAAABCwD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EAB0QAAICAgMBAAAAAAAAAAAAAAABESFh0TFB8PH/2gAIAQEAAT8QZVFa0+x0S6xbs2SlJKWFo8VoTyY08s//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="결과 캡쳐"
+        title="결과 캡쳐"
+        src="/static/6c9c55903f1faac825d7e5539ef83747/fee13/capture.jpg"
+        srcset="/static/6c9c55903f1faac825d7e5539ef83747/5fc5d/capture.jpg 182w,
+/static/6c9c55903f1faac825d7e5539ef83747/accec/capture.jpg 363w,
+/static/6c9c55903f1faac825d7e5539ef83747/fee13/capture.jpg 726w,
+/static/6c9c55903f1faac825d7e5539ef83747/934bb/capture.jpg 1089w,
+/static/6c9c55903f1faac825d7e5539ef83747/fcb1e/capture.jpg 1452w,
+/static/6c9c55903f1faac825d7e5539ef83747/f41ad/capture.jpg 1682w"
+        sizes="(max-width: 726px) 100vw, 726px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">결과 캡쳐</figcaption>
+  </figure></p>
 <h2 id="정리" style="position:relative;"><a href="#%EC%A0%95%EB%A6%AC" aria-label="정리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>정리</h2>
 <p>간단하게 타입스크립트로 리액트 개발환경을 만들어 보았다.
 자바스크립트에 비해 타입스크립트의 장점은 뭘까?</p>
