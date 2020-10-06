@@ -834,7 +834,7 @@ new HtmlWebpackPlugin({
 ([문서에는 minifiy 옵션이 웹팩 버전 3 기준으로 되어 있다](https://github.com/jantimon/html-webpack-plugin/issues/1094))
 
 환경변수에 따라 minify 옵션을 켰다.
-`NOE_ENV=production npm run build`로 빌드하면 아래처럼 코드가 압축된다.
+`NODE_ENV=production npm run build`로 빌드하면 아래처럼 코드가 압축된다.
 물론 주석도 제거 되었다.
 
 ![HtmlWebpackPlugin 2](./img/11/html-template-plugin-2.jpg)
