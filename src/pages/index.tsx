@@ -6,7 +6,6 @@ import Layout from "../components/layout/layout"
 import PostList, { PostItemType } from "../components/post-list"
 import SEO from "../components/seo"
 import { MarkdownRemark } from "../models/markdown-remark"
-import "./index.scss"
 
 const videos: PostItemType[] = [
   {
