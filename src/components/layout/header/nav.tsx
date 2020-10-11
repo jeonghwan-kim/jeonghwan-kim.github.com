@@ -1,6 +1,6 @@
 import React from "react"
-import "./nav.scss"
 import { Link } from "gatsby"
+import * as Styled from "./style"
 
 interface P {
   to?: string
@@ -20,7 +20,7 @@ const Nav: React.FC<P> = ({ to, href, onClick, children }) => {
     },
   }
   return (
-    <div className="site-nav">
+    <Styled.NavItem>
       {href ? (
         <a {...linkProps} href={href}>
           {children}
@@ -30,7 +30,7 @@ const Nav: React.FC<P> = ({ to, href, onClick, children }) => {
           {children}
         </Link>
       )}
-    </div>
+    </Styled.NavItem>
   )
 }
 

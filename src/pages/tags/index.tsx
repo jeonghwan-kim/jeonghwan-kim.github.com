@@ -1,11 +1,12 @@
 import { graphql, Link, PageProps } from "gatsby"
 import React from "react"
-import Content, { Section } from "../../components/content"
+import Content, { Section } from "../../components/layout/content"
 import Icon from "../../components/icon"
-import Layout from "../../components/layout/layout"
+import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import { MarkdownRemark } from "../../models/markdown-remark"
 import * as Styled from "./style"
+import { IconType } from "../../components/Icon/style"
 
 type P = PageProps<{
   site: any
@@ -54,7 +55,7 @@ const TagPage: React.FC<P> = ({ data }) => {
         <Section
           title={
             <>
-              <Icon type="tag" size={4} />
+              <Icon type={IconType.Tag} size={4} />
               태그
             </>
           }

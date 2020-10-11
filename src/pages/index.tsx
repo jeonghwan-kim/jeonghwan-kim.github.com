@@ -1,11 +1,12 @@
 import { graphql, Link, PageProps } from "gatsby"
 import React, { FC } from "react"
-import Content, { Section } from "../components/content"
+import Content, { Section } from "../components/layout/content"
 import Icon from "../components/icon"
-import Layout from "../components/layout/layout"
+import Layout from "../components/layout"
 import PostList, { PostItemType } from "../components/post-list"
 import SEO from "../components/seo"
 import { MarkdownRemark } from "../models/markdown-remark"
+import { IconType } from "../components/Icon/style"
 
 const videos: PostItemType[] = [
   {
@@ -79,7 +80,7 @@ const BlogIndex: FC<P> = ({ data }: P) => {
         <Section
           title={
             <>
-              <Icon type="video" size={4} />
+              <Icon type={IconType.Video} size={4} />
               <span id="videos">VIDEOS</span>
             </>
           }

@@ -1,8 +1,6 @@
-import React, { FC, ReactNode } from "react"
-import { MarkdownRemark, Frontmatter, Fields } from "../models/markdown-remark"
 import { Link } from "gatsby"
-
-import "./post-list.scss"
+import React, { FC, ReactNode } from "react"
+import * as Styled from "./style"
 
 export interface PostItemType {
   title: ReactNode
@@ -16,26 +14,27 @@ export interface P {
 
 const PostList: FC<P> = ({ posts }) => {
   return (
-    <ul id="post-list" className="post-list">
+    <Styled.PostList id="post-list">
       {posts.map(({ title, slug, meta, excerpt }) => {
         return (
-          <li key={slug} className="post-item">
+          <Styled.PostItem key={slug}>
             <Link to={slug}>
-              <h2 className="post-item-title">{title}</h2>
-              {meta && <div className="post-item-meta">{meta}</div>}
+              <Styled.PostTitle className="post-item-title">
+                {title}
+              </Styled.PostTitle>
+              {meta && <Styled.PostMeta>{meta}</Styled.PostMeta>}
               {excerpt && (
-                <p
-                  className="post-item-summary"
+                <Styled.PostSummary
                   dangerouslySetInnerHTML={{
                     __html: excerpt,
                   }}
-                ></p>
+                />
               )}
             </Link>
-          </li>
+          </Styled.PostItem>
         )
       })}
-    </ul>
+    </Styled.PostList>
   )
 }
 

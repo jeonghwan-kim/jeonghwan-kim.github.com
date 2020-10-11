@@ -1,12 +1,13 @@
 import { graphql, Link } from "gatsby"
 import React, { FC } from "react"
-import Content, { Section } from "../../components/content"
-import Layout from "../../components/layout/layout"
+import Content, { Section } from "../../components/layout/content"
+import Layout from "../../components/layout"
 import PostList from "../../components/post-list"
 import SEO from "../../components/seo"
 import { MarkdownRemark } from "../../models/markdown-remark"
 import Icon from "../../components/icon"
 import * as Styled from "./style"
+import { IconType } from "../../components/Icon/style"
 
 interface CateogryPostsProps {
   title: string
@@ -63,7 +64,7 @@ export const CateogryPosts: FC<CateogryPostsProps> = ({
       <Section
         title={
           <>
-            <Icon type="article" size={4} />
+            <Icon type={IconType.Article} size={4} />
             {title}
           </>
         }

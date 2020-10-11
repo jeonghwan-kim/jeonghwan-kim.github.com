@@ -1,5 +1,7 @@
+import { Link } from "gatsby"
 import React from "react"
-import Button from "../../components/button"
+import Button from "../../components/Button"
+import { ButtonType } from "../../components/button/style"
 
 import "./post-tag.scss"
 
@@ -13,7 +15,7 @@ const PostTag: React.FC<P> = ({ tags }) => {
       {tags.map(tag => {
         return (
           <li>
-            <Button type="secondary" link to={`/tags/#${tag}`}>
+            <Button type={ButtonType.Secondary} link to={`/tags/#${tag}`}>
               #{tag}
             </Button>
           </li>
