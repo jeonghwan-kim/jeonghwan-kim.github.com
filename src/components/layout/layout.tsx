@@ -8,6 +8,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React, { FC, ReactNode, useEffect, useState } from "react"
 import "../../sass/main.scss"
+import GlobalStyle from "../../styles/GlobalStyle"
 import Footer from "./footer"
 import Header from "./header"
 import layoutStore from "./layout-store"
@@ -44,38 +45,41 @@ const Layout: FC<P> = p => {
 
   const { author, title, social } = data.site.siteMetadata
   return (
-    <div className="layout">
-      <Header
-        {...p}
-        siteTitle={title}
-        githubUsername={social.githubUsername}
-        email={social.email}
-      />
-      {p.aside ? (
-        <div className="container flex">
-          <aside className="aside-left">{p.aside}</aside>
-          <div>
-            <main className="has-aside">{p.children}</main>
+    <>
+      <GlobalStyle />
+      <div className="layout">
+        <Header
+          {...p}
+          siteTitle={title}
+          githubUsername={social.githubUsername}
+          email={social.email}
+        />
+        {p.aside ? (
+          <div className="container flex">
+            <aside className="aside-left">{p.aside}</aside>
+            <div>
+              <main className="has-aside">{p.children}</main>
+              <Footer
+                author={author}
+                githubUsername={social.githubUsername}
+                email={social.email}
+              />
+            </div>
+          </div>
+        ) : (
+          <>
+            <main className="container">{p.children}</main>
             <Footer
               author={author}
               githubUsername={social.githubUsername}
               email={social.email}
             />
-          </div>
-        </div>
-      ) : (
-        <>
-          <main className="container">{p.children}</main>
-          <Footer
-            author={author}
-            githubUsername={social.githubUsername}
-            email={social.email}
-          />
-        </>
-      )}
+          </>
+        )}
 
-      {modals.map(modal => React.cloneElement(modal))}
-    </div>
+        {modals.map(modal => React.cloneElement(modal))}
+      </div>
+    </>
   )
 }
 

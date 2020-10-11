@@ -1,11 +1,11 @@
 import { graphql, Link, PageProps } from "gatsby"
 import React from "react"
-import Content, { Section } from "../components/content"
-import Icon from "../components/icon"
-import Layout from "../components/layout/layout"
-import SEO from "../components/seo"
-import { MarkdownRemark } from "../models/markdown-remark"
-import "./tags.scss"
+import Content, { Section } from "../../components/content"
+import Icon from "../../components/icon"
+import Layout from "../../components/layout/layout"
+import SEO from "../../components/seo"
+import { MarkdownRemark } from "../../models/markdown-remark"
+import * as Styled from "./style"
 
 type P = PageProps<{
   site: any
@@ -59,32 +59,30 @@ const TagPage: React.FC<P> = ({ data }) => {
             </>
           }
         >
-          <div className="tag-list">
-            {d2.map(item => {
-              return (
-                <div className="tag-item">
-                  <h2 id={item.tag}>
-                    <Link to={`#${item.tag}`} className="tag-title-link">
-                      #{item.tag}
-                    </Link>
-                  </h2>
-                  <ul className="post-list">
-                    {item.node
-                      .sort((a, b) => {
-                        return a.date > b.date ? -1 : 1
-                      })
-                      .map(node => {
-                        return (
-                          <li key={node.link}>
-                            <Link to={node.link}>{node.title}</Link>
-                          </li>
-                        )
-                      })}
-                  </ul>
-                </div>
-              )
-            })}
-          </div>
+          {d2.map(item => {
+            return (
+              <Styled.TagItem>
+                <Styled.TagName id={item.tag}>
+                  <Link to={`#${item.tag}`} className="tag-title-link">
+                    #{item.tag}
+                  </Link>
+                </Styled.TagName>
+                <Styled.TagPostList>
+                  {item.node
+                    .sort((a, b) => {
+                      return a.date > b.date ? -1 : 1
+                    })
+                    .map(node => {
+                      return (
+                        <Styled.TagPostItem key={node.link}>
+                          <Link to={node.link}>{node.title}</Link>
+                        </Styled.TagPostItem>
+                      )
+                    })}
+                </Styled.TagPostList>
+              </Styled.TagItem>
+            )
+          })}
         </Section>
       </Content>
     </Layout>
