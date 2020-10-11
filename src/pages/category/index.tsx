@@ -6,8 +6,7 @@ import PostList from "../../components/post-list"
 import SEO from "../../components/seo"
 import { MarkdownRemark } from "../../models/markdown-remark"
 import Icon from "../../components/icon"
-
-import "./category.scss"
+import * as Styled from "./style"
 
 interface CateogryPostsProps {
   title: string
@@ -23,42 +22,40 @@ export const CateogryPosts: FC<CateogryPostsProps> = ({
   <Layout
     hasHeaderBorder
     aside={
-      <div className="category-list">
-        <ul>
-          <li>
-            <label>글분류</label>
-          </li>
-          <li>
-            <Link to="/category" className={!activeCategory ? "active" : ""}>
-              모든글
-            </Link>{" "}
-          </li>
-          <li>
-            <Link
-              to="/category/series"
-              className={activeCategory === "series" ? "active" : ""}
-            >
-              연재물
-            </Link>{" "}
-          </li>
-          <li>
-            <Link
-              className={activeCategory === "dev" ? "active" : ""}
-              to="/category/dev"
-            >
-              개발
-            </Link>{" "}
-          </li>
-          <li>
-            <Link
-              to="/category/think"
-              className={activeCategory === "think" ? "active" : ""}
-            >
-              생각
-            </Link>{" "}
-          </li>
-        </ul>
-      </div>
+      <Styled.CategoryList>
+        <Styled.CategoryListItem>
+          <label>글분류</label>
+        </Styled.CategoryListItem>
+        <Styled.CategoryListItem>
+          <Link to="/category" className={!activeCategory ? "active" : ""}>
+            모든글
+          </Link>{" "}
+        </Styled.CategoryListItem>
+        <Styled.CategoryListItem>
+          <Link
+            to="/category/series"
+            className={activeCategory === "series" ? "active" : ""}
+          >
+            연재물
+          </Link>{" "}
+        </Styled.CategoryListItem>
+        <Styled.CategoryListItem>
+          <Link
+            className={activeCategory === "dev" ? "active" : ""}
+            to="/category/dev"
+          >
+            개발
+          </Link>{" "}
+        </Styled.CategoryListItem>
+        <Styled.CategoryListItem>
+          <Link
+            to="/category/think"
+            className={activeCategory === "think" ? "active" : ""}
+          >
+            생각
+          </Link>{" "}
+        </Styled.CategoryListItem>
+      </Styled.CategoryList>
     }
   >
     <SEO title={`분류: ${title}`} />
