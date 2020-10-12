@@ -1,7 +1,7 @@
 import React from "react"
-import "./post-video.scss"
 import { Video } from "../../models/site"
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
+import * as Styled from "./style"
 
 interface P {
   video: Video
@@ -9,7 +9,7 @@ interface P {
 
 const PostVideo: React.FC<P> = ({ video }) => {
   return (
-    <div className="post-video">
+    <Styled.PostVideo>
       <a
         id="post-video"
         href={video.url}
@@ -31,7 +31,7 @@ const PostVideo: React.FC<P> = ({ video }) => {
           </div>
         </div>
       </a>
-    </div>
+    </Styled.PostVideo>
   )
 }
 

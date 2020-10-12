@@ -1,17 +1,15 @@
 import React from "react"
 import {
-  TwitterShareButton,
-  TwitterIcon,
-  FacebookShareButton,
   FacebookIcon,
-  FacebookShareCount,
-  PocketShareButton,
+  FacebookShareButton,
   PocketIcon,
+  PocketShareButton,
+  TwitterIcon,
+  TwitterShareButton,
 } from "react-share"
 import { MarkdownRemark } from "../../models/markdown-remark"
 import { SiteMetadata } from "../../models/site"
-
-import "./post-share.scss"
+import * as Styled from "./style"
 
 interface P {
   markdownRemark: MarkdownRemark
@@ -27,8 +25,8 @@ const PostShare: React.FC<P> = ({ markdownRemark, siteMetadata }) => {
   const url = siteMetadata.url + markdownRemark.fields.slug
 
   return (
-    <ul className="post-share">
-      <li>
+    <Styled.ShareList>
+      <Styled.ShareItem>
         <TwitterShareButton
           url={url}
           hashtags={[
@@ -38,21 +36,21 @@ const PostShare: React.FC<P> = ({ markdownRemark, siteMetadata }) => {
         >
           <TwitterIcon {...iconProps} />
         </TwitterShareButton>
-      </li>
-      <li>
+      </Styled.ShareItem>
+      <Styled.ShareItem>
         <FacebookShareButton
           url={url}
           hashtag={"#" + siteMetadata.title.replace(/\s/g, "")}
         >
           <FacebookIcon {...iconProps} />
         </FacebookShareButton>
-      </li>
-      <li>
+      </Styled.ShareItem>
+      <Styled.ShareItem>
         <PocketShareButton url={url}>
           <PocketIcon {...iconProps} />
         </PocketShareButton>
-      </li>
-    </ul>
+      </Styled.ShareItem>
+    </Styled.ShareList>
   )
 }
 

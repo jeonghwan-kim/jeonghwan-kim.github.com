@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import ScrollSpy from "./scroll-spy"
-import "./post-toc.scss"
+import * as Styled from "./style"
 
 interface P {
   tableOfContents: string
@@ -12,13 +12,13 @@ const PostToc: React.FC<P> = ({ tableOfContents }) => {
     const headings = Array.from(
       post.querySelectorAll("h1,h2,h3,h4,h5,h6")
     ).filter((h: HTMLElement) => h.id)
-    const toc = document.querySelector(".post-toc")
+    const toc = document.querySelector("#post-toc")
     new ScrollSpy(toc as HTMLElement, headings as HTMLElement[])
   }, [])
 
   return (
-    <div
-      className="post-toc"
+    <Styled.Toc
+      id="post-toc"
       dangerouslySetInnerHTML={{ __html: tableOfContents }}
     />
   )

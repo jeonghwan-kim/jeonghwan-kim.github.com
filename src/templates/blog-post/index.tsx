@@ -4,7 +4,6 @@ import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import { MarkdownRemark } from "../../models/markdown-remark"
 import { Series, Site, Video } from "../../models/site"
-import "./blog-post.scss"
 import PostComment from "./post-comment"
 import PostShare from "./post-share"
 import PostTag from "./post-tag"
@@ -14,6 +13,7 @@ import SeriesNav from "./series-nav"
 import SiblingNav from "./sibling-nav"
 import Content, { Section } from "../../components/layout/content"
 import prismjsCopy from "../../hooks/prismjs-copy"
+import * as Styled from "./style"
 
 interface P {
   data: {
@@ -48,7 +48,7 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
         url={site.siteMetadata.url + markdownRemark.fields.slug}
         image={markdownRemark.frontmatter.featured_image}
       />
-      <Content className="blog-post container">
+      <Styled.BlogPost className="container">
         <div itemScope itemType="http://schema.org/BlogPosting">
           <Section>
             <main>
@@ -112,7 +112,7 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
             </footer>
           </Section>
         </div>
-      </Content>
+      </Styled.BlogPost>
     </Layout>
   )
 }

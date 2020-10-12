@@ -37,7 +37,7 @@ exports.crateBlogPost = async ({ graphql, actions }) => {
   posts.forEach((p, i) => {
     createPage({
       path: qs.unescape(p.fields.slug),
-      component: path.resolve(`./src/templates/blog-post/blog-post.tsx`),
+      component: path.resolve(`./src/templates/blog-post/index.tsx`),
       context: {
         slug: p.fields.slug,
         date: p.fields.date,

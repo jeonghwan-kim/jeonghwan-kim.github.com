@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React, { CSSProperties } from "react"
 import { MarkdownRemark } from "../../models/markdown-remark"
-import "./sibling-nav.scss"
+import * as Styled from "./style"
 
 interface SiblingNavItemProps {
   label: string
@@ -20,7 +20,7 @@ const SiblingNavItem: React.FC<SiblingNavItemProps> = p => {
     : (labelStyle.marginRight = 16)
 
   return (
-    <div className="sibling-nav-item">
+    <Styled.SiblingNavItem>
       <div className="label" style={labelStyle}>
         {p.label}
       </div>
@@ -31,7 +31,7 @@ const SiblingNavItem: React.FC<SiblingNavItemProps> = p => {
           {p.align === "right" && <i style={{ marginLeft: 8 }}>{p.icon}</i>}
         </div>
       </Link>
-    </div>
+    </Styled.SiblingNavItem>
   )
 }
 
@@ -42,7 +42,7 @@ interface P {
 
 const SiblingNav: React.FC<P> = p => {
   return (
-    <div className="sibling-nav">
+    <Styled.SiblingNav>
       {p.previous && (
         <SiblingNavItem
           label="이전글"
@@ -61,7 +61,7 @@ const SiblingNav: React.FC<P> = p => {
           url={p.next.fields.slug}
         />
       )}
-    </div>
+    </Styled.SiblingNav>
   )
 }
 export default SiblingNav

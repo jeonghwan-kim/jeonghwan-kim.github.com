@@ -1,10 +1,10 @@
 import { Link } from "gatsby"
 import React from "react"
-import "./series-nav.scss"
 import { Series } from "../../models/site"
 import { MarkdownRemark } from "../../models/markdown-remark"
 import Button from "../../components/Button"
 import { ButtonType } from "../../components/button/style"
+import * as Styled from "./style"
 
 interface P {
   series: Series
@@ -26,36 +26,36 @@ const SeriesNav: React.FC<P> = ({ series, posts, nodeId, lite, className }) => {
 
   function renderLite() {
     return (
-      <div className={`series-nav py-3 px-2 ${className || ""}`}>
-        <div className="mb-1">
-          <span className="series-title">{series.title}</span>
+      <Styled.SeriesNav className={`${className || ""}`}>
+        <Styled.SeriesNavTitle>
+          {series.title}
           <span className="series-order">
             (<span className="active">{curIdx + 1}</span>/{posts.length})
           </span>
-        </div>
-        <div className="series-controls flex">
+        </Styled.SeriesNavTitle>
+        <Styled.SeriesNavControls>
           {prev && (
-            <span className="prev align-left">
+            <Styled.SeriesNavPrev>
               <Button link type={ButtonType.Secondary} to={prev.fields.slug}>
                 « 이전
               </Button>
-            </span>
+            </Styled.SeriesNavPrev>
           )}
           {next && (
-            <span className="next align-right">
+            <Styled.SeriesNavNext>
               <Button link type={ButtonType.Secondary} to={next.fields.slug}>
                 다음 »
               </Button>
-            </span>
+            </Styled.SeriesNavNext>
           )}
-        </div>
-      </div>
+        </Styled.SeriesNavControls>
+      </Styled.SeriesNav>
     )
   }
 
   function renderDefault() {
     return (
-      <div className={`series-navigator px-2 pt-3 pb-2 ${className || ""}`}>
+      <Styled.SeriesNavigator className={`${className || ""}`}>
         <h3 className="series-title">{series.title}</h3>
         <div className="post-list">
           <ul>
@@ -73,7 +73,7 @@ const SeriesNav: React.FC<P> = ({ series, posts, nodeId, lite, className }) => {
             })}
           </ul>
         </div>
-      </div>
+      </Styled.SeriesNavigator>
     )
   }
 }

@@ -1,9 +1,7 @@
-import { Link } from "gatsby"
 import React from "react"
 import Button from "../../components/Button"
 import { ButtonType } from "../../components/button/style"
-
-import "./post-tag.scss"
+import * as Styled from "./style"
 
 interface P {
   tags: string[]
@@ -11,17 +9,17 @@ interface P {
 
 const PostTag: React.FC<P> = ({ tags }) => {
   return (
-    <ul className="post-tag">
+    <Styled.TagList>
       {tags.map(tag => {
         return (
-          <li>
+          <Styled.TagItem>
             <Button type={ButtonType.Secondary} link to={`/tags/#${tag}`}>
               #{tag}
             </Button>
-          </li>
+          </Styled.TagItem>
         )
       })}
-    </ul>
+    </Styled.TagList>
   )
 }
 
