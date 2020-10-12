@@ -1,6 +1,7 @@
 import { graphql } from "gatsby"
-import React, { FC, useEffect } from "react"
+import React, { FC } from "react"
 import Layout from "../../components/layout"
+import { Section } from "../../components/layout/content"
 import SEO from "../../components/seo"
 import { MarkdownRemark } from "../../models/markdown-remark"
 import { Series, Site, Video } from "../../models/site"
@@ -11,8 +12,6 @@ import PostToc from "./post-toc"
 import PostVideo from "./post-video"
 import SeriesNav from "./series-nav"
 import SiblingNav from "./sibling-nav"
-import Content, { Section } from "../../components/layout/content"
-import prismjsCopy from "../../hooks/prismjs-copy"
 import * as Styled from "./style"
 
 interface P {
@@ -34,10 +33,6 @@ interface P {
 const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
   const { site, markdownRemark, series, video } = data
   const { previous, next } = pageContext
-
-  useEffect(() => {
-    prismjsCopy()
-  }, [])
 
   return (
     <Layout hasHeaderBorder>

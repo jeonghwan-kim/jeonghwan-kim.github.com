@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { lighten } from "polished"
 import Content from "../../components/layout/content"
 import {
   Border,
@@ -98,14 +99,14 @@ export const BlogPost = styled(Content)`
           max-width: 100%;
         }
         blockquote {
-          color: lighten(${Colors.Black}, 20%);
+          color: ${lighten(0.2, Colors.Black)};
           position: relative;
           &::before {
             content: "“";
             position: absolute;
-            left: -${SpaceUnit()} * 3;
+            left: -${SpaceUnit(3)};
             font-size: 40px;
-            color: lighten(${Colors.Black}, 60%);
+            color: ${lighten(0.6, Colors.Black)};
           }
         }
         .gatsby-highlight {
