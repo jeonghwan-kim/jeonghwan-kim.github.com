@@ -6,7 +6,7 @@ import PostList from "../../components/PostList"
 import SEO from "../../components/seo"
 import { MarkdownRemark } from "../../models/markdown-remark"
 import Icon from "../../components/icon"
-import * as Styled from "./style"
+import * as Styled from "../../components/Category/style"
 import { IconType } from "../../components/Icon/style"
 
 interface CateogryPostsProps {

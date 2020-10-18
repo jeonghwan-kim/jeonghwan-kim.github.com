@@ -5,7 +5,7 @@ import Icon from "../../components/icon"
 import Layout from "../../components/layout"
 import SEO from "../../components/seo"
 import { MarkdownRemark } from "../../models/markdown-remark"
-import * as Styled from "./style"
+import * as Styled from "../../components/Tag/style"
 import { IconType } from "../../components/Icon/style"
 
 type P = PageProps<{
