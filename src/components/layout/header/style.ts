@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { lighten } from "polished"
 import {
   Border,
   Colors,
+  Container,
   SpaceUnit,
   Widths,
 } from "../../../styles/style-variables"
@@ -14,6 +14,10 @@ export const SiteHeader = styled.header<{ bordered: boolean }>`
     color: ${Colors.Black};
     text-decoration: none;
   }
+  ${Container} {
+    display: flex;
+    align-items: center;
+  }
 `
 
 export const SiteTitle = styled.h1`
@@ -23,7 +27,7 @@ export const SiteTitle = styled.h1`
   overflow: hidden;
 `
 
-export const SiteLog = styled.div`
+export const SiteLogo = styled.div`
   a {
     display: inline-block;
     width: 100%;
@@ -39,30 +43,17 @@ export const NavList = styled.nav`
   display: flex;
   align-items: center;
   justify-self: center;
-  height: 100%;
   margin-left: ${SpaceUnit(2)};
-
-  @media (max-width: ${Widths.Tablet} - 1) {
-    .icon {
-      width: ${SpaceUnit(4)} !important;
-      height: ${SpaceUnit(4)} !important;
-    }
-  }
 `
 
-export const NavName = styled.div`
-  margin-left: 1px;
-  @media (max-width: ${Widths.Tablet} - 1) {
-    display: none;
-  }
-`
-
-export const NavItem = styled.div`
+export const Nav = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   a {
+    display: flex;
+    align-items: center;
     padding: ${SpaceUnit()};
     appearance: none;
     background: transparent;
@@ -74,16 +65,23 @@ export const NavItem = styled.div`
   &:last-child {
     margin-right: 0;
   }
-  @media (max-width: ${Widths.Tablet} - 1) {
-    .nav-title {
-      display: none;
+  span {
+    margin-left: 1px;
+    @media (max-width: calc(${Widths.Tablet} - 1px)) {
+      display: none !important;
+    }
+  }
+  @media (max-width: calc(${Widths.Tablet} - 1px)) {
+    i {
+      width: ${SpaceUnit(4)} !important;
+      height: ${SpaceUnit(4)} !important;
     }
   }
 `
 
 export const Contacts = styled.div`
   display: flex;
-  @media (max-width: ${Widths.Tablet} - 1) {
+  @media (max-width: calc(${Widths.Mobile})) {
     display: none;
   }
 `
