@@ -36,7 +36,7 @@ export const BlogPost = styled(Content)`
       top: ${SpaceUnit()};
       margin-left: ${SpaceUnit(4)};
       padding-bottom: ${SpaceUnit()};
-      @media (max-width: ${Widths.Desktop} - 1) {
+      @media (max-width: calc(${Widths.Desktop} - 1px)) {
         display: none;
       }
     }

@@ -72,20 +72,20 @@ const Layout: FC<P> = p => {
 
 export default Layout
 
-interface PlainLayoutProps {}
+// interface PlainLayoutProps {}
 
-export const PlainLayout: FC<PlainLayoutProps> = ({ children }) => {
-  return <Layout>{children}</Layout>
-}
+// export const PlainLayout: FC<PlainLayoutProps> = ({ children }) => {
+//   return <Layout>{children}</Layout>
+// }
 
-interface PostLayoutProps {}
+// interface PostLayoutProps {}
 
-export const PostLayout: FC<PostLayoutProps> = ({ children }) => {
-  return <Layout>{children}</Layout>
-}
+// export const PostLayout: FC<PostLayoutProps> = ({ children }) => {
+//   return <Layout>{children}</Layout>
+// }
 
-interface TwoColumnLayoutProps {}
+// interface TwoColumnLayoutProps {}
 
-export const TwoColumnLayout: FC<TwoColumnLayoutProps> = ({ children }) => {
-  return <Layout>{children}</Layout>
-}
+// export const TwoColumnLayout: FC<TwoColumnLayoutProps> = ({ children }) => {
+//   return <Layout>{children}</Layout>
+// }

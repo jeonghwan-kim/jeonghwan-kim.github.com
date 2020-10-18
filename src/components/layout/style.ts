@@ -9,7 +9,7 @@ export const AsideLeft = styled.aside`
   border-right: ${Border()};
   position: sticky;
   top: 0px;
-  @media (max-width: ${Widths.Tablet} - 1) {
+  @media (max-width: calc(${Widths.Tablet} - 1px)) {
     display: none;
   }
 `
@@ -19,7 +19,7 @@ export const Main = styled.main<{ hasAside: boolean }>`
     props.hasAside &&
     css`
       padding-left: ${SpaceUnit(4)};
-      @media (max-width: ${Widths.Tablet} - 1) {
+      @media (max-width: calc(${Widths.Tablet} - 1px)) {
         padding-left: 0;
       }
     `}
