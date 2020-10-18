@@ -1,7 +1,7 @@
 import React, { CSSProperties } from "react"
 import * as Styled from "./style"
 
-interface IconProps extends Styled.IconProps {
+export interface IconProps extends Styled.IconProps {
   style?: CSSProperties
 }
 
