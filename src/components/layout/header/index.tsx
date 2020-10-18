@@ -1,18 +1,19 @@
 import { Link } from "gatsby"
 import React from "react"
-import Icon from "../../icon"
+import { Container } from "../../../styles/style-variables"
+import Icon from "../../Icon"
 import { IconType } from "../../Icon/style"
 import Nav from "./nav"
 import * as Styled from "./style"
 
-interface P {
+export interface HeaderProps {
   siteTitle: string
   hasHeaderBorder?: boolean
   githubUsername: string
   email: string
 }
 
-const Header: React.FC<P> = ({
+const Header: React.FC<HeaderProps> = ({
   siteTitle,
   hasHeaderBorder,
   githubUsername,
@@ -20,26 +21,24 @@ const Header: React.FC<P> = ({
 }) => {
   return (
     <Styled.SiteHeader bordered={hasHeaderBorder}>
-      <div className="flex container">
+      <Container>
         <Styled.SiteTitle>
-          <Styled.SiteLog>
-            <Link className="site-logo" to="/">
-              {siteTitle}
-            </Link>
-          </Styled.SiteLog>
+          <Styled.SiteLogo>
+            <Link to="/">{siteTitle}</Link>
+          </Styled.SiteLogo>
         </Styled.SiteTitle>
         <Styled.NavList>
           <Nav to="/category/">
             <Icon type={IconType.Article} />
-            <Styled.NavName>POSTS</Styled.NavName>
+            <span>POSTS</span>
           </Nav>
           <Nav to="/#videos">
             <Icon type={IconType.Video} />
-            <Styled.NavName>VIDEOS</Styled.NavName>
+            <span>VIDEOS</span>
           </Nav>
           <Nav to="/tags/">
             <Icon type={IconType.Tag} />
-            <Styled.NavName>TAGS</Styled.NavName>
+            <span>TAGS</span>
           </Nav>
         </Styled.NavList>
         <Styled.Contacts>
@@ -53,7 +52,7 @@ const Header: React.FC<P> = ({
             <Icon type={IconType.Github} style={{ filter: "invert(0.6)" }} />
           </Nav>
         </Styled.Contacts>
-      </div>
+      </Container>
     </Styled.SiteHeader>
   )
 }

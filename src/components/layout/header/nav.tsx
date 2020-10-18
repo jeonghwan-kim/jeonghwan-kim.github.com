@@ -11,7 +11,6 @@ interface P {
 const Nav: React.FC<P> = ({ to, href, onClick, children }) => {
   const linkProps = {
     style: { overflow: "hidden" },
-    className: "flex",
     onClick: e => {
       if (!to && onClick) {
         e.preventDefault()
@@ -20,7 +19,7 @@ const Nav: React.FC<P> = ({ to, href, onClick, children }) => {
     },
   }
   return (
-    <Styled.NavItem>
+    <Styled.Nav>
       {href ? (
         <a {...linkProps} href={href}>
           {children}
@@ -30,7 +29,7 @@ const Nav: React.FC<P> = ({ to, href, onClick, children }) => {
           {children}
         </Link>
       )}
-    </Styled.NavItem>
+    </Styled.Nav>
   )
 }
 
