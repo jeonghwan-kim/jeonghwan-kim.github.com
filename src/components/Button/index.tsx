@@ -2,14 +2,20 @@ import React from "react"
 import { Link } from "gatsby"
 import * as Styled from "./style"
 
-interface P {
+export interface ButtonProps {
   type: Styled.ButtonType
   link?: boolean
   to?: string
   className?: string
   onClick?: () => void
 }
-const Button: React.FC<P> = ({ type, link, to, children, onClick }) => {
+const Button: React.FC<ButtonProps> = ({
+  type,
+  link,
+  to,
+  children,
+  onClick,
+}) => {
   if (link) {
     return (
       <Styled.ButtonLink type={type}>

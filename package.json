@@ -10,6 +10,7 @@
     "@types/react-share": "^3.0.3",
     "babel-plugin-styled-components": "^1.11.1",
     "clipboard": "^2.0.6",
+    "core-js": "^3.6.5",
     "gatsby": "^2.23.12",
     "gatsby-image": "^2.4.9",
     "gatsby-plugin-disqus": "^1.2.2",
@@ -38,7 +39,15 @@
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "@babel/core": "^7.12.3",
+    "@storybook/addon-actions": "^6.0.26",
+    "@storybook/addon-essentials": "^6.0.26",
+    "@storybook/addon-links": "^6.0.26",
+    "@storybook/react": "^6.0.26",
+    "babel-loader": "^8.1.0",
+    "babel-preset-react-app": "^9.1.2",
+    "prettier": "2.0.5",
+    "react-is": "^16.13.1"
   },
   "keywords": [
     "gatsby"
@@ -53,7 +62,9 @@
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "deploy": "gh-pages --dist public --branch gh-pages",
-    "ci": "npm run build && npm run deploy"
+    "ci": "npm run build && npm run deploy",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
