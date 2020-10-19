@@ -2,21 +2,17 @@ import React, { FC } from "react"
 import { Section } from "../../layout/content"
 import * as Styled from "./style"
 
-interface P {
-  author: string
-  email: string
-  githubUsername: string
+export interface FooterProps {
+  bordered?: boolean
 }
 
-const Footer: FC<P> = ({ author, email, githubUsername }) => {
+const Footer: FC<FooterProps> = props => {
   return (
-    <Styled.SiteFooter>
+    <Styled.Footer {...props}>
       <Section>
-        <Styled.Copyright>
-          © {author} {new Date().getFullYear()}
-        </Styled.Copyright>
+        <Styled.Copyright>© 김정환 {new Date().getFullYear()}</Styled.Copyright>
       </Section>
-    </Styled.SiteFooter>
+    </Styled.Footer>
   )
 }
 

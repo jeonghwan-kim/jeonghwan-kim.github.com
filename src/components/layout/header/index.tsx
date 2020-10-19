@@ -7,12 +7,12 @@ import Nav from "./nav"
 import * as Styled from "./style"
 
 export interface HeaderProps {
-  hasHeaderBorder?: boolean
+  bordered?: boolean
 }
 
-const Header: React.FC<HeaderProps> = ({ hasHeaderBorder }) => {
+const Header: React.FC<HeaderProps> = props => {
   return (
-    <Styled.SiteHeader bordered={hasHeaderBorder}>
+    <Styled.Header {...props}>
       <Container>
         <Styled.SiteTitle>
           <Styled.SiteLogo>
@@ -45,7 +45,7 @@ const Header: React.FC<HeaderProps> = ({ hasHeaderBorder }) => {
           </Nav>
         </Styled.Contacts>
       </Container>
-    </Styled.SiteHeader>
+    </Styled.Header>
   )
 }
 

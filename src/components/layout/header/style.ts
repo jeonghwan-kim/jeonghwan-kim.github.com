@@ -7,7 +7,7 @@ import {
   Widths,
 } from "../../../styles/style-variables"
 
-export const SiteHeader = styled.header<{ bordered: boolean }>`
+export const Header = styled.header<{ bordered: boolean }>`
   height: ${SpaceUnit(7)};
   border-bottom: ${props => (props.bordered ? Border() : `none`)};
   a {

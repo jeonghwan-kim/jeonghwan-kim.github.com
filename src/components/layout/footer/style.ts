@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import { Border, Colors } from "../../../styles/style-variables"
 
-export const SiteFooter = styled.footer`
-  border-top: ${Border()};
+export const Footer = styled.footer<{ bordered: boolean }>`
+  border-top: ${props => (props.bordered ? Border() : `none`)};
   background-color: transparent;
   text-align: center;
 `

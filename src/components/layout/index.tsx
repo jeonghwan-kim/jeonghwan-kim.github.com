@@ -1,11 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import { graphql, useStaticQuery } from "gatsby"
 import React, { FC, ReactNode } from "react"
 import GlobalStyle from "../../styles/GlobalStyle"
 import Footer from "./footer"
@@ -18,23 +10,6 @@ interface P {
 }
 
 const Layout: FC<P> = p => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          author
-          title
-          social {
-            email
-            githubUsername
-          }
-        }
-      }
-    }
-  `)
-
-  const { author, title, social } = data.site.siteMetadata
-
   return (
     <>
       <GlobalStyle />
@@ -44,21 +19,13 @@ const Layout: FC<P> = p => {
           <Styled.AsideLeft>{p.aside}</Styled.AsideLeft>
           <div>
             <Styled.Main hasAside>{p.children}</Styled.Main>
-            <Footer
-              author={author}
-              githubUsername={social.githubUsername}
-              email={social.email}
-            />
+            <Footer bordered />
           </div>
         </div>
       ) : (
         <>
           <Styled.Main>{p.children}</Styled.Main>
-          <Footer
-            author={author}
-            githubUsername={social.githubUsername}
-            email={social.email}
-          />
+          <Footer bordered />
         </>
       )}
     </>
@@ -67,20 +34,26 @@ const Layout: FC<P> = p => {
 
 export default Layout
 
-// interface PlainLayoutProps {}
+export interface PlainLayoutProps {}
 
-// export const PlainLayout: FC<PlainLayoutProps> = ({ children }) => {
-//   return <Layout>{children}</Layout>
-// }
+export const PlainLayout: FC<PlainLayoutProps> = ({ children }) => {
+  return (
+    <Layout>
+      <Header />
+      <Styled.Main>{children}</Styled.Main>
+      <Footer bordered />
+    </Layout>
+  )
+}
 
-// interface PostLayoutProps {}
+interface PostLayoutProps {}
 
-// export const PostLayout: FC<PostLayoutProps> = ({ children }) => {
-//   return <Layout>{children}</Layout>
-// }
+export const PostLayout: FC<PostLayoutProps> = ({ children }) => {
+  return <Layout>{children}</Layout>
+}
 
-// interface TwoColumnLayoutProps {}
+interface TwoColumnLayoutProps {}
 
-// export const TwoColumnLayout: FC<TwoColumnLayoutProps> = ({ children }) => {
-//   return <Layout>{children}</Layout>
-// }
+export const TwoColumnLayout: FC<TwoColumnLayoutProps> = ({ children }) => {
+  return <Layout>{children}</Layout>
+}
