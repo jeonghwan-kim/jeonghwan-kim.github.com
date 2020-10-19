@@ -38,12 +38,7 @@ const Layout: FC<P> = p => {
   return (
     <>
       <GlobalStyle />
-      <Header
-        {...p}
-        siteTitle={title}
-        githubUsername={social.githubUsername}
-        email={social.email}
-      />
+      <Header {...p} />
       {p.aside ? (
         <div className="container flex">
           <Styled.AsideLeft>{p.aside}</Styled.AsideLeft>

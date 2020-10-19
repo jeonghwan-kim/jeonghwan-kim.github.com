@@ -11,8 +11,5 @@ const Template: Story<HeaderProps> = args => <Header {...args} />
 
 export const Basic = Template.bind({})
 Basic.args = {
-  siteTitle: "김정환블로그",
   hasHeaderBorder: true,
-  githubUsername: "jeonghwan-kim",
-  email: "ej88ej@gmail.com",
 }

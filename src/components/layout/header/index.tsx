@@ -7,24 +7,16 @@ import Nav from "./nav"
 import * as Styled from "./style"
 
 export interface HeaderProps {
-  siteTitle: string
   hasHeaderBorder?: boolean
-  githubUsername: string
-  email: string
 }
 
-const Header: React.FC<HeaderProps> = ({
-  siteTitle,
-  hasHeaderBorder,
-  githubUsername,
-  email,
-}) => {
+const Header: React.FC<HeaderProps> = ({ hasHeaderBorder }) => {
   return (
     <Styled.SiteHeader bordered={hasHeaderBorder}>
       <Container>
         <Styled.SiteTitle>
           <Styled.SiteLogo>
-            <Link to="/">{siteTitle}</Link>
+            <Link to="/">김정환블로그</Link>
           </Styled.SiteLogo>
         </Styled.SiteTitle>
         <Styled.NavList>
@@ -45,10 +37,10 @@ const Header: React.FC<HeaderProps> = ({
           <Nav to="/feed.xml">
             <Icon type={IconType.RSS} style={{ filter: "invert(0.6)" }} />
           </Nav>
-          <Nav href={`mailto:${email}`}>
+          <Nav href={`mailto:ej88ej@gmail.com`}>
             <Icon type={IconType.Email} style={{ filter: "invert(0.6)" }} />
           </Nav>
-          <Nav to={`https://github.com/${githubUsername}`}>
+          <Nav to={`https://github.com/jeonghwan-kim`}>
             <Icon type={IconType.Github} style={{ filter: "invert(0.6)" }} />
           </Nav>
         </Styled.Contacts>
