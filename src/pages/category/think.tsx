@@ -1,6 +1,6 @@
 import { graphql } from "gatsby"
 import React from "react"
-import { CateogryPosts } from "."
+import { CateogryPosts } from "../../components/Category"
 
 export default p => (
   <CateogryPosts

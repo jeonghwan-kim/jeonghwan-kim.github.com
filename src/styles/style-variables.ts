@@ -25,7 +25,7 @@ export const Fonts = {
 
 export const Widths = {
   Site: "1024px",
-  Mobile: "414px",
+  Mobile: "375px",
   Tablet: "768px",
   Desktop: "1024px",
   Content: "800px",
@@ -33,11 +33,8 @@ export const Widths = {
 
 export const container = css`
   max-width: ${Widths.Site};
-  min-width: ${Widths.Mobile};
   margin-left: auto;
   margin-right: auto;
-  padding-left: ${SpaceUnit()};
-  padding-right: ${SpaceUnit()};
   height: 100%;
 `
 export const containerSm = css`

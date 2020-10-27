@@ -10,6 +10,7 @@ import {
 export const Header = styled.header<{ bordered: boolean }>`
   height: ${SpaceUnit(7)};
   border-bottom: ${props => (props.bordered ? Border() : `none`)};
+  padding: 0 ${SpaceUnit()};
   a {
     color: ${Colors.Black};
     text-decoration: none;

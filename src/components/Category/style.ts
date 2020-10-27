@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { lighten } from "polished"
-import { Colors, SpaceUnit } from "../../styles/style-variables"
+import { Colors, SpaceUnit, Widths } from "../../styles/style-variables"
 
 export const CategoryList = styled.ul`
   list-style: none;
@@ -59,5 +59,7 @@ export const CategoryListItem = styled.li`
 `
 
 export const Wrapper = styled.div`
-  padding-left: ${SpaceUnit(4)};
+  @media (min-width: ${Widths.Tablet}) {
+    padding-left: ${SpaceUnit(4)};
+  }
 `

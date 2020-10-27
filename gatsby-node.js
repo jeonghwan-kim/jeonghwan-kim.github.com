@@ -15,7 +15,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 }
 
 exports.createPages = async ({ graphql, actions }) => {
-  pages.crateBlogPost({ graphql, actions })
+  return pages.crateBlogPost({ graphql, actions })
 }
 
 exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {

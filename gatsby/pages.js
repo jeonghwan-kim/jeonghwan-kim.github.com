@@ -2,8 +2,6 @@ const path = require(`path`)
 const qs = require("querystring")
 
 exports.crateBlogPost = async ({ graphql, actions }) => {
-  const { createPage } = actions
-
   const result = await graphql(`
     {
       allMarkdownRemark(sort: { fields: fields___date, order: DESC }) {
@@ -35,7 +33,7 @@ exports.crateBlogPost = async ({ graphql, actions }) => {
   const posts = result.data.allMarkdownRemark.edges.map(e => e.node)
 
   posts.forEach((p, i) => {
-    createPage({
+    actions.createPage({
       path: qs.unescape(p.fields.slug),
       component: path.resolve(`./src/templates/blog-post/index.tsx`),
       context: {
