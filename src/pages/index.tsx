@@ -1,12 +1,13 @@
 import { graphql, Link, PageProps } from "gatsby"
 import React, { FC } from "react"
-import Content, { Section } from "../components/layout/content"
 import Icon from "../components/icon"
-import Layout from "../components/layout"
+import { IconType } from "../components/Icon/style"
+import { HomeLayout } from "../components/layout"
 import PostList, { PostItemType } from "../components/PostList"
+import Section from "../components/Section"
 import SEO from "../components/seo"
 import { MarkdownRemark } from "../models/markdown-remark"
-import { IconType } from "../components/Icon/style"
+import { Container } from "../styles/style-variables"
 
 const videos: PostItemType[] = [
   {
@@ -61,9 +62,9 @@ type P = PageProps<{ allMarkdownRemark: { nodes: MarkdownRemark[] } }>
 
 const BlogIndex: FC<P> = ({ data }: P) => {
   return (
-    <Layout>
+    <HomeLayout>
       <SEO title="홈" />
-      <Content className="container-sm">
+      <Container small>
         <Section>
           <PostList
             posts={data.allMarkdownRemark.nodes.map(node => ({
@@ -87,8 +88,8 @@ const BlogIndex: FC<P> = ({ data }: P) => {
         >
           <PostList posts={videos} />
         </Section>
-      </Content>
-    </Layout>
+      </Container>
+    </HomeLayout>
   )
 }
 

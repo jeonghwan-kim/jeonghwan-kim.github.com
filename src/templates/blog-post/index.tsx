@@ -1,15 +1,17 @@
 import { graphql } from "gatsby"
 import React, { FC } from "react"
-import Layout from "../../components/layout"
-import { Section } from "../../components/layout/content"
+import { PlainLayout } from "../../components/layout"
+import Section from "../../components/Section"
 import SEO from "../../components/seo"
 import { MarkdownRemark } from "../../models/markdown-remark"
 import { Series, Site, Video } from "../../models/site"
+import { Container } from "../../styles/style-variables"
 import PostComment from "./post-comment"
 import PostShare from "./post-share"
 import PostTag from "./post-tag"
 import PostToc from "./post-toc"
 import PostVideo from "./post-video"
+import PostHeader from "./PostHeader"
 import SeriesNav from "./series-nav"
 import SiblingNav from "./sibling-nav"
 import * as Styled from "./style"
@@ -33,9 +35,9 @@ interface P {
 const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
   const { site, markdownRemark, series, video } = data
   const { previous, next } = pageContext
-
+  const hasAside = markdownRemark.tableOfContents || series || video
   return (
-    <Layout hasHeaderBorder>
+    <PlainLayout>
       <SEO
         title={markdownRemark.frontmatter.title}
         description={markdownRemark.excerpt}
@@ -43,12 +45,12 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
         url={site.siteMetadata.url + markdownRemark.fields.slug}
         image={markdownRemark.frontmatter.featured_image}
       />
-      <Styled.BlogPost className="container">
+      <Container small={!hasAside}>
         <div itemScope itemType="http://schema.org/BlogPosting">
           <Section>
-            <main>
-              {(markdownRemark.tableOfContents || series || video) && (
-                <aside>
+            <Styled.Main>
+              {hasAside && (
+                <Styled.Aside>
                   {markdownRemark.tableOfContents && (
                     <PostToc tableOfContents={markdownRemark.tableOfContents} />
                   )}
@@ -61,26 +63,19 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
                     />
                   )}
                   {video && <PostVideo video={video} />}
-                </aside>
+                </Styled.Aside>
               )}
-              <article>
-                <header>
-                  <h1 itemProp="name headline">
-                    {markdownRemark.frontmatter.title}
-                  </h1>
-                  <time
-                    itemProp="datePublished"
-                    dateTime={markdownRemark.fields.date}
-                  >
-                    {markdownRemark.fields.dateStr}
-                  </time>
-                </header>
-                <div
-                  className="post-content"
+              <Styled.Article>
+                <PostHeader
+                  title={markdownRemark.frontmatter.title}
+                  datetime={markdownRemark.fields.dateStr}
+                />
+                <Styled.PostContent
+                  id="post-content"
                   itemProp="articleBody"
                   dangerouslySetInnerHTML={{ __html: markdownRemark.html }}
-                ></div>
-                <div className="post-meta">
+                />
+                <Styled.PostMeta>
                   {(markdownRemark.frontmatter.tags || []).length > 0 && (
                     <PostTag tags={markdownRemark.frontmatter.tags} />
                   )}
@@ -88,27 +83,29 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
                     markdownRemark={markdownRemark}
                     siteMetadata={data.site.siteMetadata}
                   />
-                </div>
-              </article>
-            </main>
+                </Styled.PostMeta>
+              </Styled.Article>
+            </Styled.Main>
           </Section>
           <Section>
-            <footer className="container-sm">
-              <SiblingNav previous={previous} next={next} />
-              {series && (
-                <SeriesNav
-                  className="mb-4"
-                  series={series}
-                  nodeId={markdownRemark.id}
-                  posts={data.allMarkdownRemark.nodes}
-                />
-              )}
-              <PostComment markdownRemark={markdownRemark} site={data.site} />
-            </footer>
+            <Container small>
+              <footer>
+                <SiblingNav previous={previous} next={next} />
+                {series && (
+                  <SeriesNav
+                    className="mb-4"
+                    series={series}
+                    nodeId={markdownRemark.id}
+                    posts={data.allMarkdownRemark.nodes}
+                  />
+                )}
+                <PostComment markdownRemark={markdownRemark} site={data.site} />
+              </footer>
+            </Container>
           </Section>
         </div>
-      </Styled.BlogPost>
-    </Layout>
+      </Container>
+    </PlainLayout>
   )
 }
 

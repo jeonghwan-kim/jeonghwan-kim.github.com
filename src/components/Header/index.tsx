@@ -1,18 +1,18 @@
 import { Link } from "gatsby"
 import React from "react"
-import { Container } from "../../../styles/style-variables"
-import Icon from "../../Icon"
-import { IconType } from "../../Icon/style"
+import { Container } from "../../styles/style-variables"
+import Icon from "../Icon"
+import { IconType } from "../Icon/style"
 import Nav from "./nav"
 import * as Styled from "./style"
 
 export interface HeaderProps {
-  bordered?: boolean
+  noBorder?: boolean
 }
 
-const Header: React.FC<HeaderProps> = props => {
+const Header: React.FC<HeaderProps> = ({ noBorder }) => {
   return (
-    <Styled.Header {...props}>
+    <Styled.Header bordered={!noBorder}>
       <Container>
         <Styled.SiteTitle>
           <Styled.SiteLogo>

@@ -1,134 +1,125 @@
 import styled from "styled-components"
 import { lighten } from "polished"
-import Content from "../../components/layout/content"
 import {
   Border,
   Colors,
+  Container,
   Fonts,
   SpaceUnit,
   Widths,
 } from "../../styles/style-variables"
 import Video2Img from "./images/icon-video-2.png"
 
-export const BlogPost = styled(Content)`
-  main {
-    margin-top: ${SpaceUnit(10)};
-    @media (max-width: ${Widths.Tablet}) {
-      margin-top: ${SpaceUnit(5)};
-    }
-    @media (max-width: ${Widths.Mobile}) {
-      margin-top: ${SpaceUnit(2)};
-    }
-    display: flex;
-    align-items: flex-start;
-    article {
-      order: 0;
-    }
-    aside {
-      order: 1;
-    }
+export const Main = styled.main`
+  display: flex;
+  align-items: flex-start;
+  margin-top: ${SpaceUnit(10)};
+  @media (max-width: ${Widths.Tablet}) {
+    margin-top: ${SpaceUnit(5)};
+  }
+  @media (max-width: ${Widths.Mobile}) {
+    margin-top: ${SpaceUnit(2)};
+  }
+`
 
-    aside {
-      width: 250px;
-      position: sticky;
-      max-height: 100vh;
-      overflow-y: scroll;
-      top: ${SpaceUnit()};
-      margin-left: ${SpaceUnit(4)};
-      padding-bottom: ${SpaceUnit()};
-      @media (max-width: calc(${Widths.Desktop} - 1px)) {
-        display: none;
-      }
-    }
+export const Aside = styled.aside`
+  order: 1;
+  width: 250px;
+  position: sticky;
+  max-height: 100vh;
+  overflow-y: scroll;
+  top: ${SpaceUnit()};
+  margin-left: ${SpaceUnit(4)};
+  padding-bottom: ${SpaceUnit()};
+  @media (max-width: calc(${Widths.Desktop} - 1px)) {
+    display: none;
+  }
+`
 
-    article {
-      // HACK: 안그러면 우측에 추가공간 생김
-      // overflow-x: hidden;
-      flex: 1 0 0%;
-      min-width: 0%;
-      header {
-        margin-bottom: 7 * ${SpaceUnit()};
-        h1 {
-          margin-top: 0;
-          margin-bottom: ${SpaceUnit()};
-          color: ${Colors.Black};
-          font-size: 42px;
-        }
-        time {
-          color: ${Colors.Gray};
-        }
-      }
-      .post-content {
-        font-size: 18px;
-        line-height: 1.5em;
-        font-family: ${Fonts.Article};
-        h1 {
-          font-size: 200%;
-          margin-top: 20px;
-        }
-        h2 {
-          font-size: 180%;
-          margin-top: 18px;
-        }
-        h3 {
-          font-size: 160%;
-          margin-top: 16px;
-        }
-        h4 {
-          font-size: 140%;
-          margin-top: 14px;
-        }
-        h5 {
-          font-size: 120%;
-          margin-top: 12px;
-        }
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-          color: ${Colors.Brand};
-          font-family: ${Fonts.Base};
-          line-height: 1em;
-        }
-        img {
-          border-radius: ${SpaceUnit()} / 2;
-          display: block;
-          margin: ${SpaceUnit()} * 2 auto;
-          max-width: 100%;
-        }
-        blockquote {
-          color: ${lighten(0.2, Colors.Black)};
-          position: relative;
-          &::before {
-            content: "“";
-            position: absolute;
-            left: -${SpaceUnit(3)};
-            font-size: 40px;
-            color: ${lighten(0.6, Colors.Black)};
-          }
-        }
-        .gatsby-highlight {
-          // overflow-x: scroll;
-          // width: 100%;
-          // max-width: 694px;
-          // @media (max-width: $mobile-width) {
-          //   max-width: $mobile-width;
-          // }
-          pre {
-            border-radius: ${SpaceUnit()} / 2;
-            overflow: auto;
-            word-wrap: normal;
-            white-space: pre;
-          }
-        }
-      }
-      .post-meta {
-        margin-top: ${SpaceUnit()} * 4;
-      }
+export const Article = styled.article`
+  order: 0;
+  flex: 1 0 0%;
+  min-width: 0%;
+`
+
+export const PostHeader = styled.header`
+  margin-bottom: ${SpaceUnit(7)};
+`
+
+export const PostTitle = styled.h1`
+  margin-top: 0;
+  margin-bottom: ${SpaceUnit()};
+  color: ${Colors.Black};
+  font-size: 42px;
+`
+
+export const PostTime = styled.time`
+  color: ${Colors.Gray};
+`
+
+export const PostContent = styled.div`
+  font-size: 18px;
+  line-height: 1.5em;
+  font-family: ${Fonts.Article};
+  h1 {
+    font-size: 200%;
+    margin-top: 20px;
+  }
+  h2 {
+    font-size: 180%;
+    margin-top: 18px;
+  }
+  h3 {
+    font-size: 160%;
+    margin-top: 16px;
+  }
+  h4 {
+    font-size: 140%;
+    margin-top: 14px;
+  }
+  h5 {
+    font-size: 120%;
+    margin-top: 12px;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: ${Colors.Brand};
+    font-family: ${Fonts.Base};
+    line-height: 1em;
+  }
+  img {
+    border-radius: ${SpaceUnit(0.5)};
+    display: block;
+    margin: ${SpaceUnit()} * 2 auto;
+    max-width: 100%;
+  }
+  blockquote {
+    color: ${lighten(0.2, Colors.Black)};
+    position: relative;
+    &::before {
+      content: "“";
+      position: absolute;
+      left: -${SpaceUnit(3)};
+      font-size: 40px;
+      color: ${lighten(0.6, Colors.Black)};
     }
   }
+  .gatsby-highlight {
+    pre {
+      border-radius: ${SpaceUnit()} / 2;
+      overflow: auto;
+      word-wrap: normal;
+      white-space: pre;
+    }
+  }
+`
+
+export const PostMeta = styled.div`
+  margin-top: ${SpaceUnit(4)};
 `
 
 export const ShareList = styled.ul`

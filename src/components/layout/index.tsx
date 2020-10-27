@@ -1,59 +1,64 @@
 import React, { FC, ReactNode } from "react"
 import GlobalStyle from "../../styles/GlobalStyle"
-import Footer from "./footer"
-import Header from "./header"
+import { Container } from "../../styles/style-variables"
+import Footer from "../Footer"
+import Header, { HeaderProps } from "../Header"
+import Section from "../Section"
 import * as Styled from "./style"
 
-interface P {
-  hasHeaderBorder?: boolean
-  aside?: ReactNode
-}
+export interface LayoutProps extends HeaderProps {}
 
-const Layout: FC<P> = p => {
+const Layout: FC<LayoutProps> = ({ noBorder, children }) => {
   return (
     <>
       <GlobalStyle />
-      <Header {...p} />
-      {p.aside ? (
-        <div className="container flex">
-          <Styled.AsideLeft>{p.aside}</Styled.AsideLeft>
-          <div>
-            <Styled.Main hasAside>{p.children}</Styled.Main>
-            <Footer bordered />
-          </div>
-        </div>
-      ) : (
-        <>
-          <Styled.Main>{p.children}</Styled.Main>
-          <Footer bordered />
-        </>
-      )}
+      <Header noBorder={noBorder} />
+      {children}
     </>
   )
 }
 
 export default Layout
 
-export interface PlainLayoutProps {}
-
-export const PlainLayout: FC<PlainLayoutProps> = ({ children }) => {
+export const PlainLayout: FC<LayoutProps> = ({ children }) => {
   return (
     <Layout>
-      <Header />
       <Styled.Main>{children}</Styled.Main>
       <Footer bordered />
     </Layout>
   )
 }
 
-interface PostLayoutProps {}
+export interface HomeLayoutProps {}
 
-export const PostLayout: FC<PostLayoutProps> = ({ children }) => {
-  return <Layout>{children}</Layout>
+export const HomeLayout: FC<HomeLayoutProps> = ({ children }) => {
+  return (
+    <Layout noBorder>
+      <Styled.Main>{children}</Styled.Main>
+      <Footer bordered />
+    </Layout>
+  )
 }
 
-interface TwoColumnLayoutProps {}
+interface TwoColumnLayoutProps {
+  aside: ReactNode
+}
 
-export const TwoColumnLayout: FC<TwoColumnLayoutProps> = ({ children }) => {
-  return <Layout>{children}</Layout>
+export const TwoColumnLayout: FC<TwoColumnLayoutProps> = ({
+  aside,
+  children,
+}) => {
+  return (
+    <Layout>
+      <Container>
+        <div style={{ display: "flex" }}>
+          <Styled.AsideLeft>{aside}</Styled.AsideLeft>
+          <div style={{ flex: "1" }}>
+            <Styled.Main>{children}</Styled.Main>
+            <Footer bordered />
+          </div>
+        </div>
+      </Container>
+    </Layout>
+  )
 }

@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import { Section } from "../../layout/content"
+import Section from "../Section"
 import * as Styled from "./style"
 
 export interface FooterProps {

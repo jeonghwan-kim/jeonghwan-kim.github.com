@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { lighten } from "polished"
 import { Colors, SpaceUnit } from "../../styles/style-variables"
+
 export const CategoryList = styled.ul`
   list-style: none;
   padding-left: 0;
@@ -55,4 +56,8 @@ export const CategoryListItem = styled.li`
       cursor: pointer;
     }
   }
+`
+
+export const Wrapper = styled.div`
+  padding-left: ${SpaceUnit(4)};
 `

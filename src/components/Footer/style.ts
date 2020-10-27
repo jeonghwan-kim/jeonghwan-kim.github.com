@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Border, Colors } from "../../../styles/style-variables"
+import { Border, Colors } from "../../styles/style-variables"
 
 export const Footer = styled.footer<{ bordered: boolean }>`
   border-top: ${props => (props.bordered ? Border() : `none`)};

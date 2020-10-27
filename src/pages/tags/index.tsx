@@ -1,12 +1,13 @@
 import { graphql, Link, PageProps } from "gatsby"
 import React from "react"
-import Content, { Section } from "../../components/layout/content"
 import Icon from "../../components/icon"
-import Layout from "../../components/layout"
-import SEO from "../../components/seo"
-import { MarkdownRemark } from "../../models/markdown-remark"
-import * as Styled from "../../components/Tag/style"
 import { IconType } from "../../components/Icon/style"
+import { PlainLayout } from "../../components/layout"
+import Section from "../../components/Section"
+import SEO from "../../components/seo"
+import * as Styled from "../../components/Tag/style"
+import { MarkdownRemark } from "../../models/markdown-remark"
+import { Container } from "../../styles/style-variables"
 
 type P = PageProps<{
   site: any
@@ -45,13 +46,13 @@ const TagPage: React.FC<P> = ({ data }) => {
   })
 
   return (
-    <Layout hasHeaderBorder>
+    <PlainLayout>
       <SEO
         title="태그"
         url={`${data.site.siteMetadata.url}/tags`}
         description="태그 목록입니다"
       />
-      <Content className="container-sm">
+      <Container small>
         <Section
           title={
             <>
@@ -85,8 +86,8 @@ const TagPage: React.FC<P> = ({ data }) => {
             )
           })}
         </Section>
-      </Content>
-    </Layout>
+      </Container>
+    </PlainLayout>
   )
 }
 

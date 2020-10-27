@@ -16,27 +16,6 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: ${Colors.Black};
   }
-  .container {
-    max-width: ${Widths.Site};
-    min-width: ${Widths.Mobile};
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: ${SpaceUnit()};
-    padding-right: ${SpaceUnit()};
-    height: 100%;
-  }
-  .container-sm {
-    /* Extend .container */
-    max-width: ${Widths.Site};
-    min-width: ${Widths.Mobile};
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: ${SpaceUnit()};
-    padding-right: ${SpaceUnit()};
-    height: 100%;
-
-    max-width: ${Widths.Content}
-  }
   .flex {
     display: flex;
     align-items: center;

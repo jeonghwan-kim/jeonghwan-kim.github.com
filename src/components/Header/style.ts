@@ -5,7 +5,7 @@ import {
   Container,
   SpaceUnit,
   Widths,
-} from "../../../styles/style-variables"
+} from "../../styles/style-variables"
 
 export const Header = styled.header<{ bordered: boolean }>`
   height: ${SpaceUnit(7)};
