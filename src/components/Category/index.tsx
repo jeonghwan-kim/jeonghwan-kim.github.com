@@ -55,7 +55,7 @@ export const CateogryPosts: FC<CateogryPostsProps> = ({
       </Styled.CategoryListItem>
     </Styled.CategoryList>
   )
-  console.log(title, posts.length)
+
   return (
     <TwoColumnLayout aside={aside}>
       <SEO title={`분류: ${title}`} />
