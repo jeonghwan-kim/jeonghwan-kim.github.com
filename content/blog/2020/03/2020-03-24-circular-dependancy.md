@@ -2,7 +2,7 @@
 title: 순환 참조
 layout: post
 category: dev
-tags: [javascript]
+tags: [JavaScript]
 ---
 
 며칠전 일하다 발생했던 일이다.

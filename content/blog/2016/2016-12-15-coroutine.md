@@ -2,7 +2,7 @@
 title: 제너레이터와 프라미스를 이용한 비동기 처리
 layout: post
 category: dev
-tags: [javascript]
+tags: [JavaScript]
 summary: 콜백, 프라미스, 코루틴을 이용해 비동기 처리하는 방법을 비교한 글입니다
 permalink: /2016/12/15/coroutine.html
 ---

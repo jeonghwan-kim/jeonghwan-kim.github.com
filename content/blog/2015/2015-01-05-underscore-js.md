@@ -7,7 +7,7 @@ layout: post
 guid: http://54.64.213.117/?p=60
 permalink: /underscore-js/
 category: dev
-tags: [javascript]
+tags: [JavaScript]
 ---
 
 자바스크립트 코딩시 구 버전 웹브라우져까지 고려한다면 ECMAScript 스펙을 기준으로 한 깔끔한 코딩을 유지하기 어렵다. 자바스크립트 배열을 체크하는 코드를 살펴보자.

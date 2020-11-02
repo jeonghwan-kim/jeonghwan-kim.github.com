@@ -7,7 +7,7 @@ layout: post
 guid: http://whatilearn.com/?p=133
 permalink: /%ea%bc%ac%eb%a6%ac%ec%97%90-%ea%bc%ac%eb%a6%ac%eb%a5%bc-%eb%ac%b4%eb%8a%94-timeout/
 category: dev
-tags: [javascript]
+tags: [JavaScript]
 ---
 
 자바스크립트에서 타이머 설정은  <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers.setTimeout">setTimeout()</a>과 <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers.setInterval">setInterval()</a> 두 가지 함수로 구현할 수 있다. 전자는 시간 경과후 동작하게 하는 것이고 후자는 동일 시간마다 동작을 반복하는 것이다.

@@ -3,7 +3,7 @@ title: 자바스크립트 this 바인딩 우선순위
 layout: post
 category: dev
 permalink: 2017/10/22/js-context-binding.html
-tags: [javascript]
+tags: [JavaScript]
 summary: 자바스크립트의 네 가지 컨텍스트 바인딩에 대한 우선순위를 정리한다
 ---
 
