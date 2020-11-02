@@ -61,6 +61,7 @@ export const PostContent = styled.div`
   font-size: 18px;
   line-height: 1.5em;
   font-family: ${Fonts.Article};
+  word-break: break-all;
   h1 {
     font-size: 200%;
     margin-top: 20px;
