@@ -14,7 +14,7 @@ Php 유닛 테스트 라이브러 중 하나이다. [PHPUnit](https://phpunit.de
 
 ## 라이브러리 다운로드
 
-```sh
+```
 wget -O simpletest.tar.gz http://downloads.sourceforge.net/project/simpletest/simpletest/simpletest_1.1/simpletest_1.1.0.tar.gzö?rö=ö&tsö=1444720494ö&use_mirrorö=jaist
 tar zcvf simpletest.tar.gz
 ls

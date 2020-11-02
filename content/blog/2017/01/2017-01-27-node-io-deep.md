@@ -60,7 +60,7 @@ if (args[1]->IsObject()) {
 
 `ASYNC_CALL`[C++ 매크로](https://github.com/nodejs/node/blob/24a3d0e71b46bdf79041eb71e46662c891ab7694/src/node_file.cc#L360-L361)이며 함수가 아니다. 게다가 [`ASYNC_DEST_CALL` 매크로](https://github.com/nodejs/node/blob/24a3d0e71b46bdf79041eb71e46662c891ab7694/src/node_file.cc#L340-L358)를 사용하여 `ASYNC_CALL`을 더 확장한다. 컴파일 시간에 ASYNC_CALL 매크로는 아래 C++ 코드로 확장된다. 이 코드의 가장 중요한 부분이 `uv_fs_sate()` 호출 부분이다. 이 함수는 노드 어플리케이션 이벤트 루프에 묶여있던 stat 요청을 libuv에게 전달한다. 작업이 끝나면 After 함수가 호출된다.
 
-```c++
+```
 Environment* env = Environment::GetCurrent(args);
 CHECK(request->IsObject());
 FSReqWrap* req_wrap = FSReqWrap::New(env, request.As Object>;(),

@@ -152,14 +152,14 @@ ID로 유저를 찾아 리소스를 수정할때 `PUT /users/:id`를 사용한�
 이건 검색 쿼리다. **"chris"로 검색하고 name과 id 필드만 리턴받겠다**는 의미다.
 이 쿼리스트링은 서버에서 파싱되어 각 각 아래와 같은 디비 쿼리문으로 사용될 것이다.
 
-```mysql
+```sql
 SELECT *
 FROM users
 ORDER BY cratedAt
 DESC LIMIT 20, 10;
 ```
 
-```mysql
+```sql
 SELECT name, id
 FROM users
 WHERE name like "%chris%";
