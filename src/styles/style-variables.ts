@@ -25,8 +25,8 @@ export const Fonts = {
 
 export const Widths = {
   Site: "1024px",
-  Mobile: "375px",
-  Tablet: "768px",
+  Mobile: "320px", // iphone5
+  Tablet: "768px", // ipad
   Desktop: "1024px",
   Content: "800px",
 }

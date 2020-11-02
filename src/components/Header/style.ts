@@ -82,7 +82,7 @@ export const Nav = styled.div`
 
 export const Contacts = styled.div`
   display: flex;
-  @media (max-width: calc(${Widths.Mobile})) {
+  @media (max-width: calc(${Widths.Tablet})) {
     display: none;
   }
 `

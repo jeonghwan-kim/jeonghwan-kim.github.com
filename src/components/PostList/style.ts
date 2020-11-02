@@ -27,7 +27,7 @@ export const PostMeta = styled.div`
 export const PostSummary = styled.p`
   color: ${Colors.Black};
   line-height: 1.5em;
-  @media (max-width: ${Widths.Mobile}) {
+  @media (max-width: calc(${Widths.Tablet} - 1px)) {
     display: none;
   }
 `
