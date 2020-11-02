@@ -12,7 +12,7 @@ const PostTag: React.FC<P> = ({ tags }) => {
     <Styled.TagList>
       {tags.map(tag => {
         return (
-          <Styled.TagItem>
+          <Styled.TagItem key={tag}>
             <Button type={ButtonType.Secondary} link to={`/tags/#${tag}`}>
               #{tag}
             </Button>

@@ -63,7 +63,7 @@ const TagPage: React.FC<P> = ({ data }) => {
         >
           {d2.map(item => {
             return (
-              <Styled.TagItem>
+              <Styled.TagItem key={item.tag}>
                 <Styled.TagName id={item.tag}>
                   <Link to={`#${item.tag}`} className="tag-title-link">
                     #{item.tag}
