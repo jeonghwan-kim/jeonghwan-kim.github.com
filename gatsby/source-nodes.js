@@ -42,33 +42,36 @@ exports.createVideoNode = ({ actions, createNodeId, createContentDigest }) => {
   const videos = [
     {
       id: "1",
-      url: "https://www.inflearn.com/course/프론트엔드-개발환경",
+      url: "https://www.inflearn.com/course/프론트엔드-개발환경?inst=245c31e1",
       thumb:
         "https://cdn.inflearn.com/public/courses/324671/course_cover/638eee1a-6381-402d-a17b-3724751414f1/frontend-env-eng.png",
       title: "프론트엔드 개발환경의 이해와 실습",
     },
     {
       id: "2",
-      url: "https://www.inflearn.com/course/vuejs",
+      url: "https://www.inflearn.com/course/vuejs?inst=4b6acc34",
       thumb: "https://cdn.inflearn.com/wp-content/uploads/kjh_Vuejs-3.jpg",
       title:
         "트렐로 개발로 배우는 Vuejs, Vuex, Vue-Router 프론트엔드 실전 기술",
     },
     {
       id: "3",
-      url: "https://www.inflearn.com/course/순수js-vuejs-개발-강좌",
+      url:
+        "https://www.inflearn.com/course/순수js-vuejs-개발-강좌?inst=b936ef67",
       thumb: "https://cdn.inflearn.com/wp-content/uploads/vuejsandpure.png",
       title: "실습 UI 개발로 배워보는 순수 javascript 와 VueJS 개발",
     },
     {
       id: "4",
-      url: "https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api",
+      url:
+        "https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api?inst=8aa64815",
       thumb: "https://cdn.inflearn.com/wp-content/uploads/nodetdd.png",
       title: "테스트주도개발(TDD)로 만드는 NodeJS API 서버",
     },
     {
       id: "5",
-      url: "https://www.inflearn.com/course/tdd-견고한-소프트웨어-만들기",
+      url:
+        "https://www.inflearn.com/course/tdd-견고한-소프트웨어-만들기?inst=35309715",
       thumb: "https://cdn.inflearn.com/wp-content/uploads/software-1.jpg",
       title: "견고한 JS 소프트웨어 만들기",
     },
