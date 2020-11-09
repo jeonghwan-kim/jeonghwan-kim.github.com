@@ -19,6 +19,7 @@ export const Button = styled.button<{ type: ButtonType }>`
   text-decoration: none;
   color: ${props => color[props.type]};
   border: solid 1px ${props => color[props.type]};
+  transition: all 0.1s ease-in-out;
   &:focus,
   &:hover {
     background-color: ${props => color[props.type]};
@@ -28,7 +29,10 @@ export const Button = styled.button<{ type: ButtonType }>`
 `
 
 export const ButtonLink = styled(Button)`
+  padding: 0;
   a {
+    display: inline-block;
+    padding: ${SpaceUnit()} ${SpaceUnit(2)};
     text-decoration: none;
     color: inherit;
   }
