@@ -43,7 +43,10 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
         description={markdownRemark.excerpt}
         date={markdownRemark.fields.date}
         url={site.siteMetadata.url + markdownRemark.fields.slug}
-        image={markdownRemark.frontmatter.featured_image}
+        image={
+          markdownRemark.frontmatter.featured_image ||
+          markdownRemark.frontmatter.featuredImage?.childImageSharp.fluid.src
+        }
       />
       <Container small={!hasAside}>
         <div itemScope itemType="http://schema.org/BlogPosting">
@@ -133,6 +136,14 @@ export const pageQuery = graphql`
         tags
         seriesId
         videoId
+        featured_image
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       tableOfContents(absolute: false, maxDepth: 6, heading: null)
     }

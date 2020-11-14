@@ -21,6 +21,7 @@ export interface Frontmatter {
   videoId?: string
   tags?: string[]
   featured_image?: string
+  featuredImage?: any
   permalink?: string
   category?: string
 }

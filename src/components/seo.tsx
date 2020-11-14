@@ -37,7 +37,12 @@ const SEO: React.FC<P> = p => {
   )
 
   const description = p.description || site.siteMetadata.description
-  const image = p.image || `${site.siteMetadata.url}/assets/imgs/me.jpg`
+  const defaultImage = `${site.siteMetadata.url}/assets/imgs/me.jpg`
+  const image = p.image
+    ? p.image?.startsWith(site.siteMetadata.url)
+      ? p.image
+      : `${site.siteMetadata.url}${p.image}`
+    : defaultImage
   const { twitterUsername } = site.siteMetadata.social
   const url = p.url || site.siteMetadata.url
 
