@@ -109,6 +109,11 @@ export const PostContent = styled.div`
       color: ${lighten(0.6, Colors.Black)};
     }
   }
+  figcaption {
+    font-size: 14px;
+    color: ${Colors.Gray};
+    text-align: center;
+  }
   .gatsby-highlight {
     pre {
       border-radius: ${SpaceUnit()} / 2;
