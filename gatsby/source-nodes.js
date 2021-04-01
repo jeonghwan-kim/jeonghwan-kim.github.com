@@ -1,6 +1,10 @@
 exports.createSeriesNode = ({ actions, createNodeId, createContentDigest }) => {
   const series = [
     {
+      id: "series-20210424",
+      title: "만들면서 학습하는 리액트",
+    },
+    {
       id: "series-20200102",
       title: "프론트엔드 개발환경의 이해",
     },
