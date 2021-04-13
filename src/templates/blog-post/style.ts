@@ -67,19 +67,19 @@ export const PostContent = styled.div`
     margin-top: 20px;
   }
   h2 {
-    font-size: 180%;
+    font-size: 160%;
     margin-top: 18px;
   }
   h3 {
-    font-size: 160%;
+    font-size: 120%;
     margin-top: 16px;
   }
   h4 {
-    font-size: 140%;
+    font-size: 110%;
     margin-top: 14px;
   }
   h5 {
-    font-size: 120%;
+    font-size: 100%;
     margin-top: 12px;
   }
   h1,
@@ -175,6 +175,7 @@ export const Toc = styled.div`
         }
         &.active {
           color: ${Colors.Brand};
+          font-weight: bold;
         }
       }
     }
