@@ -487,7 +487,7 @@ data-styled.g52[id="style__ButtonLink-tlugo0-1"]{content:"ggiJll,"}/*!sc*/
 <p>다음 장 부터는 요구 사항을 정의하고 하나씩 해결해 보는 방식으로 진행하겠다.</p>
 <h2 id="검색폼-1" style="position:relative;"><a href="#%EA%B2%80%EC%83%89%ED%8F%BC-1" aria-label="검색폼 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>검색폼 1</h2>
 <ul>
-<li>💡 요구사항: 검색 상품명 입력 폼이 위치한다</li>
+<li>💡 요구사항: 검색 상품명을 입력할 수 있는 폼이 위치한다</li>
 </ul>
 <p>먼저 화면에 출력한 HTML 코드를 만든다.</p>
 <div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>form-view<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -506,8 +506,8 @@ data-styled.g52[id="style__ButtonLink-tlugo0-1"]{content:"ggiJll,"}/*!sc*/
   <span class="token punctuation">}</span>
 
   <span class="token comment">// 5</span>
-  <span class="token function">showResetButton</span><span class="token punctuation">(</span><span class="token parameter">show <span class="token operator">=</span> <span class="token boolean">true</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>resetElement<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> show <span class="token operator">?</span> <span class="token string">"block"</span> <span class="token operator">:</span> <span class="token string">"none"</span>
+  <span class="token function">showResetButton</span><span class="token punctuation">(</span><span class="token parameter">visible <span class="token operator">=</span> <span class="token boolean">true</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>resetElement<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display <span class="token operator">=</span> visible <span class="token operator">?</span> <span class="token string">"block"</span> <span class="token operator">:</span> <span class="token string">"none"</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>View 클래스의 생성자 함수를 호출해 돔을 내부 변수로 저장한다(1). qs()는 docuemnt.querySelector()를 호출하는 헬퍼 함수다.</p>
@@ -532,10 +532,10 @@ data-styled.g52[id="style__ButtonLink-tlugo0-1"]{content:"ggiJll,"}/*!sc*/
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>지금은 컨트롤러가 폼뷰를 사용하지는 않지만 앞으로 사용하기 위해 저장해 두었다. 앞으로 생성되는 모든 뷰는 이런 식으로 메인에서 객체를 생성만든 후 컨트롤러 생성자 인자로 전달하고 컨트롤러는 내부에 이 폼을 저장하는 일련의 순서를 따를 것이다.</p>
-<p><del>💡 요구사항: 검색 상품명 입력 폼이 위치한다.</del></p>
+<p><del>💡 요구사항: 검색 상품명을 입력할 수 있는 폼이 위치한다</del></p>
 <h2 id="검색폼-2" style="position:relative;"><a href="#%EA%B2%80%EC%83%89%ED%8F%BC-2" aria-label="검색폼 2 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>검색폼 2</h2>
 <ul>
-<li>💡요구사항: 검색어를 입력하면 x 버튼이 보이고 없으면 x 버튼을 숨긴다</li>
+<li>💡요구사항: 검색어를 입력하면 x버튼이 보이고 검색어를 삭제하면 x 버튼을 숨긴다</li>
 </ul>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">FormView</span> <span class="token keyword">extends</span> <span class="token class-name">View</span> <span class="token punctuation">{</span>
   <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -553,7 +553,7 @@ data-styled.g52[id="style__ButtonLink-tlugo0-1"]{content:"ggiJll,"}/*!sc*/
 <span class="token punctuation">}</span></code></pre></div>
 <p>검색어를 입력여부는 이벤트로 알 수 있다. 뷰에서 발생하는 이벤트 처리기를 연결하기 위해 bindEvents() 메서드를 호출한다(1). 미리 저장해 둔 inputElement에서 keyup 이벤트가 발생하면 handleKeyup() 메서드를 호출하는 함수를 연결했다(2). on은 addEventListener() 함수를 호출하는 헬퍼 함수다. handleKeyup() 메소드에서는 입력한 문자열의 길이에 따라 버튼의 노출 여부를 결정한다. 입력한 문자가 있으면 x 버튼을 표시하고 그렇지 않으면 숨기도록 요구사항을 구현했다(3).</p>
 <ul>
-<li><del>💡요구사항: 검색어를 입력하면 x버튼이 보이고 없으면 x 버튼을 숨긴다</del></li>
+<li><del>💡요구사항: 검색어를 입력하면 x버튼이 보이고 검색어를 삭제하면 x 버튼을 숨긴다</del></li>
 </ul>
 <h2 id="검색폼-3" style="position:relative;"><a href="#%EA%B2%80%EC%83%89%ED%8F%BC-3" aria-label="검색폼 3 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>검색폼 3</h2>
 <ul>
