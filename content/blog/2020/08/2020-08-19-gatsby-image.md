@@ -2,7 +2,7 @@
 title: "개츠비의 이미지 처리 방식"
 layout: post
 category: dev
-tags: [image, gatsby]
+tags: [image, gatsby, react]
 ---
 
 개츠비 문서를 봤을때 눈에 띄었던 것이 이미지 처리 방식이다.
