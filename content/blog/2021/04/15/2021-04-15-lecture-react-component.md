@@ -3,6 +3,7 @@ title: "만들면서 학습하는 리액트: 사용편2(컴포넌트편)"
 layout: post
 category: series
 seriesId: 3f5eff34-efcf-5aa0-b770-b7a01e329ae7
+videoId: 3f5eff34-efcf-5aa0-b770-b7a01e329ae7
 tags: [react]
 ---
 

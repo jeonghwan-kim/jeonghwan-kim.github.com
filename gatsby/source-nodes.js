@@ -91,6 +91,14 @@ exports.createVideoNode = ({ actions, createNodeId, createContentDigest }) => {
       thumb: "/assets/imgs/youtube-20200819-gatsby.png",
       title: "[Gatsby.js] 개츠비 훑어보기",
     },
+    {
+      id: "inflearn-20210504-react",
+      url:
+        "https://www.inflearn.com/course/만들면서-학습하는-리액트?inst=b59d75f4",
+      thumb:
+        "https://cdn.inflearn.com/public/courses/326905/cover/739f7b4b-1a9f-478f-a6a8-1a13bf58cae3/326905-eng.png",
+      title: "만들면서 학습하는 리액트",
+    },
   ]
 
   videos.forEach(v => {

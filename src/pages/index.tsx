@@ -11,8 +11,14 @@ import { Container } from "../styles/style-variables"
 
 const videos: PostItemType[] = [
   {
+    title: "만들면서 학습하는 리액트",
+    slug:
+      "https://www.inflearn.com/course/만들면서-학습하는-리액트?inst=b59d75f4",
+    meta: "2021년 05월 / 인프런",
+  },
+  {
     title: "프론트엔드 개발환경의 이해와 실습",
-    slug: "https://www.inflearn.com/course/프론트엔드-개발환경",
+    slug: "https://www.inflearn.com/course/프론트엔드-개발환경?inst=245c31e1",
     meta: "2020년 03월 / 인프런",
   },
   {
@@ -23,13 +29,13 @@ const videos: PostItemType[] = [
   },
   {
     title: "트렐로 개발로 배우는 Vuejs, Vuex, Vue-Router 프론트엔드 실전 기술",
-    slug: "https://www.inflearn.com/course/vuejs",
+    slug: "https://www.inflearn.com/course/vuejs?inst=4b6acc34",
     meta: "2018년 11월 / 인프런",
   },
   {
     title: "견고한 JS 소프트웨어 만들기",
     slug:
-      "https://www.inflearn.com/course/tdd-%EA%B2%AC%EA%B3%A0%ED%95%9C-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EB%A7%8C%EB%93%A4%EA%B8%B0",
+      "https://www.inflearn.com/course/tdd-견고한-소프트웨어-만들기?inst=35309715",
     meta: "2018년 06월 / 인프런",
   },
   {
@@ -41,13 +47,13 @@ const videos: PostItemType[] = [
   {
     title: "실습 UI 개발로 배워보는 순수 javascript 와 VueJS 개발",
     slug:
-      "https://www.inflearn.com/course/%EC%88%9C%EC%88%98js-vuejs-%EA%B0%9C%EB%B0%9C-%EA%B0%95%EC%A2%8C",
+      "https://www.inflearn.com/course/순수js-vuejs-개발-강좌?inst=b936ef67",
     meta: "2018년 01월 / 인프런",
   },
   {
     title: "테스트주도개발(TDD)로 만드는 NodeJS API 서버",
     slug:
-      "https://www.inflearn.com/course/%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%A3%BC%EB%8F%84%EA%B0%9C%EB%B0%9C-tdd-nodejs-api",
+      "https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api?inst=8aa64815",
     meta: "2017년 03월 / 인프런",
   },
   {
