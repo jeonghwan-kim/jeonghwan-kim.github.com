@@ -33,8 +33,7 @@ const { Writable } = require("stream")
 많은 방법으로 쓰기 가능한 스트림을 구현할 수 있습니다. 예를들어 `Writable` 생성자를 확장하는 거죠.
 
 ```js
-class myWritableStream extedns Writable {
-}
+class myWritableStream extends Writable {}
 ```
 
 하지만... 저는 좀 더 간단한 방법을 좋아해요. `Writable` 생성자로 객체를 생성하면서 옵션을 전달하는 거죠. 필수 옵션은 앞으로 기록될 데이터 청크(chunk)를 보내기 위한 `write` 함수 입니다.
