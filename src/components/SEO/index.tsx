@@ -26,23 +26,7 @@ export interface MetaProps {
 }
 
 const SEO: React.FC<SEOProps> = ({ title, description, date, url, image }) => {
-  const { site } = useStaticQuery<{ site: Site }>(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-            url
-            social {
-              twitterUsername
-            }
-          }
-        }
-      }
-    `
-  )
+  const { site } = useStaticQuery<{ site: Site }>(query)
 
   const getImage = () => {
     const DEFAULT_IMAGE = `${site.siteMetadata.url}/assets/imgs/me.jpg`
@@ -92,3 +76,19 @@ const SEO: React.FC<SEOProps> = ({ title, description, date, url, image }) => {
 }
 
 export default SEO
+
+const query = graphql`
+  query SEO {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+        url
+        social {
+          twitterUsername
+        }
+      }
+    }
+  }
+`

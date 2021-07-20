@@ -1,7 +1,7 @@
 import React from "react"
 import { PlainLayout } from "../components/layout"
 import Section from "../components/Section"
-import SEO from "../components/seo"
+import SEO from "../components/SEO"
 import { Container } from "../styles/style-variables"
 
 const NotFoundPage = () => (

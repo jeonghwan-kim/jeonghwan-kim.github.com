@@ -3,7 +3,7 @@ import React from "react"
 import { Series } from "../../models/site"
 import { MarkdownRemark } from "../../models/markdown-remark"
 import Button from "../../components/Button"
-import { ButtonType } from "../../components/button/style"
+import { ButtonType } from "../../components/Button/style"
 import * as Styled from "./style"
 
 interface P {

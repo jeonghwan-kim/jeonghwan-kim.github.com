@@ -1,11 +1,11 @@
 import { graphql, Link, PageProps } from "gatsby"
 import React, { FC } from "react"
-import Icon from "../components/icon"
+import Icon from "../components/Icon"
 import { IconType } from "../components/Icon/style"
 import { HomeLayout } from "../components/layout"
 import PostList, { PostItemType } from "../components/PostList"
 import Section from "../components/Section"
-import SEO from "../components/seo"
+import SEO from "../components/SEO"
 import { MarkdownRemark } from "../models/markdown-remark"
 import { Container } from "../styles/style-variables"
 

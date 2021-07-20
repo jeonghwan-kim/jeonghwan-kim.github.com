@@ -1,11 +1,11 @@
 import { Link } from "gatsby"
 import React, { FC } from "react"
 import { MarkdownRemark } from "../../models/markdown-remark"
-import { Icon, IconType } from "../icon/style"
+import { Icon, IconType } from "../Icon/style"
 import { TwoColumnLayout } from "../layout"
 import PostList from "../PostList"
 import Section from "../Section"
-import SEO from "../seo"
+import SEO from "../SEO"
 import * as Styled from "./style"
 
 interface CateogryPostsProps {
