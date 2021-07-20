@@ -9,6 +9,7 @@
     "@types/react-helmet": "^6.1.0",
     "@types/react-share": "^3.0.3",
     "babel-plugin-styled-components": "^1.11.1",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
     "clipboard": "^2.0.6",
     "core-js": "^3.6.5",
     "gatsby": "^2.24.80",
