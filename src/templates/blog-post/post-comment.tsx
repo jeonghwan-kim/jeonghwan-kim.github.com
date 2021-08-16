@@ -1,24 +1,28 @@
-import React from "react"
-import { Disqus } from "gatsby-plugin-disqus"
-import { MarkdownRemark } from "../../models/markdown-remark"
-import { Site } from "../../models/site"
+import React, { createRef } from "react"
+import { useEffect } from "react"
 
-interface P {
-  markdownRemark: MarkdownRemark
-  site: Site
+const utterancSettings = {
+  src: "https://utteranc.es/client.js",
+  repo: "jeonghwan-kim/jeonghwan-kim.github.com",
+  "issue-term": "pathname",
+  label: "Comment",
+  theme: "github-light",
+  crossOrigin: "anonymous",
+  async: "true",
 }
 
-const PostComment: React.FC<P> = ({ markdownRemark, site }) => {
-  const config: { url: string; title: string; identifier?: string } = {
-    url: `${site.siteMetadata.url + markdownRemark.fields.slug}`,
-    title: markdownRemark.frontmatter.title,
-  }
+const PostComment: React.FC = () => {
+  const ref = createRef<HTMLDivElement>()
 
-  if (!markdownRemark.fields.beforeGatsby) {
-    config.identifier = markdownRemark.id
-  }
+  useEffect(() => {
+    const utterances = document.createElement("script")
+    Object.entries(utterancSettings).forEach(([key, value]) => {
+      utterances.setAttribute(key, value)
+    })
+    ref.current.appendChild(utterances)
+  }, [])
 
-  return <Disqus config={config} />
+  return <div id="utteranc-comments" ref={ref}></div>
 }
 
 export default PostComment
