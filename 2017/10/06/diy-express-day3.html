@@ -1,10 +1,10 @@
 <!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.d84affe0ed219172eefb.css">code[class*=language-],pre[class*=language-]{color:#000;background:none;text-shadow:0 1px #fff;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}pre[class*=language-].line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}pre[class*=language-].line-numbers>code{position:relative;white-space:inherit}.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:0;font-size:100%;left:-3.8em;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-ms-user-select:none;user-select:none}.line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}</style><meta name="generator" content="Gatsby 2.24.80"/><title data-react-helmet="true">익스프레스 만들기 Day 3 | 김정환 블로그</title><meta data-react-helmet="true" property="og:locale" content="ko_KR"/><meta data-react-helmet="true" property="og:locale:alternate" content="en_US"/><meta data-react-helmet="true" property="og:site_name" content="김정환 블로그"/><meta data-react-helmet="true" property="description" content="지금까지 만든 페이지가 포스트 조회, 생성임. 편집까지 만들어보자.
 아니, 귀찮으니깐 삭제 기능부터 만들자. 삭제 기능 구현 조회 페이지의 각 포스트 하단에 삭제 버튼을 만들고 버튼을 클릭할때 호출할
- API를 만들면 되겠다.
-application에 delete 메쏘드 기능도 추가하자…"/><meta data-react-helmet="true" property="og:url" content="https://jeonghwan-kim.github.io/2017/10/06/diy-express-day3.html"/><meta data-react-helmet="true" property="og:title" content="익스프레스 만들기 Day 3"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="지금까지 만든 페이지가 포스트 조회, 생성임. 편집까지 만들어보자.
+DELETE /api/posts?id= API를 만들면 되겠다.
+application…"/><meta data-react-helmet="true" property="og:url" content="https://jeonghwan-kim.github.io/2017/10/06/diy-express-day3.html"/><meta data-react-helmet="true" property="og:title" content="익스프레스 만들기 Day 3"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="지금까지 만든 페이지가 포스트 조회, 생성임. 편집까지 만들어보자.
 아니, 귀찮으니깐 삭제 기능부터 만들자. 삭제 기능 구현 조회 페이지의 각 포스트 하단에 삭제 버튼을 만들고 버튼을 클릭할때 호출할
- API를 만들면 되겠다.
-application에 delete 메쏘드 기능도 추가하자…"/><meta data-react-helmet="true" property="og:image" content="https://jeonghwan-kim.github.io/assets/imgs/me.jpg"/><meta data-react-helmet="true" property="og:image:height" content="300"/><meta data-react-helmet="true" property="og:image:width" content="300"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:site" content="jeonghwan0424"/><meta data-react-helmet="true" name="twitter:creator" content="jeonghwan0424"/><script data-react-helmet="true" type="application/ld+json">
+DELETE /api/posts?id= API를 만들면 되겠다.
+application…"/><meta data-react-helmet="true" property="og:image" content="https://jeonghwan-kim.github.io/assets/imgs/me.jpg"/><meta data-react-helmet="true" property="og:image:height" content="300"/><meta data-react-helmet="true" property="og:image:width" content="300"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:site" content="jeonghwan0424"/><meta data-react-helmet="true" name="twitter:creator" content="jeonghwan0424"/><script data-react-helmet="true" type="application/ld+json">
         {
           "@context": "http://schema.org",
           "@type": "BlogPosting",
@@ -174,6 +174,7 @@ data-styled.g33[id="style__PostTime-sc-1n9unvi-5"]{content:"kuIxtw,"}/*!sc*/
 .fivxtX blockquote{color:#6f6f73;position:relative;}/*!sc*/
 .fivxtX blockquote::before{content:"“";position:absolute;left:-24px;font-size:40px;color:#d6d6d8;}/*!sc*/
 .fivxtX figcaption{font-size:14px;color:gray;text-align:center;}/*!sc*/
+.fivxtX code:not([class^="language-"]){font-size:0.8em;background-color:#f5f2f0;border-radius:8px;padding:2px 6px;word-break:break-all;}/*!sc*/
 .fivxtX .gatsby-highlight pre{border-radius:8px / 2;overflow:auto;word-wrap:normal;white-space:pre;}/*!sc*/
 data-styled.g34[id="style__PostContent-sc-1n9unvi-6"]{content:"fivxtX,"}/*!sc*/
 .eIvNOy{margin-top:32px;}/*!sc*/
@@ -235,7 +236,7 @@ data-styled.g50[id="style__Button-tlugo0-0"]{content:"kdpBXK,"}/*!sc*/
 .ggiJll{padding:0;}/*!sc*/
 .ggiJll a{display:inline-block;padding:8px 16px;-webkit-text-decoration:none;text-decoration:none;color:inherit;}/*!sc*/
 data-styled.g51[id="style__ButtonLink-tlugo0-1"]{content:"ggiJll,"}/*!sc*/
-</style><link as="script" rel="preload" href="/webpack-runtime-f0162d18e53d1084cb62.js"/><link as="script" rel="preload" href="/styles-83801f3b4dd3459a4027.js"/><link as="script" rel="preload" href="/framework-58f863d6aa18c11a521f.js"/><link as="script" rel="preload" href="/app-d3d89fdb7a4b350875fd.js"/><link as="script" rel="preload" href="/commons-bda62ddd507d90cc6664.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-index-tsx-c5c37919a21e420a9431.js"/><link as="fetch" rel="preload" href="/page-data/2017/10/06/diy-express-day3.html/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/3044774879.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="style__Header-sc-1u3l4dx-0 iHjXPF"><div class="style-variables__Container-yjc0j7-0 cESDEF"><h1 class="style__SiteTitle-sc-1u3l4dx-1 fYZQZv"><div class="style__SiteLogo-sc-1u3l4dx-2 kXicAr"><a href="/">김정환블로그</a></div></h1><nav class="style__NavList-sc-1u3l4dx-3 dRpnLp"><div class="style__Nav-sc-1u3l4dx-4 jleQsE"><a style="overflow:hidden" href="/category/"><i type="Article" class="style__Icon-c6mdh9-0 jTvHaB"></i><span>POSTS</span></a></div><div class="style__Nav-sc-1u3l4dx-4 jleQsE"><a style="overflow:hidden" href="/#videos"><i type="Video" class="style__Icon-c6mdh9-0 gNRebb"></i><span>VIDEOS</span></a></div><div class="style__Nav-sc-1u3l4dx-4 jleQsE"><a style="overflow:hidden" href="/tags/"><i type="Tag" class="style__Icon-c6mdh9-0 PEEOL"></i><span>TAGS</span></a></div></nav><div class="style__Contacts-sc-1u3l4dx-5 UQMIL"><div class="style__Nav-sc-1u3l4dx-4 jleQsE"><a style="overflow:hidden" href="/feed.xml"><i type="RSS" style="filter:invert(0.6)" class="style__Icon-c6mdh9-0 hwcsxM"></i></a></div><div class="style__Nav-sc-1u3l4dx-4 jleQsE"><a style="overflow:hidden" href="mailto:ej88ej@gmail.com"><i type="Email" style="filter:invert(0.6)" class="style__Icon-c6mdh9-0 gronOM"></i></a></div><div class="style__Nav-sc-1u3l4dx-4 jleQsE"><a href="https://github.com/jeonghwan-kim" style="overflow:hidden"><i type="Github" style="filter:invert(0.6)" class="style__Icon-c6mdh9-0 kTpwny"></i></a></div></div></div></header><main class="style__Main-sc-1v9vg5k-1 cvnEat"><div class="style-variables__Container-yjc0j7-0 cESDEF"><div itemscope="" itemType="http://schema.org/BlogPosting"><section class="style__Section-aapyq4-0 kWiZOG"><main class="style__Main-sc-1n9unvi-0 fYgCjn"><aside class="style__Aside-sc-1n9unvi-1 bYONHT"><div id="post-toc" class="style__Toc-sc-1n9unvi-12 jnYDpf"><ul>
+</style><link as="script" rel="preload" href="/webpack-runtime-1c4a0c4a20a8d65d0ca8.js"/><link as="script" rel="preload" href="/styles-83801f3b4dd3459a4027.js"/><link as="script" rel="preload" href="/framework-58f863d6aa18c11a521f.js"/><link as="script" rel="preload" href="/app-d3d89fdb7a4b350875fd.js"/><link as="script" rel="preload" href="/commons-bda62ddd507d90cc6664.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-index-tsx-d2228f31e92aa25f4a94.js"/><link as="fetch" rel="preload" href="/page-data/2017/10/06/diy-express-day3.html/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/3044774879.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="style__Header-sc-1u3l4dx-0 iHjXPF"><div class="style-variables__Container-yjc0j7-0 cESDEF"><h1 class="style__SiteTitle-sc-1u3l4dx-1 fYZQZv"><div class="style__SiteLogo-sc-1u3l4dx-2 kXicAr"><a href="/">김정환블로그</a></div></h1><nav class="style__NavList-sc-1u3l4dx-3 dRpnLp"><div class="style__Nav-sc-1u3l4dx-4 jleQsE"><a style="overflow:hidden" href="/category/"><i type="Article" class="style__Icon-c6mdh9-0 jTvHaB"></i><span>POSTS</span></a></div><div class="style__Nav-sc-1u3l4dx-4 jleQsE"><a style="overflow:hidden" href="/#videos"><i type="Video" class="style__Icon-c6mdh9-0 gNRebb"></i><span>VIDEOS</span></a></div><div class="style__Nav-sc-1u3l4dx-4 jleQsE"><a style="overflow:hidden" href="/tags/"><i type="Tag" class="style__Icon-c6mdh9-0 PEEOL"></i><span>TAGS</span></a></div></nav><div class="style__Contacts-sc-1u3l4dx-5 UQMIL"><div class="style__Nav-sc-1u3l4dx-4 jleQsE"><a style="overflow:hidden" href="/feed.xml"><i type="RSS" style="filter:invert(0.6)" class="style__Icon-c6mdh9-0 hwcsxM"></i></a></div><div class="style__Nav-sc-1u3l4dx-4 jleQsE"><a style="overflow:hidden" href="mailto:ej88ej@gmail.com"><i type="Email" style="filter:invert(0.6)" class="style__Icon-c6mdh9-0 gronOM"></i></a></div><div class="style__Nav-sc-1u3l4dx-4 jleQsE"><a href="https://github.com/jeonghwan-kim" style="overflow:hidden"><i type="Github" style="filter:invert(0.6)" class="style__Icon-c6mdh9-0 kTpwny"></i></a></div></div></div></header><main class="style__Main-sc-1v9vg5k-1 cvnEat"><div class="style-variables__Container-yjc0j7-0 cESDEF"><div itemscope="" itemType="http://schema.org/BlogPosting"><section class="style__Section-aapyq4-0 kWiZOG"><main class="style__Main-sc-1n9unvi-0 fYgCjn"><aside class="style__Aside-sc-1n9unvi-1 bYONHT"><div id="post-toc" class="style__Toc-sc-1n9unvi-12 jnYDpf"><ul>
 <li><a href="#%EC%82%AD%EC%A0%9C-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84">삭제 기능 구현</a></li>
 <li>
 <p><a href="#%ED%85%9C%ED%94%8C%EB%A6%BF-%EC%97%94%EC%A7%84">템플릿 엔진</a></p>
@@ -250,7 +251,7 @@ data-styled.g51[id="style__ButtonLink-tlugo0-1"]{content:"ggiJll,"}/*!sc*/
 아니, 귀찮으니깐 삭제 기능부터 만들자.</p>
 <h2 id="삭제-기능-구현" style="position:relative;"><a href="#%EC%82%AD%EC%A0%9C-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84" aria-label="삭제 기능 구현 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>삭제 기능 구현</h2>
 <p>조회 페이지의 각 포스트 하단에 삭제 버튼을 만들고 버튼을 클릭할때 호출할
-<code class="language-text">DELETE /api/posts?id=</code> API를 만들면 되겠다.
+<code>DELETE /api/posts?id=</code> API를 만들면 되겠다.
 application에 delete 메쏘드 기능도 추가하자. (현제는 post, get까지 구현된 상황임)</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">destroy</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">path<span class="token punctuation">,</span> fn</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>path <span class="token operator">||</span> <span class="token operator">!</span>fn<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"path and fn is required"</span><span class="token punctuation">)</span>
@@ -266,16 +267,16 @@ application에 delete 메쏘드 기능도 추가하자. (현제는 post, get까�
   listen<span class="token punctuation">,</span>
   server<span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>자바스크립트에서 <code class="language-text">delete</code>는 예약어라서 바로 사용할순 없어서 <code class="language-text">destory()</code>란 이름으로 함수를 만들어
-모듈 객체에 <code class="language-text">delete</code> 속성으로 <code class="language-text">destory()</code> 함수를 할당했다.</p>
+<p>자바스크립트에서 <code>delete</code>는 예약어라서 바로 사용할순 없어서 <code>destory()</code>란 이름으로 함수를 만들어
+모듈 객체에 <code>delete</code> 속성으로 <code>destory()</code> 함수를 할당했다.</p>
 <p>app.js 에서 라우팅 로직을 추가한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/api/posts"</span><span class="token punctuation">,</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./routes/api/post"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>index<span class="token punctuation">)</span>
 app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/api/posts"</span><span class="token punctuation">,</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./routes/api/post"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>create<span class="token punctuation">)</span>
 
 <span class="token comment">// 삭제 api 추가</span>
 app<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token string">"/api/posts"</span><span class="token punctuation">,</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./routes/api/post"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>destroy<span class="token punctuation">)</span></code></pre></div>
-<p>포스트(post) 모듈의 <code class="language-text">destory()</code> 함수도 간단히 만들었다.
-디비가 없으니간 디비 역할을하는 <code class="language-text">posts</code> 배열에서 삭제할 포스트를 아이디로 찾아서 제거한다.</p>
+<p>포스트(post) 모듈의 <code>destory()</code> 함수도 간단히 만들었다.
+디비가 없으니간 디비 역할을하는 <code>posts</code> 배열에서 삭제할 포스트를 아이디로 찾아서 제거한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">destroy</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> id <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id <span class="token operator">*</span> <span class="token number">1</span>
   posts <span class="token operator">=</span> posts<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token parameter">post</span> <span class="token operator">=></span> post<span class="token punctuation">.</span>id <span class="token operator">!==</span> id<span class="token punctuation">)</span>
@@ -317,9 +318,9 @@ app<span class="token punctuation">.</span><span class="token function">delete</
 
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>파일 내용을 읽은 후 <code class="language-text">render()</code> 함수로 처리하고 처리 결결 만들어질 HTML 문자열을 <code class="language-text">res</code> 객체로
+<p>파일 내용을 읽은 후 <code>render()</code> 함수로 처리하고 처리 결결 만들어질 HTML 문자열을 <code>res</code> 객체로
 응답하는 코드다.</p>
-<p>뷰 파일을 읽어내는 <code class="language-text">render()</code> 함수를 구현해 보자.</p>
+<p>뷰 파일을 읽어내는 <code>render()</code> 함수를 구현해 보자.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">render</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">html<span class="token punctuation">,</span> cb</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">let</span> <span class="token punctuation">{</span> text<span class="token punctuation">,</span> partialName <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">findPartials</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span>
 
@@ -332,17 +333,17 @@ app<span class="token punctuation">.</span><span class="token function">delete</
     <span class="token function">render</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> cb<span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>렌더 함수는 뷰 파일을 읽은 문자열을 <code class="language-text">html</code> 변수로 받는다. 이 문자열을 파싱하는 중에 인클루드된
-뷰파일을 읽어야 할수 있기 때문에 비동기로 움직일 것이다. 그래서 콜백 함수 <code class="language-text">cb</code>를 두번째 인자로
+<p>렌더 함수는 뷰 파일을 읽은 문자열을 <code>html</code> 변수로 받는다. 이 문자열을 파싱하는 중에 인클루드된
+뷰파일을 읽어야 할수 있기 때문에 비동기로 움직일 것이다. 그래서 콜백 함수 <code>cb</code>를 두번째 인자로
 받았다.</p>
-<p>뷰 파일 내용인 <code class="language-text">html</code> 문자열에서 하위 뷰 파일을 찾아내기 위해 <code class="language-text">findPartials()</code> 함수를 이용한다.
-이 녀석은 전달한 문자열 <code class="language-text">text</code>와 하위 템플릿인 <code class="language-text">partialName</code> 문자열을 반환하다.</p>
+<p>뷰 파일 내용인 <code>html</code> 문자열에서 하위 뷰 파일을 찾아내기 위해 <code>findPartials()</code> 함수를 이용한다.
+이 녀석은 전달한 문자열 <code>text</code>와 하위 템플릿인 <code>partialName</code> 문자열을 반환하다.</p>
 <p>하위 템플릿이 없으면 곧바로 템플릿 문자열을 반환한다.</p>
-<p>하위 템플릿이 있으면 이 파일을 읽는다. 그리고 하위 템플릿 선언부 (<code class="language-text">include &#39;.view&#39;</code>)와
+<p>하위 템플릿이 있으면 이 파일을 읽는다. 그리고 하위 템플릿 선언부 (<code>include '.view'</code>)와
 교체한다.</p>
 <p>이렇게 처리한 템플릿은 계속해서 반복한다. 하나의 뷰 파일에는 여러개의 하위 뷰 파일이 인클루드 될 수
 있기 때문이다.</p>
-<p>아래는 <code class="language-text">findPartial()</code> 함수다.</p>
+<p>아래는 <code>findPartial()</code> 함수다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">findPartials</span> <span class="token operator">=</span> <span class="token parameter">text</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">let</span> partialName <span class="token operator">=</span> text<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/include '.*\.view'/</span><span class="token punctuation">)</span>
 
@@ -394,12 +395,12 @@ app<span class="token punctuation">.</span><span class="token function">delete</
 <p>뷰 파일에 데이터을 넣어서 HTML을 생성하는 기능도 추가해보자. 먼저는 템프릿에 데이터는 {%raw%}{{ }}{%endraw%}로
 설정할 거다.</p>
 <div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>{%raw%}{{msg}}{%endraw%}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></div>
-<p>이 코드에 넣은 데이터 객체는 뷰 파일을 파싱하는 <code class="language-text">render()</code> 함수의 인자로 전달한다.</p>
+<p>이 코드에 넣은 데이터 객체는 뷰 파일을 파싱하는 <code>render()</code> 함수의 인자로 전달한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span> msg<span class="token operator">:</span> <span class="token string">"hello world"</span> <span class="token punctuation">}</span>
 <span class="token function">render</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token parameter">html</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   res<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"Content-Type"</span><span class="token punctuation">,</span> <span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
-<p>템플릿을 파싱하는 부분에서 모든 서브 템플릿을 합친 문자열 <code class="language-text">html</code>에 데이터 내용을 교체한다.</p>
+<p>템플릿을 파싱하는 부분에서 모든 서브 템플릿을 합친 문자열 <code>html</code>에 데이터 내용을 교체한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">render</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token parameter">html</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token comment">// 데이터로 동적인 HTML을 생성한다</span>
   Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -412,7 +413,7 @@ app<span class="token punctuation">.</span><span class="token function">delete</
 <h3 id="리팩토링" style="position:relative;"><a href="#%EB%A6%AC%ED%8C%A9%ED%86%A0%EB%A7%81" aria-label="리팩토링 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>리팩토링</h3>
 <p>좋아. 좀 더 편리하게 사용할 수 있게 리팩토링 해보자.
 뷰 렌더 함수는 요청에 대해 적적한 뷰 파일을 찾아 응답하는 것이기 때문에 응답 객체의 역할이
-맞다. <code class="language-text">res.render(&#39;index&#39;)</code> 형태로 사용하고 싶다.</p>
+맞다. <code>res.render('index')</code> 형태로 사용하고 싶다.</p>
 <p>response.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">respose</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">res<span class="token punctuation">,</span> appData</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   res<span class="token punctuation">.</span>render <span class="token operator">=</span>
@@ -445,9 +446,9 @@ app<span class="token punctuation">.</span><span class="token function">delete</
 
   <span class="token comment">// ...</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>응답 객체에 <code class="language-text">render()</code> 함수로 코드를 옮겼다. 뷰 렌더링을 모두 마치면 알아서 <code class="language-text">res.send()</code> 함수로
+<p>응답 객체에 <code>render()</code> 함수로 코드를 옮겼다. 뷰 렌더링을 모두 마치면 알아서 <code>res.send()</code> 함수로
 응답하도록 처리했다.</p>
-<p>response 생성시 <code class="language-text">appData</code> 변수를 받고 있는데 어플리케이션 객체에서 넘어온 데이터다.</p>
+<p>response 생성시 <code>appData</code> 변수를 받고 있는데 어플리케이션 객체에서 넘어온 데이터다.</p>
 <p>application.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">Application</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> appData <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
@@ -470,29 +471,29 @@ app<span class="token punctuation">.</span><span class="token function">delete</
     <span class="token keyword">set</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p><code class="language-text">set()</code> 함수로 어플리케이션 설정 정보를 저장할 수 있다. 우선은 뷰를 위한 뷰 폴더 경로를 설정하기
+<p><code>set()</code> 함수로 어플리케이션 설정 정보를 저장할 수 있다. 우선은 뷰를 위한 뷰 폴더 경로를 설정하기
 위해 사용했다.</p>
 <p>app.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"views"</span><span class="token punctuation">,</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"./views"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
 <p>정리하자면...</p>
 <ul>
-<li><code class="language-text">app.set()</code>으로 뷰 템플릿 경로를 설정하고</li>
-<li><code class="language-text">res.render()</code>로 html을 생성하고 응답할수 있게 되었다</li>
+<li><code>app.set()</code>으로 뷰 템플릿 경로를 설정하고</li>
+<li><code>res.render()</code>로 html을 생성하고 응답할수 있게 되었다</li>
 </ul>
 <p>잘되는군... 흠~ 그런데..</p>
-<p><code class="language-text">/</code>, <code class="language-text">/index.html</code> 처럼 하나의 핸들러함수를 공유하는 경우 404 에러가 나온다.</p>
+<p><code>/</code>, <code>/index.html</code> 처럼 하나의 핸들러함수를 공유하는 경우 404 에러가 나온다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/index.html"</span><span class="token punctuation">,</span> index<span class="token punctuation">.</span>listPost<span class="token punctuation">)</span>
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> index<span class="token punctuation">.</span>listPost<span class="token punctuation">)</span></code></pre></div>
 <p>뭐가 문제지?</p>
 <p>...</p>
-<p>미들웨어 함수 fn의 <code class="language-text">fn.__path</code>, <code class="language-text">fn.__method</code> 사용하는 코드 때문이다.</p>
+<p>미들웨어 함수 fn의 <code>fn.__path</code>, <code>fn.__method</code> 사용하는 코드 때문이다.</p>
 <p>index.listPost.__path 를 설정하는데</p>
 <ul>
-<li><code class="language-text">app.get(&#39;/index.html&#39;, index.listPost)</code> 코드에서 <code class="language-text">index.listPost.__path = &#39;/index.html&#39;</code>로 설정하고</li>
-<li><code class="language-text">app.get(&#39;/&#39;, index.listPost)</code> 코드에서 <code class="language-text">index.listPost.__path = &#39;/&#39;</code>로 덮어 씌워버린다.</li>
+<li><code>app.get('/index.html', index.listPost)</code> 코드에서 <code>index.listPost.__path = '/index.html'</code>로 설정하고</li>
+<li><code>app.get('/', index.listPost)</code> 코드에서 <code>index.listPost.__path = '/'</code>로 덮어 씌워버린다.</li>
 </ul>
-<p>결국 <code class="language-text">/index.html</code>로 요청하면 404 에러 코드를 응답하게되는 거다.</p>
-<p>함수를 복제하자. <code class="language-text">clone()</code> 폴리필을 추가해서 해결했다.</p>
+<p>결국 <code>/index.html</code>로 요청하면 404 에러 코드를 응답하게되는 거다.</p>
+<p>함수를 복제하자. <code>clone()</code> 폴리필을 추가해서 해결했다.</p>
 <p>application.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// clone 폴리필</span>
 <span class="token class-name">Function</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">clone</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -611,4 +612,4 @@ include 'footer.view'</code></pre></div>
       
       
       
-      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2017/10/06/diy-express-day3.html";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-97cf1363dde6e663e726.js"],"app":["/app-d3d89fdb7a4b350875fd.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-daf4f03b6b29f9fc4e76.js"],"component---src-pages-category-dev-tsx":["/component---src-pages-category-dev-tsx-0cd73c1112b01c1602dc.js"],"component---src-pages-category-index-tsx":["/component---src-pages-category-index-tsx-e2c6ef4572cbfbc0e6dc.js"],"component---src-pages-category-series-tsx":["/component---src-pages-category-series-tsx-6f7b9ce4728d91660215.js"],"component---src-pages-category-think-tsx":["/component---src-pages-category-think-tsx-9f783578063913b468b5.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-4ea984f123cb0ff5e9b5.js"],"component---src-pages-tags-index-tsx":["/component---src-pages-tags-index-tsx-1ab4d2b4c128b3cdffd7.js"],"component---src-templates-blog-post-index-tsx":["/component---src-templates-blog-post-index-tsx-c5c37919a21e420a9431.js"]};/*]]>*/</script><script src="/polyfill-97cf1363dde6e663e726.js" nomodule=""></script><script src="/component---src-templates-blog-post-index-tsx-c5c37919a21e420a9431.js" async=""></script><script src="/commons-bda62ddd507d90cc6664.js" async=""></script><script src="/app-d3d89fdb7a4b350875fd.js" async=""></script><script src="/framework-58f863d6aa18c11a521f.js" async=""></script><script src="/styles-83801f3b4dd3459a4027.js" async=""></script><script src="/webpack-runtime-f0162d18e53d1084cb62.js" async=""></script></body></html>
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2017/10/06/diy-express-day3.html";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-97cf1363dde6e663e726.js"],"app":["/app-d3d89fdb7a4b350875fd.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-daf4f03b6b29f9fc4e76.js"],"component---src-pages-category-dev-tsx":["/component---src-pages-category-dev-tsx-0cd73c1112b01c1602dc.js"],"component---src-pages-category-index-tsx":["/component---src-pages-category-index-tsx-e2c6ef4572cbfbc0e6dc.js"],"component---src-pages-category-series-tsx":["/component---src-pages-category-series-tsx-6f7b9ce4728d91660215.js"],"component---src-pages-category-think-tsx":["/component---src-pages-category-think-tsx-9f783578063913b468b5.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-4ea984f123cb0ff5e9b5.js"],"component---src-pages-tags-index-tsx":["/component---src-pages-tags-index-tsx-1ab4d2b4c128b3cdffd7.js"],"component---src-templates-blog-post-index-tsx":["/component---src-templates-blog-post-index-tsx-d2228f31e92aa25f4a94.js"]};/*]]>*/</script><script src="/polyfill-97cf1363dde6e663e726.js" nomodule=""></script><script src="/component---src-templates-blog-post-index-tsx-d2228f31e92aa25f4a94.js" async=""></script><script src="/commons-bda62ddd507d90cc6664.js" async=""></script><script src="/app-d3d89fdb7a4b350875fd.js" async=""></script><script src="/framework-58f863d6aa18c11a521f.js" async=""></script><script src="/styles-83801f3b4dd3459a4027.js" async=""></script><script src="/webpack-runtime-1c4a0c4a20a8d65d0ca8.js" async=""></script></body></html>
