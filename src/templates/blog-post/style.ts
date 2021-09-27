@@ -114,6 +114,13 @@ export const PostContent = styled.div`
     color: ${Colors.Gray};
     text-align: center;
   }
+  code:not([class^="language-"]) {
+    font-size: 0.8em;
+    background-color: #f5f2f0;
+    border-radius: 8px;
+    padding: 2px 6px;
+    word-break: break-all;
+  }
   .gatsby-highlight {
     pre {
       border-radius: ${SpaceUnit()} / 2;

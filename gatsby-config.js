@@ -45,6 +45,7 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`, // 코드 하일라이팅, npm i prismjs 해야 함.
             options: {
               showLineNumbers: false,
+              noInlineHighlight: true,
             },
           },
         ],
