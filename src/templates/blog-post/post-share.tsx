@@ -7,13 +7,12 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from "react-share"
-import { MarkdownRemark } from "../../models/markdown-remark"
-import { SiteMetadata } from "../../models/site"
+import { MarkdownRemark, SiteSiteMetadata } from "../../../graphql-types"
 import * as Styled from "./style"
 
 interface P {
   markdownRemark: MarkdownRemark
-  siteMetadata: SiteMetadata
+  siteMetadata: SiteSiteMetadata
 }
 
 const PostShare: React.FC<P> = ({ markdownRemark, siteMetadata }) => {

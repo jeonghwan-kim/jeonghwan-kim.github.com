@@ -1,13 +1,13 @@
 import React from "react"
-import { Video } from "../../models/site"
 import { trackCustomEvent } from "gatsby-plugin-google-analytics"
 import * as Styled from "./style"
+import { Video } from "../../../graphql-types"
 
-interface P {
+interface Props {
   video: Video
 }
 
-const PostVideo: React.FC<P> = ({ video }) => {
+const PostVideo: React.FC<Props> = ({ video }) => {
   return (
     <Styled.PostVideo>
       <a

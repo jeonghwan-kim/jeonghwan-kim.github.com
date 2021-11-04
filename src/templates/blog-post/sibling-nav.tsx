@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React, { CSSProperties } from "react"
-import { MarkdownRemark } from "../../models/markdown-remark"
+import { MarkdownRemark } from "../../../graphql-types"
 import * as Styled from "./style"
 
 interface SiblingNavItemProps {

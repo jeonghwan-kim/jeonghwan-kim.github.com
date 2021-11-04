@@ -1,20 +1,17 @@
 import { graphql, Link, PageProps } from "gatsby"
 import React from "react"
+import { Query } from "../../../graphql-types"
 import Icon from "../../components/Icon"
 import { IconType } from "../../components/Icon/style"
 import { PlainLayout } from "../../components/layout"
 import Section from "../../components/Section"
 import SEO from "../../components/SEO"
 import * as Styled from "../../components/Tag/style"
-import { MarkdownRemark } from "../../models/markdown-remark"
 import { Container } from "../../styles/style-variables"
 
-type P = PageProps<{
-  site: any
-  allMarkdownRemark: { nodes: MarkdownRemark[] }
-}>
+type Props = PageProps<Query>
 
-const TagPage: React.FC<P> = ({ data }) => {
+const TagPage: React.FC<Props> = ({ data }) => {
   const d1: {
     [k in string]: { link: string; title: string; date: string }[]
   } = {}

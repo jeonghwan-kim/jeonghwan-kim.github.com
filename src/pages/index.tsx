@@ -1,12 +1,13 @@
 import { graphql, Link, PageProps } from "gatsby"
 import React, { FC } from "react"
+import { Query } from "../../graphql-types"
 import Icon from "../components/Icon"
 import { IconType } from "../components/Icon/style"
 import { HomeLayout } from "../components/layout"
 import PostList, { PostItemType } from "../components/PostList"
 import Section from "../components/Section"
 import SEO from "../components/SEO"
-import { MarkdownRemark } from "../models/markdown-remark"
+import { dateFormat } from "../helpers/date"
 import { Container } from "../styles/style-variables"
 
 const videos: PostItemType[] = [
@@ -64,9 +65,9 @@ const videos: PostItemType[] = [
   },
 ]
 
-type P = PageProps<{ allMarkdownRemark: { nodes: MarkdownRemark[] } }>
+type Props = PageProps<Query>
 
-const BlogIndex: FC<P> = ({ data }: P) => {
+const BlogIndex: FC<Props> = ({ data }: Props) => {
   return (
     <HomeLayout>
       <SEO title="홈" />
@@ -77,7 +78,9 @@ const BlogIndex: FC<P> = ({ data }: P) => {
               slug: node.fields.slug,
               title: node.frontmatter.title,
               meta: (
-                <time dateTime={node.fields.date}>{node.fields.dateStr}</time>
+                <time dateTime={node.fields.date}>
+                  {dateFormat(node.fields.date)}
+                </time>
               ),
               excerpt: node.excerpt,
             }))}
@@ -111,7 +114,6 @@ export const pageQuery = graphql`
         excerpt(pruneLength: 200, format: PLAIN, truncate: true)
         fields {
           slug
-          dateStr: date(formatString: "YYYY년 MM월 DD일")
           date
         }
         frontmatter {

@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import React, { FC } from "react"
-import { MarkdownRemark } from "../../models/markdown-remark"
+import { MarkdownRemark } from "../../../graphql-types"
+import { dateFormat } from "../../helpers/date"
 import { Icon, IconType } from "../Icon/style"
 import { TwoColumnLayout } from "../layout"
 import PostList from "../PostList"
@@ -8,17 +9,13 @@ import Section from "../Section"
 import SEO from "../SEO"
 import * as Styled from "./style"
 
-interface CateogryPostsProps {
+interface Props {
   title: string
   posts: MarkdownRemark[]
   activeCategory?: string
 }
 
-export const CateogryPosts: FC<CateogryPostsProps> = ({
-  title,
-  posts,
-  activeCategory,
-}) => {
+export const CateogryPosts: FC<Props> = ({ title, posts, activeCategory }) => {
   const aside = (
     <Styled.CategoryList>
       <Styled.CategoryListItem>
@@ -72,7 +69,11 @@ export const CateogryPosts: FC<CateogryPostsProps> = ({
             posts={posts.map(p => ({
               slug: p.fields.slug,
               title: p.frontmatter.title,
-              meta: <time dateTime={p.fields.date}>{p.fields.dateStr}</time>,
+              meta: (
+                <time dateTime={p.fields.date}>
+                  {dateFormat(p.fields.date)}
+                </time>
+              ),
               excerpt: p.excerpt,
             }))}
           />

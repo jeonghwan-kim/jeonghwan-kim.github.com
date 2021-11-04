@@ -1,10 +1,14 @@
 import { graphql } from "gatsby"
 import React, { FC } from "react"
+import {
+  MarkdownRemarkEdge,
+  Query,
+  SitePageContext,
+} from "../../../graphql-types"
 import { PlainLayout } from "../../components/layout"
 import Section from "../../components/Section"
 import SEO from "../../components/SEO"
-import { MarkdownRemark } from "../../models/markdown-remark"
-import { Series, Site, Video } from "../../models/site"
+import { dateFormat } from "../../helpers/date"
 import { Container } from "../../styles/style-variables"
 import PostComment from "./post-comment"
 import PostShare from "./post-share"
@@ -16,23 +20,12 @@ import SeriesNav from "./series-nav"
 import SiblingNav from "./sibling-nav"
 import * as Styled from "./style"
 
-interface P {
-  data: {
-    site: Site
-    markdownRemark: MarkdownRemark
-    allMarkdownRemark: {
-      nodes: MarkdownRemark[]
-    }
-    series: Series
-    video: Video
-  }
-  pageContext: {
-    previous: MarkdownRemark
-    next: MarkdownRemark
-  }
+interface Props {
+  data: Query
+  pageContext: MarkdownRemarkEdge
 }
 
-const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
+const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
   const { site, markdownRemark, series, video } = data
   const { previous, next } = pageContext
   const hasAside = markdownRemark.tableOfContents || series || video
@@ -71,7 +64,7 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
               <Styled.Article>
                 <PostHeader
                   title={markdownRemark.frontmatter.title}
-                  datetime={markdownRemark.fields.dateStr}
+                  datetime={dateFormat(markdownRemark.fields.date)}
                 />
                 <Styled.PostContent
                   id="post-content"
@@ -102,7 +95,7 @@ const BlogPostTemplate: FC<P> = ({ data, pageContext }) => {
                     posts={data.allMarkdownRemark.nodes}
                   />
                 )}
-                <PostComment markdownRemark={markdownRemark} site={data.site} />
+                <PostComment />
               </footer>
             </Container>
           </Section>
