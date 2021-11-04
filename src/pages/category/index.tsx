@@ -11,7 +11,7 @@ export default p => (
 
 export const pageQuery = graphql`
   {
-    allMarkdownRemark(sort: { fields: fields___date, order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           excerpt(pruneLength: 200, format: PLAIN, truncate: true)

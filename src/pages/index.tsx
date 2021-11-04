@@ -103,7 +103,10 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(sort: { fields: fields___date, order: DESC }, limit: 10) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 10
+    ) {
       nodes {
         excerpt(pruneLength: 200, format: PLAIN, truncate: true)
         fields {

@@ -13,7 +13,7 @@ export default p => (
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
-      sort: { fields: fields___date, order: DESC }
+      sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { category: { eq: "think" } } }
     ) {
       edges {
