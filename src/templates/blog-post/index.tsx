@@ -38,7 +38,8 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
         url={site.siteMetadata.url + markdownRemark.fields.slug}
         image={
           markdownRemark.frontmatter.featured_image ||
-          markdownRemark.frontmatter.featuredImage?.childImageSharp.fluid.src
+          markdownRemark.frontmatter.featuredImage?.childImageSharp
+            ?.gatsbyImageData.src
         }
       />
       <Container small={!hasAside}>
@@ -132,9 +133,7 @@ export const pageQuery = graphql`
         featured_image
         featuredImage {
           childImageSharp {
-            fluid(maxWidth: 300) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 300, layout: CONSTRAINED)
           }
         }
       }
