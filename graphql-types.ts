@@ -4503,10 +4503,22 @@ export type SeoQuery = {
 export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never }>
 
 export type Unnamed_1_Query = {
-  placeholderImage?:
-    | { childImageSharp?: { gatsbyImageData: any } | null | undefined }
-    | null
-    | undefined
+  allMarkdownRemark: {
+    edges: Array<{
+      node: {
+        excerpt?: string | null | undefined
+        fields?:
+          | {
+              slug?: string | null | undefined
+              date?: any | null | undefined
+              dateStr?: any | null | undefined
+            }
+          | null
+          | undefined
+        frontmatter?: { title?: string | null | undefined } | null | undefined
+      }
+    }>
+  }
 }
 
 export type Unnamed_2_QueryVariables = Exact<{ [key: string]: never }>
@@ -4576,27 +4588,6 @@ export type Unnamed_5_QueryVariables = Exact<{ [key: string]: never }>
 
 export type Unnamed_5_Query = {
   allMarkdownRemark: {
-    edges: Array<{
-      node: {
-        excerpt?: string | null | undefined
-        fields?:
-          | {
-              slug?: string | null | undefined
-              date?: any | null | undefined
-              dateStr?: any | null | undefined
-            }
-          | null
-          | undefined
-        frontmatter?: { title?: string | null | undefined } | null | undefined
-      }
-    }>
-  }
-}
-
-export type Unnamed_6_QueryVariables = Exact<{ [key: string]: never }>
-
-export type Unnamed_6_Query = {
-  allMarkdownRemark: {
     nodes: Array<{
       excerpt?: string | null | undefined
       fields?:
@@ -4608,9 +4599,9 @@ export type Unnamed_6_Query = {
   }
 }
 
-export type Unnamed_7_QueryVariables = Exact<{ [key: string]: never }>
+export type Unnamed_6_QueryVariables = Exact<{ [key: string]: never }>
 
-export type Unnamed_7_Query = {
+export type Unnamed_6_Query = {
   site?:
     | { siteMetadata?: { url?: string | null | undefined } | null | undefined }
     | null
