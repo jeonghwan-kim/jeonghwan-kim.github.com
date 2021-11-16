@@ -1,10 +1,6 @@
 import { graphql } from "gatsby"
 import React, { FC } from "react"
-import {
-  MarkdownRemarkEdge,
-  Query,
-  SitePageContext,
-} from "../../../graphql-types"
+import { MarkdownRemarkEdge, Query } from "../../../graphql-types"
 import { PlainLayout } from "../../components/layout"
 import Section from "../../components/Section"
 import SEO from "../../components/SEO"

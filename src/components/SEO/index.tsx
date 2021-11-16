@@ -8,8 +8,8 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
-import { Site } from "../../models/site"
-import { createMeta, CreateMetaProps } from "./meta"
+import { createMeta } from "./meta"
+import { Site } from "../../../graphql-types"
 
 interface SEOProps {
   title: string
