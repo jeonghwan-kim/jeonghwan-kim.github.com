@@ -161,9 +161,9 @@ const LoginForm2 = () => {
 필드값이 있는지 검사해서 없는 필드에 대한 오류 메세지를 추가한다. 모든 필드가 제
 대로 입력 되었는지도 반환한다.
 
-이메일이나 비밀번호 필드를 입력하지 않고 로그인 버튼을 누르면 오류 메시지가 각필
-드 아래 노출될 것이다. 모든 필드를 채우고 로그인 버튼을 누르면 오류 메세지가 사
-라질 것이다.
+이메일이나 비밀번호 필드를 입력하지 않고 로그인 버튼을 누르면 오류 메시지가 각
+필드 아래 노출될 것이다. 모든 필드를 채우고 로그인 버튼을 누르면 오류 메세지가
+사라질 것이다.
 
 ![오류 메세지를 노출한다](./LoginForm2.png)
 
@@ -171,12 +171,12 @@ const LoginForm2 = () => {
 
 _touched, handleBlur_
 
-사용자는 입력할 필드가 많은 폼을 마주하면 부담스럽다. 수많은 필드를 거치며제출제
-출 버튼을 향해 묵묵히 필드에 값을 채워나가야 하기 때문이다.
+사용자는 입력할 필드가 많은 폼을 마주하면 부담스럽다. 수많은 필드를 거치며 제출
+버튼을 향해 묵묵히 필드에 값을 채워나가야 하기 때문이다.
 
 필드에 잘못된 값을 입력할 때 곧장 오류 메세지를 보여준다면 사용자가 쉽게 폼을 사
-용할수 있어서 더 나은 UX다. 다만 사용자가 필드에 값을 다 채우기도 전에 오류 메세
-지를 보여주는 것 사용자를 재촉하고 무례하다.
+용할 수 있어서 더 나은 UX다. 다만 사용자가 필드에 값을 다 채우기도 전에 오류 메
+세지를 보여주는 것 사용자를 재촉하고 무례하다.
 
 사용자가 필드 입력을 마쳤다는 상태를 알고 있다면 이 값에 따라 오류 메세지를 노출
 하면 되겠다. 입력했다는 상태는 언제 갱신할까? 사용자가 필드를 입력하고 다음 필드
@@ -346,7 +346,7 @@ const LoginForm = () => {
   }, [validate])
 
   return (
-    <form onSubmit={handleSubmit} noValidate>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         name="email"
@@ -375,7 +375,7 @@ const LoginForm = () => {
 
 # 재활용 가능한 형태로 개선하기
 
-이렇게 해서 폼의 요구사항을 어찌어찌 구현은 했다.
+일단 요구사항은 구현은 했다.
 
 - 값을 필드에 바인딩할 수 있다. (values, handleChange)
 - 폼 제출을 처리할 수 있다. (handleSubmit)
@@ -387,10 +387,10 @@ const LoginForm = () => {
 
 ## useForm 훅으로 분리
 
-로그인 폼은 두 가지 역할이 섞여 있다. 폼을 다루는 어플리케이션 기능과 로그인이라
-는 도메인 기능이다. 폼은 로그인 폼 뿐만 아니라 다양한 목적을 위한 폼을 만드는데
-다시 쓰일수 있다. 기존 로그인 코드에서 폼 기능만 쏙 빼서 useForm 이라는 훅으로분
-리해 보자.
+로그인 폼은 두 가지 역할이 섞여 있다. 폼을 다루는 **어플리케이션 기능**과 로그인
+이라는 **도메인 기능**이다. 폼은 로그인 폼 뿐만 아니라 다양한 목적을 위한 폼을
+만드는데 다시 사용될 수 있다. 기존 로그인 코드에서 폼 기능만 쏙 빼서 useForm 이
+라는 훅으로 분리해 보자.
 
 ```jsx
 // useForm은 폼 기능을 제공한다
@@ -454,20 +454,19 @@ function useForm({ initialValues, validate, onSubmit }) {
 }
 ```
 
-useForm은 LoginForm에서 로그인 도메인 로직을 빼고 순수 폼 로직만 제거했다. 이 과
-정에서 로그인이라는 성격을 갖는 코드를 변경했다.
+useForm은 LoginForm에서 로그인 로직을 빼고 폼 로직만 가져왔다.
 
-handleSubmit에서 방문 여부를 참으로 설정하는 코드인데 모든 필드명을 순회하면서참
-으로 설정한다. 폼제출 마지막에 경고창으로 입력값을 보여주는 로직은 사용하는 쪽이
-담당하도록 onSubmit 콜백으로 분리했다.
+handleSubmit에서 방문 여부를 설정하는 코드는 로그인 필드 뿐만아니라 어느 필드가
+오더라도 모든 필드명을 순회하면서 설정하는 로직으로 바뀌었다. 입력값을 보여주는
+로직은 사용하는 쪽 즉 로그인 폼이 알아서 구현하도록 onSubmit 콜백으로 분리했다.
 
-runValidator는 검증자 함수를 외부에서 받아 useCallback으로 만든 함수다. 로그인폼
-에서는 validate 함수에 직접 로그인을 위한 검증로직을 만든 반면 useForm에서는로그
-인 냄새를 모두 제거하고 외부에서 받은 검증자 함수를 적절한 시기에 호출하기만한다
-.
+runValidator는 검증자 함수를 외부에서 받아 useCallback으로 만든 함수다. 로그인
+폼에서는 validate 함수에 직접 로그인을 위한 검증로직을 만든 반면 useForm에서는
+로그인 코드를 모두 제거하고 외부에서 받은 검증자 함수를 적절한 시기에 호출하기만
+한다.
 
 마지막에 useForm 외부에서 사용할 수 있는 값과 함수를 반환했다. useForm은 이렇게
-쓸수 있겠다.
+쓸 수 있겠다.
 
 ```jsx
 const LoginForm4 = () => {
@@ -495,43 +494,39 @@ const LoginForm4 = () => {
   })
 
   return (
-    <>
-      <h1>4단계. useForm </h1>
-      <form onSubmit={handleSubmit} noValidate>
-        <input
-          type="text"
-          name="email"
-          value={values.email}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        {/* 이메일 오류메시지를 출력한다 */}
-        {touched.email && errors.email && <span>{errors.email}</span>}
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="email"
+        value={values.email}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+      {touched.email && errors.email && <span>{errors.email}</span>}
 
-        <input
-          type="password"
-          name="password"
-          value={values.password}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        {/* 비밀번호 오류메시지를 출력한다 */}
-        {touched.password && errors.password && <span>{errors.password}</span>}
+      <input
+        type="password"
+        name="password"
+        value={values.password}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+      {touched.password && errors.password && <span>{errors.password}</span>}
 
-        <button type="submit">Login</button>
-      </form>
-    </>
+      <button type="submit">Login</button>
+    </form>
   )
 }
 ```
 
-LoginForm에 있던 폼 로직을 사라졌다. useForm으로 옮겼기 때문이다. 로그인이라는도
-메인 성격의 코드만 이 함수에 남아있는데 폼 초기값(initialValue)과 제출처리기
-(onSubmit)다. 이 두 값을 어떤 폼을 제작하느냐에 따라 달라지기 때문에 인자로 전달
-한다. LoginForm에서는 로그인을 위한 두 필드 email과 password를 정의했다. 이 값을
-검증하는 validator도 정의했다. 폼 제출을 처리하도록 onSubmit도 정의했다.
+LoginForm에 있던 폼 로직을 사라졌다. useForm으로 옮겼기 때문이다. 로그인이라는
+도메인 성격의 코드만 이 함수에 남아있는데 폼 초기값(initialValue)과 제출 처리기
+(onSubmit)다. 이 두 값은 어떤 폼을 만드냐에따라 달라지기 때문에 인자로 전달한다.
 
-폼과 로그인폼이라는 두 객체의 관심사가 적절히 분리되었다.
+LoginForm에서는 로그인을 위한 두 필드 email과 password를 정의했다. 이 값을 검증
+하는 validator도 정의했다. 폼 제출을 처리하도록 onSubmit도 정의했다.
+
+**폼**과 **로그인 폼**이라는 두 객체의 관심사가 적절히 분리되었다.
 
 ## getFieldProps 유틸 함수 제공
 
@@ -591,14 +586,14 @@ const LoginForm = () => {
 
 ## 리액트 컨택스트 사용하기
 
-_<Form> <Field> <ErrorMessage>_
+_\<Form\> \<Field\> \<ErrorMessage\>_
 
 리액트 앨리먼트를 정의를 더 단순하게 만들고 싶다. form, input에 전달하는 속성을
 감출 수 있을까? 추상화 한다면 어떤 모습일까? 이런 모습으로 사용해 보고 싶다.
 
 ```jsx
 const LoginForm = () => (
-  <Form initialValue={/*생략*/} validate={/*생략*/} onSubmit={/*생략*/}>
+  <Form>
     <Field type="email" name="email">
     <ErrorMessage name="email">
     <Field type="password" name="password">
@@ -609,8 +604,8 @@ const LoginForm = () => (
 ```
 
 컴포넌트의 주된 역할은 UI를 그리는 것이다. 반환하는 리액트 앨리먼트 코드를 보고
-서 모양을 쉽게 떠올린다면 사용하기 편리한 컴포넌트일 것이다. 그런 점에서 위에서
-제시한 컴포넌트는 이전에 비해 더 나은 코드다.
+서 모양을 쉽게 떠올린다면 사용하기 쉬운 컴포넌트다. 그런 점에서 위에 제시한 컴포
+넌트는 이전에 비해 더 나은 코드다.
 
 상태를 제어하는 코드를 모두 제거했다. Form, Field, ErrorMessage 컴포넌트가 알아
 서 상태 제어를 하기 때문이다. props로 전달하지 않고 상태를 사용하려면 리액트 컨
@@ -633,11 +628,11 @@ const Form = ({children, ...props} => {
 }
 ```
 
-컨택스트를 하나 생성하고 FormContext라고 이름 지었다.
+컨택스트를 하나 생성하고 FormContext라고 이름지었다.
 
 Form 컴포넌트는 useForm의 반환값을 컨택스트 프로바이더의 값으로 전달한다. Form
 컴포넌트의 자식 컴포넌트에서 이 값을 사용하려는 의도다. useForm 인자를 대신 받아
-주어야한다.
+야 한다.
 
 form 앨리먼트를 사용하고 제출 이벤트를 처리한다.
 
@@ -669,7 +664,7 @@ const ErrorMessage = ({ name }) => {
 
 ```jsx
 const LginForm = () => {
-  const validate = (values: LoginFormValue) => {
+  const validate = values => {
     const errors = {
       email: "",
       password: "",
@@ -684,7 +679,7 @@ const LginForm = () => {
 
     return errors
   }
-  const handleSubmit = (values: LoginFormValue) => {
+  const handleSubmit = values => {
     alert(JSON.stringify(values, null, 2))
   }
 
@@ -707,23 +702,23 @@ const LginForm = () => {
 ```
 
 로그인 검증과 로그인 제출 처리 그리고 로그인 UI만 남았다. 폼 로직을 모두 Form,
-Field, ErrorMessage로 옮겼기 때문이다.
+Field, ErrorMessage로 위임했기 때문이다.
 
-로그인 컴포넌트가 단순해진 것 뿐만 아니라분리한 폼 로직을 재활용 할 수도 있다.
+로그인 컴포넌트가 단순해진 것 뿐만 아니라 분리한 폼 로직을 재활용 할 수도 있다.
 회원가입 폼을 만든다면 Form, Filed, ErrorMessage를 재활용해서 UI를 구성할 수 있
 다. 회원 가입에 해당하는 initialValue와 validate, onSubmit 함수만 정의하면 된다.
 
 # Formik 소개
 
-Formik은 이와 유사한 방식으로 동작하는 리액트 폼 라이브러리다. 리액트 공식 문서
-에 소개된 것을 보고 알게 되었는데 코드가 비교적 단순해서 폼을 이해하고 다루는데
-도움이 되었다.
+[Formik](https://formik.org/)은 이와 유사한 방식으로 동작하는 리액트 폼 라이브러
+리다. 리액트 공식 문서에 소개된 것을 보고 알게 되었는데 코드가 비교적 단순해서
+폼을 이해하고 다루는데 도움이 되었다.
 
 지금까지 작성한 코드를 Formik을 이용해서 바꿔보면 이렇다.
 
 ```jsx
-const LginForm7 = () => {
-  const validate = (values: LoginFormValue) => {
+const LginForm = () => {
+  const validate = values => {
     const errors = {}
 
     if (!values.email) {
@@ -735,7 +730,7 @@ const LginForm7 = () => {
 
     return errors
   }
-  const handleSubmit = (values: LoginFormValue) => {
+  const handleSubmit = values => {
     alert(JSON.stringify(values, null, 2))
   }
 
@@ -746,7 +741,7 @@ const LginForm7 = () => {
         validate={validate}
         onSubmit={handleSubmit}
       >
-        <Form noValidate>
+        <Form>
           <Field type="email" name="email" />
           <ErrorMessage name="email" />
           <Field type="password" name="password" />
@@ -764,13 +759,19 @@ const LginForm7 = () => {
 폼을 위해 세 가지 상태를 정의했다. 입력값, 오류메시지, 필드 방문여부. 이 상태를
 갱신하면서 사용자가 제대로 폼을 입력하는 기능을 만들었다.
 
-로그인폼을 읽기 쉽게 하기위해 로그인이라는 도메인 코드만 남겼다. 폼 관련 코드는
-재활용할 수 있는 훅과 Form, Filed, ErrorMessage 컴포넌트로 분리해 냈다. 회원가입
-컴포넌트를 만든다면 꽤나 많은 코드를 다시 사용할 수있따.
+로그인 폼을 읽기 쉽게 하기위해 로그인이라는 도메인 코드만 남겼다. 폼 관련 코드는
+재활용할 수 있는 useForm 훅과 Form, Filed, ErrorMessage 컴포넌트로 분리해 냈다.
+회원가입 폼을 만든다면 꽤나 많은 코드를 다시 사용할 수 있다. 생산적이다.
 
 비슷한 역할을 하는 formik 라이브러리를 소개했다. 여전히 검증자 함수가 복잡해 보
-인다면 선언형 밸리데이터 yup이 대안이 될 수도 있다.
+인다면 선언형 밸리데이터
+[yup](https://formik.org/docs/tutorial#schema-validation-with-yup)이 대안이 될
+수 있다.
+
+오랜만에 글을 썼더니 집중하기 힘들고 시간도 많이 걸렸다. 그만 글도 길어져버렸다.
+다시 글쓰는 루틴을 시작하자.
 
 ## 참고
 
 - [formik 공식문서](https://formik.org/)
+- [글에서 사용한 예제 코드](https://github.com/jeonghwan-kim/2022-02-01-react-form)
