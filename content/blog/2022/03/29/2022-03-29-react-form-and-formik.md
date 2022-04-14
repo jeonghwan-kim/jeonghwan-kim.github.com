@@ -2,6 +2,8 @@
 title: "리액트로 폼(Form) 다루기"
 layout: post
 category: dev
+tags:
+  - react
 ---
 
 폼 다루는 방법에 대해 얘기해 보자.
