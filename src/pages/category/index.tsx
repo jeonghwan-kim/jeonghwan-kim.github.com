@@ -4,7 +4,6 @@ import { CateogryPosts } from "../../components/Category"
 
 export default p => (
   <CateogryPosts
-    title="모든 글"
     posts={p.data.allMarkdownRemark.edges.map(edge => edge.node)}
   />
 )
@@ -22,6 +21,7 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+            category
           }
         }
       }

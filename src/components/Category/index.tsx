@@ -9,64 +9,59 @@ import Section from "../Section"
 import SEO from "../SEO"
 import * as Styled from "./style"
 
-interface Props {
-  title: string
-  posts: MarkdownRemark[]
-  activeCategory?: string
+const categoryMap = {
+  series: "연재물",
+  dev: "개발",
+  think: "생각",
 }
 
-export const CateogryPosts: FC<Props> = ({ title, posts, activeCategory }) => {
+interface Props {
+  posts: MarkdownRemark[]
+}
+
+export const CateogryPosts: FC<Props> = ({ posts }) => {
+  const category = new URLSearchParams(window.location.search).get("key")
+  const renderedPosts = category
+    ? posts.filter(p => p.frontmatter.category === category)
+    : posts
+
   const aside = (
     <Styled.CategoryList>
       <Styled.CategoryListItem>
         <label>글분류</label>
       </Styled.CategoryListItem>
       <Styled.CategoryListItem>
-        <Link to="/category" className={!activeCategory ? "active" : ""}>
+        <Link to="/category" className={!category ? "active" : ""}>
           모든글
-        </Link>{" "}
+        </Link>
       </Styled.CategoryListItem>
-      <Styled.CategoryListItem>
-        <Link
-          to="/category/series"
-          className={activeCategory === "series" ? "active" : ""}
-        >
-          연재물
-        </Link>{" "}
-      </Styled.CategoryListItem>
-      <Styled.CategoryListItem>
-        <Link
-          className={activeCategory === "dev" ? "active" : ""}
-          to="/category/dev"
-        >
-          개발
-        </Link>{" "}
-      </Styled.CategoryListItem>
-      <Styled.CategoryListItem>
-        <Link
-          to="/category/think"
-          className={activeCategory === "think" ? "active" : ""}
-        >
-          생각
-        </Link>{" "}
-      </Styled.CategoryListItem>
+      {Object.keys(categoryMap).map(c => (
+        <Styled.CategoryListItem key={c}>
+          <Link
+            to={`/category?key=${c}`}
+            className={c === category ? "active" : ""}
+          >
+            {categoryMap[c]}
+          </Link>
+        </Styled.CategoryListItem>
+      ))}
     </Styled.CategoryList>
   )
 
   return (
     <TwoColumnLayout aside={aside}>
-      <SEO title={`분류: ${title}`} />
+      <SEO title={`분류: ${categoryMap[category] || "모든글"}`} />
       <Styled.Wrapper>
         <Section
           title={
             <>
               <Icon type={IconType.Article} size={4} />
-              {title}
+              {categoryMap[category] || "모든글"}
             </>
           }
         >
           <PostList
-            posts={posts.map(p => ({
+            posts={renderedPosts.map(p => ({
               slug: p.fields.slug,
               title: p.frontmatter.title,
               meta: (
