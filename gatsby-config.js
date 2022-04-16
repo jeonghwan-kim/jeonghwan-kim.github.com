@@ -10,9 +10,6 @@ module.exports = {
       githubUsername: "jeonghwan-kim",
     },
   },
-  flags: {
-    DEV_SSR: true,
-  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
