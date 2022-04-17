@@ -240,8 +240,7 @@ export type Site = Node & {
   siteMetadata?: Maybe<SiteSiteMetadata>
   port?: Maybe<Scalars["Int"]>
   host?: Maybe<Scalars["String"]>
-  polyfill?: Maybe<Scalars["Boolean"]>
-  pathPrefix?: Maybe<Scalars["String"]>
+  flags?: Maybe<SiteFlags>
   id: Scalars["ID"]
   parent?: Maybe<Node>
   children: Array<Node>
@@ -253,6 +252,10 @@ export type SiteBuildTimeArgs = {
   fromNow?: Maybe<Scalars["Boolean"]>
   difference?: Maybe<Scalars["String"]>
   locale?: Maybe<Scalars["String"]>
+}
+
+export type SiteFlags = {
+  DEV_SSR?: Maybe<Scalars["Boolean"]>
 }
 
 export type SiteSiteMetadata = {
@@ -993,8 +996,7 @@ export type QuerySiteArgs = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>
   port?: Maybe<IntQueryOperatorInput>
   host?: Maybe<StringQueryOperatorInput>
-  polyfill?: Maybe<BooleanQueryOperatorInput>
-  pathPrefix?: Maybe<StringQueryOperatorInput>
+  flags?: Maybe<SiteFlagsFilterInput>
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
@@ -2250,6 +2252,10 @@ export type SiteSiteMetadataSocialFilterInput = {
   githubUsername?: Maybe<StringQueryOperatorInput>
 }
 
+export type SiteFlagsFilterInput = {
+  DEV_SSR?: Maybe<BooleanQueryOperatorInput>
+}
+
 export type SiteConnection = {
   totalCount: Scalars["Int"]
   edges: Array<SiteEdge>
@@ -2301,8 +2307,7 @@ export type SiteFieldsEnum =
   | "siteMetadata___social___githubUsername"
   | "port"
   | "host"
-  | "polyfill"
-  | "pathPrefix"
+  | "flags___DEV_SSR"
   | "id"
   | "parent___id"
   | "parent___parent___id"
@@ -2431,8 +2436,7 @@ export type SiteFilterInput = {
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>
   port?: Maybe<IntQueryOperatorInput>
   host?: Maybe<StringQueryOperatorInput>
-  polyfill?: Maybe<BooleanQueryOperatorInput>
-  pathPrefix?: Maybe<StringQueryOperatorInput>
+  flags?: Maybe<SiteFlagsFilterInput>
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
