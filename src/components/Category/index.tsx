@@ -20,7 +20,10 @@ interface Props {
 }
 
 export const CateogryPosts: FC<Props> = ({ posts }) => {
-  const category = new URLSearchParams(window.location.search).get("key")
+  const category =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("key")
+      : ""
   const renderedPosts = category
     ? posts.filter(p => p.frontmatter.category === category)
     : posts
