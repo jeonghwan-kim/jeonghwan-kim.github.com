@@ -1,4 +1,6 @@
 ---
+slug: "/dev/2022/05/06/react-router.html"
+date: 2022-05-06
 title: "리액트 라우터 만들기 "
 layout: post
 category: dev

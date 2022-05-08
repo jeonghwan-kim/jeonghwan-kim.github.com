@@ -1,4 +1,6 @@
 ---
+slug: "/dev/2022/04/28/use-context.html"
+date: 2022-04-28
 title: "리액트 useContext는 어떤 모습일까?"
 layout: post
 category: dev

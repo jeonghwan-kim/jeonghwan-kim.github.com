@@ -1,4 +1,6 @@
 ---
+slug: "/dev/2022/03/29/react-form-and-formik.html"
+date: 2022-03-29
 title: "리액트로 폼(Form) 다루기"
 layout: post
 category: dev

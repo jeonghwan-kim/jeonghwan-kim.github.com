@@ -1,4 +1,6 @@
 ---
+slug: "/dev/2022/04/24/use-effect.html"
+date: 2022-04-24
 title: "리액트 useEffect는 어떤 모습일까?"
 layout: post
 category: dev
