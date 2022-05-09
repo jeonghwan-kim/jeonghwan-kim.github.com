@@ -25,17 +25,16 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
   const { site, markdownRemark, series, video } = data
   const { previous, next } = pageContext
   const hasAside = markdownRemark.tableOfContents || series || video
+
   return (
     <PlainLayout>
       <SEO
         title={markdownRemark.frontmatter.title}
         description={markdownRemark.excerpt}
-        date={markdownRemark.fields.date}
-        url={site.siteMetadata.url + markdownRemark.fields.slug}
+        date={markdownRemark.frontmatter.date}
+        url={site.siteMetadata.url + markdownRemark.frontmatter.slug}
         image={
-          markdownRemark.frontmatter.featured_image ||
-          markdownRemark.frontmatter.featuredImage?.childImageSharp
-            ?.gatsbyImageData.src
+          markdownRemark.frontmatter.featuredImage?.childImageSharp?.fixed?.src
         }
       />
       <Container small={!hasAside}>
@@ -61,7 +60,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
               <Styled.Article>
                 <PostHeader
                   title={markdownRemark.frontmatter.title}
-                  datetime={dateFormat(markdownRemark.fields.date)}
+                  datetime={dateFormat(markdownRemark.frontmatter.date)}
                 />
                 <Styled.PostContent
                   id="post-content"
@@ -112,24 +111,21 @@ export const pageQuery = graphql`
         url
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       id
-      excerpt(pruneLength: 160, truncate: true)
       html
-      fields {
-        dateStr: date(formatString: "YYYY년 MM월 DD일")
-        date
-        slug
-      }
       frontmatter {
+        slug
+        date
         title
         tags
         seriesId
         videoId
-        featured_image
         featuredImage {
           childImageSharp {
-            gatsbyImageData(width: 300, layout: CONSTRAINED)
+            fixed(width: 300) {
+              src
+            }
           }
         }
       }
@@ -147,15 +143,13 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       filter: { frontmatter: { seriesId: { eq: $seriesId } } }
-      sort: { order: ASC, fields: [fields___date] }
+      sort: { order: ASC, fields: [frontmatter___date] }
     ) {
       nodes {
         id
-        fields {
+        frontmatter {
           slug
           date
-        }
-        frontmatter {
           title
           seriesId
         }

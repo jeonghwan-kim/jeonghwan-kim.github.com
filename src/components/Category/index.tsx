@@ -65,11 +65,11 @@ export const CateogryPosts: FC<Props> = ({ posts }) => {
         >
           <PostList
             posts={renderedPosts.map(p => ({
-              slug: p.fields.slug,
+              slug: p.frontmatter.slug,
               title: p.frontmatter.title,
               meta: (
-                <time dateTime={p.fields.date}>
-                  {dateFormat(p.fields.date)}
+                <time dateTime={p.frontmatter.date}>
+                  {dateFormat(p.frontmatter.date)}
                 </time>
               ),
               excerpt: p.excerpt,

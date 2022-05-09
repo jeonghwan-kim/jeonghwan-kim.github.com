@@ -1,28 +1,81 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
+const path = require("path")
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin")
-
-const nodes = require("./gatsby/nodes")
-const pages = require("./gatsby/pages")
-const sourceNodes = require("./gatsby/source-nodes")
-
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  if (node.internal.type === `MarkdownRemark`) {
-    nodes.createMarkdown({ node, actions, getNode })
-  }
-}
+const series = require("./content/series.json")
+const videos = require("./content/videos.json")
 
 exports.createPages = async ({ graphql, actions }) => {
-  return pages.crateBlogPost({ graphql, actions })
+  const { createPage } = actions
+
+  const blogPostTemplate = path.resolve(
+    __dirname,
+    `./src/templates/blog-post/index.tsx`
+  )
+
+  const result = await graphql(`
+    {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+        edges {
+          node {
+            frontmatter {
+              slug
+              date
+              title
+              category
+              seriesId
+              videoId
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) {
+    throw result.errors
+  }
+
+  const nodes = result.data.allMarkdownRemark.edges.map(e => e.node)
+
+  nodes.forEach(({ frontmatter: { slug, date, seriesId, videoId } }, index) => {
+    createPage({
+      path: slug,
+      component: blogPostTemplate,
+      context: {
+        slug,
+        date,
+        seriesId,
+        videoId,
+        previous: index === nodes.length - 1 ? null : nodes[index + 1],
+        next: index === 0 ? null : nodes[index - 1],
+      },
+    })
+  })
 }
 
-exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
-  sourceNodes.createSeriesNode({ actions, createNodeId, createContentDigest })
-  sourceNodes.createVideoNode({ actions, createNodeId, createContentDigest })
+exports.sourceNodes = ({ actions, createContentDigest }) => {
+  series.forEach(s => {
+    actions.createNode({
+      id: s.id,
+      title: s.title,
+      internal: {
+        type: "series",
+        contentDigest: createContentDigest(s),
+      },
+    })
+  })
+
+  videos.forEach(v => {
+    actions.createNode({
+      id: v.id,
+      title: v.title,
+      thumb: v.thumb,
+      url: v.url,
+      internal: {
+        type: "video",
+        contentDigest: createContentDigest(v),
+      },
+    })
+  })
 }
 
 exports.onCreateWebpackConfig = ({ actions, stage }) => {

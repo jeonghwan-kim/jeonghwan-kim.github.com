@@ -13,6 +13,8 @@ const PostVideo: React.FC<Props> = ({ video }) => {
       <a
         id="post-video"
         href={video.url}
+        target="_blank"
+        title={`"${video.title}" 영상 보기`}
         onClick={e => {
           trackCustomEvent({
             category: "포스트/관련영상",

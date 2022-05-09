@@ -49,7 +49,7 @@ const SiblingNav: React.FC<P> = p => {
           align="left"
           icon="«"
           text={p.previous.frontmatter.title}
-          url={p.previous.fields.slug}
+          url={p.previous.frontmatter.slug}
         />
       )}
       {p.next && (
@@ -58,7 +58,7 @@ const SiblingNav: React.FC<P> = p => {
           align="right"
           icon="»"
           text={`${p.next.frontmatter.title}`}
-          url={p.next.fields.slug}
+          url={p.next.frontmatter.slug}
         />
       )}
     </Styled.SiblingNav>

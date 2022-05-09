@@ -35,14 +35,22 @@ const SeriesNav: React.FC<P> = ({ series, posts, nodeId, lite, className }) => {
         <Styled.SeriesNavControls>
           {prev && (
             <Styled.SeriesNavPrev>
-              <Button link type={ButtonType.Secondary} to={prev.fields.slug}>
+              <Button
+                link
+                type={ButtonType.Secondary}
+                to={prev.frontmatter?.slug}
+              >
                 « 이전
               </Button>
             </Styled.SeriesNavPrev>
           )}
           {next && (
             <Styled.SeriesNavNext>
-              <Button link type={ButtonType.Secondary} to={next.fields.slug}>
+              <Button
+                link
+                type={ButtonType.Secondary}
+                to={next.frontmatter?.slug}
+              >
                 다음 »
               </Button>
             </Styled.SeriesNavNext>
@@ -61,11 +69,16 @@ const SeriesNav: React.FC<P> = ({ series, posts, nodeId, lite, className }) => {
             {posts.map(post => {
               const active = post.id === nodeId
               return (
-                <li className={active ? "active" : ""} key={post.fields.slug}>
+                <li
+                  className={active ? "active" : ""}
+                  key={post.frontmatter?.slug}
+                >
                   {active ? (
                     <div className="active">{post.frontmatter.title}</div>
                   ) : (
-                    <Link to={post.fields.slug}>{post.frontmatter.title}</Link>
+                    <Link to={post.frontmatter?.slug}>
+                      {post.frontmatter.title}
+                    </Link>
                   )}
                 </li>
               )

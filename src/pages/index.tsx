@@ -75,11 +75,11 @@ const BlogIndex: FC<Props> = ({ data }: Props) => {
         <Section>
           <PostList
             posts={data.allMarkdownRemark.nodes.map(node => ({
-              slug: node.fields.slug,
+              slug: node.frontmatter.slug,
               title: node.frontmatter.title,
               meta: (
-                <time dateTime={node.fields.date}>
-                  {dateFormat(node.fields.date)}
+                <time dateTime={node.frontmatter.date}>
+                  {dateFormat(node.frontmatter.date)}
                 </time>
               ),
               excerpt: node.excerpt,
@@ -112,11 +112,9 @@ export const pageQuery = graphql`
     ) {
       nodes {
         excerpt(pruneLength: 200, format: PLAIN, truncate: true)
-        fields {
+        frontmatter {
           slug
           date
-        }
-        frontmatter {
           title
         }
       }

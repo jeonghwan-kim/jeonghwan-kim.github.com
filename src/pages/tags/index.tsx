@@ -20,9 +20,7 @@ const TagPage: React.FC<Props> = ({ data }) => {
     const { tags } = node.frontmatter
     if (tags && tags.length > 0) {
       tags.forEach(tag => {
-        const { date, slug } = node.fields
-        const { permalink, category, title } = node.frontmatter
-        const link = permalink || `/${category}${slug}`
+        const { slug, date, title } = node.frontmatter
         if (!d1[tag]) {
           d1[tag] = []
         }
@@ -100,14 +98,10 @@ export const data = graphql`
     allMarkdownRemark {
       nodes {
         frontmatter {
+          slug
           tags
           title
-          permalink
           category
-        }
-        fields {
-          slug
-          date
         }
       }
     }

@@ -21,7 +21,7 @@ const PostShare: React.FC<P> = ({ markdownRemark, siteMetadata }) => {
     size: 8 * 6,
   }
 
-  const url = siteMetadata.url + markdownRemark.fields.slug
+  const url = siteMetadata.url + markdownRemark.frontmatter.slug
 
   return (
     <Styled.ShareList>

@@ -14,12 +14,9 @@ export const pageQuery = graphql`
       edges {
         node {
           excerpt(pruneLength: 200, format: PLAIN, truncate: true)
-          fields {
-            slug
-            dateStr: date(formatString: "YYYY년 MM월 DD일")
-            date
-          }
           frontmatter {
+            slug
+            date
             title
             category
           }

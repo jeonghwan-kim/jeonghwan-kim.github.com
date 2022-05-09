@@ -98,9 +98,9 @@ module.exports = {
               return allMarkdownRemark.edges.map(edge => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
-                  date: edge.node.fields.date,
-                  url: site.siteMetadata.url + edge.node.fields.slug,
-                  guid: site.siteMetadata.url + edge.node.fields.slug,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.url + edge.node.frontmatter.slug,
+                  guid: site.siteMetadata.url + edge.node.frontmatter.slug,
                 })
               })
             },
@@ -111,11 +111,9 @@ module.exports = {
                 edges {
                   node {
                     excerpt
-                    fields {
+                    frontmatter {
                       slug
                       date
-                    }
-                    frontmatter {
                       title
                     }
                   }
@@ -129,6 +127,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-styled-components`,
-    // `gatsby-plugin-graphql-codegen`,
+    `gatsby-plugin-graphql-codegen`,
   ],
 }
