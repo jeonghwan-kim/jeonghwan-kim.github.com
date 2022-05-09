@@ -1,11 +1,8 @@
 ---
-id: 4
 title: Elastic Beanstalk
 date: 2014-07-12T08:18:53+00:00
-author: Chris
 layout: post
-guid: http://54.64.213.117/?p=4
-permalink: /elastic-beanstalk/
+slug: /elastic-beanstalk/
 category: dev
 tags: [aws]
 ---

@@ -1,11 +1,8 @@
 ---
-id: 16
 title: Angular-fullstack 로딩 속도 개선
 date: 2014-08-02T08:33:03+00:00
-author: Chris
 layout: post
-guid: http://54.64.213.117/?p=16
-permalink: /angular-fullstack-%eb%a1%9c%eb%94%a9-%ec%86%8d%eb%8f%84-%ea%b0%9c%ec%84%a0/
+slug: /angular-fullstack-로딩-속도-개선/
 category: dev
 tags: [angularjs]
 ---
