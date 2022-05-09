@@ -104,7 +104,7 @@ SPA로 동작하는 이 프로젝트는 **[react-router](https://reacttraining.c
 $ npm i react-router-dom
 ```
 
-설정 방식의 vue-router와 달리 컴포넌트를 이용한 **"선언적(declarative)"** 방식으로 설정하는 것이 차이다.
+설정 방식의 vue-router와 달리 컴포넌트를 이용한 "**선언적(declarative)**" 방식으로 설정하는 것이 차이다.
 
 각 경로에 해당하는 컴포넌트들을 components 폴더에 미리 준비했다.
 
@@ -256,7 +256,7 @@ Vue도 마찬가지지만 Flux 아키텍처를 따르는 React는 Redux라는 �
 npm i redux react-redux
 ```
 
-상태관리를 위한 전역 저장소를 **"스토어"**라고 하는데 redux의 createStore 함수로 만들 수 있다.
+상태관리를 위한 전역 저장소를 "**스토어"**라고 하는데 redux의 createStore 함수로 만들 수 있다.
 
 리액트 어플리케이션이 스토어에 접근하기 위해서는 루트 컴포넌트에 이를 넣어주어야 하는데, react-redux의 Provider 컴포넌트가 그러한 역할을 하는 녀석이다.
 
@@ -357,7 +357,7 @@ src
 
 유저 스토어를 이용해 유저 목록을 보여주는 컴포넌트를 어떻게 컨테이너와 함께 설계할 수 있는지 알아보자.
 
-먼저 보여주는 부분만 담당하는 UserList 컴포넌트를 만들건데 이를 **"프리젠테이셔널 컴포넌트(Presentational Component)"**라고 한다.
+먼저 보여주는 부분만 담당하는 UserList 컴포넌트를 만들건데 이를 "**프리젠테이셔널 컴포넌트(Presentational Component)"**라고 한다.
 
 ```js
 // src/components/UserList.js
@@ -401,7 +401,7 @@ onEdit = user => this.props.onEdit(user)
 
 실제 수정과 삭제 처리는 다른 녀석의 역할이라는건데 바로 유저 스토어가 될 것이다.
 
-프리젠테이셔널 컴포넌트와 스토어의 중간 연결자 역할을 하는 녀석이 필요한데 이를 **"컨테이너 컴포넌트(Container Component)"** 라고 한다.
+프리젠테이셔널 컴포넌트와 스토어의 중간 연결자 역할을 하는 녀석이 필요한데 이를 "**컨테이너 컴포넌트(Container Component)**" 라고 한다.
 
 VisibleUserList란 컨테이너 컴포넌트를 만들어 보겠다.
 
@@ -536,7 +536,7 @@ export const fetchUserAsync = () => dispatch => {
 }
 ```
 
-이렇게 비동기 로직을 작성할 수 있는 이유는 fetchUserAsync 함수가 다른 액션 크리에이터와 달리 dispatch 를 인자로 받는 함수를 반환하는 **"리덕스 성크"**이기 때문이다.
+이렇게 비동기 로직을 작성할 수 있는 이유는 fetchUserAsync 함수가 다른 액션 크리에이터와 달리 dispatch 를 인자로 받는 함수를 반환하는 "**리덕스 성크"**이기 때문이다.
 
 이를 사용하는 컨테이너인 VisibleUserList 컴포넌트를 한번 보자.
 

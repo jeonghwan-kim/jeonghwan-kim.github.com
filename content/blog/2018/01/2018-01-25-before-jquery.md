@@ -88,7 +88,7 @@ document.querySelector("div")
 document.querySelectorAll("div")
 ```
 
-뭔가 패턴이 보이는가? 난 `querySelector()`와 `querySelectorAll()` 만 사용해도 충분하다고 본다. CSS 스타일의 선택자를 사용할수 있다는 점은 매우 편리하고 (제이쿼리가 그렇게 사용하니깐) 무엇보다 **"일관성"**이 있기 때문이다. [IE8부터 지원](https://developer.mozilla.org/ko/docs/Web/API/Document/querySelector)하고 있으니 안심하고 사용해도 된다.
+뭔가 패턴이 보이는가? 난 `querySelector()`와 `querySelectorAll()` 만 사용해도 충분하다고 본다. CSS 스타일의 선택자를 사용할수 있다는 점은 매우 편리하고 (제이쿼리가 그렇게 사용하니깐) 무엇보다 "**일관성**"이 있기 때문이다. [IE8부터 지원](https://developer.mozilla.org/ko/docs/Web/API/Document/querySelector)하고 있으니 안심하고 사용해도 된다.
 
 ## 돔에서 데이터 얻기
 
