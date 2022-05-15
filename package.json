@@ -1,16 +1,14 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "jeonghwan-kim.github.io",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "김정환 블로그",
+  "version": "1.0.0",
+  "author": "김정환 <ej88ej@@gmail.com>",
   "dependencies": {
-    "@types/clipboard": "^2.0.1",
     "@types/react-helmet": "^6.1.0",
     "@types/react-share": "^3.0.3",
     "babel-plugin-styled-components": "^1.11.1",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
-    "clipboard": "^2.0.6",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.7",
     "gatsby": "^4.12.1",
@@ -70,10 +68,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/issues"
   },
   "husky": {
     "hooks": {
