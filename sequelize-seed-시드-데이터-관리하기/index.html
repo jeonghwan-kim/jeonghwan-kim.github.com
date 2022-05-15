@@ -216,7 +216,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>그 동안은 seed 모듈을 만들어서 서버 구동시에 데이터베이스 싱크가 종료된 직후 seed 데이터를 입력하도록 코딩했다. <a href="https://github.com/sequelize/sequelize">Sequelize</a>에서 <a href="https://github.com/sequelize/cli#seed">seed 기능</a>을 지원하는지 알기 전까지는...</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// 디비 스키마를 초기화 한다.</span>
 models<span class="token punctuation">.</span>sequelize
-  <span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">{</span> force<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">sync</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">force</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// 시드 데이터를 입력한다.</span>
     <span class="token keyword">return</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./seed"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -242,12 +242,12 @@ models<span class="token punctuation">.</span>sequelize
       <span class="token string">"Users"</span><span class="token punctuation">,</span>
       <span class="token punctuation">[</span>
         <span class="token punctuation">{</span>
-          email<span class="token operator">:</span> <span class="token string">"user1@mail.net"</span><span class="token punctuation">,</span>
-          name<span class="token operator">:</span> <span class="token string">"user1"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">"user1@mail.net"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"user1"</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token punctuation">{</span>
-          email<span class="token operator">:</span> <span class="token string">"user2@mail.net"</span><span class="token punctuation">,</span>
-          name<span class="token operator">:</span> <span class="token string">"user2"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">"user2@mail.net"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"user2"</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">]</span><span class="token punctuation">,</span>
       <span class="token punctuation">{</span><span class="token punctuation">}</span>
@@ -259,7 +259,7 @@ models<span class="token punctuation">.</span>sequelize
     <span class="token keyword">return</span> queryInterface<span class="token punctuation">.</span><span class="token function">bulkDelete</span><span class="token punctuation">(</span>
       <span class="token string">"Users"</span><span class="token punctuation">,</span>
       <span class="token punctuation">{</span>
-        email<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token punctuation">{</span>
           $<span class="token keyword">in</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"user1@mail.net"</span><span class="token punctuation">,</span> <span class="token string">"user2@mail.net"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>

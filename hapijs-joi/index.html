@@ -241,15 +241,15 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">var</span> users <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'Chris'</span><span class="token punctuation">,</span> <span class="token string">'Mod'</span><span class="token punctuation">,</span> <span class="token string">'Daniel'</span><span class="token punctuation">,</span> <span class="token string">'JT'</span><span class="token punctuation">,</span> <span class="token string">'Justin'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
 server<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  method<span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span>
-  path<span class="token operator">:</span><span class="token string">'/users/{id}'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">path</span><span class="token operator">:</span><span class="token string">'/users/{id}'</span><span class="token punctuation">,</span>
   <span class="token function-variable function">handler</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> reply</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
     <span class="token comment">// 파라메터 검증</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span> users<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
       <span class="token comment">// 검증을 통과하면 로직 수행</span>
-      <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span>user<span class="token operator">:</span> users<span class="token punctuation">[</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">user</span><span class="token operator">:</span> users<span class="token punctuation">[</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
 
       <span class="token comment">// 검증 미통과시 404 에러코드 반환</span>
@@ -261,17 +261,17 @@ server<span class="token punctuation">.</span><span class="token function">route
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">var</span> Joi <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"joi"</span><span class="token punctuation">)</span>
 
 server<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  method<span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
-  path<span class="token operator">:</span> <span class="token string">"/users/{id}"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/users/{id}"</span><span class="token punctuation">,</span>
   <span class="token function-variable function">handler</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> reply</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> user<span class="token operator">:</span> users<span class="token punctuation">[</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">user</span><span class="token operator">:</span> users<span class="token punctuation">[</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
   <span class="token comment">// config.validate 속성에 검증 로직을 추가한다. 일종의 스키마 형태</span>
-  config<span class="token operator">:</span> <span class="token punctuation">{</span>
-    validate<span class="token operator">:</span> <span class="token punctuation">{</span>
-      params<span class="token operator">:</span> <span class="token punctuation">{</span>
-        id<span class="token operator">:</span> Joi<span class="token punctuation">.</span><span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">integer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>users<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">config</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">validate</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">params</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">id</span><span class="token operator">:</span> Joi<span class="token punctuation">.</span><span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">integer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>users<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -301,22 +301,22 @@ server<span class="token punctuation">.</span><span class="token function">route
 
 exports<span class="token punctuation">.</span><span class="token function-variable function">getSchema</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    id<span class="token operator">:</span> Joi<span class="token punctuation">.</span><span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">integer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    name<span class="token operator">:</span> Joi<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">id</span><span class="token operator">:</span> Joi<span class="token punctuation">.</span><span class="token function">number</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">integer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> Joi<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>기존 라우팅 함수에서는 이 스키마를 가져다 사용한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">server<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  method<span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
-  path<span class="token operator">:</span> <span class="token string">"/users/{id}"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/users/{id}"</span><span class="token punctuation">,</span>
   <span class="token function-variable function">handler</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> reply</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> user<span class="token operator">:</span> users<span class="token punctuation">[</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">user</span><span class="token operator">:</span> users<span class="token punctuation">[</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  config<span class="token operator">:</span> <span class="token punctuation">{</span>
-    validate<span class="token operator">:</span> <span class="token punctuation">{</span>
-      params<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">config</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">validate</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">params</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token comment">// 미리 정의한 Joi 스키마를 활용한다.</span>
-        id<span class="token operator">:</span> UserSchema<span class="token punctuation">.</span>id<span class="token punctuation">.</span><span class="token function">required</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">id</span><span class="token operator">:</span> UserSchema<span class="token punctuation">.</span>id<span class="token punctuation">.</span><span class="token function">required</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -328,21 +328,21 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 <span class="token keyword">var</span> users <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"Chris"</span><span class="token punctuation">,</span> <span class="token string">"Mod"</span><span class="token punctuation">,</span> <span class="token string">"Daniel"</span><span class="token punctuation">,</span> <span class="token string">"JT"</span><span class="token punctuation">,</span> <span class="token string">"Justin"</span><span class="token punctuation">]</span>
 
 exports<span class="token punctuation">.</span><span class="token function-variable function">find</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> reply</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> users<span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">users</span><span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 exports<span class="token punctuation">.</span><span class="token function-variable function">query</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> reply</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> user<span class="token operator">:</span> users<span class="token punctuation">[</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">user</span><span class="token operator">:</span> users<span class="token punctuation">[</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 exports<span class="token punctuation">.</span><span class="token function-variable function">insert</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> reply</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   users<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
-  <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> users<span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">users</span><span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 exports<span class="token punctuation">.</span><span class="token function-variable function">remove</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> reply</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   users<span class="token punctuation">.</span><span class="token function">splice</span><span class="token punctuation">(</span>req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>id<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
-  <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> users<span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">users</span><span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">/* users.valid */</span>
 
@@ -350,24 +350,24 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 
 exports<span class="token punctuation">.</span><span class="token function-variable function">query</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    params<span class="token operator">:</span> <span class="token punctuation">{</span>
-      id<span class="token operator">:</span> UserSchema<span class="token punctuation">.</span>id<span class="token punctuation">.</span><span class="token function">required</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">params</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">id</span><span class="token operator">:</span> UserSchema<span class="token punctuation">.</span>id<span class="token punctuation">.</span><span class="token function">required</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
 exports<span class="token punctuation">.</span><span class="token function-variable function">insert</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    payload<span class="token operator">:</span> <span class="token punctuation">{</span>
-      name<span class="token operator">:</span> UserSchema<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">required</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">payload</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> UserSchema<span class="token punctuation">.</span>name<span class="token punctuation">.</span><span class="token function">required</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
 exports<span class="token punctuation">.</span><span class="token function-variable function">remove</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    query<span class="token operator">:</span> <span class="token punctuation">{</span>
-      id<span class="token operator">:</span> UserSchema<span class="token punctuation">.</span>id<span class="token punctuation">.</span><span class="token function">required</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">query</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">id</span><span class="token operator">:</span> UserSchema<span class="token punctuation">.</span>id<span class="token punctuation">.</span><span class="token function">required</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
@@ -379,30 +379,30 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 
 module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">server</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   server<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    method<span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
-    path<span class="token operator">:</span> <span class="token string">"/users"</span><span class="token punctuation">,</span>
-    handler<span class="token operator">:</span> ctrl<span class="token punctuation">.</span>find<span class="token punctuation">,</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/users"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">handler</span><span class="token operator">:</span> ctrl<span class="token punctuation">.</span>find<span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   server<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    method<span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
-    path<span class="token operator">:</span> <span class="token string">"/users/{id}"</span><span class="token punctuation">,</span>
-    handler<span class="token operator">:</span> ctrl<span class="token punctuation">.</span>query<span class="token punctuation">,</span>
-    config<span class="token operator">:</span> <span class="token punctuation">{</span> validate<span class="token operator">:</span> valid<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/users/{id}"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">handler</span><span class="token operator">:</span> ctrl<span class="token punctuation">.</span>query<span class="token punctuation">,</span>
+    <span class="token literal-property property">config</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">validate</span><span class="token operator">:</span> valid<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   server<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    method<span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
-    path<span class="token operator">:</span> <span class="token string">"/users"</span><span class="token punctuation">,</span>
-    handler<span class="token operator">:</span> ctrl<span class="token punctuation">.</span>insert<span class="token punctuation">,</span>
-    config<span class="token operator">:</span> <span class="token punctuation">{</span> validate<span class="token operator">:</span> valid<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/users"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">handler</span><span class="token operator">:</span> ctrl<span class="token punctuation">.</span>insert<span class="token punctuation">,</span>
+    <span class="token literal-property property">config</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">validate</span><span class="token operator">:</span> valid<span class="token punctuation">.</span><span class="token function">insert</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   server<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    method<span class="token operator">:</span> <span class="token string">"DELETE"</span><span class="token punctuation">,</span>
-    path<span class="token operator">:</span> <span class="token string">"/users"</span><span class="token punctuation">,</span>
-    handler<span class="token operator">:</span> ctrl<span class="token punctuation">.</span>remove<span class="token punctuation">,</span>
-    config<span class="token operator">:</span> <span class="token punctuation">{</span> validate<span class="token operator">:</span> valid<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"DELETE"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/users"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">handler</span><span class="token operator">:</span> ctrl<span class="token punctuation">.</span>remove<span class="token punctuation">,</span>
+    <span class="token literal-property property">config</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">validate</span><span class="token operator">:</span> valid<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>이제는 자원에 해당하는 각 라우팅 폴더에 세 가지 파일을 만들자.</p>

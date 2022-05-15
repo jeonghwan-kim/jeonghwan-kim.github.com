@@ -220,7 +220,7 @@ exports <span class="token operator">=</span> module<span class="token punctuati
       <span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
       <span class="token punctuation">}</span>
-      <span class="token keyword">return</span> <span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> user<span class="token operator">:</span> username<span class="token punctuation">,</span> password<span class="token operator">:</span> password <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> <span class="token function">done</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">user</span><span class="token operator">:</span> username<span class="token punctuation">,</span> <span class="token literal-property property">password</span><span class="token operator">:</span> password <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">)</span>
 
@@ -244,8 +244,8 @@ module<span class="token punctuation">.</span><span class="token function-variab
   <span class="token comment">// ..</span>
 
   app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">session</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      name<span class="token operator">:</span> <span class="token string">'MY_APP'</span><span class="token punctuation">,</span>
-      secret<span class="token operator">:</span> <span class="token string">'MY_S3CR3T'</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'MY_APP'</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">secret</span><span class="token operator">:</span> <span class="token string">'MY_S3CR3T'</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token comment">// ..</span></code></pre></div>
@@ -288,16 +288,16 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 
 angular<span class="token punctuation">.</span><span class="token function">module</span><span class="token punctuation">(</span><span class="token string">"myApp"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">$stateProvider</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   $stateProvider<span class="token punctuation">.</span><span class="token function">state</span><span class="token punctuation">(</span><span class="token string">"main"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    url<span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span>
-    templateUrl<span class="token operator">:</span> <span class="token string">"app/main/main.html"</span><span class="token punctuation">,</span>
-    controller<span class="token operator">:</span> <span class="token string">"MainCtrl"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">templateUrl</span><span class="token operator">:</span> <span class="token string">"app/main/main.html"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">controller</span><span class="token operator">:</span> <span class="token string">"MainCtrl"</span><span class="token punctuation">,</span>
 
     <span class="token comment">// promise를 사용한 부분.</span>
     <span class="token comment">// resolve가 정상 수행되어야함 '/'으로 라우팅을 허용한다.</span>
-    resolve<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function-variable function">isAuth</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">$http<span class="token punctuation">,</span> $state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// 백엔드에 인증여부를 확인하다.</span>
-        <span class="token keyword">return</span> <span class="token function">$http</span><span class="token punctuation">(</span><span class="token punctuation">{</span> method<span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span> url<span class="token operator">:</span> <span class="token string">"/api/auth"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>
+        <span class="token keyword">return</span> <span class="token function">$http</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"/api/auth"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>
           <span class="token parameter">data<span class="token punctuation">,</span>
           status</span>
         <span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -323,8 +323,8 @@ angular
       <span class="token comment">// 백엔드에 인증을 시도한다.</span>
       $http
         <span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/api/auth"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-          username<span class="token operator">:</span> $scope<span class="token punctuation">.</span>username<span class="token punctuation">,</span>
-          password<span class="token operator">:</span> $scope<span class="token punctuation">.</span>password<span class="token punctuation">,</span>
+          <span class="token literal-property property">username</span><span class="token operator">:</span> $scope<span class="token punctuation">.</span>username<span class="token punctuation">,</span>
+          <span class="token literal-property property">password</span><span class="token operator">:</span> $scope<span class="token punctuation">.</span>password<span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data<span class="token punctuation">,</span> status</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
           console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> status<span class="token punctuation">)</span>

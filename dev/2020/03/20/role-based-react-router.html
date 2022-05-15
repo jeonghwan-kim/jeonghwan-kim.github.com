@@ -261,7 +261,7 @@ MDN 문서에 보면 의미상 "비인증"을 의미한다라고 나와 있다.<
 <p><code>&#x3C;Route></code>를 감싼 컴포넌트를 만들어야겠다.
 비슷하게 사용하지만 권한 정보를 받는 인테페이스를 갖도록 말이다.
 권한에 따라 컴포넌트를 보여줄지 말지 결정하는 역할이므로 <code>&#x3C;RouteIf></code>라고 이름지었다.</p>
-<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">RouteIf</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> component<span class="token operator">:</span> Component<span class="token punctuation">,</span> rest <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">RouteIf</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> <span class="token literal-property property">component</span><span class="token operator">:</span> Component<span class="token punctuation">,</span> rest <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token operator">&lt;</span>Route
       <span class="token punctuation">{</span><span class="token operator">...</span>rest<span class="token punctuation">}</span>
@@ -275,7 +275,7 @@ MDN 문서에 보면 의미상 "비인증"을 의미한다라고 나와 있다.<
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
 <p>여기까지는 <code>&#x3C;Route></code>와 똑같은 컴포넌트다.
 렌더 함수를 조금만 만져보자.</p>
-<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">RouteIf</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> component<span class="token operator">:</span> Component<span class="token punctuation">,</span> <span class="token operator">...</span>rest <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">RouteIf</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> <span class="token literal-property property">component</span><span class="token operator">:</span> Component<span class="token punctuation">,</span> <span class="token operator">...</span>rest <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token operator">&lt;</span>Route
       <span class="token punctuation">{</span><span class="token operator">...</span>rest<span class="token punctuation">}</span>
@@ -310,7 +310,7 @@ render() 함수에서 권한 검사할때 사용할 값이다.
 이 권한이 아닐 경우 데이터를 수정할 수 있는 모든 인풋 요소를 비활성화 해서 사용자 입력을 막을 것이다.
 보통 어드민 어플리케이션일 경우 사용자 별로 조회만 하고 수정을 제한하는 정책을 쓰는데 이를 위한 것이다.</p>
 <p>이 값을 render() 함수에서 사용해보면 이렇다.</p>
-<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">RouteIf</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> role<span class="token punctuation">,</span> component<span class="token operator">:</span> Component<span class="token punctuation">,</span> <span class="token operator">...</span>rest <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">RouteIf</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> role<span class="token punctuation">,</span> <span class="token literal-property property">component</span><span class="token operator">:</span> Component<span class="token punctuation">,</span> <span class="token operator">...</span>rest <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token operator">&lt;</span>Route
       <span class="token punctuation">{</span><span class="token operator">...</span>rest<span class="token punctuation">}</span>
@@ -342,9 +342,9 @@ render() 함수에서 권한 검사할때 사용할 값이다.
 그렇기 때문에 사용자 별로 권한 정보를 가지고 있어야하는데, 로그인 후에 이 정보를 조회할 수 있다.</p>
 <p>로그인 후, 혹은 권한 조회 API를 통해 응답받은 데이터를 아래 myRole 객체에 담으면 이런 모습이다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> myRole <span class="token operator">=</span> <span class="token punctuation">{</span>
-  usersPage<span class="token operator">:</span> <span class="token constant">ROLE</span><span class="token punctuation">.</span><span class="token constant">NONE</span><span class="token punctuation">,</span> <span class="token comment">// 사용자 관리 화면</span>
-  productsPage<span class="token operator">:</span> <span class="token constant">ROLE</span><span class="token punctuation">.</span><span class="token constant">READ</span><span class="token punctuation">,</span> <span class="token comment">// 상품 관리 화면</span>
-  adPage<span class="token operator">:</span> <span class="token constant">ROLE</span><span class="token punctuation">.</span><span class="token constant">WRITE</span><span class="token punctuation">,</span> <span class="token comment">// 광고 관리 화면</span>
+  <span class="token literal-property property">usersPage</span><span class="token operator">:</span> <span class="token constant">ROLE</span><span class="token punctuation">.</span><span class="token constant">NONE</span><span class="token punctuation">,</span> <span class="token comment">// 사용자 관리 화면</span>
+  <span class="token literal-property property">productsPage</span><span class="token operator">:</span> <span class="token constant">ROLE</span><span class="token punctuation">.</span><span class="token constant">READ</span><span class="token punctuation">,</span> <span class="token comment">// 상품 관리 화면</span>
+  <span class="token literal-property property">adPage</span><span class="token operator">:</span> <span class="token constant">ROLE</span><span class="token punctuation">.</span><span class="token constant">WRITE</span><span class="token punctuation">,</span> <span class="token comment">// 광고 관리 화면</span>
   <span class="token comment">// ...</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>화면에 따른 권한값으로 구성된 객체다.

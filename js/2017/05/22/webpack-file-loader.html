@@ -232,11 +232,11 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>웹팩에서는 main.js를 읽은 뒤 style.css 파일을 읽을 것이다. 그리고 url에 설정한 파일인 bg.svg를 발견하는데 이때 로더 설정에 svg 파일 규칙을 추가할 수 있다. 아래처럼 말이다.</p>
 <p>webpack.config.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  module<span class="token operator">:</span> <span class="token punctuation">{</span>
-    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
-        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.svg$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-        loader<span class="token operator">:</span> <span class="token string">"file-loader"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.svg$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">"file-loader"</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -246,10 +246,10 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>하지만 이대로 index.html 파일을 브라우져에 로딩하면 이미지를 제대로 로딩하지 못할 수 있다. CSS를 로딩하면 <code>background-image: url(bg.svg)</code> 코드에 의해 동일 폴더에서 이미지를 찾으려고 시도할 것이다. 그러나 웹팩으로 빌드한 이미지 파일은 output인 dist 폴더 아래로 이동했기 때문에 이미지 로딩에 실패할 것이다.</p>
 <p>file-loader 옵션을 조정해서 경로를 바로 잡아 주어야 한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
-  loader<span class="token operator">:</span> <span class="token string">'file-loader'</span><span class="token punctuation">,</span>
-  options<span class="token operator">:</span> <span class="token punctuation">{</span>
-    publicPath<span class="token operator">:</span> <span class="token string">'./dist/'</span>
-    name<span class="token operator">:</span> <span class="token string">'[name].[ext]?[hash]'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'file-loader'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">publicPath</span><span class="token operator">:</span> <span class="token string">'./dist/'</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'[name].[ext]?[hash]'</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p><code>publicPath</code> 옵션은 파일을 사용할 때 경로 앞에 추가되는 문자열이다. <code>output</code>에 설정한 'dist' 폴더에 이미지 파일을 옮겨질 것이니깐 <code>publicPath</code> 값을 './dist/'로 설정했다. 이 파일을 사용하는 측에서는 'bg.svg'를 'dist/bg.svg'로 변경하여 사용할 것이다. file-loader가 하는 역할이다.</p>
@@ -268,13 +268,13 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>10Kb 미만인 svg 파일을 url-loader로 처리하도록 변경했다.</p>
 <p>webpack.config.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
-  test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.svg)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-  use<span class="token operator">:</span> <span class="token punctuation">{</span>
-    loader<span class="token operator">:</span> <span class="token string">'url-loader'</span><span class="token punctuation">,</span>
-    options<span class="token operator">:</span> <span class="token punctuation">{</span>
-      name<span class="token operator">:</span> <span class="token string">'[name].[ext]?[hash]'</span><span class="token punctuation">,</span>
-      publicPath<span class="token operator">:</span> <span class="token string">'./dist/'</span><span class="token punctuation">,</span>
-      limit<span class="token operator">:</span> <span class="token number">10000</span> <span class="token comment">// 10kb</span>
+  <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.svg)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+  <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'url-loader'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'[name].[ext]?[hash]'</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">publicPath</span><span class="token operator">:</span> <span class="token string">'./dist/'</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">limit</span><span class="token operator">:</span> <span class="token number">10000</span> <span class="token comment">// 10kb</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>

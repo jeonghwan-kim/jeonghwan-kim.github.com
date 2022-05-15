@@ -270,8 +270,8 @@ src/Middleware.js에 있는 코드를 확인해 볼까요?</p>
 <p>req가 아래와 같은 형식의 정보를 제공한다면 어떨까요?</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">req<span class="token punctuation">.</span>path <span class="token operator">=</span> <span class="token string">"/api/posts"</span>
 req<span class="token punctuation">.</span>query <span class="token operator">=</span> <span class="token punctuation">{</span>
-  limit<span class="token operator">:</span> <span class="token string">"2"</span><span class="token punctuation">,</span>
-  page<span class="token operator">:</span> <span class="token string">"1"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">limit</span><span class="token operator">:</span> <span class="token string">"2"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">page</span><span class="token operator">:</span> <span class="token string">"1"</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>경로를 비교할때 req.url 대신에 req.path를 사용하면 정확한 비교가 되겠죠?
 게다가 쿼리스트링에 접근할 때는 미리 파싱된 req.query 객체를 통해서 limit과 page 값에 접근할 수도 있을 것입니다.</p>
@@ -294,11 +294,11 @@ req<span class="token punctuation">.</span>query <span class="token operator">=<
     <span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       path <span class="token operator">=</span> <span class="token string">'/api/posts'</span>
       qs <span class="token operator">=</span> <span class="token punctuation">{</span>
-        limit<span class="token operator">:</span> <span class="token string">'2'</span><span class="token punctuation">,</span>
-        page<span class="token operator">:</span> <span class="token string">'1'</span>
+        <span class="token literal-property property">limit</span><span class="token operator">:</span> <span class="token string">'2'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">page</span><span class="token operator">:</span> <span class="token string">'1'</span>
       <span class="token punctuation">}</span>
       <span class="token keyword">const</span> encodedQs <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">limit=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>qs<span class="token punctuation">.</span>limit<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&amp;page=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>qs<span class="token punctuation">.</span>page<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
-      req <span class="token operator">=</span> <span class="token function">Request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>url<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>path<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">?</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>encodedQs<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+      req <span class="token operator">=</span> <span class="token function">Request</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>path<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">?</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>encodedQs<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p>두 번째 테스트 케이스부터는 생성 인자가 올바로 들어간 이후의 테스트 입니다.
 모듈 생성 코드는 각 테스트 케이스에서 중복으로 사용될 것이므로 beforeEach()에서 기술하였습니다.</p>

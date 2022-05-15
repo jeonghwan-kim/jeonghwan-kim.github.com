@@ -253,17 +253,17 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>js/services/todoStorage.js:</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">angular<span class="token punctuation">.</span><span class="token function">module</span><span class="token punctuation">(</span><span class="token string">"todomvc"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">factory</span><span class="token punctuation">(</span><span class="token string">"todomvcStorage"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">var</span> storage <span class="token operator">=</span> <span class="token punctuation">{</span>
-    todos<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token literal-property property">todos</span><span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
         <span class="token comment">// &lt;-- 바로 요 변수가 데이터다</span>
-        id<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-        title<span class="token operator">:</span> <span class="token string">"요가 수행하기"</span><span class="token punctuation">,</span>
-        completed<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"요가 수행하기"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">{</span>
-        id<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
-        title<span class="token operator">:</span> <span class="token string">"어머니 용돈 드리기"</span><span class="token punctuation">,</span>
-        completed<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"어머니 용돈 드리기"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
@@ -320,19 +320,19 @@ getUsers 라고 할수 있을 것이다. 메쏘드도 POST, GET을 혼용해서 
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token comment">// 앵귤러 서비스쪽에 있던 배열을 노드 코드로 옮겼다.</span>
 <span class="token keyword">var</span> todos <span class="token operator">=</span> <span class="token punctuation">[</span>
   <span class="token punctuation">{</span>
-    id<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-    title<span class="token operator">:</span> <span class="token string">"todo 1"</span><span class="token punctuation">,</span>
-    completed<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"todo 1"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">{</span>
-    id<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
-    title<span class="token operator">:</span> <span class="token string">"todo 2"</span><span class="token punctuation">,</span>
-    completed<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"todo 2"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">{</span>
-    id<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
-    title<span class="token operator">:</span> <span class="token string">"todo 3"</span><span class="token punctuation">,</span>
-    completed<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"todo 3"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span>
 
@@ -369,7 +369,7 @@ post 메쏘드는 데이터를 보낼때 http 바디에 그 정보를 저장한�
 
 <span class="token comment">// body parser</span>
 app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>bodyParser<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>bodyParser<span class="token punctuation">.</span><span class="token function">urlencoded</span><span class="token punctuation">(</span><span class="token punctuation">{</span> extended<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>bodyParser<span class="token punctuation">.</span><span class="token function">urlencoded</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">extended</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre></div>
 <p>라우트 핸들러 함수에서 req.body를 통해 바디 데이터에 접근할 수 있다.</p>
 <h2 id="post-apitodos" style="position:relative;"><a href="#post-apitodos" aria-label="post apitodos permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>POST /api/todos</h2>
 <p>todo를 추가하는 api를 만들어 보자.
@@ -383,9 +383,9 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
   <span class="token keyword">var</span> newId <span class="token operator">=</span> <span class="token operator">!</span>todos<span class="token punctuation">.</span>length <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> todos<span class="token punctuation">[</span>todos<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>id <span class="token operator">+</span> <span class="token number">1</span>
 
   <span class="token keyword">var</span> newTodo <span class="token operator">=</span> <span class="token punctuation">{</span>
-    id<span class="token operator">:</span> newId<span class="token punctuation">,</span>
-    title<span class="token operator">:</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>title<span class="token punctuation">,</span>
-    completed<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">id</span><span class="token operator">:</span> newId<span class="token punctuation">,</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>title<span class="token punctuation">,</span>
+    <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 
   todos<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>newTodo<span class="token punctuation">)</span>

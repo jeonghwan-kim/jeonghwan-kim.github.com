@@ -281,8 +281,8 @@ lab<span class="token punctuation">.</span><span class="token function">experime
   <span class="token comment">// 테스트 케이스</span>
   lab<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">done</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> opts <span class="token operator">=</span> <span class="token punctuation">{</span>
-      method<span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
-      url<span class="token operator">:</span> <span class="token string">"/users"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"/users"</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">// 서버 구동</span>
@@ -330,16 +330,16 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 lab<span class="token punctuation">.</span><span class="token function">experiment</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">// 테스트 데이터</span>
   <span class="token keyword">var</span> tester <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token operator">:</span> <span class="token string">"Unit Tester"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Unit Tester"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 
   <span class="token comment">// 테스트 전에 post로 테스트 자원을 입력하는 프로토콜을 호출한다.</span>
   lab<span class="token punctuation">.</span><span class="token function">before</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">done</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> opts <span class="token operator">=</span> <span class="token punctuation">{</span>
-      method<span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
-      url<span class="token operator">:</span> <span class="token string">"/users"</span><span class="token punctuation">,</span>
-      payload<span class="token operator">:</span> <span class="token punctuation">{</span>
-        name<span class="token operator">:</span> tester<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+      <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"/users"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">payload</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">name</span><span class="token operator">:</span> tester<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
     app<span class="token punctuation">.</span><span class="token function">inject</span><span class="token punctuation">(</span>opts<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -352,8 +352,8 @@ lab<span class="token punctuation">.</span><span class="token function">experime
   <span class="token comment">// 테스트 종료 후 테스트 자원을 삭제하는 프로토콜을 호출한다.</span>
   lab<span class="token punctuation">.</span><span class="token function">after</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">done</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> opts <span class="token operator">=</span> <span class="token punctuation">{</span>
-      method<span class="token operator">:</span> <span class="token string">"DELETE"</span><span class="token punctuation">,</span>
-      url<span class="token operator">:</span> <span class="token string">"/users?id="</span> <span class="token operator">+</span> tester<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+      <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"DELETE"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"/users?id="</span> <span class="token operator">+</span> tester<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
     app<span class="token punctuation">.</span><span class="token function">inject</span><span class="token punctuation">(</span>opts<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       Code<span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>statusCode<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>be<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>
@@ -363,8 +363,8 @@ lab<span class="token punctuation">.</span><span class="token function">experime
 
   lab<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">done</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> opts <span class="token operator">=</span> <span class="token punctuation">{</span>
-      method<span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
-      url<span class="token operator">:</span> <span class="token string">"/users"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"/users"</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
     app<span class="token punctuation">.</span><span class="token function">inject</span><span class="token punctuation">(</span>opts<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       Code<span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>statusCode<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>be<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>
@@ -380,8 +380,8 @@ lab<span class="token punctuation">.</span><span class="token function">experime
 
   lab<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"GET users/{id}"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">done</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">var</span> opts <span class="token operator">=</span> <span class="token punctuation">{</span>
-      method<span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
-      url<span class="token operator">:</span> <span class="token string">"/users/"</span> <span class="token operator">+</span> tester<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+      <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">"/users/"</span> <span class="token operator">+</span> tester<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
     app<span class="token punctuation">.</span><span class="token function">inject</span><span class="token punctuation">(</span>opts<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       Code<span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>statusCode<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>be<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span>
@@ -396,12 +396,12 @@ lab<span class="token punctuation">.</span><span class="token function">experime
 반대로 특정 테스트는 스킵하고 싶을 때가 있는데 <code>lab.test()</code> 함수의 두 번째 파라메터로 <code>{only: Boolean, skip: Boolena}</code> 객체를 넘겨주면 가능하다.</p>
 <p>테스트 파일이 많아지면 매번 명령어로 실행하기 불가능하다.
 리눅스에 많이 사용하는 Makefile를 활용하면 이를 손쉽게 관리할 수 있다.</p>
-<div class="gatsby-highlight" data-language="makefile"><pre class="language-makefile"><code class="language-makefile"><span class="token symbol">all</span><span class="token punctuation">:</span> users auth
+<div class="gatsby-highlight" data-language="makefile"><pre class="language-makefile"><code class="language-makefile"><span class="token target symbol">all</span><span class="token punctuation">:</span> users auth
 
-<span class="token symbol">users</span><span class="token punctuation">:</span>
+<span class="token target symbol">users</span><span class="token punctuation">:</span>
   node_modules/lab/bin/lab app/routes/users/*.spec.js
 
-<span class="token symbol">auth</span><span class="token punctuation">:</span>
+<span class="token target symbol">auth</span><span class="token punctuation">:</span>
   node_modules/lab/bin/lab app/routes/auth/*.spec.js</code></pre></div>
 <p>/users 프로토콜을 테스트할 때는 <code>make user</code>로 간단히 실행한다.
 <code>make</code> 명령어는 전체 테스트를 실행한다.
@@ -411,7 +411,7 @@ Makefile은 프로젝트 루트폴더에 관리하는 것이 좋고, 스페이�
 Lab 명령어 실행시 <code>-r</code> 옵션은 리포트 형식을 정하는 옵션이다.
 <code>-r html</code> 옵션을 줘서 html 형식으로 테스트 결과를 출력하고 <code>-o report.html</code> 옵션을 추가하여 파일로 저장할 수 있다.
 Makefile을 아래처럼 수정해 보자.</p>
-<div class="gatsby-highlight" data-language="makefile"><pre class="language-makefile"><code class="language-makefile"><span class="token symbol">users</span><span class="token punctuation">:</span>
+<div class="gatsby-highlight" data-language="makefile"><pre class="language-makefile"><code class="language-makefile"><span class="token target symbol">users</span><span class="token punctuation">:</span>
   node_modules/lab/bin/lab -o report.html -r html app/routes/users/*.spec.js</code></pre></div>
 <h1 id="grunt로-자동화" style="position:relative;"><a href="#grunt%EB%A1%9C-%EC%9E%90%EB%8F%99%ED%99%94" aria-label="grunt로 자동화 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Grunt로 자동화</h1>
 <p>지금까지의 작업을 Grunt로 자동화 해보자.
@@ -422,24 +422,24 @@ Makefile을 아래처럼 수정해 보자.</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">grunt</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   grunt<span class="token punctuation">.</span><span class="token function">initConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token comment">// lab 명령어 관련 설정</span>
-    lab<span class="token operator">:</span> <span class="token punctuation">{</span>
-      files<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"app/**/*.spec.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 모든 테스트 파일을 수행한다.</span>
-      nodeEnv<span class="token operator">:</span> <span class="token string">"development"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">lab</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">files</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"app/**/*.spec.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 모든 테스트 파일을 수행한다.</span>
+      <span class="token literal-property property">nodeEnv</span><span class="token operator">:</span> <span class="token string">"development"</span><span class="token punctuation">,</span>
       <span class="token constant">DEBUG</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
-      color<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      verbose<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      timeout<span class="token operator">:</span> <span class="token number">7000</span><span class="token punctuation">,</span>
-      parallel<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      reportFile<span class="token operator">:</span> <span class="token string">"report.html"</span><span class="token punctuation">,</span> <span class="token comment">// 리포트 파일을 생성한다.</span>
-      reporter<span class="token operator">:</span> <span class="token string">"html"</span><span class="token punctuation">,</span>
-      coverage<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">color</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">verbose</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">timeout</span><span class="token operator">:</span> <span class="token number">7000</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">parallel</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">reportFile</span><span class="token operator">:</span> <span class="token string">"report.html"</span><span class="token punctuation">,</span> <span class="token comment">// 리포트 파일을 생성한다.</span>
+      <span class="token literal-property property">reporter</span><span class="token operator">:</span> <span class="token string">"html"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">coverage</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
     <span class="token comment">// 생성한 리프포트 파일을 크롬 브라우저로 열람한다.</span>
-    open<span class="token operator">:</span> <span class="token punctuation">{</span>
-      report<span class="token operator">:</span> <span class="token punctuation">{</span>
-        path<span class="token operator">:</span> <span class="token string">"report.html"</span><span class="token punctuation">,</span>
-        app<span class="token operator">:</span> <span class="token string">"Google Chrome"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">open</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">report</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"report.html"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">app</span><span class="token operator">:</span> <span class="token string">"Google Chrome"</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>

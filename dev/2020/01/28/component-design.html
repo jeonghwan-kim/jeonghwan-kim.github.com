@@ -270,7 +270,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">FooterSaveButton</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span> fetching<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">fetching</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -288,8 +288,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
   <span class="token punctuation">}</span>
 
   <span class="token function">onClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> fetching<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> fetching<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">fetching</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">fetching</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 
   <span class="token function">save</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -334,7 +334,7 @@ FooterSaveButton이라는 이름 안에 동작(Save)과 표현(Footer)이 섞여
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">SaveButton</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
   <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span> fetching<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">fetching</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -348,8 +348,8 @@ FooterSaveButton이라는 이름 안에 동작(Save)과 표현(Footer)이 섞여
   <span class="token punctuation">}</span>
 
   <span class="token function">onClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> fetching<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> fetching<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">fetching</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">fetching</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 
   <span class="token function">save</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -385,14 +385,14 @@ SaveFooterButton은 버튼 이름이 정해져 있고 상태와 이벤트를 제
   <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
-      posts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      pagination<span class="token operator">:</span> <span class="token punctuation">{</span>
-        page<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-        totalPages<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">posts</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">pagination</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">page</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">totalPages</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      fetching<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      modalShown<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      post<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">fetching</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">modalShown</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">post</span><span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 
@@ -401,13 +401,13 @@ SaveFooterButton은 버튼 이름이 정해져 있고 상태와 이벤트를 제
   <span class="token punctuation">}</span>
 
   <span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token parameter">page</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> fetching<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">fetching</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token function">fetchPosts</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        posts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token operator">...</span>data<span class="token punctuation">.</span>posts<span class="token punctuation">]</span><span class="token punctuation">,</span>
-        pagination<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token operator">...</span>data<span class="token punctuation">.</span>pagination<span class="token punctuation">}</span><span class="token punctuation">,</span>
-        fetching<span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token literal-property property">posts</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token operator">...</span>data<span class="token punctuation">.</span>posts<span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">pagination</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token operator">...</span>data<span class="token punctuation">.</span>pagination<span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">fetching</span><span class="token operator">:</span> <span class="token boolean">false</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
@@ -479,7 +479,7 @@ fetching 상태를 활성화하고 api로 가져온 뒤 응답 데이터로 상�
   <span class="token function">toggleModal</span><span class="token punctuation">(</span><span class="token parameter">post</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
       post<span class="token punctuation">,</span>
-      modalShown<span class="token operator">:</span> <span class="token operator">!</span><span class="token operator">!</span>post
+      <span class="token literal-property property">modalShown</span><span class="token operator">:</span> <span class="token operator">!</span><span class="token operator">!</span>post
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
@@ -611,14 +611,14 @@ pagination 객체를 외부로부터 받아 페이지네이션을 그리는데�
   <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
-      posts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      pagination<span class="token operator">:</span> <span class="token punctuation">{</span>
-        page<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-        size<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-        totalPages<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">posts</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">pagination</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">page</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">size</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">totalPages</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      modalShown<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      post<span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">modalShown</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">post</span><span class="token operator">:</span> <span class="token keyword">undefined</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 
@@ -627,13 +627,13 @@ pagination 객체를 외부로부터 받아 페이지네이션을 그리는데�
   <span class="token punctuation">}</span>
 
   <span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token parameter">page</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> fetching<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">fetching</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
     <span class="token function">fetchPosts</span><span class="token punctuation">(</span>page <span class="token operator">||</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        posts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token operator">...</span>data<span class="token punctuation">.</span>posts<span class="token punctuation">]</span><span class="token punctuation">,</span>
-        pagination<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span>data<span class="token punctuation">.</span>pagination <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        fetching<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">posts</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token operator">...</span>data<span class="token punctuation">.</span>posts<span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">pagination</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span>data<span class="token punctuation">.</span>pagination <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">fetching</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
@@ -656,7 +656,7 @@ pagination 객체를 외부로부터 받아 페이지네이션을 그리는데�
   <span class="token function">toggleModal</span><span class="token punctuation">(</span><span class="token parameter">post</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
       post<span class="token punctuation">,</span>
-      modalShown<span class="token operator">:</span> <span class="token operator">!</span><span class="token operator">!</span>post<span class="token punctuation">,</span>
+      <span class="token literal-property property">modalShown</span><span class="token operator">:</span> <span class="token operator">!</span><span class="token operator">!</span>post<span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>

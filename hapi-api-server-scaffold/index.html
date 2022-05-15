@@ -275,7 +275,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
       <span class="token keyword">return</span> <span class="token function">reply</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">code</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
-    <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> users<span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">users</span><span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
@@ -287,7 +287,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
       <span class="token keyword">return</span> <span class="token function">reply</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">code</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
-    <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> user<span class="token operator">:</span> user <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">user</span><span class="token operator">:</span> user <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
@@ -300,7 +300,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
     <span class="token punctuation">}</span>
 
     req<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"info"</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">" is inserted."</span><span class="token punctuation">)</span>
-    <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> users<span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">code</span><span class="token punctuation">(</span><span class="token number">201</span><span class="token punctuation">)</span>
+    <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">users</span><span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">code</span><span class="token punctuation">(</span><span class="token number">201</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
@@ -312,7 +312,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
       <span class="token keyword">return</span> <span class="token function">reply</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">code</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
-    <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> users<span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">users</span><span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>userDao 모듈을 살펴보자. 각 로직에 해당하는 쿼리를 로딩하여 실행한 결과를 반환한다. 보통 프로토콜은 GET/POST/PUT/DELETE로 구성되고 이에 맞게 find()/query()(id로 조회할 경우 등)/insert()/update()/remove() 함수를 DAO 모듈에 구현한다.</p>
@@ -326,8 +326,8 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 
   <span class="token comment">// 로딩한 쿼리를 실행한다.</span>
   db<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    sql<span class="token operator">:</span> q<span class="token punctuation">,</span>
-    values<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">sql</span><span class="token operator">:</span> q<span class="token punctuation">,</span>
+    <span class="token literal-property property">values</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
     <span class="token function-variable function">callback</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err<span class="token punctuation">,</span> data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token function">callback</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span>

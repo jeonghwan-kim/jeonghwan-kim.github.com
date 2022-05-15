@@ -312,7 +312,7 @@ di<span class="token punctuation">.</span><span class="token function">register<
 <span class="token punctuation">}</span></code></pre></div>
 <p>main 함수를 찾게되면 registration 변수에는 아래와 같은 객체가 들어 있을 것이다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
-  deps<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'dep1'</span><span class="token punctuation">,</span> <span class="token string">'dep2'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">deps</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'dep1'</span><span class="token punctuation">,</span> <span class="token string">'dep2'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token function-variable function">func</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">dep1<span class="token punctuation">,</span> dep2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">/* main 함수 본문 */</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>register 메소드를 확인하면 쉽게 알 수 있다.
@@ -322,7 +322,7 @@ get('dep1'), get('dep2')를 호출하여 각각 dep1과 dep2의 의존성을 해
 <p>재귀 단계에 들어가 dep1, dep2를 불러오는 과정을 한번 더 살펴보자.
 registration['dep1']에 저장된 값을 불러오는데 아래와 같은 객체로 되어 있다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
-  deps<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">deps</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token function-variable function">func</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>main 함수와는 다르게 의존성 배열이 비어있기 때문에 의존성 객체를 찾는 forEach 구문은 건너뛴다.
@@ -412,8 +412,8 @@ main 함수에서 사용할 객체의 메소드만 정의한 <a href="https://ko
     <span class="token keyword">const</span> spy2 <span class="token operator">=</span> <span class="token function">createSpy</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
     <span class="token comment">// 생성한 스파이 함수를 의존 객체의 get, calculate 메소드로 바인딩한다.</span>
-    <span class="token keyword">const</span> dep1 <span class="token operator">=</span> <span class="token punctuation">{</span> get<span class="token operator">:</span> spy1 <span class="token punctuation">}</span>
-    <span class="token keyword">const</span> dep2 <span class="token operator">=</span> <span class="token punctuation">{</span> calculate<span class="token operator">:</span> spy2 <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> dep1 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">get</span><span class="token operator">:</span> spy1 <span class="token punctuation">}</span>
+    <span class="token keyword">const</span> dep2 <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">calculate</span><span class="token operator">:</span> spy2 <span class="token punctuation">}</span>
 
     <span class="token comment">// 테스트 대상을 실행한다.</span>
     <span class="token function">main</span><span class="token punctuation">(</span>dep1<span class="token punctuation">,</span> dep2<span class="token punctuation">)</span>

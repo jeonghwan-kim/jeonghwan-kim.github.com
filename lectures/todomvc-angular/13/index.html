@@ -246,7 +246,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>js/services/todomvcStorage.js:</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">angular<span class="token punctuation">.</span><span class="token function">module</span><span class="token punctuation">(</span><span class="token string">"todomvc"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">factory</span><span class="token punctuation">(</span><span class="token string">"todomvcStorage"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">$http</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">var</span> storage <span class="token operator">=</span> <span class="token punctuation">{</span>
-    todos<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">todos</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 
     <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       $http
@@ -269,7 +269,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>$http 는 메쏘드에 따라 <code>get()</code>, <code>post()</code>, <code>put()</code>, <code>delete()</code> 함수를 제공한다.
 첫번째 파라메터는 요청 url을 입력한다.
 post와 put함수는 두번째 파라메터로 요청 바디를 추가할 수 있는데 다음과 같은 형시으로 객체를 넘겨준다.</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">$http<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/api/todos"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> title<span class="token operator">:</span> <span class="token string">"new todo"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">$http<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">"/api/todos"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"new todo"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p>$http는 기본적으로 프라미스를 지원한다.
 따라서 각 함수를 실행하면 프라미스를 리턴하기 때문에 then 함수를 이용해 결과 처리를 할수 있다.
 <code>then</code>의 첫번째 파라매터는 성공시 함수이고 둘째 파라매터는 실패시 파라메터다.

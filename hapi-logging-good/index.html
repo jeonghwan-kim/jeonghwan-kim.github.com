@@ -247,34 +247,34 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span>
 
 <span class="token keyword">var</span> opts <span class="token operator">=</span> <span class="token punctuation">{</span>
-  opsInterval<span class="token operator">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
-  reporters<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">opsInterval</span><span class="token operator">:</span> <span class="token number">1000</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">reporters</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
-      reporter<span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"good-console"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      args<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token literal-property property">reporter</span><span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"good-console"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">args</span><span class="token operator">:</span> <span class="token punctuation">[</span>
         <span class="token punctuation">{</span>
-          request<span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
-          response<span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
-          log<span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
-          error<span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">request</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">response</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">log</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">error</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
-      reporter<span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"good-file"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      args<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token literal-property property">reporter</span><span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"good-file"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">args</span><span class="token operator">:</span> <span class="token punctuation">[</span>
         <span class="token punctuation">{</span>
-          path<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"../../../logs"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-          format<span class="token operator">:</span> <span class="token string">"YYYYMMDD-hhmmss"</span><span class="token punctuation">,</span>
-          prefix<span class="token operator">:</span> <span class="token string">"hapi"</span><span class="token punctuation">,</span>
-          extension<span class="token operator">:</span> <span class="token string">"log"</span><span class="token punctuation">,</span>
-          rotate<span class="token operator">:</span> <span class="token string">"daily"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">path</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"../../../logs"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">format</span><span class="token operator">:</span> <span class="token string">"YYYYMMDD-hhmmss"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">prefix</span><span class="token operator">:</span> <span class="token string">"hapi"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">extension</span><span class="token operator">:</span> <span class="token string">"log"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">rotate</span><span class="token operator">:</span> <span class="token string">"daily"</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token punctuation">{</span>
-          request<span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
-          response<span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
-          log<span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
-          error<span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">request</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">response</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">log</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">error</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -284,8 +284,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">server</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   server<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>
     <span class="token punctuation">{</span>
-      register<span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"good"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      options<span class="token operator">:</span> opts<span class="token punctuation">,</span>
+      <span class="token literal-property property">register</span><span class="token operator">:</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"good"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">options</span><span class="token operator">:</span> opts<span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -314,7 +314,7 @@ module<span class="token punctuation">.</span><span class="token function-variab
   <span class="token comment">// 로깅 예제</span>
   req<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"info"</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">" is inserted."</span><span class="token punctuation">)</span>
 
-  <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> users<span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token function">reply</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">users</span><span class="token operator">:</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>/users (post) 라우팅 로직 안에 위와 같이 로그를 뿌리도록 설정한다. 아래는 콘솔에선 보는 로그 화면이다. 파일도 동일하게 동작한다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">150216/011404.736, [request,info], data: asdf is inserted.

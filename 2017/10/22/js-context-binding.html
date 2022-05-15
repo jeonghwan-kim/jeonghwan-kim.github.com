@@ -282,8 +282,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <span class="token punctuation">}</span>
 
 <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
-  hello<span class="token operator">:</span> hello<span class="token punctuation">,</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">hello</span><span class="token operator">:</span> hello<span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 
 obj<span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 'chris'</span></code></pre></div>
@@ -296,8 +296,8 @@ obj<span class="token punctuation">.</span><span class="token function">hello</s
 <span class="token punctuation">}</span>
 
 <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
-  hello<span class="token operator">:</span> hello<span class="token punctuation">,</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">hello</span><span class="token operator">:</span> hello<span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 
 helloFn <span class="token operator">=</span> obj<span class="token punctuation">.</span>hello
@@ -315,8 +315,8 @@ name <span class="token operator">=</span> <span class="token string">"global co
 <span class="token punctuation">}</span>
 
 <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
-  hello<span class="token operator">:</span> hello<span class="token punctuation">,</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">hello</span><span class="token operator">:</span> hello<span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 
 <span class="token function">setTimeout</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>hello<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span> <span class="token comment">// 1초 후에 hello 함수가 동작하면 this는?</span>
@@ -337,7 +337,7 @@ name <span class="token operator">=</span> <span class="token string">"global co
 <span class="token punctuation">}</span>
 
 <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 
 name <span class="token operator">=</span> <span class="token string">"global context!"</span>
@@ -354,7 +354,7 @@ name <span class="token operator">=</span> <span class="token string">"global co
 <span class="token punctuation">}</span>
 
 <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 
 <span class="token function">setTimeout</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span> <span class="token comment">// 1초 후에 hello 함수가 동작하면 this는?</span>
@@ -370,12 +370,12 @@ name <span class="token operator">=</span> <span class="token string">"global co
 <span class="token punctuation">}</span>
 
 <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
-  hello<span class="token operator">:</span> hello<span class="token punctuation">,</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">hello</span><span class="token operator">:</span> hello<span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 
 obj<span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 'chris'</span>
-obj<span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">"alice"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 'alice</span></code></pre></div>
+obj<span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"alice"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 'alice</span></code></pre></div>
 <p><code>obj.hello()</code>는 암시적 바인딩 규칙이 적용되어 <code>obj</code> 객체가 바인딩된다.
 <code>obj.name</code>인 'chris'를 출력한다.</p>
 <p>반면 <code>obj.hello.call()</code> 함수를 통해 <code>{name: 'alice'}</code> 객체를 명시적으로 바인딩하면,
@@ -411,7 +411,7 @@ obj<span class="token punctuation">.</span><span class="token function">hello</s
 <span class="token punctuation">}</span>
 
 <span class="token keyword">var</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span>
-  hello<span class="token operator">:</span> hello<span class="token punctuation">,</span>
+  <span class="token literal-property property">hello</span><span class="token operator">:</span> hello<span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 
 obj1<span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token string">"chris"</span><span class="token punctuation">)</span>
@@ -520,15 +520,15 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token punctuation">}</span>
 
 <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
-  hello<span class="token operator">:</span> hello<span class="token punctuation">,</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">hello</span><span class="token operator">:</span> hello<span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">"global contenxt!"</span>
 
 <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 'global contenxt!'</span>
 obj<span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 'global contenxt!'</span>
-<span class="token function">hello</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">"chris"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 'global contenxt!'</span></code></pre></div>
+<span class="token function">hello</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"chris"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 'global contenxt!'</span></code></pre></div>
 <p>흔히 발생할 수 있는 실수다.</p>
 <p><code>setTimeout()</code> 함수에 넘겨준 <code>callback</code>은 실행시점에 컨택스트가 정해질 것이다.
 기본 바인딩인 <code>hello()</code>, 암시적 바인딩인 <code>obj.hello()</code>, 그리고 명시적 바인딩인 <code>hello.call()</code>를 실행해 보자.</p>
@@ -541,14 +541,14 @@ obj<span class="token punctuation">.</span><span class="token function">hello</s
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
-  hello<span class="token operator">:</span> hello<span class="token punctuation">,</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"chris"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">hello</span><span class="token operator">:</span> hello<span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">"global contenxt!"</span>
 
 <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 'global contenxt!'</span>
 obj<span class="token punctuation">.</span><span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 'chris'</span>
-<span class="token function">hello</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">"alice"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 'alice'</span></code></pre></div>
+<span class="token function">hello</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"alice"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 'alice'</span></code></pre></div>
 <p>화살표 함수는 상위 블록의 컨텍스트를 this로 사용한다고 했다.</p>
 <p><code>hello()</code>로 호출했을 경우 기본 바인딩된 전역 객체를 사용하는 것을 확인할 수 있다.</p>
 <p><code>obj.hello()</code>는 암시적 바인딩된 <code>obj</code> 객체를 사용하고 있다.</p>

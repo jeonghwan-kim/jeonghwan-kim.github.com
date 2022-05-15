@@ -285,10 +285,10 @@ Config <span class="token function">file</span> generated at <span class="token 
 <p>karma.conf.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   config<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    frameworks<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"jasmine"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    files<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"./src/hello.js"</span><span class="token punctuation">,</span> <span class="token string">"./test/hello.spec.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    autoWatch<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    browsers<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"Chrome"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">frameworks</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"jasmine"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">files</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"./src/hello.js"</span><span class="token punctuation">,</span> <span class="token string">"./test/hello.spec.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">autoWatch</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">browsers</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"Chrome"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p><strong>frameworks</strong>는 테스트 프레임웍 이름을 설정하는 부분인데 'jasmine' 문자열로 자스민 프레임웍을 사용한다고 설정했다. 어떤 프로젝트는 모카와 함께 사용하는 경우도 있었다.</p>
@@ -308,7 +308,7 @@ Config <span class="token function">file</span> generated at <span class="token 
 <p>src/hello.js 파일을 만들어 Hello 모듈을 만들었다.</p>
 <p>src/hello.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">var</span> Hello <span class="token operator">=</span> <span class="token punctuation">{</span>
-  message<span class="token operator">:</span> <span class="token string">"Hello world"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">"Hello world"</span><span class="token punctuation">,</span>
   <span class="token function">greeting</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>message
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -372,7 +372,7 @@ Chrome <span class="token number">57.0</span>.2987 <span class="token punctuatio
 <p>테스트 코드를 작성하고 <code>npm t</code> 명령어로 테스트를 실행하면 실패가 떨어진다. 이제 이 테스트를 통과할수 있을만큼만 Hello 모듈을 수정하겠다.</p>
 <p>src/hello.js</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">var</span> Hello <span class="token operator">=</span> <span class="token punctuation">{</span>
-  message<span class="token operator">:</span> <span class="token string">"Hello"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">message</span><span class="token operator">:</span> <span class="token string">"Hello"</span><span class="token punctuation">,</span>
   <span class="token function">greeting</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">this.message </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -387,7 +387,7 @@ Chrome <span class="token number">57.0</span>.2987 <span class="token punctuatio
 <p>Ajax를 이용해 외부 API 결과를 이름으로 반환한다.</p>
 </blockquote>
 <p>자스민에서는 ajax 테스트를 위한 <a href="https://github.com/jasmine/jasmine-ajax">jasmin-ajax</a> 라이브러리를 제공한다. 나는 카르마로 자스민을 돌리고 있기 때문에 <a href="https://github.com/IDCubed/karma-jasmine-ajax">karma-jasmine-ajax</a> 프러그인을 사용할 거다. <code>npm i karma-jasmine-ajax --save-dev</code> 으로 플러그인을 다운로드 하고 karma.conf.js 파일에 관련한 설정 코드를 추가한다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">frameworks<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'jasmine-ajax'</span><span class="token punctuation">,</span> <span class="token string">'jasmine'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></code></pre></div>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token literal-property property">frameworks</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'jasmine-ajax'</span><span class="token punctuation">,</span> <span class="token string">'jasmine'</span><span class="token punctuation">]</span><span class="token punctuation">,</span></code></pre></div>
 <p>frameworks 배열의 문자열 순서가 중요하다. 만약 <code>['jasmine', 'jasmine-ajax']</code> 순서로 설정하고 테스트를 돌리면 다음과 같이 에러가 발생한다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">Uncaught ReferenceError: getJasmineRequireObj is not defined</code></pre></div>
 <h3 id="ajax-요청을-보냈는지-검사하자" style="position:relative;"><a href="#ajax-%EC%9A%94%EC%B2%AD%EC%9D%84-%EB%B3%B4%EB%83%88%EB%8A%94%EC%A7%80-%EA%B2%80%EC%82%AC%ED%95%98%EC%9E%90" aria-label="ajax 요청을 보냈는지 검사하자 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ajax 요청을 보냈는지 검사하자</h3>
@@ -471,8 +471,8 @@ Chrome <span class="token number">57.0</span>.2987 <span class="token punctuatio
   request <span class="token operator">=</span> jasmine<span class="token punctuation">.</span>Ajax<span class="token punctuation">.</span>requests<span class="token punctuation">.</span><span class="token function">mostRecent</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
   response <span class="token operator">=</span> <span class="token punctuation">{</span>
-    status<span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
-    responseText<span class="token operator">:</span> <span class="token string">"Chris"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">status</span><span class="token operator">:</span> <span class="token number">200</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">responseText</span><span class="token operator">:</span> <span class="token string">"Chris"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
   request<span class="token punctuation">.</span><span class="token function">respondWith</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -518,7 +518,7 @@ Chrome <span class="token number">57.0</span>.2987 <span class="token punctuatio
 <p>돔 처리를 위해 제이쿼리를 사용했다. 들어온 파라매터가 제이쿼리 인스턴스인지 검사해서 아니면 예외를 던지도록 했다.</p>
 <p>카르마에서 제이쿼리를 사용하려면 <code>npm i jquery --save-dev</code> 로 제이쿼리를 설치한 뒤, 카르마 설정파일인 karma.conf.js에 제이쿼리 라이브러리 경로를 추가해야한다.</p>
 <p>karma.conf.js:</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">files<span class="token operator">:</span> <span class="token punctuation">[</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token literal-property property">files</span><span class="token operator">:</span> <span class="token punctuation">[</span>
   <span class="token string">'./node_modules/jquery/dist/jquery.js'</span><span class="token punctuation">,</span>
   <span class="token string">'./src/hello.js'</span><span class="token punctuation">,</span>
   <span class="token string">'./test/hello.spec.js'</span>

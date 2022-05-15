@@ -200,10 +200,10 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">cookieParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
   express<span class="token punctuation">.</span><span class="token function">session</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    key<span class="token operator">:</span> <span class="token string">"sid"</span><span class="token punctuation">,</span> <span class="token comment">// 세션키</span>
-    secret<span class="token operator">:</span> <span class="token string">"secret"</span><span class="token punctuation">,</span> <span class="token comment">// 비밀키</span>
-    cookie<span class="token operator">:</span> <span class="token punctuation">{</span>
-      maxAge<span class="token operator">:</span> <span class="token number">1000</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span><span class="token punctuation">,</span> <span class="token comment">// 쿠키 유효기간 1시간</span>
+    <span class="token literal-property property">key</span><span class="token operator">:</span> <span class="token string">"sid"</span><span class="token punctuation">,</span> <span class="token comment">// 세션키</span>
+    <span class="token literal-property property">secret</span><span class="token operator">:</span> <span class="token string">"secret"</span><span class="token punctuation">,</span> <span class="token comment">// 비밀키</span>
+    <span class="token literal-property property">cookie</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">maxAge</span><span class="token operator">:</span> <span class="token number">1000</span> <span class="token operator">*</span> <span class="token number">60</span> <span class="token operator">*</span> <span class="token number">60</span><span class="token punctuation">,</span> <span class="token comment">// 쿠키 유효기간 1시간</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span></code></pre></div>
@@ -227,7 +227,7 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">cookieParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
   <span class="token function">session</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    store<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">RedisStore</span><span class="token punctuation">(</span><span class="token comment">/*redis config: host, port 등*/</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 세션 저장소를 레디스 서버로 설정</span>
+    <span class="token literal-property property">store</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">RedisStore</span><span class="token punctuation">(</span><span class="token comment">/*redis config: host, port 등*/</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 세션 저장소를 레디스 서버로 설정</span>
     <span class="token comment">/* 이하 express.session 코드와 동일 */</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span></code></pre></div>

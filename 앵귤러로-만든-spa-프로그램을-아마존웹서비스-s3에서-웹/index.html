@@ -220,18 +220,18 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
   <span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">$routeProvider<span class="token punctuation">,</span> $locationProvider</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     $routeProvider
       <span class="token punctuation">.</span><span class="token function">when</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-        templateUrl<span class="token operator">:</span> <span class="token string">"views/main.html"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">templateUrl</span><span class="token operator">:</span> <span class="token string">"views/main.html"</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span>
       <span class="token punctuation">.</span><span class="token function">when</span><span class="token punctuation">(</span><span class="token string">"/about"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-        templateUrl<span class="token operator">:</span> <span class="token string">"views/about.html"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">templateUrl</span><span class="token operator">:</span> <span class="token string">"views/about.html"</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span>
       <span class="token punctuation">.</span><span class="token function">otherwise</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-        redirectTo<span class="token operator">:</span> <span class="token string">"views/404.html"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">redirectTo</span><span class="token operator">:</span> <span class="token string">"views/404.html"</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
     $locationProvider<span class="token punctuation">.</span><span class="token function">html5Mode</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      enabled<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      requireBase<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">enabled</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">requireBase</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p><code>angular.config()</code> 함수에서 <code>$locationProvider.html5Mode()</code>를 호출한다. 이렇게 설정하면 <code>/</code>, <code>/about</code>로 라우팅 할수 있다. 없는 페이지는 404.html 파일을 렌더링 하도록한다.</p>

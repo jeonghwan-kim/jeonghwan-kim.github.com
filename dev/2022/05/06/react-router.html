@@ -272,8 +272,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <h1 id="네비게이션-컴포넌트" style="position:relative;"><a href="#%EB%84%A4%EB%B9%84%EA%B2%8C%EC%9D%B4%EC%85%98-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8" aria-label="네비게이션 컴포넌트 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>네비게이션 컴포넌트</h1>
 <p><em><code>&#x3C;Link></code></em></p>
 <p>브라우저가 <code>&#x3C;a></code> 엘리먼트를 처리하는 기본 동작이 href 속성의 값을 서버로 요청하는 것이다. 그 전에 어플리케이션에서 라우트를 수행해야한다. 먼저 링크에 대한 브라우저의 기본 동작을 변경하는 컴포넌트를 만들어야겠다.</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Link</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> to<span class="token punctuation">,</span> children <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token parameter">e</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Link</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> to<span class="token punctuation">,</span> children <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> e <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token comment">// 브라우저 기본 동작을 막는다.</span>
     e<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
@@ -297,7 +297,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 </ol>
 <p>첫 번째 과제를 해결하기 위해 요청한 주소를 리액트 상태로 관리하자. 이 상태 변화가 리액트 트리를 다시 그릴 것이다.</p>
 <p>요청 상태를 사용하는 컴포넌트를 만들자.</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Router</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> children <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Router</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> children <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token comment">// 요청한 주소를 path 상태로 관리한다.</span>
   <span class="token comment">// 어플리케이션이 처음 요청한 주소를 기본값으로 사용한다.</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>path<span class="token punctuation">,</span> setPath<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>pathname<span class="token punctuation">)</span>
@@ -315,7 +315,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 routerContext<span class="token punctuation">.</span>displayName <span class="token operator">=</span> <span class="token string">"RouterContext"</span></code></pre></div>
 <p>routerContext를 만들었다. 이 녀석은 Router에서 관리하는 상태를 전달하는 통로 역할을 할 것이다.</p>
 <p>이 컨택스트를 이용해 Router와 자식 컴포넌트 사이에 채널을 뚫자.</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Router</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> children <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Router</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> children <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token comment">// ...</span>
 
   <span class="token keyword">const</span> contextValue <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -330,11 +330,11 @@ routerContext<span class="token punctuation">.</span>displayName <span class="to
   <span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>Link 컴포넌트를 클릭할 때 아무 일도 일어나지 않은걸 기억하는가? Link 컴포넌트가 컨택스트를 통해 라우터의 상태를 변경하도록 바꿔 보자.</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Link</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> to<span class="token punctuation">,</span> children <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Link</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> to<span class="token punctuation">,</span> children <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token comment">// 컨택스트를 사용한다.</span>
   <span class="token keyword">const</span> <span class="token punctuation">{</span> changePath <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useContext</span><span class="token punctuation">(</span>routerContext<span class="token punctuation">)</span>
 
-  <span class="token keyword">const</span> <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token parameter">e</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> e <span class="token operator">=></span> <span class="token punctuation">{</span>
     e<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token comment">// 컨택스트를 통해 값을 변경한다.</span>
     <span class="token comment">// 리액트가 App 컴포넌트를 리렌더링 할 수 있을까?</span>
@@ -442,13 +442,13 @@ routerContext<span class="token punctuation">.</span>displayName <span class="to
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Router</span></span><span class="token punctuation">></span></span>
 <span class="token punctuation">)</span></code></pre></div>
 <p>Routes 컴포넌트에 있던 조건부 렌더링 로직을 다시 App 컴포넌트로 가져 올 수 있다. 다만 이를 자식 엘리먼트로 갖는 Routes 컴포넌트는 이 표에서 적당한 엘리먼트를 찾아야 하는 역할이 남았다.</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Routes</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> children <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Routes</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> children <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">{</span> path <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useContext</span><span class="token punctuation">(</span>routerContext<span class="token punctuation">)</span>
 
   <span class="token comment">// 반환할 리액트 엘리먼트다</span>
   <span class="token keyword">let</span> element <span class="token operator">=</span> <span class="token keyword">null</span>
 
-  Children<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>children<span class="token punctuation">,</span> <span class="token parameter">child</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  Children<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>children<span class="token punctuation">,</span> child <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token comment">// 리액트 엘리먼트인지 검사한다</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isValidElement</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span>
@@ -483,11 +483,11 @@ routerContext<span class="token punctuation">.</span>displayName <span class="to
 </blockquote>
 <p>이 중 <a href="https://developer.mozilla.org/ko/docs/Web/API/History/pushState">pushState</a> 함수는 브라우져의 방문 기록을 추가하는 함수다. 주소를 변경하는 시점에 브라우져의 세션 기록 스택에 상태를 추가하면 브라우저의 기록이 하나 추가 된다. 주소도 바뀔 것이다.</p>
 <p>Router 컴포넌트의 주소 변경 핸들러에 다음 코드를 추가해 보자.</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Router</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> children <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Router</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> children <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token comment">// ...</span>
 
   <span class="token comment">// 상태와 주소를 변경한다.</span>
-  <span class="token keyword">const</span> <span class="token function-variable function">changePath</span> <span class="token operator">=</span> <span class="token parameter">path</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">changePath</span> <span class="token operator">=</span> path <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token function">setPath</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span>
     <span class="token comment">// 주소를 변경한다</span>
     window<span class="token punctuation">.</span>history<span class="token punctuation">.</span><span class="token function">pushState</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> path<span class="token punctuation">)</span>
@@ -585,13 +585,13 @@ routerContext<span class="token punctuation">.</span>displayName <span class="to
 <p>pushState를 호출할 때 state에 어떤 값을 전달하면 스택에 저장해 둘 수 있다. 브라우저는 새로운 상태로 이동할 때 마다, 즉 뒤로 가기나 앞으로 가기 버튼을 누를 때마다 이 이벤트를 발생시킨다. 이 때 스택에 저장해둔 state 값을 꺼내서 사용하는 구조이다. 이 이벤트의 이름은 popstate 다.</p>
 <p>pushState를 호출할 때 이동할 경로 path 를 저장해 두자. popstate 이벤트가 발생했을 때 스택에 있는 이 값을 꺼내서 화면을 그리면 되겠다. 물론 화면을 직접 그리는 것은 아니고 path 상태만 이 값으로 바꿔주자는 것이다. 화면은 리액트가 알아서 그릴 것이다.</p>
 <p>Router 컴포넌트를 조금 고치자.</p>
-<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Router</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> children <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="tsx"><pre class="language-tsx"><code class="language-tsx"><span class="token keyword">const</span> <span class="token function-variable function">Router</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> children <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token comment">// ...</span>
 
   <span class="token comment">// popstate 이벤트가 발생하면 path 상태를 갱신한다.</span>
   <span class="token comment">// 리액트가 이 상태를 사용하는 컴포넌트를 다시 그릴 것이다.</span>
   <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> <span class="token function-variable function">handleOnpopstate</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token operator">:</span> PopStateEvent</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">handleOnpopstate</span> <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token operator">:</span> PopStateEvent<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       <span class="token function">setPath</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>state<span class="token operator">?.</span>path <span class="token operator">||</span> <span class="token string">"/"</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 
@@ -647,7 +647,7 @@ routerContext<span class="token punctuation">.</span>displayName <span class="to
   <span class="token keyword">const</span> <span class="token punctuation">{</span> path<span class="token punctuation">,</span> changePath <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useContext</span><span class="token punctuation">(</span>routerContext<span class="token punctuation">)</span>
 
   <span class="token keyword">const</span> navigate <span class="token operator">=</span> <span class="token function">useCallback</span><span class="token punctuation">(</span>
-    <span class="token parameter">nextPath</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    nextPath <span class="token operator">=></span> <span class="token punctuation">{</span>
       <span class="token comment">// 이전 주소와 이동할 주소가 같으면 멈춘다.</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span>path <span class="token operator">===</span> nextPath<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span>

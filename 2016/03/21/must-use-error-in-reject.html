@@ -225,7 +225,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>어디선가 에러를 던질때 Error 객체를 사용하는것 보다 Object를 사용하는 것이 낫다고 들었다.</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">try</span> <span class="token punctuation">{</span>
   <span class="token comment">// 에러가 아닌 객체를 던졌다</span>
-  <span class="token keyword">throw</span> <span class="token punctuation">{</span> error<span class="token operator">:</span> <span class="token string">"Ooops!"</span> <span class="token punctuation">}</span>
+  <span class="token keyword">throw</span> <span class="token punctuation">{</span> <span class="token literal-property property">error</span><span class="token operator">:</span> <span class="token string">"Ooops!"</span> <span class="token punctuation">}</span>
 <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token comment">//  { error: "Ooops!" }</span>
 <span class="token punctuation">}</span></code></pre></div>
@@ -236,7 +236,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>Promise는 try-catch 로직과 똑같이 동작한다.
 그래서 promise 처리중 throw가 발생해도 종료되지 않고 프로미스만 Rejected 상태로 변한다.</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token function">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token function">reject</span><span class="token punctuation">(</span><span class="token punctuation">{</span> error<span class="token operator">:</span> <span class="token string">"Ooops!"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token function">reject</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">error</span><span class="token operator">:</span> <span class="token string">"Ooops!"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">result</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>

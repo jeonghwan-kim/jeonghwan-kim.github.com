@@ -257,8 +257,8 @@ a <span class="token operator">=</span> <span class="token number">2</span> <spa
 <p>위에서 a는 상수로 정의했고 일단 설정하면 변경할 수가 없다. a = 2가 예외를 던지는 이유가 이때문이다. (사파리는 제외)</p>
 <p>자바스크립트의 const의 문제는 충분하지 않는다는 것이다. 아래 예제는 이 한계를 설명한다.</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token punctuation">{</span>
-  x<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-  y<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">x</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">y</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 a<span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">2</span> <span class="token comment">// 예외 아님!</span>
 a <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">// TypeError 예외!</span></code></pre></div>

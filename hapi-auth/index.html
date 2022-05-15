@@ -247,10 +247,10 @@ module<span class="token punctuation">.</span><span class="token function-variab
 
     <span class="token comment">// 인증 strategy 를 생성한다.</span>
     server<span class="token punctuation">.</span>auth<span class="token punctuation">.</span><span class="token function">strategy</span><span class="token punctuation">(</span><span class="token string">"mySessionStrategy"</span><span class="token punctuation">,</span> <span class="token string">"cookie"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-      password<span class="token operator">:</span> <span class="token string">"secret"</span><span class="token punctuation">,</span>
-      cookie<span class="token operator">:</span> <span class="token string">"sid-example"</span><span class="token punctuation">,</span>
-      redirectTo<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      isSecure<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">"secret"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">cookie</span><span class="token operator">:</span> <span class="token string">"sid-example"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">redirectTo</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">isSecure</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
@@ -295,39 +295,39 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">server</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">// 로그인</span>
   server<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    method<span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
-    path<span class="token operator">:</span> <span class="token string">"/auth"</span><span class="token punctuation">,</span>
-    handler<span class="token operator">:</span> ctrl<span class="token punctuation">.</span>login<span class="token punctuation">,</span>
-    config<span class="token operator">:</span> <span class="token punctuation">{</span>
-      auth<span class="token operator">:</span> <span class="token punctuation">{</span>
-        mode<span class="token operator">:</span> <span class="token string">"try"</span><span class="token punctuation">,</span> <span class="token comment">// 인증 시도</span>
-        strategy<span class="token operator">:</span> <span class="token string">"mySessionStrategy"</span><span class="token punctuation">,</span> <span class="token comment">// 사용할 strategy</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/auth"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">handler</span><span class="token operator">:</span> ctrl<span class="token punctuation">.</span>login<span class="token punctuation">,</span>
+    <span class="token literal-property property">config</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">auth</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">"try"</span><span class="token punctuation">,</span> <span class="token comment">// 인증 시도</span>
+        <span class="token literal-property property">strategy</span><span class="token operator">:</span> <span class="token string">"mySessionStrategy"</span><span class="token punctuation">,</span> <span class="token comment">// 사용할 strategy</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token comment">// 로그아웃</span>
   server<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    method<span class="token operator">:</span> <span class="token string">"DELETE"</span><span class="token punctuation">,</span>
-    path<span class="token operator">:</span> <span class="token string">"/auth"</span><span class="token punctuation">,</span>
-    handler<span class="token operator">:</span> ctrl<span class="token punctuation">.</span>logout<span class="token punctuation">,</span>
-    config<span class="token operator">:</span> <span class="token punctuation">{</span>
-      auth<span class="token operator">:</span> <span class="token punctuation">{</span>
-        mode<span class="token operator">:</span> <span class="token string">"required"</span><span class="token punctuation">,</span> <span class="token comment">// 인증 필수</span>
-        strategy<span class="token operator">:</span> <span class="token string">"mySessionStrategy"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"DELETE"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/auth"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">handler</span><span class="token operator">:</span> ctrl<span class="token punctuation">.</span>logout<span class="token punctuation">,</span>
+    <span class="token literal-property property">config</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">auth</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">"required"</span><span class="token punctuation">,</span> <span class="token comment">// 인증 필수</span>
+        <span class="token literal-property property">strategy</span><span class="token operator">:</span> <span class="token string">"mySessionStrategy"</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token comment">// 세션 확인 (개발용)</span>
   server<span class="token punctuation">.</span><span class="token function">route</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    method<span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
-    path<span class="token operator">:</span> <span class="token string">"/auth"</span><span class="token punctuation">,</span>
-    handler<span class="token operator">:</span> ctrl<span class="token punctuation">.</span>find<span class="token punctuation">,</span>
-    config<span class="token operator">:</span> <span class="token punctuation">{</span>
-      auth<span class="token operator">:</span> <span class="token punctuation">{</span>
-        mode<span class="token operator">:</span> <span class="token string">"required"</span><span class="token punctuation">,</span>
-        strategy<span class="token operator">:</span> <span class="token string">"mySessionStrategy"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"GET"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/auth"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">handler</span><span class="token operator">:</span> ctrl<span class="token punctuation">.</span>find<span class="token punctuation">,</span>
+    <span class="token literal-property property">config</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">auth</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">"required"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">strategy</span><span class="token operator">:</span> <span class="token string">"mySessionStrategy"</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -341,8 +341,8 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 
 exports<span class="token punctuation">.</span><span class="token function-variable function">login</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> reply</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token punctuation">{</span>
-    username<span class="token operator">:</span> <span class="token string">'Chris'</span><span class="token punctuation">,</span>
-    password<span class="token operator">:</span> <span class="token string">'chrisPass'</span>
+    <span class="token literal-property property">username</span><span class="token operator">:</span> <span class="token string">'Chris'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">'chrisPass'</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
   <span class="token comment">// 인증 정보 검증</span>

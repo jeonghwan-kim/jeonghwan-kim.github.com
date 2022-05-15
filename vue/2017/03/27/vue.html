@@ -440,15 +440,15 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    el<span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
-    data<span class="token operator">:</span> <span class="token punctuation">{</span>
-      msg<span class="token operator">:</span> <span class="token string">"Hello world"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">msg</span><span class="token operator">:</span> <span class="token string">"Hello world"</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
 <p>Vue 생성자 함수로 뷰모델을 만드는데 이것이 Vue 인스턴스다. 이것은 자바스크립트 객체인데 내부적으로 연결될 템플릿이 필요하다. 그것을 <code>el</code> 키에 셀렉터 값으로 넣어주면 된다.</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token punctuation">{</span>
-  el<span class="token operator">:</span> <span class="token string">"#app"</span>
+  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">"#app"</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>그리고 <code>data</code> 객체는 인스턴스의 상태를 저장하는 역할을 하는데 템플릿에 바인딩할 데이터들의 집합이다. msg 변수 값을 템플릿에 인터폴레이션 문법으로 바인딩하여 출력하였다.</p>
 <div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html">{% raw %}{{ msg }}{% endraw %}</code></pre></div>
@@ -460,8 +460,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    el<span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function-variable function">onClick</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Hello world"</span><span class="token punctuation">)</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -474,9 +474,9 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    el<span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
-    data<span class="token operator">:</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">"Chris"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">data</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Chris"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">computed</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function-variable function">greeting</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token string">"Hello "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -545,16 +545,16 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
   Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">"Child"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    el<span class="token operator">:</span> <span class="token string">"#child"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">"#child"</span><span class="token punctuation">,</span>
     <span class="token function-variable function">data</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> <span class="token punctuation">{</span>
-        name<span class="token operator">:</span> <span class="token string">"Chris"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Chris"</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token keyword">var</span> vm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    el<span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
 <p>Child 컴포넌트를 정의했는데 Vue 인스턴스를 만들 때와 다른점은 <code>data</code> 부분이다. 컴포넌트는 재사용이 가능하기 때문에 고유한 데이터를 가지고 있어야 한다. 그래서 매번 함수를 실행한 결과 새로운 객체를 반환하도록 했다. (Vue 인스턴스에서는 객체를 할당했다)</p>
@@ -597,8 +597,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
   Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">"Child"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    el<span class="token operator">:</span> <span class="token string">"#child"</span><span class="token punctuation">,</span>
-    props<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">"#child"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"name"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
 <p>Child 컴포넌트를 사용하는 부모 컴포넌트 측에서는 Child의 name 속성에 "Chris" 문자열을 데이터로 전달했다. Child 컴포넌트는 이 값을 받기 위해 componet 함수 옵션 객체에 props 배열에 'name' 값을 추가하면된다. 필요한 만큼 배열에 추가하는 방식이다.</p>
@@ -607,8 +607,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
   Vue<span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">"NameForm"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    el<span class="token operator">:</span> <span class="token string">"#child"</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">"#child"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function-variable function">onClick</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">"typed"</span><span class="token punctuation">)</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>

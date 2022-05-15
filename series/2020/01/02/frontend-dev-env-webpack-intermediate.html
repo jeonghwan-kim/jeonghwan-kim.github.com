@@ -313,14 +313,14 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>웹팩 설정 파일의 devServer 객체에 개발 서버 옵션을 설정할 수 있다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// webpack.config.js:</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
-    contentBase<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"dist"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    publicPath<span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span>
-    host<span class="token operator">:</span> <span class="token string">"dev.domain.com"</span><span class="token punctuation">,</span>
-    overlay<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    port<span class="token operator">:</span> <span class="token number">8081</span><span class="token punctuation">,</span>
-    stats<span class="token operator">:</span> <span class="token string">"errors-only"</span><span class="token punctuation">,</span>
-    historyApiFallback<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">devServer</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">contentBase</span><span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">"dist"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">publicPath</span><span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">host</span><span class="token operator">:</span> <span class="token string">"dev.domain.com"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">overlay</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">port</span><span class="token operator">:</span> <span class="token number">8081</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">stats</span><span class="token operator">:</span> <span class="token string">"errors-only"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">historyApiFallback</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p><strong>contentBase</strong>: 정적파일을 제공할 경로. 기본값은 웹팩 아웃풋이다.</p>
@@ -338,9 +338,9 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <p>메세지 출력 옵션만 설정한 뒤,</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// webpack.config.js:</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
-    overlay<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    stats<span class="token operator">:</span> <span class="token string">"errors-only"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">devServer</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">overlay</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">stats</span><span class="token operator">:</span> <span class="token string">"errors-only"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>npm 스크립트를 수정해보자.</p>
@@ -364,14 +364,14 @@ devServer.before에 추가하는 것이 바로 미들웨어인 셈이다.
 아래 코드를 보자.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// webpack.config.js</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">devServer</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function-variable function">before</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">app<span class="token punctuation">,</span> server<span class="token punctuation">,</span> compiler</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/api/keywords"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
         res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-          <span class="token punctuation">{</span> keyword<span class="token operator">:</span> <span class="token string">"이탈리아"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-          <span class="token punctuation">{</span> keyword<span class="token operator">:</span> <span class="token string">"세프의요리"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-          <span class="token punctuation">{</span> keyword<span class="token operator">:</span> <span class="token string">"제철"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-          <span class="token punctuation">{</span> keyword<span class="token operator">:</span> <span class="token string">"홈파티"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span> <span class="token literal-property property">keyword</span><span class="token operator">:</span> <span class="token string">"이탈리아"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span> <span class="token literal-property property">keyword</span><span class="token operator">:</span> <span class="token string">"세프의요리"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span> <span class="token literal-property property">keyword</span><span class="token operator">:</span> <span class="token string">"제철"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token punctuation">{</span> <span class="token literal-property property">keyword</span><span class="token operator">:</span> <span class="token string">"홈파티"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">)</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -433,7 +433,7 @@ ajax 라이브러리인 axios를 설치한다.</p>
 <span class="token keyword">const</span> apiMocker <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"connect-api-mocker"</span><span class="token punctuation">)</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">devServer</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function-variable function">before</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">app<span class="token punctuation">,</span> server<span class="token punctuation">,</span> compiler</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token function">apiMocker</span><span class="token punctuation">(</span><span class="token string">"/api"</span><span class="token punctuation">,</span> <span class="token string">"mocks/api"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -478,9 +478,9 @@ app<span class="token punctuation">.</span><span class="token function">get</spa
 웹팩 개발 서버는 <a href="https://webpack.js.org/configuration/dev-server/#devserverproxy">proxy</a> 속성으로 이를 지원한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// webpack.config.js</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
-    proxy<span class="token operator">:</span> <span class="token punctuation">{</span>
-      <span class="token string">"/api"</span><span class="token operator">:</span> <span class="token string">"http://localhost:8081"</span><span class="token punctuation">,</span> <span class="token comment">// 프록시</span>
+  <span class="token literal-property property">devServer</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">proxy</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">"/api"</span><span class="token operator">:</span> <span class="token string">"http://localhost:8081"</span><span class="token punctuation">,</span> <span class="token comment">// 프록시</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
@@ -509,7 +509,7 @@ api 호출코드를 다시 복구한 뒤,</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// webpack.config.js:</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   devServer <span class="token operator">=</span> <span class="token punctuation">{</span>
-    hot<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">hot</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>view.js를 사용하는 컨트롤러 코드를 잠깐 읽어보자.</p>
@@ -620,8 +620,8 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <span class="token keyword">const</span> OptimizeCSSAssetsPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"optimize-css-assets-webpack-plugin"</span><span class="token punctuation">)</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
-    minimizer<span class="token operator">:</span> mode <span class="token operator">===</span> <span class="token string">"production"</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">OptimizeCSSAssetsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">optimization</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">minimizer</span><span class="token operator">:</span> mode <span class="token operator">===</span> <span class="token string">"production"</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">OptimizeCSSAssetsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p><a href="https://webpack.js.org/configuration/optimization/#optimizationminimizer">optimization.minimizer</a>는 웹팩이 결과물을 압축할때 사용할 플러그인을 넣는 배열이다.
@@ -637,14 +637,14 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <span class="token keyword">const</span> TerserPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"terser-webpack-plugin"</span><span class="token punctuation">)</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
-    minimizer<span class="token operator">:</span>
+  <span class="token literal-property property">optimization</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">minimizer</span><span class="token operator">:</span>
       mode <span class="token operator">===</span> <span class="token string">"production"</span>
         <span class="token operator">?</span> <span class="token punctuation">[</span>
             <span class="token keyword">new</span> <span class="token class-name">TerserPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-              terserOptions<span class="token operator">:</span> <span class="token punctuation">{</span>
-                compress<span class="token operator">:</span> <span class="token punctuation">{</span>
-                  drop_console<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 콘솔 로그를 제거한다</span>
+              <span class="token literal-property property">terserOptions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token literal-property property">compress</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                  <span class="token literal-property property">drop_console</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 콘솔 로그를 제거한다</span>
                 <span class="token punctuation">}</span><span class="token punctuation">,</span>
               <span class="token punctuation">}</span><span class="token punctuation">,</span>
             <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -658,9 +658,9 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <p>가장 단순한 것은 엔트리를 여러개로 분리하는 것이다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// webpack.config.js</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  entry<span class="token operator">:</span> <span class="token punctuation">{</span>
-    main<span class="token operator">:</span> <span class="token string">"./src/app.js"</span><span class="token punctuation">,</span>
-    controller<span class="token operator">:</span> <span class="token string">"./src/controller.js"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">entry</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">main</span><span class="token operator">:</span> <span class="token string">"./src/app.js"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">controller</span><span class="token operator">:</span> <span class="token string">"./src/controller.js"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>빌드하면 엔트리가 두 개 생성되고 물론 하나의 엔트이일 때보다 용량이 조금 줄었다.</p>
@@ -674,9 +674,9 @@ HtmlWebpackPlugin에 의해 html 코드에소 두 파일을 로딩하는 코드�
 optization.splitChucks 속성을 설정하는 방식이다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// webpack.config.js:</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  optimization<span class="token operator">:</span> <span class="token punctuation">{</span>
-    splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
-      chunks<span class="token operator">:</span> <span class="token string">"all"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">optimization</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">splitChunks</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">chunks</span><span class="token operator">:</span> <span class="token string">"all"</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
@@ -722,8 +722,8 @@ import() 함수로 가져올 컨트롤러 모듈 경로를 전달하는데 주�
 웹팩 설정중 <a href="https://webpack.js.org/configuration/externals/">externals</a>가 바로 이러한 기능을 제공한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// webpack.config.js:</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  externals<span class="token operator">:</span> <span class="token punctuation">{</span>
-    axios<span class="token operator">:</span> <span class="token string">"axios"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">externals</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">axios</span><span class="token operator">:</span> <span class="token string">"axios"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>externals에 추가하면 웹팩은 코드에서 axios를 사용하더라도 번들에 포함하지 않고 빌드한다.
@@ -736,11 +736,11 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> CopyPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"copy-webpack-plugin"</span><span class="token punctuation">)</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token keyword">new</span> <span class="token class-name">CopyPlugin</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
-        from<span class="token operator">:</span> <span class="token string">"./node_modules/axios/dist/axios.min.js"</span><span class="token punctuation">,</span>
-        to<span class="token operator">:</span> <span class="token string">"./axios.min.js"</span><span class="token punctuation">,</span> <span class="token comment">// 목적지 파일에 들어간다</span>
+        <span class="token literal-property property">from</span><span class="token operator">:</span> <span class="token string">"./node_modules/axios/dist/axios.min.js"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">to</span><span class="token operator">:</span> <span class="token string">"./axios.min.js"</span><span class="token punctuation">,</span> <span class="token comment">// 목적지 파일에 들어간다</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>

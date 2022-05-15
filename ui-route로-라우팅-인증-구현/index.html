@@ -221,12 +221,12 @@ angular<span class="token punctuation">.</span><span class="token function">modu
   <span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">$stateProvider</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     $stateProvider
       <span class="token punctuation">.</span><span class="token function">state</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token comment">// 상태 정의</span>
-        url<span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token comment">// 라우팅 경로</span>
-        templateUrl<span class="token operator">:</span> <span class="token string">'main.html'</span><span class="token punctuation">,</span> <span class="token comment">// 템플릿 경로</span>
-        controller<span class="token operator">:</span> <span class="token string">'MainCtrl'</span><span class="token punctuation">,</span> <span class="token comment">// 컨트롤러 이름</span>
-        resolve<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">// 라우팅 실행 전에 auth에 인증정보를 설정</span>
+        <span class="token literal-property property">url</span><span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token comment">// 라우팅 경로</span>
+        <span class="token literal-property property">templateUrl</span><span class="token operator">:</span> <span class="token string">'main.html'</span><span class="token punctuation">,</span> <span class="token comment">// 템플릿 경로</span>
+        <span class="token literal-property property">controller</span><span class="token operator">:</span> <span class="token string">'MainCtrl'</span><span class="token punctuation">,</span> <span class="token comment">// 컨트롤러 이름</span>
+        <span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">// 라우팅 실행 전에 auth에 인증정보를 설정</span>
           <span class="token function-variable function">auth</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">Auth</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> Auth<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">{</span>redirect<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> Auth<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">redirect</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
           <span class="token punctuation">}</span>
       <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
@@ -236,9 +236,9 @@ angular<span class="token punctuation">.</span><span class="token function">modu
 <p>이것은 ng-route 모듈에서도 같은 이름으로 제공합니다.
 목적에 따라서는 컨트롤러에서 사용할 데이터를 라우팅 직전에 <code>resolve</code> 속성에 정의하여 사용할 수도 있습니다.</p>
 <p>예를 들어 resolve 속성에 아래와 같이 객체를 설정하면 컨트롤러에서는 <code>name</code>, <code>skills</code>라는 변수로 이 값에 접근할 수 있죠</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">resolve<span class="token operator">:</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> <span class="token string">"Jeonghwan"</span>
-  skills<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"javascript"</span><span class="token punctuation">,</span> <span class="token string">"php"</span><span class="token punctuation">]</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Jeonghwan"</span>
+  <span class="token literal-property property">skills</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"javascript"</span><span class="token punctuation">,</span> <span class="token string">"php"</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>우리는 <code>resolve</code> 속성에 <code>auth</code>라는 키를 갖는 객체를 할당할 것입니다.
 <code>{auth: promise}</code> 식으로 말이죠.</p>

@@ -245,8 +245,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 예를 들어 타이머 경과 시간인 ts 정수나 동작 여부를 나타내는 불리언 값 따위가 될 수 있다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// 상태</span>
 <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">observer</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  ts<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token comment">//</span>
-  isRunning<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">ts</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token comment">//</span>
+  <span class="token literal-property property">isRunning</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <h2 id="데리베이션" style="position:relative;"><a href="#%EB%8D%B0%EB%A6%AC%EB%B2%A0%EC%9D%B4%EC%85%98" aria-label="데리베이션 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>데리베이션</h2>
 <p>데리베이션은 상태의 변화에 반응하는 것을 말한다.
@@ -288,8 +288,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 
 <span class="token comment">// 상태</span>
 <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">observable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  ts<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-  isRunning<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">ts</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">isRunning</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token comment">// 계산된 값</span>
@@ -421,8 +421,8 @@ autorun() 함수로 리액션을 만들었는데 상태 변화에 따라 돔을 
 
 <span class="token comment">// 상태</span>
 <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">observable</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  ts<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
-  isRunning<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">ts</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">isRunning</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token comment">// 계산된 값</span>
@@ -432,7 +432,7 @@ autorun() 함수로 리액션을 만들었는데 상태 변화에 따라 돔을 
   <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>sec<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">:</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>ms<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token keyword">let</span> timerId<span class="token operator">:</span> number <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">=</span> <span class="token keyword">null</span>
+<span class="token keyword">let</span> <span class="token literal-property property">timerId</span><span class="token operator">:</span> number <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">=</span> <span class="token keyword">null</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>

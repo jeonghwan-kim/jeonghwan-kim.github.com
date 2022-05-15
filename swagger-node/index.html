@@ -248,7 +248,7 @@ swagger project test</code></pre></div>
       <span class="token key atrule">operationId</span><span class="token punctuation">:</span> hello</code></pre></div>
 <p><code>x-swagger-router-controller</code>키에 할당된 값은 controllers 폴더의 자바스크립트 파일명이다. 그리고 <code>operationId</code>키의 값은 이 파일의 메쏘드 명이다. /api/controllers/hello_world.js 파일을 들여다 보면 쉽게 이해할 수 있다.</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  hello<span class="token operator">:</span> hello<span class="token punctuation">,</span>
+  <span class="token literal-property property">hello</span><span class="token operator">:</span> hello<span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -277,9 +277,9 @@ SwaggerExpress<span class="token punctuation">.</span><span class="token functio
 <p>app.js파일에서 SwaggerExpress의 config 객체에 <code>swaggerSecurityHanders</code> 객체를 추가한다.</p>
 <p>app.js:</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">var</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
-  appRoot<span class="token operator">:</span> __dirname<span class="token punctuation">,</span> <span class="token comment">// required config</span>
+  <span class="token literal-property property">appRoot</span><span class="token operator">:</span> __dirname<span class="token punctuation">,</span> <span class="token comment">// required config</span>
 
-  swaggerSecurityHandlers<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">swaggerSecurityHandlers</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function-variable function">api_key</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> authOrSecDef<span class="token punctuation">,</span> scopesOrApiKey<span class="token punctuation">,</span> cb</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token comment">// your security code</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">"1234"</span> <span class="token operator">===</span> scopesOrApiKey<span class="token punctuation">)</span> <span class="token punctuation">{</span>

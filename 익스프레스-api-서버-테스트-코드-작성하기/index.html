@@ -266,10 +266,10 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 exports<span class="token punctuation">.</span><span class="token function-variable function">index</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
-      name<span class="token operator">:</span> <span class="token string">"Chris"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Chris"</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
-      name<span class="token operator">:</span> <span class="token string">"Sam"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Sam"</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
@@ -318,7 +318,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>name<span class="token punctuation">)</span> <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span>
 
   models<span class="token punctuation">.</span>User<span class="token punctuation">.</span><span class="token function">findOne</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    where<span class="token operator">:</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>name <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">where</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>name <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
     <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">user</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>user<span class="token punctuation">)</span> <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token number">404</span><span class="token punctuation">)</span>
@@ -334,7 +334,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 <span class="token keyword">var</span> sequelize <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Sequelize</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 exports<span class="token punctuation">.</span>User <span class="token operator">=</span> sequelize<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"User"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  name<span class="token operator">:</span> Sequelize<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">name</span><span class="token operator">:</span> Sequelize<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p>그럼 유닛 테스트를 위해 데이터베이스에 직접 자료를 넣어야 할까요?
 그렇게 할 수도 있겠지만 시간이 많이 걸립니다. 왜냐하면 테스트를 위해 데이테베이스 컨넥션을 생성한 뒤
@@ -352,7 +352,7 @@ sinon 모듈을 이용해 이 함수를 흉내낼 수 있습니다.</p>
 
 sinon<span class="token punctuation">.</span><span class="token function">stub</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>User<span class="token punctuation">,</span> <span class="token string">"findOne"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">returns</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token function-variable function">then</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">"Chris"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Chris"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p>테스트를 진행할 때 modles.User 객체의 <code>findOne()</code> 함수가 호출될 때 <code>then</code> 함수가 포함된
@@ -364,7 +364,7 @@ sinon<span class="token punctuation">.</span><span class="token function">stub</
   <span class="token function">before</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     sinon<span class="token punctuation">.</span><span class="token function">stub</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>User<span class="token punctuation">,</span> <span class="token string">"findOne"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">returns</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
       <span class="token function-variable function">then</span><span class="token operator">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">"Chris"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Chris"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>

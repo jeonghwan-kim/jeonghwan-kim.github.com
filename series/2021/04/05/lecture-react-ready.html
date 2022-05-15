@@ -532,7 +532,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
   <span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Store</span><span class="token punctuation">(</span>storage<span class="token punctuation">)</span>
 
   <span class="token keyword">const</span> views <span class="token operator">=</span> <span class="token punctuation">{</span>
-    formView<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">FormView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 1</span>
+    <span class="token literal-property property">formView</span><span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">FormView</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 1</span>
   <span class="token punctuation">}</span>
 
   <span class="token keyword">new</span> <span class="token class-name">Controller</span><span class="token punctuation">(</span>store<span class="token punctuation">,</span> views<span class="token punctuation">)</span>
@@ -809,7 +809,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
     <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
       &lt;ul class="tabs">
         </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>Object<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span>Tab<span class="token punctuation">)</span> <span class="token comment">// 3</span>
-          <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> key<span class="token punctuation">,</span> label<span class="token operator">:</span> TabLabel<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 4</span>
+          <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> key<span class="token punctuation">,</span> <span class="token literal-property property">label</span><span class="token operator">:</span> TabLabel<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 4</span>
           <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>_getTab<span class="token punctuation">)</span>
           <span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> // 5
       &lt;/ul>
@@ -1019,7 +1019,7 @@ TabLabel <span class="token operator">=</span> <span class="token punctuation">{
 
   <span class="token function">handleClick</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token punctuation">{</span> keyword <span class="token punctuation">}</span> <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>dataset <span class="token comment">// 3</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">"@click"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> value<span class="token operator">:</span> keyword <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 4</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">"@click"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> keyword <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 4</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>생성 시점에 이벤트를 바인딩한다(1). 하위 엘리먼트에 클릭 이벤트가 발생하면 li 요소일 경우만 이벤트를 처리하도록 했다(2). 이벤트 처리기는 data-keyword 속성에 저장된 키워드 값을 조회한다(3). 여기까지가 뷰의 몫이고 키워드와 "@click" 이란 이름으로 이벤트를 발행해 외부로 알린다.</p>
@@ -1073,9 +1073,9 @@ TabLabel <span class="token operator">=</span> <span class="token punctuation">{
   <span class="token comment">// 1</span>
   <span class="token function">_getItem</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> keyword<span class="token punctuation">,</span> date <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> formattedDate <span class="token operator">=</span> date<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"ko-KR"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-      hour12<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      dateStyle<span class="token operator">:</span> <span class="token string">"short"</span><span class="token punctuation">,</span>
-      timeStyle<span class="token operator">:</span> <span class="token string">"medium"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">hour12</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">dateStyle</span><span class="token operator">:</span> <span class="token string">"short"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">timeStyle</span><span class="token operator">:</span> <span class="token string">"medium"</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
     <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
@@ -1157,7 +1157,7 @@ TabLabel <span class="token operator">=</span> <span class="token punctuation">{
 
   <span class="token function">handleClickRemoveButton</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token punctuation">{</span> keyword <span class="token punctuation">}</span> <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>parentElement<span class="token punctuation">.</span>dataset <span class="token comment">// 3</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">"@remove"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> value<span class="token operator">:</span> keyword <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 4</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">"@remove"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> keyword <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 4</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>이벤트를 바인딩하는 부모 메소드를 오버라이딩 한다. 자식 엘리먼트 중에 버튼을 클릭하면 handleClickRemoveButton()을 호출한다(1). 이어서 li 엘리먼트의 클릭을 처리하는 부모의 메소드도 호출한다(2).</p>

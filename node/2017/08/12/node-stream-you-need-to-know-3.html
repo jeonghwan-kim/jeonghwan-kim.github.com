@@ -340,7 +340,7 @@ process<span class="token punctuation">.</span>stdin<span class="token punctuati
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token punctuation">{</span> Transform <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"stream"</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> commaSplitter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Transform</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  readableObjectMode<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">readableObjectMode</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 
   <span class="token function">transform</span><span class="token punctuation">(</span><span class="token parameter">chunk<span class="token punctuation">,</span> encoding<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>chunk<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">trim</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -349,8 +349,8 @@ process<span class="token punctuation">.</span>stdin<span class="token punctuati
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> arrayToObject <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Transform</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  readableObjectMode<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  writableObjectMode<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">readableObjectMode</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">writableObjectMode</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 
   <span class="token function">transform</span><span class="token punctuation">(</span><span class="token parameter">chunk<span class="token punctuation">,</span> encoding<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
@@ -363,7 +363,7 @@ process<span class="token punctuation">.</span>stdin<span class="token punctuati
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> objectToString <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Transform</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  writableObjectMode<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">writableObjectMode</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 
   <span class="token function">transform</span><span class="token punctuation">(</span><span class="token parameter">chunk<span class="token punctuation">,</span> encoding<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>chunk<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"\n"</span><span class="token punctuation">)</span>

@@ -322,7 +322,7 @@ postsView<span class="token punctuation">.</span><span class="token function-var
 <span class="token keyword">import</span> api <span class="token keyword">from</span> <span class="token string">"../api.js"</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-  template<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div>
+  <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div>
     &lt;small v-if="fetching">Loginding...&lt;/small>
     &lt;section v-else v-for="post in posts">
       &lt;h2>{{post.title}}&lt;/h2>
@@ -332,8 +332,8 @@ postsView<span class="token punctuation">.</span><span class="token function-var
 
   <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      posts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      fetching<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">posts</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">fetching</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
@@ -341,14 +341,14 @@ postsView<span class="token punctuation">.</span><span class="token function-var
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  filters<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">filters</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">excerpt</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"mobile:filter:exceprt"</span><span class="token punctuation">)</span>
       <span class="token keyword">return</span> val<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"..."</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">this</span><span class="token punctuation">.</span>fetching <span class="token operator">=</span> <span class="token boolean">true</span>
       api<span class="token punctuation">.</span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -369,7 +369,7 @@ API 요청시 fetching 상태를 이용해 "Loading..." 메세지를 추가했�
   <span class="token keyword">import</span> PostList <span class="token keyword">from</span> <span class="token string">'./PostList.vue'</span>
 
   <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    el<span class="token operator">:</span> <span class="token string">'#app'</span>
+    <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">'#app'</span>
     <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token parameter">h</span> <span class="token operator">=></span> <span class="token function">h</span><span class="token punctuation">(</span>PostList<span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre></div>
@@ -396,7 +396,7 @@ API 요청시 fetching 상태를 이용해 "Loading..." 메세지를 추가했�
 위에서 했던 것과 마찬가지로 Mobile에서 글자수를 100자만 보여줬던 것을 PC에서는 글자수 300개를 보여주려고 한다.
 이를 담당하는 <code>excerpt()</code> 필터함수를 오버라이딩 하면 되겠다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// vue-pc/PostsComponent.js</span>
-filters<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">filters</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token function">excerpt</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> val<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'...'</span>
   <span class="token punctuation">}</span>
@@ -406,14 +406,14 @@ filters<span class="token operator">:</span> <span class="token punctuation">{</
 즉 확장된 컴포넌트에서 동일한 이름으로 함수를 재정의하면 기존 함수가 가려져 덮어 씌워지는 효과가 있다.
 로그를 찍어 확인해 보자.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// vue-mobile/PostsComponents.vue</span>
-filters<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">filters</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token function">excerpt</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'mobile:filter:exceprt'</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> val<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'...'</span>
   <span class="token punctuation">}</span>
 
 <span class="token comment">// vue-pc/PostsComponents.vue</span>
-filters<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">filters</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token function">excerpt</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'pc:filter:exceprt'</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> val<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'...'</span>
@@ -450,7 +450,7 @@ pc:created</code></pre></div>
   <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">enableScroll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token function">enableScroll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'scroll'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'load more'</span><span class="token punctuation">)</span>
@@ -470,7 +470,7 @@ load <span class="token function">more</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setPagination</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token function">enableScroll</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// Overriding: NOP</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -479,7 +479,7 @@ methods<span class="token operator">:</span> <span class="token punctuation">{</
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-template<span class="token operator">:</span>
+<span class="token literal-property property">template</span><span class="token operator">:</span>
   <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">&lt;div>
     &lt;small v-if="fetching">Loginding...&lt;/small>
     &lt;section v-else v-for="post in posts">

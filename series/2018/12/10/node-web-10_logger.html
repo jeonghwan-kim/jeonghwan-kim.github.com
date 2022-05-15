@@ -281,17 +281,17 @@ GET /favicon.ico</code></pre></div>
 이번에도 비슷한 방법으로 구현하겠습니다.
 세 부분으로 나눠서 풀어볼게요.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> colors <span class="token operator">=</span> <span class="token punctuation">{</span>
-  green<span class="token operator">:</span> <span class="token string">"\x1b[32m"</span><span class="token punctuation">,</span>
-  cyan<span class="token operator">:</span> <span class="token string">"\x1b[36m"</span><span class="token punctuation">,</span>
-  red<span class="token operator">:</span> <span class="token string">"\x1b[31m"</span><span class="token punctuation">,</span>
-  yellow<span class="token operator">:</span> <span class="token string">"\x1b[33m"</span><span class="token punctuation">,</span>
-  reset<span class="token operator">:</span> <span class="token string">"\x1b[0m"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">green</span><span class="token operator">:</span> <span class="token string">"\x1b[32m"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">cyan</span><span class="token operator">:</span> <span class="token string">"\x1b[36m"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">red</span><span class="token operator">:</span> <span class="token string">"\x1b[31m"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">yellow</span><span class="token operator">:</span> <span class="token string">"\x1b[33m"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">reset</span><span class="token operator">:</span> <span class="token string">"\x1b[0m"</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>사용할 컬러 값을 맵으로 만듭니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> methodColorMap <span class="token operator">=</span> <span class="token punctuation">{</span>
-  get<span class="token operator">:</span> colors<span class="token punctuation">.</span>green<span class="token punctuation">,</span>
-  post<span class="token operator">:</span> colors<span class="token punctuation">.</span>cyan<span class="token punctuation">,</span>
-  put<span class="token operator">:</span> colors<span class="token punctuation">.</span>yellow<span class="token punctuation">,</span>
+  <span class="token literal-property property">get</span><span class="token operator">:</span> colors<span class="token punctuation">.</span>green<span class="token punctuation">,</span>
+  <span class="token literal-property property">post</span><span class="token operator">:</span> colors<span class="token punctuation">.</span>cyan<span class="token punctuation">,</span>
+  <span class="token literal-property property">put</span><span class="token operator">:</span> colors<span class="token punctuation">.</span>yellow<span class="token punctuation">,</span>
   <span class="token keyword">delete</span><span class="token operator">:</span> colors<span class="token punctuation">.</span>red<span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>메소드 이름에 따라 사용할 색상을 맵핑하여 methodColorMap을 만듭니다.</p>

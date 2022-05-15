@@ -326,7 +326,7 @@ myplugin.js 라는 파일을 아래처럼 만들어 보자(출처: <a href="http
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// myplugin.js:</span>
 module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">myplugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    visitor<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">visitor</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function">Identifier</span><span class="token punctuation">(</span><span class="token parameter">path</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">const</span> name <span class="token operator">=</span> path<span class="token punctuation">.</span>node<span class="token punctuation">.</span>name
 
@@ -364,7 +364,7 @@ path.node.name의 값을 변경하는데 문자를 뒤집는 코드다.
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// myplugin.js:</span>
 module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">myplugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    visitor<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">visitor</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token comment">// https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-block-scoping/src/index.js#L26</span>
       <span class="token function">VariableDeclaration</span><span class="token punctuation">(</span><span class="token parameter">path</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"VariableDeclaration() kind:"</span><span class="token punctuation">,</span> path<span class="token punctuation">.</span>node<span class="token punctuation">.</span>kind<span class="token punctuation">)</span> <span class="token comment">// const</span>
@@ -413,7 +413,7 @@ var alert = function (msg) {
 <p>프로젝트 루트에 babel.config.js 파일을 아래와 같이 작성하자.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// babel.config.js:</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token string">"@babel/plugin-transform-block-scoping"</span><span class="token punctuation">,</span>
     <span class="token string">"@babel/plugin-transform-arrow-functions"</span><span class="token punctuation">,</span>
     <span class="token string">"@babel/plugin-transform-strict-mode"</span><span class="token punctuation">,</span>
@@ -440,7 +440,7 @@ mypreset.js 파일을 다음과 같이 작성하자.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// mypreset.js</span>
 module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">mypreset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token string">"@babel/plugin-transform-arrow-functions"</span><span class="token punctuation">,</span>
       <span class="token string">"@babel/plugin-transform-block-scoping"</span><span class="token punctuation">,</span>
       <span class="token string">"@babel/plugin-transform-strict-mode"</span><span class="token punctuation">,</span>
@@ -451,7 +451,7 @@ module<span class="token punctuation">.</span><span class="token function-variab
 <p>프리셋을 사용하기 위해 바벨 설정을 약간 수정한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// babel.config.js</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  presets<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"./mypreset.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">presets</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"./mypreset.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>플러그인 세팅 코드를 제거하고 presets에 방금 만든 mypreset.js를 추가했다.
 실행해보면 동일한 결과를 출력할 것이다.</p>
@@ -473,7 +473,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <p>설치한 바벨 설정을 조금만 더 바꿔본다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// babel.config.js:</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  presets<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@babel/preset-env"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">presets</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@babel/preset-env"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>그리고 빌드하면,</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npx babel app.js
@@ -493,12 +493,12 @@ var alert = function alert(msg) {
 <code>target</code> 옵션에 브라우져 버전명만 지정하면 env 프리셋은 이에 맞는 플러그인들을 찾아 최적의 코드를 출력해 낸다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// babel.config.js</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  presets<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">presets</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">[</span>
       <span class="token string">"@babel/preset-env"</span><span class="token punctuation">,</span>
       <span class="token punctuation">{</span>
-        targets<span class="token operator">:</span> <span class="token punctuation">{</span>
-          chrome<span class="token operator">:</span> <span class="token string">"79"</span><span class="token punctuation">,</span> <span class="token comment">// 크롬 79까지 지원하는 코드를 만든다</span>
+        <span class="token literal-property property">targets</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">chrome</span><span class="token operator">:</span> <span class="token string">"79"</span><span class="token punctuation">,</span> <span class="token comment">// 크롬 79까지 지원하는 코드를 만든다</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -513,13 +513,13 @@ const alert = msg => window.alert(msg);</code></pre></div>
 만약 인터넷 익스플로러도 지원해야 한다면 바벨 설정에 브라우져 정보만 하나 더 추가하면 된다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// babel.config.js :</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  presets<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">presets</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">[</span>
       <span class="token string">"@babel/preset-env"</span><span class="token punctuation">,</span>
       <span class="token punctuation">{</span>
-        targets<span class="token operator">:</span> <span class="token punctuation">{</span>
-          chrome<span class="token operator">:</span> <span class="token string">"79"</span><span class="token punctuation">,</span>
-          ie<span class="token operator">:</span> <span class="token string">"11"</span><span class="token punctuation">,</span> <span class="token comment">// ie 11까지 지원하는 코드를 만든다</span>
+        <span class="token literal-property property">targets</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">chrome</span><span class="token operator">:</span> <span class="token string">"79"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">ie</span><span class="token operator">:</span> <span class="token string">"11"</span><span class="token punctuation">,</span> <span class="token comment">// ie 11까지 지원하는 코드를 만든다</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -552,14 +552,14 @@ target에 ie 11을 설정하고 빌드한 것인데 인터넷 익스플로러는
 <p>env 프리셋은 폴리필을 지정할 수 있는 옵션을 제공한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// babel.config.js:</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  presets<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">presets</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">[</span>
       <span class="token string">"@babel/preset-env"</span><span class="token punctuation">,</span>
       <span class="token punctuation">{</span>
-        useBuiltIns<span class="token operator">:</span> <span class="token string">"usage"</span><span class="token punctuation">,</span> <span class="token comment">// 폴리필 사용 방식 지정</span>
-        corejs<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">useBuiltIns</span><span class="token operator">:</span> <span class="token string">"usage"</span><span class="token punctuation">,</span> <span class="token comment">// 폴리필 사용 방식 지정</span>
+        <span class="token literal-property property">corejs</span><span class="token operator">:</span> <span class="token punctuation">{</span>
           <span class="token comment">// 폴리필 버전 지정</span>
-          version<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">version</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -590,12 +590,12 @@ new Promise();</code></pre></div>
 <p>웹팩 설정에 로더를 추가한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// webpack.config.js:</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  module<span class="token operator">:</span> <span class="token punctuation">{</span>
-    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
-        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-        exclude<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-        loader<span class="token operator">:</span> <span class="token string">"babel-loader"</span><span class="token punctuation">,</span> <span class="token comment">// 바벨 로더를 추가한다</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">"babel-loader"</span><span class="token punctuation">,</span> <span class="token comment">// 바벨 로더를 추가한다</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>

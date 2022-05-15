@@ -266,7 +266,7 @@ server 폴더로 이동한 뒤 필요한 노드 모듈을 설치하고 서버를
 <h3 id="1-get-home" style="position:relative;"><a href="#1-get-home" aria-label="1 get home permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1) GET /home</h3>
 <p>메인 화면을 만들때 사용할 데이터를 얻는 API이다. 아래와 같은 형태로 응답하는데...</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
-  greeting<span class="token operator">:</span> String
+  <span class="token literal-property property">greeting</span><span class="token operator">:</span> String
 <span class="token punctuation">}</span></code></pre></div>
 <p>문자열은 경우에 따라 두 가지로 응답한다.</p>
 <p>로그인 전이면 "Hello Word"를, 로그인 후면 "Hello {Name}"으로 응답한다.<br />
@@ -349,23 +349,23 @@ Curl 명령어로 API를 요청해 보면</p>
 Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Router<span class="token punctuation">)</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  mode<span class="token operator">:</span> <span class="token string">"history"</span><span class="token punctuation">,</span>
-  routes<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">"history"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">routes</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
-      path<span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span>
-      name<span class="token operator">:</span> <span class="token string">"Home"</span><span class="token punctuation">,</span>
-      component<span class="token operator">:</span> Home<span class="token punctuation">,</span>
+      <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Home"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">component</span><span class="token operator">:</span> Home<span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
-      path<span class="token operator">:</span> <span class="token string">"/login"</span><span class="token punctuation">,</span>
-      name<span class="token operator">:</span> <span class="token string">"Login"</span><span class="token punctuation">,</span>
-      component<span class="token operator">:</span> Login<span class="token punctuation">,</span>
+      <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/login"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Login"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">component</span><span class="token operator">:</span> Login<span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
-      path<span class="token operator">:</span> <span class="token string">"/me"</span><span class="token punctuation">,</span>
-      name<span class="token operator">:</span> <span class="token string">"Me"</span><span class="token punctuation">,</span>
-      component<span class="token operator">:</span> Me<span class="token punctuation">,</span>
-      beforeEnter<span class="token operator">:</span> requireAuth<span class="token punctuation">,</span>
+      <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/me"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Me"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">component</span><span class="token operator">:</span> Me<span class="token punctuation">,</span>
+      <span class="token literal-property property">beforeEnter</span><span class="token operator">:</span> requireAuth<span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
@@ -381,11 +381,11 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token keyword">const</span> resourceHost <span class="token operator">=</span> <span class="token string">"http://localhost:3000"</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Veux<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  state<span class="token operator">:</span> <span class="token punctuation">{</span>
-    accessToken<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">accessToken</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  getters<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-  mutations<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">getters</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token constant">LOGIN</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> <span class="token punctuation">{</span> accessToken <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       state<span class="token punctuation">.</span>accessToken <span class="token operator">=</span> accessToken
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -393,7 +393,7 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
       state<span class="token punctuation">.</span>accessToken <span class="token operator">=</span> <span class="token keyword">null</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  actions<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">actions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token constant">LOGIN</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> commit <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> email<span class="token punctuation">,</span> password <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> axios
         <span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>resourceHost<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/login</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span> email<span class="token punctuation">,</span> password <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -412,7 +412,7 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token keyword">import</span> store <span class="token keyword">from</span> <span class="token string">"./store"</span>
 
 <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  el<span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
   <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token parameter">h</span> <span class="token operator">=></span> <span class="token function">h</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">,</span>
   store<span class="token punctuation">,</span>
   router<span class="token punctuation">,</span>
@@ -434,7 +434,7 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
     <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> <span class="token punctuation">{</span>
-        greeting<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">greeting</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -464,10 +464,10 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token comment">/* 중략 */</span>
     <span class="token punctuation">{</span>
-      path<span class="token operator">:</span> <span class="token string">'/me'</span><span class="token punctuation">,</span>
-      name<span class="token operator">:</span> <span class="token string">'Me'</span><span class="token punctuation">,</span>
-      component<span class="token operator">:</span> Me<span class="token punctuation">,</span>
-      beforeEnter<span class="token operator">:</span> <span class="token function">requireAuth</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">'/me'</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Me'</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">component</span><span class="token operator">:</span> Me<span class="token punctuation">,</span>
+      <span class="token literal-property property">beforeEnter</span><span class="token operator">:</span> <span class="token function">requireAuth</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
@@ -495,12 +495,12 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
     <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> <span class="token punctuation">{</span>
-        email<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-        password<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-        msg<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">msg</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function">onSubmit</span><span class="token punctuation">(</span><span class="token parameter">email<span class="token punctuation">,</span> password</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// LOGIN 액션 실행</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>$store
@@ -530,7 +530,7 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 로그인 API에 성공하면 <code>commit()</code> 함수를 이용해 스토어에 액세스 토큰을 저장한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// sotre/index.js</span>
 
-actions<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">actions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token constant">LOGIN</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>commit<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>email<span class="token punctuation">,</span> password<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>resourceHost<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/login</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span>email<span class="token punctuation">,</span> password<span class="token punctuation">}</span><span class="token punctuation">)</span>
       <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>data<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -541,7 +541,7 @@ actions<span class="token operator">:</span> <span class="token punctuation">{</
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-mutations<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token constant">LOGIN</span> <span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> <span class="token punctuation">{</span>accessToken<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
     <span class="token comment">// 스토어에 액세스 토큰 저장</span>
@@ -579,8 +579,8 @@ mutations<span class="token operator">:</span> <span class="token punctuation">{
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
     <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> <span class="token punctuation">{</span>
-        user<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
-        accessLog<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">user</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">accessLog</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -606,7 +606,7 @@ mutations<span class="token operator">:</span> <span class="token punctuation">{
 <p><a href="https://github.com/axios/axios#global-axios-defaults">Axios 기본 설정값 설정</a>으로 구현할 수 있다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// store/index.js</span>
 
-actions<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">actions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token constant">LOGIN</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>commit<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>email<span class="token punctuation">,</span> password<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>resourceHost<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/login</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span>email<span class="token punctuation">,</span> password<span class="token punctuation">}</span><span class="token punctuation">)</span>
       <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>data<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -628,7 +628,7 @@ actions<span class="token operator">:</span> <span class="token punctuation">{</
 영구적인 곳에 저장할 필요가 있다. 로컬 스토리지에 저장하겠다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// store/index.js</span>
 
-mutations<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token constant">LOGIN</span> <span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> <span class="token punctuation">{</span>accessToken<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     state<span class="token punctuation">.</span>accessToken <span class="token operator">=</span> accessToken
 
@@ -668,12 +668,12 @@ mutations<span class="token operator">:</span> <span class="token punctuation">{
   <span class="token keyword">import</span> store <span class="token keyword">from</span> <span class="token string">"../store"</span>
 
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-    computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">computed</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function">isAuthenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> store<span class="token punctuation">.</span>getters<span class="token punctuation">.</span>isAuthenticated
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function">onClickLogout</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token comment">// LOGOUT 변이 실행 후 리다이렉트</span>
         store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">"LOGOUT"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span>$router<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -683,14 +683,14 @@ mutations<span class="token operator">:</span> <span class="token punctuation">{
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre></div>
 <p><code>onClickLogout()</code> 함수는 <code>LOGOUT</code> 액션을 실행한뒤 메인 페이지로 라우팅한다.</p>
 <p>액션과 변이 함수도 로그아웃 처리를 해 주자.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">actions<span class="token operator">:</span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token literal-property property">actions</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token constant">LOGOUT</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>commit<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// HTTP 요청 헤더값 제거</span>
     axios<span class="token punctuation">.</span>defaults<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>common<span class="token punctuation">[</span><span class="token string">'Authorization'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">undefined</span>
     <span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'LOGOUT'</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
-mutations<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">mutations</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token constant">LOGOUT</span> <span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// 토큰 정보 삭제</span>
     state<span class="token punctuation">.</span>accessToken <span class="token operator">=</span> <span class="token keyword">null</span>

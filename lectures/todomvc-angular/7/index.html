@@ -282,10 +282,10 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 $scope<span class="token punctuation">.</span><span class="token function">$watch</span><span class="token punctuation">(</span><span class="token string">"status"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>$scope<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">"completed"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// Completed 클릭시</span>
-    $scope<span class="token punctuation">.</span>statusFilter <span class="token operator">=</span> <span class="token punctuation">{</span> completed<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span> <span class="token comment">// 필터를 설정한다.</span>
+    $scope<span class="token punctuation">.</span>statusFilter <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span> <span class="token comment">// 필터를 설정한다.</span>
   <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>$scope<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">"active"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">// Active 클릭시</span>
-    $scope<span class="token punctuation">.</span>statusFilter <span class="token operator">=</span> <span class="token punctuation">{</span> completed<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span> <span class="token comment">// 필터를 설정한다.</span>
+    $scope<span class="token punctuation">.</span>statusFilter <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span> <span class="token comment">// 필터를 설정한다.</span>
   <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
     <span class="token comment">// All 클릭시</span>
     $scope<span class="token punctuation">.</span>statusFilter <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">// 필터를 해제한다.</span>
@@ -405,14 +405,14 @@ $scope<span class="token punctuation">.</span><span class="token function">$watc
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">angular<span class="token punctuation">.</span><span class="token function">module</span><span class="token punctuation">(</span><span class="token string">"todomvc"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">controller</span><span class="token punctuation">(</span><span class="token string">"TodomvcCtrl"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">$scope</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   $scope<span class="token punctuation">.</span>todos <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
-      id<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-      title<span class="token operator">:</span> <span class="token string">"요가 수행하기"</span><span class="token punctuation">,</span>
-      completed<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"요가 수행하기"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
-      id<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
-      title<span class="token operator">:</span> <span class="token string">"어머니 용돈 드리기"</span><span class="token punctuation">,</span>
-      completed<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">id</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"어머니 용돈 드리기"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span>
 
@@ -424,9 +424,9 @@ $scope<span class="token punctuation">.</span><span class="token function">$watc
       <span class="token operator">?</span> <span class="token number">1</span>
       <span class="token operator">:</span> $scope<span class="token punctuation">.</span>todos<span class="token punctuation">[</span>$scope<span class="token punctuation">.</span>todos<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>id <span class="token operator">+</span> <span class="token number">1</span>
     <span class="token keyword">var</span> newTodo <span class="token operator">=</span> <span class="token punctuation">{</span>
-      id<span class="token operator">:</span> newId<span class="token punctuation">,</span>
-      title<span class="token operator">:</span> todoTitle<span class="token punctuation">,</span>
-      completed<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">id</span><span class="token operator">:</span> newId<span class="token punctuation">,</span>
+      <span class="token literal-property property">title</span><span class="token operator">:</span> todoTitle<span class="token punctuation">,</span>
+      <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
 
     $scope<span class="token punctuation">.</span>todos<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>newTodo<span class="token punctuation">)</span>
@@ -446,9 +446,9 @@ $scope<span class="token punctuation">.</span><span class="token function">$watc
 
   $scope<span class="token punctuation">.</span><span class="token function">$watch</span><span class="token punctuation">(</span><span class="token string">"status"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>$scope<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">"completed"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      $scope<span class="token punctuation">.</span>statusFilter <span class="token operator">=</span> <span class="token punctuation">{</span> completed<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span>
+      $scope<span class="token punctuation">.</span>statusFilter <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span>
     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>$scope<span class="token punctuation">.</span>status <span class="token operator">===</span> <span class="token string">"active"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      $scope<span class="token punctuation">.</span>statusFilter <span class="token operator">=</span> <span class="token punctuation">{</span> completed<span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span>
+      $scope<span class="token punctuation">.</span>statusFilter <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">completed</span><span class="token operator">:</span> <span class="token boolean">false</span> <span class="token punctuation">}</span>
     <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
       $scope<span class="token punctuation">.</span>statusFilter <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
     <span class="token punctuation">}</span>

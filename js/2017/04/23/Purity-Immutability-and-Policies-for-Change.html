@@ -410,15 +410,15 @@ a<span class="token punctuation">[</span><span class="token number">1</span><spa
 a <span class="token comment">// [1, 2, 3]</span></code></pre></div>
 <p>그러나 서드파티 API에 전달할 객체에 불변객체를 넘기면 부작용이 생길 여지가 있다. API의 함수 구현에 따라 전달받은 인자를 수정해야만 할 수 있기 때문이다.</p>
 <p>값을 변경할 때마다 새로운 객체로 복제해서 불변성을 지킬수도 있다. ES6에는 Object.assign() 메소드가 있는데 여러 객체를 하나로 합치는 녀석이다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">let</span> objA <span class="token operator">=</span> <span class="token punctuation">{</span> a<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">}</span>
-<span class="token keyword">let</span> objB <span class="token operator">=</span> <span class="token punctuation">{</span> b<span class="token operator">:</span> <span class="token string">"B"</span> <span class="token punctuation">}</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">let</span> objA <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">}</span>
+<span class="token keyword">let</span> objB <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token string">"B"</span> <span class="token punctuation">}</span>
 <span class="token keyword">let</span> objC <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>objA<span class="token punctuation">,</span> objB<span class="token punctuation">)</span>
 
 objC <span class="token comment">// {a: 'A', b: 'B'}</span>
 objA <span class="token comment">// {a: 'A', b: 'B'}</span></code></pre></div>
 <p>그러나 문제는 assign() 의 첫번째 인자도 변경된다는 점이다. 기존 객체를 유지하며 새로운 객체를 만들려면 첫번째 인자에 빈 객체를 전달해서 만들어야 한다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">let</span> objA <span class="token operator">=</span> <span class="token punctuation">{</span> a<span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">}</span>
-<span class="token keyword">let</span> objB <span class="token operator">=</span> <span class="token punctuation">{</span> b<span class="token operator">:</span> <span class="token string">"B"</span> <span class="token punctuation">}</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">let</span> objA <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">a</span><span class="token operator">:</span> <span class="token string">"A"</span> <span class="token punctuation">}</span>
+<span class="token keyword">let</span> objB <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">b</span><span class="token operator">:</span> <span class="token string">"B"</span> <span class="token punctuation">}</span>
 <span class="token keyword">let</span> objC <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> objA<span class="token punctuation">,</span> objB<span class="token punctuation">)</span>
 
 objC <span class="token comment">// {a: 'A', b: 'B'}</span>

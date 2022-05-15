@@ -294,7 +294,7 @@ exports<span class="token punctuation">.</span><span class="token function-varia
   channel<span class="token punctuation">,</span>
   icon_emoji<span class="token punctuation">,</span>
   username<span class="token punctuation">,</span>
-  attachments<span class="token operator">:</span> <span class="token function">buildAttachments</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">attachments</span><span class="token operator">:</span> <span class="token function">buildAttachments</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p>channel, icon_emoji, username은 모두 환경 변수를 그대로 사용했다. attachments를 만드는 <code>buildAttachements()</code> 함수에 SNS로 부터 받은 <code>event</code>를 전달해 실행한다.</p>
 <p>attachment 를 만드는 로직으로 넘어가자.</p>
@@ -307,8 +307,8 @@ exports<span class="token punctuation">.</span><span class="token function-varia
   <span class="token keyword">const</span> color <span class="token operator">=</span> <span class="token function">isErrorMessage</span><span class="token punctuation">(</span>Message<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">"danger"</span> <span class="token operator">:</span> <span class="token string">"good"</span>
   <span class="token keyword">return</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
-      author_name<span class="token operator">:</span> Environment<span class="token punctuation">,</span>
-      text<span class="token operator">:</span> <span class="token function">highlightMessage</span><span class="token punctuation">(</span>Message<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">author_name</span><span class="token operator">:</span> Environment<span class="token punctuation">,</span>
+      <span class="token literal-property property">text</span><span class="token operator">:</span> <span class="token function">highlightMessage</span><span class="token punctuation">(</span>Message<span class="token punctuation">)</span><span class="token punctuation">,</span>
       color<span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span>
@@ -351,13 +351,13 @@ exports<span class="token punctuation">.</span><span class="token function-varia
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> https <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"https"</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">{</span>
-  port<span class="token operator">:</span> <span class="token number">443</span><span class="token punctuation">,</span>
-  method<span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
-  hostname<span class="token operator">:</span> <span class="token string">"hooks.slack.com"</span><span class="token punctuation">,</span>
-  path<span class="token operator">:</span> webhookPath<span class="token punctuation">,</span>
-  headers<span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"Content-Type"</span><span class="token operator">:</span> <span class="token string">"application/json"</span><span class="token punctuation">,</span>
-    <span class="token string">"Content-Length"</span><span class="token operator">:</span> postData<span class="token punctuation">.</span>length<span class="token punctuation">,</span>
+  <span class="token literal-property property">port</span><span class="token operator">:</span> <span class="token number">443</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">method</span><span class="token operator">:</span> <span class="token string">"POST"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">hostname</span><span class="token operator">:</span> <span class="token string">"hooks.slack.com"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">path</span><span class="token operator">:</span> webhookPath<span class="token punctuation">,</span>
+  <span class="token literal-property property">headers</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"Content-Type"</span><span class="token operator">:</span> <span class="token string">"application/json"</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"Content-Length"</span><span class="token operator">:</span> postData<span class="token punctuation">.</span>length<span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 

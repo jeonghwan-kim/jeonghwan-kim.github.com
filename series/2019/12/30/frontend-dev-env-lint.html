@@ -323,8 +323,8 @@ ESLint로 코드를 검사 하면</p>
 설정 파일의 rules 객체에 이 규칙을 추가한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// .eslintrc.js</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"no-unexpected-multiline"</span><span class="token operator">:</span> <span class="token string">"error"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"no-unexpected-multiline"</span><span class="token operator">:</span> <span class="token string">"error"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>규칙에 설정하는 값은 세 가지다. "off"나 0은 끔, "warn"이나 1은 경고, "error"나 2는 오류.
@@ -349,8 +349,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>린트 설정에 no-extra-semi 규칙을 추가하고,</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// .eslintrc.js</span>
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"no-extra-semi"</span><span class="token operator">:</span> <span class="token string">"error"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"no-extra-semi"</span><span class="token operator">:</span> <span class="token string">"error"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>코드를 검사하면 오류를 출력한다.</p>
@@ -481,11 +481,11 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>설정 파일에서 pulugins와 rules에 설정을 추가한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// .eslintrc.js</span>
 <span class="token punctuation">{</span>
-  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token string">"prettier"</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"prettier/prettier"</span><span class="token operator">:</span> <span class="token string">"error"</span>
+  <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"prettier/prettier"</span><span class="token operator">:</span> <span class="token string">"error"</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>프리티어의 모든 규칙을 ESLint 규칙으로 가져온 설정이다.
@@ -494,7 +494,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>프리티어는 이 두 패키지를 함께 사용하는 <a href="https://prettier.io/docs/en/integrating-with-linters.html">단순한 설정</a>을 제공하는데 아래 설정을 추가하면 된다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// .eslintrc.js</span>
 <span class="token punctuation">{</span>
-  <span class="token string">"extends"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token string-property property">"extends"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token string">"eslint:recommended"</span><span class="token punctuation">,</span>
     <span class="token string">"plugin:prettier/recommended"</span>
   <span class="token punctuation">]</span>

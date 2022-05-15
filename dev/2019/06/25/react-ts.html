@@ -336,29 +336,29 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save-dev ts-loader webpack webpack-cli</code></pre></div>
 <p>webpack.config.js 파일을 만들어 아래 내용으로 웹팩 설정을 구성한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  mode<span class="token operator">:</span> <span class="token string">"development"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">"development"</span><span class="token punctuation">,</span>
 
   <span class="token comment">// 엔트리 포인트</span>
-  entry<span class="token operator">:</span> <span class="token string">"./src/index.tsx"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">entry</span><span class="token operator">:</span> <span class="token string">"./src/index.tsx"</span><span class="token punctuation">,</span>
 
   <span class="token comment">// 빌드 결과물을 dist/main.js에 위치</span>
-  output<span class="token operator">:</span> <span class="token punctuation">{</span>
-    filename<span class="token operator">:</span> <span class="token string">"main.js"</span><span class="token punctuation">,</span>
-    path<span class="token operator">:</span> __dirname <span class="token operator">+</span> <span class="token string">"/dist"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">output</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">"main.js"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> __dirname <span class="token operator">+</span> <span class="token string">"/dist"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
   <span class="token comment">// 디버깅을 위해 빌드 결과물에 소스맵 추가</span>
-  devtool<span class="token operator">:</span> <span class="token string">"source-map"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">devtool</span><span class="token operator">:</span> <span class="token string">"source-map"</span><span class="token punctuation">,</span>
 
-  resolve<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token comment">// 파일 확장자 처리</span>
-    extensions<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">".ts"</span><span class="token punctuation">,</span> <span class="token string">".tsx"</span><span class="token punctuation">,</span> <span class="token string">".js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">extensions</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">".ts"</span><span class="token punctuation">,</span> <span class="token string">".tsx"</span><span class="token punctuation">,</span> <span class="token string">".js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-  module<span class="token operator">:</span> <span class="token punctuation">{</span>
-    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token comment">// .ts나 .tsx 확장자를 ts-loader가 트랜스파일</span>
-      <span class="token punctuation">{</span> test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.tsx?$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> loader<span class="token operator">:</span> <span class="token string">"ts-loader"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span> <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.tsx?$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span> <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">"ts-loader"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
@@ -398,9 +398,9 @@ index.html 파일을 만들어 아래 코드를 작성하자.</p>
 webpack-dev-server를 이용하면 이러한 일련의 과정을 자동화 할 수 있다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ npm install --save-dev webpack-dev-server</code></pre></div>
 <p>웹팩 설정 중 <code>devServer</code> 속성에 개발 서버 정보를 세팅한다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">devServer<span class="token operator">:</span> <span class="token punctuation">{</span>
-  contentBase<span class="token operator">:</span> <span class="token string">'./'</span><span class="token punctuation">,</span>
-  publicPath<span class="token operator">:</span> <span class="token string">'/dist'</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token literal-property property">devServer</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">contentBase</span><span class="token operator">:</span> <span class="token string">'./'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">publicPath</span><span class="token operator">:</span> <span class="token string">'/dist'</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>index.html이 프로젝트 최상단에 있기 때문에 <code>contentBase</code>를 './'로 잡는다.
 빌드 결과물이 dist 폴더에 있기 때문에 정적 파일을 제공하는 폴더인 <code>publicPath</code>를 '/dist'로 지정한다.</p>

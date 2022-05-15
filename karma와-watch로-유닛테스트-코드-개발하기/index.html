@@ -222,12 +222,12 @@ module<span class="token punctuation">.</span><span class="token function-variab
 
   grunt<span class="token punctuation">.</span><span class="token function">initConfig</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
-    karma<span class="token operator">:</span> <span class="token punctuation">{</span>
-      options<span class="token operator">:</span> <span class="token punctuation">{</span>
-        configFile<span class="token operator">:</span> <span class="token string">'karma.conf.js'</span>
+    <span class="token literal-property property">karma</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">configFile</span><span class="token operator">:</span> <span class="token string">'karma.conf.js'</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      unit<span class="token operator">:</span> <span class="token punctuation">{</span>
-        singleRun<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">unit</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">singleRun</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
@@ -244,14 +244,14 @@ module<span class="token punctuation">.</span><span class="token function-variab
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   config<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token comment">// base path that will be used to resolve all patterns (eg. files, exclude)</span>
-    basePath<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">basePath</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
 
     <span class="token comment">// frameworks to use</span>
     <span class="token comment">// available frameworks: https://npmjs.org/browse/keyword/karma-adapter</span>
-    frameworks<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"jasmine"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">frameworks</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"jasmine"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 
     <span class="token comment">// list of files / patterns to load in the browser</span>
-    files<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token literal-property property">files</span><span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token string">"bower_components/angular/angular.js"</span><span class="token punctuation">,</span>
       <span class="token string">"bower_components/angular-mocks/angular-mocks.js"</span><span class="token punctuation">,</span>
       <span class="token string">"bower_components/jquery/dist/jquery.js"</span><span class="token punctuation">,</span>
@@ -261,37 +261,37 @@ module<span class="token punctuation">.</span><span class="token function-variab
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
 
     <span class="token comment">// list of files to exclude</span>
-    exclude<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 
     <span class="token comment">// preprocess matching files before serving them to the browser</span>
     <span class="token comment">// available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor</span>
-    preprocessors<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">preprocessors</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
 
     <span class="token comment">// test results reporter to use</span>
     <span class="token comment">// possible values: 'dots', 'progress'</span>
     <span class="token comment">// available reporters: https://npmjs.org/browse/keyword/karma-reporter</span>
-    reporters<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"progress"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">reporters</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"progress"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 
     <span class="token comment">// web server port</span>
-    port<span class="token operator">:</span> <span class="token number">9876</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">port</span><span class="token operator">:</span> <span class="token number">9876</span><span class="token punctuation">,</span>
 
     <span class="token comment">// enable / disable colors in the output (reporters and logs)</span>
-    colors<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">colors</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 
     <span class="token comment">// level of logging</span>
     <span class="token comment">// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG</span>
-    logLevel<span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token constant">LOG_INFO</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">logLevel</span><span class="token operator">:</span> config<span class="token punctuation">.</span><span class="token constant">LOG_INFO</span><span class="token punctuation">,</span>
 
     <span class="token comment">// enable / disable watching file and executing tests whenever any file changes</span>
-    autoWatch<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">autoWatch</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 
     <span class="token comment">// start these browsers</span>
     <span class="token comment">// available browser launchers: https://npmjs.org/browse/keyword/karma-launcher</span>
-    browsers<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"Chrome"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">browsers</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"Chrome"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 
     <span class="token comment">// Continuous Integration mode</span>
     <span class="token comment">// if true, Karma captures browsers, runs the tests and exits</span>
-    singleRun<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">singleRun</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>여러가지 옵션 중 몇가지만 살펴 보자. frameworks에는 어떤 밸리데이터를 사용할지 설정한다. 우리는 jasmine을 사용한다. files 에는 테스트를 위해 브라우저가 로딩해야할 자바스크립트 파일 들이다. 프로넥트에서 사용한 라이브러리를 모두 로딩하면 된다. 마지막의 singleRun 옵션은 Gurntfile과 중복되지만 문제 없다.</p>
@@ -310,17 +310,17 @@ Done, without errors.</code></pre></div>
 <p><a href="https://github.com/gruntjs/grunt-contrib-watch">grunt-contrib-watch</a> 모듈을 설치한다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">npm install grunt-contrib-watch --save</code></pre></div>
 <p>Gruntfile.js 에 watch 태스크와 그 서브 태스크를 추가한다.</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">watch<span class="token operator">:</span> <span class="token punctuation">{</span>
-  karma<span class="token operator">:</span> <span class="token punctuation">{</span>
-    files<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'src/**/*.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    tasks<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'karma:continuous:run'</span><span class="token punctuation">]</span>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token literal-property property">watch</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">karma</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">files</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'src/**/*.js'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">tasks</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'karma:continuous:run'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>src 폴더에 모든 js 파일을 감자하여 karma:continuous 서브 태스크를 수행하도록 설정했다. 그럼 karma:continuous 서브 태스크 정의를 살펴보자.</p>
-<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">karma<span class="token operator">:</span> <span class="token punctuation">{</span>
-  continuous<span class="token operator">:</span> <span class="token punctuation">{</span>
-    background<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    singleRun<span class="token operator">:</span> <span class="token boolean">false</span>
+<div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token literal-property property">karma</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">continuous</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">background</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">singleRun</span><span class="token operator">:</span> <span class="token boolean">false</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>기존 karma:unit 태스크와 달리 <code>singleRun: false</code>로 설정하여 태스크 수행후 종료하지 않고 계속 진행하도록 하였다. 그리고 <code>background: true</code> 옵션도 추가하였다.</p>

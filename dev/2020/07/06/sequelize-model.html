@@ -227,18 +227,18 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 User<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>
   <span class="token punctuation">{</span>
     <span class="token comment">// 컬럼 속성</span>
-    firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
-      type<span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
-      allowNull<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">firstName</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">allowNull</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    lastName<span class="token operator">:</span> <span class="token punctuation">{</span>
-      type<span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">lastName</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">type</span><span class="token operator">:</span> DataTypes<span class="token punctuation">.</span><span class="token constant">STRING</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">{</span>
     <span class="token comment">// 기타 옵션</span>
     sequelize<span class="token punctuation">,</span> <span class="token comment">// 데이터베이스 컨넥션</span>
-    modelName<span class="token operator">:</span> <span class="token string">"User"</span><span class="token punctuation">,</span> <span class="token comment">// 모델(테이블) 이름</span>
+    <span class="token literal-property property">modelName</span><span class="token operator">:</span> <span class="token string">"User"</span><span class="token punctuation">,</span> <span class="token comment">// 모델(테이블) 이름</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">)</span>
 
@@ -259,10 +259,10 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <span class="token comment">// 클래스 외부에서 호출했던 init() 메소드를 클래스 안으로 옮겼다</span>
     <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>
       <span class="token punctuation">{</span>
-        firstName<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">firstName</span><span class="token operator">:</span> <span class="token punctuation">{</span>
           <span class="token comment">/* ... */</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        lastName<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">lastName</span><span class="token operator">:</span> <span class="token punctuation">{</span>
           <span class="token comment">/* ... */</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -328,13 +328,13 @@ Object<span class="token punctuation">.</span><span class="token function">value
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
   <span class="token comment">// 그룹 기준으로 조회한다</span>
   <span class="token keyword">static</span> <span class="token function">findByGroup</span><span class="token punctuation">(</span><span class="token parameter">GroupId</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span> where<span class="token operator">:</span> <span class="token punctuation">{</span> GroupId <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">findAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">where</span><span class="token operator">:</span> <span class="token punctuation">{</span> GroupId <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <h1 id="인스턴스-메소드" style="position:relative;"><a href="#%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4-%EB%A9%94%EC%86%8C%EB%93%9C" aria-label="인스턴스 메소드 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>인스턴스 메소드</h1>
 <p>데이터베이스에서 정적 메소드로 데이터베이스에 접근하면 데이터를 모델 인스턴스로 만들어 반환한다.
 테이블을 모델링 할 때 init() 메소드로 컬럼을 정의했는데 바로 인스턴스 멤버 변수로 접근할 수 있다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">"user1"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"user1"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>name<span class="token punctuation">)</span> <span class="token comment">// 'user1'</span></code></pre></div>
 <p>계산된 값을 얻으려면 인스턴스 메소드 형태로 추가할 수 있다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span> <span class="token punctuation">{</span>
@@ -344,7 +344,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">{</span> firstname<span class="token operator">:</span> <span class="token string">"user1"</span><span class="token punctuation">,</span> lastname<span class="token operator">:</span> <span class="token string">"kim"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">firstname</span><span class="token operator">:</span> <span class="token string">"user1"</span><span class="token punctuation">,</span> <span class="token literal-property property">lastname</span><span class="token operator">:</span> <span class="token string">"kim"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>fullname<span class="token punctuation">)</span> <span class="token comment">// 'user1 kim'</span></code></pre></div>
 <h1 id="결론" style="position:relative;"><a href="#%EA%B2%B0%EB%A1%A0" aria-label="결론 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>결론</h1>
 <p>define()을 사용하면 function 키워드로 클래스를 사용하듯 시퀄라이즈 모델을 다루었다.</p>

@@ -274,8 +274,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>js/directives/todoItem.js:</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">angular<span class="token punctuation">.</span><span class="token function">module</span><span class="token punctuation">(</span><span class="token string">"todomvc"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">"todoItem"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    restrict<span class="token operator">:</span> <span class="token string">"E"</span><span class="token punctuation">,</span>
-    template<span class="token operator">:</span> <span class="token string">"&lt;div>todoItem&lt;/div>"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">restrict</span><span class="token operator">:</span> <span class="token string">"E"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">"&lt;div>todoItem&lt;/div>"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p><code>TodomvcCtrl</code> 컨트롤러를 만든것과 비슷한 방법으로 디렉티브를 만들 수 있다.
@@ -298,13 +298,13 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>js/directives/todoItem.js:</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">angular<span class="token punctuation">.</span><span class="token function">module</span><span class="token punctuation">(</span><span class="token string">"todomvc"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">"todoItem"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    restrict<span class="token operator">:</span> <span class="token string">"E"</span><span class="token punctuation">,</span>
-    scope<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">restrict</span><span class="token operator">:</span> <span class="token string">"E"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">scope</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token comment">// 디렉티브 스코프 설정</span>
-      todo<span class="token operator">:</span> <span class="token string">"="</span><span class="token punctuation">,</span> <span class="token comment">// 양방향 바인딩</span>
-      remove<span class="token operator">:</span> <span class="token string">"&amp;"</span><span class="token punctuation">,</span> <span class="token comment">// 참고 바인딩. 함수 설정시 사용함</span>
+      <span class="token literal-property property">todo</span><span class="token operator">:</span> <span class="token string">"="</span><span class="token punctuation">,</span> <span class="token comment">// 양방향 바인딩</span>
+      <span class="token literal-property property">remove</span><span class="token operator">:</span> <span class="token string">"&amp;"</span><span class="token punctuation">,</span> <span class="token comment">// 참고 바인딩. 함수 설정시 사용함</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    template<span class="token operator">:</span>
+    <span class="token literal-property property">template</span><span class="token operator">:</span>
       <span class="token string">'&lt;div class="input-group">'</span> <span class="token operator">+</span>
       <span class="token string">'&lt;span class="input-group-addon">'</span> <span class="token operator">+</span>
       <span class="token string">'&lt;input type="checkbox" aria-label="..." ng-model="todo.completed" ng-click="update(todo)">'</span> <span class="token operator">+</span>

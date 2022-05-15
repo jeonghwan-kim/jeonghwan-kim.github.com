@@ -254,8 +254,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>간단한 로그인 폼을 만들어 보자.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">LoginForm1</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>values<span class="token punctuation">,</span> setValues<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    email<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-    password<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token keyword">const</span> <span class="token function-variable function">handleChange</span> <span class="token operator">=</span> <span class="token parameter">e</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -336,8 +336,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 
   <span class="token comment">// 오류 메세지를 담는다</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>errors<span class="token punctuation">,</span> setErrors<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    email<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-    password<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token keyword">const</span> <span class="token function-variable function">handleSubmit</span> <span class="token operator">=</span> <span class="token parameter">e</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -379,8 +379,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
   <span class="token comment">// 필드값을 검증한다.</span>
   <span class="token keyword">const</span> <span class="token function-variable function">validate</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> errors <span class="token operator">=</span> <span class="token punctuation">{</span>
-      email<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-      password<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>values<span class="token punctuation">.</span>email<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -448,8 +448,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 
   <span class="token comment">// 필드 방문 상태를 관리한다</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>touched<span class="token punctuation">,</span> setTouched<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    email<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    password<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token comment">// blur 이벤트가 발생하면 touched 상태를 true로 바꾼다</span>
@@ -495,8 +495,8 @@ touched 상태는 각 필드의 방문여부를 나태내는 변수다.</p>
 
     <span class="token comment">// 모든 필드에 방문했다고 표시한다.</span>
     <span class="token function">setTouched</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      email<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      password<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
     <span class="token comment">// 필드 검사 후 잘못된 값이면 제출 처리를 중단한다.</span>
@@ -553,19 +553,19 @@ touched 상태는 각 필드의 방문여부를 나태내는 변수다.</p>
 <p>전체 코드를 보면서 정리해 보자.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">LoginForm</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>values<span class="token punctuation">,</span> setValues<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    email<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-    password<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token keyword">const</span> <span class="token punctuation">[</span>errors<span class="token punctuation">,</span> setErrors<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    email<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-    password<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token comment">// 필드 방문 상태를 관리한다</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>touched<span class="token punctuation">,</span> setTouched<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    email<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    password<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token keyword">const</span> <span class="token function-variable function">handleChange</span> <span class="token operator">=</span> <span class="token parameter">e</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -588,8 +588,8 @@ touched 상태는 각 필드의 방문여부를 나태내는 변수다.</p>
 
     <span class="token comment">// 모든 필드에 방문했다고 표시한다.</span>
     <span class="token function">setTouched</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      email<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      password<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
     <span class="token comment">// 필드 검사 후 잘못된 값이면 제출 처리를 중단한다.</span>
@@ -607,8 +607,8 @@ touched 상태는 각 필드의 방문여부를 나태내는 변수다.</p>
   <span class="token comment">// 필드값을 검증한다.</span>
   <span class="token keyword">const</span> validate <span class="token operator">=</span> <span class="token function">useCallback</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> errors <span class="token operator">=</span> <span class="token punctuation">{</span>
-      email<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-      password<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>values<span class="token punctuation">.</span>email<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -735,11 +735,11 @@ useForm은 이렇게 쓸 수 있겠다.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">LoginForm4</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token comment">// useForm에 검증자 함수와 제출 콜백을 인자로 전달한다. 반환한 값에서 필요한 필드를 뽑아냈다.</span>
   <span class="token keyword">const</span> <span class="token punctuation">{</span> errors<span class="token punctuation">,</span> touched<span class="token punctuation">,</span> handleChange<span class="token punctuation">,</span> handleBlur<span class="token punctuation">,</span> handleSubmit <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">useForm</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    initialValues<span class="token operator">:</span> <span class="token punctuation">{</span> email<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span> password<span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">initialValues</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token function-variable function">validate</span><span class="token operator">:</span> <span class="token parameter">values</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       <span class="token keyword">const</span> errors <span class="token operator">=</span> <span class="token punctuation">{</span>
-        email<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-        password<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span>
 
       <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>values<span class="token punctuation">.</span>email<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -896,8 +896,8 @@ ErrorMessage 컴포넌트는 touched와 errors 상태를 보고 오류 메세지
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">LginForm</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token function-variable function">validate</span> <span class="token operator">=</span> <span class="token parameter">values</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> errors <span class="token operator">=</span> <span class="token punctuation">{</span>
-      email<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-      password<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>values<span class="token punctuation">.</span>email<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -916,7 +916,7 @@ ErrorMessage 컴포넌트는 touched와 errors 상태를 보고 오류 메세지
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
       </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Form</span></span>
-        <span class="token attr-name">initialValues</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> email<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span> password<span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+        <span class="token attr-name">initialValues</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
         <span class="token attr-name">validate</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>validate<span class="token punctuation">}</span></span>
         <span class="token attr-name">onSubmit</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleSubmit<span class="token punctuation">}</span></span>
       <span class="token punctuation">></span></span><span class="token plain-text">
@@ -958,7 +958,7 @@ ErrorMessage 컴포넌트는 touched와 errors 상태를 보고 오류 메세지
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token plain-text">
       </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Formik</span></span>
-        <span class="token attr-name">initialValues</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> email<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span> password<span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
+        <span class="token attr-name">initialValues</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">email</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token literal-property property">password</span><span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span>
         <span class="token attr-name">validate</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>validate<span class="token punctuation">}</span></span>
         <span class="token attr-name">onSubmit</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleSubmit<span class="token punctuation">}</span></span>
       <span class="token punctuation">></span></span><span class="token plain-text">

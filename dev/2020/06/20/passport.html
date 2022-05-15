@@ -265,19 +265,19 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 
 app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/debug"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    <span class="token string">"req.session"</span><span class="token operator">:</span> req<span class="token punctuation">.</span>session<span class="token punctuation">,</span> <span class="token comment">// 세션 데이터</span>
-    <span class="token string">"req.user"</span><span class="token operator">:</span> req<span class="token punctuation">.</span>user<span class="token punctuation">,</span> <span class="token comment">// 유저 데이터(뒷 부분에서 설명)</span>
-    <span class="token string">"req._passport"</span><span class="token operator">:</span> req<span class="token punctuation">.</span>_passport<span class="token punctuation">,</span> <span class="token comment">// 패스포트 데이터(뒷 부분에서 설명)</span>
+    <span class="token string-property property">"req.session"</span><span class="token operator">:</span> req<span class="token punctuation">.</span>session<span class="token punctuation">,</span> <span class="token comment">// 세션 데이터</span>
+    <span class="token string-property property">"req.user"</span><span class="token operator">:</span> req<span class="token punctuation">.</span>user<span class="token punctuation">,</span> <span class="token comment">// 유저 데이터(뒷 부분에서 설명)</span>
+    <span class="token string-property property">"req._passport"</span><span class="token operator">:</span> req<span class="token punctuation">.</span>_passport<span class="token punctuation">,</span> <span class="token comment">// 패스포트 데이터(뒷 부분에서 설명)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p>브라우져로 localhost:3000/debug 에 접속하면 세션 정보를 확인 할 수 있다.</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token punctuation">{</span>
-  <span class="token string">"req.session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"cookie"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-      <span class="token string">"originalMaxAge"</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
-      <span class="token string">"expires"</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
-      <span class="token string">"httpOnly"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      <span class="token string">"path"</span><span class="token operator">:</span> <span class="token string">"/"</span>
+  <span class="token string-property property">"req.session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"cookie"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">"originalMaxAge"</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"expires"</span><span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"httpOnly"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"path"</span><span class="token operator">:</span> <span class="token string">"/"</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
@@ -402,11 +402,11 @@ app<span class="token punctuation">.</span><span class="token function">post</sp
 예외가 발생하면 이후 오류 미들웨어에서 처리할 것이다.</p>
 <p>로그인 후 세션 상태를 보면 userId 키에 사용자 아이디가 있다.</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token punctuation">{</span>
-  <span class="token string">"req.session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"cookie"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"req.session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"cookie"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
     <span class="token comment">// userId가 추가 되었다</span>
-    <span class="token string">"userId"</span><span class="token operator">:</span> <span class="token number">1</span>
+    <span class="token string-property property">"userId"</span><span class="token operator">:</span> <span class="token number">1</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>userId는 세션에 저장되어 있기 때문에 이후 모든 요청에서 이 데이터가 지속될 것이다.</p>
@@ -455,15 +455,15 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <p>세션 활성화 직 후 세션에 저장된 로그인 정보를 복구하도록 순서를 맞추어서 미들웨어를 세팅했다.</p>
 <p>로그인 후 req 객체를 보면 이처럼 유저 정보가 세팅되어 있다.</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token punctuation">{</span>
-  <span class="token string">"req.session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"cookie"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token string">"userId"</span><span class="token operator">:</span> <span class="token number">1</span>
+  <span class="token string-property property">"req.session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"cookie"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">/* ... */</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"userId"</span><span class="token operator">:</span> <span class="token number">1</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
   <span class="token comment">// req에 user 객체가 할당되었다</span>
-  <span class="token string">"req.user"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-    <span class="token string">"username"</span><span class="token operator">:</span> <span class="token string">"user1"</span>
+  <span class="token string-property property">"req.user"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"username"</span><span class="token operator">:</span> <span class="token string">"user1"</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <h2 id="접근-제한-requser" style="position:relative;"><a href="#%EC%A0%91%EA%B7%BC-%EC%A0%9C%ED%95%9C-requser" aria-label="접근 제한 requser permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>접근 제한: req.user</h2>
@@ -537,8 +537,8 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p>로그아웃 이후 세션 상태를 보면 모두 삭제되었다.</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token punctuation">{</span>
-  <span class="token string">"req.session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"cookie"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+  <span class="token string-property property">"req.session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"cookie"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <h1 id="passport-사용하기" style="position:relative;"><a href="#passport-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0" aria-label="passport 사용하기 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>passport 사용하기</h1>
@@ -556,38 +556,38 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <p>passport는 정보를 req._passport 에 사용할 데이터를 저장하는데 확인하기 위해 /debug 컨트롤러를 좀 수정하자.</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts">app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"/debug"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    <span class="token string">"req.session"</span><span class="token operator">:</span> req<span class="token punctuation">.</span>session<span class="token punctuation">,</span>
-    <span class="token string">"req.user"</span><span class="token operator">:</span> req<span class="token punctuation">.</span>user<span class="token punctuation">,</span>
+    <span class="token string-property property">"req.session"</span><span class="token operator">:</span> req<span class="token punctuation">.</span>session<span class="token punctuation">,</span>
+    <span class="token string-property property">"req.user"</span><span class="token operator">:</span> req<span class="token punctuation">.</span>user<span class="token punctuation">,</span>
 
     <span class="token comment">// passport 정보를 들여다 보자</span>
-    <span class="token string">"req._passport"</span><span class="token operator">:</span> req<span class="token punctuation">.</span>_passport<span class="token punctuation">,</span>
+    <span class="token string-property property">"req._passport"</span><span class="token operator">:</span> req<span class="token punctuation">.</span>_passport<span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p>브라우져로 확인해 보면 req._passport에 추가된 데이터를 볼 수 있다.</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token punctuation">{</span>
-  <span class="token string">"req.session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"cookie"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+  <span class="token string-property property">"req.session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"cookie"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
   <span class="token comment">// passport 데이터가 추가 되었다.</span>
-  <span class="token string">"req._passport"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"instance"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-      <span class="token string">"_key"</span><span class="token operator">:</span> <span class="token string">"passport"</span><span class="token punctuation">,</span>
-      <span class="token string">"_strategies"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">// 전략?</span>
-        <span class="token string">"session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token string-property property">"req._passport"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"instance"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">"_key"</span><span class="token operator">:</span> <span class="token string">"passport"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"_strategies"</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">// 전략?</span>
+        <span class="token string-property property">"session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
           "na
           me<span class="token string">": "</span>session"
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token string">"_serializers"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token string">"_deserializers"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token string">"_infoTransformers"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-      <span class="token string">"_framework"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token string">"_userProperty"</span><span class="token operator">:</span> <span class="token string">"user"</span><span class="token punctuation">,</span>
-      <span class="token string">"_sm"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token string">"_key"</span><span class="token operator">:</span> <span class="token string">"passport"</span>
+      <span class="token string-property property">"_serializers"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"_deserializers"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"_infoTransformers"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"_framework"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"_userProperty"</span><span class="token operator">:</span> <span class="token string">"user"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"_sm"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string-property property">"_key"</span><span class="token operator">:</span> <span class="token string">"passport"</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token string">"strategies"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+      <span class="token string-property property">"strategies"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
@@ -630,18 +630,18 @@ passport<span class="token punctuation">.</span><span class="token function">use
 <p>사용자를 찾으면 user 객체를 넘기고 그렇지 않으면 false를 전달하여 로그인 실패를 처리하도록 한다.</p>
 <p>Strategy 객체를 <code>passport.use()</code>로 등록하면 req._strategies에 등록한 전략 데이터를 기록한다.</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token punctuation">{</span>
-  <span class="token string">"req._passport"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"instance"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-      <span class="token string">"_strategies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-        <span class="token string">"session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-          <span class="token string">"name"</span><span class="token operator">:</span> <span class="token string">"session"</span>
+  <span class="token string-property property">"req._passport"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"instance"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">"_strategies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string-property property">"session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string-property property">"name"</span><span class="token operator">:</span> <span class="token string">"session"</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
         <span class="token comment">// 로컬 전략</span>
-        <span class="token string">"local"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-          <span class="token string">"_usernameField"</span><span class="token operator">:</span> <span class="token string">"username"</span><span class="token punctuation">,</span>
-          <span class="token string">"_passwordField"</span><span class="token operator">:</span> <span class="token string">"password"</span><span class="token punctuation">,</span>
-          <span class="token string">"name"</span><span class="token operator">:</span> <span class="token string">"local"</span>
+        <span class="token string-property property">"local"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token string-property property">"_usernameField"</span><span class="token operator">:</span> <span class="token string">"username"</span><span class="token punctuation">,</span>
+          <span class="token string-property property">"_passwordField"</span><span class="token operator">:</span> <span class="token string">"password"</span><span class="token punctuation">,</span>
+          <span class="token string-property property">"name"</span><span class="token operator">:</span> <span class="token string">"local"</span>
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
@@ -670,19 +670,19 @@ user를 통해서 세션에 저장할 데이터를 추리면 된다.
 <p>여기까지 passport로 대체하는 작업을 마쳤다.</p>
 <p>로그인 한 뒤 요청 객체의 상태를 들여다 보자.</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token punctuation">{</span>
-  <span class="token string">"req.session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"cookies"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
+  <span class="token string-property property">"req.session"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"cookies"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token comment">/* ... */</span><span class="token punctuation">}</span>
 
     <span class="token comment">// serializeUser에 등록한 함수가 동작</span>
-    <span class="token string">"passport"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-      <span class="token string">"user"</span><span class="token operator">:</span> <span class="token number">1</span>
+    <span class="token string-property property">"passport"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">"user"</span><span class="token operator">:</span> <span class="token number">1</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
   <span class="token comment">// deserialzieUser에 등록한 함수가 동작</span>
-  <span class="token string">"req.user"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token string">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
-    <span class="token string">"username"</span><span class="token operator">:</span> <span class="token string">"user1"</span>
+  <span class="token string-property property">"req.user"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token string-property property">"id"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string-property property">"username"</span><span class="token operator">:</span> <span class="token string">"user1"</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <h2 id="나머지-작업" style="position:relative;"><a href="#%EB%82%98%EB%A8%B8%EC%A7%80-%EC%9E%91%EC%97%85" aria-label="나머지 작업 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>나머지 작업</h2>

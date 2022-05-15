@@ -283,8 +283,8 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>설정파일 부터 시작해 보자.</p>
 <p>webpack.config.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  entry<span class="token operator">:</span> <span class="token punctuation">{</span>
-    main<span class="token operator">:</span> <span class="token string">"./src/main.js"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">entry</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">main</span><span class="token operator">:</span> <span class="token string">"./src/main.js"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>우리가 사용할 html에서 사용할 자바스크립트의 시작점은 src/main.js 코드다. <code>entry</code> 키에 시작점 경로를 지정했다.</p>
@@ -292,9 +292,9 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>엔트리에 설정한 자바스크립트 파일을 시작으로 의존되어 있는 모든 모듈을 하나로 묶을 것이다. 번들된 결과물을 처리할 위치는 <code>output</code>에 기록한다.</p>
 <p>webpack.config.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  output<span class="token operator">:</span> <span class="token punctuation">{</span>
-    filename<span class="token operator">:</span> <span class="token string">"bundle.js"</span><span class="token punctuation">,</span>
-    path<span class="token operator">:</span> <span class="token string">"./dist"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">output</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">filename</span><span class="token operator">:</span> <span class="token string">"bundle.js"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"./dist"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>dist 폴더의 bundle.js 파일로 결과를 저장할 것이다.</p>
@@ -329,15 +329,15 @@ Utils<span class="token punctuation">.</span><span class="token function">log</s
 <p>마침 위 코드를 ES6로 작성했으니 로더를 이용해 ES5으로 변환해 보겠다.</p>
 <p>webpack.config.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  module<span class="token operator">:</span> <span class="token punctuation">{</span>
-    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
-        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-        exclude<span class="token operator">:</span> <span class="token string">"node_modules"</span><span class="token punctuation">,</span>
-        use<span class="token operator">:</span> <span class="token punctuation">{</span>
-          loader<span class="token operator">:</span> <span class="token string">"babel-loader"</span><span class="token punctuation">,</span>
-          options<span class="token operator">:</span> <span class="token punctuation">{</span>
-            presets<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"env"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">exclude</span><span class="token operator">:</span> <span class="token string">"node_modules"</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">"babel-loader"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token literal-property property">presets</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"env"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
           <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -394,11 +394,11 @@ exports<span class="token punctuation">.</span><span class="token function">push
 <a href="https://github.com/webpack-contrib/style-loader">style-loader</a>는 자바스크립트로 변경된 스타일시트를 동적으로 돔에 추가하는 로더이다. 보통 CSS를 번들링하기 위해서는 css-loader, style-loader를 함께 사용한다.</p>
 <p>webpack.config.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  module<span class="token operator">:</span> <span class="token punctuation">{</span>
-    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
-        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-        use<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"style-loader"</span><span class="token punctuation">,</span> <span class="token string">"css-loader"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"style-loader"</span><span class="token punctuation">,</span> <span class="token string">"css-loader"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -451,7 +451,7 @@ exports<span class="token punctuation">.</span><span class="token function">push
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"webpack"</span><span class="token punctuation">)</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>UglifyJsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>optimize<span class="token punctuation">.</span>UglifyJsPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>아래 번들링된 결과를 확인해 보라.</p>
 <p><figure class="gatsby-resp-image-figure" style="">
@@ -497,11 +497,11 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <p>우선은 사스로더부터 적용해 보자.</p>
 <p>webpack.config.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  module<span class="token operator">:</span> <span class="token punctuation">{</span>
-    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
-        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.scss$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-        use<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"style-loader"</span><span class="token punctuation">,</span> <span class="token string">"css-loader"</span><span class="token punctuation">,</span> <span class="token string">"sass-loader"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.scss$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"style-loader"</span><span class="token punctuation">,</span> <span class="token string">"css-loader"</span><span class="token punctuation">,</span> <span class="token string">"sass-loader"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -527,18 +527,18 @@ Utils<span class="token punctuation">.</span><span class="token function">log</s
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> ExtractTextPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"extract-text-webpack-plugin"</span><span class="token punctuation">)</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  module<span class="token operator">:</span> <span class="token punctuation">{</span>
-    rules<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
-        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.scss$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-        use<span class="token operator">:</span> ExtractTextPlugin<span class="token punctuation">.</span><span class="token function">extract</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-          fallback<span class="token operator">:</span> <span class="token string">"style-loader"</span><span class="token punctuation">,</span>
-          use<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"css-loader"</span><span class="token punctuation">,</span> <span class="token string">"sass-loader"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.scss$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">use</span><span class="token operator">:</span> ExtractTextPlugin<span class="token punctuation">.</span><span class="token function">extract</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          <span class="token literal-property property">fallback</span><span class="token operator">:</span> <span class="token string">"style-loader"</span><span class="token punctuation">,</span>
+          <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"css-loader"</span><span class="token punctuation">,</span> <span class="token string">"sass-loader"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">ExtractTextPlugin</span><span class="token punctuation">(</span><span class="token string">"style.css"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">ExtractTextPlugin</span><span class="token punctuation">(</span><span class="token string">"style.css"</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>plugins 배열에 <code>new ExtractTextPlugin('style.css')</code> 객체를 추가했다. style.css로 번들링하겠다는 의도다.</p>
 <p>UglifyJsPlugin과 다르게 로더쪽에 설정을 추가했다. 기존 로더를 제거하고 ExtractTextPlugin이 제공하는 extract() 함수를 로더를 지정한다.</p>

@@ -451,10 +451,10 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token function">renderMemoList</span><span class="token punctuation">(</span><span class="token parameter">memos<span class="token operator">:</span> Memo<span class="token punctuation">[</span><span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token function">renderMemoList</span><span class="token punctuation">(</span>memos<span class="token operator">:</span> Memo<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token plain-text">
-      </span><span class="token punctuation">{</span>memos<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">memo<span class="token punctuation">,</span> idx</span><span class="token punctuation">)</span> <span class="token operator">=></span>
+      </span><span class="token punctuation">{</span>memos<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>memo<span class="token punctuation">,</span> idx<span class="token punctuation">)</span> <span class="token operator">=></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>idx<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
           </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Link</span></span> <span class="token attr-name">to</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/memo/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>memo<span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
             </span><span class="token punctuation">{</span><span class="token function">memoTitle</span><span class="token punctuation">(</span>memo<span class="token punctuation">.</span>content<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
@@ -522,7 +522,7 @@ MemoPage 컴포넌트 내부에 라우터를 선언하는 방식으로 해결했
   withRouter<span class="token punctuation">,</span>
 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react-router-dom"</span>
 
-<span class="token keyword">const</span> MemoRouter<span class="token operator">:</span> React<span class="token punctuation">.</span><span class="token constant">FC</span><span class="token operator">&lt;</span>RouteComponentProps<span class="token operator">></span> <span class="token operator">=</span> <span class="token parameter">props</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<span class="token keyword">const</span> MemoRouter<span class="token operator">:</span> React<span class="token punctuation">.</span><span class="token constant">FC</span><span class="token operator">&lt;</span>RouteComponentProps<span class="token operator">></span> <span class="token operator">=</span> props <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">{</span> match <span class="token punctuation">}</span> <span class="token operator">=</span> props
 
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
@@ -632,7 +632,7 @@ MemoPage 컴포넌트 내부에 라우터를 선언하는 방식으로 해결했
 <span class="token punctuation">}</span>
 
 <span class="token keyword">class</span> <span class="token class-name">MemoComponent</span> <span class="token keyword">extends</span> <span class="token class-name">React</span><span class="token punctuation">.</span>Component<span class="token punctuation">{</span><span class="token builtin">any</span><span class="token punctuation">,</span> MemoState<span class="token punctuation">}</span> <span class="token punctuation">{</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props<span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -645,7 +645,7 @@ MemoPage 컴포넌트 내부에 라우터를 선언하는 방식으로 해결했
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">fetchData</span><span class="token punctuation">(</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 
-  <span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token parameter">id<span class="token operator">:</span> string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">fetchData</span><span class="token punctuation">(</span>id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> memoId <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>id <span class="token operator">||</span> <span class="token string">'0'</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> memo <span class="token operator">=</span> <span class="token function">fetchMemo</span><span class="token punctuation">(</span>memoId<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>

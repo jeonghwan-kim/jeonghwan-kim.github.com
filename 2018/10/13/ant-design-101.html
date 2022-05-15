@@ -303,7 +303,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 
 module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">override</span><span class="token punctuation">(</span><span class="token parameter">config<span class="token punctuation">,</span> env</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   config <span class="token operator">=</span> <span class="token function">injectBabelPlugin</span><span class="token punctuation">(</span>
-    <span class="token punctuation">[</span><span class="token string">'import'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> libraryName<span class="token operator">:</span> <span class="token string">'antd'</span><span class="token punctuation">,</span> libraryDirectory<span class="token operator">:</span> <span class="token string">'es'</span><span class="token punctuation">,</span> style<span class="token operator">:</span> <span class="token string">'css'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">[</span><span class="token string">'import'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">libraryName</span><span class="token operator">:</span> <span class="token string">'antd'</span><span class="token punctuation">,</span> <span class="token literal-property property">libraryDirectory</span><span class="token operator">:</span> <span class="token string">'es'</span><span class="token punctuation">,</span> <span class="token literal-property property">style</span><span class="token operator">:</span> <span class="token string">'css'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   config<span class="token punctuation">,</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>웹팩에서 css까지 로딩하기 때문에 어플리케이션 코드에서는 이를 제거하고 앤트 디자인 자바스크립트 코드만 로딩해서 사용하면 된다.</p>
@@ -316,10 +316,10 @@ module<span class="token punctuation">.</span><span class="token function-variab
 
 module<span class="token punctuation">.</span><span class="token function-variable function">exports</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">override</span><span class="token punctuation">(</span><span class="token parameter">config<span class="token punctuation">,</span> env</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   config <span class="token operator">=</span> rewireLess<span class="token punctuation">.</span><span class="token function">withLoaderOptions</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    modifyVars<span class="token operator">:</span> <span class="token punctuation">{</span>
-      <span class="token string">"@primary-color"</span><span class="token operator">:</span> <span class="token string">"#1DA57A"</span><span class="token punctuation">,</span> <span class="token comment">// 녹색</span>
+    <span class="token literal-property property">modifyVars</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token string-property property">"@primary-color"</span><span class="token operator">:</span> <span class="token string">"#1DA57A"</span><span class="token punctuation">,</span> <span class="token comment">// 녹색</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    javascriptEnabled<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">javascriptEnabled</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span>config<span class="token punctuation">,</span> env<span class="token punctuation">)</span>
 
   <span class="token keyword">return</span> config

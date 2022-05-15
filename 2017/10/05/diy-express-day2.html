@@ -257,16 +257,16 @@ module<span class="token punctuation">.</span><span class="token function-variab
 <p>오케이. 메소드에 따라 색상도 추가해 보자.</p>
 <p>logger.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> colors <span class="token operator">=</span> <span class="token punctuation">{</span>
-  green<span class="token operator">:</span> <span class="token string">'\x1b[32m'</span><span class="token punctuation">,</span>
-  cyan<span class="token operator">:</span> <span class="token string">'\x1b[36m'</span><span class="token punctuation">,</span>
-  red<span class="token operator">:</span> <span class="token string">'\x1b[31m'</span><span class="token punctuation">,</span>
-  yellow<span class="token operator">:</span> <span class="token string">'\x1b[33m'</span><span class="token punctuation">,</span>
-  reset<span class="token operator">:</span> <span class="token string">'\x1b[0m'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">green</span><span class="token operator">:</span> <span class="token string">'\x1b[32m'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">cyan</span><span class="token operator">:</span> <span class="token string">'\x1b[36m'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">red</span><span class="token operator">:</span> <span class="token string">'\x1b[31m'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">yellow</span><span class="token operator">:</span> <span class="token string">'\x1b[33m'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">reset</span><span class="token operator">:</span> <span class="token string">'\x1b[0m'</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">const</span> methodColorMap <span class="token operator">=</span> <span class="token punctuation">{</span>
-  get<span class="token operator">:</span> colors<span class="token punctuation">.</span>green<span class="token punctuation">,</span>
-  post<span class="token operator">:</span> colors<span class="token punctuation">.</span>cyan<span class="token punctuation">,</span>
-  put<span class="token operator">:</span> colors<span class="token punctuation">.</span>yellow<span class="token punctuation">,</span>
+  <span class="token literal-property property">get</span><span class="token operator">:</span> colors<span class="token punctuation">.</span>green<span class="token punctuation">,</span>
+  <span class="token literal-property property">post</span><span class="token operator">:</span> colors<span class="token punctuation">.</span>cyan<span class="token punctuation">,</span>
+  <span class="token literal-property property">put</span><span class="token operator">:</span> colors<span class="token punctuation">.</span>yellow<span class="token punctuation">,</span>
   <span class="token keyword">delete</span><span class="token operator">:</span> colors<span class="token punctuation">.</span>red
 <span class="token punctuation">}</span>
 
@@ -350,9 +350,9 @@ app<span class="token punctuation">.</span><span class="token function">use</spa
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token string">"/api/posts"</span><span class="token punctuation">,</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./routes/api/post"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>index<span class="token punctuation">)</span></code></pre></div>
 <p>post.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> posts <span class="token operator">=</span> <span class="token punctuation">[</span>
-  <span class="token punctuation">{</span> title<span class="token operator">:</span> <span class="token string">"post 3"</span><span class="token punctuation">,</span> body<span class="token operator">:</span> <span class="token string">"this is post 3"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">{</span> title<span class="token operator">:</span> <span class="token string">"post 2"</span><span class="token punctuation">,</span> body<span class="token operator">:</span> <span class="token string">"this is post 2"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">{</span> title<span class="token operator">:</span> <span class="token string">"post 1"</span><span class="token punctuation">,</span> body<span class="token operator">:</span> <span class="token string">"this is post 1"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"post 3"</span><span class="token punctuation">,</span> <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token string">"this is post 3"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"post 2"</span><span class="token punctuation">,</span> <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token string">"this is post 2"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"post 1"</span><span class="token punctuation">,</span> <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token string">"this is post 1"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">index</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -567,8 +567,8 @@ request 객체는 <code>ReadableStream</code> 인터페이스를 구현한 녀�
 <p>post.js:</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">create</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> post <span class="token operator">=</span> <span class="token punctuation">{</span>
-    title<span class="token operator">:</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>title<span class="token punctuation">,</span>
-    body<span class="token operator">:</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>body<span class="token punctuation">,</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>title<span class="token punctuation">,</span>
+    <span class="token literal-property property">body</span><span class="token operator">:</span> req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>body<span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 
   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>post<span class="token punctuation">.</span>title <span class="token operator">||</span> <span class="token operator">!</span>post<span class="token punctuation">.</span>body<span class="token punctuation">)</span> <span class="token punctuation">{</span>

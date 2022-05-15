@@ -251,8 +251,8 @@ fmt<span class="token punctuation">.</span><span class="token function">Printf</
 <div class="gatsby-highlight" data-language="go"><pre class="language-go"><code class="language-go">name <span class="token operator">:=</span> <span class="token string">"World"</span>
 
 fmt<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"Hello"</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span> <span class="token comment">// "HelloWorld"</span>
-fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hello"</span><span class="token punctuation">,</span> world<span class="token string">") // "</span>Hello world\n<span class="token string">"
-fmt.Printf("</span>Hello <span class="token operator">%</span>s<span class="token string">", name) // "</span>Hello world"</code></pre></div>
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hello"</span><span class="token punctuation">,</span> world<span class="token string">") // "</span>Hello world\n"
+fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"Hello %s"</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span> <span class="token comment">// "Hello world"</span></code></pre></div>
 <p>Print() 함수는 단순히 문자열을 표준 출력으로 내보내서 터미널에 "HelloWorld"란 문자를 기록한다. 인자가 2개 이상일 경우 순서대로 붙여서 출력한다.</p>
 <p>반면 Println()은 여러개 인자를 출력할 때 사이사이 빈 문자를 넣는다. 마지막엔 개행문자까지 추가하기 때문에 가독성이 필요할 경우 Print()보다 Println()을 선호하는 편이다.</p>
 <p>Printf()는 앞에서 다루었듯이 문자열과 변수를 함께 출력할 때 사용한다. 동사를 포함한 템플릿 문자열과 변수를 인자로 받는다.</p>

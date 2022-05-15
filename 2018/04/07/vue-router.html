@@ -290,13 +290,13 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 Vue.js 공식 문서의 <a href="https://kr.vuejs.org/v2/guide/routing.html#%EB%8B%A8%EC%88%9C%ED%95%9C-%EB%9D%BC%EC%9A%B0%ED%8C%85-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">Scaling Up 섹션</a>에
 구현된 코드가 있다.</p>
 <p>라우팅 별로 세 개의 컴포넌트를 만든다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> Home <span class="token operator">=</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">"&lt;p>home page&lt;/p>"</span> <span class="token punctuation">}</span>
-<span class="token keyword">const</span> About <span class="token operator">=</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">"&lt;p>about page&lt;/p>"</span> <span class="token punctuation">}</span>
-<span class="token keyword">const</span> NotFound <span class="token operator">=</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">"&lt;p>Page not found&lt;/p>"</span> <span class="token punctuation">}</span></code></pre></div>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> Home <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">"&lt;p>home page&lt;/p>"</span> <span class="token punctuation">}</span>
+<span class="token keyword">const</span> About <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">"&lt;p>about page&lt;/p>"</span> <span class="token punctuation">}</span>
+<span class="token keyword">const</span> NotFound <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">"&lt;p>Page not found&lt;/p>"</span> <span class="token punctuation">}</span></code></pre></div>
 <p>경로에 따라 위 세개 컴포넌트를 바꿔가면서 렌더링 해주려고 한다. 그럼 경로와 컴포넌트 딕셔너리가 필요하겠다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> routes <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token string">"/"</span><span class="token operator">:</span> Home<span class="token punctuation">,</span>
-  <span class="token string">"/about"</span><span class="token operator">:</span> About<span class="token punctuation">,</span>
+  <span class="token string-property property">"/"</span><span class="token operator">:</span> Home<span class="token punctuation">,</span>
+  <span class="token string-property property">"/about"</span><span class="token operator">:</span> About<span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>루트('/') 경로와 어바웃('/about') 경로에 대한 각각의 컴포넌트 딕셔너리를 만들었다.</p>
 <p>뷰 인스턴스 설정 객체에는 el, data 뿐만아니라 <code>render</code> 속성도 있다. 사실 함수다. createElement같은 돔 생성 함수를 인자로
@@ -314,7 +314,7 @@ Vue.js 공식 문서의 <a href="https://kr.vuejs.org/v2/guide/routing.html#%EB%
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   <span class="token comment">/* 생략 */</span>
 
-  computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">computed</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">ViewComponent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> routes<span class="token punctuation">[</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>pathname<span class="token punctuation">]</span> <span class="token operator">||</span> NotFound
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -379,7 +379,7 @@ vue-cli의 <a href="https://github.com/vuejs-templates/webpack-simple">webpack-s
 <span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">"./router"</span>
 
 <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  el<span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
   <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token parameter">h</span> <span class="token operator">=></span> <span class="token function">h</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">,</span>
 
   <span class="token comment">// 라우터 객체를 넘겨준다</span>
@@ -398,17 +398,17 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// router/index.js</span>
 
 <span class="token comment">/* 생략 */</span>
-<span class="token keyword">const</span> Home <span class="token operator">=</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">"&lt;div>Home&lt;/div>"</span> <span class="token punctuation">}</span>
-<span class="token keyword">const</span> NotFound <span class="token operator">=</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">"&lt;div>Not Found&lt;/div>"</span> <span class="token punctuation">}</span></code></pre></div>
+<span class="token keyword">const</span> Home <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">"&lt;div>Home&lt;/div>"</span> <span class="token punctuation">}</span>
+<span class="token keyword">const</span> NotFound <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">"&lt;div>Not Found&lt;/div>"</span> <span class="token punctuation">}</span></code></pre></div>
 <p>마지막으로 <code>VueRouter</code> 클래스 함수로 라우터 객체를 생성한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// router/index.js</span>
 
 <span class="token comment">/* 생략 */</span>
 <span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  mode<span class="token operator">:</span> <span class="token string">"history"</span><span class="token punctuation">,</span>
-  routes<span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span> component<span class="token operator">:</span> Home <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span> component<span class="token operator">:</span> NotFound <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">"history"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">routes</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/"</span><span class="token punctuation">,</span> <span class="token literal-property property">component</span><span class="token operator">:</span> Home <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"*"</span><span class="token punctuation">,</span> <span class="token literal-property property">component</span><span class="token operator">:</span> NotFound <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
@@ -567,14 +567,14 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
 
   <span class="token comment">// 라우트 정의 부분</span>
-  routes<span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span> component<span class="token operator">:</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">'&lt;div>Home&lt;/div>'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">'/login'</span><span class="token punctuation">,</span> component<span class="token operator">:</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">'&lt;div>Login&lt;/div>'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">'/logout'</span><span class="token punctuation">,</span>component<span class="token operator">:</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">'&lt;div>Logout&lt;/div>'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">'/posts'</span><span class="token punctuation">,</span>component<span class="token operator">:</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">'&lt;div>Posts&lt;/div>'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">'/posts/new'</span><span class="token punctuation">,</span>component<span class="token operator">:</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">'&lt;div>New Post&lt;/div>'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">'/posts/detail'</span><span class="token punctuation">,</span>component<span class="token operator">:</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">'&lt;div>Post Detail&lt;/div>'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">'*'</span><span class="token punctuation">,</span> component<span class="token operator">:</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">'&lt;div>Not Found&lt;/div>'</span><span class="token punctuation">}</span> <span class="token punctuation">}</span>
+  <span class="token literal-property property">routes</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div>Home&lt;/div>'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">'/login'</span><span class="token punctuation">,</span> <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div>Login&lt;/div>'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">'/logout'</span><span class="token punctuation">,</span><span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div>Logout&lt;/div>'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">'/posts'</span><span class="token punctuation">,</span><span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div>Posts&lt;/div>'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">'/posts/new'</span><span class="token punctuation">,</span><span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div>New Post&lt;/div>'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">'/posts/detail'</span><span class="token punctuation">,</span><span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div>Post Detail&lt;/div>'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">'*'</span><span class="token punctuation">,</span> <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div>Not Found&lt;/div>'</span><span class="token punctuation">}</span> <span class="token punctuation">}</span>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p>routes 속성에 정의하는 컬렉션에는 <code>children</code> 속성이 있다. 이는 특정 라우팅의 하위 경로가 변경됨에 따라 하위 컴포넌트로 변경할수 있는 기능이다.</p>
@@ -583,19 +583,19 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// router/index.js</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">VueRouter</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  routes<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">routes</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token comment">// 생략</span>
 
     <span class="token punctuation">{</span>
-      path<span class="token operator">:</span> <span class="token string">"/posts"</span><span class="token punctuation">,</span>
-      component<span class="token operator">:</span> <span class="token punctuation">{</span>
-        template<span class="token operator">:</span> <span class="token string">"&lt;div>Posts &lt;br/>&lt;router-view>&lt;/router-view>&lt;/div>"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/posts"</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">"&lt;div>Posts &lt;br/>&lt;router-view>&lt;/router-view>&lt;/div>"</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
       <span class="token comment">// 중첩된 라우트는 children 속성으로 하위 라우트를 정의할 수 있다.</span>
-      children<span class="token operator">:</span> <span class="token punctuation">[</span>
-        <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">"new"</span><span class="token punctuation">,</span> component<span class="token operator">:</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">"&lt;div>New Post&lt;/div>"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">"detail"</span><span class="token punctuation">,</span> component<span class="token operator">:</span> <span class="token punctuation">{</span> template<span class="token operator">:</span> <span class="token string">"&lt;div>Post Detail&lt;/div>"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"new"</span><span class="token punctuation">,</span> <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">"&lt;div>New Post&lt;/div>"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"detail"</span><span class="token punctuation">,</span> <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">"&lt;div>Post Detail&lt;/div>"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
@@ -604,9 +604,9 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p>부모 라우트에서는 자녀 라우트들을 렌더링하기 위한 뷰가 필요한데 /posts 라우트의 컴포넌트에 정의한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
-  path<span class="token operator">:</span> <span class="token string">'/posts'</span><span class="token punctuation">,</span>
-  component<span class="token operator">:</span> <span class="token punctuation">{</span>
-    template<span class="token operator">:</span> <span class="token string">'&lt;div>Posts &lt;br/>&lt;router-view>&lt;/router-view>&lt;/div>'</span>
+  <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">'/posts'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div>Posts &lt;br/>&lt;router-view>&lt;/router-view>&lt;/div>'</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>template 부분에 <code>&#x3C;router-view></code> 태그를 삽입했다.
@@ -750,7 +750,7 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 </ul>
 <p>이런식으로 detail 대신 <strong>아이디 값</strong>이 온다면 어떨까?</p>
 <p>뷰 라우터는 이러한 동적 라우트 매칭을 위한 설정도 제공한다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">':id'</span><span class="token punctuation">,</span> component<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre></div>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span> <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">':id'</span><span class="token punctuation">,</span> <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre></div>
 <p><code>{ path: 'detail' }</code> 부분을 <code>{ path: ':id }</code> 로 변경했다. 동적 라우트는 세미콜론으로 시작한다.
 이제 /posts/1, posts/2 같은 URI는 모두 같은 경로로 매핑 된다.</p>
 <p>그럼 /posts/new는 어떻게 동작할까? 그렇다. 이것도 같은 경로로 인식될 것이다. 따라서 라우트 정의의
@@ -761,11 +761,11 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 <p>참고로 쿼리문자열은 <code>this.$route.query</code>로 확인할 수 있다.</p>
 <p>그럼 id 값만 출력하는 포스트 상세 컴포넌트로 수정해 보겠다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
-  path<span class="token operator">:</span> <span class="token string">':id'</span><span class="token punctuation">,</span>
-  component<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">':id'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">component</span><span class="token operator">:</span> <span class="token punctuation">{</span>
 
     <span class="token comment">// this.$route.params.id로 id 값에 접근할 수 있다</span>
-    template<span class="token operator">:</span> <span class="token string">'&lt;div>PostView&lt;br />id:{%raw%}{{this.$route.params.id}}{%endraw%}&lt;/div>'</span>
+    <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div>PostView&lt;br />id:{%raw%}{{this.$route.params.id}}{%endraw%}&lt;/div>'</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre></div>
 <p><figure class="gatsby-resp-image-figure" style="">
@@ -872,7 +872,7 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
   <span class="token comment">// 컴포넌트 생성시 데이터를 패치한다</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
-methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token function">fetchData</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>post <span class="token operator">=</span> <span class="token keyword">null</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">true</span>
@@ -894,11 +894,11 @@ fetchData() 함수를 호출하는 로직을 추가하자.</p>
   <span class="token comment">// 컴포넌트 생성시 데이터를 패치한다</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">fetchData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
-watch<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">watch</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token comment">// 라우터 객체를 감시하고 있다가 fetchData() 함수를 호출한다</span>
-  <span class="token string">'$route'</span><span class="token operator">:</span> <span class="token string">'fetchData'</span>
+  <span class="token string-property property">'$route'</span><span class="token operator">:</span> <span class="token string">'fetchData'</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span>
-methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token function">fetchData</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>post <span class="token operator">=</span> <span class="token keyword">null</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">true</span>
@@ -927,8 +927,8 @@ methods<span class="token operator">:</span> <span class="token punctuation">{</
 <span class="token keyword">const</span> <span class="token function-variable function">requireAuth</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span>Auth<span class="token punctuation">.</span><span class="token function">loggedIn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    path<span class="token operator">:</span> <span class="token string">"/login"</span><span class="token punctuation">,</span>
-    query<span class="token operator">:</span> <span class="token punctuation">{</span> redirect<span class="token operator">:</span> to<span class="token punctuation">.</span>fullPath <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">"/login"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">query</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">redirect</span><span class="token operator">:</span> to<span class="token punctuation">.</span>fullPath <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>beforeEnter() 훅에 사용할 함수다.<br />
@@ -938,13 +938,13 @@ methods<span class="token operator">:</span> <span class="token punctuation">{</
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// router/index.js</span>
 
 <span class="token punctuation">{</span>
-  path<span class="token operator">:</span> <span class="token string">'/posts'</span><span class="token punctuation">,</span> component<span class="token operator">:</span> Posts<span class="token punctuation">,</span>
-  children<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-    path<span class="token operator">:</span> <span class="token string">'new'</span><span class="token punctuation">,</span>
-    component<span class="token operator">:</span> NewPost<span class="token punctuation">,</span>
+  <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">'/posts'</span><span class="token punctuation">,</span> <span class="token literal-property property">component</span><span class="token operator">:</span> Posts<span class="token punctuation">,</span>
+  <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">'new'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">component</span><span class="token operator">:</span> NewPost<span class="token punctuation">,</span>
 
     <span class="token comment">// 인증 여부를 체크하는 requreAuth를 beforeEnter 속성에 추가했다</span>
-    beforeEnter<span class="token operator">:</span> requireAuth
+    <span class="token literal-property property">beforeEnter</span><span class="token operator">:</span> requireAuth
   <span class="token punctuation">}</span><span class="token punctuation">,</span></code></pre></div>
 <h3 id="로그인" style="position:relative;"><a href="#%EB%A1%9C%EA%B7%B8%EC%9D%B8" aria-label="로그인 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>로그인</h3>
 <p>로그인 페이지에서는 어떻게 다음 플로우를 짤수 있을까? /login 경로에 연결된 로그인 컴포넌트를 만들어 보자.</p>
@@ -964,7 +964,7 @@ methods<span class="token operator">:</span> <span class="token punctuation">{</
 <p>계속해서 login 함수 부분을 살펴보자.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// components/Login.vue</span>
 
-methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token function">login</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     Auth<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>email<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>password<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
 
@@ -1059,7 +1059,7 @@ redirect 문자열을 인자로 하여 <code>this.$router.replace()</code> 함�
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// router/index.js</span>
 
 <span class="token punctuation">{</span>
-  path<span class="token operator">:</span> <span class="token string">'/logout'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token string">'/logout'</span><span class="token punctuation">,</span>
   <span class="token function">beforeEnter</span><span class="token punctuation">(</span><span class="token parameter">to<span class="token punctuation">,</span> from<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     Auth<span class="token punctuation">.</span><span class="token function">logout</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>

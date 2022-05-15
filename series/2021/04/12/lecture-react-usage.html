@@ -358,7 +358,7 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <p>클래스에서 state를 사용하려면 생성자 함수에서 멤버 변수로 등록해 초기값을 설정한다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 1</span>
-  <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span> searchKeyword<span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span> <span class="token comment">// 2</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">searchKeyword</span><span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span> <span class="token comment">// 2</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>App 클래스는 React.Component 클래스를 상속했기 때문에 생성 시점에 부모의 생성자 함수를 호출해야 한다(1). 그리고 나서 생성된 this에 state란 객체를 등록해 상태를 만들 수 있다(2). searchKeyword 라는 이름을 키로 갖는 객체를 초기 값으로 할당했는데 입력값이 빈 문자열이라는 의미다.</p>
 <p>다음은 이 값을 인풋 엘리먼트에 연결할 차례다. 렌더 함수에서 반환하는 리액트 엘리먼트 중에 input에 연결한다.</p>
@@ -478,7 +478,7 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">&lt;</span>form onReset<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">handleReset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token operator">></span></code></pre></div>
 <p>handleReset() 메서드는 아래처럼 만든다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">handleReset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> searchKeyword<span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 1</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">searchKeyword</span><span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 1</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"TODO: handleResset"</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>input 엘리먼트에 입력한 검색어를 삭제하려면 어떻게 해야할까? input은 제어 컴포넌트 방식을 사용하고 있어서 컴포넌트의 state로 관리하고 있다. State를 변경할 때마다 input 값에 반영되는 것이다. 따라서 검색어를 지우려면 state 값을 초기화 하면 된다(1). State를 바꿀 때는 직접 값을 할당하지 말고 setState() 사용을 잊지 말자.</p>
@@ -506,8 +506,8 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
-    searchKeyword<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-    searchResult<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 1</span>
+    <span class="token literal-property property">searchKeyword</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">searchResult</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 1</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>컴포넌트 생성시 state 객체를 만드는데 searchResult를 추가해 검색 결과가 없다는 의미의 빈 배열값으로 설정했다(1).</p>
@@ -596,9 +596,9 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
-    searchKeyword<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-    searchResult<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    submitted<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 1</span>
+    <span class="token literal-property property">searchKeyword</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">searchResult</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">submitted</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 1</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
@@ -606,7 +606,7 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
   <span class="token keyword">const</span> searchResult <span class="token operator">=</span> store<span class="token punctuation">.</span><span class="token function">search</span><span class="token punctuation">(</span>searchKeyword<span class="token punctuation">)</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     searchResult<span class="token punctuation">,</span>
-    submitted<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 2</span>
+    <span class="token literal-property property">submitted</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// 2</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>초기값을 false로 설정하고(1) search() 메서드를 호출할때 true로 설정했다(2). 이 상태를 가지고 조건부 렌더링을 하자.</p>
@@ -656,9 +656,9 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <p>검색 폼에 타이핑을 시작하면 나타나는 x 버튼을 클릭하면 입력한 검색어를 지우는것 뿐만 아니라 아래 있는 검색 결과도 삭제해야 한다. 검색 결과는 searchResult 상태에 의존하기 때문에 적절한 시점에 빈 배열로 초기화하면 간단하다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">handleReset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    searchKeyword<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
-    searchResult<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    submitted<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">searchKeyword</span><span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">searchResult</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">submitted</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>상태값을 변경한 것이 전부다. 하나씩 생각해보자</p>
@@ -734,10 +734,10 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
-    searchKeyword<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-    searchResult<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    submitted<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    selectedTab<span class="token operator">:</span> TabType<span class="token punctuation">.</span><span class="token constant">KEYWORD</span><span class="token punctuation">,</span> <span class="token comment">// 1</span>
+    <span class="token literal-property property">searchKeyword</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">searchResult</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">submitted</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">selectedTab</span><span class="token operator">:</span> TabType<span class="token punctuation">.</span><span class="token constant">KEYWORD</span><span class="token punctuation">,</span> <span class="token comment">// 1</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>selectedTab이란 필드를 state에 추가하고 추천 검색어를 기본값으로 설정했다(1). 이 값을 탭 UI에 연결할 차례다. render() 메서드에 있는 엘리먼트 변수 tabs를 보자.</p>
@@ -766,7 +766,7 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">&lt;</span>li
   key<span class="token operator">=</span><span class="token punctuation">{</span>tabType<span class="token punctuation">}</span>
   className<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>selectedTab <span class="token operator">===</span> tabType <span class="token operator">?</span> <span class="token string">"active"</span> <span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">}</span>
-  onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> selectedTab<span class="token operator">:</span> tabType <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token comment">// 1</span>
+  onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">selectedTab</span><span class="token operator">:</span> tabType <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token comment">// 1</span>
 <span class="token operator">></span>
   <span class="token punctuation">{</span>TabLabel<span class="token punctuation">[</span>tabType<span class="token punctuation">]</span><span class="token punctuation">}</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>li<span class="token operator">></span></code></pre></div>
@@ -797,11 +797,11 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
-    searchKeyword<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-    searchResult<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    submitted<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    selectedTab<span class="token operator">:</span> TabType<span class="token punctuation">.</span><span class="token constant">KEYWORD</span><span class="token punctuation">,</span>
-    keywordList<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 1</span>
+    <span class="token literal-property property">searchKeyword</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">searchResult</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">submitted</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">selectedTab</span><span class="token operator">:</span> TabType<span class="token punctuation">.</span><span class="token constant">KEYWORD</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">keywordList</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 1</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>추천 검색어 목록을 상태로 관리하기 위해 keywordList 필드를 추가해 빈배열을 기본값으로 설정했다(1).</p>
@@ -870,7 +870,7 @@ render() 함수에서 화면을 그릴 차례다. keywrodList 앨리먼트 변�
   <span class="token keyword">const</span> searchResult <span class="token operator">=</span> store<span class="token punctuation">.</span><span class="token function">search</span><span class="token punctuation">(</span>searchKeyword<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     searchResult<span class="token punctuation">,</span>
-    submitted<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">submitted</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     searchKeyword<span class="token punctuation">,</span> <span class="token comment">// 1</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
@@ -887,12 +887,12 @@ render() 함수에서 화면을 그릴 차례다. keywrodList 앨리먼트 변�
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
-    searchKeyword<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-    searchResult<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    submitted<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    selectedTab<span class="token operator">:</span> TabType<span class="token punctuation">.</span><span class="token constant">KEYWORD</span><span class="token punctuation">,</span>
-    keywordList<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    historyList<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 1</span>
+    <span class="token literal-property property">searchKeyword</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">searchResult</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">submitted</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">selectedTab</span><span class="token operator">:</span> TabType<span class="token punctuation">.</span><span class="token constant">KEYWORD</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">keywordList</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">historyList</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment">// 1</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>historyList 필드를 추가해 빈 배열로 기본값을 설정했다(1). 추천 검색어와 마찬가지로 어디선가 최근 검색어 데이터를 가져와 여기에 저장해 둘 단계가 필요하다. render() 함수에서는 이 상태를 보고 리액트 엘리먼트를 생성할 것이기 때문이다.</p>
@@ -1004,7 +1004,7 @@ render() 함수에서 화면을 그릴 차례다. keywrodList 앨리먼트 변�
   <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     searchKeyword<span class="token punctuation">,</span>
     searchResult<span class="token punctuation">,</span>
-    submitted<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">submitted</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     historyList <span class="token comment">// 2</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>

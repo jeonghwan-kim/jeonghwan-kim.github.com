@@ -601,7 +601,7 @@ useState를 여러번 호출하더라도 항상 value에 값을 할당하기 때
 
     <span class="token comment">// 지정한 상태를 조회한다</span>
     <span class="token keyword">const</span> value <span class="token operator">=</span> values<span class="token punctuation">[</span>cursor<span class="token punctuation">]</span>
-    <span class="token keyword">const</span> <span class="token function-variable function">setValue</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">value<span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">setValue</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">value</span><span class="token operator">:</span> any</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       <span class="token comment">// 지정한 상태의 값을 변경한다</span>
       values<span class="token punctuation">[</span>cursor<span class="token punctuation">]</span> <span class="token operator">=</span> value
       <span class="token function">forceUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span>

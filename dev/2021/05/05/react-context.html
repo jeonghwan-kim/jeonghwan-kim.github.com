@@ -260,7 +260,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p>가령 루트 컴포넌트의 상태를 자식 컴포넌트에게 전달할 때 컴포넌트의 단계가 깊어질 수록 매번 props를 전달하는 모양이 된다.
 카운터 어플리케이션 예제 코드를 보면 이렇게 작성할 수 있겠다.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
-  state <span class="token operator">=</span> <span class="token punctuation">{</span> count<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span>
+  state <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span>
 
   <span class="token function-variable function">setCount</span> <span class="token operator">=</span> <span class="token parameter">count</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> count <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
@@ -337,14 +337,14 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>사용한다.</p>
 <p>먼제 Provider를 이용해 카운터 데이터를 제공할 CounterProvider 컴포넌트를 만든다.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">CounterProvider</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
-  state <span class="token operator">=</span> <span class="token punctuation">{</span> count<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span>
+  state <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span>
 
   <span class="token function-variable function">setCount</span> <span class="token operator">=</span> <span class="token parameter">count</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> count <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> value <span class="token operator">=</span> <span class="token punctuation">{</span>
       <span class="token operator">...</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">,</span>
-      setCount<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>setCount<span class="token punctuation">,</span>
+      <span class="token literal-property property">setCount</span><span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>setCount<span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
@@ -405,7 +405,7 @@ Consumer의 자식은 함수여야만 한다.
     _value <span class="token operator">=</span> value<span class="token punctuation">;</span>
 
     <span class="token keyword">return</span> React<span class="token punctuation">.</span>Children<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>children<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">child<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
-      React<span class="token punctuation">.</span><span class="token function">cloneElement</span><span class="token punctuation">(</span>child<span class="token punctuation">,</span> <span class="token punctuation">{</span> key<span class="token operator">:</span> index <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      React<span class="token punctuation">.</span><span class="token function">cloneElement</span><span class="token punctuation">(</span>child<span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">key</span><span class="token operator">:</span> index <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 
@@ -475,7 +475,7 @@ Consumer는 render props로 자식 컴포넌트를 받기 때문에 함수 호�
 <span class="token keyword">const</span> <span class="token function-variable function">ConfigProvider</span> <span class="token operator">=</span> <span class="token parameter">props</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
 	<span class="token comment">// 3. locale을 제공하는 컨텍스트 값을 준비</span>
 	<span class="token keyword">const</span> config <span class="token operator">=</span> <span class="token punctuation">{</span>
-    locale<span class="token operator">:</span> locale <span class="token operator">||</span> legacyLocale<span class="token punctuation">,</span>
+    <span class="token literal-property property">locale</span><span class="token operator">:</span> locale <span class="token operator">||</span> legacyLocale<span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
 	<span class="token keyword">const</span> memoedConfig <span class="token operator">=</span> <span class="token function">useMemo</span><span class="token punctuation">(</span>

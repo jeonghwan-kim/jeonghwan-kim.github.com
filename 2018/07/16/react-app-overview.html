@@ -806,14 +806,14 @@ ReactDom<span class="token punctuation">.</span><span class="token function">ren
 <span class="token comment">// ...</span>
 
 <span class="token comment">// 액션 생성자</span>
-<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">fetchUser</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token constant">FETCH_USER</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">fetchUser</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token constant">FETCH_USER</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token comment">// ...</span>
 
 <span class="token comment">// 초기 상태</span>
 <span class="token keyword">const</span> initialSatate <span class="token operator">=</span> <span class="token punctuation">{</span>
-  users<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  isEditing<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-  editingUser<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">users</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">isEditing</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">editingUser</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">// 리듀서</span>
@@ -891,7 +891,7 @@ onEdit과 onDelete 함수 구현을 보면 자체 로직은 없고 이 컴포넌
 
 <span class="token keyword">const</span> <span class="token function-variable function">mapStateToProps</span> <span class="token operator">=</span> <span class="token parameter">state</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
-    users<span class="token operator">:</span> state<span class="token punctuation">.</span>user<span class="token punctuation">.</span>users<span class="token punctuation">,</span>
+    <span class="token literal-property property">users</span><span class="token operator">:</span> state<span class="token punctuation">.</span>user<span class="token punctuation">.</span>users<span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
@@ -1056,9 +1056,9 @@ sagaMw<span class="token punctuation">.</span><span class="token function">run</
 <span class="token punctuation">}</span>
 
 <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">fetchUserAsync</span><span class="token punctuation">(</span><span class="token parameter">action</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token constant">REQEUST_USER</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token constant">REQEUST_USER</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>fetchUserApi<span class="token punctuation">)</span>
-  <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token operator">:</span> <span class="token constant">RECEIVE_USER</span><span class="token punctuation">,</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token constant">RECEIVE_USER</span><span class="token punctuation">,</span> users <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">rootSaga</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>

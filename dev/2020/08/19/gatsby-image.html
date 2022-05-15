@@ -296,12 +296,12 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// gatsby-config.js</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
-      resolve<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-source-filesystem</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-      options<span class="token operator">:</span> <span class="token punctuation">{</span>
-        name<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">images</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
-        path<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>__dirname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/src/images</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+      <span class="token literal-property property">resolve</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-source-filesystem</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+      <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">images</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+        <span class="token literal-property property">path</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>__dirname<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/src/images</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -320,7 +320,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// gatsby-config.js</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  plugins<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-transformer-sharp</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-plugin-sharp</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-transformer-sharp</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">gatsby-plugin-sharp</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">]</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>두 플러그인을 추가하고 나면 imageSharp 노드가 생성된다.
 이것은 파일 노드의 자식노드로도 나타나는데 childImageSharp란 이름으로 조회한다.</p>
@@ -429,7 +429,7 @@ gatsby-image의 <code>&#x3C;Img></code>가 반응형 이미지를 처리하는 �
         data<span class="token punctuation">.</span>mobileImage<span class="token punctuation">.</span>childImageSharp<span class="token punctuation">.</span>fluid<span class="token punctuation">,</span>
         <span class="token punctuation">{</span>
           <span class="token operator">...</span>data<span class="token punctuation">.</span>desktopImage<span class="token punctuation">.</span>childImageSharp<span class="token punctuation">.</span>fluid<span class="token punctuation">,</span>
-          media<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">(min-width: 800px)</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+          <span class="token literal-property property">media</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">(min-width: 800px)</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">]</span><span class="token punctuation">}</span></span>
     <span class="token punctuation">/></span></span>

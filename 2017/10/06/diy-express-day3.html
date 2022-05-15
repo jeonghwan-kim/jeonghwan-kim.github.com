@@ -394,7 +394,7 @@ app<span class="token punctuation">.</span><span class="token function">delete</
 설정할 거다.</p>
 <div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>{%raw%}{{msg}}{%endraw%}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></div>
 <p>이 코드에 넣은 데이터 객체는 뷰 파일을 파싱하는 <code>render()</code> 함수의 인자로 전달한다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span> msg<span class="token operator">:</span> <span class="token string">"hello world"</span> <span class="token punctuation">}</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">msg</span><span class="token operator">:</span> <span class="token string">"hello world"</span> <span class="token punctuation">}</span>
 <span class="token function">render</span><span class="token punctuation">(</span>file<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token parameter">html</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   res<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">"Content-Type"</span><span class="token punctuation">,</span> <span class="token string">"text/html"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>html<span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
@@ -581,16 +581,16 @@ include 'footer.view'</code></pre></div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">listPost</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token function">debug</span><span class="token punctuation">(</span><span class="token string">"listPost()"</span><span class="token punctuation">)</span>
   <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
-    title<span class="token operator">:</span> <span class="token string">"Blog"</span><span class="token punctuation">,</span>
-    scriptPath<span class="token operator">:</span> <span class="token string">"js/index.js"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"Blog"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">scriptPath</span><span class="token operator">:</span> <span class="token string">"js/index.js"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
   res<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">"index"</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">newPost</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
-    title<span class="token operator">:</span> <span class="token string">"New Post"</span><span class="token punctuation">,</span>
-    scriptPath<span class="token operator">:</span> <span class="token string">"js/new.js"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">"New Post"</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">scriptPath</span><span class="token operator">:</span> <span class="token string">"js/new.js"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
   res<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token string">"new"</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>

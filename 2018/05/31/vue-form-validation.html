@@ -233,16 +233,16 @@ errorBag.name 키가 있을 경우, 즉 입력 에러가 있을 경우 첫번째
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
   <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">{</span>
-      name<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-      errorBag<span class="token operator">:</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+      <span class="token literal-property property">errorBag</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  watch<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">watch</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">name</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">this</span><span class="token punctuation">.</span>errorBag<span class="token punctuation">.</span>name <span class="token operator">=</span> validator<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> val<span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">onSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">this</span><span class="token punctuation">.</span>errorBag<span class="token punctuation">.</span>name <span class="token operator">=</span> validator<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -292,7 +292,7 @@ errorBag.name 키가 있을 경우, 즉 입력 에러가 있을 경우 첫번째
 <p><code>v-validate</code> 디렉티브에 검증자 정보를 문자열 <code>"required|minLen3"</code> 형태로 전달하면 선언적 마크업의 모습과 어울린다.</p>
 <p>곧장 디렉티브 코드를 작성해 보자.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-  validate<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">validate</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">bind</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> binding<span class="token punctuation">,</span> vnode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       validator<span class="token punctuation">.</span><span class="token function">setup</span><span class="token punctuation">(</span>el<span class="token punctuation">.</span>name<span class="token punctuation">,</span> binding<span class="token punctuation">.</span>expression<span class="token punctuation">,</span> vnode<span class="token punctuation">.</span>context<span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -383,9 +383,9 @@ validates 맵에서 검증자를 가져와 해당하는 검증함수를 validate
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
   directives<span class="token punctuation">,</span>
   <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span> errorBag<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token literal-property property">errorBag</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token function">onSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">const</span> errors <span class="token operator">=</span> validator<span class="token punctuation">.</span><span class="token function">validate</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
 
@@ -420,7 +420,7 @@ errorBag의 name 은 초기화 되어 있지 않기 때문에 단순히 <code>th
 
     Vue<span class="token punctuation">.</span><span class="token function">mixin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
       <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token punctuation">{</span> errorBag<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">errorBag</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token punctuation">}</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -428,7 +428,7 @@ errorBag의 name 은 초기화 되어 있지 않기 때문에 단순히 <code>th
 <p>컴포넌트에서 디렉티브를 등록 부분을 플러그인으로 옮겼다. 나중에 플러그인만 설정하면 디렉티브까지 자동으로 로딩하게될 것이다.</p>
 <p>믹스인(mixin)은 컴포넌트에 옵션 객체를 추가할수 있는 방법이다. 컴포넌트 생성시 데이터나 계산된 속성 따위를 여기서 정의할 수 있는데, 여기서는 errorBag 데이터를 옮겨놨다.</p>
 <p>이어서 계산된 속성도 추가한다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token literal-property property">computed</span><span class="token operator">:</span> <span class="token punctuation">{</span>
   <span class="token function">$errors</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> errorBag <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>errorBag <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
@@ -464,7 +464,7 @@ errorBag의 name 은 초기화 되어 있지 않기 때문에 단순히 <code>th
 Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>MyPlugin<span class="token punctuation">)</span>
 
 <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  el<span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">el</span><span class="token operator">:</span> <span class="token string">"#app"</span><span class="token punctuation">,</span>
   <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token parameter">h</span> <span class="token operator">=></span> <span class="token function">h</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
 <p><code>Vue.use(MyPlugin)</code> 하나의 코드로 줄었다. 이것으로</p>
@@ -494,9 +494,9 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
     <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function">onSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>$validator<span class="token punctuation">.</span><span class="token function">validateAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -535,9 +535,9 @@ Vue<span class="token punctuation">.</span><span class="token function">use</spa
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
     <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span> name<span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">""</span> <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">methods</span><span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token function">onSubmit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>$validator<span class="token punctuation">.</span><span class="token function">validateAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>

@@ -290,7 +290,7 @@ title<span class="token punctuation">.</span>textContent <span class="token oper
 <p>그럼 다음 장에서 그렇게 만들어 보자.</p>
 <h2 id="리액티브" style="position:relative;"><a href="#%EB%A6%AC%EC%95%A1%ED%8B%B0%EB%B8%8C" aria-label="리액티브 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>리액티브</h2>
 <p>코드를 좀 변경해 보겠다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span> _data<span class="token operator">:</span> <span class="token string">"hello world"</span> <span class="token punctuation">}</span> <span class="token comment">// 1</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">_data</span><span class="token operator">:</span> <span class="token string">"hello world"</span> <span class="token punctuation">}</span> <span class="token comment">// 1</span>
 
 <span class="token keyword">const</span> h1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"h1"</span><span class="token punctuation">)</span>
 document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>h1<span class="token punctuation">)</span>
@@ -321,7 +321,7 @@ document<span class="token punctuation">.</span>body<span class="token punctuati
 <p>state.data에 값을 할당하면 UI를 업데이트 작업을 추가한다. render() 함수를 빼둔 것이 바로 이 때문이다. data 값을 변경하고 나면 곧장 render() 함수를 실행해(3) UI를 업데이트할 것이다. 데이터 변경이 자동으로 UI까지 영향을 미치는 것이다.</p>
 <p>아래 전체 코드를 보면서 흐름을 정리하자.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// 데이터를 가지는 상태 객체</span>
-<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span> _data<span class="token operator">:</span> <span class="token string">"hello world"</span> <span class="token punctuation">}</span>
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">_data</span><span class="token operator">:</span> <span class="token string">"hello world"</span> <span class="token punctuation">}</span>
 
 <span class="token comment">// 엘리먼트를 준비한다</span>
 <span class="token keyword">const</span> h1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"h1"</span><span class="token punctuation">)</span>
@@ -419,9 +419,9 @@ Object<span class="token punctuation">.</span><span class="token function">defin
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"h1"</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">"Hello World"</span><span class="token punctuation">)</span> <span class="token comment">// 6</span></code></pre></div>
 <p>콘솔 로그로 반환된 값을 찍어보면 돔 엘리먼트와 달리 일반 객체다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
-  type<span class="token operator">:</span> <span class="token string">"h1"</span><span class="token punctuation">,</span>
-  props<span class="token operator">:</span> <span class="token punctuation">{</span>
-    children<span class="token operator">:</span> <span class="token string">"Hello World"</span>
+  <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">"h1"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">props</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">children</span><span class="token operator">:</span> <span class="token string">"Hello World"</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>인자로 전달한 "h1" 이 type 속성에 "Hello World"가 props 속성에 각각 추가되었다.

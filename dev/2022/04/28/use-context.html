@@ -314,7 +314,7 @@ set은 새로운 메세지를 받고 이를 구독자들에게 통지하는 역�
 Provider, Consumer 컴포넌트를 만들었는데 이벤트 에미터를 통해 메세지를 공급/소비하는 역할을 할 것이다.</p>
 <p>컨택스트를 이렇게 사용해 보자.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> countContext <span class="token operator">=</span> MyReact<span class="token punctuation">.</span><span class="token function">createContext</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  count<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">count</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
   <span class="token function">setCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
@@ -507,7 +507,7 @@ Consumer 컴포넌트의 로직과 똑같다.</p>
 <span class="token punctuation">}</span></code></pre></div>
 <p>Consumer 컴포넌트의 렌더 프롭을 통해 컨택스트 값을 조회했던 코드가 꽤나 간결해 졌다.</p>
 <p>PlusButton도 마찬가지다.</p>
-<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> PlusButton<span class="token operator">:</span> <span class="token function-variable function">FC</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token literal-property property">PlusButton</span><span class="token operator">:</span> <span class="token function-variable function">FC</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token comment">// 컨택스트의 값을 가져온다</span>
   <span class="token keyword">const</span> <span class="token punctuation">{</span> count<span class="token punctuation">,</span> setCount <span class="token punctuation">}</span> <span class="token operator">=</span> MyReact<span class="token punctuation">.</span><span class="token function">useContext</span><span class="token punctuation">(</span>countContext<span class="token punctuation">)</span>
   <span class="token comment">// Consumer의 렌더 프롭보다 간결하다.</span>
