@@ -1,11 +1,11 @@
-<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="theme-color" content="#663399"/><meta data-react-helmet="true" name="twitter:creator" content="jeonghwan0424"/><meta data-react-helmet="true" name="twitter:site" content="jeonghwan0424"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" property="og:image:width" content="300"/><meta data-react-helmet="true" property="og:image:height" content="300"/><meta data-react-helmet="true" property="og:image" content="https://jeonghwan-kim.github.io/assets/imgs/me.jpg"/><meta data-react-helmet="true" property="og:description" content="주로 웹 기술에 대해 이야기 합니다"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="프론트엔드 테스트할 기회가 생겼다"/><meta data-react-helmet="true" property="og:url" content="https://jeonghwan-kim.github.io/dev/2021/08/09/testing-frontend.html"/><meta data-react-helmet="true" property="description" content="주로 웹 기술에 대해 이야기 합니다"/><meta data-react-helmet="true" property="og:site_name" content="김정환 블로그"/><meta data-react-helmet="true" property="og:locale:alternate" content="en_US"/><meta data-react-helmet="true" property="og:locale" content="ko_KR"/><meta name="generator" content="Gatsby 4.12.1"/><style data-href="/styles.97941cbd921bbe7dc5d1.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#000;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;text-shadow:0 1px #fff;white-space:pre;word-break:normal;word-spacing:normal}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{background:#b3d4fc;text-shadow:none}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{background:hsla(0,0%,100%,.5);color:#9a6e3a}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}pre[class*=language-].line-numbers{counter-reset:linenumber;padding-left:3.8em;position:relative}pre[class*=language-].line-numbers>code{position:relative;white-space:inherit}.line-numbers .line-numbers-rows{border-right:1px solid #999;font-size:100%;left:-3.8em;letter-spacing:-1px;pointer-events:none;position:absolute;top:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;width:3em}.line-numbers-rows>span{counter-increment:linenumber;display:block}.line-numbers-rows>span:before{color:#999;content:counter(linenumber);display:block;padding-right:.8em;text-align:right}</style><title data-react-helmet="true">프론트엔드 테스트할 기회가 생겼다 | 김정환 블로그</title><script data-react-helmet="true" type="application/ld+json">
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="theme-color" content="#663399"/><meta data-react-helmet="true" name="twitter:creator" content="jeonghwan0424"/><meta data-react-helmet="true" name="twitter:site" content="jeonghwan0424"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" property="og:image:width" content="300"/><meta data-react-helmet="true" property="og:image:height" content="300"/><meta data-react-helmet="true" property="og:image" content="https://jeonghwan-kim.github.io/assets/imgs/me.jpg"/><meta data-react-helmet="true" property="og:description" content="주로 웹 기술에 대해 이야기 합니다"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="2021-07 스크랩"/><meta data-react-helmet="true" property="og:url" content="https://jeonghwan-kim.github.io/2021-07-scrap"/><meta data-react-helmet="true" property="description" content="주로 웹 기술에 대해 이야기 합니다"/><meta data-react-helmet="true" property="og:site_name" content="김정환 블로그"/><meta data-react-helmet="true" property="og:locale:alternate" content="en_US"/><meta data-react-helmet="true" property="og:locale" content="ko_KR"/><meta name="generator" content="Gatsby 4.12.1"/><style data-href="/styles.97941cbd921bbe7dc5d1.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#000;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;text-shadow:0 1px #fff;white-space:pre;word-break:normal;word-spacing:normal}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{background:#b3d4fc;text-shadow:none}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{background:hsla(0,0%,100%,.5);color:#9a6e3a}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}pre[class*=language-].line-numbers{counter-reset:linenumber;padding-left:3.8em;position:relative}pre[class*=language-].line-numbers>code{position:relative;white-space:inherit}.line-numbers .line-numbers-rows{border-right:1px solid #999;font-size:100%;left:-3.8em;letter-spacing:-1px;pointer-events:none;position:absolute;top:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;width:3em}.line-numbers-rows>span{counter-increment:linenumber;display:block}.line-numbers-rows>span:before{color:#999;content:counter(linenumber);display:block;padding-right:.8em;text-align:right}</style><title data-react-helmet="true">2021-07 스크랩 | 김정환 블로그</title><script data-react-helmet="true" type="application/ld+json">
         {
           "@context": "http://schema.org",
           "@type": "BlogPosting",
-          "url": "https://jeonghwan-kim.github.io/dev/2021/08/09/testing-frontend.html",
-          "headline": "프론트엔드 테스트할 기회가 생겼다",
-          "datePublished": "2021-08-09T00:00:00.000Z",
-          "dateModified": "2021-08-09T00:00:00.000Z",
+          "url": "https://jeonghwan-kim.github.io/2021-07-scrap",
+          "headline": "2021-07 스크랩",
+          "datePublished": "2021-07-31T00:00:00.000Z",
+          "dateModified": "2021-07-31T00:00:00.000Z",
           "image": "undefined"
         }
         </script><style type="text/css">
@@ -178,11 +178,6 @@ data-styled.g24[id="style__ShareList-sc-m5hfiz-8"]{content:"bEuJpX,"}/*!sc*/
 .kYsa-DB{display:inline-block;margin-right:8px;}/*!sc*/
 .kYsa-DB:last-child{margin-right:0;}/*!sc*/
 data-styled.g25[id="style__ShareItem-sc-m5hfiz-9"]{content:"kYsa-DB,"}/*!sc*/
-.hPQWDh{list-style:none;padding-left:0;}/*!sc*/
-data-styled.g26[id="style__TagList-sc-m5hfiz-10"]{content:"hPQWDh,"}/*!sc*/
-.zpMhn{display:inline-block;margin-right:8px;}/*!sc*/
-.zpMhn:last-child{margin-right:0;}/*!sc*/
-data-styled.g27[id="style__TagItem-sc-m5hfiz-11"]{content:"zpMhn,"}/*!sc*/
 .eYsHAx{border-left:2px solid #e6e6e6;}/*!sc*/
 .eYsHAx ul{padding-left:16px;list-style:none;margin:0;}/*!sc*/
 .eYsHAx ul li{margin-bottom:4px;}/*!sc*/
@@ -199,37 +194,392 @@ data-styled.g36[id="style__SiblingNav-sc-m5hfiz-20"]{content:"bKfchi,"}/*!sc*/
 .hjUWSp a{-webkit-text-decoration:none;text-decoration:none;color:#cd5554;}/*!sc*/
 .hjUWSp a h3{margin-top:8px;margin-bottom:8px;}/*!sc*/
 data-styled.g37[id="style__SiblingNavItem-sc-m5hfiz-21"]{content:"hjUWSp,"}/*!sc*/
-.czvurY{display:inline-block;padding:8px 16px;border-radius:4px;background-color:#f9f8fd;-webkit-text-decoration:none;text-decoration:none;color:#91684a;border:solid 1px #91684a;-webkit-transition:all 0.1s ease-in-out;transition:all 0.1s ease-in-out;}/*!sc*/
-.czvurY:focus,.czvurY:hover{background-color:#91684a;color:#f9f8fd;cursor:pointer;}/*!sc*/
-data-styled.g38[id="style__Button-sc-29k00d-0"]{content:"czvurY,"}/*!sc*/
-.gSRLFD{padding:0;}/*!sc*/
-.gSRLFD a{display:inline-block;padding:8px 16px;-webkit-text-decoration:none;text-decoration:none;color:inherit;}/*!sc*/
-data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
-</style><link as="script" rel="preload" href="/webpack-runtime-a9c712b142c5bf3c666d.js"/><link as="script" rel="preload" href="/framework-4c8a0e1427088b7b2c20.js"/><link as="script" rel="preload" href="/app-35322b44ad09d3d732f9.js"/><link as="script" rel="preload" href="/commons-959be7953cab4f259d16.js"/><link as="script" rel="preload" href="/75cc51bbb1e223832d63a96308f000fb9347d201-2121610ed739d39d4d8d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-index-tsx-507f499ed8c4fb80a604.js"/><link as="fetch" rel="preload" href="/page-data/dev/2021/08/09/testing-frontend.html/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/3044774879.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="style__Header-sc-vbm58b-0 gqCOvG"><div class="style-variables__Container-sc-nxq9i0-0 beTzJw"><h1 class="style__SiteTitle-sc-vbm58b-1 guNCry"><div class="style__SiteLogo-sc-vbm58b-2 NYJNa"><a href="/">김정환블로그</a></div></h1><nav class="style__NavList-sc-vbm58b-3 kZUEuG"><div class="style__Nav-sc-vbm58b-4 dmGAJy"><a style="overflow:hidden" href="/category/"><i type="Article" class="style__Icon-sc-dweicn-0 jmopRO"></i><span>POSTS</span></a></div><div class="style__Nav-sc-vbm58b-4 dmGAJy"><a style="overflow:hidden" href="/#videos"><i type="Video" class="style__Icon-sc-dweicn-0 cPNdDH"></i><span>VIDEOS</span></a></div><div class="style__Nav-sc-vbm58b-4 dmGAJy"><a style="overflow:hidden" href="/tags/"><i type="Tag" class="style__Icon-sc-dweicn-0 foJLjb"></i><span>TAGS</span></a></div></nav><div class="style__Contacts-sc-vbm58b-5 kshdJa"><div class="style__Nav-sc-vbm58b-4 dmGAJy"><a style="overflow:hidden" href="/feed.xml"><i type="RSS" style="filter:invert(0.6)" class="style__Icon-sc-dweicn-0 fCDzAA"></i></a></div><div class="style__Nav-sc-vbm58b-4 dmGAJy"><a style="overflow:hidden" href="mailto:ej88ej@gmail.com"><i type="Email" style="filter:invert(0.6)" class="style__Icon-sc-dweicn-0 gYxnvc"></i></a></div><div class="style__Nav-sc-vbm58b-4 dmGAJy"><a href="https://github.com/jeonghwan-kim" style="overflow:hidden"><i type="Github" style="filter:invert(0.6)" class="style__Icon-sc-dweicn-0 blgLAe"></i></a></div></div></div></header><main class="style__Main-sc-zv3lme-1 Arfql"><div class="style-variables__Container-sc-nxq9i0-0 beTzJw"><div itemscope="" itemType="http://schema.org/BlogPosting"><section class="style__Section-sc-9mziih-0 McSYz"><main class="style__Main-sc-m5hfiz-0 bLZTvt"><aside class="style__Aside-sc-m5hfiz-1 bCTQiH"><div id="post-toc" class="style__Toc-sc-m5hfiz-12 eYsHAx"><ul>
-<li><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%ED%95%98%EB%A0%A4%EB%8A%94-%EC%9D%B4%EC%9C%A0">테스트 하려는 이유</a></li>
-<li><a href="#%ED%85%8C%EC%8A%A4%ED%8C%85-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC">테스팅 라이브러리</a></li>
-<li><a href="#%EA%B2%B0%EB%A1%A0">결론</a></li>
-</ul></div></aside><article class="style__Article-sc-m5hfiz-2 eKoDvT"><header class="style__PostHeader-sc-m5hfiz-3 OLtvj"><h1 itemProp="name headline" class="style__PostTitle-sc-m5hfiz-4 eNvKQH">프론트엔드 테스트할 기회가 생겼다</h1><time itemProp="datePublished" class="style__PostTime-sc-m5hfiz-5 loIVig">2021년 08월 09일</time></header><div id="post-content" itemProp="articleBody" class="style__PostContent-sc-m5hfiz-6 jrXHCg"><p>백엔드 개발할 때 웬만하면 테스트 코드를 작성했다. 어플리케이션을 출시한 뒤에도 부족한 테스트를 마져 작성했는데 이런 방식이 코딩에 자신감을 주었기 때문이다. 새로운 기능을 만들거나 버그를 수정 하더라도 자동화된 테스트 덕분에 회귀 테스트를 빠르게 반복 할 수 있기 때문이다.</p>
-<p>한편 프론프엔드 개발에서는 테스트를 잘 못했다. 초반에 몇 번 시도해 보았지만 최근에는 거의 테스트 코드를 작성하지 않는다. 유틸리티 함수만 조금 테스트하고 대부분의 코드를 차지하는 UI 대해서는 QA에 전적으로 의존한다.</p>
-<p>백엔드 개발에서처럼 프론트엔드에도 자동화된 테스트가 항상 아쉽다. 이번에 출시 한지 3년 이상 지난 프로덕트의 운영 업무를 맡았다. 신규 피쳐 개발이 적고 버그를 고치거나 데이터를 확인하는 정도의 일을 하고있는데 프론트엔드 테스트를 다시 시도해 볼 좋은 기회라고 생각한다.</p>
-<h2 id="테스트-하려는-이유" style="position:relative;"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%ED%95%98%EB%A0%A4%EB%8A%94-%EC%9D%B4%EC%9C%A0" aria-label="테스트 하려는 이유 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>테스트 하려는 이유</h2>
-<p>개발 프로세스에 테스트가 없는 것은 아니다. 개발이 완료되면 전문 QA의 검사가 기다리고 있는데 제품의 버그를 줄이고 일정 수준 이상의 품질을 유지할수 있는 것은 꼼꼼한 테스트 덕분이다. 그럼에도 불구하고 코딩할 때 테스트 하려는 이유는 뭘까? 정확히 얘기하면 "자동화된 테스트"다.</p>
-<p>이것은 과거 경험에서 기인하다. 서두에서도 얘기했지만  테스트 코드는 여러 면에서 좋다.</p>
-<p>첫째, 만든 구현물에 대한 자신감이 생긴다. 정상 동작하는 것 뿐만 아니라 예외 케이스와 에지 케이스를 테스트하기 때문이다. 수동 테스트는 사람이 직접 수행하지만 자동화된 테스트는 컴퓨터가 실행하기 때문에 언제든지 테스트를 반복할 수 있다. 코드에 변화가 있을 때마다 테스트 하기 때문에 변경한 코드에 대한 자신감이 생기는 것이다.</p>
-<p>둘째, 한 번 발생한 버그는 다시 발생하지 않는다. 제품을 운영하다가 버그 리포팅이 들어오면 테스트 코드로 버그를 재현한다. 또 하나의 테스트 케이스가 생기는 셈이다. 테스트 코드로 재현한 버그를 수정한다. TDD에서 말하는 레드, 그린, 블루 패턴을 적용할 수 있다.</p>
-<p>셋째, 좋은 코드를 만들 수 있다. 테스트 코드를 한 번이라도 작성해 본 사람은 테스트 케이스를 작성하는데 상당히 많은 제약을 경험했을 것이다. API 호출, 데이터베이스 접근 등 외부 요소에 대해 고려해야 하는데 이러한 제약 덕분에 테스트 하려는 대상의 역할을 조절하다보면 설계에 대한 고민을 하게 된다.</p>
-<h2 id="테스팅-라이브러리" style="position:relative;"><a href="#%ED%85%8C%EC%8A%A4%ED%8C%85-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC" aria-label="테스팅 라이브러리 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>테스팅 라이브러리</h2>
-<p>테스트 하려는 제품이 리액트 기반이다. <a href="https://ko.reactjs.org/docs/testing.html#tools">리액트 문서 말미</a>에 보면 테스트 도구로 Jest와 <a href="https://testing-library.com/docs/react-testing-library/intro/">RTL</a>을 소개한다. Jest는 테스트 코드를 실행하는 역할이고 RTL은 "React 컴포넌트를 테스트하게 하는 도구 모음" 정도로 소개한다.</p>
-<p>RTL 웹페이지로 이동하면 Testing Library 중 하나의 라이브러리인 것처럼 보인다. Testing Library에는 리액트 뿐만 아니라 여러 프레임워크 뿐만 아니라 바닐라 자바스스크립트 테스트를 위한 도구를 제공한다.</p>
-<p>이 라이브러리의 <a href="https://testing-library.com/docs/guiding-principles/">원칙</a>이 인상 적이다.</p>
-<blockquote>
-<p>The more your tests resemble the way your software is used, the more confidence they can give you.</p>
-</blockquote>
-<p>소프트웨어가 사용하는 것처럼 테스트 할수록 더 자신감을 가질 수 있다.</p>
-<p><a href="https://jeonghwan-kim.github.io/vue/2017/04/19/vue-component-test.html">이전에 다른 컴포넌트 테스트 방법</a>을 보면서 '이걸 현실에 맞게 활용할 수 있을까?' 라는 의문을 가졌었다. 컴포넌트의 상태를 체크하는 등 세부 구현을 검증하는 방법이 좀 맘에 들지 않았다. 왜나면 리팩토링 하고나면 구현 방식이 달라질 수 있는데 매번 테스트도 변경해야 하기 때문이다.</p>
-<p>반면 소프트웨어가 엔드 유저에게 제공하는 기능을 테스트 한다면 세부 구현에 얽매이지 않을 것이다. RTL에서 말하는 것이 이것이다. 소프트웨어가 사용되는 것처럼 테스트를 만들어 놓으면 코드를 리팩토링 하더라도 테스트가 유지 될 수 있다. 매번 테스트 코드를 고쳐야한다면 테스트 작성자는 얼마가지 않아 지쳐 포기하게 될 것이다.</p>
-<h2 id="결론" style="position:relative;"><a href="#%EA%B2%B0%EB%A1%A0" aria-label="결론 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>결론</h2>
-<p>평소 스스로 부족하다고 생각한 분야 중 하나가 테스트다. 이론 뿐만 아니라 경험도 적어서 궁금하던 차에 모처럼 프로트엔드 테스트에 대해 경험할 기회가 생겨서 반갑다.</p></div><div class="style__PostMeta-sc-m5hfiz-7 dUgVGn"><ul class="style__TagList-sc-m5hfiz-10 hPQWDh"><li class="style__TagItem-sc-m5hfiz-11 zpMhn"><button type="Secondary" class="style__Button-sc-29k00d-0 style__ButtonLink-sc-29k00d-1 czvurY gSRLFD"><a href="/tags/#test">#<!-- -->test</a></button></li></ul><ul class="style__ShareList-sc-m5hfiz-8 bEuJpX"><li class="style__ShareItem-sc-m5hfiz-9 kYsa-DB"><button aria-label="twitter" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#00aced"></circle><path d="M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z" fill="white"></path></svg></button></li><li class="style__ShareItem-sc-m5hfiz-9 kYsa-DB"><button aria-label="facebook" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#3b5998"></circle><path d="M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z" fill="white"></path></svg></button></li><li class="style__ShareItem-sc-m5hfiz-9 kYsa-DB"><button aria-label="pocket" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#EF3F56"></circle><path d="M41.084 29.065l-7.528 7.882a2.104 2.104 0 0 1-1.521.666 2.106 2.106 0 0 1-1.522-.666l-7.528-7.882c-.876-.914-.902-2.43-.065-3.384.84-.955 2.228-.987 3.1-.072l6.015 6.286 6.022-6.286c.88-.918 2.263-.883 3.102.071.841.938.82 2.465-.06 3.383l-.015.002zm6.777-10.976C47.463 16.84 46.361 16 45.14 16H18.905c-1.2 0-2.289.82-2.716 2.044-.125.363-.189.743-.189 1.125v10.539l.112 2.096c.464 4.766 2.73 8.933 6.243 11.838.06.053.125.102.19.153l.04.033c1.882 1.499 3.986 2.514 6.259 3.014a14.662 14.662 0 0 0 6.13.052c.118-.042.235-.065.353-.087.03 0 .065-.022.098-.042a15.395 15.395 0 0 0 6.011-2.945l.039-.045.18-.153c3.502-2.902 5.765-7.072 6.248-11.852L48 29.674v-10.52c0-.366-.041-.728-.161-1.08l.022.015z" fill="white"></path></svg></button></li></ul></div></article></main></section><section class="style__Section-sc-9mziih-0 McSYz"><div class="style-variables__Container-sc-nxq9i0-0 dQLIMF"><footer><div class="style__SiblingNav-sc-m5hfiz-20 bKfchi"><div class="style__SiblingNavItem-sc-m5hfiz-21 hjUWSp"><div class="label" style="text-align:left;margin-left:16px">이전글</div><a href="/2021-07-scrap"><div class="flex"><i style="margin-right:8px">«</i><h3 style="text-align:left">2021-07 스크랩</h3></div></a></div><div class="style__SiblingNavItem-sc-m5hfiz-21 hjUWSp"><div class="label" style="text-align:right;margin-right:16px">다음글</div><a href="/think/2021/08/23/customizing-keyboard.html"><div class="flex"><h3 style="text-align:right">한성 키보드를 매직 키보드와 유사하게 사용하기</h3><i style="margin-left:8px">»</i></div></a></div></div><div id="utteranc-comments"></div></footer></div></section></div></div></main><footer class="style__Footer-sc-16v2ybn-0 gJNjmC"><section class="style__Section-sc-9mziih-0 McSYz"><div class="style__Copyright-sc-16v2ybn-1 bLBGRf">© 김정환 <!-- -->2022</div></section></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+</style><link as="script" rel="preload" href="/webpack-runtime-a9c712b142c5bf3c666d.js"/><link as="script" rel="preload" href="/framework-4c8a0e1427088b7b2c20.js"/><link as="script" rel="preload" href="/app-35322b44ad09d3d732f9.js"/><link as="script" rel="preload" href="/commons-959be7953cab4f259d16.js"/><link as="script" rel="preload" href="/75cc51bbb1e223832d63a96308f000fb9347d201-2121610ed739d39d4d8d.js"/><link as="script" rel="preload" href="/component---src-templates-blog-post-index-tsx-507f499ed8c4fb80a604.js"/><link as="fetch" rel="preload" href="/page-data/2021-07-scrap/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/3044774879.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="style__Header-sc-vbm58b-0 gqCOvG"><div class="style-variables__Container-sc-nxq9i0-0 beTzJw"><h1 class="style__SiteTitle-sc-vbm58b-1 guNCry"><div class="style__SiteLogo-sc-vbm58b-2 NYJNa"><a href="/">김정환블로그</a></div></h1><nav class="style__NavList-sc-vbm58b-3 kZUEuG"><div class="style__Nav-sc-vbm58b-4 dmGAJy"><a style="overflow:hidden" href="/category/"><i type="Article" class="style__Icon-sc-dweicn-0 jmopRO"></i><span>POSTS</span></a></div><div class="style__Nav-sc-vbm58b-4 dmGAJy"><a style="overflow:hidden" href="/#videos"><i type="Video" class="style__Icon-sc-dweicn-0 cPNdDH"></i><span>VIDEOS</span></a></div><div class="style__Nav-sc-vbm58b-4 dmGAJy"><a style="overflow:hidden" href="/tags/"><i type="Tag" class="style__Icon-sc-dweicn-0 foJLjb"></i><span>TAGS</span></a></div></nav><div class="style__Contacts-sc-vbm58b-5 kshdJa"><div class="style__Nav-sc-vbm58b-4 dmGAJy"><a style="overflow:hidden" href="/feed.xml"><i type="RSS" style="filter:invert(0.6)" class="style__Icon-sc-dweicn-0 fCDzAA"></i></a></div><div class="style__Nav-sc-vbm58b-4 dmGAJy"><a style="overflow:hidden" href="mailto:ej88ej@gmail.com"><i type="Email" style="filter:invert(0.6)" class="style__Icon-sc-dweicn-0 gYxnvc"></i></a></div><div class="style__Nav-sc-vbm58b-4 dmGAJy"><a href="https://github.com/jeonghwan-kim" style="overflow:hidden"><i type="Github" style="filter:invert(0.6)" class="style__Icon-sc-dweicn-0 blgLAe"></i></a></div></div></div></header><main class="style__Main-sc-zv3lme-1 Arfql"><div class="style-variables__Container-sc-nxq9i0-0 beTzJw"><div itemscope="" itemType="http://schema.org/BlogPosting"><section class="style__Section-sc-9mziih-0 McSYz"><main class="style__Main-sc-m5hfiz-0 bLZTvt"><aside class="style__Aside-sc-m5hfiz-1 bCTQiH"><div id="post-toc" class="style__Toc-sc-m5hfiz-12 eYsHAx"><ul>
+<li>
+<p><a href="#2021-07-w1">2021-07-W1</a></p>
+<ul>
+<li><a href="#2021-07-01%EB%AA%A9">2021-07-01목</a></li>
+<li><a href="#2021-07-02-%EA%B8%88">2021-07-02 금</a></li>
+<li><a href="#2021-07-03-%ED%86%A0">2021-07-03 토</a></li>
+<li><a href="#2021-07-04-%EC%9D%BC">2021-07-04 일</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#2021-07-w2">2021-07-W2</a></p>
+<ul>
+<li><a href="#2021-07-05-%EC%9B%94">2021-07-05 월</a></li>
+<li><a href="#2021-07-06-%ED%99%94">2021-07-06 화</a></li>
+<li><a href="#2021-07-08-%EB%AA%A9">2021-07-08 목</a></li>
+<li><a href="#2021-07-09-%EA%B8%88">2021-07-09 금</a></li>
+<li><a href="#2021-07-10-%ED%86%A0">2021-07-10 토</a></li>
+<li><a href="#2021-07-11-%EC%9D%BC">2021-07-11 일</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#2021-07-w3">2021-07-W3</a></p>
+<ul>
+<li><a href="#2021-07-12-%EC%9B%94">2021-07-12 월</a></li>
+<li><a href="#2021-07-13-%ED%99%94">2021-07-13 화</a></li>
+<li><a href="#2021-07-14-%EC%88%98">2021-07-14 수</a></li>
+<li><a href="#2021-07-16-%EA%B8%88">2021-07-16 금</a></li>
+<li><a href="#2021-07-17-%ED%86%A0">2021-07-17 토</a></li>
+<li><a href="#2021-07-18-%EC%9D%BC">2021-07-18 일</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#2021-07-w4">2021-07-W4</a></p>
+<ul>
+<li><a href="#2021-07-19-%EC%9B%94">2021-07-19 월</a></li>
+<li><a href="#2021-07-21-%EC%88%98">2021-07-21 수</a></li>
+<li><a href="#2021-07-22-%EB%AA%A9">2021-07-22 목</a></li>
+<li><a href="#2021-07-23-%EA%B8%88">2021-07-23 금</a></li>
+<li><a href="#2021-07-24-%ED%86%A0">2021-07-24 토</a></li>
+<li><a href="#2021-07-25-%EC%9D%BC">2021-07-25 일</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#2021-07-w5">2021-07-W5</a></p>
+<ul>
+<li><a href="#2021-07-26-%EC%9B%94">2021-07-26 월</a></li>
+<li><a href="#2021-07-27-%ED%99%94">2021-07-27 화</a></li>
+<li><a href="#2021-07-28-%EC%88%98">2021-07-28 수</a></li>
+<li><a href="#2021-07-30-%EA%B8%88">2021-07-30 금</a></li>
+</ul>
+</li>
+</ul></div></aside><article class="style__Article-sc-m5hfiz-2 eKoDvT"><header class="style__PostHeader-sc-m5hfiz-3 OLtvj"><h1 itemProp="name headline" class="style__PostTitle-sc-m5hfiz-4 eNvKQH">2021-07 스크랩</h1><time itemProp="datePublished" class="style__PostTime-sc-m5hfiz-5 loIVig">2021년 07월 31일</time></header><div id="post-content" itemProp="articleBody" class="style__PostContent-sc-m5hfiz-6 jrXHCg"><h1 id="2021-07-w1" style="position:relative;"><a href="#2021-07-w1" aria-label="2021 07 w1 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-W1</h1>
+<p>총 13, 기술 12</p>
+<h2 id="2021-07-01목" style="position:relative;"><a href="#2021-07-01%EB%AA%A9" aria-label="2021 07 01목 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-01목</h2>
+<p><a href="https://www.justingarrison.com/blog/2021-03-15-the-document-culture-of-amazon/">The Document Culture fo Amazon</a></p>
+<ul>
+<li>문서기반 회의. 회의전 문서 반드시 공유해야</li>
+<li>조용히 문서 읽는 것으로 회의 시작</li>
+<li>아무도 회의전에 문서를 읽지 않기 때문</li>
+<li>문서의 양식보다 사용 방법이 흥미로움</li>
+</ul>
+<h2 id="2021-07-02-금" style="position:relative;"><a href="#2021-07-02-%EA%B8%88" aria-label="2021 07 02 금 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-02 금</h2>
+<p><a href="https://www.robinwieruch.de/react-testing-library/">How to use React Testing Library Tutorial</a></p>
+<ul>
+<li>좋은 문서다</li>
+<li>가지치기: 공식문서, jest-dom, aria-label attributes</li>
+</ul>
+<p>Using the aria-label attribute - MDN</p>
+<ul>
+<li>WAI-ARI Roles- MDN</li>
+</ul>
+<h2 id="2021-07-03-토" style="position:relative;"><a href="#2021-07-03-%ED%86%A0" aria-label="2021 07 03 토 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-03 토</h2>
+<p><a href="https://www.thestartupbible.com/2021/07/laser-focus.html">레이저 집중</a></p>
+<ul>
+<li>한 가지를 잘 해야 성공</li>
+<li>세상은 넓고, 하지 말아야 할 일은 많다</li>
+</ul>
+<p><a href="https://jakearchibald.com/2021/encoding-data-for-post-requests/">Encoding Data for POST requests</a></p>
+<ul>
+<li>URLSearchParams() → application/x-www-form-urlencoded</li>
+<li>URL.#.searchParams()</li>
+<li>FormData() → multipart/form-data</li>
+</ul>
+<h2 id="2021-07-04-일" style="position:relative;"><a href="#2021-07-04-%EC%9D%BC" aria-label="2021 07 04 일 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-04 일</h2>
+<p><a href="https://tech.kakao.com/2021/07/02/openwork-agile/">Open work, 카카오의 일하는 방식</a></p>
+<ul>
+<li>투명해야</li>
+</ul>
+<h1 id="2021-07-w2" style="position:relative;"><a href="#2021-07-w2" aria-label="2021 07 w2 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-W2</h1>
+<p>총 14, 기술 10</p>
+<h2 id="2021-07-05-월" style="position:relative;"><a href="#2021-07-05-%EC%9B%94" aria-label="2021 07 05 월 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-05 월</h2>
+<p><a href="https://blog.stackblitz.com/posts/introducing-webcontainers/">Introducing Web Containers: Run Node.js</a></p>
+<ul>
+<li>Natively in your browser</li>
+<li>Faster. Debugging in Browser. Secure</li>
+<li>Github</li>
+</ul>
+<p><a href="https://www.thestartupbible.com/2021/07/its-all-about-data.html">답은 데이터에 있다</a></p>
+<h2 id="2021-07-06-화" style="position:relative;"><a href="#2021-07-06-%ED%99%94" aria-label="2021 07 06 화 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-06 화</h2>
+<p><a href="https://brunch.co.kr/@ashashash/101">좋은 프로덕트 팀과 반대 팀의 17가지 차이</a></p>
+<ul>
+<li>제품 비젼</li>
+<li>이런 글은 별로다. 마치 좋은 말만 있는 자기 계발서 같다</li>
+</ul>
+<p><a href="https://testing-library.com/docs/react-testing-library/intro/">React Testing Library</a></p>
+<ul>
+<li>유지 가능한 테스트</li>
+<li>Rect-dom, react-dom/test-utils 위에서 동작</li>
+<li>"The more your tests resemble the way your software is used, the more confidence ..."</li>
+</ul>
+<p><a href="https://testing-library.com/docs/react-testing-library/example-intro">RTL > Example</a></p>
+<ul>
+<li>mow: Mock Service Worker</li>
+<li>Arrange - Act -Assert</li>
+</ul>
+<p><a href="https://testing-library.com/docs/react-testing-library/setup">RTL > Setup</a></p>
+<ul>
+<li>custom render. test-utils.jsx</li>
+<li>jest.config.js</li>
+<li>tsconfig.js</li>
+</ul>
+<h2 id="2021-07-08-목" style="position:relative;"><a href="#2021-07-08-%EB%AA%A9" aria-label="2021 07 08 목 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-08 목</h2>
+<p><a href="https://testing-library.com/docs/react-testing-library/api">RTL > API</a></p>
+<ul>
+<li>DOM Testing Library + alpha</li>
+<li>Render. Wrapper → RootComponent ?</li>
+</ul>
+<p><a href="https://testing-library.com/docs/react-testing-library/api">RTL > API</a></p>
+<ul>
+<li>toBeVisible, toHaveValue</li>
+</ul>
+<p><a href="https://testing-library.com/docs/react-testing-library/example-intro">RTL > Examples (계속)</a></p>
+<ul>
+<li>React Context. toHaveTextContent</li>
+<li>useReducer</li>
+<li>Formik. waitFor(() => expect().to...)</li>
+<li>React Intl</li>
+<li>React Router</li>
+<li>React Transition Group</li>
+</ul>
+<h2 id="2021-07-09-금" style="position:relative;"><a href="#2021-07-09-%EA%B8%88" aria-label="2021 07 09 금 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-09 금</h2>
+<p><a href="https://kentcdodds.com/blog/test-isolation-with-react">Tes Isolation with React</a></p>
+<ul>
+<li>mutable state</li>
+<li>기능 보다는 유스케이스를 테스트해야</li>
+<li>Better → Event Better (better) → 최고</li>
+</ul>
+<h2 id="2021-07-10-토" style="position:relative;"><a href="#2021-07-10-%ED%86%A0" aria-label="2021 07 10 토 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-10 토</h2>
+<p><a href="https://kentcdodds.com/blog/common-mistakes-with-react-testing-library">Common mistakes with React Testing Library</a></p>
+<ul>
+<li>좋은 사례들이 많다. 글을 공유.</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/testing-components-using-render-props">Testing React components using render props</a></p>
+<ul>
+<li>이것도 좋구나</li>
+<li>Context 사용할 때 테스트하는 법</li>
+</ul>
+<h2 id="2021-07-11-일" style="position:relative;"><a href="#2021-07-11-%EC%9D%BC" aria-label="2021 07 11 일 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-11 일</h2>
+<p><a href="https://kentcdodds.com/blog/testing-implementation-details">Testing Implementation Details</a></p>
+<ul>
+<li>세부 사항을 테스트하지 말 것</li>
+<li>엔드 유저로서 테스트할것 (유저, 개발자)</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/aha-testing">AHA Testing</a></p>
+<ul>
+<li>테스트에도 추상화해서 가독성 올려야</li>
+</ul>
+<h1 id="2021-07-w3" style="position:relative;"><a href="#2021-07-w3" aria-label="2021 07 w3 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-W3</h1>
+<p>총 15, 기술 8</p>
+<h2 id="2021-07-12-월" style="position:relative;"><a href="#2021-07-12-%EC%9B%94" aria-label="2021 07 12 월 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-12 월</h2>
+<p>재택 근무 방식을 다시 생각해 보기 - 이기호</p>
+<p>모르는게 약이다</p>
+<p><a href="https://kentcdodds.com/blog/avoid-nesting-when-youre-testing">Avoid Nesting when you're Testing</a></p>
+<ul>
+<li>it/test 구분</li>
+<li>변수 추적 복잡. AHA로 개선해야</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/aha-programming">AHA Programing</a></p>
+<ul>
+<li>Avoid Hasty Abstraction - Sandi Mets</li>
+<li>"Prefer duplication over the wrong abstraction"</li>
+<li>jsinspect. 중복 코드 검색 도구</li>
+</ul>
+<h2 id="2021-07-13-화" style="position:relative;"><a href="#2021-07-13-%ED%99%94" aria-label="2021 07 13 화 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-13 화</h2>
+<p><a href="https://ppss.kr/archives/243506">최선을 다한다는 것</a></p>
+<ul>
+<li>재능, 노력, 연습 필요</li>
+<li>요구없어도 스스로 일하는 마음가짐</li>
+<li>책을 쓰거나 프로그래밍 하루 5시간 한계</li>
+</ul>
+<p><a href="https://www.thestartupbible.com/2021/07/the-only-constant-is-change-itself.html">원래 그런 것</a></p>
+<p><a href="https://kentcdodds.com/blog/common-testing-mistakes">Common Testing Mistakes</a></p>
+<ul>
+<li>내 수업 놓친 것</li>
+<li>세부 구현 테스트</li>
+<li>100% 커버리지</li>
+<li>반복, 로그인, 회원 가입</li>
+</ul>
+<h2 id="2021-07-14-수" style="position:relative;"><a href="#2021-07-14-%EC%88%98" aria-label="2021 07 14 수 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-14 수</h2>
+<p><a href="https://kentcdodds.com/blog/demystifying-testing">Demystifying Testing</a></p>
+<ul>
+<li>테스트 개념을 잘 설명할 수 있나?</li>
+<li>Teach-an-engineer-to-fish 운동?</li>
+<li>You don't need any tools to write a simple test</li>
+<li>이렇게 해서 지금 듣는 강의를 만들었나?</li>
+</ul>
+<h2 id="2021-07-16-금" style="position:relative;"><a href="#2021-07-16-%EA%B8%88" aria-label="2021 07 16 금 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-16 금</h2>
+<p><a href="https://kentcdodds.com/blog/effective-snapshot-testing">Effective snapshot testing</a></p>
+<ul>
+<li>스냅샷 단접 by Justin</li>
+<li>그럼에도 필요해</li>
+<li>콘솔로그 스냅샷</li>
+<li>Css-in-js. 스타일에 민감한 컴포넌트 테스트</li>
+<li>스냅샷 쓰지 말아야할 것</li>
+<li>큰 스냅샷. 관리 안돼. 누구도 안봐</li>
+<li>더 효과적인 스냅샷 위해</li>
+<li>커스텀 직렬화</li>
+<li>스냅샷 차이 비교. snapshot-diff</li>
+</ul>
+<h2 id="2021-07-17-토" style="position:relative;"><a href="#2021-07-17-%ED%86%A0" aria-label="2021 07 17 토 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-17 토</h2>
+<p><a href="https://kentcdodds.com/blog/how-to-add-testing-to-an-existing-project">How to add testing to an existing project</a></p>
+<ul>
+<li>정적 테스트</li>
+<li>E2e xptmxm</li>
+<li>Unit eest</li>
+<li>더 작성해라</li>
+<li>내 강의를 사라</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/static-vs-unit-vs-integration-vs-e2e-tests">Static. Unit. Integration. E2E Testing for FE apps</a></p>
+<ul>
+<li>테스트하는 이유: 자신감</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/the-testing-trophy-and-testing-classifications">The Testing Trophy and Testing Classifications</a></p>
+<h2 id="2021-07-18-일" style="position:relative;"><a href="#2021-07-18-%EC%9D%BC" aria-label="2021 07 18 일 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-18 일</h2>
+<p><a href="https://kentcdodds.com/blog/ui-testing-myths">UI Testing Myths</a></p>
+<ul>
+<li>코드수정, 테스트 실패 → 세부구현 테스트 때문</li>
+<li>리덕스 연결된 컴포넌트 테스트 어려워 → 연결해서 테스트</li>
+<li>E2e 느려 → 느리게 작섣하기 때문</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/why-youve-been-bad-about-testing">Why you've been bad about testing</a></p>
+<ul>
+<li>무엇을 테스트할지</li>
+<li>고장나면 심각한 것</li>
+<li>범위를 좁혀라</li>
+</ul>
+<h1 id="2021-07-w4" style="position:relative;"><a href="#2021-07-w4" aria-label="2021 07 w4 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-W4</h1>
+<p>총 10,기술 8</p>
+<h2 id="2021-07-19-월" style="position:relative;"><a href="#2021-07-19-%EC%9B%94" aria-label="2021 07 19 월 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-19 월</h2>
+<p><a href="https://kentcdodds.com/blog/why-your-team-needs-testing-javascript-com">Why your team needs TestingJavaScript.com</a></p>
+<ul>
+<li>너무 대 놓고 홍보</li>
+<li>코드 품질 관리 자동화 해야</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/introducing-the-react-testing-library">Introducing the react-esting-library</a></p>
+<ul>
+<li>enzyme 버려</li>
+<li>세부사항 테스트는 안돼. 기능 테스트 해야</li>
+</ul>
+<h2 id="2021-07-21-수" style="position:relative;"><a href="#2021-07-21-%EC%88%98" aria-label="2021 07 21 수 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-21 수</h2>
+<p>개발자 온보딩 가이드</p>
+<ul>
+<li>회사. 제품. 고객에 대해 학습</li>
+<li>테스트 계정 만들어 주기</li>
+<li>피드백 받아 온보딩 프로그램 개선</li>
+<li>온보딩 성과측정. 질문들</li>
+</ul>
+<p><a href="https://www.gatsbyjs.com/docs/reference/release-notes/v3.0/">Gatsby v3 release notes . March 2021</a></p>
+<ul>
+<li>2018이후 첫 메이져 업데이트. 3년만</li>
+<li>점진적 빌드 in OSS</li>
+<li>더 빠른 Refresh. React-hot-loader 제거</li>
+<li>ESLint 강제</li>
+<li>웹팩 5</li>
+<li>React 17</li>
+<li>GraphQL 15</li>
+</ul>
+<p><a href="https://www.gatsbyjs.com/docs/reference/release-notes/migrating-from-v2-to-v3/">Migrating from v2 to v3. Gatsby</a></p>
+<ul>
+<li>해볼까?</li>
+</ul>
+<h2 id="2021-07-22-목" style="position:relative;"><a href="#2021-07-22-%EB%AA%A9" aria-label="2021 07 22 목 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-22 목</h2>
+<p><a href="https://www.thestartupbible.com/2021/07/the-republic-of-facebook.html">페이스북 공화국</a></p>
+<p><a href="https://news.hada.io/topic?id=4639">Github Copilot: 첫인상</a></p>
+<p><a href="https://newspeppermint.com/2021/07/19/applecarautoindustry/">애플카, 그리고 우리가 알던 자동차 산업의 종언</a></p>
+<ul>
+<li>"소프트웨어가 모든 산업을 집어 삼키고 있어... 다음은 자동차"</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/when-i-follow-tdd">When I follow TDD</a></p>
+<ul>
+<li>버그 고칠 때 사용. 테스트로 버그 재현. Fixing a bug? Try TDD</li>
+<li>순수 함수 작성할 때</li>
+<li>잘 정의된 UI 개발할 때</li>
+</ul>
+<h2 id="2021-07-23-금" style="position:relative;"><a href="#2021-07-23-%EA%B8%88" aria-label="2021 07 23 금 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-23 금</h2>
+<p><a href="https://kentcdodds.com/blog/should-i-write-a-test-or-fix-a-bug">Should I write a test or fix a bug?</a></p>
+<ul>
+<li>우선순위 따져라. 돈. 고객</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/stop-mocking-fetch">Stop Mocking fetch</a></p>
+<ul>
+<li>msw를 소개.</li>
+</ul>
+<h2 id="2021-07-24-토" style="position:relative;"><a href="#2021-07-24-%ED%86%A0" aria-label="2021 07 24 토 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-24 토</h2>
+<p>백신 예약 서버가 터지는 이유...</p>
+<ul>
+<li>줄서기 우회할 수 있어</li>
+<li>정적파일 무거워. 3MB (폰트 0.6MB)</li>
+</ul>
+<p>Colocation</p>
+<ul>
+<li>주석</li>
+<li>Html/view</li>
+<li>Css</li>
+<li>Tests</li>
+<li>State</li>
+<li>"Reusable" utility fields</li>
+<li>예외. E2e 테스트</li>
+</ul>
+<h2 id="2021-07-25-일" style="position:relative;"><a href="#2021-07-25-%EC%9D%BC" aria-label="2021 07 25 일 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-25 일</h2>
+<p>육아는 꼭 그렇게 힘들어야 할까?</p>
+<ul>
+<li>강박증 내려 놓아야</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/improve-test-error-messages-of-your-abstractions">Improve test error messages of your abstractions</a></p>
+<ul>
+<li>추상화 했을 때 스택 트레이스 제대로 보여주기</li>
+<li>에러를 다시 던짐</li>
+<li>Error.capturestacktrace() 뭐 이런게 있나 보구먼. node.js api</li>
+</ul>
+<h1 id="2021-07-w5" style="position:relative;"><a href="#2021-07-w5" aria-label="2021 07 w5 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-W5</h1>
+<h2 id="2021-07-26-월" style="position:relative;"><a href="#2021-07-26-%EC%9B%94" aria-label="2021 07 26 월 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-26 월</h2>
+<p><a href="https://www.hani.co.kr/arti/culture/book/1004794.html">디지털 권력은 어떻게 우리를 지배하는가</a></p>
+<ul>
+<li>"우리의 적들은 시스템을 알고 있다" 추천서</li>
+</ul>
+<p><a href="https://www.thestartupbible.com/2019/02/the-team-you-recruit-will-become-the-company-that-you-will-build.html">팀이 회사 그 자체다</a></p>
+<ul>
+<li>좋은 사람들이 풍기는 아우라</li>
+<li>에버노트의 필리번, 경령 관련 사례</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/how-to-test-custom-react-hooks">How to test custom React hooks</a></p>
+<ul>
+<li>@testing-library/react-hooks 배경 설명</li>
+<li>수업에서도 잠시 볼것</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/make-your-test-fail">Make your test fail</a></p>
+<ul>
+<li>테스트 올바로 작성해야</li>
+<li>preferr-inline-snapshot</li>
+</ul>
+<h2 id="2021-07-27-화" style="position:relative;"><a href="#2021-07-27-%ED%99%94" aria-label="2021 07 27 화 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-27 화</h2>
+<p><a href="https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning">Fix the "not wrapped in act(...)" warning</a></p>
+<ul>
+<li>잘 모르겠다</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/write-fewer-longer-tests">Write fewer, longer test</a></p>
+<ul>
+<li>"One assertion per test" → 원래는 실패 원인 파악이 어려워서 나온 말. 하지만 jest는 쉽게 찾을 수</li>
+<li>여러 개 테스트를 하나로 묶어라</li>
+</ul>
+<h2 id="2021-07-28-수" style="position:relative;"><a href="#2021-07-28-%EC%88%98" aria-label="2021 07 28 수 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-28 수</h2>
+<p><a href="https://kentcdodds.com/blog/write-tests">Write tests not too many. Mostly Integration</a></p>
+<ul>
+<li>통합 테스트가 비용과 속도의 균형</li>
+<li>너무 많이 목킹 말라</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/avoid-the-test-user">Avoid the test user</a></p>
+<ul>
+<li>Test implementation detail X</li>
+</ul>
+<h2 id="2021-07-30-금" style="position:relative;"><a href="#2021-07-30-%EA%B8%88" aria-label="2021 07 30 금 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2021-07-30 금</h2>
+<p><a href="https://kentcdodds.com/blog/how-to-know-what-to-test">How to know what to test</a></p>
+<ul>
+<li>테스트 이유. 자신감. 코드보다는 유스케이스</li>
+<li>코드커버리지 &#x3C; 유스케이스 커버리지</li>
+<li>코드 커버리지는 테스트 필요를 알려줌. 중요한 것은 모름</li>
+<li>어떤 유스케이스가 이 코드를 사용하는지. 어떤 테스트가 이 유스케이스를 사용하는지 알아야</li>
+<li>앱의 어떤 부분이 고장나면 속상</li>
+<li>하나의 e2e 해피 패쓰</li>
+</ul>
+<p><a href="https://kentcdodds.com/blog/confidently-shipping-code">Confidently shipping code</a></p>
+<ul>
+<li>테스트가 자신감. 속도 올림. 경험상 그래.</li>
+</ul></div><div class="style__PostMeta-sc-m5hfiz-7 dUgVGn"><ul class="style__ShareList-sc-m5hfiz-8 bEuJpX"><li class="style__ShareItem-sc-m5hfiz-9 kYsa-DB"><button aria-label="twitter" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#00aced"></circle><path d="M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z" fill="white"></path></svg></button></li><li class="style__ShareItem-sc-m5hfiz-9 kYsa-DB"><button aria-label="facebook" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#3b5998"></circle><path d="M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z" fill="white"></path></svg></button></li><li class="style__ShareItem-sc-m5hfiz-9 kYsa-DB"><button aria-label="pocket" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#EF3F56"></circle><path d="M41.084 29.065l-7.528 7.882a2.104 2.104 0 0 1-1.521.666 2.106 2.106 0 0 1-1.522-.666l-7.528-7.882c-.876-.914-.902-2.43-.065-3.384.84-.955 2.228-.987 3.1-.072l6.015 6.286 6.022-6.286c.88-.918 2.263-.883 3.102.071.841.938.82 2.465-.06 3.383l-.015.002zm6.777-10.976C47.463 16.84 46.361 16 45.14 16H18.905c-1.2 0-2.289.82-2.716 2.044-.125.363-.189.743-.189 1.125v10.539l.112 2.096c.464 4.766 2.73 8.933 6.243 11.838.06.053.125.102.19.153l.04.033c1.882 1.499 3.986 2.514 6.259 3.014a14.662 14.662 0 0 0 6.13.052c.118-.042.235-.065.353-.087.03 0 .065-.022.098-.042a15.395 15.395 0 0 0 6.011-2.945l.039-.045.18-.153c3.502-2.902 5.765-7.072 6.248-11.852L48 29.674v-10.52c0-.366-.041-.728-.161-1.08l.022.015z" fill="white"></path></svg></button></li></ul></div></article></main></section><section class="style__Section-sc-9mziih-0 McSYz"><div class="style-variables__Container-sc-nxq9i0-0 dQLIMF"><footer><div class="style__SiblingNav-sc-m5hfiz-20 bKfchi"><div class="style__SiblingNavItem-sc-m5hfiz-21 hjUWSp"><div class="label" style="text-align:left;margin-left:16px">이전글</div><a href="/think/2021/07/19/design-system-and-streaming.html"><div class="flex"><i style="margin-right:8px">«</i><h3 style="text-align:left">디자인시스템과 라이브 방송</h3></div></a></div><div class="style__SiblingNavItem-sc-m5hfiz-21 hjUWSp"><div class="label" style="text-align:right;margin-right:16px">다음글</div><a href="/dev/2021/08/09/testing-frontend.html"><div class="flex"><h3 style="text-align:right">프론트엔드 테스트할 기회가 생겼다</h3><i style="margin-left:8px">»</i></div></a></div></div><div id="utteranc-comments"></div></footer></div></section></div></div></main><footer class="style__Footer-sc-16v2ybn-0 gJNjmC"><section class="style__Section-sc-9mziih-0 McSYz"><div class="style__Copyright-sc-16v2ybn-1 bLBGRf">© 김정환 <!-- -->2022</div></section></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
   
   
   if(true) {
@@ -245,4 +595,4 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
       
       
       
-      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/dev/2021/08/09/testing-frontend.html";window.___webpackCompilationHash="52b22d3fb8cd01c29ed1";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-ff9e2bcee19396af632a.js"],"app":["/app-35322b44ad09d3d732f9.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-a927db3e16ab33e13ef9.js"],"component---src-pages-category-index-tsx":["/component---src-pages-category-index-tsx-a6b8a7c92dd269bd8b5d.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-5709441528ac8ddc943c.js"],"component---src-pages-tags-index-tsx":["/component---src-pages-tags-index-tsx-c2fc08f2bb087c4645e0.js"],"component---src-templates-blog-post-index-tsx":["/component---src-templates-blog-post-index-tsx-507f499ed8c4fb80a604.js"]};/*]]>*/</script><script src="/polyfill-ff9e2bcee19396af632a.js" nomodule=""></script><script src="/component---src-templates-blog-post-index-tsx-507f499ed8c4fb80a604.js" async=""></script><script src="/75cc51bbb1e223832d63a96308f000fb9347d201-2121610ed739d39d4d8d.js" async=""></script><script src="/commons-959be7953cab4f259d16.js" async=""></script><script src="/app-35322b44ad09d3d732f9.js" async=""></script><script src="/framework-4c8a0e1427088b7b2c20.js" async=""></script><script src="/webpack-runtime-a9c712b142c5bf3c666d.js" async=""></script></body></html>
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2021-07-scrap";window.___webpackCompilationHash="52b22d3fb8cd01c29ed1";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-ff9e2bcee19396af632a.js"],"app":["/app-35322b44ad09d3d732f9.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-a927db3e16ab33e13ef9.js"],"component---src-pages-category-index-tsx":["/component---src-pages-category-index-tsx-a6b8a7c92dd269bd8b5d.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-5709441528ac8ddc943c.js"],"component---src-pages-tags-index-tsx":["/component---src-pages-tags-index-tsx-c2fc08f2bb087c4645e0.js"],"component---src-templates-blog-post-index-tsx":["/component---src-templates-blog-post-index-tsx-507f499ed8c4fb80a604.js"]};/*]]>*/</script><script src="/polyfill-ff9e2bcee19396af632a.js" nomodule=""></script><script src="/component---src-templates-blog-post-index-tsx-507f499ed8c4fb80a604.js" async=""></script><script src="/75cc51bbb1e223832d63a96308f000fb9347d201-2121610ed739d39d4d8d.js" async=""></script><script src="/commons-959be7953cab4f259d16.js" async=""></script><script src="/app-35322b44ad09d3d732f9.js" async=""></script><script src="/framework-4c8a0e1427088b7b2c20.js" async=""></script><script src="/webpack-runtime-a9c712b142c5bf3c666d.js" async=""></script></body></html>
