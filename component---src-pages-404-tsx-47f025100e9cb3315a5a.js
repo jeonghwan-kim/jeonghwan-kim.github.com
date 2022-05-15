@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkgatsby_starter_default=self.webpackChunkgatsby_starter_default||[]).push([[218],{2224:function(e,t,l){l.r(t);var n=l(7294),a=l(870),r=l(9213),u=l(2521),c=l(1524);t.default=function(){return n.createElement(a.oC,null,n.createElement(u.Z,{title:"404: Not found"}),n.createElement(c.W2,{small:!0},n.createElement(r.Z,null,n.createElement("h1",null,"페이지를 찾을 수 없습니다"),n.createElement("p",null,"찾는 페이지가 삭제되었거나 이동되었을 수 있습니다."))))}}}]);
-//# sourceMappingURL=component---src-pages-404-tsx-47f025100e9cb3315a5a.js.map
