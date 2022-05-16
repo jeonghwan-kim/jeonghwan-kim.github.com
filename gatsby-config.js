@@ -6,7 +6,7 @@ module.exports = {
     url: "https://jeonghwan-kim.github.io",
     social: {
       email: "ej88ej@gmail.com",
-      twitterUsername: "jeonghwan0424",
+      twitterUsername: "mokpo_dev",
       githubUsername: "jeonghwan-kim",
     },
   },
@@ -68,9 +68,6 @@ module.exports = {
         icon: `static/assets/imgs/me.jpg`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
