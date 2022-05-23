@@ -2,7 +2,7 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#663399",
+    "titleBar.activeBackground": "#cd5554",
     "titleBar.activeForeground": "#ffffff"
   }
 }

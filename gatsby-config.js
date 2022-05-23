@@ -59,11 +59,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `김정환 블로그`,
+        short_name: `김정환블로그`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#cd5554`,
+        theme_color: `#cd5554`,
         display: `minimal-ui`,
         icon: `static/assets/imgs/me.jpg`, // This path is relative to the root of the site.
       },
