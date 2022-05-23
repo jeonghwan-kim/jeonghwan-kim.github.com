@@ -4,7 +4,7 @@ date: 2017-04-10
 title: 함수로 함수 만들기1 다형성
 layout: post
 category: series
-tags: [JavaScript, functional-programming]
+tags: [JavaScript, FP]
 seriesId: series-2017-04-22-functional
 featuredImage: "./functional-javascript-thumbnail.png"
 ---

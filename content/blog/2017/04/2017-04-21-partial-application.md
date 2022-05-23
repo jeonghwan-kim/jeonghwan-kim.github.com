@@ -5,7 +5,7 @@ category: series
 seriesId: "series-2017-04-22-functional"
 slug: /js/2017/04/21/partial-application.html
 date: 2017-04-21
-tags: [JavaScript, functional-programming]
+tags: [JavaScript, FP]
 featuredImage: ./functional-javascript-thumbnail.png
 ---
 

@@ -4,7 +4,7 @@ layout: post
 category: dev
 slug: /etc/2017/01/16/so-you-want-to-be-a-functional-programmer-part-6.html
 date: 2017-01-16
-tags: [functional-programming, 번역]
+tags: [FP, 번역]
 ---
 
 > 이 문서는 https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-6-db502830403#.lmm1riwt1 를 번역한 내용입니다.

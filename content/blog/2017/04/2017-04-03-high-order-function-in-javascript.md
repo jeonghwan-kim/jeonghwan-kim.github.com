@@ -4,7 +4,7 @@ date: 2017-04-03
 title: 고차 함수
 layout: post
 category: series
-tags: [JavaScript, functional-programming]
+tags: [JavaScript, FP]
 featuredImage: "./functional-javascript-thumbnail.png"
 seriesId: "series-2017-04-22-functional"
 ---
