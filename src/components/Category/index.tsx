@@ -1,6 +1,7 @@
+import { PageProps } from "gatsby"
 import { Link } from "gatsby"
 import _ from "lodash"
-import React, { FC } from "react"
+import React, { FC, useEffect, useState } from "react"
 import { MarkdownRemark } from "../../../graphql-types"
 import { dateFormat } from "../../helpers/date"
 import { Icon, IconType } from "../Icon/style"
@@ -21,24 +22,30 @@ const getLinkHoverTitle = (name, count) =>
 
 interface Props {
   posts: MarkdownRemark[]
+  location: PageProps["location"]
 }
 
-export const CateogryPosts: FC<Props> = ({ posts }) => {
-  const activeCategory =
-    typeof window !== "undefined"
-      ? new URLSearchParams(window.location.search).get("key")
-      : null
+export const CategoryPosts: FC<Props> = ({ posts, location }) => {
+  const [renderedPosts, setRenderedPosts] = useState([])
+  const [activeCategory, setActiveCategory] = useState(null)
+  const [activeTag, setActiveTag] = useState(null)
 
-  const activeTag =
-    typeof window !== "undefined"
-      ? new URLSearchParams(window.location.search).get("tag")
-      : null
+  useEffect(() => {
+    const key = new URLSearchParams(location.search).get("key")
+    const tag = new URLSearchParams(location.search).get("tag")
+    setActiveCategory(key)
+    setActiveTag(key ? "" : tag)
+  }, [location.search])
 
-  const renderedPosts = activeCategory
-    ? posts.filter(p => p.frontmatter.category === activeCategory)
-    : activeTag
-    ? posts.filter(p => p.frontmatter.tags?.includes(activeTag))
-    : posts
+  useEffect(() => {
+    setRenderedPosts(
+      activeCategory
+        ? posts.filter(p => p.frontmatter.category === activeCategory)
+        : activeTag
+        ? posts.filter(p => p.frontmatter.tags?.includes(activeTag))
+        : posts
+    )
+  }, [activeCategory, activeTag])
 
   const postsWithTags = posts.filter(post => post.frontmatter.tags)
   let postsGroubyTag: { [tag: string]: MarkdownRemark[] } = {}
@@ -64,7 +71,9 @@ export const CateogryPosts: FC<Props> = ({ posts }) => {
         <Styled.CategoryListItem>
           <Link
             to="/category"
-            className={!activeCategory && !activeTag ? "active" : ""}
+            className={
+              activeCategory === null && activeTag === null ? "active" : ""
+            }
           >
             모든글
           </Link>
