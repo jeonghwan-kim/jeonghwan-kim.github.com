@@ -1,6 +1,10 @@
-import styled from "styled-components"
 import { lighten } from "polished"
-import { Colors, SpaceUnit, Widths } from "../../styles/style-variables"
+import styled from "styled-components"
+import { Colors, SpaceUnit } from "../../styles/style-variables"
+
+export const Wrapper = styled.div`
+  padding: ${SpaceUnit()};
+`
 
 export const CategoryList = styled.ul`
   list-style: none;
@@ -9,57 +13,41 @@ export const CategoryList = styled.ul`
 `
 
 export const CategoryListItem = styled.li`
-  a,
-  label {
-    padding: ${SpaceUnit(2)} ${SpaceUnit(4)};
+  a {
+    padding: ${SpaceUnit()} ${SpaceUnit()};
     display: flex;
     align-items: center;
-  }
-  label {
-    color: ${Colors.Gray};
-    font-weight: 200;
-  }
-  a {
     text-decoration: none;
-    &::before {
-      content: "";
-      border-radius: 50%;
-      display: inline-block;
-      margin-left: ${SpaceUnit(-3)};
-      margin-right: ${SpaceUnit(3)};
-      position: absolute;
-      border: solid 0 ${Colors.Primary};
-      transition: border-width linear 0.1s;
-    }
+    border-radius: 6px;
+    font-size: 14px;
     &.active {
-      &::before {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-        height: ${SpaceUnit()};
-        margin-left: ${SpaceUnit(-4)};
-        margin-right: ${SpaceUnit()};
-        width: ${SpaceUnit(3)};
-        background-color: ${Colors.Primary};
-      }
-    }
-    &:not(.active):hover {
-      &::before {
-        border-width: 4px;
-        transition: border-width linear 0.1s;
-      }
+      background-color: ${Colors.Primary};
+      color: ${Colors.White};
     }
     &:hover {
-      background-color: ${lighten(0.4, Colors.Primary)};
-      color: ${Colors.Primary};
       cursor: pointer;
     }
   }
 `
 
-export const Wrapper = styled.div`
-  @media (min-width: ${Widths.Tablet}) {
-    padding-left: ${SpaceUnit(4)};
+export const CategoryListTitle = styled(CategoryListItem)`
+  color: ${Colors.Gray};
+  font-weight: 500;
+  font-size: 12px;
+  padding-left: 0;
+  margin-bottom: ${SpaceUnit()};
+`
+
+export const TagList = styled(CategoryList)`
+  margin-top: ${SpaceUnit(3)};
+`
+export const TagListTitle = styled(CategoryListTitle)``
+export const TagListItem = styled(CategoryListItem)`
+  display: inline-block;
+  a {
+    background-color: ${lighten(0.35, Colors.Gray)};
+    border-radius: 4px;
+    margin-right: ${SpaceUnit(0.5)};
+    margin-bottom: ${SpaceUnit(0.5)};
   }
 `

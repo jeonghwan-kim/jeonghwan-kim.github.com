@@ -1,4 +1,5 @@
 import { Link } from "gatsby"
+import _ from "lodash"
 import React, { FC } from "react"
 import { MarkdownRemark } from "../../../graphql-types"
 import { dateFormat } from "../../helpers/date"
@@ -15,51 +16,96 @@ const categoryMap = {
   think: "생각",
 }
 
+const getLinkHoverTitle = (name, count) =>
+  `${name} ${count.toLocaleString()}개 글`
+
 interface Props {
   posts: MarkdownRemark[]
 }
 
 export const CateogryPosts: FC<Props> = ({ posts }) => {
-  const category =
+  const activeCategory =
     typeof window !== "undefined"
       ? new URLSearchParams(window.location.search).get("key")
-      : ""
-  const renderedPosts = category
-    ? posts.filter(p => p.frontmatter.category === category)
+      : null
+
+  const activeTag =
+    typeof window !== "undefined"
+      ? new URLSearchParams(window.location.search).get("tag")
+      : null
+
+  const renderedPosts = activeCategory
+    ? posts.filter(p => p.frontmatter.category === activeCategory)
+    : activeTag
+    ? posts.filter(p => p.frontmatter.tags?.includes(activeTag))
     : posts
 
+  const postsWithTags = posts.filter(post => post.frontmatter.tags)
+  let postsGroubyTag: { [tag: string]: MarkdownRemark[] } = {}
+
+  postsWithTags.forEach(post => {
+    const tags = post.frontmatter.tags
+    tags.forEach(tag => {
+      postsGroubyTag[tag] = postsGroubyTag[tag] || []
+      postsGroubyTag[tag].push(post)
+    })
+  })
+
+  const postsSortByTagCount = _.orderBy(
+    Object.entries(postsGroubyTag).map(([tag, posts]) => ({ tag, posts })),
+    entry => entry.posts.length,
+    "desc"
+  )
+
   const aside = (
-    <Styled.CategoryList>
-      <Styled.CategoryListItem>
-        <label>글분류</label>
-      </Styled.CategoryListItem>
-      <Styled.CategoryListItem>
-        <Link to="/category" className={!category ? "active" : ""}>
-          모든글
-        </Link>
-      </Styled.CategoryListItem>
-      {Object.keys(categoryMap).map(c => (
-        <Styled.CategoryListItem key={c}>
+    <Styled.Wrapper>
+      <Styled.CategoryList>
+        <Styled.CategoryListTitle>글분류</Styled.CategoryListTitle>
+        <Styled.CategoryListItem>
           <Link
-            to={`/category?key=${c}`}
-            className={c === category ? "active" : ""}
+            to="/category"
+            className={!activeCategory && !activeTag ? "active" : ""}
           >
-            {categoryMap[c]}
+            모든글
           </Link>
         </Styled.CategoryListItem>
-      ))}
-    </Styled.CategoryList>
+        {Object.keys(categoryMap).map(c => (
+          <Styled.CategoryListItem key={c}>
+            <Link
+              to={`/category?key=${c}`}
+              className={c === activeCategory ? "active" : ""}
+            >
+              {categoryMap[c]}
+            </Link>
+          </Styled.CategoryListItem>
+        ))}
+      </Styled.CategoryList>
+      <Styled.TagList>
+        <Styled.TagListTitle>태그</Styled.TagListTitle>
+        {postsSortByTagCount.map(({ tag, posts }) => (
+          <Styled.TagListItem key={tag}>
+            <Link
+              to={`/category?tag=${tag}`}
+              className={tag === activeTag ? "active" : ""}
+              title={getLinkHoverTitle(tag, posts.length)}
+            >
+              #{tag}
+            </Link>
+          </Styled.TagListItem>
+        ))}
+      </Styled.TagList>
+    </Styled.Wrapper>
   )
 
   return (
     <TwoColumnLayout aside={aside}>
-      <SEO title={`분류: ${categoryMap[category] || "모든글"}`} />
+      <SEO title={`분류: ${categoryMap[activeCategory] || "모든글"}`} />
       <Styled.Wrapper>
         <Section
           title={
             <>
               <Icon type={IconType.Article} size={4} />
-              {categoryMap[category] || "모든글"}
+              {categoryMap[activeCategory] || "모든글"}
             </>
           }
         >

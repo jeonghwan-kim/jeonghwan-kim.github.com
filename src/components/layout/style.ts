@@ -3,9 +3,9 @@ import { Border, Widths } from "../../styles/style-variables"
 
 export const AsideLeft = styled.aside`
   align-self: flex-start;
-  min-width: 200px;
+  width: 240px;
   height: 100vh;
-  overflow-y: hidden;
+  overflow-y: scroll;
   border-right: ${Border()};
   position: sticky;
   top: 0px;
