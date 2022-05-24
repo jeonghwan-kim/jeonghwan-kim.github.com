@@ -1,7 +1,7 @@
 ---
 title: 함수형 프로그래머가 되고 싶다고? 파트6
 layout: post
-category: dev
+category: 개발
 slug: /etc/2017/01/16/so-you-want-to-be-a-functional-programmer-part-6.html
 date: 2017-01-16
 tags: [FP, 번역]

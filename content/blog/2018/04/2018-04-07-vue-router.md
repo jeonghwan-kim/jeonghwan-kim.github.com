@@ -1,7 +1,7 @@
 ---
 title: Vue-Router 살펴보기
 layout: post
-category: dev
+category: 개발
 slug: /2018/04/07/vue-router.html
 date: 2018-04-07
 tags: [vuejs]

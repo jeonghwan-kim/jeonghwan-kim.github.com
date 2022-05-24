@@ -3,7 +3,7 @@ title: "SimpleTest & php unit test"
 date: 2015-10-13T17:17:22+00:00
 layout: post
 slug: /simpletest-php-unit-test/
-category: dev
+category: 개발
 tags: [test]
 ---
 

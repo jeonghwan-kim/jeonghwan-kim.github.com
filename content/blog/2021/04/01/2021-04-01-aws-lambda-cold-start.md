@@ -3,7 +3,7 @@ slug: "/dev/2021/04/01/aws-lambda-cold-start.html"
 date: 2021-04-01
 title: AWS 람다 초기 응답 속도 개선하기
 layout: post
-category: dev
+category: 개발
 tags:
   - aws
 featuredImage: cold-start.jpeg

@@ -3,7 +3,7 @@ title: 꼬리에 꼬리를 무는 setTimeout()
 date: 2015-01-22T01:05:37+00:00
 layout: post
 slug: /꼬리에-꼬리를-무는-timeout/
-category: dev
+category: 개발
 tags: [JavaScript]
 ---
 

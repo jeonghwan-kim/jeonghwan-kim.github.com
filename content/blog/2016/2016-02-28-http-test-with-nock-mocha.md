@@ -1,7 +1,7 @@
 ---
 title: "Nock, Mocha로 HTTP 테스트하기"
 layout: post
-category: dev
+category: 개발
 tags: [nodejs, test]
 slug: /2016/02/28/http-test-with-nock-mocha.html
 date: 2016-02-28

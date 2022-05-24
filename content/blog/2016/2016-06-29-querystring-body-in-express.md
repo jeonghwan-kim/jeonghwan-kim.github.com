@@ -1,7 +1,7 @@
 ---
 title: "노드에서는 쿼리스트링 인코딩을 어떻게 처리할까?"
 layout: post
-category: dev
+category: 개발
 tags: [expressjs]
 slug: /2016/06/29/querystring-body-in-express.html
 date: 2016-06-29

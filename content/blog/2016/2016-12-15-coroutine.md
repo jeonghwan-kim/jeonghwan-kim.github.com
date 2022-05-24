@@ -1,7 +1,7 @@
 ---
 title: 제너레이터와 프라미스를 이용한 비동기 처리
 layout: post
-category: dev
+category: 개발
 tags: [JavaScript]
 slug: /2016/12/15/coroutine.html
 date: 2016-12-15

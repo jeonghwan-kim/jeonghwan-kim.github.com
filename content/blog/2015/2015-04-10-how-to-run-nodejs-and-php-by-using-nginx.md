@@ -3,7 +3,7 @@ title: nginx를 이용하여 nodejs와 php 어플리케이션 함께 구동하�
 date: 2015-04-10T10:04:00+00:00
 layout: post
 slug: /how-to-run-nodejs-and-php-by-using-nginx/
-category: dev
+category: 개발
 tags: [linux]
 ---
 

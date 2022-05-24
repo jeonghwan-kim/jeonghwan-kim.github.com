@@ -3,7 +3,7 @@ title: AngularJS, Passport로 인증구현
 date: 2015-01-17T12:34:54+00:00
 layout: post
 slug: /angularjs-passport로-인증구현/
-category: dev
+category: 개발
 tags: [angularjs, nodejs, authentication]
 ---
 

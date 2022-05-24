@@ -3,7 +3,7 @@ title: 프론트에서 잡지 못한 예외를 서버에 리포팅하는 방법
 date: 2015-05-05T23:45:45+00:00
 layout: post
 slug: /server-side-loggin-in-angular/
-category: dev
+category: 개발
 tags: [angularjs]
 ---
 

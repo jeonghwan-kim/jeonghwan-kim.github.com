@@ -3,7 +3,7 @@ slug: "/dev/2021/08/31/disqus-to-utterances.html"
 date: 2021-08-31
 title: "블로그 댓글 서비스 교체: Disqus → Utterances 데이터 이관 "
 layout: post
-category: dev
+category: 개발
 ---
 
 이전글 ([블로그 댓글 서비스 교체: Utterances](/dev/2021/08/26/utterances.html))에서 댓글 서비스를 교체했다.

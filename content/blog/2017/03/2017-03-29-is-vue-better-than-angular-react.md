@@ -1,7 +1,7 @@
 ---
 title: 과연 Vue.js가 앵귤러나 리엑트보다 좋을까?
 layout: post
-category: dev
+category: 개발
 slug: /vue/2017/03/29/is-vue-better-than-angular-react.html
 date: 2017-03-29
 tags: [vuejs, 번역]

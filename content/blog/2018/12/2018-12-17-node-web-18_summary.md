@@ -3,7 +3,7 @@ slug: "/series/2018/12/17/node-web-18_summary.html"
 date: 2018-12-17
 title: "[Node.js코드랩] 18. 마무리"
 layout: post
-category: series
+category: 연재물
 seriesId: series-2018-12-01-weplanet-codelab
 tags: [lecture]
 ---

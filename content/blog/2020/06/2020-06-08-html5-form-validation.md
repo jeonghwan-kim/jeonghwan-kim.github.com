@@ -3,7 +3,7 @@ slug: "/dev/2020/06/08/html5-form-validation.html"
 date: 2020-06-08
 title: "HTML5 폼 검증에 대해 정리해 보자"
 layout: post
-category: dev
+category: 개발
 tags: [html5]
 ---
 

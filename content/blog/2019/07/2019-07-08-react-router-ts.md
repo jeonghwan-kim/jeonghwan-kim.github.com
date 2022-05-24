@@ -3,7 +3,7 @@ slug: "/dev/2019/07/08/react-router-ts.html"
 date: 2019-07-08
 title: "리액트 라우터 사용하기 (타입스크립트 버전)"
 layout: post
-category: dev
+category: 개발
 tags: [react, TypeScript]
 ---
 

@@ -3,7 +3,7 @@ slug: "/dev/2021/10/29/return-to-intellij.html"
 date: 2021-10-29
 title: "최근에 발견한 인텔리제이 기능과 플러그인"
 layout: post
-category: dev
+category: 개발
 featuredImage: toast.jpg
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Ionic으로 Hello world 시작하기"
 layout: post
-category: dev
+category: 개발
 tags: [ionic]
 slug: /2016/08/03/ionic-hello-world.html
 date: 2016-08-03

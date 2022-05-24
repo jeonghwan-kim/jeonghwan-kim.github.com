@@ -3,7 +3,7 @@ slug: "/series/2018/12/12/node-web-12_get-posts-api.html"
 date: 2018-12-12
 title: "[Node.js코드랩] 12.포스트 조회 API"
 layout: post
-category: series
+category: 연재물
 seriesId: series-2018-12-01-weplanet-codelab
 tags: [lecture]
 ---

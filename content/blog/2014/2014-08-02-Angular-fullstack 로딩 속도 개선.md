@@ -3,7 +3,7 @@ title: Angular-fullstack 로딩 속도 개선
 date: 2014-08-02T08:33:03+00:00
 layout: post
 slug: /angular-fullstack-로딩-속도-개선/
-category: dev
+category: 개발
 tags: [angularjs]
 ---
 

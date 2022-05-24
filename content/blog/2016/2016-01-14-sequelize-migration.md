@@ -1,7 +1,7 @@
 ---
 title: Sequelize 마이그레이션
 date: 2016-01-14T09:21:17+00:00
-category: dev
+category: 개발
 layout: post
 slug: /sequelize-migration/
 tags:

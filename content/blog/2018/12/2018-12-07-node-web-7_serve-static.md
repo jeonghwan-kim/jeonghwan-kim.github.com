@@ -3,7 +3,7 @@ slug: "/series/2018/12/07/node-web-7_serve-static.html"
 date: 2018-12-07
 title: "[Node.js코드랩] 7.커스텀 모듈 serve-static"
 layout: post
-category: series
+category: 연재물
 tags: [lecture]
 seriesId: series-2018-12-01-weplanet-codelab
 ---

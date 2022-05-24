@@ -3,7 +3,7 @@ slug: "/dev/2019/07/15/react-redux-ts.html"
 date: 2019-07-15
 title: "리액트 리덕스 사용하기 (타입스크립트 버전)"
 layout: post
-category: dev
+category: 개발
 tags: [react, TypeScript]
 ---
 

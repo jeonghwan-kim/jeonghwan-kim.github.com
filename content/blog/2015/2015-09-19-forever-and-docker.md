@@ -3,7 +3,7 @@ title: Forever와 Docker
 date: 2015-09-19T14:12:03+00:00
 layout: post
 slug: /forever-and-docker/
-category: dev
+category: 개발
 tags: [docker]
 ---
 

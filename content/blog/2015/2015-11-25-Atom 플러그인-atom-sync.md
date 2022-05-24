@@ -3,7 +3,7 @@ title: "Atom 플러그인: atom-sync"
 date: 2015-11-25T20:48:34+00:00
 layout: post
 slug: /atom-플러그인-atom-sync/
-category: dev
+category: 개발
 tags: [atom]
 ---
 

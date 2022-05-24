@@ -3,7 +3,7 @@ slug: "/series/2018/12/10/node-web-10_logger.html"
 date: 2018-12-10
 title: "[Node.js코드랩] 10.커스텀 모듈 logger"
 layout: post
-category: series
+category: 연재물
 seriesId: series-2018-12-01-weplanet-codelab
 tags: [lecture]
 ---

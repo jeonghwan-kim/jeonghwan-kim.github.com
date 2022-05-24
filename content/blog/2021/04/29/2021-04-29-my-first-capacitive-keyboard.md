@@ -3,7 +3,7 @@ slug: "/think/2021/04/29/my-first-capacitive-keyboard.html"
 date: 2021-04-29
 title: "나의 첫 무접점 키보드 "
 layout: post
-category: think
+category: 에세이
 featuredImage: my-desk.jpg
 ---
 

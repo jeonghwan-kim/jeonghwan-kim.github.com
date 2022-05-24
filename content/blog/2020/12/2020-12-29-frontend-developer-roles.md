@@ -3,7 +3,7 @@ slug: "/think/2020/12/29/frontend-developer-roles.html"
 date: 2020-12-29
 title: "프론트엔드 개발자의 역할"
 layout: post
-category: think
+category: 에세이
 featuredImage: 2020-12-29-frontend-developer-roles.jpg
 ---
 

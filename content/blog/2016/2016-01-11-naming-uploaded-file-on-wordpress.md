@@ -1,6 +1,6 @@
 ---
 title: 워드프레스 파일 업로드 시 파일명 처리
-category: dev
+category: 개발
 date: 2016-01-11T21:15:30+00:00
 layout: post
 slug: /naming-uploaded-file-on-wordpress/

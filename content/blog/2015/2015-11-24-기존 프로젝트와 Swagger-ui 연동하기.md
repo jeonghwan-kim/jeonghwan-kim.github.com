@@ -3,7 +3,7 @@ title: 기존 프로젝트와 Swagger-ui 연동하기
 date: 2015-11-24T20:33:24+00:00
 layout: post
 slug: /기존-프로젝트와-swagger-ui-연동하기/
-category: dev
+category: 개발
 tags: [swagger]
 ---
 

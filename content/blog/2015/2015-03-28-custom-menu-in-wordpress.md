@@ -3,7 +3,7 @@ title: 워드프레스 커스텀 메뉴 추가하기
 date: 2015-03-28T15:43:26+00:00
 layout: post
 slug: /custom-menu-in-wordpress/
-category: dev
+category: 개발
 tags: [wordpress]
 ---
 

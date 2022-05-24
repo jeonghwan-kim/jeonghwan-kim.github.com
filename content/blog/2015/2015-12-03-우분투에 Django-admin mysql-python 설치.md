@@ -3,7 +3,7 @@ title: 우분투에 Django-admin, mysql-python 설치
 date: 2015-12-03T18:04:28+00:00
 layout: post
 slug: /우분투에-django-admin-mysql-python-설치/
-category: dev
+category: 개발
 tags: [python]
 ---
 

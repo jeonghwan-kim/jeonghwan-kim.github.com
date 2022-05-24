@@ -3,7 +3,7 @@ title: Angular Form
 date: 2015-01-09T19:02:17+00:00
 layout: post
 slug: /angular-form/
-category: dev
+category: 개발
 tags: [angularjs]
 ---
 

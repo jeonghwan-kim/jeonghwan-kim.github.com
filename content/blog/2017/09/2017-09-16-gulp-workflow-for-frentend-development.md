@@ -1,7 +1,7 @@
 ---
 title: 프론트엔드 개발을 위한 Gulp
 layout: post
-category: dev
+category: 개발
 slug: /tool/2017/09/16/gulp-workflow-for-frentend-development.html
 date: 2017-09-16
 tags: [gulp, 번역]

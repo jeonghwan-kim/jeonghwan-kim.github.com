@@ -3,7 +3,7 @@ title: mongodump 크론잡이 동작하지 않을 때
 date: 2015-12-07T20:55:16+00:00
 layout: post
 slug: /mongodump-is-not-working-on-cronjob/
-category: dev
+category: 개발
 tags: [Database]
 ---
 

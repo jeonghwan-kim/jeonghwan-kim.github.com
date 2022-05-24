@@ -3,7 +3,7 @@ slug: "/dev/2020/10/25/styled-components.html"
 date: 2020-10-25
 title: "styled-component로 리액트 컴포넌트 만들기"
 layout: post
-category: dev
+category: 개발
 tags: [react]
 ---
 

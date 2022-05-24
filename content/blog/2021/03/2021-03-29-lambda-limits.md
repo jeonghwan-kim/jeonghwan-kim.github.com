@@ -3,7 +3,7 @@ slug: "/dev/2021/03/29/lambda-limits.html"
 date: 2021-03-29
 title: AWS 람다 용량 관리
 layout: post
-category: dev
+category: 개발
 tags:
   - aws
 ---

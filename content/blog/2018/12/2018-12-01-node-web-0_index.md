@@ -3,7 +3,7 @@ slug: "/series/2018/12/01/node-web-0_index.html"
 date: 2018-12-01
 title: "🌳[Node.js 코드랩] 소개 및 목차"
 layout: post
-category: series
+category: 연재물
 tags: [lecture]
 ---
 

@@ -3,7 +3,7 @@ slug: "/dev/2020/08/15/react-helmet.html"
 date: 2020-08-15
 title: "react-helmet의 동작 방식"
 layout: post
-category: dev
+category: 개발
 tags: [react, gatsby, seo]
 ---
 

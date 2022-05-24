@@ -3,7 +3,7 @@ slug: "/dev/2021/08/09/testing-frontend.html"
 date: 2021-08-09
 title: 프론트엔드 테스트할 기회가 생겼다
 layout: post
-category: dev
+category: 개발
 tags: [test]
 ---
 

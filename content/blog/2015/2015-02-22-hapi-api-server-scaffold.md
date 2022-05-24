@@ -1,7 +1,7 @@
 ---
 title: Hapi Api 서버 스캐폴드
 date: 2015-02-22T12:00:26+00:00
-category: series
+category: 연재물
 seriesId: "series-2015-02-22-hapijs"
 slug: /hapi-api-server-scaffold/
 layout: post

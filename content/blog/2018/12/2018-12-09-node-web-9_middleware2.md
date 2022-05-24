@@ -3,7 +3,7 @@ slug: "/series/2018/12/09/node-web-9_middleware2.html"
 date: 2018-12-09
 title: "[Node.js코드랩] 9.미들웨어 활용"
 layout: post
-category: series
+category: 연재물
 seriesId: series-2018-12-01-weplanet-codelab
 tags: [lecture]
 ---

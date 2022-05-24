@@ -1,7 +1,7 @@
 ---
 title: Node.js Stream 당신이 알아야할 모든 것 2편
 layout: post
-category: dev
+category: 개발
 slug: /node/2017/08/07/node-stream-you-need-to-know-2.html
 date: 2017-08-07
 tags: [nodejs, 번역]

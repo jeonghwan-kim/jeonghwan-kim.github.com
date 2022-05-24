@@ -1,7 +1,7 @@
 ---
 title: "Jekyll 커스터마이징 1 - 코멘트와 페이지네이션"
 layout: post
-category: dev
+category: 개발
 tags: [jekyll]
 slug: /2016/02/07/jekyll-customizing.html
 date: 2016-02-07

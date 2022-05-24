@@ -3,7 +3,7 @@ title: 익스프레스 파일 업로드
 date: 2015-03-28T14:13:12+00:00
 layout: post
 slug: /fileupload-in-expressjs/
-category: dev
+category: 개발
 tags: [expressjs]
 ---
 

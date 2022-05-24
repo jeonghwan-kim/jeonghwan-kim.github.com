@@ -1,7 +1,7 @@
 ---
 title: 자바스크립트 this 바인딩 우선순위
 layout: post
-category: dev
+category: 개발
 slug: /2017/10/22/js-context-binding.html
 date: 2017-10-22
 tags: [JavaScript]

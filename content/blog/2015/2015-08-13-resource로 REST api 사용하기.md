@@ -3,7 +3,7 @@ title: "$resource로 REST api 사용하기"
 date: 2015-08-13T23:32:53+00:00
 layout: post
 slug: /resource로-rest-api-사용하기/
-category: dev
+category: 개발
 tags: [angularjs]
 ---
 

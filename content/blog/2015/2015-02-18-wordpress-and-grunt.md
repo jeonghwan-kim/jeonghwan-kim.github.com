@@ -3,7 +3,7 @@ title: 워드프레스에 Grunt 설정하기
 date: 2015-02-18T21:35:59+00:00
 layout: post
 slug: /wordpress-and-grunt/
-category: dev
+category: 개발
 tags: [grunt, wordpress]
 ---
 

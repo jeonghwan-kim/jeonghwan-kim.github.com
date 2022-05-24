@@ -1,7 +1,7 @@
 ---
 title: 토이프로젝트_독서노트
 layout: post
-category: dev
+category: 개발
 slug: /toy_project/2017/01/09/reading-book.html
 date: 2017-01-09
 tags: [toy-project]

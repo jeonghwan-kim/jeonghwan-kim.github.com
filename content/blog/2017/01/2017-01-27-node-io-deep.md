@@ -1,7 +1,7 @@
 ---
 title: 노드 개발자가 IO 작업을 시작하면 무슨일이 일어날까?
 layout: post
-category: dev
+category: 개발
 slug: /node/2017/01/27/node-io-deep.html
 date: 2017-01-27
 tags: [번역]

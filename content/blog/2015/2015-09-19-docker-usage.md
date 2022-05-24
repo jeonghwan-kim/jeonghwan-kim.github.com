@@ -3,7 +3,7 @@ title: 도커 활용기
 date: 2015-09-19T15:16:40+00:00
 layout: post
 slug: /docker-usage/
-category: dev
+category: 개발
 tags: [docker]
 ---
 

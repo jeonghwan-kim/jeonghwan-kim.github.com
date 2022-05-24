@@ -1,7 +1,7 @@
 ---
 title: Vue 글로벌 컴포넌트 테스트
 layout: post
-category: dev
+category: 개발
 slug: /vue/2017/04/19/vue-component-test.html
 date: 2017-04-19
 tags: [vuejs, test]

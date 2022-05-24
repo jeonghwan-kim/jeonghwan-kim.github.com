@@ -3,7 +3,7 @@ title: AngularJS 스터디 노트
 date: 2015-04-02T18:16:34+00:00
 layout: post
 slug: /angularjs-스터디-노트/
-category: dev
+category: 개발
 tags: [angularjs]
 ---
 

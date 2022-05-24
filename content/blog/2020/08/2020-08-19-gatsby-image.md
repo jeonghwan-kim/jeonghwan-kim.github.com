@@ -3,7 +3,7 @@ slug: "/dev/2020/08/19/gatsby-image.html"
 date: 2020-08-19
 title: "개츠비의 이미지 처리 방식"
 layout: post
-category: dev
+category: 개발
 tags: [image, gatsby, react]
 ---
 

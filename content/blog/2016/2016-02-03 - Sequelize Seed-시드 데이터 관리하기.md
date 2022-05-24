@@ -1,7 +1,7 @@
 ---
 title: "Sequelize Seed - 시드 데이터 관리하기"
 date: 2016-02-03T12:02:53+00:00
-category: dev
+category: 개발
 layout: post
 slug: /sequelize-seed-시드-데이터-관리하기/
 tags: [sequelize]

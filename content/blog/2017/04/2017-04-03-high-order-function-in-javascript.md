@@ -3,7 +3,7 @@ slug: /js/2017/04/03/high-order-function-in-javascript.html
 date: 2017-04-03
 title: 고차 함수
 layout: post
-category: series
+category: 연재물
 tags: [JavaScript, FP]
 featuredImage: "./functional-javascript-thumbnail.png"
 seriesId: "series-2017-04-22-functional"

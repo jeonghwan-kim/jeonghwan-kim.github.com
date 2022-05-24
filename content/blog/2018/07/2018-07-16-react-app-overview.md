@@ -1,6 +1,6 @@
 ---
 title: React로 만든 프로젝트 톺아보기
-category: dev
+category: 개발
 slug: /2018/07/16/react-app-overview.html
 date: 2018-07-16
 tags: [react]

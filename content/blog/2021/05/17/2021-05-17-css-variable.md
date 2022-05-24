@@ -3,7 +3,7 @@ slug: "/dev/2021/05/17/css-variable.html"
 date: 2021-05-17
 title: "CSS 변수와 웹사이트 테마"
 layout: post
-category: dev
+category: 개발
 featuredImage: dark-theme.png
 tags: [css]
 ---

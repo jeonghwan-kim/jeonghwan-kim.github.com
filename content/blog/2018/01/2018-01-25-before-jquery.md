@@ -1,7 +1,7 @@
 ---
 title: jQuery 보다 먼저 알았으면 좋았을 것들
 layout: post
-category: dev
+category: 개발
 slug: /2018/01/25/before-jquery.html
 date: 2018-01-25
 tags: [JavaScript, jquery]

@@ -3,7 +3,7 @@ slug: "/dev/2020/05/25/supertest.html"
 date: 2020-05-25
 title: "Node.js로 만든 API 테스트(supertest)"
 layout: post
-category: dev
+category: 개발
 tags: [nodejs, test]
 ---
 

@@ -3,7 +3,7 @@ slug: "/series/2018/12/02/node-web-2_http.html"
 date: 2018-12-02
 title: "[Node.js코드랩] 2.기본 모듈 http"
 layout: post
-category: series
+category: 연재물
 seriesId: series-2018-12-01-weplanet-codelab
 tags: [lecture]
 ---

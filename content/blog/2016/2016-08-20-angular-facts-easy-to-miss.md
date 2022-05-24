@@ -1,7 +1,7 @@
 ---
 title: "앵귤러 개발자가 놓치기 쉬운 10가지 사실들"
 layout: post
-category: dev
+category: 개발
 tags: [angularjs]
 slug: /2016/08/20/angular-facts-easy-to-miss.html
 date: 2016-08-20

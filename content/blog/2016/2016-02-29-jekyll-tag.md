@@ -1,7 +1,7 @@
 ---
 title: "Jekyll 커스터마이징 2 - 태그"
 layout: post
-category: dev
+category: 개발
 tags: [jekyll]
 slug: /2016/02/29/jekyll-tag.html
 date: 2016-02-29

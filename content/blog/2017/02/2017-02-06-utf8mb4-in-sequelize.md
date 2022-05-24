@@ -1,7 +1,7 @@
 ---
 title: 시퀄라이즈에서 이모티콘 저장하기
 layout: post
-category: dev
+category: 개발
 slug: /node/2017/02/06/utf8mb4-in-sequelize.html
 date: 2017-02-06
 tags: [sequelize]

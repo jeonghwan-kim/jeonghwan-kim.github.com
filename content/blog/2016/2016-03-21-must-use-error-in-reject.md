@@ -1,7 +1,7 @@
 ---
 title: "Promise.reject()에 에러 객체를 넘겨줘야하는 이유"
 layout: post
-category: dev
+category: 개발
 tags: [JavaScript]
 slug: /2016/03/21/must-use-error-in-reject.html
 date: 2016-03-21

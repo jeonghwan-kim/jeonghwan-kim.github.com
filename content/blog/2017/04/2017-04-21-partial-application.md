@@ -1,7 +1,7 @@
 ---
 title: 함수로 함수 만들기3 부분적용
 layout: post
-category: series
+category: 연재물
 seriesId: "series-2017-04-22-functional"
 slug: /js/2017/04/21/partial-application.html
 date: 2017-04-21

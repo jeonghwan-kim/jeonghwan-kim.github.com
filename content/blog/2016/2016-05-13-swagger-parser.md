@@ -1,7 +1,7 @@
 ---
 title: "스웨거 문서 문법 체크하기"
 layout: post
-category: dev
+category: 개발
 tags: [swagger]
 slug: /2016/05/13/swagger-parser.html
 date: 2016-05-13

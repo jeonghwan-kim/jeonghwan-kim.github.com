@@ -3,7 +3,7 @@ slug: "/dev/2021/08/26/utterances.html"
 date: 2021-08-26
 title: "블로그 댓글 서비스 교체: Utterances"
 layout: post
-category: dev
+category: 개발
 ---
 
 언제부터인가 블로그 하단에 광고가 붙기 시작했다.

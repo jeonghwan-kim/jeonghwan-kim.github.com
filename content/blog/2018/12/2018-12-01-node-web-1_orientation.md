@@ -3,7 +3,7 @@ slug: "/series/2018/12/01/node-web-1_orientation.html"
 date: 2018-12-01
 title: "[Node.js 코드랩] 1.오리엔테이션"
 layout: post
-category: series
+category: 연재물
 seriesId: series-2018-12-01-weplanet-codelab
 tags: [lecture]
 ---

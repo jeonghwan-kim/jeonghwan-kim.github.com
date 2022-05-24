@@ -1,7 +1,7 @@
 ---
 title: UI 컴포넌트 확장
 layout: post
-category: dev
+category: 개발
 slug: /2018/05/12/extended-component.html
 date: 2018-05-12
 tags: [vuejs]

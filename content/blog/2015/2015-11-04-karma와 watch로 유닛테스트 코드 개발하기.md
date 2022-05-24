@@ -3,7 +3,7 @@ title: karma와 watch로 유닛테스트 코드 개발하기
 date: 2015-11-04T10:49:41+00:00
 layout: post
 slug: /karma와-watch로-유닛테스트-코드-개발하기/
-category: dev
+category: 개발
 tags: [test]
 ---
 

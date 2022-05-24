@@ -3,7 +3,7 @@ title: "$$postDigest()와 $timeout()"
 date: 2015-08-12T00:35:20+00:00
 layout: post
 slug: /postdigest와-timeout/
-category: dev
+category: 개발
 tags: [angularjs]
 ---
 

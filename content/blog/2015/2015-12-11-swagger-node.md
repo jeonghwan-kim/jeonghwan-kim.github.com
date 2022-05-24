@@ -3,7 +3,7 @@ title: Swagger-node로 express 시작하기
 date: 2015-12-11T11:40:31+00:00
 layout: post
 slug: /swagger-node/
-category: dev
+category: 개발
 tags: [expressjs, swagger]
 ---
 

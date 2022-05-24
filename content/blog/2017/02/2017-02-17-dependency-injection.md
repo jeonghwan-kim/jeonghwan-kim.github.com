@@ -1,7 +1,7 @@
 ---
 title: 의존성 주입
 layout: post
-category: dev
+category: 개발
 slug: /js/2017/02/17/dependency-injection.html
 date: 2017-02-17
 tags: [design-pattern]

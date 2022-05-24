@@ -1,7 +1,7 @@
 ---
 title: morgan-helper
 date: 2016-02-01T08:29:51+00:00
-category: dev
+category: 개발
 layout: post
 slug: /morgan-helper/
 tags:

@@ -3,7 +3,7 @@ title: 워드프레스 자식 테마 만들기
 date: 2015-03-28T15:07:50+00:00
 layout: post
 slug: /how-to-build-wordpress-child-theme/
-category: dev
+category: 개발
 tags: [wordpress]
 ---
 

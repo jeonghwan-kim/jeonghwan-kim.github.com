@@ -1,7 +1,7 @@
 ---
 title: "Angular2 Quickstart에서 사용하는 라이브러리는 왜 이렇게 많을까?"
 layout: post
-category: dev
+category: 개발
 tags: [angularjs]
 slug: /2016/08/23/about-angular2-quickstart-libraries.html
 date: 2016-08-23

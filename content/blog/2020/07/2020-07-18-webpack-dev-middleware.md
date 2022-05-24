@@ -3,7 +3,7 @@ slug: "/dev/2020/07/18/webpack-dev-middleware.html"
 date: 2020-07-18
 title: "웹팩 개발 서버로 부족하다면 webpack-dev-middleware를 사용해 보자"
 layout: post
-category: dev
+category: 개발
 tags: [webpack]
 ---
 

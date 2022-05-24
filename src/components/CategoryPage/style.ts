@@ -27,6 +27,12 @@ export const CategoryListItem = styled.li`
     &:hover {
       cursor: pointer;
     }
+    label {
+      flex: 1;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 `
 

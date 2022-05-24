@@ -3,7 +3,7 @@ title: 워드프레스 플러그인 정리
 date: 2015-03-12T20:32:16+00:00
 layout: post
 slug: /plugins-in-wordpress/
-category: dev
+category: 개발
 tags: [wordpress]
 ---
 

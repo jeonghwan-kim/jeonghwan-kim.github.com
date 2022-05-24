@@ -1,7 +1,7 @@
 ---
 title: 토이프로젝트_라이프트래커
 layout: post
-category: dev
+category: 개발
 slug: /toy_project/2017/01/17/life-tracker.html
 date: 2017-01-17
 tags: [toy-project]

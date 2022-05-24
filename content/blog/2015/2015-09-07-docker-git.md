@@ -3,7 +3,7 @@ title: Docker + Git
 date: 2015-09-07T10:55:26+00:00
 layout: post
 slug: /docker-git/
-category: dev
+category: 개발
 tags: [docker, git]
 ---
 

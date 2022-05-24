@@ -1,6 +1,6 @@
 ---
 title: boot2docker 업데이트 (v1.9)
-category: dev
+category: 개발
 date: 2016-01-03T18:26:20+00:00
 layout: post
 slug: /boot2docker-업데이트-v1-9/

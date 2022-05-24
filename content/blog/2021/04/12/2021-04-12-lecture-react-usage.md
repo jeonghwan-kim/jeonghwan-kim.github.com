@@ -3,7 +3,7 @@ slug: "/series/2021/04/12/lecture-react-usage.html"
 date: 2021-04-12
 title: "만들면서 학습하는 리액트: 사용편1"
 layout: post
-category: series
+category: 연재물
 seriesId: series-2021-04-24-inflean-react
 videoId: video-2021-05-04-inflearn-react
 tags: [react]

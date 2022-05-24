@@ -3,7 +3,7 @@ slug: "/dev/2020/04/30/nodemon-EADDRINUSE.html"
 date: 2020-04-30
 title: "노드몬(nodemon) 사용시 포트 충돌 이슈"
 layout: post
-category: dev
+category: 개발
 tags: [nodemon]
 ---
 

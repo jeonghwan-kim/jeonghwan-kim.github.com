@@ -1,7 +1,7 @@
 ---
 title: "서울에서 Elastic Beanstalk 사용하기"
 layout: post
-category: dev
+category: 개발
 tags:
   - aws
 slug: /2016/02/20/beanstalk-in-seoul.html

@@ -3,7 +3,7 @@ slug: "/think/2020/11/01/work-density.html"
 date: 2020-11-01
 title: "업무 밀도"
 layout: post
-category: think
+category: 에세이
 ---
 
 며칠 전 사무실에서 퇴근길 인사를 주고받으며 "업무 밀도가 높다"는 피드백을 받았다.

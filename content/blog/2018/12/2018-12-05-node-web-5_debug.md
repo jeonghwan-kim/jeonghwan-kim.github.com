@@ -4,7 +4,7 @@ date: 2018-12-05
 title: "[Node.js코드랩] 5.커스텀 모듈 Debug"
 layout: post
 seriesId: series-2018-12-01-weplanet-codelab
-category: series
+category: 연재물
 ---
 
 ## 🌳목표

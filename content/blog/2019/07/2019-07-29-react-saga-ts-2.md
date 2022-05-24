@@ -3,7 +3,7 @@ slug: "/dev/2019/07/29/react-saga-ts-2.html"
 date: 2019-07-29
 title: "리덕스 사가 사용하기 (타입스크립트 버전) - 2편"
 layout: post
-category: dev
+category: 개발
 tags: [react, TypeScript]
 ---
 

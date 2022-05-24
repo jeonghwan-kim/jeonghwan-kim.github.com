@@ -1,14 +1,5 @@
-import { graphql, PageProps } from "gatsby"
-import React, { FC } from "react"
-import { Query } from "../../../graphql-types"
-import { CategoryPosts } from "../../components/Category"
-
-const CategoryPage: FC<PageProps<Query>> = p => (
-  <CategoryPosts
-    location={p.location}
-    posts={p.data.allMarkdownRemark.edges.map(edge => edge.node)}
-  />
-)
+import { graphql } from "gatsby"
+import CategoryPage from "../../components/CategoryPage"
 
 export default CategoryPage
 

@@ -1,7 +1,7 @@
 ---
 title: "Yeoman 제너레이터 만들기"
 layout: post
-category: dev
+category: 개발
 tags: [yeoman]
 slug: /2016/10/13/how-to-make-yeoman-generator.html
 date: 2016-10-13

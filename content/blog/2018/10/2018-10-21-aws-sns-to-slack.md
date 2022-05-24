@@ -1,7 +1,7 @@
 ---
 title: AWS를 슬랙으로 모니터링
 layout: post
-category: dev
+category: 개발
 slug: /2018/10/21/aws-sns-to-slack.html
 date: 2018-10-21
 tags: [aws, slack]

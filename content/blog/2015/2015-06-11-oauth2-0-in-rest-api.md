@@ -3,7 +3,7 @@ title: REST api에 OAuth2.0 구현
 date: 2015-06-11T15:31:20+00:00
 layout: post
 slug: /oauth2-0-in-rest-api/
-category: dev
+category: 개발
 tags: [authentication]
 ---
 

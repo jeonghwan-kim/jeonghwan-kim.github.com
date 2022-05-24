@@ -3,7 +3,7 @@ slug: "/series/2018/12/08/node-web-8_middleware.html"
 date: 2018-12-08
 title: "[Node.js코드랩] 8.미들웨어"
 layout: post
-category: series
+category: 연재물
 seriesId: series-2018-12-01-weplanet-codelab
 tags: [lecture]
 ---

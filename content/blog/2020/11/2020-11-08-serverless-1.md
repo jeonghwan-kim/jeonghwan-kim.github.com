@@ -3,7 +3,7 @@ slug: "/dev/2020/11/08/serverless-1.html"
 date: 2020-11-08
 title: "서버리스 웹 애플리케이션 만들기"
 layout: post
-category: dev
+category: 개발
 tags: [aws]
 ---
 

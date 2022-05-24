@@ -3,7 +3,7 @@ slug: "/dev/2019/02/07/go-net-http.html"
 date: 2019-02-07
 title: "Go net/http 패키지"
 layout: post
-category: dev
+category: 개발
 tags: [go]
 ---
 

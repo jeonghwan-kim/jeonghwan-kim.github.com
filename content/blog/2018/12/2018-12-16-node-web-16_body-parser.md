@@ -3,7 +3,7 @@ slug: "/series/2018/12/16/node-web-16_body-parser.html"
 date: 2018-12-16
 title: "[Node.js코드랩] 16. body-parser"
 layout: post
-category: series
+category: 연재물
 seriesId: series-2018-12-01-weplanet-codelab
 tags: [lecture]
 ---

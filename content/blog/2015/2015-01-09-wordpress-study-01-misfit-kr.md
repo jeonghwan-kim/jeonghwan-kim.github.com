@@ -3,7 +3,7 @@ title: "WordPress study 01 & misfit.kr"
 date: 2015-01-09T21:52:58+00:00
 layout: post
 slug: /wordpress-study-01-misfit-kr/
-category: dev
+category: 개발
 tags: [wordpress]
 ---
 

@@ -3,7 +3,7 @@ title: 워드프레스와 제이쿼리 등
 date: 2015-03-11T00:16:00+00:00
 layout: post
 slug: /wordpress-and-jquery/
-category: dev
+category: 개발
 tags: [jquery, wordpress]
 ---
 

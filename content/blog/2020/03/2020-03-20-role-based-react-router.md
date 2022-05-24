@@ -3,7 +3,7 @@ slug: "/dev/2020/03/20/role-based-react-router.html"
 date: 2020-03-20
 title: 리액트 라우터를 활용한 권한별 라우팅 제어
 layout: post
-category: dev
+category: 개발
 tags: [react]
 ---
 

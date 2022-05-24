@@ -3,7 +3,7 @@ slug: "/series/2018/12/03/node-web-3_refactoring.html"
 date: 2018-12-03
 title: "[Node.js코드랩] 3.리팩토링"
 layout: post
-category: series
+category: 연재물
 seriesId: series-2018-12-01-weplanet-codelab
 tags: [lecture]
 ---

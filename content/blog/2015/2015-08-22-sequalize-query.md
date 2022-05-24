@@ -3,7 +3,7 @@ title: sequalize 쿼리
 date: 2015-08-22T15:22:13+00:00
 layout: post
 slug: /sequalize-쿼리/
-category: dev
+category: 개발
 tags: [sequelize]
 videoId: "video-inflean-nodejs"
 ---

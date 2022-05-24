@@ -2,7 +2,7 @@
 slug: "/series/2018/12/06/node-web-6_static-files.html"
 date: 2018-12-06
 title: "[Node.js코드랩] 6.정적 파일"
-category: series
+category: 연재물
 seriesId: series-2018-12-01-weplanet-codelab
 ---
 

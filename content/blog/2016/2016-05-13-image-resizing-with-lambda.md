@@ -1,7 +1,7 @@
 ---
 title: "람다를 이용해 이미지 리사이징 서버 만들기"
 layout: post
-category: dev
+category: 개발
 tags: [aws]
 slug: /2016/05/13/image-resizing-with-lambda.html
 date: 2016-05-13

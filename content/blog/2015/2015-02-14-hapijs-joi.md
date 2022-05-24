@@ -3,7 +3,7 @@ title: Hapi 파라매터 검증, Joi
 date: 2015-02-14T17:43:54+00:00
 layout: post
 slug: /hapijs-joi/
-category: series
+category: 연재물
 seriesId: "series-2015-02-22-hapijs"
 tags: [hapijs]
 ---

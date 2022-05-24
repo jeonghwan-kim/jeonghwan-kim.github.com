@@ -3,7 +3,7 @@ slug: "/dev/2020/04/18/interface-to-class.html"
 date: 2020-04-18
 title: "인터페이스만 사용하다가 클래스를 다시 보았다"
 layout: post
-category: dev
+category: 개발
 tags: [TypeScript]
 ---
 

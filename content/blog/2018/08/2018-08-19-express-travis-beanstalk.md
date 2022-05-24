@@ -3,7 +3,7 @@ slug: /2018/08/19/express-travis-beanstalk.html
 date: 2018-08-19
 title: 리액트, 노드 백엔드 통합 후 CI 연동하기
 layout: post
-category: dev
+category: 개발
 tags: [react, travis, expressjs, aws]
 ---
 

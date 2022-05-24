@@ -1,7 +1,7 @@
 ---
 title: Vuex, Vue-router, Axios를 이용한 SPA 인증 구현
 layout: post
-category: dev
+category: 개발
 slug: /2018/03/26/vue-authentication.html
 date: 2018-03-26
 tags: [vuejs]

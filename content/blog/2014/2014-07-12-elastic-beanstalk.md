@@ -3,7 +3,7 @@ title: Elastic Beanstalk
 date: 2014-07-12T08:18:53+00:00
 layout: post
 slug: /elastic-beanstalk/
-category: dev
+category: 개발
 tags: [aws]
 ---
 

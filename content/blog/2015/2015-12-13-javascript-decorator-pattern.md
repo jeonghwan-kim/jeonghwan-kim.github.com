@@ -3,7 +3,7 @@ title: Javascript Decorator Pattern
 date: 2015-12-13T08:20:53+00:00
 layout: post
 slug: /javascript-decorator-pattern/
-category: dev
+category: 개발
 tags: [design-pattern]
 ---
 

@@ -3,7 +3,7 @@ slug: "/dev/2021/03/18/type-guard.html"
 date: 2021-03-18
 title: 유니온 타입과 타입 가드
 layout: post
-category: dev
+category: 개발
 tags: [TypeScript]
 ---
 

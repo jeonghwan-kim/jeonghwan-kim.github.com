@@ -3,7 +3,7 @@ slug: "/dev/2020/07/06/sequelize-model.html"
 date: 2020-07-06
 title: "시퀄라이즈 Model 클래스 활용하기"
 layout: post
-category: dev
+category: 개발
 tags: [sequelize]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Sequelize Transaction 사용할때 주의할 점"
 layout: post
-category: dev
+category: 개발
 tags: [sequelize]
 slug: /2016/07/13/sequelize-transaction.html
 date: 2016-07-13

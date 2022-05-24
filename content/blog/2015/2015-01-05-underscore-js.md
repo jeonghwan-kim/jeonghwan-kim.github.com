@@ -3,7 +3,7 @@ title: underscore.js
 date: 2015-01-05T22:16:09+00:00
 layout: post
 slug: /underscore-js/
-category: dev
+category: 개발
 tags: [JavaScript]
 ---
 

@@ -3,7 +3,7 @@ slug: "/dev/2020/01/28/component-design.html"
 date: 2020-01-28
 title: 컴포넌트의 역할 분리
 layout: post
-category: dev
+category: 개발
 tags: [react]
 ---
 

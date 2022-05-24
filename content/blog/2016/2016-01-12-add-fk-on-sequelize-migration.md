@@ -1,7 +1,7 @@
 ---
 title: Sequelize로 마이그레이션 시 외래키 추가하기
 date: 2016-01-12T22:17:40+00:00
-category: dev
+category: 개발
 layout: post
 slug: /add-fk-on-sequelize-migration/
 tags:

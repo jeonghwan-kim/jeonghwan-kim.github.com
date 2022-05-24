@@ -1,7 +1,7 @@
 ---
 title: "워드프레스에서 지킬로 블로그 이동"
 layout: post
-category: dev
+category: 개발
 tags: [wordpress, jekyll]
 slug: /2016/02/07/from-wordpress-to-jekyll.html
 date: 2016-02-07

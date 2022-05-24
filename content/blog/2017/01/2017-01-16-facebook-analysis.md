@@ -1,7 +1,7 @@
 ---
 title: 토이프로젝트_페이스북 분석기
 layout: post
-category: dev
+category: 개발
 slug: /toy_project/2017/01/16/facebook-analysis.html
 date: 2017-01-16
 tags: [toy-project]

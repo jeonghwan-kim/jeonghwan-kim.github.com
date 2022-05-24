@@ -3,7 +3,7 @@ title: Hapi 로깅, Good
 date: 2015-02-16T10:23:33+00:00
 layout: post
 slug: /hapi-logging-good/
-category: series
+category: 연재물
 seriesId: "series-2015-02-22-hapijs"
 tags: [hapijs]
 ---

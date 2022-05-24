@@ -3,7 +3,7 @@ slug: "/series/2020/01/02/frontend-dev-env-webpack-intermediate.html"
 date: 2020-01-02
 title: "프론트엔드 개발환경의 이해: 웹팩(심화)"
 layout: post
-category: series
+category: 연재물
 tags: [webpack]
 seriesId: "series-2020-01-02-inflean-frontend-dev-env"
 videoId: "video-inflearn-frontend-dev-env"

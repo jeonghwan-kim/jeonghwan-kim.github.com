@@ -3,7 +3,7 @@ slug: "/dev/2021/03/08/babel-typescript.html"
 date: 2021-03-08
 title: babel-loader와 ts-loader의 빌드 결과가 다른 현상
 layout: post
-category: dev
+category: 개발
 tags: [babel]
 ---
 

@@ -3,7 +3,7 @@ slug: "/series/2018/12/11/node-web-11_router-use.html"
 date: 2018-12-11
 title: "[Node.js코드랩] 11.라우터 use"
 layout: post
-category: series
+category: 연재물
 seriesId: series-2018-12-01-weplanet-codelab
 tags: [lecture]
 ---

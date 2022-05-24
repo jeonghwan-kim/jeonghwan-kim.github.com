@@ -3,7 +3,7 @@ title: Hapi 시작하기
 date: 2015-02-14T16:15:06+00:00
 layout: post
 slug: /start-with-hapi/
-category: series
+category: 연재물
 seriesId: "series-2015-02-22-hapijs"
 tags: [hapijs]
 ---

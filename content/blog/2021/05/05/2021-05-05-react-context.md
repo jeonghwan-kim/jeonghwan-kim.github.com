@@ -3,7 +3,7 @@ slug: "/dev/2021/05/05/react-context.html"
 date: 2021-05-05
 title: "리액트 컨텍스트"
 layout: post
-category: dev
+category: 개발
 featuredImage: drill.jpg
 tags: [react]
 ---

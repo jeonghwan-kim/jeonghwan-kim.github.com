@@ -3,7 +3,7 @@ slug: "/series/2018/12/04/node-web-4_application.html"
 date: 2018-12-04
 title: "[Node.js코드랩] 4.어플리케이션"
 layout: post
-category: series
+category: 연재물
 seriesId: series-2018-12-01-weplanet-codelab
 tags: [lecture]
 ---

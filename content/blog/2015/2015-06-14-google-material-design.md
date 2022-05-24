@@ -3,7 +3,7 @@ title: Google Material Design
 date: 2015-06-14T15:20:29+00:00
 layout: post
 slug: /google-material-design/
-category: dev
+category: 개발
 tags: [css]
 ---
 

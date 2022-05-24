@@ -3,7 +3,7 @@ slug: "/dev/2020/03/24/circular-dependancy.html"
 date: 2020-03-24
 title: 순환 참조
 layout: post
-category: dev
+category: 개발
 tags: [JavaScript]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 익스프레스 만들기 Day 3
 layout: post
-category: series
+category: 연재물
 seriesId: "series-2017-10-02-expressjs"
 slug: /2017/10/06/diy-express-day3.html
 date: 2017-10-06

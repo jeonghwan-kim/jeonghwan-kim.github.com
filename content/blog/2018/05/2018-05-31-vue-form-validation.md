@@ -1,7 +1,7 @@
 ---
 title: VueJS 폼 검증
 layout: post
-category: dev
+category: 개발
 slug: /2018/05/31/vue-form-validation.html
 date: 2018-05-31
 tags: [vuejs]

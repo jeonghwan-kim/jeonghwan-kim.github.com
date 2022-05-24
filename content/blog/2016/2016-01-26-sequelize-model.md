@@ -1,7 +1,7 @@
 ---
 title: Sequelize Modeling
 date: 2016-01-26T23:27:50+00:00
-category: dev
+category: 개발
 layout: post
 slug: /sequelize-model/
 tags:

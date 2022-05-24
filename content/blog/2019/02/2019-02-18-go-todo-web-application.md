@@ -3,7 +3,7 @@ slug: "/dev/2019/02/18/go-todo-web-application.html"
 date: 2019-02-18
 title: "Go로 투두 웹 어플리케이션 만들기"
 layout: post
-category: dev
+category: 개발
 tags: [go]
 ---
 

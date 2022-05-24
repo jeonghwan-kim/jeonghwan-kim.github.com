@@ -3,7 +3,7 @@ slug: "/series/2019/12/10/frontend-dev-env-webpack-basic.html"
 date: 2019-12-10
 title: "프론트엔드 개발환경의 이해: 웹팩(기본)"
 layout: post
-category: series
+category: 연재물
 tags: [webpack]
 seriesId: "series-2020-01-02-inflean-frontend-dev-env"
 videoId: "video-inflearn-frontend-dev-env"

@@ -3,7 +3,7 @@ title: $resource와 service
 date: 2015-01-22T01:13:07+00:00
 layout: post
 slug: /resource와-service/
-category: dev
+category: 개발
 tags: [angularjs]
 ---
 

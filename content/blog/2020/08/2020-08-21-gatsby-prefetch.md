@@ -3,7 +3,7 @@ slug: "/dev/2020/08/21/gatsby-prefetch.html"
 date: 2020-08-21
 title: "개츠비 프리로딩과 프리패치"
 layout: post
-category: dev
+category: 개발
 tags: [gatsby, prefetch, react]
 ---
 

@@ -3,7 +3,7 @@ title: grunt open
 date: 2015-08-10T09:38:30+00:00
 layout: post
 slug: /grunt-open/
-category: dev
+category: 개발
 tags: [grunt]
 ---
 

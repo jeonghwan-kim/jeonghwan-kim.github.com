@@ -3,7 +3,7 @@ title: git push 이벤트를 slack 채널로 보내기
 date: 2015-10-01T19:59:03+00:00
 layout: post
 slug: /git-push-이벤트를-slack-채널로-보내기/
-category: dev
+category: 개발
 tags: [git, slack]
 ---
 

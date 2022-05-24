@@ -3,7 +3,7 @@ title: passport-google-oauth 구글 인증 모듈
 date: 2015-07-23T21:50:03+00:00
 layout: post
 slug: /passport-google-oauth-구글-인증-모듈/
-category: dev
+category: 개발
 tags: [authentication]
 ---
 

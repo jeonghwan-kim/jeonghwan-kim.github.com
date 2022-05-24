@@ -3,7 +3,7 @@ title: ng-plualize 단수, 복수형 처리
 date: 2015-12-21T09:56:48+00:00
 layout: post
 slug: /ng-plualize-단수-복수형-처리/
-category: dev
+category: 개발
 tags: [angularjs]
 ---
 
