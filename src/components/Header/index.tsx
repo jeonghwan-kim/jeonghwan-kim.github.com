@@ -28,10 +28,6 @@ const Header: React.FC<HeaderProps> = ({ noBorder }) => {
             <Icon type={IconType.Video} />
             <span>VIDEOS</span>
           </Nav>
-          <Nav to="/tags/">
-            <Icon type={IconType.Tag} />
-            <span>TAGS</span>
-          </Nav>
         </Styled.NavList>
         <Styled.Contacts>
           <Nav to="/feed.xml">
