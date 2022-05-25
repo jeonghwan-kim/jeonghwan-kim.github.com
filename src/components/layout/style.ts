@@ -5,7 +5,7 @@ export const AsideLeft = styled.aside`
   align-self: flex-start;
   width: 240px;
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-right: ${Border()};
   position: sticky;
   top: 0px;
