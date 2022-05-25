@@ -11,7 +11,7 @@ type CategoryPageAsideProps = PageProps<Query> & {
   activeTag: string
 }
 
-const CategoryPageAside: FC<CategoryPageAsideProps> = props => {
+const PostsPageAside: FC<CategoryPageAsideProps> = props => {
   return (
     <Styled.Wrapper>
       <CategoryList {...props} />
@@ -19,4 +19,4 @@ const CategoryPageAside: FC<CategoryPageAsideProps> = props => {
     </Styled.Wrapper>
   )
 }
-export default CategoryPageAside
+export default PostsPageAside

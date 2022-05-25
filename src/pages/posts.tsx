@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
-import CategoryPage from "../../components/CategoryPage"
+import PostsPage from "../components/PostsPage"
 
-export default CategoryPage
+export default PostsPage
 
 export const pageQuery = graphql`
   {

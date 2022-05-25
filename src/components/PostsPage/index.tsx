@@ -7,12 +7,13 @@ import { TwoColumnLayout } from "../layout"
 import PostList from "../PostList"
 import Section from "../Section"
 import SEO from "../SEO"
-import CategoryPageAside from "./CategoryPageAside"
+import PostsPageAside from "./PostsPageAside"
 import { categoryMap } from "./helpers"
 import * as Styled from "./style"
 
-const CategoryPage: FC<PageProps<Query>> = props => {
+const PostsPage: FC<PageProps<Query>> = props => {
   const { data, location } = props
+
   const posts = data.allMarkdownRemark.edges.map(edge => edge.node)
 
   const [renderedPosts, setRenderedPosts] = useState([])
@@ -39,7 +40,7 @@ const CategoryPage: FC<PageProps<Query>> = props => {
   return (
     <TwoColumnLayout
       aside={
-        <CategoryPageAside
+        <PostsPageAside
           {...props}
           activeCategory={activeCategory}
           activeTag={activeTag}
@@ -78,4 +79,4 @@ const CategoryPage: FC<PageProps<Query>> = props => {
   )
 }
 
-export default CategoryPage
+export default PostsPage

@@ -40,7 +40,7 @@ const CategoryList: FC<CategoryListProps> = ({
       <Styled.CategoryListTitle>글분류</Styled.CategoryListTitle>
       <Styled.CategoryListItem>
         <Link
-          to="/category"
+          to="/posts/"
           className={
             activeCategory === null && activeTag === null ? "active" : ""
           }
@@ -52,7 +52,7 @@ const CategoryList: FC<CategoryListProps> = ({
       {postsSortByCategoryCount.map(({ category, posts }) => (
         <Styled.CategoryListItem key={category}>
           <Link
-            to={`/category?key=${encodeURIComponent(category)}`}
+            to={`/posts/?key=${encodeURIComponent(category)}`}
             className={category === activeCategory ? "active" : ""}
             title={getLinkHoverTitle(category, posts.length)}
           >

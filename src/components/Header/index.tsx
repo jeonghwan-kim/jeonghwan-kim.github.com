@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ noBorder }) => {
           </Styled.SiteLogo>
         </Styled.SiteTitle>
         <Styled.NavList>
-          <Nav to="/category/">
+          <Nav to="/posts/">
             <Icon type={IconType.Article} />
             <span>POSTS</span>
           </Nav>
