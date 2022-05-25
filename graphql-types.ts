@@ -236,8 +236,6 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars["Date"]>
   siteMetadata?: Maybe<SiteSiteMetadata>
-  port?: Maybe<Scalars["Int"]>
-  host?: Maybe<Scalars["String"]>
   polyfill?: Maybe<Scalars["Boolean"]>
   pathPrefix?: Maybe<Scalars["String"]>
   jsxRuntime?: Maybe<Scalars["String"]>
@@ -795,8 +793,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>
-  port?: Maybe<IntQueryOperatorInput>
-  host?: Maybe<StringQueryOperatorInput>
   polyfill?: Maybe<BooleanQueryOperatorInput>
   pathPrefix?: Maybe<StringQueryOperatorInput>
   jsxRuntime?: Maybe<StringQueryOperatorInput>
@@ -2066,8 +2062,6 @@ export type SiteFieldsEnum =
   | "siteMetadata___social___email"
   | "siteMetadata___social___twitterUsername"
   | "siteMetadata___social___githubUsername"
-  | "port"
-  | "host"
   | "polyfill"
   | "pathPrefix"
   | "jsxRuntime"
@@ -2198,8 +2192,6 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>
-  port?: Maybe<IntQueryOperatorInput>
-  host?: Maybe<StringQueryOperatorInput>
   polyfill?: Maybe<BooleanQueryOperatorInput>
   pathPrefix?: Maybe<StringQueryOperatorInput>
   jsxRuntime?: Maybe<StringQueryOperatorInput>
@@ -3902,28 +3894,6 @@ export type Unnamed_2_Query = {
             slug?: string | null | undefined
             date?: any | null | undefined
             title?: string | null | undefined
-          }
-        | null
-        | undefined
-    }>
-  }
-}
-
-export type Unnamed_3_QueryVariables = Exact<{ [key: string]: never }>
-
-export type Unnamed_3_Query = {
-  site?:
-    | { siteMetadata?: { url?: string | null | undefined } | null | undefined }
-    | null
-    | undefined
-  allMarkdownRemark: {
-    nodes: Array<{
-      frontmatter?:
-        | {
-            slug?: string | null | undefined
-            tags?: Array<string | null | undefined> | null | undefined
-            title?: string | null | undefined
-            category?: string | null | undefined
           }
         | null
         | undefined
