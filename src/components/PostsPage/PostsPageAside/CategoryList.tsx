@@ -1,20 +1,19 @@
 import { Link, PageProps } from "gatsby"
 import _ from "lodash"
 import React, { FC } from "react"
-import { MarkdownRemark, Query } from "../../../../graphql-types"
+import {
+  MarkdownRemark,
+  MarkdownRemarkFrontmatterFilterInput,
+  Query,
+} from "../../../../graphql-types"
 import { getLinkHoverTitle } from "../helpers"
 import * as Styled from "../style"
 
 type CategoryListProps = PageProps<Query> & {
-  activeCategory: string
-  activeTag: string
+  activeCategory?: string
 }
 
-const CategoryList: FC<CategoryListProps> = ({
-  data,
-  activeCategory,
-  activeTag,
-}) => {
+const CategoryList: FC<CategoryListProps> = ({ data, activeCategory }) => {
   const allPosts = data.allMarkdownRemark.edges.map(edge => edge.node)
   const postsWithCategory = allPosts.filter(post => post.frontmatter.category)
 
@@ -41,9 +40,7 @@ const CategoryList: FC<CategoryListProps> = ({
       <Styled.CategoryListItem>
         <Link
           to="/posts/"
-          className={
-            activeCategory === null && activeTag === null ? "active" : ""
-          }
+          className={activeCategory === "모든글" ? "active" : ""}
         >
           <label>모든글</label>
           <span>{allPosts.length.toLocaleString()}</span>

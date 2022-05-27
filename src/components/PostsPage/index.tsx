@@ -8,7 +8,6 @@ import PostList from "../PostList"
 import Section from "../Section"
 import SEO from "../SEO"
 import PostsPageAside from "./PostsPageAside"
-import { categoryMap } from "./helpers"
 import * as Styled from "./style"
 
 const PostsPage: FC<PageProps<Query>> = props => {
@@ -17,47 +16,52 @@ const PostsPage: FC<PageProps<Query>> = props => {
   const posts = data.allMarkdownRemark.edges.map(edge => edge.node)
 
   const [renderedPosts, setRenderedPosts] = useState([])
-  const [activeCategory, setActiveCategory] = useState(null)
-  const [activeTag, setActiveTag] = useState(null)
+
+  const [activeType, setActiveType] = useState<"category" | "tag">()
+  const [activeKey, setActiveKey] = useState<string>()
 
   useEffect(() => {
     const key = new URLSearchParams(location.search).get("key")
     const tag = new URLSearchParams(location.search).get("tag")
-    setActiveCategory(key)
-    setActiveTag(key ? "" : tag)
+
+    setActiveType(key ? "category" : tag ? "tag" : "category")
+    setActiveKey(key ? key : tag ? tag : "모든글")
   }, [location.search])
+
+  console.log({ activeType, activeKey })
 
   useEffect(() => {
     setRenderedPosts(
-      activeCategory
-        ? posts.filter(p => p.frontmatter.category === activeCategory)
-        : activeTag
-        ? posts.filter(p => p.frontmatter.tags?.includes(activeTag))
+      activeType === "category" && activeKey !== "모든글"
+        ? posts.filter(p => p.frontmatter.category === activeKey)
+        : activeType === "tag"
+        ? posts.filter(p => p.frontmatter.tags?.includes(activeKey))
         : posts
     )
-  }, [activeCategory, activeTag])
+  }, [activeType, activeKey])
 
   return (
     <TwoColumnLayout
       aside={
         <PostsPageAside
           {...props}
-          activeCategory={activeCategory}
-          activeTag={activeTag}
+          activeType={activeType}
+          activeKey={activeKey}
         />
       }
     >
-      <SEO title={`분류: ${categoryMap[activeCategory] || "모든글"}`} />
+      {activeKey && (
+        <SEO title={`${activeType === "tag" ? "#" : ""}${activeKey}`} />
+      )}
       <Styled.Wrapper>
         <Section
           title={
             <>
-              {!activeCategory && activeTag ? (
-                <Icon type={IconType.Tag} size={4} />
-              ) : (
+              {activeType === "category" && (
                 <Icon type={IconType.Article} size={4} />
               )}
-              {activeCategory || activeTag || "모든글"}
+              {activeType === "tag" && <Icon type={IconType.Tag} size={4} />}
+              {activeKey}
             </>
           }
         >

@@ -6,7 +6,6 @@ import { getLinkHoverTitle } from "../helpers"
 import * as Styled from "../style"
 
 type TagListProps = PageProps<Query> & {
-  activeCategory: string
   activeTag: string
 }
 

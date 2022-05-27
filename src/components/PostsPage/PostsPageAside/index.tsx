@@ -7,15 +7,22 @@ import CategoryList from "./CategoryList"
 import TagList from "./TagList"
 
 type CategoryPageAsideProps = PageProps<Query> & {
-  activeCategory: string
-  activeTag: string
+  activeType: "category" | "tag"
+  activeKey: string
 }
 
-const PostsPageAside: FC<CategoryPageAsideProps> = props => {
+const PostsPageAside: FC<CategoryPageAsideProps> = ({
+  activeKey,
+  activeType,
+  ...props
+}) => {
   return (
     <Styled.Wrapper>
-      <CategoryList {...props} />
-      <TagList {...props} />
+      <CategoryList
+        {...props}
+        activeCategory={activeType === "category" ? activeKey : null}
+      />
+      <TagList {...props} activeTag={activeType === "tag" ? activeKey : null} />
     </Styled.Wrapper>
   )
 }
