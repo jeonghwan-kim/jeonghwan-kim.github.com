@@ -7,12 +7,13 @@ import { TwoColumnLayout } from "../layout"
 import PostList from "../PostList"
 import Section from "../Section"
 import SEO from "../SEO"
+import { CategoryList, TagList } from "./aside"
 import { useStore } from "./hooks"
-import PostsPageAside from "./PostsPageAside"
 import * as Styled from "./style"
 
 const PostsPage: FC<PageProps<Query>> = props => {
   const { data, location } = props
+  const posts = data.allMarkdownRemark.edges.map(edge => edge.node)
 
   const {
     activeKey,
@@ -29,47 +30,40 @@ const PostsPage: FC<PageProps<Query>> = props => {
   }, [location.search])
 
   useEffect(() => {
-    const posts = data.allMarkdownRemark.edges.map(edge => edge.node)
     setPosts(posts)
   }, [activeType, activeKey])
 
-  const seoTitle = `${activeType === "tag" ? "#" : ""}${activeKey}`
+  const seoTitle = activeKey
+    ? `${activeType === "tag" ? "#" : ""}${activeKey}`
+    : null
+
+  const sectionTitle = (
+    <>
+      {activeType === "category" && <Icon type={IconType.Article} size={4} />}
+      {activeType === "tag" && <Icon type={IconType.Tag} size={4} />}
+      {activeKey}
+    </>
+  )
 
   return (
     <TwoColumnLayout
       aside={
-        <PostsPageAside
-          {...props}
-          activeType={activeType}
-          activeKey={activeKey}
-        />
+        <Styled.Wrapper>
+          <CategoryList
+            posts={posts}
+            activeCategory={activeType === "category" ? activeKey : null}
+          />
+          <TagList
+            posts={posts.filter(post => post.frontmatter.tags)}
+            activeTag={activeType === "tag" ? activeKey : null}
+          />
+        </Styled.Wrapper>
       }
     >
-      {activeKey && <SEO title={seoTitle} />}
+      {seoTitle && <SEO title={seoTitle} />}
       <Styled.Wrapper>
-        <Section
-          title={
-            <>
-              {activeType === "category" && (
-                <Icon type={IconType.Article} size={4} />
-              )}
-              {activeType === "tag" && <Icon type={IconType.Tag} size={4} />}
-              {activeKey}
-            </>
-          }
-        >
-          <PostList
-            posts={renderedPosts.map(p => ({
-              slug: p.frontmatter.slug,
-              title: p.frontmatter.title,
-              meta: (
-                <time dateTime={p.frontmatter.date}>
-                  {dateFormat(p.frontmatter.date)}
-                </time>
-              ),
-              excerpt: p.excerpt,
-            }))}
-          />
+        <Section title={sectionTitle}>
+          <PostList posts={renderedPosts} />
         </Section>
       </Styled.Wrapper>
     </TwoColumnLayout>

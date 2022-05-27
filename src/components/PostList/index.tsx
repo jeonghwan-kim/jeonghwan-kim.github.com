@@ -1,28 +1,37 @@
 import { Link } from "gatsby"
 import React, { FC, ReactNode } from "react"
+import { MarkdownRemark } from "../../../graphql-types"
+import { dateFormat } from "../../helpers/date"
 import * as Styled from "./style"
 
-export interface PostItemType {
-  title: ReactNode
-  slug: string
-  meta?: ReactNode
-  excerpt?: string
-}
-export interface P {
-  posts: PostItemType[]
+type Post = Pick<MarkdownRemark, "frontmatter" | "excerpt">
+
+export interface PostListProps {
+  posts: Post[]
+  renderMeta?(post: Post): ReactNode
 }
 
-const PostList: FC<P> = ({ posts }) => {
+const PostList: FC<PostListProps> = ({ posts, renderMeta }) => {
   return (
     <Styled.PostList id="post-list">
-      {posts.map(({ title, slug, meta, excerpt }) => {
+      {posts.map(post => {
+        const { frontmatter, excerpt } = post
+        const { slug, date, title } = frontmatter
         return (
           <Styled.PostItem key={slug}>
             <Link to={slug}>
               <Styled.PostTitle className="post-item-title">
                 {title}
               </Styled.PostTitle>
-              {meta && <Styled.PostMeta>{meta}</Styled.PostMeta>}
+              {date && (
+                <Styled.PostMeta>
+                  {renderMeta ? (
+                    renderMeta(post)
+                  ) : (
+                    <time dateTime={date}>{dateFormat(date)}</time>
+                  )}
+                </Styled.PostMeta>
+              )}
               {excerpt && (
                 <Styled.PostSummary
                   dangerouslySetInnerHTML={{
