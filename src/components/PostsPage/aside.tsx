@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import _ from "lodash"
 import React, { FC } from "react"
 import { MarkdownRemark } from "../../../graphql-types"
+import { Params, Path } from "../../helpers/constants"
 import { getLinkHoverTitle } from "./helpers"
 import * as Styled from "./style"
 
@@ -38,7 +39,7 @@ export const CategoryList: FC<CategoryListProps> = ({
       <Styled.CategoryListTitle>글분류</Styled.CategoryListTitle>
       <Styled.CategoryListItem>
         <Link
-          to="/posts/"
+          to={Path.Posts}
           className={activeCategory === "모든글" ? "active" : ""}
         >
           <label>모든글</label>
@@ -48,7 +49,9 @@ export const CategoryList: FC<CategoryListProps> = ({
       {postsSortByCategoryCount.map(({ category, posts }) => (
         <Styled.CategoryListItem key={category}>
           <Link
-            to={`/posts/?key=${encodeURIComponent(category)}`}
+            to={`${Path.Posts}?${Params.Category}=${encodeURIComponent(
+              category
+            )}`}
             className={category === activeCategory ? "active" : ""}
             title={getLinkHoverTitle(category, posts.length)}
           >
@@ -89,7 +92,7 @@ export const TagList: FC<TagListProps> = ({ posts, activeTag }) => {
       {postsSortByTagCount.map(({ tag, posts }) => (
         <Styled.TagListItem key={tag}>
           <Link
-            to={`/posts/?tag=${encodeURIComponent(tag)}`}
+            to={`${Path.Posts}?${Params.Tag}=${encodeURIComponent(tag)}`}
             className={tag === activeTag ? "active" : ""}
             title={getLinkHoverTitle(tag, posts.length)}
           >

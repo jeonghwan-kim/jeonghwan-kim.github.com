@@ -1,5 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
+import { Params, Path } from "../../helpers/constants"
 import { Container } from "../../styles/style-variables"
 import Icon from "../Icon"
 import { IconType } from "../Icon/style"
@@ -16,15 +17,15 @@ const Header: React.FC<HeaderProps> = ({ noBorder }) => {
       <Container>
         <Styled.SiteTitle>
           <Styled.SiteLogo>
-            <Link to="/">김정환블로그</Link>
+            <Link to={Path.Home}>김정환블로그</Link>
           </Styled.SiteLogo>
         </Styled.SiteTitle>
         <Styled.NavList>
-          <Nav to="/posts/">
+          <Nav to={Path.Posts}>
             <Icon type={IconType.Article} />
             <span>POSTS</span>
           </Nav>
-          <Nav to="/#videos">
+          <Nav to={`/#${Params.Video}`}>
             <Icon type={IconType.Video} />
             <span>VIDEOS</span>
           </Nav>

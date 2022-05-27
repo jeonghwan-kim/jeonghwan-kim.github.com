@@ -7,6 +7,7 @@ import { HomeLayout } from "../components/layout"
 import PostList from "../components/PostList"
 import Section from "../components/Section"
 import SEO from "../components/SEO"
+import { Params, Path } from "../helpers/constants"
 import { Container } from "../styles/style-variables"
 
 const videos: Partial<MarkdownRemark>[] = [
@@ -92,13 +93,13 @@ const BlogIndex: FC<Props> = ({ data }: Props) => {
       <Container small>
         <Section>
           <PostList posts={data.allMarkdownRemark.nodes} />
-          <Link to="/category/">더보기</Link>
+          <Link to={Path.Posts}>더보기</Link>
         </Section>
         <Section
           title={
             <>
               <Icon type={IconType.Video} size={4} />
-              <span id="videos">VIDEOS</span>
+              <span id={Params.Video}>VIDEOS</span>
             </>
           }
         >

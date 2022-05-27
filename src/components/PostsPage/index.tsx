@@ -1,7 +1,7 @@
 import { PageProps } from "gatsby"
 import React, { FC, useEffect } from "react"
 import { Query } from "../../../graphql-types"
-import { dateFormat } from "../../helpers/date"
+import { Params } from "../../helpers/constants"
 import { Icon, IconType } from "../Icon/style"
 import { TwoColumnLayout } from "../layout"
 import PostList from "../PostList"
@@ -24,9 +24,9 @@ const PostsPage: FC<PageProps<Query>> = props => {
   } = useStore()
 
   useEffect(() => {
-    const key = new URLSearchParams(location.search).get("key")
-    const tag = new URLSearchParams(location.search).get("tag")
-    setActive(key, tag)
+    const category = new URLSearchParams(location.search).get(Params.Category)
+    const tag = new URLSearchParams(location.search).get(Params.Tag)
+    setActive(category, tag)
   }, [location.search])
 
   useEffect(() => {

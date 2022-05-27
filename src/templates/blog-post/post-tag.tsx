@@ -1,6 +1,7 @@
 import React from "react"
 import Button from "../../components/Button"
 import { ButtonType } from "../../components/Button/style"
+import { Params, Path } from "../../helpers/constants"
 import * as Styled from "./style"
 
 interface P {
@@ -16,7 +17,7 @@ const PostTag: React.FC<P> = ({ tags }) => {
             <Button
               type={ButtonType.Secondary}
               link
-              to={`/posts/?tag=${encodeURIComponent(tag)}`}
+              to={`${Path.Posts}?${Params.Tag}=${encodeURIComponent(tag)}`}
             >
               #{tag}
             </Button>
