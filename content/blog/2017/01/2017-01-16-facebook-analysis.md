@@ -4,7 +4,7 @@ layout: post
 category: 개발
 slug: /toy_project/2017/01/16/facebook-analysis.html
 date: 2017-01-16
-tags: [toy-project]
+tags: [ToyProject]
 ---
 
 4년전 페이스북 초창기에 몇가지 아이디어가 타임라인에 올라왔다.

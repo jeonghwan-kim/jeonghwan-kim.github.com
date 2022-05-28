@@ -4,7 +4,7 @@ layout: post
 category: 개발
 slug: /toy_project/2017/01/09/reading-book.html
 date: 2017-01-09
-tags: [toy-project]
+tags: [ToyProject]
 ---
 
 프로그래밍을 처음 시작할 때 가지고 놀았던 토이 프로젝트를 소개해 볼까 한다.
