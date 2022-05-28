@@ -4,7 +4,6 @@ date: 2020-04-30
 title: "노드몬(nodemon) 사용시 포트 충돌 이슈"
 layout: post
 category: 개발
-tags: [nodemon]
 ---
 
 노드(Node.js)로 서버를 개발하다 보면 이따금씩 마주하는 현상이 있다.

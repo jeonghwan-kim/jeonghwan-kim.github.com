@@ -4,7 +4,6 @@ date: 2019-12-30
 title: "프론트엔드 개발환경의 이해: 린트"
 layout: post
 category: 연재물
-tags: [lint]
 seriesId: "series-2020-01-02-inflean-frontend-dev-env"
 videoId: "video-inflearn-frontend-dev-env"
 ---

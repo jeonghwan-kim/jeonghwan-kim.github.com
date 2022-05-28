@@ -4,7 +4,7 @@ date: 2021-03-08
 title: babel-loader와 ts-loader의 빌드 결과가 다른 현상
 layout: post
 category: 개발
-tags: [babel]
+tags: [빌드도구]
 ---
 
 규모있는 자바스크립트 프로젝트의 개발 환경을 구성할 때 번들러를 사용한다. 파일간의 의존성을 분석해서 몇 개의 압축된 파일로 만들어 최적의 결과를 만들어낸다. 뿐만 아니라 웹팩 로더는 최신 ECMAScript를 사용하는데 쓰인다.

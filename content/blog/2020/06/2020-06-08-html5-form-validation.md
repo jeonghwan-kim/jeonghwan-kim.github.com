@@ -4,7 +4,6 @@ date: 2020-06-08
 title: "HTML5 폼 검증에 대해 정리해 보자"
 layout: post
 category: 개발
-tags: [html5]
 ---
 
 폼(Form)은 웹 개발 할 때 반드시 다뤄야 하는 기술이다.

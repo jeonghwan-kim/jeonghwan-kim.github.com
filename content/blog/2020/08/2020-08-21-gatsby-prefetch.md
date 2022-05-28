@@ -4,7 +4,7 @@ date: 2020-08-21
 title: "개츠비 프리로딩과 프리패치"
 layout: post
 category: 개발
-tags: [gatsby, prefetch, react]
+tags: [gatsby, react]
 ---
 
 브라우져에서 웹 페이지 로딩 성능을 좌우하는 요소 중 하나가 리소스를 다운로드 하는것이다.

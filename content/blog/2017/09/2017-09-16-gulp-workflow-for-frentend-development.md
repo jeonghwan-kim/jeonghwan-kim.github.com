@@ -4,7 +4,7 @@ layout: post
 category: 개발
 slug: /tool/2017/09/16/gulp-workflow-for-frentend-development.html
 date: 2017-09-16
-tags: [gulp, 번역]
+tags: [번역, 빌드도구]
 ---
 
 > Gulp를 이용한 프론트엔드 개발 자동화에 대한 번역글입니다.

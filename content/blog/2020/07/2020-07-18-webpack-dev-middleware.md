@@ -4,7 +4,7 @@ date: 2020-07-18
 title: "웹팩 개발 서버로 부족하다면 webpack-dev-middleware를 사용해 보자"
 layout: post
 category: 개발
-tags: [webpack]
+tags: [빌드도구]
 ---
 
 이제 프론트엔드 개발에 웹팩은 항상 달고 다닌다.

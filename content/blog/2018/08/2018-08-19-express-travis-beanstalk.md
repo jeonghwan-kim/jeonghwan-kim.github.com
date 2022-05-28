@@ -4,7 +4,7 @@ date: 2018-08-19
 title: 리액트, 노드 백엔드 통합 후 CI 연동하기
 layout: post
 category: 개발
-tags: [react, travis, expressjs, aws]
+tags: [react, expressjs, aws]
 ---
 
 [지난 블로그](/2018/07/16/react-app-overview.html)에서 설명한 리액트 기반의 프로젝트를 노드 서버로 통합하는 작업을 진행했다. 물리적으로 분리된 프론트앤드와 백엔드를 하나의 서버로 합치는 일이다. 각자를 분리하면서 얻는 이점도 있겠지만, 제한된 인력 리소스로는 이를 통합하는 것이 생산성 측면에서 더 좋다고 판단했기 때문이다.

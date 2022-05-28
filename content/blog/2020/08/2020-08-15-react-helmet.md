@@ -4,7 +4,7 @@ date: 2020-08-15
 title: "react-helmet의 동작 방식"
 layout: post
 category: 개발
-tags: [react, gatsby, seo]
+tags: [react, gatsby]
 ---
 
 Gatsby.js 프로젝트를 보면서 [react-helmet](https://github.com/nfl/react-helmet)을 발견했다.

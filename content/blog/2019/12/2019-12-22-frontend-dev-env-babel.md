@@ -4,7 +4,7 @@ date: 2019-12-22
 title: "프론트엔드 개발환경의 이해: Babel"
 layout: post
 category: 연재물
-tags: [babel]
+tags: [빌드도구]
 seriesId: "series-2020-01-02-inflean-frontend-dev-env"
 videoId: "video-inflearn-frontend-dev-env"
 ---
