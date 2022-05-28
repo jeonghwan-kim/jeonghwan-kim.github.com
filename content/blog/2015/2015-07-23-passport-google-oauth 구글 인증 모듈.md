@@ -4,7 +4,7 @@ date: 2015-07-23T21:50:03+00:00
 layout: post
 slug: /passport-google-oauth-구글-인증-모듈/
 category: 개발
-tags: [authentication]
+tags: [인증]
 ---
 
 <h1>구글 개발자 콘솔 설정</h1>

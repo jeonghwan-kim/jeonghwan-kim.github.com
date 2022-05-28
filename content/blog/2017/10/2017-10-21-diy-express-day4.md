@@ -5,7 +5,7 @@ category: 연재물
 seriesId: "series-2017-10-02-expressjs"
 slug: /2017/10/21/diy-express-day4.html
 date: 2017-10-21
-tags: [expressjs, authentication]
+tags: [expressjs, 인증]
 ---
 
 이제 인증 기능을 만들어 보자. 쿠키, 세션, 로그인 순서로 진행하면 되겠다.

@@ -4,7 +4,7 @@ date: 2015-01-17T12:34:54+00:00
 layout: post
 slug: /angularjs-passport로-인증구현/
 category: 개발
-tags: [angularjs, nodejs, authentication]
+tags: [angularjs, nodejs, 인증]
 ---
 
 AngularJS를 사용하는 프로젝트에서 사용자 인증을 구현해 보자. 작업환경은 아래와 같다.
