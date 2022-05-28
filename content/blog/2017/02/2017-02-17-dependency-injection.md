@@ -4,7 +4,7 @@ layout: post
 category: 개발
 slug: /js/2017/02/17/dependency-injection.html
 date: 2017-02-17
-tags: [design-pattern]
+tags: [디자인패턴]
 ---
 
 ## 의존성 주입은 어떻게 사용하는가?

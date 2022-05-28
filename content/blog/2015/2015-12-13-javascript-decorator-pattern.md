@@ -4,7 +4,7 @@ date: 2015-12-13T08:20:53+00:00
 layout: post
 slug: /javascript-decorator-pattern/
 category: 개발
-tags: [design-pattern]
+tags: [디자인패턴]
 ---
 
 Ghost 소스를 보면서 데코레이터 패턴을 처음 보았다. 이전 포스트에 보면 http() 메쏘드 주석에 이것은 데코레이터 패턴이라고 되어있다.
