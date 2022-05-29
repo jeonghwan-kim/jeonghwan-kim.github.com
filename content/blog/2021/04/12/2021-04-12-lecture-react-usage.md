@@ -86,7 +86,7 @@ class App extends React.Component {
 ReactDOM.render(<App />, document.querySelector("#app")) // 3
 ```
 
-리액트 컴포넌트는 React 라이브러리가 제공한 **[Component 클래스](https://ko.reactjs.org/docs/react-component.html)**를 상속해서 만드는데 어플리케이션을 나타내는 App 컴포넌트로 이름 지었다(1). 리액트 컴포넌트 구성 요소 중 **render()** 메서드는 리액트 앱의 기본 구성 요소인 리액트 엘리먼트를 반환해서 돔을 만드는 역할을 한다(2).
+리액트 컴포넌트는 React 라이브러리가 제공한 **[Component 클래스](https://ko.reactjs.org/docs/react-component.html)** 를 상속해서 만드는데 어플리케이션을 나타내는 App 컴포넌트로 이름 지었다(1). 리액트 컴포넌트 구성 요소 중 **render()** 메서드는 리액트 앱의 기본 구성 요소인 리액트 엘리먼트를 반환해서 돔을 만드는 역할을 한다(2).
 
 App은 리액트 클래스일 뿐 아직 엘리먼트는 아니다. 앞서 언급했지만 ReactDOM.render() 함수는 리액트 엘리먼트를 인자로 받기 때문에 App 클래스를 엘리먼트로 전환해야한다. JSX 문법을 이용한 `<App />` 표현식이 바로 그것이다(3).
 

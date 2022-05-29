@@ -65,7 +65,7 @@ var math = math || {} // math 네임스페이스
 
 이러한 방식으로 자바스크립트 모듈을 구현하는 대표적인 명세가 AMD와 CommonJS다.
 
-**[CommonJS](http://www.commonjs.org/)**는 자바스크립트를 사용하는 모든 환경에서 모듈을 하는 것이 목표다.
+**[CommonJS](http://www.commonjs.org/)** 는 자바스크립트를 사용하는 모든 환경에서 모듈을 하는 것이 목표다.
 exports 키워드로 모듈을 만들고 require() 함수로 불러 들이는 방식이다.
 대표적으로 서버 사이드 플래폼인 Node.js에서 이를 사용한다.
 
@@ -87,7 +87,7 @@ math.sum(1, 2) // 3
 
 **[UMD](https://github.com/umdjs/umd)**(Universal Module Definition)는 AMD기반으로 CommonJS 방식까지 지원하는 통합 형태다.
 
-이렇게 각 커뮤니티에서 각자의 스펙을 제안하다가 **[ES2015에서 표준 모듈 시스템](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)**을 내 놓았다.
+이렇게 각 커뮤니티에서 각자의 스펙을 제안하다가 **[ES2015에서 표준 모듈 시스템](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)** 을 내 놓았다.
 지금은 바벨과 웹팩을 이용해 모듈 시스템을 사용하는 것이 일반적이다.
 ES2015 모듈 시스템의 모습을 살펴보자.
 
