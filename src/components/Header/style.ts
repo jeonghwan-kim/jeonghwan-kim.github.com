@@ -12,7 +12,7 @@ export const Header = styled.header<{ bordered: boolean }>`
   border-bottom: ${props => (props.bordered ? Border() : `none`)};
   padding: 0 ${SpaceUnit()};
   a {
-    color: ${Colors.Black};
+    color: ${Colors.Foreground1};
     text-decoration: none;
   }
   ${Container} {
@@ -59,7 +59,7 @@ export const Nav = styled.div`
     appearance: none;
     background: transparent;
     border: none;
-    color: ${Colors.Black};
+    color: ${Colors.Foreground1};
     font-weight: 300;
     height: 100%;
   }

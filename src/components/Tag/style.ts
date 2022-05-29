@@ -20,7 +20,7 @@ export const TagPostItem = styled.li`
   margin-bottom: ${SpaceUnit()};
   a {
     text-decoration: none;
-    color: ${Colors.Black};
+    color: ${Colors.Foreground1};
     &:hover,
     &:focus {
       text-decoration: underline;

@@ -15,7 +15,7 @@ export const Button = styled.button<{ type: ButtonType }>`
   display: inline-block;
   padding: ${SpaceUnit()} ${SpaceUnit(2)};
   border-radius: 4px;
-  background-color: ${Colors.White};
+  background-color: ${Colors.Background1};
   text-decoration: none;
   color: ${props => color[props.type]};
   border: solid 1px ${props => color[props.type]};
@@ -23,7 +23,7 @@ export const Button = styled.button<{ type: ButtonType }>`
   &:focus,
   &:hover {
     background-color: ${props => color[props.type]};
-    color: ${Colors.White};
+    color: ${Colors.Background1};
     cursor: pointer;
   }
 `

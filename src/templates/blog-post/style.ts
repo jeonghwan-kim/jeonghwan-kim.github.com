@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { lighten } from "polished"
 import {
   Border,
   Colors,
@@ -49,12 +48,12 @@ export const PostHeader = styled.header`
 export const PostTitle = styled.h1`
   margin-top: 0;
   margin-bottom: ${SpaceUnit()};
-  color: ${Colors.Black};
+  color: ${Colors.Foreground1};
   font-size: 42px;
 `
 
 export const PostTime = styled.time`
-  color: ${Colors.Gray};
+  color: ${Colors.Foreground3};
 `
 
 export const PostContent = styled.div`
@@ -88,7 +87,7 @@ export const PostContent = styled.div`
   h4,
   h5,
   h6 {
-    color: ${Colors.Brand};
+    color: ${Colors.Foreground2};
     font-family: ${Fonts.Base};
     line-height: 1em;
   }
@@ -99,24 +98,27 @@ export const PostContent = styled.div`
     max-width: 100%;
   }
   blockquote {
-    color: ${lighten(0.2, Colors.Black)};
+    color: ${Colors.Foreground3};
     position: relative;
     &::before {
       content: "“";
       position: absolute;
       left: -${SpaceUnit(3)};
       font-size: 40px;
-      color: ${lighten(0.6, Colors.Black)};
+      color: ${Colors.Foreground3};
+    }
+    a {
+      color: ${Colors.Foreground3};
     }
   }
   figcaption {
     font-size: 14px;
-    color: ${Colors.Gray};
+    color: ${Colors.Foreground3};
     text-align: center;
   }
   code:not([class^="language-"]) {
     font-size: 0.8em;
-    background-color: #f5f2f0;
+    background-color: ${Colors.Background3};
     border-radius: 8px;
     padding: 2px 6px;
     word-break: break-all;
@@ -174,14 +176,14 @@ export const Toc = styled.div`
       }
       a {
         text-decoration: none;
-        color: ${Colors.Gray};
+        color: ${Colors.Foreground3};
         font-size: 14px;
         &:hover,
         &:focus {
-          color: ${Colors.Black};
+          color: ${Colors.Foreground1};
         }
         &.active {
-          color: ${Colors.Brand};
+          color: ${Colors.Foreground1};
           font-weight: bold;
         }
       }
@@ -252,7 +254,7 @@ export const SeriesNavTitle = styled.div`
     content: "연재물";
     display: block;
     font-size: 14px;
-    color: ${Colors.Gray};
+    color: ${Colors.Foreground3};
     font-weight: normal;
   }
   .series-order {
@@ -293,7 +295,7 @@ export const SeriesNavigator = styled.div`
       content: "이 연재물 더보기";
       display: block;
       font-size: 14px;
-      color: ${Colors.Gray};
+      color: ${Colors.Foreground3};
       font-weight: normal;
     }
   }
@@ -328,7 +330,7 @@ export const SiblingNavItem = styled.div`
     max-width: 48%;
   }
   .label {
-    color: ${Colors.Gray};
+    color: ${Colors.Foreground3};
   }
   a {
     text-decoration: none;

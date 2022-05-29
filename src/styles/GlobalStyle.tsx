@@ -10,11 +10,12 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     font-family: ${Fonts.Base};
-    color: ${Colors.Black};
+    color: ${Colors.Foreground1};
+    background-color: ${Colors.Background1};
     min-width: 320px;
   }
   a {
-    color: ${Colors.Black};
+    color: ${Colors.Foreground1};
   }
   .flex {
     display: flex;

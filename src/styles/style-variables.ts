@@ -1,20 +1,41 @@
-import { lighten } from "polished"
 import styled, { css } from "styled-components"
 
-export const Colors = {
+const LightColors = {
   Primary: "#cd5554",
-  Gray: "gray",
-  Black: "#3d3d3f",
   Brand: "#313d4b",
   Secondary: "#91684a",
   Thenary: "#00c07f",
-  White: "#f9f8fd",
+  Foreground1: "#3d3d3f",
+  Foreground2: "#505053",
+  Foreground3: "#888",
+  Foreground4: "rgb(230, 230, 230)",
+  Background1: "#fff",
+  Background2: "#ddd",
+  Background3: "#bbb",
 }
+
+const DarkColors = {
+  Primary: "#cd5554",
+  Brand: "#313d4b",
+  Secondary: "#91684a",
+  Thenary: "#00c07f",
+  Foreground1: "#fff",
+  Foreground2: "#ddd",
+  Foreground3: "#bbb",
+  Foreground4: "#505053",
+  Background1: "rgb(21, 32, 43)",
+  Background2: "#333",
+  Background3: "#555",
+}
+
+export const Colors = LightColors
+// todo 다크테마 사용하기
+// export const Colors = DarkColors
 
 export const SpaceUnit = (size = 1) => `${size * 8}px`
 
 export const Border = (thickness = 1) => {
-  return `${thickness}px solid ${lighten(0.4, Colors.Gray)}`
+  return `${thickness}px solid ${Colors.Foreground4}`
 }
 
 export const Fonts = {

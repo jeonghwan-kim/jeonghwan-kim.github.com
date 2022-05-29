@@ -7,6 +7,7 @@ const utterancSettings = {
   "issue-term": "pathname",
   label: "Comment",
   theme: "github-light",
+  // theme: "github-dark",
   crossOrigin: "anonymous",
   async: "true",
 }

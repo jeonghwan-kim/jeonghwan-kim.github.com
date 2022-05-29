@@ -1,4 +1,3 @@
-import { lighten } from "polished"
 import styled from "styled-components"
 import { Colors, SpaceUnit } from "../../styles/style-variables"
 
@@ -22,7 +21,7 @@ export const CategoryListItem = styled.li`
     font-size: 14px;
     &.active {
       background-color: ${Colors.Primary};
-      color: ${Colors.White};
+      color: ${Colors.Background1};
     }
     &:hover {
       cursor: pointer;
@@ -37,7 +36,7 @@ export const CategoryListItem = styled.li`
 `
 
 export const CategoryListTitle = styled(CategoryListItem)`
-  color: ${Colors.Gray};
+  color: ${Colors.Foreground3};
   font-weight: 500;
   font-size: 12px;
   padding-left: 0;
@@ -51,7 +50,7 @@ export const TagListTitle = styled(CategoryListTitle)``
 export const TagListItem = styled(CategoryListItem)`
   display: inline-block;
   a {
-    background-color: ${lighten(0.35, Colors.Gray)};
+    background-color: ${Colors.Background2};
     border-radius: 4px;
     margin-right: ${SpaceUnit(0.5)};
     margin-bottom: ${SpaceUnit(0.5)};

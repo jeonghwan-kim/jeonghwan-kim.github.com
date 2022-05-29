@@ -21,11 +21,11 @@ export const PostTitle = styled.h2`
 `
 
 export const PostMeta = styled.div`
-  color: ${Colors.Gray};
+  color: ${Colors.Foreground2};
 `
 
 export const PostSummary = styled.p`
-  color: ${Colors.Black};
+  color: ${Colors.Foreground1};
   line-height: 1.5em;
   @media (max-width: calc(${Widths.Tablet} - 1px)) {
     display: none;
