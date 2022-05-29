@@ -130,6 +130,7 @@ export const pageQuery = graphql`
         }
       }
       tableOfContents(absolute: false, maxDepth: 6, heading: null)
+      excerpt
     }
     series(id: { eq: $seriesId }) {
       id
