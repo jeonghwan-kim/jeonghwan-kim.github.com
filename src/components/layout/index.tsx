@@ -1,14 +1,30 @@
-import React, { FC, ReactNode } from "react"
+import React, { FC, ReactNode, useEffect } from "react"
 import GlobalStyle from "../../styles/GlobalStyle"
 import { Container } from "../../styles/style-variables"
 import Footer from "../Footer"
 import Header, { HeaderProps } from "../Header"
-import Section from "../Section"
 import * as Styled from "./style"
 
 export interface LayoutProps extends HeaderProps {}
 
 const Layout: FC<LayoutProps> = ({ noBorder, children }) => {
+  const mediaQuery = "(prefers-color-scheme: dark)"
+  const setTheme = (mediaQueryList: MediaQueryList | MediaQueryListEvent) => {
+    const theme = mediaQueryList.matches ? "dark" : "light"
+    document.querySelector("html").setAttribute("data-app-theme", theme)
+  }
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return
+    }
+    setTheme(window.matchMedia("(prefers-color-scheme: dark)"))
+  }, [])
+
+  useEffect(() => {
+    window.matchMedia(mediaQuery).addEventListener("change", setTheme)
+  }, [])
+
   return (
     <>
       <GlobalStyle />

@@ -1,9 +1,11 @@
 import { createGlobalStyle } from "styled-components"
-import { Colors, Fonts, SpaceUnit, Widths } from "./style-variables"
 import { styleNormalize } from "./style-nomalize"
+import { Colors, Fonts, SpaceUnit } from "./style-variables"
+import { theme } from "./theme"
 
 const GlobalStyle = createGlobalStyle`
   ${styleNormalize}
+  ${theme}
 
   * {
     box-sizing: border-box;

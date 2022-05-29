@@ -1,36 +1,18 @@
 import styled, { css } from "styled-components"
 
-const LightColors = {
-  Primary: "#cd5554",
-  Brand: "#313d4b",
-  Secondary: "#91684a",
-  Thenary: "#00c07f",
-  Foreground1: "#3d3d3f",
-  Foreground2: "#505053",
-  Foreground3: "#888",
-  Foreground4: "rgb(230, 230, 230)",
-  Background1: "#fff",
-  Background2: "#ddd",
-  Background3: "#bbb",
+export const Colors = {
+  Primary: `var(--color-Primary)`,
+  Brand: `var(--color-Brand)`,
+  Secondary: `var(--color-Secondary)`,
+  Thenary: `var(--color-Thenary)`,
+  Foreground1: `var(--color-Foreground1)`,
+  Foreground2: `var(--color-Foreground2)`,
+  Foreground3: `var(--color-Foreground3)`,
+  Foreground4: `var(--color-Foreground4)`,
+  Background1: `var(--color-Background1)`,
+  Background2: `var(--color-Background2)`,
+  Background3: `var(--color-Background3)`,
 }
-
-const DarkColors = {
-  Primary: "#cd5554",
-  Brand: "#313d4b",
-  Secondary: "#91684a",
-  Thenary: "#00c07f",
-  Foreground1: "#fff",
-  Foreground2: "#ddd",
-  Foreground3: "#bbb",
-  Foreground4: "#505053",
-  Background1: "rgb(21, 32, 43)",
-  Background2: "#333",
-  Background3: "#555",
-}
-
-export const Colors = LightColors
-// todo 다크테마 사용하기
-// export const Colors = DarkColors
 
 export const SpaceUnit = (size = 1) => `${size * 8}px`
 
