@@ -452,10 +452,10 @@ package.json에는 설치한 패키지 정보를 기록한다.</p>
 <p>마지막으로 틸드(~)와 캐럿(^)을 이용해 범위를 명시한다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">~1.2.3
 ^1.2.3</code></pre></div>
-<p>**<a href="https://docs.npmjs.com/misc/semver#tilde-ranges-123-12-1">틸트(~)</a>**는 마이너 버전이 명시되어 있으면 패치버전만 변경한다.
+<p><strong><a href="https://docs.npmjs.com/misc/semver#tilde-ranges-123-12-1">틸트(~)</a></strong> 는 마이너 버전이 명시되어 있으면 패치버전만 변경한다.
 예를 들어 ~1.2.3 표기는 1.2.3 부터 1.3.0 미만 까지를 포함한다.
 마이너 버전이 없으면 마이너 버전을 갱신한다. ~0 표기는 0.0.0부터 1.0.0 미만 까지를 포함한다.</p>
-<p>**<a href="https://docs.npmjs.com/misc/semver#caret-ranges-123-025-004">캐럿(^)</a>**은 정식버전에서 마이너와 패치 버전을 변경한다.
+<p><strong><a href="https://docs.npmjs.com/misc/semver#caret-ranges-123-025-004">캐럿(^)</a></strong> 은 정식버전에서 마이너와 패치 버전을 변경한다.
 예를 들어 ^1.2.3 표기는 1.2.3부터 2.0.0 미만 까지를 포함한다.
 정식버전 미만인 0.x 버전은 패치만 갱신한다. ^0 표기는 0.0.0부터 0.1.0 미만 까지를 포함한다.</p>
 <p>보통 라이브러리 정식 릴리즈 전에는 패키지 버전이 수시로 변한다.
