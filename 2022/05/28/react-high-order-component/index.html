@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="theme-color" content="#cd5554"/><meta data-react-helmet="true" name="twitter:creator" content="mokpo_dev"/><meta data-react-helmet="true" name="twitter:site" content="mokpo_dev"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" property="og:image:width" content="300"/><meta data-react-helmet="true" property="og:image:height" content="300"/><meta data-react-helmet="true" property="og:image" content="https://jeonghwan-kim.github.io/assets/imgs/me.jpg"/><meta data-react-helmet="true" property="og:description" content="훅을 주로 사용하는 지금에 비해 비교적 철 지난 주제인 것 같다.
-컴포넌트 로직을 재사용하기 위한 방법으로 고차 컴포넌트(High Order Component)를 사용한다. 써드 파티 라이브러리에서도 이 형태의 API…"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="리액트 고차 컴포넌트(HOC)"/><meta data-react-helmet="true" property="og:url" content="https://jeonghwan-kim.github.io/2022/05/28/react-high-order-component"/><meta data-react-helmet="true" property="description" content="훅을 주로 사용하는 지금에 비해 비교적 철 지난 주제인 것 같다.
-컴포넌트 로직을 재사용하기 위한 방법으로 고차 컴포넌트(High Order Component)를 사용한다. 써드 파티 라이브러리에서도 이 형태의 API…"/><meta data-react-helmet="true" property="og:site_name" content="김정환 블로그"/><meta data-react-helmet="true" property="og:locale:alternate" content="en_US"/><meta data-react-helmet="true" property="og:locale" content="ko_KR"/><meta name="generator" content="Gatsby 4.12.1"/><style data-href="/styles.97941cbd921bbe7dc5d1.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#000;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;text-shadow:0 1px #fff;white-space:pre;word-break:normal;word-spacing:normal}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{background:#b3d4fc;text-shadow:none}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{background:hsla(0,0%,100%,.5);color:#9a6e3a}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}pre[class*=language-].line-numbers{counter-reset:linenumber;padding-left:3.8em;position:relative}pre[class*=language-].line-numbers>code{position:relative;white-space:inherit}.line-numbers .line-numbers-rows{border-right:1px solid #999;font-size:100%;left:-3.8em;letter-spacing:-1px;pointer-events:none;position:absolute;top:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;width:3em}.line-numbers-rows>span{counter-increment:linenumber;display:block}.line-numbers-rows>span:before{color:#999;content:counter(linenumber);display:block;padding-right:.8em;text-align:right}</style><title data-react-helmet="true">리액트 고차 컴포넌트(HOC) | 김정환 블로그</title><script data-react-helmet="true" type="application/ld+json">
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="theme-color" content="#cd5554"/><meta data-react-helmet="true" name="twitter:creator" content="mokpo_dev"/><meta data-react-helmet="true" name="twitter:site" content="mokpo_dev"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" property="og:image:width" content="300"/><meta data-react-helmet="true" property="og:image:height" content="300"/><meta data-react-helmet="true" property="og:image" content="https://jeonghwan-kim.github.io/assets/imgs/me.jpg"/><meta data-react-helmet="true" property="og:description" content="훅을 주로 사용하는 지금에 비하면 비교적 철 지난 주제인 것 같다.
+리액트 컴포넌트 로직을 재사용하기 위한 방법으로 고차 컴포넌트(High Order Component)를 사용한다. 써드 파티 라이브러리에서도 이 형태의 API…"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="리액트 고차 컴포넌트(HOC)"/><meta data-react-helmet="true" property="og:url" content="https://jeonghwan-kim.github.io/2022/05/28/react-high-order-component"/><meta data-react-helmet="true" property="description" content="훅을 주로 사용하는 지금에 비하면 비교적 철 지난 주제인 것 같다.
+리액트 컴포넌트 로직을 재사용하기 위한 방법으로 고차 컴포넌트(High Order Component)를 사용한다. 써드 파티 라이브러리에서도 이 형태의 API…"/><meta data-react-helmet="true" property="og:site_name" content="김정환 블로그"/><meta data-react-helmet="true" property="og:locale:alternate" content="en_US"/><meta data-react-helmet="true" property="og:locale" content="ko_KR"/><meta name="generator" content="Gatsby 4.12.1"/><style data-href="/styles.97941cbd921bbe7dc5d1.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#000;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;text-shadow:0 1px #fff;white-space:pre;word-break:normal;word-spacing:normal}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{background:#b3d4fc;text-shadow:none}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{background:hsla(0,0%,100%,.5);color:#9a6e3a}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}pre[class*=language-].line-numbers{counter-reset:linenumber;padding-left:3.8em;position:relative}pre[class*=language-].line-numbers>code{position:relative;white-space:inherit}.line-numbers .line-numbers-rows{border-right:1px solid #999;font-size:100%;left:-3.8em;letter-spacing:-1px;pointer-events:none;position:absolute;top:0;-webkit-user-select:none;-ms-user-select:none;user-select:none;width:3em}.line-numbers-rows>span{counter-increment:linenumber;display:block}.line-numbers-rows>span:before{color:#999;content:counter(linenumber);display:block;padding-right:.8em;text-align:right}</style><title data-react-helmet="true">리액트 고차 컴포넌트(HOC) | 김정환 블로그</title><script data-react-helmet="true" type="application/ld+json">
         {
           "@context": "http://schema.org",
           "@type": "BlogPosting",
@@ -220,7 +220,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <p><a href="#%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%EB%A5%BC-%EB%9E%98%ED%95%91%ED%95%B4%EC%84%9C-%ED%94%84%EB%A1%AD%EC%9C%BC%EB%A1%9C-%EC%A0%84%EB%8B%AC">컴포넌트를 래핑해서 프롭으로 전달</a></p>
 </li>
 <li>
-<p><a href="#%EB%94%94%EB%B2%84%EA%B9%85%EC%9D%84-%EB%85%B8%ED%95%98%EC%9A%B0">디버깅을 노하우</a></p>
+<p><a href="#%EB%94%94%EB%B2%84%EA%B9%85-%EB%85%B8%ED%95%98%EC%9A%B0">디버깅 노하우</a></p>
 </li>
 <li>
 <p><a href="#%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%A0%95%EC%9D%98%EB%8A%94-%ED%95%9C-%EB%B2%88%EB%A7%8C">컴포넌트 정의는 한 번만</a></p>
@@ -231,27 +231,27 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <li><a href="#%EC%B0%B8%EA%B3%A0">참고</a></li>
 </ul>
 </li>
-</ul></div></aside><article class="style__Article-sc-m5hfiz-2 eKoDvT"><header class="style__PostHeader-sc-m5hfiz-3 OLtvj"><h1 itemProp="name headline" class="style__PostTitle-sc-m5hfiz-4 hNyldv">리액트 고차 컴포넌트(HOC)</h1><time itemProp="datePublished" class="style__PostTime-sc-m5hfiz-5 dyvnTZ">2022년 05월 28일</time></header><div id="post-content" itemProp="articleBody" class="style__PostContent-sc-m5hfiz-6 cJBeGU"><p>훅을 주로 사용하는 지금에 비해 비교적 철 지난 주제인 것 같다.
-컴포넌트 로직을 재사용하기 위한 방법으로 고차 컴포넌트(High Order Component)를 사용한다.</p>
+</ul></div></aside><article class="style__Article-sc-m5hfiz-2 eKoDvT"><header class="style__PostHeader-sc-m5hfiz-3 OLtvj"><h1 itemProp="name headline" class="style__PostTitle-sc-m5hfiz-4 hNyldv">리액트 고차 컴포넌트(HOC)</h1><time itemProp="datePublished" class="style__PostTime-sc-m5hfiz-5 dyvnTZ">2022년 05월 28일</time></header><div id="post-content" itemProp="articleBody" class="style__PostContent-sc-m5hfiz-6 cJBeGU"><p>훅을 주로 사용하는 지금에 비하면 비교적 철 지난 주제인 것 같다.
+리액트 컴포넌트 로직을 재사용하기 위한 방법으로 고차 컴포넌트(High Order Component)를 사용한다.</p>
 <p>써드 파티 라이브러리에서도 이 형태의 API 제공한다.
-리액트 라우터는 withRouter 함수를 통해 컴포넌트에 라우터의 일부 기능을 추가한다.
-리액트 리덕스는 connect 함수를 통해 전역 스토어와 연결한다.</p>
-<p>고차 컴포넌트는 기존 컴포넌트에 컴포넌트 고유의 기능과는 다른 어떤 기능을 추가해서 강화된(Enhanced) 컴포넌트를 만들수 있는 마법 같은 도구이다. 이 글에 고차 컴포넌트가 해결하려는 문제를 알아보고 사용법과 유의점을 정리해보자.</p>
+리액트 라우터는 withRouter 함수로 라우터의 일부 기능을 컴포넌트에 추가한다.
+리액트 리덕스는 connect 함수로 컴포넌트와 전역 스토어를 연결한다.</p>
+<p>고차 컴포넌트는 기존 컴포넌트에 컴포넌트 고유의 기능과는 다른 어떤 기능을 추가해 강화된(Enhanced) 컴포넌트를 만들 수 있는 마법 같은 도구이다. 이 글에 고차 컴포넌트가 해결하려는 문제를 알아보고 사용법과 유의점을 정리해 보자.</p>
 <h1 id="횡단-관심사-분리" style="position:relative;"><a href="#%ED%9A%A1%EB%8B%A8-%EA%B4%80%EC%8B%AC%EC%82%AC-%EB%B6%84%EB%A6%AC" aria-label="횡단 관심사 분리 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>횡단 관심사 분리</h1>
 <p>고차 컴포넌트는 횡단 관심사를 분리하는데 사용한다고 표현한다.</p>
 <blockquote>
 <p>횡단 관심사(Cross-Cutting Concerns)에 고차 컴포넌트 사용하기 - <a href="https://ko.reactjs.org/docs/higher-order-components.html">고차 컴포넌트 | 리액트 공식문서</a></p>
 </blockquote>
-<p>횡단 관심사란 뭘까? 반대말은 종단 관심사 일까?
+<p>횡단 관심사란 뭘까? 반대말은 종단 관심사일까?
 원문으로는 "Cross-Cutting concern"이라고 한다.</p>
 <blockquote>
-<p>crosscut: &#x3C;물건을> 가로지라다; &#x3C;장소 등을> 횡단하다. - 출처: 뉴에이스 영한사전</p>
+<p>crosscut: &#x3C;물건을> 가로지르다; &#x3C;장소 등을> 횡단하다. - 출처: 뉴에이스 영한사전</p>
 </blockquote>
 <p>어떤 것을 가로지르는 관심사라는 것이다.</p>
 <p>소프트웨어는 계층 구조로 구성하는 것이 일반적이다.
-대표적인것이 OSI 7 계층이다.
-어플리케이션을 만들때는 컨트롤러 - 서비스 - 레포지터리 같은 계층을 둔다.
-리액트로 클라이언트 어플리케이션을 만들 때도 역시 계층을 구성한다.</p>
+대표적인 것이 OSI 7 계층이다.
+백엔드 어플리케이션은 컨트롤러 - 서비스 - 레포지터리와 같은 계층으로 구성한다.
+마찬가지로 클라이언트 어플리케이션도 계층을 구성한다.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span><span class="token punctuation">></span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Router</span></span><span class="token punctuation">></span></span><span class="token plain-text">
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Container</span></span><span class="token punctuation">></span></span><span class="token plain-text">
@@ -259,17 +259,17 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gSRLFD,"}/*!sc*/
 <ul>
 <li>전체 어플리케이션을 담당하는 App 컴포넌트다.</li>
 <li>브라우져 요청 따라 컴포넌트를 선택하는 것이 Router 컴포넌트다.</li>
-<li>UI 렌더에 필요한 데이터 처리는 컨테이너 컴포넌트의 역할이다.</li>
+<li>UI 렌더에 필요한 데이터 처리는 Container 컴포넌트의 역할이다.</li>
 <li>UI를 렌더링하는 것은 Page 컴포넌트다.</li>
 </ul>
-<p>이처럼 어플리케이션은 계층을 이루지만 각 계층의 기능을 완벽하게 분리할 수 없다.
+<p>이처럼 어플리케이션은 계층으로 분리하지만 기능까지 완벽하게 분리할 수는 없다.
 코드의 중복이 생길 수 밖에 없다.
 예를 들어 Container 컴포넌트에서 주소 파라매터 정보가 필요하다.
 Page 컴포넌트에서도 주소 이동 기능을 가질 수 있다.
 두 계층 모두 주소 기능이 필요하다.</p>
 <p>이처럼 각 계층을 넘어 공통으로 필요한 관심사가 있는데 이것을 횡단 관심사, Cross-Cutting concerns라고 표현한다.
 어떤 대화에서는 "공통 관심사"라고도 표현하기도 한다. (참고: <a href="https://groups.google.com/g/ksug/c/GI7MQklFt8A/m/Dukz90JBgbQJ">이번에는 AOP 용어의 우리말 표현을 가지고 나눠봐요</a>)</p>
-<p>횡단 관심사를 그림으로 보면 좀 더 쉽다.</p>
+<p>횡단 관심사를 그림으로 보면 조금 더 쉽게 이해할 수 있다.</p>
 <p><figure class="gatsby-resp-image-figure" style="">
     <span
       class="gatsby-resp-image-wrapper"
@@ -306,18 +306,18 @@ Page 컴포넌트에서도 주소 이동 기능을 가질 수 있다.
     </span>
     <figcaption class="gatsby-resp-image-figcaption">그림으로 보면 좀 더 쉽게 이해된다.</figcaption>
   </figure></p>
-<p>정리하면 횡단 관심사란 <strong>어플리케이션 각 계층에서 공통적으로 필요한 문제</strong>라고 할 수 있겠다.
-<strong>고차 컴포넌트</strong>는 바로 이런 공통의 기능을 해결하는 역할을 한다.</p>
-<p>로깅이나 인증이 서버 어플리케이션의 횡단 관심사라면 클라이언트 어플리케이션에서는 뭐가 있을까?
-앞에서 잠깐 언금했던 주소 정보나 전역 스토어가 공통 관심사다.
-상황에 따라서는 클라이언트에서 기록하는 로깅도 이 횡단 관심사하고 할 수 있겠다.</p>
-<p>그럼 간단히 로그 기록 기능을 리액트 고차 컴포넌트로 만들어보면서 고차 컴포넌트에 대해 자세히 알아보자.</p>
+<p>정리하면 <strong>어플리케이션 각 계층에서 공통적으로 필요한 문제</strong>를 횡단 관심사라고 부를 수 있다.
+<strong>고차 컴포넌트</strong>는 이런 공통의 기능을 해결하는 역할을 한다.</p>
+<p>로깅과 인증이 서버 어플리케이션의 횡단 관심사라면 클라이언트 어플리케이션에서는 뭐가 있을까?
+앞에 잠깐 언금했던 주소 정보나 전역 스토어가 공통 관심사다.
+상황에 따라서는 클라이언트에서 로깅하는 것을 이 횡단 관심사하고 할 수 있겠다.</p>
+<p>그럼 간단히 로그 기록 기능을 리액트 고차 컴포넌트로 만들어보면서 더 자세히 알아보자.</p>
 <h1 id="로깅-예제" style="position:relative;"><a href="#%EB%A1%9C%EA%B9%85-%EC%98%88%EC%A0%9C" aria-label="로깅 예제 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>로깅 예제</h1>
 <p>가정해 보자.
-우리는 디자인 시스템을 만들어야한다.
-디자인 시스템의 각 컴포넌트는 얼마나 사용되는지 기록을 남기고 모니터링 해야한다.</p>
+우리는 디자인 시스템을 만들고 있다.
+디자인 시스템의 각 컴포넌트는 얼마나 사용되는지 기록을 남기고 모니터링 하는 역할을 가진다.</p>
 <ul>
-<li>컴포넌트가 마운트 될때마다 기록한다.</li>
+<li>컴포넌트가 마운트 될 때마다 기록한다.</li>
 <li>Button 컴포넌트를 클릭할 때마다 기록한다.</li>
 </ul>
 <p>먼저 Header 컴포넌트부터 만들어 보자.</p>
@@ -331,7 +331,8 @@ Page 컴포넌트에서도 주소 이동 기능을 가질 수 있다.
     <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span><span class="token plain-text">Header</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>Header가 돔에 마운트도면 양식에 맞추어 로그를 남긴다. 편의상 브라우저에 남기는 것으로 했다.
+<p>Header가 돔에 붙으면 양식에 맞추어 로그를 남긴다.
+편의상 브라우저에 남기는 것으로 했다.
 실제로 만든다면 로깅 api를 사용하거나 해야할 것이다.</p>
 <p>이와 비슷하게 Button 컴포넌트도 만들어 보자.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">Button</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
@@ -349,10 +350,11 @@ Page 컴포넌트에서도 주소 이동 기능을 가질 수 있다.
     <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleClick<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">클릭</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>Header 컴포넌트와 마찬가지로 마운트 되었을 때 기록했다. 버튼을 클릭할 때도 로깅했다.</p>
+<p>Header 컴포넌트와 마찬가지로 마운트 되었을 때 기록했다.
+버튼을 클릭할 때도 로깅했다.</p>
 <p>여기는 <strong>두 가지 문제</strong>을 짚을 수 있다.</p>
-<p>두 컴포넌트에 중복된 코드가 있다.
-컴포넌트가 마운트 되었을때 로그를 남기는 코드다.
+<p>두 컴포넌트가 중복된 코드를 가진다.
+컴포넌트가 마운트 되었을 때 로그를 남기는 코드다.
 두 컴포넌트 모두 같은 생명주기 메서드를 사용하고 같은 로그 기록 함수를 호출한다.</p>
 <p>다른 문제는 더 심각하다. 로깅이 각 컴포넌트 고유의 역할이 아니라는 것이다.
 Header와 Button은 헤더 영역 UI를 렌더하고 클릭할 수 있는 버튼을 렌더하는 것만을 책임진다.
@@ -388,8 +390,8 @@ Header와 Button은 헤더 영역 UI를 렌더하고 클릭할 수 있는 버튼
 
   <span class="token keyword">return</span> WithLogging
 <span class="token punctuation">}</span></code></pre></div>
-<p>withLogging 은 컴포넌트를 받아 컴포넌를 반환하는 함수다.
-함수를 받아 함수를 반환하는 것을 고차함수라고 하듯이 이것을 고차 컴포넌트(High Order Compoonent)라고 부른다.</p>
+<p>withLogging은 컴포넌트를 받아 컴포넌를 반환하는 함수다.
+함수를 받아 함수를 반환하는 것을 고차 함수(High Order Function)라고 하듯이 이것을 고차 컴포넌트(High Order Compoonent)라고 부른다.</p>
 <p>이 함수는 인자로 받은 WrappedComponent를 내부에서 만든 WithLogging 컴포넌트에서 사용한다.
 단순히 래핑한 정도로 보일지 모를테지만 WithLogging이 하는 일이 있다.<br>
 바로 enhancedProps를 컴포넌트에 추가하는 것이다.</p>
@@ -407,16 +409,16 @@ Header와 Button은 헤더 영역 UI를 렌더하고 클릭할 수 있는 버튼
 
 <span class="token keyword">const</span> EnhancedHeader <span class="token operator">=</span> <span class="token function">withLogging</span><span class="token punctuation">(</span>Header<span class="token punctuation">)</span>
 <span class="token keyword">const</span> EnhancedButton <span class="token operator">=</span> <span class="token function">withLogging</span><span class="token punctuation">(</span>Button<span class="token punctuation">)</span></code></pre></div>
-<p>Header와 Button 코드가 매우 단순해졌다.
-로깅 기능이 모두 withLogging으로 빠져버렸기 때문이다.
+<p>Header와 Button 코드가 매우 단순하게 바뀌었다.
+로깅 기능이 모두 withLogging으로 빠졌기 때문이다.
 컴포넌트 본연의 기능만 남고 어플리케이션 공통의 기능을 고차 함수로 옮긴 셈이다.</p>
 <p>withLogging으로 래핑한 Header와 Button은 EnhancedHeader와 EnhancedButton으로 다시 태어 났다.
 컴포넌트가 마운트 되면 로그를 남길 것이다.
-결국 Header와 Button은 본연의 역할을 수행하는 코드만 가지고 있고 withLogging이라는 고차 컴포넌트를 통해 요구사항에 맞는 컴포넌트를 만들수 있다.</p>
+결국 Header와 Button은 본연의 역할을 수행하는 코드만 가지고 있고 withLogging이라는 고차 컴포넌트를 통해 요구사항에 맞는 컴포넌트가 될 수 있는 것이다.</p>
 <p>이제 Button 컴포넌트는 프롭스 객체를 통해 log 함수를 사용할 수 있다.
 withLogging으로 기능을 강화했기 때문이다.
 버튼을 클릭하면 log 함수를 사용해 로그를 남길 수 있을 것이다.</p>
-<h1 id="디버깅을-노하우" style="position:relative;"><a href="#%EB%94%94%EB%B2%84%EA%B9%85%EC%9D%84-%EB%85%B8%ED%95%98%EC%9A%B0" aria-label="디버깅을 노하우 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>디버깅을 노하우</h1>
+<h1 id="디버깅-노하우" style="position:relative;"><a href="#%EB%94%94%EB%B2%84%EA%B9%85-%EB%85%B8%ED%95%98%EC%9A%B0" aria-label="디버깅 노하우 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>디버깅 노하우</h1>
 <p>리액트 개발자 도구에는 어떻게 표시될까?</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span><span class="token punctuation">></span></span><span class="token plain-text">
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">WithLogging</span></span><span class="token punctuation">></span></span><span class="token plain-text">
@@ -425,9 +427,9 @@ withLogging으로 기능을 강화했기 때문이다.
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span></code></pre></div>
 <p>고차 함수로 감싼 컴포넌트인 WithLogging 컴포넌트가 나온다.
 컴포넌트 이름 그대로이다.
-리액트 진영에서는 보통 with로 시작한 컴포넌트를 고차 컴포넌트라고 여긴다.</p>
-<p>하지만 개발자도구에서 좀 더 명확하게 고차 컴포넌트인 것을 표시하는 방법도 있다.
-컴포넌트의 displayName 필드에 "고차_컴포넌트_이름(컴포넌트_이름)" 형식으로 문자열을 지정하는 것이다.</p>
+리액트 커뮤니티에서는 보통 with로 시작한 컴포넌트를 고차 컴포넌트라고 여긴다.</p>
+<p>하지만 개발자 도구에서 좀 더 명확하게 고차 컴포넌트인 것을 표시하는 방법도 있다.
+컴포넌트 이름을 "고차_컴포넌트_이름(컴포넌트_이름)" 형식으로 만드는 것이다.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx">WithLogging<span class="token punctuation">.</span>displayName <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">WithLogging(</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">getComponentName</span><span class="token punctuation">(</span>WrappedComponent<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">)</span><span class="token template-punctuation string">`</span></span></code></pre></div>
 <p>"WithLogging(컴포넌트_이름)" 으로 디스플레이 이름을 설정했다.
 개발자 도구를 다시 확인해 보자.</p>
@@ -437,7 +439,7 @@ withLogging으로 기능을 강화했기 때문이다.
   </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span><span class="token plain-text"> WithLoggin
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span></code></pre></div>
 <p>고차 컴포넌트 이름 대신에 실제 래핑할 컴포넌트 이름을 보여준다.
-그리고 고차 컴포넌트것을 표시하기 위에 옆에 고차 컴포넌트 이름이 표시된다.</p>
+그리고 고차 컴포넌트것을 표시하기 위에 옆에 고차 컴포넌트 이름이 표시될 것이다.</p>
 <h1 id="컴포넌트-정의는-한-번만" style="position:relative;"><a href="#%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%A0%95%EC%9D%98%EB%8A%94-%ED%95%9C-%EB%B2%88%EB%A7%8C" aria-label="컴포넌트 정의는 한 번만 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>컴포넌트 정의는 한 번만</h1>
 <p>우리는 보통 render 메서드에서 컴포넌트를 정의하지 않는다.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -452,7 +454,7 @@ withLogging으로 기능을 강화했기 때문이다.
 render 메서드가 호출될때마다 새로 정의하기 때문이다.</p>
 <p>따라서 리액트는 렌더시마다 다른 컴포넌트로 알고 기존 앨리먼트를 버리고 새로 만들것이다.
 리액트 트리를 비교할 때 앨리먼트 타입이 다르면 이전 트리를 버리고 완전히 새로운 트리를 구축하기 때문이다(<a href="https://ko.reactjs.org/docs/reconciliation.html#elements-of-different-types">재조정: 엘리먼트의 타입이 다른 경우 | 리액트 고급 안내서</a>).</p>
-<p>리액트 트리를 매번 새로 만드는 성능상의 문제만 있는것이 아니다.
+<p>리액트 트리를 매번 새로 만드는 성능상의 문제만 있는 것은 아니다.
 컴포넌트를 새로 만들기 때문에 이전 렌더에서 사용한 컴포넌트의 상태가 모두 초기화 된다.
 상태 기반의 UI가 예측대로 동작하지 않을 것이다.</p>
 <p>이것은 고차 컴포넌트를 사용할 때도 마찬가지다.</p>
@@ -465,16 +467,20 @@ render 메서드가 호출될때마다 새로 정의하기 때문이다.</p>
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>함수 호출로 만드는 고차 컴포넌트는 이러한 코드를 만들기 쉽ㄴ다.
+<p>함수 호출로 만드는 고차 컴포넌트는 이러한 코드를 만들기 쉽다.
 class와 함수 정의로 컴포넌트를 정의하는 것에 비해 코드가 짧기 때문이다.
 하지만 같은 이유로 이렇게 만들어서는 의도한대로 동작하지 않는다.</p>
-<p>대신 일반 컴포넌트 정의 처럼 바깥에서 고차 컴포넌트를 생성하는 함수를 t사용해야한다.
+<p>대신 일반 컴포넌트 정의 처럼 바깥에서 고차 컴포넌트를 생성하는 함수를 사용해야한다.
 컴포넌트가 한 번만 만들어져야 하기 때문이다.</p>
 <h1 id="결론" style="position:relative;"><a href="#%EA%B2%B0%EB%A1%A0" aria-label="결론 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>결론</h1>
 <p>고차 컴포넌트에 대해 정리했다.</p>
 <p>컴포넌트 계층을 가로지르는 공통의 관심사, 즉 횡단 관심사를 문제를 해결하는 것이 고차 컴포넌트의 역할이다.</p>
-<p>일반 컴포넌트에 횡단 관심사 기능을 추가하기 위해서는 컴포넌트를 래핑한다. 그리고 추가할 기능을 프롭스 객체를 통해 전달해서 더 강화된 컴포넌트를 만든다. 디버깅을 위해 디스플레이 네임을 사용하는 노하우도 알아보았다.</p>
-<p>고차 컴포넌트도 컴포넌트이기 때문에 사용상 유의사항은 같다. 클래스 컴포넌트의 렌더함수난 함수 컴포넌트 본체 안에서 고차 컴포넌트를 만들면 안된다. 바깥 블록에서 딱 한 번만 호출해서 컴포넌트를 정의해야한다.</p>
+<p>일반 컴포넌트에 횡단 관심사 기능을 추가하기 위해서는 컴포넌트를 래핑한다.
+그리고 추가할 기능을 프롭스 객체를 통해 전달해서 더 강화된 컴포넌트를 만든다.
+디버깅을 위해 디스플레이 네임을 사용하는 노하우도 알아보았다.</p>
+<p>고차 컴포넌트도 컴포넌트이기 때문에 사용상 유의사항은 같다.
+클래스 컴포넌트의 렌더함수난 함수 컴포넌트 본체 안에서 고차 컴포넌트를 만들면 안된다.
+바깥 블록에서 딱 한 번만 호출해서 컴포넌트를 정의해야한다.</p>
 <h2 id="참고" style="position:relative;"><a href="#%EC%B0%B8%EA%B3%A0" aria-label="참고 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>참고</h2>
 <ul>
 <li><a href="https://github.com/jeonghwan-kim/2022-05-28-react-hoc">예제 코드</a></li>
