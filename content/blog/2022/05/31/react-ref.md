@@ -1,7 +1,7 @@
 ---
 slug: "/2022/05/31/react-ref"
+title: "리액트 Ref"
 date: 2022-05-31
-title: "리액트 ref"
 layout: post
 tags:
   - react
