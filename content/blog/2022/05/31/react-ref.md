@@ -63,7 +63,7 @@ ref는 current 속성을 가지는 객체다.
 React.createRef() 함수를 호출하면 ref 객체를 얻을 수 있다.
 이 객체를 리액트 앨리먼트의 ref 속성에 전달하면 돔을 직접 제어할 수 있다.
 
-```jsx
+```jsx{2-3,6-7,11-14}
 class MyComponent extends React.Component {
   // ref 객체를 클래스 멤버 변수에 저장해 둔다.
   this.divRef = React.createRef();
@@ -107,7 +107,7 @@ createRef()로 만든 current 객체는 이런 모양이다.
 
 라이프사이클 메소드마다 로깅해보자.
 
-```jsx
+```jsx{5,9,14}
 class MyComponent extends React.Component {
   divRef = React.createRef();
 
@@ -115,17 +115,14 @@ class MyComponent extends React.Component {
     console.log(this.divRef); // {current: null}
   }
 
-
   render() {
     console.log(this.divRef)// {current: null}
-
     return <div ref={this.divRef}>
   }
 
   componentDidMount() {
     console.log(this.divRef) // {current: div}
   }
-
 }
 ```
 
@@ -138,7 +135,7 @@ class MyComponent extends React.Component {
 이 예제처럼 앨리먼트의 ref 속성에 전달하면 돔 앨리먼트가 저장된다.
 컴포넌트의 ref속성에 전달하면 인스턴스 값을 저장할 것이다.
 
-```jsx
+```jsx{9,16-17}
 class MyComponent extedns React.Component {
   divRef = React.createRef();
   fooRef = React.createRef();
@@ -188,9 +185,10 @@ useRef는 전달된 인자로 ref 객체를 만들어 반환한다.
 
 다시 사용한다면 이렇게 될 것이다.
 
-```jsx
+```jsx{2-3}
 const MyComponet = () => {
-  const divRef = React.useRef(null) // 처음에만 {current: null} 이후 이 객체는 유지될 것이다.
+  // 처음에만 {current: null} 이후 이 객체는 유지될 것이다.
+  const divRef = React.useRef(null)
 
   React.useEffect(() => {
     if (divRef.current) {
