@@ -2,11 +2,10 @@ import { createGlobalStyle } from "styled-components"
 import { styleNormalize } from "./style-nomalize"
 import { Colors, Fonts, SpaceUnit } from "./style-variables"
 import { theme } from "./theme"
+import { codeHighlight } from "./code-highlight"
 
 const GlobalStyle = createGlobalStyle`
   ${styleNormalize}
-  ${theme}
-
   * {
     box-sizing: border-box;
   }
@@ -43,22 +42,7 @@ const GlobalStyle = createGlobalStyle`
     display: none;
   }
 
-  .gatsby-highlight {
-    font-size: 14px;
-    line-height: 1.5em;
-    pre {
-      position: relative;
-      button.copy {
-        position: absolute;
-        top: ${SpaceUnit()};
-        right: ${SpaceUnit()};
-        background-color: transparent;
-        border: none;
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
-  }
+  ${codeHighlight}
+  ${theme}
 `
 export default GlobalStyle
