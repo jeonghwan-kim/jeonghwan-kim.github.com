@@ -22,7 +22,7 @@
     "gatsby-plugin-styled-components": "^5.12.1",
     "gatsby-remark-autolink-headers": "^5.12.1",
     "gatsby-remark-images": "^6.12.1",
-    "gatsby-remark-prismjs": "^6.12.1",
+    "gatsby-remark-prismjs": "^6.15.0",
     "gatsby-source-filesystem": "^4.12.1",
     "gatsby-transformer-remark": "^5.13.0",
     "gatsby-transformer-sharp": "^4.12.1",
