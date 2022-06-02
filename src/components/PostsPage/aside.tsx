@@ -6,61 +6,54 @@ import { Params, Path } from "../../helpers/constants"
 import { getLinkHoverTitle } from "./helpers"
 import * as Styled from "./style"
 
-type CategoryListProps = {
+type ArchiveListProps = {
   posts: MarkdownRemark[]
-  activeCategory?: string
+  activeYear?: string
 }
 
-export const CategoryList: FC<CategoryListProps> = ({
-  posts,
-  activeCategory,
-}) => {
-  const postsWithCategory = posts.filter(post => post.frontmatter.category)
+export const ArchiveList: FC<ArchiveListProps> = ({ posts, activeYear }) => {
+  let postsGroubyYear: { [year: string]: MarkdownRemark[] } = {}
 
-  let postsGroubyCategory: { [category: string]: MarkdownRemark[] } = {}
-
-  postsWithCategory.forEach(post => {
-    const { category } = post.frontmatter
-    postsGroubyCategory[category] = postsGroubyCategory[category] || []
-    postsGroubyCategory[category].push(post)
+  posts.forEach(post => {
+    const year = new Date(post.frontmatter.date).getFullYear()
+    postsGroubyYear[year] = postsGroubyYear[year] || []
+    postsGroubyYear[year].push(post)
   })
 
-  const postsSortByCategoryCount = _.orderBy(
-    Object.entries(postsGroubyCategory).map(([category, posts]) => ({
-      category,
+  const postsSortByYear = _.orderBy(
+    Object.entries(postsGroubyYear).map(([year, posts]) => ({
+      year,
       posts,
     })),
-    entry => entry.posts.length,
+    entry => entry.year,
     "desc"
   )
 
   return (
-    <Styled.CategoryList>
-      <Styled.CategoryListTitle>글분류</Styled.CategoryListTitle>
-      <Styled.CategoryListItem>
+    <Styled.ArchiveList>
+      <Styled.ArchiveListTitle>아카이브</Styled.ArchiveListTitle>
+      <Styled.ArchiveListItem>
         <Link
           to={Path.Posts}
-          className={activeCategory === "모든글" ? "active" : ""}
+          className={activeYear === "모든글" ? "active" : ""}
         >
           <label>모든글</label>
           <span>{posts.length.toLocaleString()}</span>
         </Link>
-      </Styled.CategoryListItem>
-      {postsSortByCategoryCount.map(({ category, posts }) => (
-        <Styled.CategoryListItem key={category}>
+      </Styled.ArchiveListItem>
+      {postsSortByYear.map(({ year, posts }) => (
+        <Styled.ArchiveListItem key={year}>
           <Link
-            to={`${Path.Posts}?${Params.Category}=${encodeURIComponent(
-              category
-            )}`}
-            className={category === activeCategory ? "active" : ""}
-            title={getLinkHoverTitle(category, posts.length)}
+            to={`${Path.Posts}?${Params.Year}=${encodeURIComponent(year)}`}
+            className={year === activeYear ? "active" : ""}
+            title={getLinkHoverTitle(year, posts.length)}
           >
-            <label>{category}</label>
+            <label>{year}년</label>
             <span>{posts.length.toLocaleString()}</span>
           </Link>
-        </Styled.CategoryListItem>
+        </Styled.ArchiveListItem>
       ))}
-    </Styled.CategoryList>
+    </Styled.ArchiveList>
   )
 }
 

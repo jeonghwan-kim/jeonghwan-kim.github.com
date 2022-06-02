@@ -4,7 +4,7 @@ export const Path = {
 }
 
 export const Params = {
-  Category: "category",
+  Year: "year",
   Tag: "tag",
   Video: "videos",
 }

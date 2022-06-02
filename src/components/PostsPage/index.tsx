@@ -7,7 +7,7 @@ import { TwoColumnLayout } from "../layout"
 import PostList from "../PostList"
 import Section from "../Section"
 import SEO from "../SEO"
-import { CategoryList, TagList } from "./aside"
+import { ArchiveList, TagList } from "./aside"
 import { useStore } from "./hooks"
 import * as Styled from "./style"
 
@@ -24,9 +24,9 @@ const PostsPage: FC<PageProps<Query>> = props => {
   } = useStore()
 
   useEffect(() => {
-    const category = new URLSearchParams(location.search).get(Params.Category)
+    const year = new URLSearchParams(location.search).get(Params.Year)
     const tag = new URLSearchParams(location.search).get(Params.Tag)
-    setActive(category, tag)
+    setActive(year, tag)
   }, [location.search])
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const PostsPage: FC<PageProps<Query>> = props => {
 
   const sectionTitle = (
     <>
-      {activeType === "category" && <Icon type={IconType.Article} size={4} />}
+      {activeType === "year" && <Icon type={IconType.Article} size={4} />}
       {activeType === "tag" && <Icon type={IconType.Tag} size={4} />}
       {activeKey}
     </>
@@ -49,9 +49,9 @@ const PostsPage: FC<PageProps<Query>> = props => {
     <TwoColumnLayout
       aside={
         <Styled.Wrapper>
-          <CategoryList
+          <ArchiveList
             posts={posts}
-            activeCategory={activeType === "category" ? activeKey : null}
+            activeYear={activeType === "year" ? activeKey : null}
           />
           <TagList
             posts={posts.filter(post => post.frontmatter.tags)}

@@ -5,13 +5,13 @@ export const Wrapper = styled.div`
   padding: ${SpaceUnit()};
 `
 
-export const CategoryList = styled.ul`
+export const ArchiveList = styled.ul`
   list-style: none;
   padding-left: 0;
   margin: 0;
 `
 
-export const CategoryListItem = styled.li`
+export const ArchiveListItem = styled.li`
   a {
     padding: ${SpaceUnit()} ${SpaceUnit()};
     display: flex;
@@ -35,7 +35,7 @@ export const CategoryListItem = styled.li`
   }
 `
 
-export const CategoryListTitle = styled(CategoryListItem)`
+export const ArchiveListTitle = styled(ArchiveListItem)`
   color: ${Colors.Foreground3};
   font-weight: 500;
   font-size: 12px;
@@ -43,11 +43,11 @@ export const CategoryListTitle = styled(CategoryListItem)`
   margin-bottom: ${SpaceUnit()};
 `
 
-export const TagList = styled(CategoryList)`
+export const TagList = styled(ArchiveList)`
   margin-top: ${SpaceUnit(3)};
 `
-export const TagListTitle = styled(CategoryListTitle)``
-export const TagListItem = styled(CategoryListItem)`
+export const TagListTitle = styled(ArchiveListTitle)``
+export const TagListItem = styled(ArchiveListItem)`
   display: inline-block;
   a {
     background-color: ${Colors.Background2};

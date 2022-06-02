@@ -2,7 +2,7 @@ import { useReducer } from "react"
 import { MarkdownRemark } from "../../../graphql-types"
 
 interface State {
-  activeType?: "category" | "tag"
+  activeType?: "year" | "tag"
   activeKey?: string
   renderedPosts: MarkdownRemark[]
 }
@@ -43,12 +43,12 @@ export const useStore = () => {
   const [state, dispatch] = useReducer(reducer, initalState)
   const { activeKey, activeType, renderedPosts } = state
 
-  const setActive = (category: string, tag: string) =>
+  const setActive = (year: string, tag: string) =>
     dispatch({
       type: "SET_ACTIVE",
       payload: {
-        activeType: category ? "category" : tag ? "tag" : "category",
-        activeKey: category ? category : tag ? tag : "모든글",
+        activeType: year ? "year" : tag ? "tag" : "year",
+        activeKey: year ? year : tag ? tag : "모든글",
       },
     })
 
@@ -56,8 +56,12 @@ export const useStore = () => {
     dispatch({
       type: "SET_POST",
       payload:
-        activeType === "category" && activeKey !== "모든글"
-          ? posts.filter(p => p.frontmatter.category === activeKey)
+        activeType === "year" && activeKey !== "모든글"
+          ? posts.filter(
+              p =>
+                new Date(p.frontmatter.date).getFullYear().toString() ===
+                activeKey
+            )
           : activeType === "tag"
           ? posts.filter(p => p.frontmatter.tags?.includes(activeKey))
           : posts,
