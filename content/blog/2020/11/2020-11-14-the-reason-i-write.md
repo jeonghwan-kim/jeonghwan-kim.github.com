@@ -3,7 +3,7 @@ slug: "/think/2020/11/14/the-reason-i-write.html"
 date: 2020-11-14
 title: "블로그에 글을 쓰는 이유"
 layout: post
-category: 에세이
+tags: [에세이]
 featuredImage: 2020-11-14-the-reason-i-write.jpg
 ---
 

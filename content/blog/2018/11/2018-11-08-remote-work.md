@@ -3,7 +3,7 @@ slug: /2018/11/08/remote-work.html
 date: 2018-11-08
 title: 비오는 날, 집에서 일하기 좋은 날씨다
 layout: post
-category: 에세이
+tags: [에세이]
 ---
 
 비오는 날. 집에서 일하기 좋은 날씨다.

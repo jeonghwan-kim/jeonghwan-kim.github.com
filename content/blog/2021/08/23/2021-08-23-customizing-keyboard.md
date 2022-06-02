@@ -3,7 +3,7 @@ slug: "/think/2021/08/23/customizing-keyboard.html"
 date: 2021-08-23
 title: 한성 키보드를 매직 키보드와 유사하게 사용하기
 layout: post
-category: 에세이
+tags: [에세이]
 featuredImage: my-keyboard.jpg
 ---
 

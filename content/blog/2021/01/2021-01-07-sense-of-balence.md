@@ -3,7 +3,7 @@ slug: "/think/2021/01/07/sense-of-balence.html"
 date: 2021-01-07
 title: 균형 감각
 layout: post
-category: 에세이
+tags: [에세이]
 ---
 
 아버지와 자주 대화하는 편이다.

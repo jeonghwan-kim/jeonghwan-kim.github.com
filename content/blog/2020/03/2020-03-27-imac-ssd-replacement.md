@@ -3,7 +3,6 @@ slug: "/think/2020/03/27/imac-ssd-replacement.html"
 date: 2020-03-27
 title: 오래된 아이맥, SSD 교체하기
 layout: post
-category: 에세이
 tags: [macos]
 ---
 

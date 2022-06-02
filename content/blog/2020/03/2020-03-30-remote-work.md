@@ -3,7 +3,7 @@ slug: "/think/2020/03/30/remote-work.html"
 date: 2020-03-30
 title: 슬기로운 재택생활
 layout: post
-category: 에세이
+tags: [에세이]
 ---
 
 오늘로써 재택 근무 22일차다.
