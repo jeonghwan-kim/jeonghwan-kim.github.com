@@ -9,22 +9,9 @@ const PostComment: React.FC = () => {
 
   const handleChangeTheme = (theme: "dark" | "light" = "light") => {
     if (containerRef.current) {
-      commentService.unload(containerRef.current)
       commentService.load(containerRef.current, theme)
     }
   }
-
-  useEffect(function load() {
-    if (containerRef.current) {
-      commentService.load(containerRef.current)
-    }
-
-    return () => {
-      if (containerRef.current) {
-        commentService.unload(containerRef.current)
-      }
-    }
-  }, [])
 
   useEffect(function setupEvent() {
     themeEventEmitter.on(handleChangeTheme)

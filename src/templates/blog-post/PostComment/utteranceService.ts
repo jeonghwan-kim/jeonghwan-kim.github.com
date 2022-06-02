@@ -11,16 +11,28 @@ const defaultUtterancSettings = {
   async: "true",
 }
 
-export const utteranceService: CommentService = {
-  load(root: HTMLElement, theme?: Theme) {
-    const utterances = document.createElement("script")
-    const settings = { ...defaultUtterancSettings, theme: `github-${theme}` }
-    Object.entries(settings).forEach(([key, value]) => {
-      utterances.setAttribute(key, value)
+class UtteranceService implements CommentService {
+  load(root: HTMLElement, theme: Theme) {
+    if (root.children.length > 0) {
+      root.innerHTML = ""
+    }
+
+    const scriptElement = this.createScriptElement({
+      ...defaultUtterancSettings,
+      theme: `github-${theme}`,
     })
-    root.appendChild(utterances)
-  },
-  unload(root: HTMLElement) {
-    root.innerHTML = ""
-  },
+
+    root.appendChild(scriptElement)
+  }
+
+  private createScriptElement(settings: typeof defaultUtterancSettings) {
+    const script = document.createElement("script")
+    Object.entries(settings).forEach(([key, value]) => {
+      script.setAttribute(key, value)
+    })
+
+    return script
+  }
 }
+
+export const utteranceService = new UtteranceService()
