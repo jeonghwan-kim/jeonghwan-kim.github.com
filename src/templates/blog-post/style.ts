@@ -118,8 +118,8 @@ export const PostContent = styled.div`
   }
   code:not([class^="language-"]) {
     font-size: 0.8em;
-    background-color: ${Colors.Background3};
-    border-radius: 8px;
+    background-color: ${Colors.Background2};
+    border-radius: 6px;
     padding: 2px 6px;
     word-break: break-all;
   }
