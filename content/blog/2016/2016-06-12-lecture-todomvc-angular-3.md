@@ -2,7 +2,7 @@
 title: "앵귤러로 Todo앱 만들기 3 - 컨트롤러"
 layout: post
 category: 연재물
-seriesId: "앵귤러로 Todo앱 만들기"
+series: "앵귤러로 Todo앱 만들기"
 tags: [angularjs, lecture]
 slug: /lectures/todomvc-angular/3/
 date: 2016-06-12 09:00:03

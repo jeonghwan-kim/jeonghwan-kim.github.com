@@ -6,20 +6,14 @@ import { ButtonType } from "../../components/Button/style"
 import * as Styled from "./style"
 
 interface P {
-  seriesId: string
+  series: string
   posts: MarkdownRemark[]
   nodeId: string
   lite?: boolean
   className?: string
 }
 
-const SeriesNav: React.FC<P> = ({
-  seriesId,
-  posts,
-  nodeId,
-  lite,
-  className,
-}) => {
+const SeriesNav: React.FC<P> = ({ series, posts, nodeId, lite, className }) => {
   const curIdx = posts.findIndex(item => {
     return item.id === nodeId
   })
@@ -33,7 +27,7 @@ const SeriesNav: React.FC<P> = ({
     return (
       <Styled.SeriesNav className={`${className || ""}`}>
         <Styled.SeriesNavTitle>
-          {seriesId}
+          {series}
           <span className="series-order">
             (<span className="active">{curIdx + 1}</span>/{posts.length})
           </span>
@@ -69,7 +63,7 @@ const SeriesNav: React.FC<P> = ({
   function renderDefault() {
     return (
       <Styled.SeriesNavigator className={`${className || ""}`}>
-        <h3 className="series-title">{seriesId}</h3>
+        <h3 className="series-title">{series}</h3>
         <div className="post-list">
           <ul>
             {posts.map(post => {

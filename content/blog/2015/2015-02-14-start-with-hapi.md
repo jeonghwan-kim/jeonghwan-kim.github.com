@@ -4,7 +4,7 @@ date: 2015-02-14T16:15:06+00:00
 layout: post
 slug: /start-with-hapi/
 category: 연재물
-seriesId: "Hapi.js로 API 서버 시작하기"
+series: "Hapi.js로 API 서버 시작하기"
 tags: [hapijs]
 ---
 

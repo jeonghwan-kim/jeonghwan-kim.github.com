@@ -65,7 +65,7 @@ export const useStore = () => {
           : activeType === "tag"
           ? posts.filter(p => p.frontmatter.tags?.includes(activeKey))
           : activeType === "series"
-          ? posts.filter(p => p.frontmatter.seriesId === activeKey)
+          ? posts.filter(p => p.frontmatter.series === activeKey)
           : posts,
     })
 

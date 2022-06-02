@@ -2,7 +2,7 @@
 title: "앵귤러로 Todo앱 만들기 9 - Service"
 layout: post
 category: 연재물
-seriesId: "앵귤러로 Todo앱 만들기"
+series: "앵귤러로 Todo앱 만들기"
 tags: [angularjs, lecture]
 slug: /lectures/todomvc-angular/9/
 date: 2016-06-14 09:00:09

@@ -391,7 +391,7 @@ export type MarkdownRemarkFrontmatter = {
   layout?: Maybe<Scalars["String"]>
   category?: Maybe<Scalars["String"]>
   tags?: Maybe<Array<Maybe<Scalars["String"]>>>
-  seriesId?: Maybe<Scalars["String"]>
+  series?: Maybe<Scalars["String"]>
   videoId?: Maybe<Scalars["String"]>
   featuredImage?: Maybe<File>
   summary?: Maybe<Scalars["String"]>
@@ -1016,7 +1016,7 @@ export type MarkdownRemarkFrontmatterFilterInput = {
   layout?: Maybe<StringQueryOperatorInput>
   category?: Maybe<StringQueryOperatorInput>
   tags?: Maybe<StringQueryOperatorInput>
-  seriesId?: Maybe<StringQueryOperatorInput>
+  series?: Maybe<StringQueryOperatorInput>
   videoId?: Maybe<StringQueryOperatorInput>
   featuredImage?: Maybe<FileFilterInput>
   summary?: Maybe<StringQueryOperatorInput>
@@ -1274,7 +1274,7 @@ export type FileFieldsEnum =
   | "childrenMarkdownRemark___frontmatter___layout"
   | "childrenMarkdownRemark___frontmatter___category"
   | "childrenMarkdownRemark___frontmatter___tags"
-  | "childrenMarkdownRemark___frontmatter___seriesId"
+  | "childrenMarkdownRemark___frontmatter___series"
   | "childrenMarkdownRemark___frontmatter___videoId"
   | "childrenMarkdownRemark___frontmatter___featuredImage___sourceInstanceName"
   | "childrenMarkdownRemark___frontmatter___featuredImage___absolutePath"
@@ -1375,7 +1375,7 @@ export type FileFieldsEnum =
   | "childMarkdownRemark___frontmatter___layout"
   | "childMarkdownRemark___frontmatter___category"
   | "childMarkdownRemark___frontmatter___tags"
-  | "childMarkdownRemark___frontmatter___seriesId"
+  | "childMarkdownRemark___frontmatter___series"
   | "childMarkdownRemark___frontmatter___videoId"
   | "childMarkdownRemark___frontmatter___featuredImage___sourceInstanceName"
   | "childMarkdownRemark___frontmatter___featuredImage___absolutePath"
@@ -3036,7 +3036,7 @@ export type MarkdownRemarkFieldsEnum =
   | "frontmatter___layout"
   | "frontmatter___category"
   | "frontmatter___tags"
-  | "frontmatter___seriesId"
+  | "frontmatter___series"
   | "frontmatter___videoId"
   | "frontmatter___featuredImage___sourceInstanceName"
   | "frontmatter___featuredImage___absolutePath"
@@ -3698,7 +3698,7 @@ export type Unnamed_2_Query = {
               title?: string | null | undefined
               category?: string | null | undefined
               tags?: Array<string | null | undefined> | null | undefined
-              seriesId?: string | null | undefined
+              series?: string | null | undefined
             }
           | null
           | undefined
@@ -3709,7 +3709,7 @@ export type Unnamed_2_Query = {
 
 export type BlogPostBySlugQueryVariables = Exact<{
   slug: Scalars["String"]
-  seriesId?: Maybe<Scalars["String"]>
+  series?: Maybe<Scalars["String"]>
   videoId?: Maybe<Scalars["String"]>
 }>
 
@@ -3738,7 +3738,7 @@ export type BlogPostBySlugQuery = {
               date?: any | null | undefined
               title?: string | null | undefined
               tags?: Array<string | null | undefined> | null | undefined
-              seriesId?: string | null | undefined
+              series?: string | null | undefined
               videoId?: string | null | undefined
               featuredImage?:
                 | {
@@ -3772,7 +3772,7 @@ export type BlogPostBySlugQuery = {
             slug?: string | null | undefined
             date?: any | null | undefined
             title?: string | null | undefined
-            seriesId?: string | null | undefined
+            series?: string | null | undefined
           }
         | null
         | undefined

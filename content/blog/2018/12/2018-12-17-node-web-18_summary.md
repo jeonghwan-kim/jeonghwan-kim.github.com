@@ -4,7 +4,7 @@ date: 2018-12-17
 title: "[Node.js코드랩] 18. 마무리"
 layout: post
 category: 연재물
-seriesId: Node.js 코드랩
+series: Node.js 코드랩
 tags: [lecture]
 ---
 

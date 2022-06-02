@@ -3,7 +3,7 @@ slug: "/series/2018/12/05/node-web-5_debug.html"
 date: 2018-12-05
 title: "[Node.js코드랩] 5.커스텀 모듈 Debug"
 layout: post
-seriesId: Node.js 코드랩
+series: Node.js 코드랩
 category: 연재물
 ---
 

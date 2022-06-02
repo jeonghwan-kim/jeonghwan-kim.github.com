@@ -105,17 +105,17 @@ type SeriesListProps = {
 export const SeriesList: FC<SeriesListProps> = ({ posts, activeSeries }) => {
   let postsGroubySeries: { [year: string]: MarkdownRemark[] } = {}
 
-  const postsHasSeries = posts.filter(post => post.frontmatter.seriesId)
+  const postsHasSeries = posts.filter(post => post.frontmatter.series)
 
   postsHasSeries.forEach(post => {
-    const { seriesId } = post.frontmatter
-    postsGroubySeries[seriesId] = postsGroubySeries[seriesId] || []
-    postsGroubySeries[seriesId].push(post)
+    const { series } = post.frontmatter
+    postsGroubySeries[series] = postsGroubySeries[series] || []
+    postsGroubySeries[series].push(post)
   })
 
   const postsSortByYear = _.orderBy(
-    Object.entries(postsGroubySeries).map(([seriesId, posts]) => ({
-      seriesId,
+    Object.entries(postsGroubySeries).map(([series, posts]) => ({
+      series,
       posts,
     })),
     entry => entry.posts[0].frontmatter.date,
@@ -125,16 +125,14 @@ export const SeriesList: FC<SeriesListProps> = ({ posts, activeSeries }) => {
   return (
     <Styled.SeriesList>
       <Styled.SeriesListTitle>연재물</Styled.SeriesListTitle>
-      {postsSortByYear.map(({ seriesId, posts }) => (
-        <Styled.SeriesListItem key={seriesId}>
+      {postsSortByYear.map(({ series, posts }) => (
+        <Styled.SeriesListItem key={series}>
           <Link
-            to={`${Path.Posts}?${Params.Series}=${encodeURIComponent(
-              seriesId
-            )}`}
-            className={seriesId === activeSeries ? "active" : ""}
-            title={getLinkHoverTitle(seriesId, posts.length)}
+            to={`${Path.Posts}?${Params.Series}=${encodeURIComponent(series)}`}
+            className={series === activeSeries ? "active" : ""}
+            title={getLinkHoverTitle(series, posts.length)}
           >
-            <label>{seriesId}</label>
+            <label>{series}</label>
             <span>{posts.length.toLocaleString()}</span>
           </Link>
         </Styled.SeriesListItem>

@@ -2,7 +2,7 @@
 title: "앵귤러로 Todo앱 만들기 1 - 노드설치"
 layout: post
 category: 연재물
-seriesId: "앵귤러로 Todo앱 만들기"
+series: "앵귤러로 Todo앱 만들기"
 tags: [angularjs, nodejs, lecture]
 slug: /lectures/todomvc-angular/1/
 date: 2016-06-12 09:00:01

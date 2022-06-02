@@ -5,7 +5,7 @@ title: "프론트엔드 개발환경의 이해: 웹팩(기본)"
 layout: post
 category: 연재물
 tags: [webpack]
-seriesId: "프론트엔드 개발환경의 이해"
+series: "프론트엔드 개발환경의 이해"
 videoId: "video-inflearn-frontend-dev-env"
 ---
 

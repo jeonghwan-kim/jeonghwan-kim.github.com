@@ -4,7 +4,7 @@ date: 2018-12-04
 title: "[Node.js코드랩] 4.어플리케이션"
 layout: post
 category: 연재물
-seriesId: Node.js 코드랩
+series: Node.js 코드랩
 tags: [lecture]
 ---
 

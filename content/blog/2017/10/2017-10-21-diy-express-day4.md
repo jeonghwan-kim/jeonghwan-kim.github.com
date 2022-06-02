@@ -2,7 +2,7 @@
 title: 익스프레스 만들기 Day 4
 layout: post
 category: 연재물
-seriesId: "Express.js 만들기"
+series: "Express.js 만들기"
 slug: /2017/10/21/diy-express-day4.html
 date: 2017-10-21
 tags: [expressjs, 인증]

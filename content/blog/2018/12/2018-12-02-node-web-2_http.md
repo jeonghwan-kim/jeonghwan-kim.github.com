@@ -4,7 +4,7 @@ date: 2018-12-02
 title: "[Node.js코드랩] 2.기본 모듈 http"
 layout: post
 category: 연재물
-seriesId: Node.js 코드랩
+series: Node.js 코드랩
 tags: [lecture]
 ---
 

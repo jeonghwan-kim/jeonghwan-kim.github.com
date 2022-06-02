@@ -15,7 +15,7 @@ export const pageQuery = graphql`
             title
             category
             tags
-            seriesId
+            series
           }
         }
       }

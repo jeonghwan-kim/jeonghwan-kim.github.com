@@ -4,7 +4,7 @@ date: 2019-12-30
 title: "프론트엔드 개발환경의 이해: 린트"
 layout: post
 category: 연재물
-seriesId: "프론트엔드 개발환경의 이해"
+series: "프론트엔드 개발환경의 이해"
 videoId: "video-inflearn-frontend-dev-env"
 ---
 

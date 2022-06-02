@@ -23,9 +23,9 @@ interface Props {
 
 const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
   const { site, markdownRemark, video } = data
-  const { seriesId } = markdownRemark.frontmatter
+  const { series } = markdownRemark.frontmatter
   const { previous, next } = pageContext
-  const hasAside = markdownRemark.tableOfContents || seriesId || video
+  const hasAside = markdownRemark.tableOfContents || series || video
 
   return (
     <PlainLayout>
@@ -47,10 +47,10 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
                   {markdownRemark.tableOfContents && (
                     <PostToc tableOfContents={markdownRemark.tableOfContents} />
                   )}
-                  {seriesId && (
+                  {series && (
                     <SeriesNav
                       lite
-                      seriesId={seriesId}
+                      series={series}
                       nodeId={markdownRemark.id}
                       posts={data.allMarkdownRemark.nodes}
                     />
@@ -84,10 +84,10 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
             <Container small>
               <footer>
                 <SiblingNav previous={previous} next={next} />
-                {seriesId && (
+                {series && (
                   <SeriesNav
                     className="mb-4"
-                    seriesId={seriesId}
+                    series={series}
                     nodeId={markdownRemark.id}
                     posts={data.allMarkdownRemark.nodes}
                   />
@@ -105,7 +105,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!, $seriesId: String, $videoId: String) {
+  query BlogPostBySlug($slug: String!, $series: String, $videoId: String) {
     site {
       siteMetadata {
         title
@@ -120,7 +120,7 @@ export const pageQuery = graphql`
         date
         title
         tags
-        seriesId
+        series
         videoId
         featuredImage {
           childImageSharp {
@@ -140,7 +140,7 @@ export const pageQuery = graphql`
       url
     }
     allMarkdownRemark(
-      filter: { frontmatter: { seriesId: { eq: $seriesId } } }
+      filter: { frontmatter: { series: { eq: $series } } }
       sort: { order: ASC, fields: [frontmatter___date] }
     ) {
       nodes {
@@ -149,7 +149,7 @@ export const pageQuery = graphql`
           slug
           date
           title
-          seriesId
+          series
         }
       }
     }

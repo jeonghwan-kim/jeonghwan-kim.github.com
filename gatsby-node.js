@@ -20,7 +20,7 @@ exports.createPages = async ({ graphql, actions }) => {
               date
               title
               category
-              seriesId
+              series
               videoId
             }
           }
@@ -35,14 +35,14 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const nodes = result.data.allMarkdownRemark.edges.map(e => e.node)
 
-  nodes.forEach(({ frontmatter: { slug, date, seriesId, videoId } }, index) => {
+  nodes.forEach(({ frontmatter: { slug, date, series, videoId } }, index) => {
     createPage({
       path: slug,
       component: blogPostTemplate,
       context: {
         slug,
         date,
-        seriesId,
+        series,
         videoId,
         previous: index === nodes.length - 1 ? null : nodes[index + 1],
         next: index === 0 ? null : nodes[index - 1],

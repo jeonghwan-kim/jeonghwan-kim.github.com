@@ -2,7 +2,7 @@
 title: 순수성, 불변성, 변경정책
 layout: post
 category: 연재물
-seriesId: "함수형 프로그래밍"
+series: "함수형 프로그래밍"
 slug: /js/2017/04/23/Purity-Immutability-and-Policies-for-Change.html
 date: 2017-04-23
 tags: [JavaScript, FP]
