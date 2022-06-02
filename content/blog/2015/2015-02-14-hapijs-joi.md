@@ -4,7 +4,7 @@ date: 2015-02-14T17:43:54+00:00
 layout: post
 slug: /hapijs-joi/
 category: 연재물
-seriesId: "series-2015-02-22-hapijs"
+seriesId: "Hapi.js로 API 서버 시작하기"
 tags: [hapijs]
 ---
 

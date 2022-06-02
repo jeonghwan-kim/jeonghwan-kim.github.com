@@ -4,7 +4,7 @@ date: 2018-12-16
 title: "[Node.js코드랩] 16. body-parser"
 layout: post
 category: 연재물
-seriesId: series-2018-12-01-weplanet-codelab
+seriesId: Node.js 코드랩
 tags: [lecture]
 ---
 

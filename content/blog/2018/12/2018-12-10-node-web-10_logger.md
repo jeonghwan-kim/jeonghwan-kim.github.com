@@ -4,7 +4,7 @@ date: 2018-12-10
 title: "[Node.js코드랩] 10.커스텀 모듈 logger"
 layout: post
 category: 연재물
-seriesId: series-2018-12-01-weplanet-codelab
+seriesId: Node.js 코드랩
 tags: [lecture]
 ---
 

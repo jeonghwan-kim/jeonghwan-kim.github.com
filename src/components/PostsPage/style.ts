@@ -56,3 +56,9 @@ export const TagListItem = styled(ArchiveListItem)`
     margin-bottom: ${SpaceUnit(0.5)};
   }
 `
+
+export const SeriesList = styled(ArchiveList)`
+  margin-top: ${SpaceUnit(3)};
+`
+export const SeriesListTitle = styled(ArchiveListTitle)``
+export const SeriesListItem = styled(ArchiveListItem)``

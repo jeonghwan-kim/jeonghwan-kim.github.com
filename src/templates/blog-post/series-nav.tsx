@@ -1,19 +1,25 @@
 import { Link } from "gatsby"
 import React from "react"
-import { MarkdownRemark, Series } from "../../../graphql-types"
+import { MarkdownRemark } from "../../../graphql-types"
 import Button from "../../components/Button"
 import { ButtonType } from "../../components/Button/style"
 import * as Styled from "./style"
 
 interface P {
-  series: Series
+  seriesId: string
   posts: MarkdownRemark[]
   nodeId: string
   lite?: boolean
   className?: string
 }
 
-const SeriesNav: React.FC<P> = ({ series, posts, nodeId, lite, className }) => {
+const SeriesNav: React.FC<P> = ({
+  seriesId,
+  posts,
+  nodeId,
+  lite,
+  className,
+}) => {
   const curIdx = posts.findIndex(item => {
     return item.id === nodeId
   })
@@ -27,7 +33,7 @@ const SeriesNav: React.FC<P> = ({ series, posts, nodeId, lite, className }) => {
     return (
       <Styled.SeriesNav className={`${className || ""}`}>
         <Styled.SeriesNavTitle>
-          {series.title}
+          {seriesId}
           <span className="series-order">
             (<span className="active">{curIdx + 1}</span>/{posts.length})
           </span>
@@ -63,7 +69,7 @@ const SeriesNav: React.FC<P> = ({ series, posts, nodeId, lite, className }) => {
   function renderDefault() {
     return (
       <Styled.SeriesNavigator className={`${className || ""}`}>
-        <h3 className="series-title">{series.title}</h3>
+        <h3 className="series-title">{seriesId}</h3>
         <div className="post-list">
           <ul>
             {posts.map(post => {

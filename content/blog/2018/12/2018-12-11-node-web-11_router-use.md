@@ -4,7 +4,7 @@ date: 2018-12-11
 title: "[Node.js코드랩] 11.라우터 use"
 layout: post
 category: 연재물
-seriesId: series-2018-12-01-weplanet-codelab
+seriesId: Node.js 코드랩
 tags: [lecture]
 ---
 

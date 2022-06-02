@@ -4,7 +4,7 @@ date: 2021-04-08
 title: "만들면서 학습하는 리액트: 소개편"
 layout: post
 category: 연재물
-seriesId: series-2021-04-24-inflean-react
+seriesId: 만들면서 학습하는 리액트
 videoId: video-2021-05-04-inflearn-react
 tags: [react]
 ---

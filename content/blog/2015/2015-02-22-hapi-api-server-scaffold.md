@@ -2,7 +2,7 @@
 title: Hapi Api 서버 스캐폴드
 date: 2015-02-22T12:00:26+00:00
 category: 연재물
-seriesId: "series-2015-02-22-hapijs"
+seriesId: "Hapi.js로 API 서버 시작하기"
 slug: /hapi-api-server-scaffold/
 layout: post
 tags: [hapijs]

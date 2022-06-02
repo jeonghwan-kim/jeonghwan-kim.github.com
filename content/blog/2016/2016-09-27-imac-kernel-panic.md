@@ -1,7 +1,6 @@
 ---
 title: "아이맥, 커널 패닉에 빠지다"
 layout: post
-tags: [에세이]
 tags: [macos]
 slug: /2016/09/27/imac-kernel-panic.html
 date: 2016-09-27

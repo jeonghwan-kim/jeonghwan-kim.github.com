@@ -7,7 +7,7 @@ import { TwoColumnLayout } from "../layout"
 import PostList from "../PostList"
 import Section from "../Section"
 import SEO from "../SEO"
-import { ArchiveList, TagList } from "./aside"
+import { ArchiveList, SeriesList, TagList } from "./aside"
 import { useStore } from "./hooks"
 import * as Styled from "./style"
 
@@ -26,7 +26,8 @@ const PostsPage: FC<PageProps<Query>> = props => {
   useEffect(() => {
     const year = new URLSearchParams(location.search).get(Params.Year)
     const tag = new URLSearchParams(location.search).get(Params.Tag)
-    setActive(year, tag)
+    const series = new URLSearchParams(location.search).get(Params.Series)
+    setActive(year, tag, series)
   }, [location.search])
 
   useEffect(() => {
@@ -56,6 +57,10 @@ const PostsPage: FC<PageProps<Query>> = props => {
           <TagList
             posts={posts.filter(post => post.frontmatter.tags)}
             activeTag={activeType === "tag" ? activeKey : null}
+          />
+          <SeriesList
+            posts={posts}
+            activeSeries={activeType === "series" ? activeKey : null}
           />
         </Styled.Wrapper>
       }

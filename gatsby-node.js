@@ -1,6 +1,5 @@
 const path = require("path")
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin")
-const series = require("./content/series.json")
 const videos = require("./content/videos.json")
 
 exports.createPages = async ({ graphql, actions }) => {
@@ -53,17 +52,6 @@ exports.createPages = async ({ graphql, actions }) => {
 }
 
 exports.sourceNodes = ({ actions, createContentDigest }) => {
-  series.forEach(s => {
-    actions.createNode({
-      id: s.id,
-      title: s.title,
-      internal: {
-        type: "series",
-        contentDigest: createContentDigest(s),
-      },
-    })
-  })
-
   videos.forEach(v => {
     actions.createNode({
       id: v.id,

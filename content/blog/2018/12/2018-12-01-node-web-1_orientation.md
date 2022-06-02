@@ -4,7 +4,7 @@ date: 2018-12-01
 title: "[Node.js 코드랩] 1.오리엔테이션"
 layout: post
 category: 연재물
-seriesId: series-2018-12-01-weplanet-codelab
+seriesId: Node.js 코드랩
 tags: [lecture]
 ---
 

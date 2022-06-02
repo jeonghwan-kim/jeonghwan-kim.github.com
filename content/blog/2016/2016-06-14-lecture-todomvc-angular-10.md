@@ -2,7 +2,7 @@
 title: "앵귤러로 Todo앱 만들기 10 - Express.js로 웹서버 만들기"
 layout: post
 category: 연재물
-seriesId: "series-2016-06-11-angularjs"
+seriesId: "앵귤러로 Todo앱 만들기"
 tags: [angularjs, lecture]
 slug: /lectures/todomvc-angular/10/
 date: 2016-06-14 09:00:10

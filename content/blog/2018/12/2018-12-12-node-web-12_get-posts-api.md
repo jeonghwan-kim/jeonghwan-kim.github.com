@@ -4,7 +4,7 @@ date: 2018-12-12
 title: "[Node.js코드랩] 12.포스트 조회 API"
 layout: post
 category: 연재물
-seriesId: series-2018-12-01-weplanet-codelab
+seriesId: Node.js 코드랩
 tags: [lecture]
 ---
 

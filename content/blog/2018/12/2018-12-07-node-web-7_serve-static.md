@@ -5,7 +5,7 @@ title: "[Node.js코드랩] 7.커스텀 모듈 serve-static"
 layout: post
 category: 연재물
 tags: [lecture]
-seriesId: series-2018-12-01-weplanet-codelab
+seriesId: Node.js 코드랩
 ---
 
 ## 🌳목표

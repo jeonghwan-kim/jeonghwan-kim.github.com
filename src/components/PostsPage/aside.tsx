@@ -96,3 +96,49 @@ export const TagList: FC<TagListProps> = ({ posts, activeTag }) => {
     </Styled.TagList>
   )
 }
+
+type SeriesListProps = {
+  posts: MarkdownRemark[]
+  activeSeries?: string
+}
+
+export const SeriesList: FC<SeriesListProps> = ({ posts, activeSeries }) => {
+  let postsGroubySeries: { [year: string]: MarkdownRemark[] } = {}
+
+  const postsHasSeries = posts.filter(post => post.frontmatter.seriesId)
+
+  postsHasSeries.forEach(post => {
+    const { seriesId } = post.frontmatter
+    postsGroubySeries[seriesId] = postsGroubySeries[seriesId] || []
+    postsGroubySeries[seriesId].push(post)
+  })
+
+  const postsSortByYear = _.orderBy(
+    Object.entries(postsGroubySeries).map(([seriesId, posts]) => ({
+      seriesId,
+      posts,
+    })),
+    entry => entry.posts[0].frontmatter.date,
+    "desc"
+  )
+
+  return (
+    <Styled.SeriesList>
+      <Styled.SeriesListTitle>연재물</Styled.SeriesListTitle>
+      {postsSortByYear.map(({ seriesId, posts }) => (
+        <Styled.SeriesListItem key={seriesId}>
+          <Link
+            to={`${Path.Posts}?${Params.Series}=${encodeURIComponent(
+              seriesId
+            )}`}
+            className={seriesId === activeSeries ? "active" : ""}
+            title={getLinkHoverTitle(seriesId, posts.length)}
+          >
+            <label>{seriesId}</label>
+            <span>{posts.length.toLocaleString()}</span>
+          </Link>
+        </Styled.SeriesListItem>
+      ))}
+    </Styled.SeriesList>
+  )
+}

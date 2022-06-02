@@ -4,7 +4,7 @@ date: 2018-12-15
 title: "[Node.js코드랩] 15.라우터 Get, Post"
 layout: post
 category: 연재물
-seriesId: series-2018-12-01-weplanet-codelab
+seriesId: Node.js 코드랩
 tags: [lecture]
 ---
 

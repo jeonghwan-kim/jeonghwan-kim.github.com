@@ -5,7 +5,7 @@ title: 함수로 함수 만들기1 다형성
 layout: post
 category: 연재물
 tags: [JavaScript, FP]
-seriesId: series-2017-04-22-functional
+seriesId: 함수형 프로그래밍
 featuredImage: "./functional-javascript-thumbnail.png"
 ---
 

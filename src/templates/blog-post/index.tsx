@@ -22,9 +22,10 @@ interface Props {
 }
 
 const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
-  const { site, markdownRemark, series, video } = data
+  const { site, markdownRemark, video } = data
+  const { seriesId } = markdownRemark.frontmatter
   const { previous, next } = pageContext
-  const hasAside = markdownRemark.tableOfContents || series || video
+  const hasAside = markdownRemark.tableOfContents || seriesId || video
 
   return (
     <PlainLayout>
@@ -46,10 +47,10 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
                   {markdownRemark.tableOfContents && (
                     <PostToc tableOfContents={markdownRemark.tableOfContents} />
                   )}
-                  {series && (
+                  {seriesId && (
                     <SeriesNav
                       lite
-                      series={series}
+                      seriesId={seriesId}
                       nodeId={markdownRemark.id}
                       posts={data.allMarkdownRemark.nodes}
                     />
@@ -83,10 +84,10 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
             <Container small>
               <footer>
                 <SiblingNav previous={previous} next={next} />
-                {series && (
+                {seriesId && (
                   <SeriesNav
                     className="mb-4"
-                    series={series}
+                    seriesId={seriesId}
                     nodeId={markdownRemark.id}
                     posts={data.allMarkdownRemark.nodes}
                   />
@@ -131,10 +132,6 @@ export const pageQuery = graphql`
       }
       tableOfContents(absolute: false, maxDepth: 6, heading: null)
       excerpt(pruneLength: 500)
-    }
-    series(id: { eq: $seriesId }) {
-      id
-      title
     }
     video(id: { eq: $videoId }) {
       id

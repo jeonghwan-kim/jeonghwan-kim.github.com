@@ -6,7 +6,7 @@ layout: post
 category: 연재물
 tags: [JavaScript, FP]
 featuredImage: "./functional-javascript-thumbnail.png"
-seriesId: "series-2017-04-22-functional"
+seriesId: "함수형 프로그래밍"
 ---
 
 ![high-order-function](./high-order-function.png)

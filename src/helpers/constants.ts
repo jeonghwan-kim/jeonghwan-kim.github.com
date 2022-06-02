@@ -6,5 +6,6 @@ export const Path = {
 export const Params = {
   Year: "year",
   Tag: "tag",
+  Series: "series",
   Video: "videos",
 }
