@@ -18,7 +18,7 @@ featuredImage: wash-car.jpg
 리액트는 이런 경우에 대비해 ref라는 특별한 객체를 제공한다.
 
 특별한 기능인만큼 그동안 잘 사용해 보지 않았다.
-몰랐을 때는 document.querySelect를 사용해서 직접 엘리먼트를 찾기도했다.
+몰랐을 때는 document.querySelector() 를 사용해서 직접 엘리먼트를 찾기도 했다.
 아주 가끔 사용해 봤는데 그 때마다 사용법이 일관되지 않은 것 같았다.
 crateRef, useRef, 콜백 ref, 문자열 ref.
 사용하다보니 이런 용어가 머릿속에 정리되지 않은채 남아있다.
@@ -28,8 +28,8 @@ crateRef, useRef, 콜백 ref, 문자열 ref.
 # 언제 사용하는가?
 
 리액트 컴포넌트로 UI를 만드는 것은 선언적이다.
-상태을 정의하고 이것을 UI에 반영한다.
-예를 들자면 이런 코드다.
+상태을 정의하고 이것을 UI에 반영.
+말하자면 이런 코드다.
 
 ```jsx
 const MyComponent extends React.Component {
@@ -74,7 +74,7 @@ class MyComponent extends React.Component {
   }
 
   componentDidMount() {
-    // ref 객체읭 current 속성에 돔 엘리먼트가 저장된다.
+    // ref 객체의 current 속성에 돔 엘리먼트가 저장된다.
     const divElement = thir.divRef.current;
     // DOM api를 사용할 수 있다.
     divElement.style.backgroundColor = 'red';
@@ -206,12 +206,12 @@ const MyComponet = () => {
 차 안으로 물이 들어오지 않게 창문을 닫고 중립 기어만 놓으면 기계가 알아서 차를 닦아 준다.
 기계 밖으로 나온 뒤에 햇살에 비추어 보면 군데군데 얼룩이 남아있다.
 휠 안쪽, 라이에이터 그릴 사이, 번호판 숫자.
-이런 부분은 걸레를 들고 직접 닦을 수 밖에 없다.
+이런 부분은 걸레를 들고 손수 닦을 수 밖에 없다.
 
 선언적 방식으로 코딩하면 신속하게 UI를 만들어 낼수 있다.
 하지만 자동 포커스, 애니매이션 같은 디테일이 필요한 것은 직접 엘리먼트에 접근할수 밖에 없다.
 직접 돔을 다루어야한다.
-이런 과정을 거처야 비로서 쓸만한 어플리케이션을 만들 수 있는 것 같다.
+이런 과정을 거처야 비로소 쓸만한 어플리케이션을 만들 수 있는 것 같다.
 완벽하게 세차한 뒤 반짝이는 차를 보면서 만족하는 것 처럼 디테일을 챙겨만든 제품을 사용할 때 개발자로서 뿌듯함을 느낀다.
 
 ## 참고

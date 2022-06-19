@@ -19,8 +19,8 @@ layout: post
 - hooks 때문에 출시. 코드양 줄고, 용량 줄어 4kb
 - useParams, useLocation
 - 라이프 사이클의 전형적 불편함
-- 중척 라우팅 -> 다시 읽자.
-- witch 대신 Routes
+- 중첩 라우팅 -> 다시 읽자.
+- Switch 대신 Routes
 
 # 5/15 일
 
@@ -29,7 +29,7 @@ layout: post
 - Remix는 뭘까?
 - 파생된 생태
 - state 여러개 -> 변경을 한 곳에서 처리
-- Geeter 같은 것? 상태는 1개. 나머지는 계산해서 사용
+- Getter 같은 것? 상태는 1개. 나머지는 계산해서 사용
 - 성능이 걱정이라면 useMemo, useComputedValue -> 구현 코드 참고
 - 좀 어렵다.
 
