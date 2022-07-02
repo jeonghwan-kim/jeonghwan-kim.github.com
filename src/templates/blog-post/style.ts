@@ -123,6 +123,12 @@ export const PostContent = styled.div`
     padding: 2px 6px;
     word-break: break-all;
   }
+  hr {
+    border: none;
+    height: 1px;
+    background-color: ${Colors.Foreground4};
+    margin: ${SpaceUnit(4)} 0;
+  }
   .gatsby-highlight {
     pre {
       border-radius: ${SpaceUnit()} / 2;
