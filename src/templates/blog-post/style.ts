@@ -58,7 +58,7 @@ export const PostTime = styled.time`
 
 export const PostContent = styled.div`
   font-size: 18px;
-  line-height: 1.5em;
+  line-height: 1.8em;
   font-family: ${Fonts.Article};
   word-break: break-word;
   h1 {
