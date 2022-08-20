@@ -1,5 +1,5 @@
 ---
-slug: "2022/08/06/special-parental-leave"
+slug: "/2022/08/06/special-parental-leave"
 title: "특별육아휴직"
 date: 2022-08-06
 layout: post
