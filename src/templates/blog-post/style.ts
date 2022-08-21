@@ -63,23 +63,23 @@ export const PostContent = styled.div`
   word-break: break-word;
   h1 {
     font-size: 200%;
-    margin-top: 20px;
+    margin-top: 1.5em;
   }
   h2 {
     font-size: 160%;
-    margin-top: 18px;
+    margin-top: 1.5em;
   }
   h3 {
     font-size: 120%;
-    margin-top: 16px;
+    margin-top: 1.5em;
   }
   h4 {
     font-size: 110%;
-    margin-top: 14px;
+    margin-top: 1.5em;
   }
   h5 {
     font-size: 100%;
-    margin-top: 12px;
+    margin-top: 1.5em;
   }
   h1,
   h2,
