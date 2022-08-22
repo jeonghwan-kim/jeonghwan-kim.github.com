@@ -178,5 +178,5 @@ npm start --workspaces --if-present
 
 ## 참고
 
+- [예제 코드](https://github.com/jeonghwan-kim/2022-post-sample-code/tree/main/npm-workspace)
 - [workspaces | npm Docs](https://docs.npmjs.com/cli/v7/using-npm/workspaces)
-- [예제 코드](https://github.com/jeonghwan-kim/post-npm-workspace)

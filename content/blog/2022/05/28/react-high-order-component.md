@@ -307,6 +307,6 @@ class와 함수 정의로 컴포넌트를 정의하는 것에 비해 코드가 �
 
 ## 참고
 
-- [예제 코드](https://github.com/jeonghwan-kim/2022-05-28-react-hoc)
+- [예제 코드](https://github.com/jeonghwan-kim/2022-post-sample-code/tree/main/react-hoc)
 - [리액트 공식문서](https://ko.reactjs.org/docs/higher-order-components.html)
 - [횡단 관심사](https://ko.wikipedia.org/wiki/%ED%9A%A1%EB%8B%A8_%EA%B4%80%EC%8B%AC%EC%82%AC)

@@ -366,7 +366,7 @@ useContext가 해결하려는 문제는 무엇이었을까?
 
 ## 참고
 
-- [예제 코드](https://github.com/jeonghwan-kim/2022-04-02-react-hooks)
+- [예제 코드](https://github.com/jeonghwan-kim/2022-post-sample-code/tree/main/react-hooks)
 - [리액트 공식 문서 > useContext](https://ko.reactjs.org/docs/hooks-reference.html#usecontext)
 - [jamiebuilds/create-react-context](https://github.com/jamiebuilds/create-react-context)
 - [프로퍼티 내리꽂기 (prop drilling)](https://edykim.com/ko/post/prop-drilling/)

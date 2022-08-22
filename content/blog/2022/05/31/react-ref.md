@@ -216,6 +216,6 @@ const MyComponet = () => {
 
 ## 참고
 
-- [샘플코드](https://github.com/jeonghwan-kim/psot-react-ref)
+- [샘플코드](https://github.com/jeonghwan-kim/2022-post-sample-code/tree/main/react-ref)
 - [Ref와 DOM | 리액트 고급 안내서](https://ko.reactjs.org/docs/refs-and-the-dom.html)
 - [Hook API 참고서 | 리액트 HOOK](https://ko.reactjs.org/docs/hooks-reference.html#useref)
