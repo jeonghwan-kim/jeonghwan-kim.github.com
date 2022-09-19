@@ -131,7 +131,7 @@ export const pageQuery = graphql`
         }
       }
       tableOfContents(absolute: false, maxDepth: 6, heading: null)
-      excerpt(pruneLength: 500)
+      excerpt(pruneLength: 200)
     }
     video(id: { eq: $videoId }) {
       id
