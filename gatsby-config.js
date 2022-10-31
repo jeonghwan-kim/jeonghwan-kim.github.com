@@ -5,8 +5,6 @@ module.exports = {
     author: `김정환`,
     url: "https://jeonghwan-kim.github.io",
     social: {
-      email: "ej88ej@gmail.com",
-      twitterUsername: "mokpo_dev",
       githubUsername: "jeonghwan-kim",
     },
   },

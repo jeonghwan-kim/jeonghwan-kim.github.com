@@ -6,7 +6,6 @@ export interface CreateMetaProps {
   url: string
   image: string
   title: string
-  twitterUsername?: string
   date?: string
 }
 
@@ -16,7 +15,6 @@ export const createMeta = ({
   url,
   image,
   title,
-  twitterUsername,
   date,
 }: CreateMetaProps): MetaProps[] => {
   const meta: MetaProps[] = [
@@ -65,25 +63,6 @@ export const createMeta = ({
       content: `300`,
     },
   ]
-
-  if (twitterUsername) {
-    meta.push(
-      ...[
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:site`,
-          content: twitterUsername,
-        },
-        {
-          name: `twitter:creator`,
-          content: twitterUsername,
-        },
-      ]
-    )
-  }
 
   if (date) {
     meta.push({

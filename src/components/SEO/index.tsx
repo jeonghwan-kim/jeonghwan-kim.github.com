@@ -46,7 +46,6 @@ const SEO: React.FC<SEOProps> = ({ title, description, date, url, image }) => {
     url: url || site.siteMetadata.url,
     image: getImage(),
     title,
-    twitterUsername: site.siteMetadata.social.twitterUsername,
   })
 
   return (
@@ -85,9 +84,6 @@ const query = graphql`
         description
         author
         url
-        social {
-          twitterUsername
-        }
       }
     }
   }

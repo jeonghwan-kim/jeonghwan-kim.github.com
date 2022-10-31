@@ -34,9 +34,6 @@ const Header: React.FC<HeaderProps> = ({ noBorder }) => {
           <Nav to="/feed.xml">
             <Icon type={IconType.RSS} style={{ filter: "invert(0.6)" }} />
           </Nav>
-          <Nav href={`mailto:ej88ej@gmail.com`}>
-            <Icon type={IconType.Email} style={{ filter: "invert(0.6)" }} />
-          </Nav>
           <Nav to={`https://github.com/jeonghwan-kim`}>
             <Icon type={IconType.Github} style={{ filter: "invert(0.6)" }} />
           </Nav>
