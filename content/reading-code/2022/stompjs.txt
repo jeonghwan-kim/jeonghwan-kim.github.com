@@ -1,0 +1,377 @@
+
+wc -l `find ./src -name '*.ts*'` 
+
+      38 ./src/augment-websocket.ts
+      13 ./src/byte.ts
+     812 ./src/client.ts
+     250 ./src/frame-impl.ts
+      41 ./src/i-frame.ts
+      35 ./src/i-message.ts
+      23 ./src/i-transaction.ts
+      15 ./src/index.ts
+     255 ./src/parser.ts
+     152 ./src/stomp-config.ts
+     539 ./src/stomp-handler.ts
+      12 ./src/stomp-headers.ts
+      18 ./src/stomp-subscription.ts
+     156 ./src/types.ts
+      50 ./src/versions.ts
+     269 ./src/compatibility/compat-client.ts
+      26 ./src/compatibility/heartbeat-info.ts
+     118 ./src/compatibility/stomp.ts
+    2822 total
+
+
+
+augment-websocket.ts
+  func argmentWebscoekt(webSocket, debug)
+    webScoket.terminate == func () { // 뭔가 소켓을 종료하는 코드다. 지연시켜서 하는듯.
+
+byte.ts
+  스톰프 명세에 있는 바이트 값 
+  const BYTE = {
+    LF: '\x0A', // LINEFEED byte (octet 10)
+    NULL: '\x00',  // NULL byte (octet 0)
+
+client.ts *
+  stompHandler 객체를 가지고 있음
+
+class Client
+  Variables
+    brokerURL // ex. ws://..., Client#webSocketFacktory가 사용
+    stompVersion // 핸드 쉐이크 할때 사용 
+    webSocketFactory: () => IStompCoket // 웹소켓이나 SocketJS 같은 비슷한 객체 반환
+    connectionTimeout = 0 //
+    _connectionWatcher: number // Timer
+    reconnectDealy = 5000 // 5s
+    heartbeatIncoming = 10000; // 10s
+    heartbeatOutgoing = 1000
+    spliteLargeFrames: boolean // 비표준. 자바 스프링 브로커만 이 모드를 사용
+    maxWebSocketChunkSize =  8 * 1024
+    forceBinaryWSFrames = false
+    appendMissingNULLonIncoming // 리액트 네이티브 어쩌구
+    get webScoket() // this._stompHandler._webSocket 반환 
+    
+    connectHeaders // login, passcode, host
+    get disconnectHeaders // this._disconnectHeader
+    set disconnectHEaders
+    _disconnectHEaders 
+     
+    onUnhandedMessage // RabbitMQ 임시 큐에서 보낸 메세지 받을 때 유용?
+    onUnhandedReceipt // 
+    onUnhandledFrame
+    get connected() // this._stompHandler.connecd 반환 
+    get active(): boolean // this.state 상태값 비교 
+    onChangeState: (state) => void
+    _chagneState(state) // this.state = state; this.onChangeState(state)
+    _resolveSocketClose()
+    state: ActivationState
+    _reconnector
+  Methods
+    constructor(conf)
+    configure() // Object.assing(this, conf)
+    activate(): void // 브로커와 연결, 재시도는 Client#reconnectDelay
+    _connect(): Promive<void> // stompHandler 생성 
+    _createWebScoket(): IStompScoket // 외부에서 팩토리 받으면 실행, 아니면 new WebScoket()
+    _schedule_reconnect(): void
+    async deactivate()
+    forceDisconnect
+    _disposeStompHandler()
+    publish(params)
+    watchForReceip() //어떤 고유의 작업시 사용?
+    subscribe(dest, cb, headers): StompSubscription 
+    unsubscribe(id, headers)
+    begin() // 트랜젝션 시작
+    commit()
+    abort()
+    ack() // 긍정
+    nack() // 부정 
+
+frame-impl.ts
+  스톰프 프레임을 표현하는 클래스 
+  class FrameImple implements IFrame
+    Variables
+      command
+      headers
+      isBinaryBody
+      get Body(): string
+      _body
+      get binaryBody()
+      _binaryBody
+      escapeHeaderValues: boolean;
+      skipContentLengthHeader: boolean
+    Methodrams
+      constructor() // 멤버변수 설저어, 플래그 초기화 
+      static fromRawFrome(rawFrame, escapeHeaderValues): FrameImple // 팩토리
+      toString()
+      serialize()
+      serializeCmdAndHeadrs()
+      isBodyEmtpy()
+      bodyLength() // 게터로 만들지 않는구나. 게터는 내부 변수를 위한 것이라고 생각하자
+      static sizeOfUTF8()
+      static toUnit8Array()
+      marshall(params) // 고랭에서 본 단어. 
+      static hdrValueEscape()
+      static hdrValueUnEscape()
+
+i-frame.ts
+  interface IFrame // STOMP frame
+    command
+    headers
+    isBinaryBody
+    readonly body
+    readonly binaryBody
+  type Frmae = IFrame // alias
+
+i-message.ts
+  interface IMessage exntes IFRame
+    ack: (header?) => void;
+    nack: (header?) => void
+  type Message = IMessage // alias
+
+
+i-transaction.ts
+  interface ITransaction // Client#begin 으로 트랜잭션 객체를 만든다 
+    id
+    commit: () => void
+    abort: () => void
+
+index.ts
+  export * from './....' // 라이브러리 인덱스는 이런 역할이구나 
+
+parser.ts
+  const NULL = 0
+  const LF = 10
+  const CR = 13
+  const COLON = 58
+  class Parser
+    Variables
+      _encoder = new TextEncoder()
+      _decoder = new TextDecoder()
+      _result
+      _token: number[] = []
+      _headerKey: string
+      _bodyBytesRemaining: number
+      _onByte: (byte: number) => void
+    Methods
+      constructor(onFrame, onIncomingPing) // _initState() 호출
+      parseChunk(segment, appendMissingNULLLonIncoming) //
+      _collectFrame() // 
+      _collectCommand()
+      _collectHeaders()
+      _reinjectByte()
+      _collectHeaderKey()
+      _collectHeaderValue()
+      _setupCollectBody()
+      _collectBodyNullTerminated
+      _collectBodyFixedSize
+      _retrivedBdoy()
+      _consumByte()
+      _consumeTokenAsUTF8()
+      _consumeTokenAsRaw()
+      _initState()
+
+
+stomp-config.ts
+  STOMP Clinet의 설정 옵션. Client 클래스의 필드이름과 같다. 생성자로 전달한다.
+  class StompConfig // 왜 인터페이스로 만들지 않았을까? 왜 클래스로 정의했을까? 
+
+stomp-handler.ts
+  class StompHandler // 스톰프 프로토콜 핸들러
+    멤버 변수
+      debug
+      stompVersions
+      connectHeaders
+      disconnectHeaders
+      heartbeatIncoming // HeartbeatInfo에서 제어
+      heartbeatOutgoing // HeartbeatInfo에서 제어
+      onUnhandledMessage
+      onUnhandledReceipt
+      onUnhandledFrame
+      onConnect
+      onDisconnect
+      onStompError
+      onWebSocketClose
+      onWebSocketError
+      logRawCommunication
+      splitLargeFrames
+      maxWebScoketChunkSize
+      forceBinaryWSFrames
+      appendMissingNULLonIncoming
+      discardWebsocketOnCommFailure
+      get connectedVersion()
+      _connectedVersion
+      get connected() // 이걸로 연결을 확인할 수 있을까?
+      _connected
+      _subscriptions
+      _receiptWatchers
+      _partialData
+      _escapeHeaderValues
+      _counter
+      _pinger
+      _ponger
+      _lastServerActivityTS
+      _onclose
+    construct(_client, _webSocket, config?)
+      카운터와 구독자 맵 초기화 // 구독자 인덱스 
+    configure(conf): void
+      Object.assing(this, config) // 여기도 사용하네?
+    start(): void
+      const parset= new Parser() // 파서 생성, PONG 로그도 남기는구나
+      this._webScoket.onmessage = // 데이터 수신기 정의. 위에 파서가 청크를 해석한다 
+      this._onclose = // 연결 닫기 정기 
+      this._webSocket.onclose =  // 위 함수를 웹소켓에 연결 
+      this._webScoket.onError = // this.onWebScoketError 호출하는 함수 정의
+      this._webScoket.onopen = // 연결함수 정의
+          this._transmit({command: 'CONNECT', headers }) // 스톰프 명령어?
+    _serverFrameHeaders = { // 맵으로 되어 있군. 명령어, 콜백 조합?
+      CONNECTED: // 연결되었을 때 콜백. 로깅, 
+          this._setupHeartbeat(frame.headers) // 서버의 값을 설정
+          this.onConnect(frame) // 연결 핸들러 실행
+      MESSAGE: // subscribe() 호출시 등록할 콜백 
+          onReceive = this._subscriptions[...] ||| this.onUnhandedMessage
+          bless the frame to be a Message // 주석 인상적 
+          act, nack // ?
+          onReceive(message) 
+      RECEIPT: // 위에 등록한 콜백을 실행하는 건가?
+          const callback = this._receiptWatchers[frame.headers['receipt-id]]
+          // 콜백을 실행
+      ERROR
+          this.onStompError(frame)
+    _setupHeartbeat)headers): void 
+      클라이언트와 서버중 큰 값을 취한다 
+      this._webScoket.readyState === StompSocketState.OPEN 일때만 보낸다
+      pong은 설정한 ttl의 두 배 시간동안 기다린다.
+    _closeOrDiscardWebscoekt() // ?
+    forceDisconnect() // this._webScoket.readyState를 검사하고 소켓을 닫는다. 위 함수 호출
+    public _closeWebScoket() // 이건 공개네? 사용하라는 것?
+    _discardWebsocket()
+    _transmit({command, headers?, body?, binaryBody?, skipContentLengthHeader?)
+      const frame = new FrameImple() // 프레임을 만든다. 
+      this._webScoekt.send(rawChunk) // 소켓으로 보낸다. 한번에 보내거나 청크를 여러개 보냄
+
+    dispose() // 연결 해제 
+      this._transmit({ command: 'DISCONNECT', header })  // 스톰프 명령어
+      this._closeWebsocket() // 연결전이라면 웹소켓을 닫는다
+
+    _cleanUp() 
+      _connected = false // 플래그 단다.
+      핑퐁 인터벌 핸들러를 정리한다.
+
+    publish(params): void // 메세지를 보낸다.
+      this._transmit({commaned: 'SEND', headers, body...}) // 스톰프 명령어
+
+    watchForReceipt(receiptId, callback) // 수신을 감시한다. 콜백 등록 
+
+    subscribe(destinamtion: callback, headers) // 토픽 구독
+      this._transmit({command: 'SUBSCRIBE', headers}) // 스톰프 명령어 
+      return { id, unsubscribe }
+
+    unsubscribe(id, headers) // 위에서 반환한 구독해지 함수 
+      this._trasmit({ command: 'UNSUBSCRIBE', header }) // 스톰프 명령어 
+
+    begin(transctionId) // 트랜잭션 시작
+      this._transmit({command: 'BEGIN', headers: {transactionId}) // 스톰프 명령어 
+      return { commit, abort }
+
+    commit(transactionId) 
+      this._transmit({commit: 'COMMIT // 
+
+    abort(transactionId) 
+      this._transmit({ command: 'ABORT' //
+
+    ack(messageId, subscriptionId, headers) ///
+      this._tracsmit({ command: 'ACK' // 뭐지?
+
+    nack(messageId, subscriptionId, headers) ///
+      this._tracsmit({ command: 'NACK' // 뭐지?
+
+stomp-headers.ts
+  class StompHeaders {[key: string]: string } // 그냥 오브젝트 인데? 
+
+stomp-subscription.ts
+  class StompSubscription // Client#subscribe 호출하면 생기는 객체 
+    id // 구독 아이디
+    unsubscribe() // 왜 명세만 있지? 
+
+
+types.ts
+
+  type debugFnType= (msg: string) => void
+
+  type messageCallbackType = (message: IMessagee) => void
+
+  type frameCallbackType = (receipt: IFrame) => void
+
+  type closeEventCallbackType<T = any> = (evt: T) => void; // any를 이렇게 사용
+
+  type wsErrorCallbackType<T = any> = (evt: T) => void;
+
+  interface IPublishPrams 
+    destination
+  - headers?
+  - body?
+  - body?
+  - binaryBody?
+  - skipcontentLengthHeader?
+
+  type publishParams = IPublishParams // alise를 꼭 이렇게 만들더라?
+
+  type RawHeaderType  = [string, string]
+
+  interface IRawFrameType 
+  - command
+  - headers
+  - binaryBody
+
+  interface IStompSocketMEssageEvent
+  - data?
+
+  interface IStompSocket // dom typelib에 의존하지 않으려고 Websocket 인터페이스를 복사
+  - onclose()
+  - onerror()
+  - onmessage()
+  - onopen()
+  - terminate?()
+  -  
+  - binaryType: 'arrybuffter'
+  - readyState: number
+  -  
+  - close()
+  - send()
+
+  enum StompSocketState // 대문자 
+  - CONNECTING
+  - OPEN
+  - CLOSING
+  - CLOSED
+
+  enum ActivationState
+  - ACTIVE
+  - DEACTIVATING
+  - INACTIVEE
+
+
+versions.ts
+
+class Version
+- supportedVersion()
+- protocolVersion() // 점을 제거한다. 예: v12.stomp
+
+compatibility/compat-client.ts
+
+class CompatClient extends Client // 지원종료 → Client
+
+
+compatibility/heartbeat-info.ts
+
+class HeartbeatInfo // 내부에 클라이언트 객체를 가지고 온고인/아웃고잉의 게터/세터를 가진다
+- get outgoing(): number
+- set outgoing(number)
+- get incoming(): number
+- set incoming(number)
+
+
+compatibility/stomp.ts
+
+class Stomp // 지원 종료. → Client
