@@ -15,4 +15,4 @@
 - [2022-06-02 | 리액트 Portal](./react-portal)
 - [2022-07-31 | NPM 워크스페이스와 모노레포](./npm-workspace)
 - [2022-08-21 | 웹팩 빌드시 이전 결과물을 삭제하는 옵션](./webpack-output-clean)
-- [2022-10-31 | 스톰프(Stomp)](./stomp)
+- [2022-10-31 | 스톰프(Stomp)](./stomp)다

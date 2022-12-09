@@ -495,6 +495,6 @@ const HomePage = () => {
 
 ## 참고
 
-- [예제 코드](https://github.com/jeonghwan-kim/2022-post-sample-code/tree/main/react-router)
+- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2022/react-router)
 - [History API | MDN](https://developer.mozilla.org/ko/docs/Web/API/History_API)
 - [React Router](https://reactrouter.com/)
