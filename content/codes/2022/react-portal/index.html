@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Portal</title>
+    <style>
+      .App {
+        background: cyan;
+        width: 400px;
+        height: 400px;
+      }
+      .Modal {
+        /* 화면 중안에 위치할 것이다 */
+        margin: 80px auto;
+        width: 300px;
+        padding: 16px;
+        background: #fff;
+        box-shadow: #000 0px 0px 15px;
+        border-radius: 8px;
+      }
+      #modal-root {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="modal-root"></div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script
+      type="text/babel"
+      data-presets="react"
+      data-type="module"
+      src="./app.js"
+    ></script>
+  </body>
+</html>

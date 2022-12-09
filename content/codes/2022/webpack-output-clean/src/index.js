@@ -1,0 +1,3 @@
+function greeting() {
+  return "hello"
+}
