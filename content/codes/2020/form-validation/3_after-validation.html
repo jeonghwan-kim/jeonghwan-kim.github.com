@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    form.was-validated input:invalid {
+      border-color: red;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <input name="email" placeholder="email" required type="email" />
+    <button>Submit</button>
+  </form>
+  
+  <script>
+    function onload() {
+      document.querySelectorAll('input').forEach(input => {
+
+        /**
+         * invalid 이벤트 발생 시점
+         * - 폼 제출시 각 컨트롤이 invalid 할때 발생
+         * - checkValidity() 호출 후 
+         * https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event
+         */
+        input.addEventListener('invalid', () => {
+          console.log(input.validity)
+          document.forms[0].classList.add('was-validated')
+        })
+      })
+    }
+
+    document.addEventListener('DOMContentLoaded', onload)
+  </script>
+</body>
+</html>

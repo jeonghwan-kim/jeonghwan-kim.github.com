@@ -1,0 +1,43 @@
+.Modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: auto;
+  padding: 40px;
+  box-shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0px 2px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 1000;
+  background-color: white;
+}
+.Modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+.Modal-body {
+  min-height: 100px;
+}
+.Modal-footer {
+  margin-top: 32px;
+  text-align: right;
+}
+.Modal-footer button {
+  background: none;
+  border: solid 1px lightgrey;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: cornflowerblue 1px solid;
+  color: cornflowerblue;
+}
+.Modal-footer button:hover {
+  cursor: pointer;
+  background-color: cornflowerblue;
+  color: white;
+}

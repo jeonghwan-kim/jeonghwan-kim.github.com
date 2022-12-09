@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    form.was-validated input:invalid {
+      border-color: red;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <input name="email" placeholder="email" required type="email" minlength="6"/>
+    <span id="error"></span>
+    <button>Submit</button>
+  </form>
+
+  <script>
+    const validityMessage = {
+      badInput: '잘못된 입력입니다',
+      patternMismatch: '_patternMismatch',
+      rangeOverflow: '_rangeOverflow',
+      rangeUnderflow: '_rangeUnderflow',
+      stepMismatch: '_stepMismatch',
+      tooLong: '_tooLong',
+      tooShort: '6자 이상 입력하세요',
+      typeMismatch: '이메일 주소 형식으로 입력하세요',
+      valueMissing: '이메일을 반드시 입력하세요',
+    }
+
+    function getMessage(validity) {
+      for (const key in validityMessage) {
+        if (validity[key]) {
+          return validityMessage[key]
+        }
+      }
+    }
+
+    function showError(input) {
+      // 오류 메시지 스타일 
+      document.querySelector('#error').textContent = getMessage(input.validity)
+    }
+
+    function onload() {
+      document.querySelectorAll('input').forEach(input => {
+        
+        input.addEventListener('invalid', (e) => {
+          document.forms[0].classList.add('was-validated');
+          showError(input)
+
+          /**
+           * 브라우져 툴팁 숨김 
+           */ 
+          e.preventDefault();
+        })
+
+        input.addEventListener('input', () => {
+          // 검증 후에 오류 메세지 표시 
+          if (document.forms[0].classList.contains('was-validated')) {
+            input.reportValidity()
+          }
+        })
+      })
+    }
+
+    document.addEventListener('DOMContentLoaded', onload)
+  </script>
+</body>
+</html>

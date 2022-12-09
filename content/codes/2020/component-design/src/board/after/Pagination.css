@@ -1,0 +1,25 @@
+.Pagination {
+  display: inline-block;
+  border: solid 1px lightgrey;
+}
+.Pagination li {
+  display: inline-block;
+  padding: 12px 16px;
+  border-right: 1px solid lightgrey;
+}
+.Pagination li:last-child {
+  border-right: none;
+}
+.Pagination li:hover {
+  background-color: cornflowerblue;
+  color: white;
+  cursor: pointer;
+}
+.Pagination.disabled {
+  color: grey;
+}
+.Pagination li.active {
+  font-weight: bold;
+  background-color: cornflowerblue;
+  color: white;
+}

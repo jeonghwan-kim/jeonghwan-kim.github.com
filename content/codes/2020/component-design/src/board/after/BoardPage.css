@@ -1,0 +1,19 @@
+.BoardPage ul {
+  list-style: none;
+  padding: 0;
+}
+.BoardPage ul.posts {
+  border: solid 1px lightgrey;
+}
+.BoardPage ul.posts li {
+  padding: 16px;
+  border-bottom: 1px solid lightgray;
+}
+.BoardPage ul.posts li:last-child {
+  border-bottom: none;
+}
+.BoardPage ul.posts li:hover {
+  cursor: pointer;
+  color: white;
+  background-color: cornflowerblue;
+}

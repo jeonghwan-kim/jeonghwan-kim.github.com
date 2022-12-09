@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+#root {
+  height: 100vh;
+}
+
+.FooterButton {
+  position: absolute;
+  bottom: 0;
+  background: rgb(14, 97, 185);
+  font-size: 14px;
+  padding: 16px;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  color: white;
+  left: 0;
+  right: 0;
+  border: none;
+}
+.FooterButton:disabled {
+  background-color: grey;
+}
