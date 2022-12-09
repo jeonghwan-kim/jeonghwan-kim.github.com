@@ -177,7 +177,7 @@ if (process.env.NODE_ENV === "production") {
 
 간단한 샘플 코드를 정리해 두었다.
 
-- 코드 참고: https://github.com/jeonghwan-kim/post_webpack-dev-middleware
+- 코드 참고: https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2020/webpack-dev-middleware
 
 사실 회사에서는 웹서버로 스프링을 더 많이 사용한다.
 그렇기 때문에 웹팩 개발서버와 스프링 서버 두 개로 개발환경을 만드는데...
