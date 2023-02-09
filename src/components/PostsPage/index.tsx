@@ -2,6 +2,7 @@ import { PageProps } from "gatsby"
 import React, { FC, useEffect } from "react"
 import { Query } from "../../../graphql-types"
 import { Params } from "../../helpers/constants"
+import GoogleAdsense from "../GoogleAdsense"
 import { Icon, IconType } from "../Icon/style"
 import { TwoColumnLayout } from "../layout"
 import PostList from "../PostList"
@@ -66,6 +67,7 @@ const PostsPage: FC<PageProps<Query>> = props => {
       }
     >
       {seoTitle && <SEO title={seoTitle} />}
+      <GoogleAdsense />
       <Styled.Wrapper>
         <Section title={sectionTitle}>
           <PostList posts={renderedPosts} />

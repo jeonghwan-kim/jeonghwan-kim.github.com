@@ -15,6 +15,7 @@ import PostHeader from "./PostHeader"
 import SeriesNav from "./series-nav"
 import SiblingNav from "./sibling-nav"
 import * as Styled from "./style"
+import GoogleAdsense from "../../components/GoogleAdsense"
 
 interface Props {
   data: Query
@@ -38,6 +39,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
           markdownRemark.frontmatter.featuredImage?.childImageSharp?.fixed?.src
         }
       />
+      <GoogleAdsense />
       <Container small={!hasAside}>
         <div itemScope itemType="http://schema.org/BlogPosting">
           <Section>

@@ -1,6 +1,7 @@
 import { graphql, Link, PageProps } from "gatsby"
 import React, { FC } from "react"
 import { MarkdownRemark, Query } from "../../graphql-types"
+import GoogleAdsense from "../components/GoogleAdsense"
 import Icon from "../components/Icon"
 import { IconType } from "../components/Icon/style"
 import { HomeLayout } from "../components/layout"
@@ -90,6 +91,7 @@ const BlogIndex: FC<Props> = ({ data }: Props) => {
   return (
     <HomeLayout>
       <SEO title="홈" />
+      <GoogleAdsense />
       <Container small>
         <Section>
           <PostList posts={data.allMarkdownRemark.nodes} />
