@@ -5,5 +5,6 @@
     "titleBar.activeBackground": "#cd5554",
     "titleBar.activeForeground": "#ffffff"
   },
-  "editor.formatOnSaveMode": "modificationsIfAvailable"
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
