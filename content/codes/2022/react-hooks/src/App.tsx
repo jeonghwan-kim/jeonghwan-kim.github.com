@@ -10,8 +10,8 @@ import MyComponent5 from "./useEffect/MyComponent5 "
 import MyComponent6Wrapper from "./useEffect/MyComponent6"
 import CountApp1 from "./useContext/CountApp1"
 import CountApp2 from "./useContext/CountApp2"
-import MyApp1 from "./useReducer/MyApp1"
-import MyApp2 from "./useReducer/MyApp2"
+import RegisterForm1 from "./useReducer/RegisterForm1"
+import RegisterForm2 from "./useReducer/RegisterForm2"
 
 function App() {
   return (
@@ -29,7 +29,8 @@ function App() {
       {/* <MyComponent6Wrapper /> */}
       {/* <CountApp1 /> */}
       {/* <CountApp2 /> */}
-      <MyApp2 />
+      {/* <RegisterForm1 /> */}
+      <RegisterForm2 />
     </>
   )
 }
