@@ -1,5 +1,5 @@
 ---
-slug: "/dev/2023-04-07/recursive-type"
+slug: "/dev/2023/04/07/recursive-type"
 date: 2023-04-07
 title: "재귀타입"
 layout: post
