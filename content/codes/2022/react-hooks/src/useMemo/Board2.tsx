@@ -1,4 +1,5 @@
 import React from "react"
+import { Post, Query } from "./types"
 
 const MyReact = (function () {
   const memorizedStates: [any, any[]][] = []
@@ -59,22 +60,8 @@ const MyReact = (function () {
   }
 })()
 
-interface Post {
-  id: number
-  content: string
-  tag?: string
-}
-
-const Board: React.FC = () => {
+const Board: React.FC<{ posts: Post[]; query: Query }> = ({ posts, query }) => {
   MyReact.resetCursor()
-
-  const [darkTheme, setDarkTheme] = React.useState(false)
-  const [posts, setPosts] = React.useState([
-    { id: 1, content: "post a", tag: "react" },
-    { id: 2, content: "post b", tag: "vue" },
-    { id: 3, content: "post c", tag: "react" },
-  ])
-  const [query, setQuery] = React.useState({ tag: "" })
 
   function filterPosts() {
     console.log("filterPosts")
@@ -83,21 +70,7 @@ const Board: React.FC = () => {
 
   const filteredPosts = MyReact.useMemo(filterPosts, [posts, query])
 
-  return (
-    <>
-      <div>
-        <div>{darkTheme ? "어두운 테마" : "밝은 테마"}</div>
-        <button onClick={() => setDarkTheme(!darkTheme)}>테마 변경</button>
-      </div>
-      <hr />
-      <div>
-        <button onClick={() => setQuery({ tag: "" })}>All</button>
-        <button onClick={() => setQuery({ tag: "react" })}>react</button>
-        <button onClick={() => setQuery({ tag: "vue" })}>vue</button>
-        <FilteredPosts value={filteredPosts} />
-      </div>
-    </>
-  )
+  return <FilteredPosts value={filteredPosts} />
 }
 
 const FilteredPosts = React.memo<{ value: Post[] }>(function FilteredPosts({
@@ -113,4 +86,24 @@ const FilteredPosts = React.memo<{ value: Post[] }>(function FilteredPosts({
   )
 })
 
-export default () => <Board />
+export default () => {
+  const [darkTheme, setDarkTheme] = React.useState(false)
+  const [posts, setPosts] = React.useState([
+    { id: 1, content: "post a", tag: "react" },
+    { id: 2, content: "post b", tag: "vue" },
+    { id: 3, content: "post c", tag: "react" },
+  ])
+  const [query, setQuery] = React.useState({ tag: "" })
+
+  return (
+    <>
+      <div>{darkTheme ? "어두운 테마" : "밝은 테마"}</div>
+      <button onClick={() => setDarkTheme(!darkTheme)}>테마 변경</button>
+      <hr />
+      <button onClick={() => setQuery({ tag: "" })}>All</button>
+      <button onClick={() => setQuery({ tag: "react" })}>react</button>
+      <button onClick={() => setQuery({ tag: "vue" })}>vue</button>
+      <Board posts={posts} query={query} />
+    </>
+  )
+}
