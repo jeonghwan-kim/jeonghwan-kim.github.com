@@ -472,7 +472,7 @@ useReducer를 사용하면서 두 가지 좋은 점을 발견했다.
 
 ## 참고
 
-- [소스코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2022/react-hooks/src/useReducer)
+- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2022/react-hooks/src/useReducer)
 - [리덕스 코드](https://github.com/reduxjs/redux)
 - [리액트 코드 ReactFiberHooks.js](https://github.com/facebook/react/blob/main/packages/react-reconciler/src/ReactFiberHooks.js)
 - [React Source Code Analysis 13.hooks source code](https://programmer.group/react-source-code-analysis-13.hooks-source-code.html)
