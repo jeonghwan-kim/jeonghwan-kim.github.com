@@ -1,6 +1,6 @@
 ---
 slug: "/2023/06/24/lecture-react-season2-part1-ch1"
-date: 2023-06-24
+date: 2023-06-24 00:01:01
 title: "[리액트 2부] 1.1 준비"
 layout: post
 series: 리액트 2부
