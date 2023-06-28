@@ -1,7 +1,7 @@
 ---
 slug: "/2023/06/24/lecture-react-season2-part2-ch3"
 date: 2023-06-24 00:02:03
-title: "[리액트 2부] 2.2 라우터 2"
+title: "[리액트 2부] 2.3 라우터 2"
 layout: post
 series: 리액트 2부
 tags: [react]
