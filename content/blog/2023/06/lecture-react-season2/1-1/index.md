@@ -94,7 +94,7 @@ tags: [react]
 
 아래는 요구사항 목록이다.
 
-- [리액트 2부 요구사항 | Github]()
+- [리액트 2부 요구사항 | Github](https://github.com/jeonghwan-kim/lecture-react-season2/wiki/%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD)
 
 # 실습환경 구성
 
