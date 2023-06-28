@@ -1,7 +1,7 @@
 ---
 slug: "/2023/06/24/lecture-react-season2-part3"
 date: 2023-06-24 00:03:00
-title: "[리액트 2부] 3편 고급주제"
+title: "[리액트 2부] 3편 기본훅"
 layout: post
 series: 리액트 2부
 tags: [react]
