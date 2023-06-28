@@ -196,6 +196,6 @@ npm start --workspace react # 혹은 npm run 1-react
 
 참고
 
-- [[리액트 1부] 만들면서 학습하는 리액트 | 김정환블로그](https://jeonghwan-kim.github.io/posts/?series=%EB%A7%8C%EB%93%A4%EB%A9%B4%EC%84%9C%20%ED%95%99%EC%8A%B5%ED%95%98%EB%8A%94%20%EB%A6%AC%EC%95%A1%ED%8A%B8)
-- [웹팩 빌드시 이전 결과물을 삭제하는 옵션 | 김정환블로그](https://jeonghwan-kim.github.io/2022/08/21/webpack-output-clean)
-- [NPM 워크스페이스와 모노레포 | 김정환블로그](https://jeonghwan-kim.github.io/2022/07/31/npm-workspace)
+- [[리액트 1부] 만들면서 학습하는 리액트 | 김정환블로그](/posts/?series=%EB%A7%8C%EB%93%A4%EB%A9%B4%EC%84%9C%20%ED%95%99%EC%8A%B5%ED%95%98%EB%8A%94%20%EB%A6%AC%EC%95%A1%ED%8A%B8)
+- [웹팩 빌드시 이전 결과물을 삭제하는 옵션 | 김정환블로그](/2022/08/21/webpack-output-clean)
+- [NPM 워크스페이스와 모노레포 | 김정환블로그](/2022/07/31/npm-workspace)

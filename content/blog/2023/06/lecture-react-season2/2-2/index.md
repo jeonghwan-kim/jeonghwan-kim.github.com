@@ -427,5 +427,5 @@ Routes
 
 참고
 
-- [리액트 라우터 만들기 | 김정환 블로그](https://jeonghwan-kim.github.io/dev/2022/05/06/react-router.html)
+- [리액트 라우터 만들기 | 김정환 블로그](/dev/2022/05/06/react-router.html)
 - [react-router | Github](https://github.com/remix-run/react-router)

@@ -360,5 +360,5 @@ useState의 역할는 함수 컴포넌트에서 값을 지속해 상태로 관�
 
 참고
 
-- [리액트 useState는 어떤 모습일까? | 김정환 블로그](https://jeonghwan-kim.github.io/dev/2022/04/11/use-state.html)
+- [리액트 useState는 어떤 모습일까? | 김정환 블로그](/dev/2022/04/11/use-state.html)
 - [React hooks: not magic, just arrays | Rudi Yardley](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)
