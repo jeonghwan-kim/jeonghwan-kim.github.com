@@ -150,7 +150,7 @@ output.clean 속성을 사용할 수 있다. 이전 빌드 공간을 삭제하�
 
 ```json{2}
   "scripts": {
-    "start": "PORT=8000 webpack serve --config ../shared/webpack.config.js"
+    "start": "webpack serve --config ../shared/webpack.config.js"
   },
 ```
 
