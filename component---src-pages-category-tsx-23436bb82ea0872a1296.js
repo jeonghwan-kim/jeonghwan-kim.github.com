@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkjeonghwan_kim_github_io=self.webpackChunkjeonghwan_kim_github_io||[]).push([[593],{4505:function(e,t,n){var l=n(7294),r=n(5414);t.Z=e=>{let{to:t}=e;return l.createElement(r.q,null,l.createElement("title",null,"Redirecting"),l.createElement("meta",{httpEquiv:"refresh",content:"0; URL="+t}),l.createElement("link",{rel:"canonical",href:t}))}},4030:function(e,t,n){n.r(t);var l=n(7294),r=n(4505);t.default=()=>l.createElement(r.Z,{to:"/posts"})}}]);
-//# sourceMappingURL=component---src-pages-category-tsx-23436bb82ea0872a1296.js.map
