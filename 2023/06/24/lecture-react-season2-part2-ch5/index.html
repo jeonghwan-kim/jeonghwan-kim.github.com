@@ -1,0 +1,920 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 4.25.7"/><meta data-react-helmet="true" property="og:locale" content="ko_KR"/><meta data-react-helmet="true" property="og:locale:alternate" content="en_US"/><meta data-react-helmet="true" property="og:site_name" content="김정환 블로그"/><meta data-react-helmet="true" property="description" content="Dialog 문제 사실 Dialog에는 버그가 있다. 부모 스타일의 영향을 받아 빈 공간이 조금 생긴다.  원인은 중첩된 돔 구조로 인해 부모 엘리먼트의 스타일 영향을 다이얼로그가 받기 때문이다. .Dialog 스타일을 재정의해 부모로부터 받은 스타일을 무시거나 !important…"/><meta data-react-helmet="true" property="og:url" content="https://jeonghwan-kim.github.io/2023/06/24/lecture-react-season2-part2-ch5"/><meta data-react-helmet="true" property="og:title" content="[리액트 2부] 2.5 다이얼로그 2"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:description" content="Dialog 문제 사실 Dialog에는 버그가 있다. 부모 스타일의 영향을 받아 빈 공간이 조금 생긴다.  원인은 중첩된 돔 구조로 인해 부모 엘리먼트의 스타일 영향을 다이얼로그가 받기 때문이다. .Dialog 스타일을 재정의해 부모로부터 받은 스타일을 무시거나 !important…"/><meta data-react-helmet="true" property="og:image" content="https://jeonghwan-kim.github.io/assets/imgs/me.jpg"/><meta data-react-helmet="true" property="og:image:height" content="300"/><meta data-react-helmet="true" property="og:image:width" content="300"/><meta name="theme-color" content="#cd5554"/><style data-href="/styles.e27398efb16816fc3496.css" data-identity="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#000;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;text-shadow:0 1px #fff;white-space:pre;word-break:normal;word-spacing:normal}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{background:#b3d4fc;text-shadow:none}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{background:hsla(0,0%,100%,.5);color:#9a6e3a}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}pre[class*=language-].line-numbers{counter-reset:linenumber;padding-left:3.8em;position:relative}pre[class*=language-].line-numbers>code{position:relative;white-space:inherit}.line-numbers .line-numbers-rows{border-right:1px solid #999;font-size:100%;left:-3.8em;letter-spacing:-1px;pointer-events:none;position:absolute;top:0;-webkit-user-select:none;user-select:none;width:3em}.line-numbers-rows>span{counter-increment:linenumber;display:block}.line-numbers-rows>span:before{color:#999;content:counter(linenumber);display:block;padding-right:.8em;text-align:right}</style><title data-react-helmet="true">[리액트 2부] 2.5 다이얼로그 2 | 김정환 블로그</title><script data-react-helmet="true" type="application/ld+json">
+        {
+          "@context": "http://schema.org",
+          "@type": "BlogPosting",
+          "url": "https://jeonghwan-kim.github.io/2023/06/24/lecture-react-season2-part2-ch5",
+          "headline": "[리액트 2부] 2.5 다이얼로그 2",
+          "datePublished": "2023-06-24T00:02:05.000Z",
+          "dateModified": "2023-06-24T00:02:05.000Z",
+          "image": "undefined"
+        }
+        </script><script data-react-helmet="true" async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6924464729605173" crossorigin="anonymous"></script><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link rel="icon" href="/favicon-32x32.png?v=e086d9fa26f0982bdea4aba2cd6f0c94" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=e086d9fa26f0982bdea4aba2cd6f0c94"/><link rel="preconnect" href="https://www.google-analytics.com"/><link rel="dns-prefetch" href="https://www.google-analytics.com"/><link rel="alternate" type="application/rss+xml" title="김정환 블로그 RSS Feed" href="/feed.xml"/><style data-styled="" data-styled-version="5.3.11">.chXWVf{max-width:1024px;margin-left:auto;margin-right:auto;height:100%;}/*!sc*/
+.ewiFLq{max-width:1024px;margin-left:auto;margin-right:auto;height:100%;max-width:800px;}/*!sc*/
+data-styled.g1[id="style-variables__Container-sc-nxq9i0-0"]{content:"chXWVf,ewiFLq,"}/*!sc*/
+html{line-height:1.15;-webkit-text-size-adjust:100%;}/*!sc*/
+body{margin:0;}/*!sc*/
+main{display:block;}/*!sc*/
+h1{font-size:2em;margin:0.67em 0;}/*!sc*/
+hr{box-sizing:content-box;height:0;overflow:visible;}/*!sc*/
+pre{font-family:monospace,monospace;font-size:1em;}/*!sc*/
+a{background-color:transparent;}/*!sc*/
+abbr[title]{border-bottom:none;-webkit-text-decoration:underline;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted;}/*!sc*/
+b,strong{font-weight:bolder;}/*!sc*/
+code,kbd,samp{font-family:monospace,monospace;font-size:1em;}/*!sc*/
+small{font-size:80%;}/*!sc*/
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}/*!sc*/
+sub{bottom:-0.25em;}/*!sc*/
+sup{top:-0.5em;}/*!sc*/
+img{border-style:none;}/*!sc*/
+button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0;}/*!sc*/
+button,input{overflow:visible;}/*!sc*/
+button,select{text-transform:none;}/*!sc*/
+button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button;}/*!sc*/
+button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner{border-style:none;padding:0;}/*!sc*/
+button:-moz-focusring,[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring{outline:1px dotted ButtonText;}/*!sc*/
+fieldset{padding:0.35em 0.75em 0.625em;}/*!sc*/
+legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal;}/*!sc*/
+progress{vertical-align:baseline;}/*!sc*/
+textarea{overflow:auto;}/*!sc*/
+[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0;}/*!sc*/
+[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto;}/*!sc*/
+[type="search"]{-webkit-appearance:textfield;outline-offset:-2px;}/*!sc*/
+[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}/*!sc*/
+::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;}/*!sc*/
+details{display:block;}/*!sc*/
+summary{display:list-item;}/*!sc*/
+template{display:none;}/*!sc*/
+[hidden]{display:none;}/*!sc*/
+*{box-sizing:border-box;}/*!sc*/
+body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--color-Foreground1);background-color:var(--color-Background1);min-width:320px;}/*!sc*/
+a{color:var(--color-Foreground1);}/*!sc*/
+.flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+.flex-1{-webkit-flex:1;-ms-flex:1;flex:1;overflow:auto;}/*!sc*/
+.flex-0{-webkit-flex:0;-ms-flex:0;flex:0;overflow:auto;}/*!sc*/
+.align-left{text-align:left;}/*!sc*/
+.align-right{text-align:right;}/*!sc*/
+.hidden{display:none;}/*!sc*/
+.gatsby-highlight{font-size:14px;line-height:1.5em;}/*!sc*/
+.gatsby-highlight pre{position:relative;}/*!sc*/
+.gatsby-highlight pre button.copy{position:absolute;top:8px;right:8px;background-color:transparent;border:none;}/*!sc*/
+.gatsby-highlight pre button.copy:hover{cursor:pointer;}/*!sc*/
+.gatsby-highlight-code-line{display:block;background-color:rgba(255,255,255,0.65);box-shadow:inset;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;border-left:0.25em solid var(--color-Primary);}/*!sc*/
+:root,html[data-app-theme="light"]{--color-Primary:#cd5554;--color-Brand:#313d4b;--color-Secondary:#91684a;--color-Thenary:#00c07f;--color-Foreground1:#3d3d3f;--color-Foreground2:#505053;--color-Foreground3:#888;--color-Foreground4:rgb(230,230,230);--color-Background1:#fff;--color-Background2:#ddd;--color-Background3:#bbb;}/*!sc*/
+html[data-app-theme="dark"]{--color-Primary:#cd5554;--color-Brand:#313d4b;--color-Secondary:#91684a;--color-Thenary:#00c07f;--color-Foreground1:#fff;--color-Foreground2:#ddd;--color-Foreground3:#bbb;--color-Foreground4:#505053;--color-Background1:rgb(21,32,43);--color-Background2:#333;--color-Background3:#555;}/*!sc*/
+data-styled.g2[id="sc-global-ckfRTL1"]{content:"sc-global-ckfRTL1,"}/*!sc*/
+.xrpOc{padding:48px 8px;}/*!sc*/
+data-styled.g3[id="style__Section-sc-9mziih-0"]{content:"xrpOc,"}/*!sc*/
+.dlvpSK{border-top:1px solid var(--color-Foreground4);background-color:transparent;text-align:center;}/*!sc*/
+data-styled.g5[id="style__Footer-sc-16v2ybn-0"]{content:"dlvpSK,"}/*!sc*/
+.bosZju{font-size:14px;color:var(--color-Foreground3);display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+data-styled.g6[id="style__Copyright-sc-16v2ybn-1"]{content:"bosZju,"}/*!sc*/
+.hjpzNl{background:url(/static/icon-article-5c7fd592cc0b73ddeff5019ce768dc83.png);-webkit-filter:invert(1);filter:invert(1);display:inline-block;width:24px;height:24px;background-repeat:no-repeat;background-position-x:0;background-position-y:0;background-size:contain;}/*!sc*/
+.dyrsUo{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAaGVYSWZNTQAqAAAACAAEAQYAAwAAAAEAAgAAARIAAwAAAAEAAQAAASgAAwAAAAEAAgAAh2kABAAAAAEAAAA+AAAAAAADoAEAAwAAAAEAAQAAoAIABAAAAAEAAABkoAMABAAAAAEAAABkAAAAAK1EW3oAAALkaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA1LjQuMCI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyI+CiAgICAgICAgIDx0aWZmOlBob3RvbWV0cmljSW50ZXJwcmV0YXRpb24+MjwvdGlmZjpQaG90b21ldHJpY0ludGVycHJldGF0aW9uPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpDb21wcmVzc2lvbj4xPC90aWZmOkNvbXByZXNzaW9uPgogICAgICAgICA8dGlmZjpSZXNvbHV0aW9uVW5pdD4yPC90aWZmOlJlc29sdXRpb25Vbml0PgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+MTAwPC9leGlmOlBpeGVsWURpbWVuc2lvbj4KICAgICAgICAgPGV4aWY6Q29sb3JTcGFjZT4xPC9leGlmOkNvbG9yU3BhY2U+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj4xMDA8L2V4aWY6UGl4ZWxYRGltZW5z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);-webkit-filter:invert(1);filter:invert(1);display:inline-block;width:24px;height:24px;background-repeat:no-repeat;background-position-x:0;background-position-y:0;background-size:contain;}/*!sc*/
+.fIbOdL{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAaGVYSWZNTQAqAAAACAAEAQYAAwAAAAEAAgAAARIAAwAAAAEAAQAAASgAAwAAAAEAAgAAh2kABAAAAAEAAAA+AAAAAAADoAEAAwAAAAEAAQAAoAIABAAAAAEAAABkoAMABAAAAAEAAABkAAAAAK1EW3oAAALkaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA1LjQuMCI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyI+CiAgICAgICAgIDx0aWZmOlBob3RvbWV0cmljSW50ZXJwcmV0YXRpb24+MjwvdGlmZjpQaG90b21ldHJpY0ludGVycHJldGF0aW9uPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpDb21wcmVzc2lvbj4xPC90aWZmOkNvbXByZXNzaW9uPgogICAgICAgICA8dGlmZjpSZXNvbHV0aW9uVW5pdD4yPC90aWZmOlJlc29sdXRpb25Vbml0PgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+MTAwPC9leGlmOlBpeGVsWURpbWVuc2lvbj4KICAgICAgICAgPGV4aWY6Q29sb3JTcGFjZT4xPC9leGlmOkNvbG9yU3BhY2U+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj4xMDA8L2V4aWY6UGl4ZWxYRGltZW5z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);-webkit-filter:invert(1);filter:invert(1);display:inline-block;width:24px;height:24px;background-repeat:no-repeat;background-position-x:0;background-position-y:0;background-size:contain;}/*!sc*/
+.dyXCpJ{background:url(data:image/png;base64,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);-webkit-filter:invert(1);filter:invert(1);display:inline-block;width:24px;height:24px;background-repeat:no-repeat;background-position-x:0;background-position-y:0;background-size:contain;}/*!sc*/
+data-styled.g7[id="style__Icon-sc-dweicn-0"]{content:"hjpzNl,dyrsUo,fIbOdL,dyXCpJ,"}/*!sc*/
+.elLmpq{height:56px;border-bottom:1px solid var(--color-Foreground4);padding:0 8px;}/*!sc*/
+.elLmpq a{color:var(--color-Foreground1);-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.elLmpq .style-variables__Container-sc-nxq9i0-0{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}/*!sc*/
+data-styled.g8[id="style__Header-sc-vbm58b-0"]{content:"elLmpq,"}/*!sc*/
+.pQdgx{margin:0;font-size:24px;font-weight:lighter;overflow:hidden;}/*!sc*/
+data-styled.g9[id="style__SiteTitle-sc-vbm58b-1"]{content:"pQdgx,"}/*!sc*/
+.hUAKTR a{display:inline-block;width:100%;height:28px;line-height:28px;font-weight:bold;-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+data-styled.g10[id="style__SiteLogo-sc-vbm58b-2"]{content:"hUAKTR,"}/*!sc*/
+.gawxzF{-webkit-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;justify-self:center;margin-left:16px;}/*!sc*/
+data-styled.g11[id="style__NavList-sc-vbm58b-3"]{content:"gawxzF,"}/*!sc*/
+.UXSfl{height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}/*!sc*/
+.UXSfl a{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:8px;-webkit-appearance:none;-moz-appearance:none;appearance:none;background:transparent;border:none;color:var(--color-Foreground1);font-weight:300;height:100%;}/*!sc*/
+.UXSfl:last-child{margin-right:0;}/*!sc*/
+.UXSfl span{margin-left:1px;}/*!sc*/
+@media (max-width:calc(768px - 1px)){.UXSfl span{display:none !important;}}/*!sc*/
+@media (max-width:calc(768px - 1px)){.UXSfl i{width:32px !important;height:32px !important;}}/*!sc*/
+data-styled.g12[id="style__Nav-sc-vbm58b-4"]{content:"UXSfl,"}/*!sc*/
+.cuWSKp{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}/*!sc*/
+@media (max-width:calc(768px)){.cuWSKp{display:none;}}/*!sc*/
+data-styled.g13[id="style__Contacts-sc-vbm58b-5"]{content:"cuWSKp,"}/*!sc*/
+.biwuZy{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;margin-top:80px;}/*!sc*/
+@media (max-width:768px){.biwuZy{margin-top:40px;}}/*!sc*/
+@media (max-width:320px){.biwuZy{margin-top:16px;}}/*!sc*/
+data-styled.g16[id="style__Main-sc-m5hfiz-0"]{content:"biwuZy,"}/*!sc*/
+.eZKrmY{-webkit-order:1;-ms-flex-order:1;order:1;width:250px;position:-webkit-sticky;position:sticky;max-height:100vh;overflow-y:scroll;top:8px;margin-left:32px;padding-bottom:8px;}/*!sc*/
+@media (max-width:calc(1024px - 1px)){.eZKrmY{display:none;}}/*!sc*/
+data-styled.g17[id="style__Aside-sc-m5hfiz-1"]{content:"eZKrmY,"}/*!sc*/
+.czLBwQ{-webkit-order:0;-ms-flex-order:0;order:0;-webkit-flex:1 0 0%;-ms-flex:1 0 0%;flex:1 0 0%;min-width:0%;}/*!sc*/
+data-styled.g18[id="style__Article-sc-m5hfiz-2"]{content:"czLBwQ,"}/*!sc*/
+.jcGEDk{margin-bottom:56px;}/*!sc*/
+data-styled.g19[id="style__PostHeader-sc-m5hfiz-3"]{content:"jcGEDk,"}/*!sc*/
+.euPptM{margin-top:0;margin-bottom:8px;color:var(--color-Foreground1);font-size:42px;}/*!sc*/
+data-styled.g20[id="style__PostTitle-sc-m5hfiz-4"]{content:"euPptM,"}/*!sc*/
+.cjLGRy{color:var(--color-Foreground3);}/*!sc*/
+data-styled.g21[id="style__PostTime-sc-m5hfiz-5"]{content:"cjLGRy,"}/*!sc*/
+.fzkVwz{font-size:18px;line-height:1.8em;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;word-break:break-word;}/*!sc*/
+.fzkVwz h1{font-size:200%;margin-top:1.5em;}/*!sc*/
+.fzkVwz h2{font-size:160%;margin-top:1.5em;}/*!sc*/
+.fzkVwz h3{font-size:120%;margin-top:1.5em;}/*!sc*/
+.fzkVwz h4{font-size:110%;margin-top:1.5em;}/*!sc*/
+.fzkVwz h5{font-size:100%;margin-top:1.5em;}/*!sc*/
+.fzkVwz h1,.fzkVwz h2,.fzkVwz h3,.fzkVwz h4,.fzkVwz h5,.fzkVwz h6{color:var(--color-Foreground2);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1em;}/*!sc*/
+.fzkVwz img{border-radius:4px;display:block;margin:8px * 2 auto;max-width:100%;}/*!sc*/
+.fzkVwz blockquote{color:var(--color-Foreground3);position:relative;}/*!sc*/
+.fzkVwz blockquote::before{content:"“";position:absolute;left:-24px;font-size:40px;color:var(--color-Foreground3);}/*!sc*/
+.fzkVwz blockquote a{color:var(--color-Foreground3);}/*!sc*/
+.fzkVwz figcaption{font-size:14px;color:var(--color-Foreground3);text-align:center;}/*!sc*/
+.fzkVwz code:not([class^="language-"]){font-size:0.8em;background-color:var(--color-Background2);border-radius:6px;padding:2px 6px;word-break:break-all;}/*!sc*/
+.fzkVwz hr{border:none;height:1px;background-color:var(--color-Foreground4);margin:32px 0;}/*!sc*/
+.fzkVwz .gatsby-highlight pre{border-radius:8px / 2;overflow:auto;word-wrap:normal;white-space:pre;}/*!sc*/
+data-styled.g22[id="style__PostContent-sc-m5hfiz-6"]{content:"fzkVwz,"}/*!sc*/
+.gWlWjA{margin-top:32px;}/*!sc*/
+data-styled.g23[id="style__PostMeta-sc-m5hfiz-7"]{content:"gWlWjA,"}/*!sc*/
+.Zrbds{list-style:none;padding-left:0;}/*!sc*/
+data-styled.g24[id="style__ShareList-sc-m5hfiz-8"]{content:"Zrbds,"}/*!sc*/
+.rEtEK{display:inline-block;margin-right:8px;}/*!sc*/
+.rEtEK:last-child{margin-right:0;}/*!sc*/
+data-styled.g25[id="style__ShareItem-sc-m5hfiz-9"]{content:"rEtEK,"}/*!sc*/
+.hPbviO{list-style:none;padding-left:0;}/*!sc*/
+data-styled.g26[id="style__TagList-sc-m5hfiz-10"]{content:"hPbviO,"}/*!sc*/
+.fwLOMY{display:inline-block;margin-right:8px;}/*!sc*/
+.fwLOMY:last-child{margin-right:0;}/*!sc*/
+data-styled.g27[id="style__TagItem-sc-m5hfiz-11"]{content:"fwLOMY,"}/*!sc*/
+.bQItRK{border-left:2px solid var(--color-Foreground4);}/*!sc*/
+.bQItRK ul{padding-left:16px;list-style:none;margin:0;}/*!sc*/
+.bQItRK ul li{margin-bottom:4px;}/*!sc*/
+.bQItRK ul li p{margin:0;}/*!sc*/
+.bQItRK ul li a{-webkit-text-decoration:none;text-decoration:none;color:var(--color-Foreground3);font-size:14px;}/*!sc*/
+.bQItRK ul li a:hover,.bQItRK ul li a:focus{color:var(--color-Foreground1);}/*!sc*/
+.bQItRK ul li a.active{color:var(--color-Foreground1);font-weight:bold;}/*!sc*/
+data-styled.g28[id="style__Toc-sc-m5hfiz-12"]{content:"bQItRK,"}/*!sc*/
+.eftQyD{padding:24px 16px;border-left:2px solid var(--color-Foreground4);}/*!sc*/
+data-styled.g30[id="style__SeriesNav-sc-m5hfiz-14"]{content:"eftQyD,"}/*!sc*/
+.ljJnzd{font-weight:bold;margin-bottom:8px;}/*!sc*/
+.ljJnzd::before{content:"연재물";display:block;font-size:14px;color:var(--color-Foreground3);font-weight:normal;}/*!sc*/
+.ljJnzd .series-order{font-weight:normal;}/*!sc*/
+.ljJnzd .series-order .active{font-weight:bold;}/*!sc*/
+data-styled.g31[id="style__SeriesNavTitle-sc-m5hfiz-15"]{content:"ljJnzd,"}/*!sc*/
+.gDEDeX{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}/*!sc*/
+data-styled.g32[id="style__SeriesNavControls-sc-m5hfiz-16"]{content:"gDEDeX,"}/*!sc*/
+.eOQHpJ{display:inline-block;-webkit-flex:1 0 50%;-ms-flex:1 0 50%;flex:1 0 50%;text-align:left;}/*!sc*/
+data-styled.g33[id="style__SeriesNavPrev-sc-m5hfiz-17"]{content:"eOQHpJ,"}/*!sc*/
+.eiqKzO{text-align:right;}/*!sc*/
+data-styled.g34[id="style__SeriesNavNext-sc-m5hfiz-18"]{content:"eiqKzO,"}/*!sc*/
+.JutbE{padding:24px 16px 16px;border-top:2px solid var(--color-Foreground4);border-bottom:2px solid var(--color-Foreground4);}/*!sc*/
+.JutbE .flex{-webkit-flex-flow:row;-ms-flex-flow:row;flex-flow:row;}/*!sc*/
+.JutbE .controls{-webkit-flex:0 0 100px;-ms-flex:0 0 100px;flex:0 0 100px;text-align:right;}/*!sc*/
+.JutbE .controls a{-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.JutbE .series-title{margin-top:8px;}/*!sc*/
+.JutbE .series-title::before{content:"이 연재물 더보기";display:block;font-size:14px;color:var(--color-Foreground3);font-weight:normal;}/*!sc*/
+.JutbE .post-list{line-height:1.5em;}/*!sc*/
+.JutbE .post-list a{display:inline-block;width:100%;-webkit-text-decoration:none;text-decoration:none;}/*!sc*/
+.JutbE .post-list a:hover,.JutbE .post-list a:focus{-webkit-text-decoration:underline;text-decoration:underline;}/*!sc*/
+.JutbE .post-list li{list-style:circle;}/*!sc*/
+.JutbE .post-list li.active{list-style:unset;font-weight:bold;}/*!sc*/
+data-styled.g35[id="style__SeriesNavigator-sc-m5hfiz-19"]{content:"JutbE,"}/*!sc*/
+.kwQYqN{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}/*!sc*/
+data-styled.g36[id="style__SiblingNav-sc-m5hfiz-20"]{content:"kwQYqN,"}/*!sc*/
+.hIztSa{max-width:33.3333%;}/*!sc*/
+@media (max-width:768px){.hIztSa{max-width:48%;}}/*!sc*/
+.hIztSa .label{color:var(--color-Foreground3);}/*!sc*/
+.hIztSa a{-webkit-text-decoration:none;text-decoration:none;color:var(--color-Primary);}/*!sc*/
+.hIztSa a h3{margin-top:8px;margin-bottom:8px;}/*!sc*/
+data-styled.g37[id="style__SiblingNavItem-sc-m5hfiz-21"]{content:"hIztSa,"}/*!sc*/
+.dOrSUt{display:inline-block;padding:8px 16px;border-radius:4px;background-color:var(--color-Background1);-webkit-text-decoration:none;text-decoration:none;color:var(--color-Secondary);border:solid 1px var(--color-Secondary);-webkit-transition:all 0.1s ease-in-out;transition:all 0.1s ease-in-out;}/*!sc*/
+.dOrSUt:focus,.dOrSUt:hover{background-color:var(--color-Secondary);color:var(--color-Background1);cursor:pointer;}/*!sc*/
+data-styled.g38[id="style__Button-sc-29k00d-0"]{content:"dOrSUt,"}/*!sc*/
+.gUblxo{padding:0;}/*!sc*/
+.gUblxo a{display:inline-block;padding:8px 16px;-webkit-text-decoration:none;text-decoration:none;color:inherit;}/*!sc*/
+data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"gUblxo,"}/*!sc*/
+</style></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><header class="style__Header-sc-vbm58b-0 elLmpq"><div class="style-variables__Container-sc-nxq9i0-0 chXWVf"><h1 class="style__SiteTitle-sc-vbm58b-1 pQdgx"><div class="style__SiteLogo-sc-vbm58b-2 hUAKTR"><a href="/">김정환블로그</a></div></h1><nav class="style__NavList-sc-vbm58b-3 gawxzF"><div class="style__Nav-sc-vbm58b-4 UXSfl"><a style="overflow:hidden" href="/posts"><i type="Article" class="style__Icon-sc-dweicn-0 hjpzNl"></i><span>POSTS</span></a></div><div class="style__Nav-sc-vbm58b-4 UXSfl"><a style="overflow:hidden" href="/#videos"><i type="Video" class="style__Icon-sc-dweicn-0 dyrsUo"></i><span>VIDEOS</span></a></div></nav><div class="style__Contacts-sc-vbm58b-5 cuWSKp"><div class="style__Nav-sc-vbm58b-4 UXSfl"><a style="overflow:hidden" href="/feed.xml"><i type="RSS" style="filter:invert(0.6)" class="style__Icon-sc-dweicn-0 fIbOdL"></i></a></div><div class="style__Nav-sc-vbm58b-4 UXSfl"><a href="https://github.com/jeonghwan-kim" style="overflow:hidden"><i type="Github" style="filter:invert(0.6)" class="style__Icon-sc-dweicn-0 dyXCpJ"></i></a></div></div></div></header><main class="style__Main-sc-zv3lme-1 hzwMtm"><div class="style-variables__Container-sc-nxq9i0-0 chXWVf"><div itemscope="" itemType="http://schema.org/BlogPosting"><section class="style__Section-sc-9mziih-0 xrpOc"><main class="style__Main-sc-m5hfiz-0 biwuZy"><aside class="style__Aside-sc-m5hfiz-1 eZKrmY"><div id="post-toc" class="style__Toc-sc-m5hfiz-12 bQItRK"><ul>
+<li><a href="#dialog-%EB%AC%B8%EC%A0%9C">Dialog 문제</a></li>
+<li><a href="#%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%8F%AC%ED%83%88">리액트 포탈</a></li>
+<li><a href="#dialog-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0">Dialog 문제 해결</a></li>
+<li><a href="#errordialog-alert">ErrorDialog (alert)</a></li>
+<li><a href="#paymentsuccessdialog-confirm">PaymentSuccessDialog (confirm)</a></li>
+<li><a href="#dialog-%EA%B0%9C%EC%84%A0-%EB%A0%88%ED%94%84">Dialog 개선: 레프</a></li>
+<li><a href="#%EC%A4%91%EA%B0%84-%EC%A0%95%EB%A6%AC">중간 정리</a></li>
+</ul></div><div class="style__SeriesNav-sc-m5hfiz-14 eftQyD"><div class="style__SeriesNavTitle-sc-m5hfiz-15 ljJnzd">[리액트 2부] 고급주제와 훅<span class="series-order">(<span class="active">12</span>/<!-- -->27<!-- -->)</span></div><div class="style__SeriesNavControls-sc-m5hfiz-16 gDEDeX"><span class="style__SeriesNavPrev-sc-m5hfiz-17 eOQHpJ"><button type="Secondary" class="style__Button-sc-29k00d-0 style__ButtonLink-sc-29k00d-1 dOrSUt gUblxo"><a href="/2023/06/24/lecture-react-season2-part2-ch4">« 이전</a></button></span><span class="style__SeriesNavPrev-sc-m5hfiz-17 style__SeriesNavNext-sc-m5hfiz-18 eOQHpJ eiqKzO"><button type="Secondary" class="style__Button-sc-29k00d-0 style__ButtonLink-sc-29k00d-1 dOrSUt gUblxo"><a href="/2023/06/24/lecture-react-season2-part2-ch6">다음 »</a></button></span></div></div></aside><article class="style__Article-sc-m5hfiz-2 czLBwQ"><header class="style__PostHeader-sc-m5hfiz-3 jcGEDk"><h1 itemProp="name headline" class="style__PostTitle-sc-m5hfiz-4 euPptM">[리액트 2부] 2.5 다이얼로그 2</h1><time itemProp="datePublished" class="style__PostTime-sc-m5hfiz-5 cjLGRy">2023년 06월 24일</time></header><div id="post-content" itemProp="articleBody" class="style__PostContent-sc-m5hfiz-6 fzkVwz"><h1 id="dialog-문제" style="position:relative;"><a href="#dialog-%EB%AC%B8%EC%A0%9C" aria-label="dialog 문제 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dialog 문제</h1>
+<p>사실 Dialog에는 버그가 있다. 부모 스타일의 영향을 받아 빈 공간이 조금 생긴다.</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/cbf4551415871d45af71c1350512653e/066f9/dialog-bug.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 175.82417582417582%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAjABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAEDBAL/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAABxRYOki3vBFa1aEBcD//EABwQAAIDAAMBAAAAAAAAAAAAAAECABESAxAxFP/aAAgBAQABBQK+k8wxmHigiLzBV+gTW26TyhKEQCv/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AV//xAAXEQADAQAAAAAAAAAAAAAAAAABEBEg/9oACAECAQE/AVTj/8QAHhAAAgIBBQEAAAAAAAAAAAAAAAECEZEQICExMmH/2gAIAQEABj8C1tRdHl4GmVT4+nUsjlv/AP/EAB4QAQACAgMAAwAAAAAAAAAAAAEAESExEEFhUXGB/9oACAEBAAE/IVW5lvyxNs9ylY22EGaJqEIjphps2yeuKuJVbr8jt42fcbtTylpjuf/aAAwDAQACAAMAAAAQww8AA8//xAAWEQADAAAAAAAAAAAAAAAAAAAQESD/2gAIAQMBAT8QCj//xAAWEQEBAQAAAAAAAAAAAAAAAAABECD/2gAIAQIBAT8QgWP/xAAiEAEAAgEDAwUAAAAAAAAAAAABABExIWHRQVGBEKHB8PH/2gAIAQEAAT8QzZl6wLkYrUeWxLhqQJTMtBvYUyhsCk0Ix2BSLtPbefjOIQCJUm0oGfE98+n1NiXO56sWOTPkRsT/2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Dialog에 보라색 빈 공간이 있다."
+        title="Dialog에 보라색 빈 공간이 있다."
+        src="/static/cbf4551415871d45af71c1350512653e/066f9/dialog-bug.jpg"
+        srcset="/static/cbf4551415871d45af71c1350512653e/5fc5d/dialog-bug.jpg 182w,
+/static/cbf4551415871d45af71c1350512653e/accec/dialog-bug.jpg 363w,
+/static/cbf4551415871d45af71c1350512653e/066f9/dialog-bug.jpg 400w"
+        sizes="(max-width: 400px) 100vw, 400px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">Dialog에 보라색 빈 공간이 있다.</figcaption>
+  </figure></p>
+<p>원인은 중첩된 돔 구조로 인해 부모 엘리먼트의 스타일 영향을 다이얼로그가 받기 때문이다.</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.ProductPage main</span> <span class="token punctuation">{</span>
+<span class="gatsby-highlight-code-line">  <span class="token property">padding-bottom</span><span class="token punctuation">:</span> 51px<span class="token punctuation">;</span></span><span class="token punctuation">}</span>
+<span class="token selector">.Dialog > main</span> <span class="token punctuation">{</span>
+  <span class="token property">flex</span><span class="token punctuation">:</span> 1 1<span class="token punctuation">;</span>
+  <span class="token property">max-height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
+  <span class="token property">min-height</span><span class="token punctuation">:</span> 40px<span class="token punctuation">;</span>
+  <span class="token property">overflow-y</span><span class="token punctuation">:</span> scroll<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>.Dialog 스타일을 재정의해 부모로부터 받은 스타일을 무시거나 !important를 사용하는 방법은 근본적으로 해결할 수 없다. 부모로부터 어떤 스타일을 상속 받을지 예측 할 수 없기 때문이다.</p>
+<p><strong>중첩된 돔 구조에서 벗어나야</strong>만 비로소 스타일 상속의 영향을 받지 않는다. 어플리케이션 루트 컴포넌트에 Dialog만 그리면 정상적인 모습이다.</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/4eeb6530c33b437c1fcd21c0a26b5722/066f9/dialog-original.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 175.27472527472528%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAjABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAEDBAX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHECwGm3mQalQiAtB//xAAeEAACAQQDAQAAAAAAAAAAAAAAAgEDESExBBIUQf/aAAgBAQABBQKZzcXRaRSnyZpr7WJfu07F19FjH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BX//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BX//EABwQAAEDBQAAAAAAAAAAAAAAAAEAAiAQEjEyUf/aAAgBAQAGPwKGKWhoWgRd2f8A/8QAIBABAAICAgEFAAAAAAAAAAAAAQARMXEhUZEQQWGx8f/aAAgBAQABPyFLcue5bt8xvuYirQ56nyPEwdy3QC8rP1Yz5SsTJv0+6IW3KIVtz//aAAwDAQACAAMAAAAQow8MA8//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EF//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EF//xAAiEAEAAQMEAQUAAAAAAAAAAAABABEhMUFRYfGxEHGRofD/2gAIAQEAAT8Q5LNW87dFqubd2j2oquJ1ncoUJEdD7EqUJVA3VncYCOsIbFgn2Xn0yfmJjGrzOKMsfLgn/9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="다이얼로그의 원래 모습이다."
+        title="다이얼로그의 원래 모습이다."
+        src="/static/4eeb6530c33b437c1fcd21c0a26b5722/066f9/dialog-original.jpg"
+        srcset="/static/4eeb6530c33b437c1fcd21c0a26b5722/5fc5d/dialog-original.jpg 182w,
+/static/4eeb6530c33b437c1fcd21c0a26b5722/accec/dialog-original.jpg 363w,
+/static/4eeb6530c33b437c1fcd21c0a26b5722/066f9/dialog-original.jpg 400w"
+        sizes="(max-width: 400px) 100vw, 400px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">다이얼로그의 원래 모습이다.</figcaption>
+  </figure></p>
+<p>범위를 좁힌 예제를 가지고 문제를 해결해 보자.</p>
+<h1 id="리액트-포탈" style="position:relative;"><a href="#%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%8F%AC%ED%83%88" aria-label="리액트 포탈 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>리액트 포탈</h1>
+<p>Red 컴포넌트를 만들자.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">Red</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">빨간색</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+<span class="token comment">// index.html</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token plain-text">
+.red {
+  background: red;
+}
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre></div>
+<p>배경색을 빨간색으로 지정한 .red 클래스를 사용해서 div을 반환하는 컴포넌트다. 빨간 배경의 박스가 렌더링 될 것이다.</p>
+<p>이 컴포넌트를 다른 Green 하위에 사용해 보자.</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">Red</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">빨간색</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="gatsby-highlight-code-line"><span class="token keyword">const</span> <span class="token function-variable function">Green</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span></span><span class="gatsby-highlight-code-line">  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>green<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token plain-text">녹색</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token plain-text"></span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Red</span></span> <span class="token punctuation">/></span></span><span class="token plain-text"></span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></span><span class="gatsby-highlight-code-line"><span class="token punctuation">)</span></span>
+<span class="token comment">// index.html</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="token plain-text">.red {</span>
+<span class="token plain-text">  background: red;</span>
+<span class="token plain-text">}</span>
+<span class="gatsby-highlight-code-line"><span class="token plain-text">.green div {</span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">  background: green;</span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">}</span></span><span class="token plain-text"></span>
+<span class="token plain-text"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre></div>
+<p>배경색을 초록색으로 지정한 .green 클래스를 사용해서 디비전을 반환하는 앨리먼트다. 녹색 배경의 박스가 렌더링 될 것이다. 레드 컴포넌트도 함께 렌더링할 것이다.</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 726px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/fd7a9537d3787961d5648caf11afdbff/c5e11/all-greens-no-red.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 46.7032967032967%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHtaVCj/8QAFhABAQEAAAAAAAAAAAAAAAAAEQEg/9oACAEBAAEFAiOf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFxAAAwEAAAAAAAAAAAAAAAAAAAExIP/aAAgBAQAGPwKIpXj/xAAbEAABBAMAAAAAAAAAAAAAAAAAARARQSExcf/aAAgBAQABPyHeycIizlCH/9oADAMBAAIAAwAAABBUP//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/EIj/xAAXEQEAAwAAAAAAAAAAAAAAAAAAAREh/9oACAECAQE/EIxb/8QAHhAAAgEDBQAAAAAAAAAAAAAAABEBITHRQVFhkbH/2gAIAQEAAT8QcysbRshG7PGCIduiMGpPssP/2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="모두 녹색이다. 빨간색이 없다."
+        title="모두 녹색이다. 빨간색이 없다."
+        src="/static/fd7a9537d3787961d5648caf11afdbff/fee13/all-greens-no-red.jpg"
+        srcset="/static/fd7a9537d3787961d5648caf11afdbff/5fc5d/all-greens-no-red.jpg 182w,
+/static/fd7a9537d3787961d5648caf11afdbff/accec/all-greens-no-red.jpg 363w,
+/static/fd7a9537d3787961d5648caf11afdbff/fee13/all-greens-no-red.jpg 726w,
+/static/fd7a9537d3787961d5648caf11afdbff/934bb/all-greens-no-red.jpg 1089w,
+/static/fd7a9537d3787961d5648caf11afdbff/fcb1e/all-greens-no-red.jpg 1452w,
+/static/fd7a9537d3787961d5648caf11afdbff/c5e11/all-greens-no-red.jpg 2551w"
+        sizes="(max-width: 726px) 100vw, 726px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">모두 녹색이다. 빨간색이 없다.</figcaption>
+  </figure></p>
+<p>예상과 달리 Red가 녹색으로 렌더링 되었다. 돔과 스타일을 살펴보자. .red 스타일이 해당돔에 적용 되었지만 .green div 스타일이 오버라이딩 되었다. 우선순위에 의해 이 스타일이 적용되어 녹색 배경으로 계산된 것이 원인이다.</p>
+<p>이러한 돔 상속 구조로 인한 스타일 상속은 이 구조를 벗어나지 않은 한 해결하기 까다롭다.
+Red를 다른 돔에 마운트한다면 스타일 상속의 영향을 받지 않을 것이다. react-dom 패키지의 렌더 함수로 다른 돔에 붙여 보자.</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="gatsby-highlight-code-line"><span class="token keyword">const</span> root2 <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"dialog"</span><span class="token punctuation">)</span><span class="token punctuation">)</span></span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Green</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span>
+<span class="gatsby-highlight-code-line">root2<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Red</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span></span></code></pre></div>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 726px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/7fe265c9247befa54d23996ba50fa691/3acf0/green-and-red.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 53.2967032967033%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAECAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB2LCIxCf/xAAYEAEAAwEAAAAAAAAAAAAAAAABAAIQMf/aAAgBAQABBQIpUY48J//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABcQAQADAAAAAAAAAAAAAAAAAAECESD/2gAIAQEABj8Csia//8QAGxAAAwACAwAAAAAAAAAAAAAAAAERUZEhQWH/2gAIAQEAAT8hhBeYKrGivNHYzTjVcn//2gAMAwEAAgADAAAAEAg//8QAFREBAQAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8Qh//EABcRAAMBAAAAAAAAAAAAAAAAAAABETH/2gAIAQIBAT8QSmFP/8QAGhABAAIDAQAAAAAAAAAAAAAAAQARITGRUf/aAAgBAQABPxAaEtgIjKYX2iaZ19Q0ikORK7EvVs//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="레드 컴포넌트가 빨간색으로 렌더링 되었다."
+        title="레드 컴포넌트가 빨간색으로 렌더링 되었다."
+        src="/static/7fe265c9247befa54d23996ba50fa691/fee13/green-and-red.jpg"
+        srcset="/static/7fe265c9247befa54d23996ba50fa691/5fc5d/green-and-red.jpg 182w,
+/static/7fe265c9247befa54d23996ba50fa691/accec/green-and-red.jpg 363w,
+/static/7fe265c9247befa54d23996ba50fa691/fee13/green-and-red.jpg 726w,
+/static/7fe265c9247befa54d23996ba50fa691/934bb/green-and-red.jpg 1089w,
+/static/7fe265c9247befa54d23996ba50fa691/fcb1e/green-and-red.jpg 1452w,
+/static/7fe265c9247befa54d23996ba50fa691/3acf0/green-and-red.jpg 2000w"
+        sizes="(max-width: 726px) 100vw, 726px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">레드 컴포넌트가 빨간색으로 렌더링 되었다.</figcaption>
+  </figure></p>
+<p>Green은 #root 앨리먼트에 마운트하고 Red는 #dialog 앨리먼트에 마운트했다. 후자는 부모 컴포넌트가 없어서 스타일 영향에서 벗어났다.</p>
+<p>컴포넌트의 마운트 위치를 변경해서 돔 구조에서 벗어서 스타일 상속 문제를 해결했지만 컴포넌트 구조도 함께 바뀌어 버렸다. 여전히 Green 아래 Red 를 위치시키고 싶은 경우가 있다. 마치 Dialog를 App 하위에 위치시켜야하는 것 처럼 말이다.</p>
+<p>이러한 문제를 해결할 수 이는 것이 <strong>리액트 포탈</strong>이다. 포탈을 사용하면 우리가 한 것처럼 해당 리액트 앨리먼트를 지정한 돔에 마운트 시킬수 있다. 지정한 돔이 어플리케이션이 마운트된 돔 바깥이라도 어디든지 상관없다.</p>
+<p>뿐만아니라 포탈로 마운트한 앨리먼트에서 발생한 이벤트가 어플리케이션에으로 버블링되어 올라간다. 어플리케이션에서는 다른 돔에 마운트된 앨리먼트라도 부모에 있는 앨리먼트처럼 이벤트를 처리할 수 있다. 반대로 부모 앨리먼트가 포탈에 있는 컴포넌트로 인자를 전달할 수도 있다.</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">Red</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span>
+<span class="gatsby-highlight-code-line">  ReactDOM<span class="token punctuation">.</span><span class="token function">createPortal</span><span class="token punctuation">(</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text">red</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span><span class="token punctuation">,</span>
+    document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#dialog"</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span></code></pre></div>
+<p>Red에서 리액트 앨리먼트를 바로 반환하지 않고 createPortal 함수를 사용했다. 렌더링할 리액트 앨리먼트와 이것을 마운트할 돔 앨리먼트를 인자로 전달하는 방식이다. 컴포넌트가 렌더링되면 #dialog 돔 앨리먼트에 이 리액트 앨리먼트가 붙게 될 것이다.</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 726px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/8a0d0ebb220a6a2221857bf21c4a87bf/3acf0/independent-red.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 53.2967032967033%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAIF/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/2gAMAwEAAhADEAAAAdm0gJ//xAAZEAEAAgMAAAAAAAAAAAAAAAABABAREjH/2gAIAQEAAQUC1Mxp4T//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAXEAADAQAAAAAAAAAAAAAAAAAAATEg/9oACAEBAAY/Aoilx//EABsQAQACAgMAAAAAAAAAAAAAAAEAEUGRIVFx/9oACAEBAAE/IQbBPdSqy1PTUzEjis5n/9oADAMBAAIAAwAAABCLP//EABYRAQEBAAAAAAAAAAAAAAAAAAARMf/aAAgBAwEBPxDUf//EABYRAQEBAAAAAAAAAAAAAAAAAAABEf/aAAgBAgEBPxCNf//EABsQAQADAAMBAAAAAAAAAAAAAAEAESExUXGR/9oACAEBAAE/EDgA4DZBEMPECpSZ0hwikOiV9iXq2f/Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Red가 스타일 영향을 받지 않는다."
+        title="Red가 스타일 영향을 받지 않는다."
+        src="/static/8a0d0ebb220a6a2221857bf21c4a87bf/fee13/independent-red.jpg"
+        srcset="/static/8a0d0ebb220a6a2221857bf21c4a87bf/5fc5d/independent-red.jpg 182w,
+/static/8a0d0ebb220a6a2221857bf21c4a87bf/accec/independent-red.jpg 363w,
+/static/8a0d0ebb220a6a2221857bf21c4a87bf/fee13/independent-red.jpg 726w,
+/static/8a0d0ebb220a6a2221857bf21c4a87bf/934bb/independent-red.jpg 1089w,
+/static/8a0d0ebb220a6a2221857bf21c4a87bf/fcb1e/independent-red.jpg 1452w,
+/static/8a0d0ebb220a6a2221857bf21c4a87bf/3acf0/independent-red.jpg 2000w"
+        sizes="(max-width: 726px) 100vw, 726px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">Red가 스타일 영향을 받지 않는다.</figcaption>
+  </figure></p>
+<p>Red를 클릭하면 이벤트가 버블링되어 Green에서 수신된다.</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 726px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/49abf9712293aa8fb8784775641a820d/3acf0/event-bubble.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 53.2967032967033%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHZmxAX/8QAGBAAAwEBAAAAAAAAAAAAAAAAAQIRABD/2gAIAQEAAQUCCihF0nTv/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGRAAAgMBAAAAAAAAAAAAAAAAAAEgITEy/9oACAEBAAY/AsRyiof/xAAbEAADAAIDAAAAAAAAAAAAAAAAAREhMUFxwf/aAAgBAQABPyFGlboh8CISJI5FjRuf/9oADAMBAAIAAwAAABCcD//EABcRAQADAAAAAAAAAAAAAAAAAAEQETH/2gAIAQMBAT8QS9j/xAAXEQEAAwAAAAAAAAAAAAAAAAABEBEx/9oACAECAQE/EBrI/8QAGxABAQACAwEAAAAAAAAAAAAAAQAhMRFRYXH/2gAIAQEAAT8QGBh2EbYNnpIhQYAxGkPLmSH5f//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Red를 클릭하면 이벤트가 버블링되어 Green에서 수신된다."
+        title="Red를 클릭하면 이벤트가 버블링되어 Green에서 수신된다."
+        src="/static/49abf9712293aa8fb8784775641a820d/fee13/event-bubble.jpg"
+        srcset="/static/49abf9712293aa8fb8784775641a820d/5fc5d/event-bubble.jpg 182w,
+/static/49abf9712293aa8fb8784775641a820d/accec/event-bubble.jpg 363w,
+/static/49abf9712293aa8fb8784775641a820d/fee13/event-bubble.jpg 726w,
+/static/49abf9712293aa8fb8784775641a820d/934bb/event-bubble.jpg 1089w,
+/static/49abf9712293aa8fb8784775641a820d/fcb1e/event-bubble.jpg 1452w,
+/static/49abf9712293aa8fb8784775641a820d/3acf0/event-bubble.jpg 2000w"
+        sizes="(max-width: 726px) 100vw, 726px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">Red를 클릭하면 이벤트가 버블링되어 Green에서 수신된다.</figcaption>
+  </figure></p>
+<h1 id="dialog-문제-해결" style="position:relative;"><a href="#dialog-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0" aria-label="dialog 문제 해결 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dialog 문제 해결</h1>
+<p>그럼 다시 우리 예제로 돌아와서. Dialog 문제는 스타일 상속 영향으로 빈 공간이 생긴다는 것이다. 해결하려면 Dialog가 App의 마운트 지점에서 벗어나 다른 곳에 마운트되어야 한다. 리액트 포탈로 옮겨보자.</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">DialogContainer</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>layoutContext.Consumer</span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="token plain-text">    </span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> dialog <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span>
+      dialog <span class="token operator">&amp;&amp;</span>
+<span class="gatsby-highlight-code-line">      ReactDOM<span class="token punctuation">.</span><span class="token function">createPortal</span><span class="token punctuation">(</span></span><span class="gatsby-highlight-code-line">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Backdrop</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>dialog<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Backdrop</span></span><span class="token punctuation">></span></span><span class="token punctuation">,</span></span><span class="gatsby-highlight-code-line">        document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#dialog"</span><span class="token punctuation">)</span></span><span class="gatsby-highlight-code-line">      <span class="token punctuation">)</span></span>    <span class="token punctuation">}</span><span class="token plain-text"></span>
+<span class="token plain-text">  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>layoutContext.Consumer</span><span class="token punctuation">></span></span>
+<span class="token punctuation">)</span></code></pre></div>
+<p>기존에는 리액트 앨리먼트를 반환하는 컴포넌트였지만 리액트 포탈로 한번 감싼 뒤 반환했다. 반환할 기존 앨리먼트를 createProtal의 첫 번째 인자로 전달했다. 이것을 마운트할 돔인 #dialog 앨리먼트를 두 번째 인자로 지정했다.</p>
+<p>이전 돔과 비교해 보자.</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 726px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/b5945e92a0a13b32d526bf0a9957a680/3acf0/dialog-on-portal.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 49.45054945054945%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAYBAgX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAABjdXmMqAn/8QAGBAAAgMAAAAAAAAAAAAAAAAAARARFET/2gAIAQEAAQUCgWVqX//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABkQAAIDAQAAAAAAAAAAAAAAAAAxEDJCgv/aAAgBAQAGPwK20MZ3P//EABwQAAMAAgMBAAAAAAAAAAAAAAABETFBUWFx8P/aAAgBAQABPyFwOb2ckmw/Q8fuRGkf/9oADAMBAAIAAwAAABDI/wD/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAVEQEBAAAAAAAAAAAAAAAAAAAAEf/aAAgBAgEBPxBX/8QAHxAAAgEDBQEAAAAAAAAAAAAAAAERMbHRIUFRYXGR/9oACAEBAAE/ENEeGiXSkC9HhLArlWVgf5BsLB//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="다른 앨리먼트에 다이얼로그 앨리먼트가 마운트 되었다."
+        title="다른 앨리먼트에 다이얼로그 앨리먼트가 마운트 되었다."
+        src="/static/b5945e92a0a13b32d526bf0a9957a680/fee13/dialog-on-portal.jpg"
+        srcset="/static/b5945e92a0a13b32d526bf0a9957a680/5fc5d/dialog-on-portal.jpg 182w,
+/static/b5945e92a0a13b32d526bf0a9957a680/accec/dialog-on-portal.jpg 363w,
+/static/b5945e92a0a13b32d526bf0a9957a680/fee13/dialog-on-portal.jpg 726w,
+/static/b5945e92a0a13b32d526bf0a9957a680/934bb/dialog-on-portal.jpg 1089w,
+/static/b5945e92a0a13b32d526bf0a9957a680/fcb1e/dialog-on-portal.jpg 1452w,
+/static/b5945e92a0a13b32d526bf0a9957a680/3acf0/dialog-on-portal.jpg 2000w"
+        sizes="(max-width: 726px) 100vw, 726px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">다른 앨리먼트에 다이얼로그 앨리먼트가 마운트 되었다.</figcaption>
+  </figure></p>
+<p>#dialog에 다이얼로그 앨리먼트가 추가되어서 #root에 있는 스타일을 더 이상 상속받지 않는다. 이제는 다이얼로그에서 정의한 스타일에만 영향을 받아 빈 공간이 생기지 않는다.</p>
+<h1 id="errordialog-alert" style="position:relative;"><a href="#errordialog-alert" aria-label="errordialog alert permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ErrorDialog (alert)</h1>
+<p>Dialog를 조합해 요구사항을 해결할수 있는 각 각의 다이얼로그를 조합할 차례다. src/componentErrorDiloag.jsx에 오류 메세지를 보여줄 다이얼로그를 만들자.</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="gatsby-highlight-code-line"><span class="token keyword">const</span> <span class="token function-variable function">ErrorDialog</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> closeDialog <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Dialog</span></span>
+    <span class="token attr-name">header</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token plain-text">오류</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span><span class="token punctuation">}</span></span>
+    <span class="token attr-name">footer</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>closeDialog<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">네, 알겠습니다</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span><span class="token punctuation">}</span></span>
+  <span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="token plain-text">    잠시 후 다시 시도해 주세요.</span>
+<span class="token plain-text">  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Dialog</span></span><span class="token punctuation">></span></span>
+<span class="token punctuation">)</span>
+<span class="gatsby-highlight-code-line">MyLayout<span class="token punctuation">.</span><span class="token function">withLayout</span><span class="token punctuation">(</span>ErrorDialog<span class="token punctuation">)</span></span></code></pre></div>
+<p>헤더에 타이틀을 넣고 하단에 모달을 닫는 버튼을 만들었다. withLayout으로 감싸 closeDialog를 인자로 받았다. 이를 호출해서 다이얼로그를 닫는 함수를 호출할 수 있다. 본문에는 "잠시 후 다시 시도해 주세요" 문구를 노출했다.</p>
+<p>오류가 발생한 지점에 이 다이얼로그를 띄우면 되겠다. 먼저 메뉴 목록 화면에 적용해 보자.</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">ProductPage</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">async</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="gatsby-highlight-code-line">    <span class="token keyword">const</span> <span class="token punctuation">{</span>startLoading<span class="token punctuation">,</span> finishLoading<span class="token punctuation">,</span> openDialog<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span></span>    <span class="token function">startLoading</span><span class="token punctuation">(</span><span class="token string">'로딩중...'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+     <span class="token keyword">const</span> productList <span class="token operator">=</span> <span class="token keyword">await</span> ProductApi<span class="token punctuation">.</span><span class="token function">fetchProductList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> productList <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="gatsby-highlight-code-line">      <span class="token function">openDialog</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ErrorDialog</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>      <span class="token keyword">return</span>
+    <span class="token punctuation">}</span>
+<span class="gatsby-highlight-code-line">    <span class="token function">finishLoading</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>  <span class="token punctuation">}</span></code></pre></div>
+<p>데이터를 패치하는 과정에서 오류가 발생하면 이를 잡아서 오류 다이얼로그에 보이도록 했다. 지금은 다이얼로그 테스트를 위해 일부러 오류를 발생시켰다.</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/1974a48fd24a923e4c7fca674ab36651/066f9/alert.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 177.47252747252747%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAjABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAEDBAUC/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAABytVhhex09HBF6gTASD//xAAaEAEBAAMBAQAAAAAAAAAAAAACAwABFBAg/9oACAEBAAEFAvRBs8tMZ2FGwMuiWXWlX6//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AV//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AV//xAAeEAEAAQIHAAAAAAAAAAAAAAABABExEBIgITJBof/aAAgBAQAGPwLGpSdTK3gLvOXkUtr/AP/EAB0QAQABBQADAAAAAAAAAAAAAAEAEBEhMVEg4fD/2gAIAQEAAT8hqaxnrPuxXZs5C/g3hgPsiP3Xi6p//9oADAMBAAIAAwAAABCABABwD//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8QX//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8QX//EAB4QAAICAgIDAAAAAAAAAAAAAAERACExURDRQWGR/9oACAEBAAE/EAagrAhMIIqSGA0Vqe779TEIWzGHHSgQkVk+BMMAeuiVfoik6AgxwYgxUrSIan//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="오류 다이얼로그가 보인다."
+        title="오류 다이얼로그가 보인다."
+        src="/static/1974a48fd24a923e4c7fca674ab36651/066f9/alert.jpg"
+        srcset="/static/1974a48fd24a923e4c7fca674ab36651/5fc5d/alert.jpg 182w,
+/static/1974a48fd24a923e4c7fca674ab36651/accec/alert.jpg 363w,
+/static/1974a48fd24a923e4c7fca674ab36651/066f9/alert.jpg 400w"
+        sizes="(max-width: 400px) 100vw, 400px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">오류 다이얼로그가 보인다.</figcaption>
+  </figure></p>
+<p>데이터 패치 과정에서 오류가 발생하면 예외를 잡아서 오류 다이얼로그가 뜬다. 하단 버튼을 클릭하면 다이얼로그가 닫힌다.</p>
+<p>장바구니, 주문내역 화면에도 오류처리를 추가하자.</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">CartPage</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">async</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="gatsby-highlight-code-line">    <span class="token keyword">const</span> <span class="token punctuation">{</span> params<span class="token punctuation">,</span> startLoading<span class="token punctuation">,</span> finishLoading<span class="token punctuation">,</span> openDialog <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props</span>    <span class="token keyword">const</span> <span class="token punctuation">{</span> productId <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">params</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>productId<span class="token punctuation">)</span> <span class="token keyword">return</span>
+
+    <span class="token function">startLoading</span><span class="token punctuation">(</span><span class="token string">"장바구니에 담는중..."</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> product <span class="token operator">=</span> <span class="token keyword">await</span> ProductApi<span class="token punctuation">.</span><span class="token function">fetchProduct</span><span class="token punctuation">(</span>productId<span class="token punctuation">)</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> product <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="gatsby-highlight-code-line">      <span class="token function">openDialog</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ErrorDialog</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span></span>      <span class="token keyword">return</span>
+    <span class="token punctuation">}</span>
+<span class="gatsby-highlight-code-line">    <span class="token function">finishLoading</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<div class="gatsby-highlight has-highlighted-lines" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">OrderPage</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">async</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> startLoading<span class="token punctuation">,</span> finishLoading<span class="token punctuation">,</span> openDialog <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props
+    <span class="token function">startLoading</span><span class="token punctuation">(</span><span class="token string">"주문 정보를 불러오는 중입니다."</span><span class="token punctuation">)</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> order <span class="token operator">=</span> <span class="token keyword">await</span> OrderApi<span class="token punctuation">.</span><span class="token function">fetchMyOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span> order <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">finishLoading</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="gatsby-highlight-code-line">      <span class="token function">openDialog</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ErrorDialog</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span></span>      <span class="token keyword">return</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">finishLoading</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>요구사항</p>
+<ul>
+<li><del>0.4 API 호출시 로딩 메세지를 다이얼로그로 표시한다. (다이얼로그)</del></li>
+<li><strong><del>0.5 예외 처리용 메세지를 다이얼로그로 표시한다. (다이얼로그)</del></strong></li>
+<li>2.7 결제하기 버튼을 클릭하면 사용자 확인을 받는다. (다이얼로그)</li>
+</ul>
+<h1 id="paymentsuccessdialog-confirm" style="position:relative;"><a href="#paymentsuccessdialog-confirm" aria-label="paymentsuccessdialog confirm permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>PaymentSuccessDialog (confirm)</h1>
+<p>장바구니 화면에서 주문 정보를 입력한 뒤 하단의 결제하기 버튼을 눌렀을 때의 후속 플로우를 구현해야 한다.</p>
+<ul>
+<li>"결제 중.." 이라는 로딩 메세지를 보인다.</li>
+<li>주문 생성 api를 호출한다.</li>
+<li>api 호출에 성공하면 로딩을 닫고 <strong>주문 성공 다이얼로그</strong>를 띄운다.</li>
+<li>실패하면 <strong>주문 실패 다이얼로그</strong>를 띄운다.</li>
+</ul>
+<p>주문 성공 다이얼로그</p>
+<ul>
+<li>결제 완료를 알리는 메세지를 보여주고 주문 상태 확인 여부를 묻는다.</li>
+<li>사용자가 '네'를 누르면 다이얼로그를 닫고 주문 상세 화면으로 이동한다.</li>
+<li>'아니오'를 클릭하면 다이얼로그를 닫고 메뉴 목록 화면으로 이동한다.</li>
+</ul>
+<p>주문 실패 다이얼로그</p>
+<ul>
+<li>결제 실패를 알리고 다시 시도해 달라는 메세지를 띄운다.</li>
+<li>사용자가 클릭할 수 있는 버튼은 네, 알겠습니다 버튼 뿐이다.</li>
+<li>클릭하면 다이얼로그를 닫는다.</li>
+</ul>
+<p>먼저 주문 상세 화면에서 결제하기 버튼 핸들러를 구현하자.</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">CartPgae</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token keyword">async</span> <span class="token function">handleSubmit</span><span class="token punctuation">(</span><span class="token parameter">values</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">const</span> <span class="token punctuation">{</span> startLoading<span class="token punctuation">,</span> finishLoading<span class="token punctuation">,</span> openDialog <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">;</span>
+<span class="gatsby-highlight-code-line">    <span class="token function">startLoading</span><span class="token punctuation">(</span><span class="token string">"결제중..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span>    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+<span class="gatsby-highlight-code-line">      <span class="token keyword">await</span> OrderApi<span class="token punctuation">.</span><span class="token function">createOrder</span><span class="token punctuation">(</span>values<span class="token punctuation">)</span><span class="token punctuation">;</span></span>    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="gatsby-highlight-code-line">      <span class="token function">openDialog</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">ErrorDialog</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span class="gatsby-highlight-code-line">      <span class="token keyword">return</span><span class="token punctuation">;</span></span><span class="gatsby-highlight-code-line">    <span class="token punctuation">}</span></span><span class="gatsby-highlight-code-line"></span>    <span class="token function">finishLoading</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">openDialog</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">PaymentSuccessDialog</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token comment">// ...</span></code></pre></div>
+<p>withLayout으로 모달 기능을 주입 받은 컴포넌트이기 때문에 startLoading, finishLoading, openDialog 함수를 사용할 수 있다. 먼저 결제 api 호출하기 전에 "결제중입니다"라는 로딩 메세지를 띄웠다. try구문 안에 주문 생성 api 를 호출했다.</p>
+<p>실패하면 catch 문으로 이동해 발생한 예외를 잡을 것이다. 띄워진 로딩을 숨긴뒤에 정의한 ErrorDialog를 띄우고 함수를 종료한다. 사용자는 다이얼로그의 버튼을 클릭한뒤에 다시 결제 시도를 할 수 있다.</p>
+<p>성공하면 try/catch 구문을 빠져 나온다. finishLoading() 으로 로딩 메세지를 감추고 주문 성공 다이얼로그를 띄울 것이다. pages/CartPage/PaymentsuccessDialog.jsx를 만들자.</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="gatsby-highlight-code-line"><span class="token keyword">const</span> <span class="token function-variable function">PaymentSuccessDialog</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> navigate<span class="token punctuation">,</span> closeDialog <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span><span class="gatsby-highlight-code-line">  <span class="token keyword">const</span> <span class="token function-variable function">handleClickNo</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span><span class="gatsby-highlight-code-line">    <span class="token function">closeDialog</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="gatsby-highlight-code-line">    <span class="token function">navigate</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span></span><span class="gatsby-highlight-code-line">  <span class="token punctuation">}</span></span>
+<span class="gatsby-highlight-code-line">  <span class="token keyword">const</span> <span class="token function-variable function">handleClickYes</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span></span><span class="gatsby-highlight-code-line">    <span class="token function">closeDialog</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="gatsby-highlight-code-line">    <span class="token function">navigate</span><span class="token punctuation">(</span><span class="token string">"/order"</span><span class="token punctuation">)</span></span><span class="gatsby-highlight-code-line">  <span class="token punctuation">}</span></span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+<span class="gatsby-highlight-code-line">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Dialog</span></span></span><span class="gatsby-highlight-code-line">      <span class="token attr-name">header</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token plain-text">결제 완료</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span><span class="token punctuation">}</span></span></span><span class="gatsby-highlight-code-line">      <span class="token attr-name">footer</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span></span><span class="gatsby-highlight-code-line">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token literal-property property">marginRight</span><span class="token operator">:</span> <span class="token string">"8px"</span> <span class="token punctuation">}</span><span class="token punctuation">}</span></span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleClickNo<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">            아니오</span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">styleType</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>brand<span class="token punctuation">"</span></span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleClickYes<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">            네, 주문상태를 확인합니다.</span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">          </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span></span><span class="gatsby-highlight-code-line">      <span class="token punctuation">}</span></span></span><span class="gatsby-highlight-code-line">    <span class="token punctuation">></span></span><span class="token plain-text"></span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">      결제가 완료되었습니다. 주문 상태를 보러 가시겠습니까?</span></span><span class="gatsby-highlight-code-line"><span class="token plain-text">    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Dialog</span></span><span class="token punctuation">></span></span></span>  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="gatsby-highlight-code-line">MyLayout<span class="token punctuation">.</span><span class="token function">withLayout</span><span class="token punctuation">(</span>MyRouter<span class="token punctuation">.</span><span class="token function">withRouter</span><span class="token punctuation">(</span>PaymentSuccessDialog<span class="token punctuation">)</span><span class="token punctuation">)</span></span></code></pre></div>
+<p>상태가 필요하지 않아 함수 컴포넌트로 정의했다. 맨아래 withLayout, withRouter로 고차함수를 만들어 다이얼로그와 주소 이동 기능을 인자로 주입받아 navigate, closeDialog를 준비했다.</p>
+<p>각 버튼의 핸들러를 만들었다. '아니오'를 클릭할 경우 다이얼로그를 닫고 메뉴 목록 화면으로 이동한다. '예'를 클릭한 경우 다이얼로그를 닫고 주문 상세 화면으로 이동한다.</p>
+<p>마지막에 리액트 앨먼트를 반환했다. 다이얼로그 컴포넌트를 조합했다. 푸터에 버튼 두개를 두어 사용자가 선택할 수 있게끔 했다. 각 버튼에 위에 정의한 핸들러를 바인딩했다.</p>
+<p>결제하기 버튼을 클릭한 뒤 주문 생성에 성공하면 이 다이얼로그가 보일 것이다.</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/4e10fc371b5cd50ba20ed7080e9d47e3/066f9/confirm.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 178.02197802197801%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAkABQDASIAAhEBAxEB/8QAGQABAAMBAQAAAAAAAAAAAAAAAAMEBQEC/8QAFwEBAQEBAAAAAAAAAAAAAAAAAAECA//aAAwDAQACEAMQAAABq8syGenRq2MBVhXEA1x9ib//xAAeEAACAgEFAQAAAAAAAAAAAAABAgADEQQQEhMUIf/aAAgBAQABBQKH4A2YtLsPNZGTg1NiCrtrmoIa3fJmTBP/xAAXEQEAAwAAAAAAAAAAAAAAAAAAAREg/9oACAEDAQE/AcWh/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwFf/8QAHxAAAgAFBQAAAAAAAAAAAAAAAAECEBEhkRIgMTJh/9oACAEBAAY/Ap1VL+nCyaWiFOJZO6yNq63/AP/EAB0QAQACAgIDAAAAAAAAAAAAAAEAIRExEGEgUXH/2gAIAQEAAT8hz0xWEXLUBUNIzyMwhPUKGQs+uFOTQWeDk2zsY1Nz/9oADAMBAAIAAwAAABDw/wA88A//xAAYEQEBAAMAAAAAAAAAAAAAAAABABEgUf/aAAgBAwEBPxDRXZOL/8QAFxEBAAMAAAAAAAAAAAAAAAAAAAERIP/aAAgBAgEBPxDFJf/EAB4QAQACAgIDAQAAAAAAAAAAAAEAESExQVEQYYHx/9oACAEBAAE/EBLXJuM9F+4ZgqashGrkAXNa+RNSx0iUoGUo7IilgtKy4n7CA7QBLNEL68mYboylKpzP/9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="주문 생성 성공 후 다이얼로그 모습"
+        title="주문 생성 성공 후 다이얼로그 모습"
+        src="/static/4e10fc371b5cd50ba20ed7080e9d47e3/066f9/confirm.jpg"
+        srcset="/static/4e10fc371b5cd50ba20ed7080e9d47e3/5fc5d/confirm.jpg 182w,
+/static/4e10fc371b5cd50ba20ed7080e9d47e3/accec/confirm.jpg 363w,
+/static/4e10fc371b5cd50ba20ed7080e9d47e3/066f9/confirm.jpg 400w"
+        sizes="(max-width: 400px) 100vw, 400px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">주문 생성 성공 후 다이얼로그 모습</figcaption>
+  </figure></p>
+<p>요구사항</p>
+<ul>
+<li><del>0.4 API 호출시 로딩 메세지를 다이얼로그로 표시한다. (다이얼로그)</del></li>
+<li><del>0.5 예외 처리용 메세지를 다이얼로그로 표시한다. (다이얼로그)</del></li>
+<li><strong><del>2.7 결제하기 버튼을 클릭하면 사용자 확인을 받는다. (다이얼로그)</del></strong></li>
+</ul>
+<h1 id="dialog-개선-레프" style="position:relative;"><a href="#dialog-%EA%B0%9C%EC%84%A0-%EB%A0%88%ED%94%84" aria-label="dialog 개선 레프 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dialog 개선: 레프</h1>
+<p>사용자 선택을 기다리는 다이얼로그는 두 가지다. 얼럿과 컨펌. 우리가 만든 ErrorDialog와 PaymentSuccessDialog다. 브라우져가 제공하는 얼럿과 컨펌은 선택값을 기본으로 지정해 엔터만 입력하더라도 다음 플로우를 진행할 수 있게끔 말이다.</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/dcf2c0aa56834a7931bb4cce0053f0be/066f9/browser-alert.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 36.81318681318682%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAQD/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAbtBiMF//8QAGBAAAwEBAAAAAAAAAAAAAAAAAQIDETH/2gAIAQEAAQUCmZhS8cPf/8QAFhEAAwAAAAAAAAAAAAAAAAAAAQIQ/9oACAEDAQE/AS0//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGhAAAgIDAAAAAAAAAAAAAAAAAAERISIxkf/aAAgBAQAGPwLPZSXBwf/EABkQAAIDAQAAAAAAAAAAAAAAAAABESExUf/aAAgBAQABPyHGLcEmkPgi3Ymj/9oADAMBAAIAAwAAABAL7//EABURAQEAAAAAAAAAAAAAAAAAAAEA/9oACAEDAQE/EEFIv//EABYRAQEBAAAAAAAAAAAAAAAAAAEQQf/aAAgBAgEBPxANn//EABsQAQACAgMAAAAAAAAAAAAAAAEAESExQYGR/9oACAEBAAE/EBYgltuPI0UfFhfdRlANIOCf/9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="얼럿. 확인 버튼이 포커스 되었다."
+        title="얼럿. 확인 버튼이 포커스 되었다."
+        src="/static/dcf2c0aa56834a7931bb4cce0053f0be/066f9/browser-alert.jpg"
+        srcset="/static/dcf2c0aa56834a7931bb4cce0053f0be/5fc5d/browser-alert.jpg 182w,
+/static/dcf2c0aa56834a7931bb4cce0053f0be/accec/browser-alert.jpg 363w,
+/static/dcf2c0aa56834a7931bb4cce0053f0be/066f9/browser-alert.jpg 400w"
+        sizes="(max-width: 400px) 100vw, 400px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">얼럿. 확인 버튼이 포커스 되었다.</figcaption>
+  </figure></p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/82010383e5c2890c4406601500e0901f/066f9/browser-confirm.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 36.81318681318682%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAHABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAQD/8QAFQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAbdRiMF//8QAGRAAAgMBAAAAAAAAAAAAAAAAAQMAAhIx/9oACAEBAAEFAlleTZMPf//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAEDAQE/AVn/xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAZEAADAAMAAAAAAAAAAAAAAAAAASEiMYH/2gAIAQEABj8Cz2RJ8If/xAAZEAACAwEAAAAAAAAAAAAAAAABEQAhUTH/2gAIAQEAAT8hB4WyAC2yFJog6n//2gAMAwEAAgADAAAAEIwv/8QAFhEAAwAAAAAAAAAAAAAAAAAAAAER/9oACAEDAQE/EGWCP//EABYRAQEBAAAAAAAAAAAAAAAAAAEQQf/aAAgBAgEBPxANn//EABsQAQADAAMBAAAAAAAAAAAAAAEAESExQYGR/9oACAEBAAE/EA4NnLc+R61HLC/aiZBUg6J//9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="컨펌. 확인 버튼이 포커스 되었다."
+        title="컨펌. 확인 버튼이 포커스 되었다."
+        src="/static/82010383e5c2890c4406601500e0901f/066f9/browser-confirm.jpg"
+        srcset="/static/82010383e5c2890c4406601500e0901f/5fc5d/browser-confirm.jpg 182w,
+/static/82010383e5c2890c4406601500e0901f/accec/browser-confirm.jpg 363w,
+/static/82010383e5c2890c4406601500e0901f/066f9/browser-confirm.jpg 400w"
+        sizes="(max-width: 400px) 100vw, 400px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">컨펌. 확인 버튼이 포커스 되었다.</figcaption>
+  </figure></p>
+<p>우리가 만든 다이얼로그도 기보 선택 버튼을 위치시켜 보자. 다이얼로그의 푸터의 마지막 버튼을 그렇게 만들어 보겠다.</p>
+<p>앨리먼트의 포커스 함수를 사용하면 되겠다. 문제는 이것이 돔 api를 사용하는 것이라 직접 돔을 다루기 때문에 리액트의 선언적 방식과 잘 맞지 않는다는 것이다.</p>
+<p>이러한 목적으로 사용하는 것이 리액트의 레프 객체다. 1편에서 주문 폼에 접근해 입력 값을 얻어오기 위해 사용한 그것 말이다. 돔에 직접 점근할 때는 리액트 레프 객체를 사용한다.</p>
+<p>먼저 레프 객체를 사용하기 위해 함수형 컴포넌트를 클래스 컴포넌트로 바꾸어야한다.</p>
+<div class="gatsby-highlight has-highlighted-lines" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">class</span> <span class="token class-name">Dialog</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>
+<span class="gatsby-highlight-code-line">    <span class="token keyword">this</span><span class="token punctuation">.</span>footerRef <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">createRef</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>  <span class="token punctuation">}</span>
+
+  <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="gatsby-highlight-code-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>footerRef<span class="token punctuation">.</span>current<span class="token punctuation">)</span> <span class="token keyword">return</span></span><span class="gatsby-highlight-code-line"></span><span class="gatsby-highlight-code-line">    <span class="token keyword">const</span> buttons <span class="token operator">=</span> Array<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span></span><span class="gatsby-highlight-code-line">      <span class="token keyword">this</span><span class="token punctuation">.</span>footerRef<span class="token punctuation">.</span>current<span class="token punctuation">.</span><span class="token function">querySelectorAll</span><span class="token punctuation">(</span><span class="token string">"button"</span><span class="token punctuation">)</span></span><span class="gatsby-highlight-code-line">    <span class="token punctuation">)</span></span><span class="gatsby-highlight-code-line">    <span class="token keyword">if</span> <span class="token punctuation">(</span>buttons<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span></span><span class="gatsby-highlight-code-line"></span><span class="gatsby-highlight-code-line">    <span class="token keyword">const</span> activeButton <span class="token operator">=</span> buttons<span class="token punctuation">[</span>buttons<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span></span><span class="gatsby-highlight-code-line">    activeButton<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span>  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> header<span class="token punctuation">,</span> children<span class="token punctuation">,</span> footer <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Dialog<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="token plain-text">        </span><span class="token punctuation">{</span>header <span class="token operator">&amp;&amp;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>header<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span><span class="token punctuation">}</span><span class="token plain-text"></span>
+<span class="token plain-text">        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>children<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span><span class="token plain-text"></span>
+<span class="gatsby-highlight-code-line"><span class="token plain-text">        </span><span class="token punctuation">{</span>footer <span class="token operator">&amp;&amp;</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>footer</span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>footerRef<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>footer<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>footer</span><span class="token punctuation">></span></span><span class="token punctuation">}</span><span class="token plain-text"></span></span><span class="token plain-text">      </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>리액트 레프 객체를 만들어서 footerRef 멤버 변수에 할당했다. 이 컴포넌트 객체가 살아있는 동안 값이 유지 될 것이다. 렌더 메소드에서 푸터 앨리먼트를 만들 때 ref속성에 바인딩했다.</p>
+<p>렌더링 후 컴포넌트가 돔에 마운트 되고 componentDidMount() 훅이 동작할 것이다. 여기서 레프 객체를 통해 돔에 접근할 수 있다. 푸터의 버튼을 찾아 가장 마지막에 위치한, 가장 오른쪽에 위치한 컴포넌트를 퍼스트 하도록 돔을 제어했다.</p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/d6ca4b16916b8e185883c361045c2875/066f9/focus-alert.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 178.02197802197801%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAkABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAQCBQb/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAGJRsmaHVq82Kk4yDYP/8QAGxAAAwEAAwEAAAAAAAAAAAAAAQIDABARExT/2gAIAQEAAQUC73eBywo4+WuKlDCqLH3lrkNbgcjf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwFf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwFf/8QAHhAAAgEDBQAAAAAAAAAAAAAAAAECETKhEBIgITH/2gAIAQEABj8C1rFZLcm2XpFOSqXok12uf//EAB8QAQABAwQDAAAAAAAAAAAAAAEAEBExIVFhkUFx0f/aAAgBAQABPyG7dl273EtlhkiMcbpHIWEOMGReYD94qdzyeq4VOk//2gAMAwEAAgADAAAAEBAIMAAP/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxBf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxBf/8QAHxABAAIBBAMBAAAAAAAAAAAAAQARIRAxUXFBodHx/9oACAEBAAE/EP3mA/ZLLm5hObssDV1tosXhOQb8DA84iImUAx7sO2grYcNdzuUXExAX3P/Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="버튼에 포거스 되었다."
+        title="버튼에 포거스 되었다."
+        src="/static/d6ca4b16916b8e185883c361045c2875/066f9/focus-alert.jpg"
+        srcset="/static/d6ca4b16916b8e185883c361045c2875/5fc5d/focus-alert.jpg 182w,
+/static/d6ca4b16916b8e185883c361045c2875/accec/focus-alert.jpg 363w,
+/static/d6ca4b16916b8e185883c361045c2875/066f9/focus-alert.jpg 400w"
+        sizes="(max-width: 400px) 100vw, 400px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">버튼에 포거스 되었다.</figcaption>
+  </figure></p>
+<p><figure class="gatsby-resp-image-figure" style="">
+    <span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; "
+    >
+      <a
+    class="gatsby-resp-image-link"
+    href="/static/8f84ff5acf1707594e0971811fbcd00e/066f9/focus-confirm.jpg"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+    <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 178.02197802197801%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAkABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAMEBQH/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAHF5poY1B1K8ImpnLAXnUTf/8QAHRAAAgICAwEAAAAAAAAAAAAAAQIAAxAREhMUMf/aAAgBAQABBQLcJ0FbcWl2HlthTgabUWnvWXkNbgZX5//EABcRAAMBAAAAAAAAAAAAAAAAAAABEBH/2gAIAQMBAT8BmVH/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AV//xAAiEAABAgMJAAAAAAAAAAAAAAABAAIREjEQICEyQVFhkaH/2gAIAQEABj8C1tBEMeVl9UpqmiYR2iqt7TiL/wD/xAAfEAEAAgAGAwAAAAAAAAAAAAABABEhMUFRYZEQIHH/2gAIAQEAAT8hvC2W9xA467w+aZI43SI4gIlKpmpr4ipYjWJ89Dd5sx3Zzaz/2gAMAwEAAgADAAAAEEMEgP8A7//EABkRAQACAwAAAAAAAAAAAAAAAAEAEBExQf/aAAgBAwEBPxClPayzSf/EABYRAAMAAAAAAAAAAAAAAAAAABARIP/aAAgBAgEBPxAOP//EACAQAQACAgEEAwAAAAAAAAAAAAEAESExURBhcYFBkeH/2gAIAQEAAT8QOX7RMPco9KxTCiJXyALmteooUqd4NtXIImjiESKHYW3Hu/nFYtRLNJnpo+YrObmX+qG1aY//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="맨 오른쪽 버튼에 포거스 되었다."
+        title="맨 오른쪽 버튼에 포거스 되었다."
+        src="/static/8f84ff5acf1707594e0971811fbcd00e/066f9/focus-confirm.jpg"
+        srcset="/static/8f84ff5acf1707594e0971811fbcd00e/5fc5d/focus-confirm.jpg 182w,
+/static/8f84ff5acf1707594e0971811fbcd00e/accec/focus-confirm.jpg 363w,
+/static/8f84ff5acf1707594e0971811fbcd00e/066f9/focus-confirm.jpg 400w"
+        sizes="(max-width: 400px) 100vw, 400px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+  </a>
+    </span>
+    <figcaption class="gatsby-resp-image-figcaption">맨 오른쪽 버튼에 포거스 되었다.</figcaption>
+  </figure></p>
+<h1 id="중간-정리" style="position:relative;"><a href="#%EC%A4%91%EA%B0%84-%EC%A0%95%EB%A6%AC" aria-label="중간 정리 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>중간 정리</h1>
+<p>Dialog 안에 빈 공간이 생기는 문제를 해결했다.</p>
+<ul>
+<li>원인: 돔 구조에 따라 부모 스타일을 상속</li>
+<li>해결: 돔 구조에서 벗어나기위해 리액트 포탈 이용</li>
+</ul>
+<p>이렇게 만든 다이얼로그를 조합해서 요구사항을 하나씩 해결했다.</p>
+<ul>
+<li>ErrorDialog: 오류 전용 다이얼로 (alert)</li>
+<li>PaymentSuccessDialog: 결제 성공 다이얼로그 (confirm)</li>
+</ul>
+<p>Dialog 개선</p>
+<ul>
+<li>기본 선택 버튼 지정</li>
+<li>돔 제어를 위해 레프 객체 사용</li>
+</ul>
+<p>두 장에 걸쳐서 다이얼로그 요구사항을 모두 해결했다.</p></div><div class="style__PostMeta-sc-m5hfiz-7 gWlWjA"><ul class="style__TagList-sc-m5hfiz-10 hPbviO"><li class="style__TagItem-sc-m5hfiz-11 fwLOMY"><button type="Secondary" class="style__Button-sc-29k00d-0 style__ButtonLink-sc-29k00d-1 dOrSUt gUblxo"><a href="/posts?tag=react">#<!-- -->react</a></button></li></ul><ul class="style__ShareList-sc-m5hfiz-8 Zrbds"><li class="style__ShareItem-sc-m5hfiz-9 rEtEK"><button aria-label="twitter" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#00aced"></circle><path d="M48,22.1c-1.2,0.5-2.4,0.9-3.8,1c1.4-0.8,2.4-2.1,2.9-3.6c-1.3,0.8-2.7,1.3-4.2,1.6 C41.7,19.8,40,19,38.2,19c-3.6,0-6.6,2.9-6.6,6.6c0,0.5,0.1,1,0.2,1.5c-5.5-0.3-10.3-2.9-13.5-6.9c-0.6,1-0.9,2.1-0.9,3.3 c0,2.3,1.2,4.3,2.9,5.5c-1.1,0-2.1-0.3-3-0.8c0,0,0,0.1,0,0.1c0,3.2,2.3,5.8,5.3,6.4c-0.6,0.1-1.1,0.2-1.7,0.2c-0.4,0-0.8,0-1.2-0.1 c0.8,2.6,3.3,4.5,6.1,4.6c-2.2,1.8-5.1,2.8-8.2,2.8c-0.5,0-1.1,0-1.6-0.1c2.9,1.9,6.4,2.9,10.1,2.9c12.1,0,18.7-10,18.7-18.7 c0-0.3,0-0.6,0-0.8C46,24.5,47.1,23.4,48,22.1z" fill="white"></path></svg></button></li><li class="style__ShareItem-sc-m5hfiz-9 rEtEK"><button aria-label="facebook" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#3b5998"></circle><path d="M34.1,47V33.3h4.6l0.7-5.3h-5.3v-3.4c0-1.5,0.4-2.6,2.6-2.6l2.8,0v-4.8c-0.5-0.1-2.2-0.2-4.1-0.2 c-4.1,0-6.9,2.5-6.9,7V28H24v5.3h4.6V47H34.1z" fill="white"></path></svg></button></li><li class="style__ShareItem-sc-m5hfiz-9 rEtEK"><button aria-label="pocket" class="react-share__ShareButton" style="background-color:transparent;border:none;padding:0;font:inherit;color:inherit;cursor:pointer"><svg viewBox="0 0 64 64" width="48" height="48"><circle cx="32" cy="32" r="31" fill="#EF3F56"></circle><path d="M41.084 29.065l-7.528 7.882a2.104 2.104 0 0 1-1.521.666 2.106 2.106 0 0 1-1.522-.666l-7.528-7.882c-.876-.914-.902-2.43-.065-3.384.84-.955 2.228-.987 3.1-.072l6.015 6.286 6.022-6.286c.88-.918 2.263-.883 3.102.071.841.938.82 2.465-.06 3.383l-.015.002zm6.777-10.976C47.463 16.84 46.361 16 45.14 16H18.905c-1.2 0-2.289.82-2.716 2.044-.125.363-.189.743-.189 1.125v10.539l.112 2.096c.464 4.766 2.73 8.933 6.243 11.838.06.053.125.102.19.153l.04.033c1.882 1.499 3.986 2.514 6.259 3.014a14.662 14.662 0 0 0 6.13.052c.118-.042.235-.065.353-.087.03 0 .065-.022.098-.042a15.395 15.395 0 0 0 6.011-2.945l.039-.045.18-.153c3.502-2.902 5.765-7.072 6.248-11.852L48 29.674v-10.52c0-.366-.041-.728-.161-1.08l.022.015z" fill="white"></path></svg></button></li></ul></div></article></main></section><section class="style__Section-sc-9mziih-0 xrpOc"><div class="style-variables__Container-sc-nxq9i0-0 ewiFLq"><footer><div class="style__SiblingNav-sc-m5hfiz-20 kwQYqN"><div class="style__SiblingNavItem-sc-m5hfiz-21 hIztSa"><div class="label" style="text-align:left;margin-left:16px">이전글</div><a href="/2023/06/24/lecture-react-season2-part2-ch4"><div class="flex"><i style="margin-right:8px">«</i><h3 style="text-align:left">[리액트 2부] 2.4 다이얼로그 1</h3></div></a></div><div class="style__SiblingNavItem-sc-m5hfiz-21 hIztSa"><div class="label" style="text-align:right;margin-right:16px">다음글</div><a href="/2023/06/24/lecture-react-season2-part2-ch6"><div class="flex"><h3 style="text-align:right">[리액트 2부] 2편 최종정리</h3><i style="margin-left:8px">»</i></div></a></div></div><div class="style__SeriesNavigator-sc-m5hfiz-19 JutbE mb-4"><h3 class="series-title">[리액트 2부] 고급주제와 훅</h3><div class="post-list"><ul><li class=""><a href="/2023/06/24/lecture-react-season2-part1">[리액트 2부] 1편 리액트로 사고하기</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part1-ch1">[리액트 2부] 1.1 준비</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part1-ch2">[리액트 2부] 1.2 상품목록 화면</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part1-ch3">[리액트 2부] 1.3 주문내역 화면</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part1-ch4">[리액트 2부] 1.4 장바구니 화면</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part1-ch5">[리액트 2부] 1편 최종정리</a></li><li class=""><a href="/2023/06/24/lecture-react-season2">[리액트 2부] 2편 고급주제</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part2-ch1">[리액트 2부] 2.1 컨택스트</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part2-ch2">[리액트 2부] 2.2 라우터 1</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part2-ch3">[리액트 2부] 2.3 라우터 2</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part2-ch4">[리액트 2부] 2.4 다이얼로그 1</a></li><li class="active"><div class="active">[리액트 2부] 2.5 다이얼로그 2</div></li><li class=""><a href="/2023/06/24/lecture-react-season2-part2-ch6">[리액트 2부] 2편 최종정리</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part3">[리액트 2부] 3편 기본훅</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part3-ch1">[리액트 2부] 3.1 클래스/함수 컴포넌트</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part3-ch2">[리액트 2부] 3.2 상태 훅</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part3-ch3">[리액트 2부] 3.3 부수효과 훅</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part3-ch4">[리액트 2부] 3.4 훅 활용 1</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part3-ch5">[리액트 2부] 3.5 컨택스트 훅</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part3-ch6">[리액트 2부] 3.6 훅 활용 2</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part3-ch7">[리액트 2부] 3편 최종정리</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part4">[리액트 2부] 4편 추가훅</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part4-ch1">[리액트 2부] 4.1 레프 훅</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part4-ch2">[리액트 2부] 4.2 제어 폼</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part4-ch3">[리액트 2부] 4.3 리듀서 훅</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part4-ch4">[리액트 2부] 4.4 메모이제이션 훅</a></li><li class=""><a href="/2023/06/24/lecture-react-season2-part4-ch5">[리액트 2부] 4편 최종정리</a></li></ul></div></div><div id="utteranc-comments"></div></footer></div></section></div></div></main><footer class="style__Footer-sc-16v2ybn-0 dlvpSK"><section class="style__Section-sc-9mziih-0 xrpOc"><div class="style__Copyright-sc-16v2ybn-1 bosZju">© 김정환 <!-- -->2023</div></section></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-31588166-2', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2023/06/24/lecture-react-season2-part2-ch5";window.___webpackCompilationHash="c9f3b2f4fa143c2d11b4";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-c69030f8ee3b56e53867.js"],"app":["/app-7f8f89cfd2c8c06f3322.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-b3876d31ea5932ac89aa.js"],"component---src-pages-category-tsx":["/component---src-pages-category-tsx-23436bb82ea0872a1296.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-b008b35f5441238512d7.js"],"component---src-pages-posts-tsx":["/component---src-pages-posts-tsx-487b59bec389c295af27.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-fef4faa74c78afe314df.js"],"component---src-templates-blog-post-index-tsx":["/component---src-templates-blog-post-index-tsx-ef40f597488a1e9b1a7a.js"]};/*]]>*/</script><script src="/polyfill-c69030f8ee3b56e53867.js" nomodule=""></script><script src="/app-7f8f89cfd2c8c06f3322.js" async=""></script><script src="/framework-e3b387611ee502c516a5.js" async=""></script><script src="/webpack-runtime-2c17cb98c285e22c6e52.js" async=""></script></body></html>
