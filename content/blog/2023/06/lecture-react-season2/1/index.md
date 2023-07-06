@@ -3,7 +3,7 @@ slug: "/2023/06/24/lecture-react-season2-part1"
 date: 2023-06-24 00:01:00
 title: "[리액트 2부] 1편 리액트로 사고하기"
 layout: post
-series: 리액트 2부
+series: "[리액트 2부] 고급주제와 훅"
 tags: [react]
 ---
 

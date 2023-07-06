@@ -3,7 +3,7 @@ slug: "/2023/06/24/lecture-react-season2-part4-ch2"
 date: 2023-06-24 00:04:02
 title: "[리액트 2부] 4.2 제어 폼"
 layout: post
-series: 리액트 2부
+series: "[리액트 2부] 고급주제와 훅"
 tags: [react]
 ---
 

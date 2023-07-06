@@ -3,7 +3,7 @@ slug: "/2023/06/24/lecture-react-season2-part4-ch4"
 date: 2023-06-24 00:04:04
 title: "[리액트 2부] 4.4 메모이제이션 훅"
 layout: post
-series: 리액트 2부
+series: "[리액트 2부] 고급주제와 훅"
 tags: [react]
 ---
 

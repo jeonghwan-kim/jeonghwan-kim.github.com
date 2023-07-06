@@ -3,7 +3,7 @@ slug: "/2023/06/24/lecture-react-season2-part2-ch4"
 date: 2023-06-24 00:02:04
 title: "[리액트 2부] 2.4 다이얼로그 1"
 layout: post
-series: 리액트 2부
+series: "[리액트 2부] 고급주제와 훅"
 tags: [react]
 ---
 

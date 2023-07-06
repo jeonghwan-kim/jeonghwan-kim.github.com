@@ -3,7 +3,7 @@ slug: "/2023/06/24/lecture-react-season2-part1-ch2"
 date: 2023-06-24 00:01:02
 title: "[리액트 2부] 1.2 상품목록 화면"
 layout: post
-series: 리액트 2부
+series: "[리액트 2부] 고급주제와 훅"
 tags: [react]
 ---
 

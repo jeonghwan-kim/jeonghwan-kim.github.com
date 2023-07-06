@@ -1,10 +1,10 @@
 ---
 slug: "/series/2021/04/12/lecture-react-usage.html"
 date: 2021-04-12
-title: "만들면서 학습하는 리액트: 사용편1"
+title: "[리액트 1부] 만들면서 학습하는 리액트: 사용편1"
 layout: post
 category: 연재물
-series: 만들면서 학습하는 리액트
+series: "[리액트 1부] 만들면서 학습하는 리액트"
 videoId: video-2021-05-04-inflearn-react
 tags: [react]
 ---

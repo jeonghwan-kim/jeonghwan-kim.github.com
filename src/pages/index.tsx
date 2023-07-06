@@ -14,7 +14,7 @@ import { Container } from "../styles/style-variables"
 const videos: Partial<MarkdownRemark>[] = [
   {
     frontmatter: {
-      title: "만들면서 학습하는 리액트",
+      title: "리액트 1부: 만들면서 학습하는 리액트",
       slug:
         "https://www.inflearn.com/course/만들면서-학습하는-리액트?inst=b59d75f4",
       date: "2021년 05월 | 인프런",

@@ -3,7 +3,7 @@ slug: "/2023/06/24/lecture-react-season2-part3-ch1"
 date: 2023-06-24 00:03:01
 title: "[리액트 2부] 3.1 클래스/함수 컴포넌트"
 layout: post
-series: 리액트 2부
+series: "[리액트 2부] 고급주제와 훅"
 tags: [react]
 ---
 

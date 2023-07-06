@@ -3,7 +3,7 @@ slug: "/2023/06/24/lecture-react-season2-part3-ch3"
 date: 2023-06-24 00:03:03
 title: "[리액트 2부] 3.3 부수효과 훅"
 layout: post
-series: 리액트 2부
+series: "[리액트 2부] 고급주제와 훅"
 tags: [react]
 ---
 

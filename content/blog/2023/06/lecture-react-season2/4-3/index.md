@@ -3,7 +3,7 @@ slug: "/2023/06/24/lecture-react-season2-part4-ch3"
 date: 2023-06-24 00:04:03
 title: "[리액트 2부] 4.3 리듀서 훅"
 layout: post
-series: 리액트 2부
+series: "[리액트 2부] 고급주제와 훅"
 tags: [react]
 ---
 
