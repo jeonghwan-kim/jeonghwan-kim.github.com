@@ -207,7 +207,7 @@ const OrderDeliveryCard = ({ order }) => {
     messageToRider,
   } = order
 
-  retrun(
+  return (
     <Card
       data={[
         { term: "배달주소", description: deliveryAddress },
@@ -321,7 +321,7 @@ const OrderPage = () => (
     <Page header={<Title>주문내역</Title>} footer={<Navbar />}>
       <OrderStatusCard order={fakeOrder} />
       <OrderPaymentCard order={fakeOrder} />
-      <OrderAddressCard order={fakeOrder} />
+      <OrderDeliveryCard order={fakeOrder} />
     </Page>
   </div>
 )
