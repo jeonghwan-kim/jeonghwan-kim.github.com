@@ -312,40 +312,39 @@ FormControl를 사용해 OrderForm 컴포넌트를 만들 차례다. 장바구�
 
 ```jsx{1,3,11,12,20,21,26,27,29,30,32}
 const OrderForm = () => (
-    <form className="OrderForm">
-      <FormControl label="주소" htmlFor="deliveryAddress" required>
-        <input
-          type="text"
-          id="deliveryAddress"
-          placeholder="배달받을 주소를 입력하세요"
-          required
-          autoFocus
-        />
-      </FormControl>
-      <FormControl label="연락처" htmlFor="deliveryContact" required>
-        <input
-          type="text"
-          id="deliveryContact"
-          placeholder="연락처를 입력하세요"
-          pattern="^\d{2,3}-\d{3,4}-\d{4}$"
-          required
-        />
-      </FormControl>
-      <FormControl label="결재수단" htmlFor="paymentMethod" required>
-        <select name="paymentMethod" id="paymentMethod" value="">
-          <option value="마이페이">마이페이</option>
-          <option value="만나서 결제">만나서 결제</option>
-        </select>
-      </FormControl>
-      <FormControl label="가게 사장님께" htmlFor="messageToShop">
-        <textarea name="messageToShop" id="messageToShop"></textarea>
-      </FormControl>
-      <FormControl label="라이더님께" htmlFor="messageToRider">
-        <textarea name="messageToRider" id="messageToRider"></textarea>
-      </FormControl>
-    </form>
-  );
-};
+  <form className="OrderForm">
+    <FormControl label="주소" htmlFor="deliveryAddress" required>
+      <input
+        type="text"
+        id="deliveryAddress"
+        placeholder="배달받을 주소를 입력하세요"
+        required
+        autoFocus
+      />
+    </FormControl>
+    <FormControl label="연락처" htmlFor="deliveryContact" required>
+      <input
+        type="text"
+        id="deliveryContact"
+        placeholder="연락처를 입력하세요"
+        pattern="^\d{2,3}-\d{3,4}-\d{4}$"
+        required
+      />
+    </FormControl>
+    <FormControl label="결재수단" htmlFor="paymentMethod" required>
+      <select name="paymentMethod" id="paymentMethod" value="">
+        <option value="마이페이">마이페이</option>
+        <option value="만나서 결제">만나서 결제</option>
+      </select>
+    </FormControl>
+    <FormControl label="가게 사장님께" htmlFor="messageToShop">
+      <textarea name="messageToShop" id="messageToShop"></textarea>
+    </FormControl>
+    <FormControl label="라이더님께" htmlFor="messageToRider">
+      <textarea name="messageToRider" id="messageToRider"></textarea>
+    </FormControl>
+  </form>
+)
 ```
 
 미리 준비한 .OrderForm 클래스와 폼 앨리먼트를 사용했다. FormControl 컴포넌트로 각 주소, 연락처, 결제수단, 가게 사장님께, 라이더님께 필드를 구성했다.
