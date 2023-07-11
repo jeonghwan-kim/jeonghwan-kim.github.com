@@ -59,7 +59,7 @@ pushState를 호출할 때 이동할 경로 path를 저장해 두면 좋겠다. 
 
 Router를 고치자.
 
-```jsx{4,9,11-15,18,22}
+```jsx{4,9,11-16,18-21,24}
 export class Router extends React.Component {
   constructor(props) {
     // ...
@@ -72,12 +72,14 @@ export class Router extends React.Component {
   }
 
   handleOnpopstate(event) {
-    const nextPath = (event.state && event.state.path) || "/"
+    const nextPath = event.state && event.state.path
+    if (!nextPath) return;
     this.setState({ path: nextPath });
   }
 
   componentDidMount() {
     window.addEventListener("popstate", this.handleOnpopstate);
+    window.history.replaceState({ path: this.state.path }, "")
   }
 
   componentWillUnmount() {
@@ -86,7 +88,11 @@ export class Router extends React.Component {
   // ...
 ```
 
+handleChagnePath에서 pushState에 상태를 추가했다. 상태 path 값을 객체로 만들어 전달했다. Link를 클릭하면 이 히스토리 상태가 히스토리 저장소에 추가될 것이다.
+
 컴포넌트 마운트 후에 popstate 이벤트 핸들러 handleOnpopstate를 등록했다. 브라우져가 새로운 상태로 이동할 때마다 호출될 것이다. 이 이벤트를 통해 방문 기록에 저장해 둔 주소 값을 찾을 수 있고 이 값으로 상태 path를 갱신한다.
+
+현재 히스토리 상태를 교체했다. replaceState 함수로 현재 경로인 상태 path를 객체로 구성해 값을 전달했다. 나중에 뒤로가기 버튼을 클릭해 popstate 이벤트가 발생할때 event.state에 이 값이 전달될 것이다.
 
 브라우저의 뒤/앞으로 가기 버튼을 클릭하면 주소 뿐만 아니라 화면도 함께 바뀔 것이다.
 
@@ -118,7 +124,7 @@ const OrderableProductItem = ({ product }) => (
   <MyRouter.routerContext.Consumer>
     {({ changePath }) => {
       const handleClick = () => {
-        changePath(`/cart?productId=${product.id}`)
+        changePath(`/cart`)
       }
 
       return <ProductItem product={product} onClick={handleClick} />
@@ -318,7 +324,7 @@ const OrderableProductItem = ({ product, navigate }) => {
   const handleClick = () => {
     navigate(`/cart`)
   }
-  return <MenuItem product={this.props.product} onClick={handleClick} />
+  return <ProductItem product={this.props.product} onClick={handleClick} />
 }
 MyRouter.withRouter(OrderableProductItem)
 ```
@@ -466,7 +472,7 @@ params 함수를 만들었다. 주소 쿼리스트링을 파싱해 객체 형식
 
 장바구니 화면에서 사용하자.
 
-```jsx{4,8,15}
+```jsx{4,8}
 class CartPage extends React.Component {
 // ...
   async fetch() {
@@ -498,10 +504,10 @@ CartPage에게 라우터 기능을 주입했다. 주소를 통해 전달된 상�
 
 히스토리 api를 사용했다.
 
-- pushstate: 주소 상태 관리 함수
+- pushState, replaceState: 주소 상태 관리 함수
 - popstate: 주소 이동시 발생하는 이벤트
 
-어플리케이션 횡단 관심사를 해결하는 패턴인 고차 컴포넌트를 사용했따.
+어플리케이션 횡단 관심사를 해결하는 패턴인 고차 컴포넌트를 사용했다.
 
 - 라우팅 기능을 계층을 아우르는 공통 관심사로 분리
 - WithRouter: 라우팅 기능을 제공하는 컴포넌트
@@ -518,7 +524,7 @@ CartPage에게 라우터 기능을 주입했다. 주소를 통해 전달된 상�
 - ~~1.3 주문하기 버튼을 클릭하면 해당 상품을 담고 장바구니 화면으로 이동한다. (네비게이션)~~
 - ~~2.8 결제 성공 후 주문내역 화면으로 이동한다. (네비게이션)~~
 
-참고
+## 참고
 
 - [History API | MDN](https://developer.mozilla.org/ko/docs/Web/API/History_API)
 - [리액트 고차컴포넌트 | 김정환 블로그](/2022/05/28/react-high-order-component)

@@ -139,7 +139,7 @@ useEffect가 부수 효과를 등록할 때 어떤 값을 사용하는지 알려
 ```jsx{2,11-20}
 const MyReact = (function MyReact() {
   let dep;
-  let isInitialized;
+  const isInitialized = [];
 
   function useEffect(effect, nextDep) {
     function runDeferedEffect() {
@@ -147,8 +147,8 @@ const MyReact = (function MyReact() {
       setTimeout(effect, ENOUGH_TIME_TO_RENDER)
     }
 
-    if (!isInitialized) {
-      isInitialzied = true
+    if (!isInitialized[cursor]) {
+      isInitialzied[cursor] = true
       dep = nextDep
       runDeferedEffect()
       return
@@ -229,7 +229,7 @@ name을 변경할 때마다 로컬 스토리지에 저장하는 부수 효과다
 
 각 부수 효과별로 의존성을 관리해야겠다.
 
-```jsx{2-4,20,26-28,31-33,35}
+```jsx{2,20-24,26-28,31-33,35}
 const MyReact = (function MyReact() {
   const deps = []
   const isInitialzied = []

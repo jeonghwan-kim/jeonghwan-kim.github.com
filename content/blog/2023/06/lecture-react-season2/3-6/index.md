@@ -36,7 +36,7 @@ const routerContext = React.createContext({})
 routerContext.displayName = "RouterContext"
 ```
 
-Route를 클래스에서 함수로 컴포넌트로 변경한다.
+Router를 클래스에서 함수로 컴포넌트로 변경한다.
 
 ```jsx{2,9-12,14-19}
 const Router = ({ children }) => {
@@ -48,12 +48,15 @@ const Router = ({ children }) => {
   }
 
   const handlePopstate = event => {
-    const nextPath = (event.state && event.state.path) || "/"
+    const nextPath = event.state && event.state.path
+    if (!nextPath) return
     setPath(nextPath)
   }
 
   React.useEffect(() => {
     window.addEventListener("popstate", handlePopstate)
+    window.history.replaceState({ path }, "")
+
     return () => {
       window.removeEventListener("popstate", handlePopstate)
     }
@@ -106,14 +109,14 @@ export const Route = () => null
 Link도 훅을 사용한다.
 
 ```jsx{2}
-export const Link = ({ to, ...props }) => {
+export const Link = ({ to, ...rest }) => {
   const { path, changePath } = React.useContext(routerContext)
 
   const handleClick = e => {
     e.preventDefault()
     if (to !== path) changePath(to)
   }
-  return <a {...props} href={to} onClick={handleClick} />
+  return <a {...rest} href={to} onClick={handleClick} />
 }
 ```
 
@@ -301,7 +304,7 @@ const OrderableProductItem = ({ product }) => {
 
 Layout을 클래스 컴포넌트로 구현했기 때문에 this.state로 상태를 관리했다. withLayout은 레이아웃 컨택스트를 소비하기 위해 소비자 컴포넌트를 사용하고 대상 컨포넌트에게 기능을 제공할 목적으로 고차 컴포넌트 패턴을 사용했다.
 
-이것을 함수형 컴포넌트와 훅으로 변환하는 것이 이번 절의 목적이다.
+이것을 함수 컴포넌트와 훅으로 변환하는 것이 이번 절의 목적이다.
 
 src/lib/MyLayout.jsx 파일을 만들고 여기에 레이아웃 컨택스트를 만든다.
 

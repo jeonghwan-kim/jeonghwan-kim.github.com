@@ -157,15 +157,20 @@ API를 계속 호출한다. 우리가 원하는 것은 딱 한 번만 호출해�
 
 네트웍을 한 번만 요청하려면 부수 효과 훅으로 적절히 조절해야 한다.
 
-```jsx{6}
+```jsx{8-10}
 const ProductPage = () => {
-  const [productList, setProductList] = useState([]);
+  const [productList, setProductList] = useState([])
 
-  const fetch = async () => {/* ... */};
+  const fetch = async () => {
+    /* ... */
+  }
 
-  React.useEffect(() => fetch(), [])
+  React.useEffect(() => {
+    fetch()
+  }, [])
 
   // ...
+}
 ```
 
 의존성에 빈 배열을 전달했다. 변하지 않는 값이기 때문에 컴포넌트가 렌더링될 때 딱 한 번만 부수효과를 실행할 것이다.
@@ -196,7 +201,7 @@ const ProductPage = () => {
 
 src/pages/OrderPage/OrderForm.jsx
 
-```jsx{3,14,27}
+```jsx{3,15-21,28-29}
 const OrderForm = ({ onSubmit }) => {
   const getInputValueByName = name => {
     // todo

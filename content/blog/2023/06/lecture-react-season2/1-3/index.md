@@ -411,7 +411,7 @@ UI 계층 구조를 나눈뒤 역할에 맞는 기존 컴포넌트를 조합했�
 - Card: 헤더, 메인, 푸터 형식의 카드 렌더링
 - OrderStatusCard: Card의 data, header, footer 사용
 - OrderPaymentCard: Card의 data, header 사용
-- OrderStatusCard: 의 data 사용
+- OrderDeliveryCard: Card의 data 사용
 
 UI 렌더를 위한 최소한의 상태 표현을 찾고 OrderPage에서 상태를 관리했다.
 

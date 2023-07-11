@@ -147,7 +147,7 @@ const countContext = MyReact.createContext({
 
 컨택스트에게 메세지를 전달할 카운터 제공자 컴포넌트를 만들자.
 
-```js{1,10-13,15}
+```jsx{1,10-13,15}
 class CountProvider extends React.Component {
   constructor(props) {
     super(props)
@@ -162,7 +162,9 @@ class CountProvider extends React.Component {
       setCount: nextValue => this.setState({ count: nextValue }),
     }
     return (
-      <countContext.Provider value={value}>{children}</countContext.Provider>
+      <countContext.Provider value={value}>
+        {this.props.children}
+      </countContext.Provider>
     )
   }
 }
@@ -243,7 +245,7 @@ const Consumer = ({ children }) => <>{children(emitter.get())}</>
 Provider를 변경하자.
 
 ```jsx{3,7}
-class Provider extends Component {
+class Provider extends React.Component {
   componentDidMount() {
     emitter.set(this.props.value)
   }
@@ -311,7 +313,7 @@ Consumer는 렌더 프롭을 인자로 받기 때문에 children이 함수 형�
 
 앞으로 라우터와 다이얼로그를 만들면서 자세히 살펴볼 예정이다.
 
-멀린 떨어진 컨포넌트간에 메세지를 전달할 때 컨택스트만 있는 것은 아니다. 오히려 컨택스를 사용하기 전에 먼저 고려해볼 후보가 있다. 컴포넌트 합성, 렌더 프롭을 사용하는 것이 오히려 더 간단한 해법일 수([context를 사용하기 전에 고려할 것](https://ko.legacy.reactjs.org/docs/context.html#before-you-use-context)) 있으니 이점을 유의하길 바란다.
+멀리 떨어진 컨포넌트간에 메세지를 전달할 때 컨택스트만 있는 것은 아니다. 오히려 컨택스를 사용하기 전에 먼저 고려해볼 후보가 있다. 컴포넌트 합성, 렌더 프롭을 사용하는 것이 오히려 더 간단한 해법일 수([context를 사용하기 전에 고려할 것](https://ko.legacy.reactjs.org/docs/context.html#before-you-use-context)) 있으니 이점을 유의하길 바란다.
 
 # 중간 정리
 
@@ -328,7 +330,7 @@ createContext
 컨택스트를 만들고 Provider와 Consumer 컴포넌트를 사용
 
 - Provider: 메세지 공급자. 리액트 렌더 사이클과 연동하기 위해 상태를 가짐
-- Consumer: 이 상태를 구독할수 있는 컴포넌트. 이 값이 렌더 프롬의 함수 인자로 들어옴
+- Consumer: 이 상태를 구독할수 있는 컴포넌트. 이 값이 렌더 프롭의 함수 인자로 들어옴
 - Provider 하위에 Consumer를 사용하기만 하면 멀리있는 컴포넌트의 메세지를 구독할 수 있음
 
 컨택스트는 리액트의 기본 api이다. 여기서는 배경과 구조를 이해할 목적으로 직접 구현해본 것이다. 이제부터는 리액트 api의 createContext를 사용해 볼것이다.

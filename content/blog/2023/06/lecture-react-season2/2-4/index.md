@@ -71,7 +71,7 @@ layoutContext.displayName = "LayoutContext"
 이어서 레이아웃 상태를 보유한 Layout 컴포넌트를 만들자.
 
 ```jsx{5,10-12,14}
-export class Layout extends React.Component {
+class Layout extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -132,7 +132,7 @@ Page는 레이아웃 컨택스트를 통해 전달된 다이얼로그 상태를 
 Layout의 상태 dialog에 다이얼로그 앨리먼트를 추가해서 테스트해보자.
 
 ```jsx{5}
-export class Layout extends React.Component {
+class Layout extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -284,7 +284,7 @@ class ProductPage extends React.Component {
   }
   // ...
 }
-export default withLayout(ProductPage)
+withLayout(ProductPage)
 ```
 
 ![WithLayout](./with-layout.jpg)

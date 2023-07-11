@@ -316,6 +316,7 @@ const OrderForm = () => (
     <FormControl label="주소" htmlFor="deliveryAddress" required>
       <input
         type="text"
+        name="deliveryAddress"
         id="deliveryAddress"
         placeholder="배달받을 주소를 입력하세요"
         required
@@ -325,6 +326,7 @@ const OrderForm = () => (
     <FormControl label="연락처" htmlFor="deliveryContact" required>
       <input
         type="text"
+        name="deliveryContact"
         id="deliveryContact"
         placeholder="연락처를 입력하세요"
         pattern="^\d{2,3}-\d{3,4}-\d{4}$"
@@ -541,7 +543,7 @@ class MyComponent extedns React.Component {
 레프 객체를 사용하기 위해 OrderForm 함수형 컴포넌트를 클래스 컴포넌트로 바꾸자.
 
 ```jsx{1,5,11,19,20}
-class OrderForm extends Component<OrderFormProps> {
+class OrderForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -653,7 +655,7 @@ UI 상태 표현과 위치를 정할 차례다.
 상태를 관리하기 위해 CartPage 함수형 컴포넌트를 클래스 컴포넌트로 바꾸자.
 
 ```jsx{1,4,7,11,28}
-class CartPage extends Component {
+class CartPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = { product: null }

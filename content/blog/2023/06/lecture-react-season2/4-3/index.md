@@ -418,24 +418,19 @@ MyForm에 있는 상태를 리듀서로 교체해 보자. 기존 파일을 그�
 
 src/lib/MyForm-reducer.jsx
 
-```jsx{6}
-const formContext = // ...
-const Form = // ...
-const Field = // ...
-const ErrorMessage =  // ...
-
-const getInitialState = (values) => ({
+```jsx
+const getInitialState = values => ({
   values,
   errors: {},
   touched: {},
-});
+})
 ```
 
 스토어에 저장할 초기 상태를 생성하는 함수를 정의했다. 폼 초기 값을 values로 받아 values, errors, touched 필드로 구성된 객체를 반환한다. 각자 상태로 관리하던 것을 하나로 합쳤다.
 
 이 상태를 변경할 리듀서를 정의 하자.
 
-```jsx{1}
+```jsx
 const formReducer = (state, action) => {
   if (action.type === "SET_VALUES") {
     return {
@@ -491,50 +486,51 @@ const formReducer = (state, action) => {
 이제 초기 useReducer 훅을 사용할 준비를 마쳤다. 두 값을 사용해 훅을 사용해 보자.
 
 ```jsx{2-5,8-12,16,22-26,30,44,45,48}
-export function useForm({ initialValues, validate, onSubmit, }) {
+export function useForm({ initialValue, validate, onSubmit }) {
   const [state, dispatch] = React.useReducer(
     formReducer,
-    getInitialState(initialValues)
-  );
+    getInitialState(initialValue)
+  )
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     dispatch({
       type: "SET_VALUES",
       name: e.target.name,
       value: e.target.value,
-    });
- };
+    })
+  }
 
-  const handleBlur = (e) => {
-    dispatch({ type: "SET_TOUCHED", name: e.target.name });
- };
+  const handleBlur = e => {
+    dispatch({ type: "SET_TOUCHED", name: e.target.name })
+  }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = e => {
+    e.preventDefault()
 
-    dispatch({ type: "SET_TOUCHED_ALL" });
-    const nextState = formReducer(state, { type: "VALIDATE", validate });
-    if (Object.values(nextState.errors).some(Boolean) return;
+    dispatch({ type: "SET_TOUCHED_ALL" })
 
-    onSubmit(nextState.values);
-  };
+    const nextState = formReducer(state, { type: "VALIDATE", validate })
+    if (Object.values(nextState.errors).some(Boolean)) return
 
-  const getFieldProps = (name) => {
-    const value = state.values[name];
-    const onBlur = handleBlur;
-    const onChange = handleChange;
+    onSubmit(nextState.values)
+  }
+
+  const getFieldProps = name => {
+    const value = state.values[name]
+    const onBlur = handleBlur
+    const onChange = handleChange
 
     return {
       name,
       value,
       onBlur,
       onChange,
-    };
-  };
+    }
+  }
 
   React.useEffect(() => {
-    dispatch({type: 'VALIDATE', validate})
-  }, [state.values]);
+    dispatch({ type: "VALIDATE", validate })
+  }, [state.values])
 
   return {
     ...state,
@@ -542,7 +538,7 @@ export function useForm({ initialValues, validate, onSubmit, }) {
     handleBlur,
     handleSubmit,
     getFieldProps,
-  };
+  }
 }
 ```
 

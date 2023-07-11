@@ -55,7 +55,7 @@ const MyReact = (function MyReact() {
   function useName(initialValue = "") {
     if (!isInitialized) {
       firstname = initialValue
-      isInitialzied = true
+      isInitialized = true
     }
 
     const setFirstname = value => {

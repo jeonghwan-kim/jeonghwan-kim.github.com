@@ -27,6 +27,7 @@ const MyReact = (function MyReact() {
   function useRef(initialValue) {
     if (!isInitialized[cursor]) {
       memorizedStates[cursor] = { current: initialValue }
+      isInitialized[cursor] = true
     }
     const memorizedState = memorizedStates[cursor]
     cursor = cursor + 1
@@ -174,7 +175,7 @@ MyReact 안에 레프 객체를 담을 클로져 공간을 확보하고 여기�
 
 --
 
-함수 컴포넌트에서 레프 객체를 사용할 수 있게 레프 훅을 직접 만들어 보았다. 컴퍼넌트가 살아있는 동안 유지되는 값인데 렌더링에 영향을 주지 않는 것이 특징이다. 상태 훅이나 메모 훅과 비슷한 특징이라서 비슷하게 구혔했는데 후자를 선택했다.
+함수 컴포넌트에서 레프 객체를 사용할 수 있게 레프 훅을 직접 만들어 보았다. 컴퍼넌트가 살아있는 동안 유지되는 값인데 렌더링에 영향을 주지 않는 것이 특징이다. 상태 훅과 비슷한 특징이라서 비슷하게 구혔했다. 값이 바뀌더라도 리렌더하지 않는점이 다르다.
 
 실제 리액트의 것을 Dialog과 OrderForm에 활용했다. 클래스 컴포넌트에 멤버변수로 생성한 래프객체를 함수형컴포넌트의 훅으로 교체했다. 나머지는 클래스 컴포넌트의 것과 똑같다.
 

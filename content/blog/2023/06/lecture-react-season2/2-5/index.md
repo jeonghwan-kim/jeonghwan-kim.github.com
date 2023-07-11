@@ -122,17 +122,14 @@ Red를 클릭하면 이벤트가 버블링되어 Green에서 수신된다.
 
 그럼 다시 우리 예제로 돌아와서. Dialog 문제는 스타일 상속 영향으로 빈 공간이 생긴다는 것이다. 해결하려면 Dialog가 App의 마운트 지점에서 벗어나 다른 곳에 마운트되어야 한다. 리액트 포탈로 옮겨보자.
 
-```jsx{5-8}
-export const DialogContainer = () => (
-  <layoutContext.Consumer>
-    {({ dialog }) =>
-      dialog &&
-      ReactDOM.createPortal(
-        <Backdrop>{dialog}</Backdrop>,
-        document.querySelector("#dialog")
-      )
-    }
-  </layoutContext.Consumer>
+```jsx{4-7}
+export const DialogContainer = withLayout(
+  ({ dialog }) =>
+    dialog &&
+    ReactDOM.createPortal(
+      <Backdrop>{dialog}</Backdrop>,
+      document.querySelector("#dialog")
+    )
 )
 ```
 
@@ -168,7 +165,7 @@ MyLayout.withLayout(ErrorDialog)
 class ProductPage extends React.Component {
   async fetch() {
     const {startLoading, finishLoading, openDialog} = this.props;
-    startLoading('로딩중...');
+    startLoading('메뉴 목록 로딩중...');
     try {
      const productList = await ProductApi.fetchProductList();
       this.setState({ productList });
@@ -208,7 +205,7 @@ class CartPage extends React.Component {
 }
 ```
 
-```jsx{10}
+```jsx{3,9,12}
 class OrderPage extends React.Component {
   async fetch() {
     const { startLoading, finishLoading, openDialog } = this.props
@@ -217,7 +214,6 @@ class OrderPage extends React.Component {
       const order = await OrderApi.fetchMyOrder()
       this.setState({ order })
     } catch (e) {
-      finishLoading()
       openDialog(<ErrorDialog />)
       return
     }
@@ -277,7 +273,7 @@ withLayout으로 모달 기능을 주입 받은 컴포넌트이기 때문에 sta
 
 실패하면 catch 문으로 이동해 발생한 예외를 잡을 것이다. 띄워진 로딩을 숨긴뒤에 정의한 ErrorDialog를 띄우고 함수를 종료한다. 사용자는 다이얼로그의 버튼을 클릭한뒤에 다시 결제 시도를 할 수 있다.
 
-성공하면 try/catch 구문을 빠져 나온다. finishLoading() 으로 로딩 메세지를 감추고 주문 성공 다이얼로그를 띄울 것이다. pages/CartPage/PaymentsuccessDialog.jsx를 만들자.
+성공하면 try/catch 구문을 빠져 나온다. finishLoading() 으로 로딩 메세지를 감추고 주문 성공 다이얼로그를 띄울 것이다. pages/CartPage/PaymentSuccessDialog.jsx를 만들자.
 
 ```jsx{1,2-5,7-10,13-27,31}
 const PaymentSuccessDialog = ({ navigate, closeDialog }) => {

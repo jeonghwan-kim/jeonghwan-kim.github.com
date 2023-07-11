@@ -266,12 +266,12 @@ memo는 컴포넌트를 인자로 받아 실행하고 리액트 앨리먼트를 
 
 memo를 사용해 컴포넌트를 메모이제이션 해보자.
 
-```jsx{1}
+```jsx
 const FilteredPosts = MyReact.memo(({ value }) => {
   console.log("FilteredPosts")
   return (
     <ul>
-      {(value || []).map(post => (
+      {(value || []).map(({ id, content, tag }) => (
         <li key={id}>
           {content} <span>#{tag}</span>
         </li>
@@ -518,7 +518,7 @@ const OrderPage: FC = () => {
 
 이것을 해결하자.
 
-```jsx{4-6,8-10,15-20,26}
+```jsx{4-6,8-10,16-19,26}
 const OrderStatusCard: FC<{ order: Order }> = ({ order }) => {
   // ...
 
@@ -553,7 +553,7 @@ const ExpectedDeliveryMinutes = React.memo(({ value, onClick }) => {
       <Button onClick={onClick}>위치보기</Button>
     </>
   );
-
+})
 ```
 
 useMemo로 무거운 계산을 메모이제이션했다. 위치정보(position)가 변경되지 않는한 이전에 계산해 캐시한 값을 사용하기 때문에 곧장 다음 코드를 실행할 수 있을 것이다.

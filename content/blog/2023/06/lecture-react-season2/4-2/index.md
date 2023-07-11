@@ -7,7 +7,7 @@ series: "[리액트 2부] 고급주제와 훅"
 tags: [react]
 ---
 
-1편에서 주문 폼을 비제어 폼으로 구현했다. 입력 값을 브라우저의 상태 관리에 맞기고 검증도 브라우져의 기본 동작을 활용했다. 폼을 제출할 때 입력값을 얻기 위해 리액트 레프 객체를 연결했다.
+1편에서 주문 폼을 비제어 컴포넌트로 구현했다. 입력 값을 브라우저의 상태 관리에 맞기고 검증도 브라우져의 기본 동작을 활용했다. 폼을 제출할 때 입력값을 얻기 위해 리액트 레프 객체를 연결했다.
 
 이번에는 **제어 컴포넌트**로 폼을 변경해보자. 입력 값을 리액트 상태와 오류 메세지를 리액트 상태로 관리해 검증 기능을 커스터마이징할 수 있다. 폼을 제출할 때 입력값은 이 상태를 조회하기 때문에 기존 레프 객체사용하지 않아도 된다.
 
@@ -39,7 +39,7 @@ const LoginForm = () => {
       <input
         type="text"
         name="email"
-        placeholder="배달받을 주소를 입력하세요"
+        placeholder="Email"
         autoFocus
         value={values.email}
         onChange={handleChange}
@@ -47,7 +47,7 @@ const LoginForm = () => {
       <input
         type="password"
         name="password"
-        placeholder="연락처를 입력하세요"
+        placeholder="Password"
         value={values.password}
         onChange={handleChange}
       />
@@ -156,7 +156,7 @@ const LoginForm = () => {
 
 폼을 제출하기 전에 오류 메세지를 보여주면 좋겠다. 사용자가 필드에 입력하기 시작하면 입력 값을 검증하고 즉각 피드백을 주겠다.
 
-```jsx{5-7,24-30,39,41-43,48-50,60,62,70,72}
+```jsx{8-11,24-30,35-39,48-50,60,62,70,72}
 const LoginForm = () => {
   const [values, setValues] = React.useState({
     /* ... */
@@ -256,10 +256,10 @@ useEffect 사용해 부수효과를 추가했다. 입력 값이 바뀌면 밸리
 
 LoginForm은 컴포넌트 내부에 상태와 이벤트 처리기 그리고 리액트 앨리먼트와 강하게 결합되어 재사용할 수 없는 구조다. 재사용할 수 있는 폼을 만들어 보겠다.
 
-컴포넌트 안의 기능을 재사용하는 방법으로 고차함수와 훅을 배웠다. 이번에는 함수형 컴포넌트에서 활용할 수 있도록 리액트 훅 형태로 만들어 보자. src/lib/MyForm.tsx 파일을 만들고 useForm이란 커스텀 훅으로 로직을 옮기자.
+컴포넌트 안의 기능을 재사용하는 방법으로 고차함수와 훅을 배웠다. 이번에는 함수형 컴포넌트에서 활용할 수 있도록 리액트 훅 형태로 만들어 보자. src/lib/MyForm.jsx 파일을 만들고 useForm이란 커스텀 훅으로 로직을 옮기자.
 
-```jsx{24-27}
-export const useForm = ({ initialValues, validate, onSubmit }) => {
+```jsx{1,24-27,34,41-48}
+const useForm = ({ initialValues, validate, onSubmit }) => {
   const [values, setValues] = React.useState(initialValues)
   const [errors, setErrors] = React.useState({})
   const [touched, setTouched] = React.useState({})
@@ -318,6 +318,23 @@ export const useForm = ({ initialValues, validate, onSubmit }) => {
 
 ```jsx
 const LoginForm = () => {
+  const validate = values => {
+    const errors = {}
+
+    if (!values.email) {
+      errors.email = "이메일을 입력하세요"
+    }
+    if (!values.password) {
+      errors.password = "비밀번호를 입력하세요"
+    }
+
+    return errors
+  }
+
+  const handleSubmit = values => {
+    console.log("Submitted", values)
+  }
+
   const {
     values,
     errors,
@@ -327,21 +344,8 @@ const LoginForm = () => {
     handleSubmit,
   } = MyForm.useForm({
     initialValues: { email: "", password: "" },
-    validate: values => {
-      const errors = {}
-
-      if (!values.email) {
-        errors.email = "이메일을 입력하세요"
-      }
-      if (!values.password) {
-        errors.password = "비밀번호를 입력하세요"
-      }
-
-      return errors
-    },
-    onSubmit: values => {
-      console.log("Submitted", values)
-    },
+    validate,
+    onSubmit: handleSubmit,
   })
 
   return /* .. */
