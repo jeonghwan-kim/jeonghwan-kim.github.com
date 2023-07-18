@@ -340,7 +340,7 @@ data-styled.g39[id="style__ButtonLink-sc-29k00d-1"]{content:"hSPyCS,"}/*!sc*/
 
 <span class="token keyword">const</span> contract <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Contract</span><span class="token punctuation">(</span><span class="token string">"사용자1"</span><span class="token punctuation">)</span>
 contract<span class="token punctuation">.</span><span class="token function">sign</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-conttract<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"사용자2"</span></code></pre></div>
+contract<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"사용자2"</span></code></pre></div>
 <p>'사용자1'의 계약서를 만든 뒤 서명하면 서명인이 노출되는 로직이다. 3초 후에 로그가 찍히는데 그 전에 계약자 이름을 슬그머니 '사용자2'로 바꾸었다.</p>
 <p>생성자에서 '사용자1'을 지정했지만 sign 메소드가 실행되고 3초후에 로그를 찍을 것이다. 이때 this.name을 사용하는데 바뀐 값인 '사용자2'로 서명하게 될 것이다.</p>
 <p>이건 클래스 버그가 아니다. 클래스 생성자는 인스턴스를 만들어 this로 이 값을 가리킨다. this를 사용하면 언제나 인스턴스 값에 접근할 수 있는데 이것이 this의 목적이다. 서명을 완료하기 전에 this로 접근해 객체의 name을 바꾼 것이 문제 원인이다.</p>
@@ -370,7 +370,7 @@ contract<span class="token punctuation">.</span><span class="token function">sig
 <p>리액트 컴포넌트를 만드는 두 가지 방법에 대해 배웠다.</p>
 <ul>
 <li>클래스 컴포넌트</li>
-<li>함수형 컴포넌트</li>
+<li>함수 컴포넌트</li>
 </ul>
 <p>컴포넌트의 상태가 필요할 때는 전자를 사용하고 그렇지 않을 때는 후자를 사용했다.</p>
 <p>1부 수업에서 훅을 배우고 싶어하는 분들이 많았다. 그만큼 함수 컴포넌트와 훅을 사용해 리액트 어플리케이션을 만드는 것이 일반적이기 때문이다. 리액트 문서에서도 기존 클래스 컴포넌트를 굳이 바꿀 필요는 없지만 새로 만드는 것이라면 훅과 함께 함수 컴포넌트를 사용하라고 한다.</p>
