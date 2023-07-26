@@ -470,7 +470,7 @@ eventEmitter<span class="token punctuation">.</span><span class="token function"
 <li>다이얼로그</li>
 </ul>
 <p>앞으로 라우터와 다이얼로그를 만들면서 자세히 살펴볼 예정이다.</p>
-<p>멀린 떨어진 컨포넌트간에 메세지를 전달할 때 컨택스트만 있는 것은 아니다. 오히려 컨택스를 사용하기 전에 먼저 고려해볼 후보가 있다. 컴포넌트 합성, 렌더 프롭을 사용하는 것이 오히려 더 간단한 해법일 수(<a href="https://ko.legacy.reactjs.org/docs/context.html#before-you-use-context">context를 사용하기 전에 고려할 것</a>) 있으니 이점을 유의하길 바란다.</p>
+<p>멀리 떨어진 컨포넌트간에 메세지를 전달할 때 컨택스트만 있는 것은 아니다. 오히려 컨택스를 사용하기 전에 먼저 고려해볼 후보가 있다. 컴포넌트 합성, 렌더 프롭을 사용하는 것이 오히려 더 간단한 해법일 수(<a href="https://ko.legacy.reactjs.org/docs/context.html#before-you-use-context">context를 사용하기 전에 고려할 것</a>) 있으니 이점을 유의하길 바란다.</p>
 <h1 id="중간-정리" style="position:relative;"><a href="#%EC%A4%91%EA%B0%84-%EC%A0%95%EB%A6%AC" aria-label="중간 정리 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>중간 정리</h1>
 <p>컨택스트가 해결할 수 있는 문제를 이해했다.</p>
 <ul>
@@ -485,7 +485,7 @@ eventEmitter<span class="token punctuation">.</span><span class="token function"
 <p>컨택스트를 만들고 Provider와 Consumer 컴포넌트를 사용</p>
 <ul>
 <li>Provider: 메세지 공급자. 리액트 렌더 사이클과 연동하기 위해 상태를 가짐</li>
-<li>Consumer: 이 상태를 구독할수 있는 컴포넌트. 이 값이 렌더 프롬의 함수 인자로 들어옴</li>
+<li>Consumer: 이 상태를 구독할수 있는 컴포넌트. 이 값이 렌더 프롭의 함수 인자로 들어옴</li>
 <li>Provider 하위에 Consumer를 사용하기만 하면 멀리있는 컴포넌트의 메세지를 구독할 수 있음</li>
 </ul>
 <p>컨택스트는 리액트의 기본 api이다. 여기서는 배경과 구조를 이해할 목적으로 직접 구현해본 것이다. 이제부터는 리액트 api의 createContext를 사용해 볼것이다.</p>
@@ -509,4 +509,4 @@ eventEmitter<span class="token punctuation">.</span><span class="token function"
       
       
       
-      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2023/06/24/lecture-react-season2-part2-ch1";window.___webpackCompilationHash="895468fb9cb738a9dca7";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-602f74a3708cd8894fc2.js"],"app":["/app-0e925fa30b56b6190b54.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-767fcb85b0203be49b6c.js"],"component---src-pages-category-tsx":["/component---src-pages-category-tsx-692dc85e84da19aedd7d.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-f571a987cc261495ce82.js"],"component---src-pages-posts-tsx":["/component---src-pages-posts-tsx-ec5a5161e65ed58a386f.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-7cc8d5bd758788a0af34.js"],"component---src-templates-blog-post-index-tsx":["/component---src-templates-blog-post-index-tsx-a7e97a29886815589f27.js"]};/*]]>*/</script><script src="/polyfill-602f74a3708cd8894fc2.js" nomodule=""></script><script src="/app-0e925fa30b56b6190b54.js" async=""></script><script src="/framework-e3b387611ee502c516a5.js" async=""></script><script src="/webpack-runtime-838709a91dde16e00106.js" async=""></script></body></html>
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/2023/06/24/lecture-react-season2-part2-ch1";window.___webpackCompilationHash="73b4ba7d51a01c947866";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-602f74a3708cd8894fc2.js"],"app":["/app-0e925fa30b56b6190b54.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-767fcb85b0203be49b6c.js"],"component---src-pages-category-tsx":["/component---src-pages-category-tsx-692dc85e84da19aedd7d.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-f571a987cc261495ce82.js"],"component---src-pages-posts-tsx":["/component---src-pages-posts-tsx-ec5a5161e65ed58a386f.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-7cc8d5bd758788a0af34.js"],"component---src-templates-blog-post-index-tsx":["/component---src-templates-blog-post-index-tsx-a7e97a29886815589f27.js"]};/*]]>*/</script><script src="/polyfill-602f74a3708cd8894fc2.js" nomodule=""></script><script src="/app-0e925fa30b56b6190b54.js" async=""></script><script src="/framework-e3b387611ee502c516a5.js" async=""></script><script src="/webpack-runtime-2a745111e581dffdec07.js" async=""></script></body></html>
