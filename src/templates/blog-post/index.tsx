@@ -74,10 +74,6 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
                   {(markdownRemark.frontmatter.tags || []).length > 0 && (
                     <PostTag tags={markdownRemark.frontmatter.tags} />
                   )}
-                  <PostShare
-                    markdownRemark={markdownRemark}
-                    siteMetadata={data.site.siteMetadata}
-                  />
                 </Styled.PostMeta>
               </Styled.Article>
             </Styled.Main>
