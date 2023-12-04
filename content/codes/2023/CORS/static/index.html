@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CORS test</title>
+    <style>
+      @font-face {
+        font-family: "MyFont";
+        src: url("http://localhost:4000/myfont.otf");
+      }
+    </style>
+    <script>
+      window.foo = function () {
+        return "foo 실행되다."
+      }
+      ;(async () => {
+        const res = await fetch("http://localhost:4000/resource.json", {
+          method: "GET",
+          headers: {
+            "X-Foo": "Foo",
+            "X-Bar": "Bar",
+          },
+        })
+        const el = document.createElement("prev")
+        el.textContent = JSON.stringify(await res.json(), null, 2)
+        document.body.appendChild(el)
+      })()
+    </script>
+  </head>
+  <body style="font-family: MyFont;">
+    <button
+      onclick="window.open('http://localhost:3000/popup.html', '_blank', 'width=600,height=800')"
+    >
+      팝업 열기
+    </button>
+  </body>
+</html>
