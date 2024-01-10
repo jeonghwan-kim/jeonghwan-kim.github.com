@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- superagent 로딩 -->
+    <script src="https://cdn.jsdelivr.net/npm/superagent"></script>
+    <!-- axios 로딩 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script type="module">
+      // ky 로딩
+      import ky from 'https://cdn.jsdelivr.net/npm/ky/index.min.js';
+      // wretch 로딩
+      import wretch from 'https://cdn.skypack.dev/wretch/dist/bundle/wretch.all.min.mjs'
+
+      // 라이브러리 테스트 
+
+      async function testSuperagent() {
+        // 3. 확장 
+        function attachCustomHeader (request) {
+          console.log('attachCustomeHeaders', request)
+          request.header['X-Foo'] = 'foo'
+          return request
+        }
+
+        try {
+          // 1. 요청 
+          const response = await superagent.get('/hello').use(attachCustomHeader)
+          console.log('response:', response)
+        } catch (error) {
+          // 2. 오류 
+          console.log('error:', JSON.stringify(error, null, 2), error.status, error.response)
+        }
+      }
+
+      async function testAxios() {
+        // 3. 확장
+        function customeHeaderInterceptor(config) {
+          console.log('interceptor reqeust', config)
+          config.headers["X-Foo"] = "foo"
+          return config
+        }
+        axios.interceptors.request.use(customeHeaderInterceptor)
+
+        try {
+          // 1. 요청 
+          const response = await axios.get('/hello')
+          console.log('response:', response)
+        } catch (error) {
+          // 2. 오류 
+          console.log('error:', error)
+        }
+      }
+
+  
+      async function testKy() {
+        // 3. 확장 
+        function attachCustomeHeaders(request) {
+          console.log('attachCustomeHeaders', request)
+          request.headers.set('X-Foo', 'foo')
+        }
+
+        try {
+          // 1. 요청 
+          const response = await ky.get('/hello', {
+            hooks: { 
+              beforeRequest: [ attachCustomeHeaders ] 
+            }
+          }).text()
+          console.log('response:', response)
+        } catch (error) {
+          // 2. 오류
+          console.log('error:', error)
+        }
+      }
+
+      async function testWretch() {
+        // 3. 확장
+        function attachCustomHeader(next) {
+          return (url, options) => {
+            options.headers = { "X-Foo": "foo" }
+            return next(url, options)
+          }
+        }
+        
+        try {
+          // 1. 요청 
+          const response = await wretch()
+            .middlewares([attachCustomHeader])
+            .get('/hello')
+            .notFound(err => {
+              console.log('notFound', err)
+              return err.text
+            })
+            .text()
+          console.log('response:', response)
+        } catch (error) {
+          // 2. 오류
+          console.log('error:', error)
+        }
+      }
+      
+      // 아래 주석을 하나씩 제거하면서 라이브러리를 테스트한다.
+      // testSuperagent();
+      // testAxios()  
+      // testKy()
+      testWretch()
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
