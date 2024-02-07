@@ -2,7 +2,8 @@ const http = require("http")
 const fs = require("fs")
 
 function index(req, res) {
-  const filePath = "./index.html"
+  const acceptLangulage = req.headers["accept-language"].split(";")[0]
+  const filePath = acceptLangulage.includes("ko") ? "./ko.html" : "./en.html"
 
   fs.stat(filePath, (err, stat) => {
     if (err) {
@@ -57,6 +58,7 @@ function index(req, res) {
         ETag: etag,
         "Cache-Control": "max-age=10",
         // Expires: new Date(2024, 12, 1).toUTCString(),
+        Vary: "Accept-Language",
       })
       res.end(content)
     })
@@ -64,7 +66,7 @@ function index(req, res) {
 }
 
 const server = http.createServer((req, res) => {
-  console.log(req.url)
+  console.log(req.url, req.headers)
 
   const { pathname } = new URL(req.url, `http://${req.headers.host}`)
 
