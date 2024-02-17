@@ -3,8 +3,11 @@ const fs = require("fs")
 const path = require("path")
 
 const server = http.createServer((req, res) => {
+  const { pathname } = new URL(req.url, `http://${req.headers.host}`)
+  let filename = pathname.replace(/^\//, "") || "index.html"
+
   // 요청한 파일
-  const filePath = "./index.html"
+  const filePath = path.resolve(__dirname, "dist", filename)
 
   // 파일 정보
   fs.stat(filePath, (err, stat) => {
@@ -56,11 +59,18 @@ const server = http.createServer((req, res) => {
         return
       }
 
+      if (filePath.endsWith(".html")) {
+        res.setHeaders("Cache-Control", "no-cache")
+      } else {
+        res.setHeaders("Cache-Control", "max-age=31536000")
+      }
+
       res.writeHead(200, {
         "Content-Type": "text/html",
         "Last-Modified": modified.toUTCString(),
         ETag: etag,
       })
+
       res.end(content)
     })
   })
