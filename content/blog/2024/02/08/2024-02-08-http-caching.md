@@ -229,7 +229,7 @@ etag가 다르면 파일 내용이 바뀌었다고 판단해 200 OK 상태코드
 
 캐싱 프로세스는 브라우져가 서버에 접속해 캐시 헤더를 받은 다음 동작한다. 서버에 접속하지 않고 캐싱한 파일만 사용한다면 성능을 극대화할 수 있을 것이다. 그만큼 네트웍 비용을 줄일 수 있기 때문이다.
 
-Cache-Control은 더 구체적으로 캐싱 정책을 표현할 수 있는 HTTP 헤더다. HTTP/1.1에에 정의되었다. 이 헤더를 사용해 응답하면 브라우져의 캐싱 프로세스를 더 세밀하게 제어할 수 있다.
+Cache-Control은 더 구체적으로 캐싱 정책을 표현할 수 있는 HTTP 헤더다. HTTP/1.1에 정의되었다. 이 헤더를 사용해 응답하면 브라우져의 캐싱 프로세스를 더 세밀하게 제어할 수 있다.
 
 Cache-Control에 사용할 수 있는 주요 값이다.
 
@@ -358,7 +358,7 @@ res.setHeader("Cache-Control", "max-age=31536000")
 ```js
 module.exports = {
   output: {
-    filename: "[name][contentHash].[ext]",
+    filename: "[name][contenthash].[ext]",
   },
 }
 ```
@@ -419,7 +419,7 @@ HTTP 캐싱 매커니즘을 다시 정리해 보자.
 
 캐시를 설정할 때는 신중해야한다. 반드시 갱신해야할 자원인데 브라우저가 캐싱해 버리면 난감하기 때문이다. 브라우져에서 의도적으로 캐시를 비우지 않는한 네트웍 요청을 하지 않을 것이다.
 
-참고
+## 참고
 
 - [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2024/http-cache)
 - HTTP 완벽가이드 > 7장 캐시
