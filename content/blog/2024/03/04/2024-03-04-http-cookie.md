@@ -255,7 +255,7 @@ document.cookie // ""
 // 이름, 값, 옵션을 전달하면 쿠키 문자열를 만들어 Set-Cookie 헤더에 실는다.
 res.cookie = function (name, value, options) {
   // ...
-  this.append('Set-Cookie', coolie.serialize(name, String(val), options)
+  this.append('Set-Cookie', cookie.serialize(name, String(val), options)
   // ...
 }
 ```
