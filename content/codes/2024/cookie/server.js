@@ -1,21 +1,12 @@
-const https = require("https")
-const fs = require("fs")
+const http = require("http")
 
-const certOptions = {
-  key: fs.readFileSync("./server.key"),
-  cert: fs.readFileSync("./server.cert"),
-}
-
-const server = https.createServer(certOptions, (req, res) => {
+const server = http.createServer((req, res) => {
   const cookie = req.headers["cookie"]
-  console.log(cookie)
-  if (cookie && cookie.includes("sid")) {
-    res.end("again.")
-    return
-  }
 
-  res.setHeader("Set-Cookie", "sid=1; Secure; httpOnly")
-  res.end("first.")
+  console.log(cookie)
+
+  res.setHeader("Set-Cookie", "sid=1;")
+  res.end("hello.")
 })
 
 server.listen(3000, () => {
