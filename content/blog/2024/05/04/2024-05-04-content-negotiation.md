@@ -289,7 +289,7 @@ req.acceptLanguages = function () {
 > User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Safari/605.1.15
 ```
 
-User-Agent 값은 각 브라우져가 원하는 값을 사용한다고 한다(참고: User-Agent | MDN). 가령 크롬 브라우져인데 Safari 문자자 있는 식이다. 유저 에이전트 스니핑으로 불리기도 하는 것처럼 신뢰할 수 없는 값이다.
+User-Agent 값은 각 브라우져가 원하는 값을 사용한다고 한다(참고: [User-Agent | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers/User-Agent)). 가령 크롬 브라우져인데 Safari 문자자 있는 식이다. 유저 에이전트 스니핑으로 불리기도 하는 것처럼 신뢰할 수 없는 값이다.
 
 지금까지 살펴본 헤더와 다르게 컨텐츠 협상에 어울리지 않는다. 사파리 기준으로 코드를 작성했는데 잘못 판단해 어플리케이션 버그로 이어질 수 있기 때문이다. 컨텐츠 협상에서 이 헤더를 사용하는 것은 권장하지 않고 다른 가이드라인을 활용해야 한다(참고: [사용자 에이전트를 사용한 브라우저 감지 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Browser_detection_using_the_user_agent#mobile_device_detection)).
 
