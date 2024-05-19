@@ -3,7 +3,6 @@ import { Suspense, useState } from "react"
 function BlogPost({ post }) {
   return (
     <article>
-      {/* <head>에 마운트될 것이다 */}
       <h1>{post.title}</h1>
 
       {/* <head>에 마운트될 것이다 */}
