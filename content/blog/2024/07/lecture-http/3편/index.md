@@ -6,9 +6,9 @@ layout: post
 series: "HTTP"
 ---
 
-# 3.1 업로드와 응답
+# 6장. 업로드와 응답
 
-## 3.1.1 AJAX
+## 6.1 AJAX
 
 - 폼 요청의 한계
 - AJAX, Asynchronous JavaScript and XML
@@ -16,7 +16,7 @@ series: "HTTP"
 - **fetch 함수**: HTTP/2, 2015년부터 대부분 브라우져가 지원한다.
 - fetch API 기본 사용 방법을 이해한다.
 
-## 3.1.2 Fetch API
+## 6.2 Fetch API
 
 - fetch 함수를 실행하면 브라우져는 http 요청을 만든다.
 
@@ -109,7 +109,7 @@ function postLoginController(req, res) {
 }
 ```
 
-## 3.1.3 Response
+## 6.3 Response
 
 - 브라우져는 fetch() 함수의 결과로 응답을 이행하는 프라미스를 반환한다.
 - Response 객체
@@ -143,7 +143,7 @@ const body = await response.json()
 alert(body.authenticated)
 ```
 
-## 3.1.4 중간정리
+## 6.4 중간정리
 
 - 웹 페이지 전체를 요청하지 않고 데이터만 서버에 전달하는 기법을 AJAX라고 한다.
 - 브라우져는 XHR 객체나 **fetch** 함수를 제공한다.
@@ -154,13 +154,13 @@ alert(body.authenticated)
   - [HTTP 상태 코드 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Status)
   - [Fetch | 모던 자바스크립트 튜토리얼](https://ko.javascript.info/fetch)
 
-# 3.2 진행율과 취소
+# 7장. 진행율과 취소
 
 - fetch 함수로 다운로드 진행율을 표시하는 방법
 - fetch 함수로 다운로드를 취소하는 방법
 - xhr 객체로 업로드 진행율을 표시하는 방법
 
-## 3.2.1 다운로드 진행율
+## 7.1 다운로드 진행율
 
 - Response.body는 응단 본문을 읽을 수 있는 읽기 전용 스트림이다.
 - 응답 본문을 청크로 5번 실어 보내는 서버 코드
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 })
 ```
 
-## 3.2.2 다운로드 취소
+## 7.2 다운로드 취소
 
 - AbortController는 AbortSignal에게 "abort" 이벤트를 발행을 요청하는 역할.
 - AbortSignal은 "abort" 이벤트를 발행하는 역할
@@ -266,7 +266,7 @@ controller.signal.addEventListener("abort", () =>
 )
 ```
 
-## 3.2.3 업로드 진행율
+## 7.3 업로드 진행율
 
 - 아직은 XHR 객체로 업로드 진행율을 표시한다.
 
@@ -290,7 +290,7 @@ const handleProgress = event => {
 xhr.upload.addEventListener("progress", handleProgress)
 ```
 
-## 3.2.4 중간정리
+## 7.4 중간정리
 
 - 다운로드 진행율은 Reponse.body 스트림을 사용해 계산한다.
 - 다운로드 취소는 AbortController와 AbortSignal을 사용해 취소 가능한 HTTP 요청을 만든다.
@@ -303,26 +303,26 @@ xhr.upload.addEventListener("progress", handleProgress)
   - [AbortSignal | MDN](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)
   - [XMLHttpRequst | JAVASCRIPT.INFO](https://ko.javascript.info/xmlhttprequest)
 
-# 3.3 라이브러리
+# 8장. 라이브러리
 
 - 브라우져 API를 래핑해서 사용하는게 일반적이다.
 - XHR기반, fetch 기반 라이브러리 네 개를 비교한다.
 
-## 3.3.1 SuperAgent
+## 8.1 SuperAgent
 
 - XHR 기반. 2011년 출시. 콜백 스타일. 50Kb
 - HTTP 메소드별 전용 함수
 - Error 클래스를 확장한 전용 오류 클래스
 - 플러그인으로 확장
 
-## 3.3.2 Axios
+## 8.2 Axios
 
 - XHR 기반. 2014년 출시. 프라미스 기반. 33Kb
 - HTTP 메소드별 전용 함수
 - AxiosError
 - 인터셉터로 확장
 
-## 3.3.3 Ky
+## 8.3 Ky
 
 - fetch 기반. 2018년 출시. 0.9Kb. 타입스크립트
 - HTTP 메소드별 전용 함수
@@ -330,14 +330,14 @@ xhr.upload.addEventListener("progress", handleProgress)
 - Error 클래스를 확장한 HTTPError
 - 훅으로 확장
 
-## 3.3.4 Wretch
+## 8.4 Wretch
 
 - fetch 기반. 2017년 출시. 2.8Kb. 타입스크립트
 - HTTP 메소드별 전용 함수
 - Error 클래스 확장한 WrechError
 - 미들웨어, 애드온으로 확장
 
-## 3.3.5 중간정리
+## 8.5 중간정리
 
 - 비슷한 점
   - HTTP 메소드별로 함수를 제공한다.

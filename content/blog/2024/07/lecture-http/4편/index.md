@@ -6,15 +6,15 @@ layout: post
 series: "HTTP"
 ---
 
-# 4.1 폴링
+# 9장. 폴링
 
-## 4.1.1 구조
+## 9.1 구조
 
 - 서버와 지속적인 커넥션 유지하기 위한 기법.
 - 일정한 간격으로 서버에 요청을 보낸다.
 - 서버는 요청을 처리하고 응답한다.
 
-## 4.1.2 서버 구현
+## 9.2 서버 구현
 
 ```js
 // 채팅 메세지
@@ -60,7 +60,7 @@ function update(req, res) {
 
 ```
 
-## 4.1.3 클라이언트 구현
+## 9.3 클라이언트 구현
 
 ```js
 /**
@@ -88,7 +88,7 @@ async function pollServer() {
 }
 ```
 
-## 4.1.4 중간정리
+## 9.4 중간정리
 
 - 클라이언트와 서버가 지속적으로 연결하기 위한 HTTP 활용 기법
 - 단순하게 구현할 수 있다.
@@ -99,16 +99,16 @@ async function pollServer() {
 - 참고
   - [롱 폴링 | JAVASCRIPT.INFO](https://ko.javascript.info/long-polling)
 
-# 4.2 롱 폴링
+# 10장. 롱 폴링
 
-## 4.2.1 구조
+## 10.1 구조
 
 - 서버에 요청을 보내면, 서버는 새로운 데이터가 생길 때가지 응답을 지연한다.
 - 새로운 데이터가 생길 때 응답을 보낸다.
 - 이전 방식에 비해 HTTP 요청, 응답을 최소화할 수 있다.
 - 클라이언트는 즉시 다음 요청 보낸다. 서버는 변경된 데이터가 있을 경우 응답한다.
 
-## 4.2.2 서버 구현
+## 10.2 서버 구현
 
 ```js
 /**
@@ -160,7 +160,7 @@ function update(req, res) {
 }
 ```
 
-## 4.2.3 클라이언트 구현
+## 10.3 클라이언트 구현
 
 ```js
 /**
@@ -184,7 +184,7 @@ async function longPollServer() {
 }
 ```
 
-## 4.2.4 중간 정리
+## 10.4 중간 정리
 
 - 폴링의 단점을 개선한 것이 롱폴링. 실시간성을 높임
 - 알림이 있는 경우만 HTTP 메세지를 전달해서 네트우거 대역 최소화
@@ -195,13 +195,13 @@ async function longPollServer() {
   - https://chatgpt.com/c/8d444d7c-b88f-4f64-8689-626adf84e66f
   - https://ko.javascript.info/long-polling
 
-# 4.3 SSE
+# 11장. SSE
 
 - 폴링은 클라이언트가 지속적으로 서버에 여러번 접속하는 문제가 있다.
 - 서버에서 클라이언트로 메세지를 보내는 방법이 있으면 좋겠다.
 - Server Sent Event
 
-## 4.3.1 구조
+## 11.1 구조
 
 - HTTP를 기반에 동작하는 HTML5 표준 기술
 - 통신 방식
@@ -225,7 +225,7 @@ This is a connected sentence.
   - event: 메세지의 이벤트 이름
   - retry: 재연결 간격 (밀리초 단위)
 
-## 4.3.2 서버 구현
+## 11.2 서버 구현
 
 - GET /subscribe 컨트롤러
 
@@ -291,7 +291,7 @@ function update(req, res) {
 }
 ```
 
-## 4.3.3 클라이언트 구현
+## 11.3 클라이언트 구현
 
 - 구독함수 정의
 
@@ -307,7 +307,7 @@ function subscribe() {
 }
 ```
 
-## 4.3.4 재연결
+## 11.4 재연결
 
 - EventSource 객체는 서버와 연결이 끊기면 다시 연결한다.
 - 메세지에 retry로 재연결 시간을 지정할 수 있다.
@@ -334,7 +334,7 @@ function subscribe(req, res) {
 }
 ```
 
-## 4.3.5 중간 정리
+## 11.5 중간 정리
 
 - `content-type: text/event-stream` 헤더 응답
 - EventSource 브라우져 객체
@@ -346,9 +346,9 @@ function subscribe(req, res) {
   - https://chatgpt.com/c/77761981-674b-44ff-81c7-03291e7bfcc8
   - SSE 코드 및 설명
 
-# 4.4 웹 소켓
+# 12장. 웹 소켓
 
-## 4.4.1 구조
+## 12.1 구조
 
 - HTTP는 메세지 전달이 단방향이다.
   - 폴링: 클라이언트 → 서버
@@ -381,7 +381,7 @@ Sec-WebSocket-Accept: fX+lgbZ/+V4eiY0s9Muig1sv880=
 
 - 지속 연결. HTTP 처럼 끊기지 않는다.
 
-## 4.4.2 서버 구현
+## 12.2 서버 구현
 
 ```js
 const { WebSocketServer } = require("ws")
@@ -409,7 +409,7 @@ wss.on("connection", webScoket => {
 })
 ```
 
-## 4.4.3 클라이언트 구현
+## 12.3 클라이언트 구현
 
 ```js
 /**
@@ -432,7 +432,7 @@ function subscribe() {
 }
 ```
 
-## 4.4.4 중간 정리
+## 12.4 중간 정리
 
 - 서버와 클라이언트의 양방향 프로토콜
 - TCP 연결을 유지하고 반복된 헤더를 보내지 않아 효율적으로 데이터 전송
