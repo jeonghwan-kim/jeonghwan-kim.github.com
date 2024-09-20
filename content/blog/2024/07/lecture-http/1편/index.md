@@ -1,7 +1,7 @@
 ---
 slug: "/2024/07/07/lecture-http-part1"
 date: 2024-07-07 00:01:00
-title: "[HTTP] 1편. 기본"
+title: "[HTTP] 1편. HTTP 기본"
 layout: post
 series: "HTTP"
 ---
@@ -10,72 +10,9 @@ series: "HTTP"
 
 ## 1.1 문서 배포
 
-- 웹 어플리케이션은 서버와 브라우져의 긴밀한 협업으로 동작한다.
-- 협업의 수단 HTTP
-- HTTP 강의를 HTTP로 전달
-
-서버 프로그램 my-server:
-
-```js
-// 노드 http 모듈로 웹서버를 만든다.
-const http = require("http")
-
-// 요청이 들어올 경우 content 문자열을 반환하는 데 이것이 이 서버가 제공하는 http 응답이 될 것이다.
-const content = `HTTP Lecture
-
-1. Basic
-  1.1 HTTP Start
-  1.2 HTTP Message
-2. Web Browser
-  2.1 Content Negotiation
-  2.2 Cookie
-`
-const handler = (req, res) => res.end(content)
-
-// 위 핸들러로 http 서버 객체를 만들었다.
-const server = http.createServer(handler)
-
-// 서버는 3000번 포트에서 요청을 기다릴 것이다.
-server.listen(3000, () => console.log("server is running ::3000"))
-```
-
-클라이언트 프로그램 my-client:
-
-```js
-// http 요청을 만들기 위해 http 모듈을 사용합니다.
-const http = require("http")
-
-// 강의 서버 주소 http://localhost:3000 으로 접속한다.
-const options = new URL("http://localhost:3000/")
-
-// http 모듈의 request 함수로 요청을 보낸다.
-const req = http.request(options, res => {
-  const data = []
-
-  // 응답이 오면 data 에 기록하고 있다가 종료되면 내용을 출력한다.
-  res.on("data", chunk => {
-    data.push(chunk.toString())
-  })
-
-  // 혹시 모를 오류도 기록할 것이다.
-  res.on("end", () => {
-    console.log(data.join(""))
-  })
-})
-
-req.on("error", err => {
-  console.error(err)
-})
-
-req.end()
-```
-
-실행:
-
-```shell
-# 클라이언트를 실행하면 서버가 제공한 강의 내용을 볼 수 있다.
-$ node my-client
-```
+- 웹 어플리케이션의 동작 원리와 HTTP의 역할
+- HTTP로 전하는 강의
+- 실습: 간단한 강의 제공 애플리케이션 구현
 
 ## 1.2 더 많은 문서
 
