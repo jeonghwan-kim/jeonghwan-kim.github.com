@@ -12,90 +12,13 @@ series: "HTTP"
 
 - 웹 어플리케이션의 동작 원리와 HTTP의 역할
 - HTTP로 전하는 강의
-- 실습: 간단한 강의 제공 애플리케이션 구현
+- 간단한 강의 제공 애플리케이션 구현
 
 ## 1.2 더 많은 문서
 
 - 더 많은 수업 자료를 여러 페이지로 제공하려면 파일로 분리
-  - public/1-1_http-start.txt
-  - public/1-2_http-message.txt
-  - public/2-1_content-negotiation.txt
-  - public/2-2_cookie.txt
-
-하나 이상의 파일을 제공하는 my-server:
-
-```js
-const http = require("http")
-const fs = require("fs")
-const path = require("path")
-
-// 요청 처리 핸들러는 요청한 파일을 응답한다.
-const handler = (req, res) => {
-  // url에서 요청한 파일 이름을 찾는다.
-  const filename = req.url.replace(/^\//, "")
-
-  // public 폴더에 파일이 있으면 읽어서 응답한다.
-  const filepath = path.resolve(__dirname, "public", filename)
-  fs.readFile(filepath, (err, data) => {
-    // 파일을 읽기 못하면 'Error' 메세지를 응답한다.
-    if (err) {
-      console.error(err)
-      res.end("Error")
-      return
-    }
-
-    res.end(data)
-  })
-}
-
-const server = http.createServer(handler)
-server.listen(3000, () => console.log("server is running ::3000"))
-```
-
-- 클라이언트도 개선
-  - 기존: 요청을 하드코딩
-  - 변경: 원하는 파일을 요청할수 있어야
-    - 예시 1: `http://localhost:3000/1-1_http-start.txt`
-    - 예시 2: `http://localhost:3000/1-2_http-message.txt`
-- 요청 인자를 어플리케이션 외부로 이동한다.
-
-URL을 받아 처리하는 my-client:
-
-```js
-const http = require("http")
-// 커맨드라인 인자로 url을 받을 수 있다.
-const url = process.argv[2]
-
-// 인자 없이 실행할 경우 안내 문구를 출력하고 종료한다.
-if (!url) {
-  console.error("Usage: node my-client/index.js <url>")
-}
-
-// 인자로 전달한 url로 접속한다.
-const options = new URL(url)
-const req = http.request(options, res => {
-  const data = []
-  res.on("data", chunk => {
-    data.push(chunk.toString())
-  })
-  res.on("end", () => {
-    console.log(data.join(""))
-  })
-})
-
-req.on("error", err => {
-  console.error(err)
-})
-
-req.end()
-```
-
-실행:
-
-```shell
-$ node my-client http://localhost:3000/1-1_http-start.txt
-$ node my-client http://localhost:3000/1-2_http-message.txt
-```
+- 파일 기반 콘텐츠 제공 서버
+- 동적 URL 지원 클라이언트
 
 ## 1.3 HTTP/0.9
 
