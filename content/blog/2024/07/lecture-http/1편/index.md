@@ -22,24 +22,24 @@ series: "HTTP"
 
 ## 1.3 HTTP/0.9
 
-### HTTP 초기 버전
+**HTTP 초기 버전**:
 
 - 1989년 버너스리가 제안
-  - **HTML**: 하이퍼텍스트 마크업 언어
-  - **HTTP**: 하이퍼텍스트 전송 규약
-  - **httpd**: HTTP 서버 프로그램
-  - **WorldWideWeb**: 최초의 웹 클라이언트
+- **HTML**: 하이퍼텍스트 마크업 언어
+- **HTTP**: 하이퍼텍스트 전송 규약
+- **httpd**: HTTP 서버 프로그램
+- **WorldWideWeb**: 최초의 웹 클라이언트
 - 1990년 프로토콜 완성
 - 1991년 외부 공개
 
-### 이후 버전
+**이후 버전**:
 
 - 1996년 http/1.0
 - 1997년 http/1.1
 - 2015년 http/2
 - 2018년 http/3
 
-### HTTP 핵심 요소
+**HTTP 핵심 요소**:
 
 - URL
 - 헤더
@@ -54,13 +54,15 @@ series: "HTTP"
 
 ## 1.5 중간 정리
 
-- HTTP의 초기 버전(http/0.9) 구현
-- 1990년 팀 버너스 리가 HTML, HTTP, httpd, WorldWideWeb 로 구성해 초기 구조를 제안
-- cURL
-- 참고
-  - [HTTP의 진화 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)
-  - [WorldWideWeb](https://worldwideweb.cern.ch/browser/)
-  - [cURL | 김정환블로그](/2023/12/03/curl)
+- HTTP의 초기 버전을 직접 만들면서 이해했습니다.
+- 이후에 http 프로토콜은 여러 버전으로 진화했습니다.
+- 수업에서 사용할 도구를 소개했습니다.
+
+**참고**:
+
+- [HTTP의 진화 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)
+- [WorldWideWeb](https://worldwideweb.cern.ch/browser/)
+- [cURL | 김정환블로그](/2023/12/03/curl)
 
 # 2장. HTTP 메시지
 
