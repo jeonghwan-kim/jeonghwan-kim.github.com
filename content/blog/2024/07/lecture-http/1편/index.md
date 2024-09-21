@@ -48,16 +48,9 @@ series: "HTTP"
 
 ## 1.4 cURL
 
-- 수업 방식: 서버와 클라이언트 간의 요청과 응답을 분석하면서 프로토콜을 이해
-- cURL(client for URL): URL을 받아 서버로 요청을 보내고 받은 응답을 출력하는 도구
+- **client for URL**의 약자. URL을 받아 서버로 요청을 보내고 받은 응답을 출력하는 도구
 - [cURL 다운로드](https://curl.se/download.html)
-
-```shell
-# 요청을 보내고 응답을 받았다.
-$ curl http://localhost:3000/1-1_http-start.txt
-```
-
-- --verbose, -v: http 메세지 자세히 보기
+- cURL로 HTTP 요청 및 응답 확인하기
 
 ## 1.5 중간 정리
 
