@@ -90,22 +90,12 @@ series: "HTTP"
 
 ## 2.3 요청
 
-- 요청 메시지: 메서드와 경로, 헤더, 본문(선택사항)으로 구성
-
-```shell
-$ curl http://localhost:3000/1-1_http-start.txt
-
-> GET /1-1_http-start.txt HTTP/1.1
-> Host: localhost:3000
-> User-Agent: curl/8.4.0
-> Accept: */*
->
-```
-
-- 메서드: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD
-- 경로: 파일 위치
-- 헤더: 부가 정보. (예: Content-Type: text/html)
-- 본문: 선택 사항. (예: POST 폼 데이터 전송)
+- 요청 메시지: 메서드와 경로, 헤더, 본문으로 구성
+- 메서드: GET, POST, PUT, PATCH, DELETE
+- 경로: 자원의 위치 위치
+- 프로토콜 버전
+- 요청 헤더
+- 요청 본문
 
 ## 2.4 응답
 
