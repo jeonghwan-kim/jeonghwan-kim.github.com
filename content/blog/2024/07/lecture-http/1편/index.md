@@ -66,89 +66,12 @@ series: "HTTP"
 
 # 2장. HTTP 메시지
 
-## 2.1 흐름
+## 2.1 HTTP 흐름
 
-- 순서: TCP 연결, HTTP 요청 메시지, HTTP 응답 메시지, TCP 종료
-- 비유: 통화. 전화걸기, 말하기, 듣기, 전화끊기
-
-TCP 연결:
-
-```shell
-$ curl http://localhost:3000/1-1_http-start.txt -v
-
-* Trying [::1]:3000...
-* Connected to localhost (::1) port 3000
-```
-
-HTTP 요청 메시지:
-
-```shell
-> GET /1-1_http-start.txt HTTP/1.1
-> Host: localhost:3000
-> User-Agent: curl/8.4.0
-> Accept: */*
->
-```
-
-HTTP 응답 메시지:
-
-```shell
-< HTTP/1.1 200 OK
-< Date: Sat, 06 Jul 2024 00:17:27 GMT
-< Connection: keep-alive
-< Keep-Alive: timeout=5
-< Content-Length: 23
-<
-1.1 HTTP Start
-bla bla
-```
-
-TCP 종료:
-
-```shell
-* Connection #0 to host localhost left intact
-```
-
-- curl은 http 프로토콜을 사용하는 클라이언트 도구
-- tcp 위에서 연결, 메세지, 종료를 위한 메세지를 curl이 자동으로 만들어 준다.
-
---
-
-- TCP 메세지를 직접 제어할 수도 있다. (더 명확하게 이해)
-
-TCP 연결:
-
-```shell
-$ nc localhost 3000
-Connection to localhost port 3000 [tcp/hbci] succeeded!
-```
-
-HTTP 요청 메시지:
-
-```shell
-GET /1-1_http-start.txt HTTP/1.1
-
-```
-
-HTTP 응답 메시지:
-
-```shell
-HTTP/1.1 200 OK
-Date: Sat, 06 Jul 2024 00:34:52 GMT
-Connection: keep-alive
-Keep-Alive: timeout=5
-Content-Length: 23
-
-1.1 HTTP Start
-
-bla bla%
-```
-
-TCP 종료:
-
-```shell
-
-```
+- TCP 연결 수립 (3-Way Handshake)
+- HTTP 메세지 전송
+- HTTP 메세지 수신
+- TCP 연결 종료
 
 ## 2.2 URL
 
