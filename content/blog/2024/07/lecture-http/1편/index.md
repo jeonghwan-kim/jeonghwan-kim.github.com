@@ -76,13 +76,17 @@ series: "HTTP"
 ## 2.2 URL
 
 - Uniform Resource Locator
-  - 인터넷 상의 자원을 식별하는 역할
-- 형식: 프로토콜//도메인:포트?쿼리키=쿼리값#앵커
-  - 프로토콜: <strong style="font-size: 1.2em">http:</strong>//도메인:포트?쿼리키=쿼리값#앵커
-  - 도메인: http://<strong style="font-size: 1.2em">localhost</strong>:포트?쿼리키=쿼리값#앵커
-  - 포트: http://localhost:<strong style="font-size: 1.2em">3000</strong>?쿼리키=쿼리값#앵커
-  - 쿼리문자열: http://localhost:3000?<strong style="font-size: 1.2em">search=name</strong>#앵커
-  - 프레그먼트: http://localhost:3000?search=name#<strong style="font-size: 1.2em">title</strong>
+
+```
+프로토콜://도메인:포트/경로?쿼리문자열#앵커
+```
+
+- **프로토콜**: <strong style="font-size: 1.4em">http:</strong>//도메인:포트/경로?쿼리문자열#앵커
+- **도메인**: <span>http</span>://<strong style="font-size: 1.4em">localhost</strong>:포트/경로?쿼리문자열#앵커
+- **포트**: <span>http</span>://localhost<strong style="font-size: 1.4em">:3000</strong>/경로?쿼리문자열#앵커
+- **경로**: <span>http</span>://localhost:3000<strong style="font-size: 1.4em">/ch01.txt</strong>?search=name#앵커
+- **쿼리문자열**: <span>http</span>://localhost:3000/ch01.txt<strong style="font-size: 1.4em">?search=name</strong>#앵커
+- **프레그먼트**: <span>http</span>://localhost:3000/ch01.txt?search=name<strong style="font-size: 1.4em">#title</strong>
 
 ## 2.3 요청
 
