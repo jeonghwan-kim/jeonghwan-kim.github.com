@@ -112,9 +112,14 @@ series: "HTTP"
 
 ## 4.3 생명주기
 
-- 세션 쿠키(Session Cookie): 세션과 같은 수명을 같는 쿠키
-- 영속적인 쿠키(Permananet Cookie): **Max-Age**, **Expires**로 수명이 지정된 쿠키
-- `< Set-Cookie: sid=1; Max-Age=10 // 10초간 쿠키를 유지하세요.`
+- 세션 쿠키(Session Cookie)
+- Max-Age와 Expries 쿠키 디렉티브
+
+```
+< Set-Cookie: sid=1; Max-Age=10
+```
+
+- 영속적인 쿠키(Permanent Cookie)
 
 ## 4.4 Secure
 
