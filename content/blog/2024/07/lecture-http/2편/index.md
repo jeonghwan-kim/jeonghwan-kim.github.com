@@ -141,59 +141,8 @@ series: "HTTP"
 
 ## 4.6 서버 라이브러리
 
-- Express.js [res.cookie()](https://github.com/expressjs/express/blob/master/lib/response.js#L884)
-
-```js
-// 이름, 값, 옵션을 전달하면 쿠키 문자열를 만들어 Set-Cookie 헤더에 실는다.
-res.cookie = function (name, value, options) {
-  // ...
-  this.append('Set-Cookie', cookie.serialize(name, String(val), options)
-  // ...
-}
-```
-
-- [cookie-parser](https://github.com/expressjs/cookie-parser/tree/master)
-
-```js
-// 쿠키 파서 미들웨서 생성 함수
-function cookieParser(secret, options) {
-  // 쿠키 파서 미들웨어를 반환한다.
-  return function coolieParser(req, res, next) {
-    // 헤더에서 쿠키 문자열을 조회
-    var cookies = req.headers.cookie
-    // 문자열을 객체로 파싱
-    req.coolies = cookie.parse(coolies, options)
-    // 파싱한 객체를 JSON 값으로 변환
-    //   'false' → false
-    //   '1' → 1
-    req.coolies = JSONCookies(req.cookies)
-    next()
-  }
-}
-```
-
-- [cookie](https://github.com/jshttp/cookie/tree/master)
-
-```js
-it("문자를 객체로 변환한다.", function () {
-  assert.deepEqual(cookie.parse("foo=bar"), { foo: "bar" })
-})
-
-it("값을 URL 디코딩한다.", function () {
-  assert.deepEqual(cookie.parse("email=%20%22%2c%3b%2f"), { email: ' ",;/' })
-})
-
-it("값이 없는 쿠키를 제거한다.", function () {
-  assert.deepEqual(cookie.parse("foo=bar;fizz  ;  buzz"), { foo: "bar" })
-})
-
-it("중복 쿠키를 제거한다", function () {
-  assert.deepEqual(cookie.parse("foo=%1;bar=bar;foo=boo"), {
-    foo: "%1",
-    bar: "bar",
-  })
-})
-```
+- 쿠키 데이터를 문자열로 변환하는 함수 : Express.js [res.cookie()](https://github.com/expressjs/express/blob/master/lib/response.js)
+- 문자열을 쿠키 데이터로 변환하는 함수: [cookie-parser](https://github.com/expressjs/cookie-parser/tree/master)
 
 ## 4.7 브라우져 라이브러리
 
