@@ -37,20 +37,14 @@ series: "HTTP"
 
 ## 3.3 언어
 
-- `> Accept-Language: ko`
-- 사례: 유투브
-- 라이브러리: express.js [req.acceptLanuages()](https://expressjs.com/en/5x/api.html#req.acceptsLanguages)
+- Accept-Language
 
-```js
-req.acceptLangualges()
+```
+> Accept-Language: ko
 ```
 
-```js
-req.acceptLanguages = function () {
-  var accept = accepts(this)
-  return accept.languages.apply(accept, arguments)
-}
-```
+- 사례) 유투브
+- 라이브러리) [express.js req.acceptLanuages()](https://expressjs.com/en/5x/api.html#req.acceptsLanguages), [accepts](https://github.com/jshttp/accepts/blob/master/index.js#L195), [negotiator](https://github.com/jshttp/negotiator/blob/master/index.js#L63)
 
 ## 3.4 유저 에이전트
 
