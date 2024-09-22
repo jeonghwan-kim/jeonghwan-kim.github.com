@@ -147,104 +147,24 @@ series: "HTTP"
 ## 4.7 쿠키 라이브러리(브라우져)
 
 - 브라우져에서 쿠키를 제어하는 사례. '오늘 하루 다시 보지 않기'
-- [js-cookie](https://github.com/js-cookie/js-cookie/tree/main): 쿠키 데이터를 변경/조회/삭제하는 라이브러리:
-
-```js
-// 이 브라우져 사용자가 오늘 하루 다시 보지 않기를 선택했다.
-document.cookie = "checked=true; MaxAge=86400"
-```
-
-- [js-cookie](https://github.com/js-cookie/js-cookie/tree/main)
-
-```js
-function set(name, value, attributes) {
-  // 만료일 설정
-  if (typeof attributes.expires === "number") {
-    attributes.expires = new Date(Date.now() + attributes.expires * 864e5)
-  }
-  if (attributes.expires) {
-    attributes.expires = attributes.expires.toUTCString()
-  }
-
-  // 옵션 객체를 문자열로 변환
-  var stringifiedAttributes = ""
-  for (var attributeName in attributes) {
-    if (!attributes[attributeName]) continue
-
-    stringifiedAttributes += "; " + attributeName
-  }
-
-  // name, value, options 를 한 문자열로 만들어 document.cookie에 할당
-  return (document.cookie =
-    name + "=" + converter.write(value, name) + stringifiedAttributes)
-}
-```
-
-```js
-// "checked=true; Max-Age: 86400" 쿠키를 설정한다.
-Cookie.set('checked', true, { Max-Age : 86400 })
-```
-
-```js
-function get(name) {
-  //;로 파싱한다. 여러개 쿠키를 배열로 만든다.
-  var cookies = document.cookie ? document.cookie.split("; ") : []
-  var jar = {}
-  for (var i = 0; i < cookies.length; i++) {
-    // =로 파싱한다. name, value 튜플을 만든다.
-    var parts = cookies[i].split("=")
-    //
-    var value = parts.slice(1).join("=")
-
-    try {
-      // name을 디코딩한다.
-      var found = decodeURIComponent(parts[0])
-      if (!(found in jar)) jar[found] = converter.read(value, found)
-      // 요청한 쿠키를 찾았다.
-      if (name === found) {
-        break
-      }
-    } catch (e) {
-      // Do nothing...
-    }
-  }
-
-  // 찾은 쿠키를 반환한다.
-  return name ? jar[name] : jar
-}
-```
-
-```js
-// 이름 sid의 쿠키 값을 얻는다.
-Cookie.get("sid")
-```
-
-```js
-function remove(name, attributes) {
-  set(
-    name,
-    // 쿠키 값을 빈 문자열로 바꾼다.
-    '',
-    assign({}, attributes, {
-      // 쿠키 만료 시간을 음수로 바꾼다.
-      expires: -1
-    })
-  )
-},
-```
+- 쿠키 데이터를 변경/조회/삭제하는 라이브러리: [js-cookie](https://github.com/js-cookie/js-cookie/tree/main)
 
 ## 4.8 중간정리
 
-- 무상태 HTTP에 쿠키로 상태를 관리할 수 있다.
-- 서버가 전달하면 브라우져가 그대로 다시 요청한다.
-- 이름, 값, 디렉티브
-- 참고
-  - [HTTP 쿠키 | 김정환블로그](/2024/03/04/http-cookie)
-  - [HTTP 쿠키 | 위키피디아](https://ko.wikipedia.org/wiki/HTTP_쿠키)
-  - HTTP 완벽가이드 > 11.6 쿠키
-  - 리얼월드 HTTP > 2.5 쿠키
-  - [HTTP 쿠키 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies)
-  - [쿠키와 document.cookie | JAVASCRIPT INFO](https://ko.javascript.info/cookie)
+- 상태가 없는 HTTP에 상태를 추가할 목적으로 쿠키를 사용합니다.
+- 쿠키 유효범위를 지정하는 디렉티브: Domain, Path
+- 쿠키 생명 주기를 지정하는 디렉티브: Max-Age, Expires
+- 쿠키 생명 주기를 지정하는 디렉티브: Secure, HttpOnly
+- 쿠키 라이브러리
+
+### 참고
+
+- [HTTP 쿠키 | 김정환블로그](/2024/03/04/http-cookie)
+- [HTTP 쿠키 | 위키피디아](https://ko.wikipedia.org/wiki/HTTP_쿠키)
+- [HTTP 쿠키 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies)
+- [쿠키와 document.cookie | JAVASCRIPT INFO](https://ko.javascript.info/cookie)
+- 도서) HTTP 완벽가이드 > 11.6 쿠키
+- 도서) 리얼월드 HTTP > 2.5 쿠키
 
 # 5장. 네트워크 요청
 
