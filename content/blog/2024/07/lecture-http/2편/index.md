@@ -139,14 +139,15 @@ series: "HTTP"
 < Set-Cookie: sid=1; httpOnly
 ```
 
-## 4.6 서버 라이브러리
+## 4.6 쿠키 라이브러리(서버)
 
 - 쿠키 데이터를 문자열로 변환하는 함수 : Express.js [res.cookie()](https://github.com/expressjs/express/blob/master/lib/response.js)
 - 문자열을 쿠키 데이터로 변환하는 함수: [cookie-parser](https://github.com/expressjs/cookie-parser/tree/master)
 
-## 4.7 브라우져 라이브러리
+## 4.7 쿠키 라이브러리(브라우져)
 
-- 브라우져에서 쿠키를 제어한 사례. '오늘 하루 다시 보지 않기'
+- 브라우져에서 쿠키를 제어하는 사례. '오늘 하루 다시 보지 않기'
+- [js-cookie](https://github.com/js-cookie/js-cookie/tree/main): 쿠키 데이터를 변경/조회/삭제하는 라이브러리:
 
 ```js
 // 이 브라우져 사용자가 오늘 하루 다시 보지 않기를 선택했다.
