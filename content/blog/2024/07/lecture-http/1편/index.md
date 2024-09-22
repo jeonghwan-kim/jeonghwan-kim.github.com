@@ -58,7 +58,7 @@ series: "HTTP"
 - 이후에 http 프로토콜은 여러 버전으로 진화했습니다.
 - 수업에서 사용할 도구를 소개했습니다.
 
-**참고**:
+### 참고
 
 - [HTTP의 진화 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP)
 - [WorldWideWeb](https://worldwideweb.cern.ch/browser/)
@@ -84,9 +84,9 @@ series: "HTTP"
 - **프로토콜**: <strong style="font-size: 1.4em">http:</strong>//도메인:포트/경로?쿼리문자열#앵커
 - **도메인**: <span>http</span>://<strong style="font-size: 1.4em">localhost</strong>:포트/경로?쿼리문자열#앵커
 - **포트**: <span>http</span>://localhost<strong style="font-size: 1.4em">:3000</strong>/경로?쿼리문자열#앵커
-- **경로**: <span>http</span>://localhost:3000<strong style="font-size: 1.4em">/ch01.txt</strong>?search=name#앵커
-- **쿼리문자열**: <span>http</span>://localhost:3000/ch01.txt<strong style="font-size: 1.4em">?search=name</strong>#앵커
-- **프레그먼트**: <span>http</span>://localhost:3000/ch01.txt?search=name<strong style="font-size: 1.4em">#title</strong>
+- **경로**: <span>http</span>://localhost:3000<strong style="font-size: 1.4em">/ch01.txt</strong>?query=name#앵커
+- **쿼리문자열**: <span>http</span>://localhost:3000/ch01.txt<strong style="font-size: 1.4em">?query=name</strong>#앵커
+- **프레그먼트**: <span>http</span>://localhost:3000/ch01.txt?query=name<strong style="font-size: 1.4em">#title</strong>
 
 ## 2.3 요청
 
@@ -99,30 +99,18 @@ series: "HTTP"
 
 ## 2.4 응답
 
-- 응답 메세지: 상태코드, 헤더, 본문으로 구성
-
-```shell
-< HTTP/1.1 200 OK
-< Date: Sun, 07 Jul 2024 06:51:15 GMT
-< Connection: keep-alive
-< Keep-Alive: timeout=5
-< Content-Length: 23
-<
-1.1 HTTP Start
-
-bla bla
-```
-
-- 상태 코드: 2XX(성공), 3XX(리다이렉션), 4XX(요청 오류), 5XX(서버 오류)
-- 헤더: 부가 정보. (예: Content-Length: 23)
-- 본문: 파일 내용
+- 상태 코드: 1xx, 2xx, 3xx, 4xx, 5xx
+- 응답 헤더
+- 응답 본문
 
 ## 2.5 중간 정리
 
-- HTTP 흐름: tcp 연결, 요청 메시지, 응답 메세지, tcp 종료
-- URL
-- 요청 메시지
-- 응답 메세지
-- 참고
-  - [HTTP 개요 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Overview)
-  - [웹의 리소스 식별하기 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Identifying_resources_on_the_Web)
+- 클라이언트와 서버 간의 HTTP 흐름이 이해했습니다.
+- URL을 시작으로 HTTP 메세지를 주고 받습니다.
+- HTTP 요청
+- HTTP 응답
+
+### 참고
+
+- [HTTP 개요 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Overview)
+- [웹의 리소스 식별하기 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Identifying_resources_on_the_Web)
