@@ -8,69 +8,14 @@ series: "HTTP"
 
 # 3장. 컨텐츠 협상
 
-- 서버는 다양한 클라이언트에 적합한 자원을 제공해야
-- 컨텐츠 협상에 사용되는 HTTP 헤더와 동작 방식
+- 서버는 다양한 클라이언트에 적합한 자원을 제공해야합니다.
+- 컨텐츠 협상에 사용되는 HTTP 헤더와 동작 방식을 공부합니다.
 
-## 3.1 Accpet/Content-Type
+## 3.1 Accpet와 Content-Type
 
-- `> Accpet: text/html`
-- `< Content-Type: text/html`
-- 사례: 깃헙
-
-```shell
-curl https://github.com/jeonghwan-kim/jeonghwan-kim.github.com \
-  -H 'Accept: text/html'
-
-<!DOCTYPE html>
-<html
-```
-
-```shell
-curl https://github.com/jeonghwan-kim/jeonghwan-kim.github.com \
-  -H 'Accept: application/json'
-
-{"payload":{"allShortcutsEnabled":false,"path":"/","repo":
-```
-
-- 라이브러리: express.js [res.format()](https://github.com/expressjs/express/blob/master/lib/response.js#L685)
-
-```js
-res.format({
-  text() {/* 텍스트 문서를 반환한다 */},
-  html() {/* HTML 문서를 반환한다 */},
-  json() {/* JSON 문서를 반환한다 */},
-  default() {/* 요청한 형식이 없을 경우 이 문서를 반환한다 */}
-}
-```
-
-```js
-res.format = function(obj){
-  // 생략
-
-  // Accept 요청을 헤더가 있는 경우
-  if (key) {
-    // 응답 헤더를 설정한다.
-    this.set('Content-Type', normalizeType(key).value);
-    // 미리 준비한 응답 핸들러를 실행한다.
-    // 특정 문서를 응답할 것이다.
-    obj[key](req, this, next);
-  }
-
-  // 요청한 마임타입의 문서가 없을 경우
-  // 기본 문서를 응답한다.
-  else if (obj.default) {
-    obj.default(req, this, next);
-  }
-
-  // 기본 문서도 없으면 406 Not Acceptable을 응답한다.
-  else {
-    next(createError(406, {
-      types: normalizeTypes(keys).map(function (o) { return.o.value })
-    }))
-  }
-  // 생략
-}
-```
+- Accept와 Content-Type
+- 깃헙 사례
+- [express.js의 res.format](https://github.com/expressjs/express/blob/master/lib/response.js#L562)
 
 ## 3.2 압축
 
