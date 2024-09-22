@@ -123,10 +123,12 @@ series: "HTTP"
 
 ## 4.4 Secure
 
-- 평문 쿠키. 가로챌 위험.
-- HTTPS: TCP와 HTTP 중간에 보안 계층(Transport Layer Security, TLS)를 추가한 프로토콜
-- **Secure**: HTTPS만 사용하도록 지시
-- `< Set-Cookie: sid=1; Secure // HTTPS로 쿠키를 보내세요.`
+- 쿠키는 평문이라 유출될 수 있다.
+- Secure 쿠키 디렉티브
+
+```
+< Set-Cookie: sid=1; Secure
+```
 
 ## 4.5 HttpOnly
 
