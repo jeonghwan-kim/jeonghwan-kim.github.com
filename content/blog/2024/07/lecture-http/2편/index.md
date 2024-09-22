@@ -132,9 +132,12 @@ series: "HTTP"
 
 ## 4.5 HttpOnly
 
-- 자바스크립트를 통한 쿠키 위조. document.cookie
-- **HttpOnly**: 자바스크립트가 쿠키에 접근하는 걸 차단. 오직 HTTP 네트워크 요청에만 쿠키 사용.
-- `< Set-Cookie: sid=1; httpOnly // http 요청에만 쿠키를 사용하세요.`
+- 자바스크립트로 쿠키를 위조할 수 있다.
+- HttpOnly 쿠키 디렉티브
+
+```
+< Set-Cookie: sid=1; httpOnly
+```
 
 ## 4.6 서버 라이브러리
 
