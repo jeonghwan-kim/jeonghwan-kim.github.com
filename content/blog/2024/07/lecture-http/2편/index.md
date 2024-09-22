@@ -14,60 +14,26 @@ series: "HTTP"
 ## 3.1 Accpet와 Content-Type
 
 - Accept와 Content-Type
-- 깃헙 사례
-- [express.js의 res.format](https://github.com/expressjs/express/blob/master/lib/response.js#L562)
+
+```
+> Accpet: text/html
+< Content-Type: text/html
+```
+
+- 사례) 깃헙 사례
+- 라이브러리) [express.js의 res.format](https://github.com/expressjs/express/blob/master/lib/response.js#L562)
 
 ## 3.2 압축
 
-- `> accept-encoding: gzip`
-- `< content-encoding: gzip`
-- 사례: 깃헙
+- Accept-Encoding과 Content-Encoding
 
-```shell
-curl https://github.com/jeonghwan-kim/jeonghwan-kim.github.com \
-  -H 'Accept-Encoding: gzip' \
-  -s \
-  -o result-gzip
-
-cat result-gzip
-압축된 문서
+```
+> Accept-Encoding: gzip
+< Content-Encoding: gzip
 ```
 
-```shell
-curl https://github.com/jeonghwan-kim/jeonghwan-kim.github.com \
-  -H 'Accept-Encoding: gzip' \
-  -s \
-  --compressed
-
-압축해제된 문서
-```
-
-- 라이브러리: [compression](https://github.com/expressjs/compression#readme)
-
-```js
-// 어플리케이션에 압축 미들웨어를 추가했다.
-// Accept-Encoding 요청 헤더를 읽고 자원을 압축해서 응답할 것이다.
-// 물론 Content-Encoding 헤더까지 실어 보낸다.
-app.use(compression())
-```
-
-```js
-// 요청 헤더에서 압축 방식을 읽는다.
-// accept-encoding 헤더를 읽을 것이다.
-var accept = accepts(req)
-var method = accept.encoding(["gzip", "deflate", "identity"])
-
-// 생략
-
-// 압축 방식에 따라 압축 파이프라인을 생성한다.
-// zlib 노드 코어 모듈을 사용한다.
-stream = method === "gzip" ? zlib.createGzip(opts) : zlib.createDeflate(opts)
-
-// Content-Encoding에 압축한 방식을 명시한다.
-res.setHeader("Content-Encoding", method)
-// Content-Length 헤더는 삭제한다.
-res.removeHeader("Content-Length")
-```
+- 사례) 깃헙
+- 라이브러리) [compression](https://github.com/expressjs/compression#readme)
 
 ## 3.3 언어
 
