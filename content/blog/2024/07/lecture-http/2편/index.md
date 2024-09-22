@@ -6,14 +6,21 @@ layout: post
 series: "HTTP"
 ---
 
+# 소개
+
+- 웹 브라우져가 HTTP를 어떻게 사용하는지 이해할수 있습니다.
+- **3장. 컨텐츠 협상**: 웹브라우져가 서버와 데이터를 주고 받을 때 최적의 형태로 만들기 위한 매커니즘을 이해하실 수 있습니다.
+- **4장. 쿠키**: 서버가 웹 브라우져를 식별하기 위한 방법인 쿠키에 대해 배우실 수 있습니다.
+- **5장. 네트워크 요청**: 웹 브라우저에서 발생할 수 있는 HTTP 요청의 종류에 대해 알 수 있습니다.
+
 # 3장. 컨텐츠 협상
 
 - 서버는 다양한 클라이언트에 적합한 자원을 제공해야합니다.
 - 컨텐츠 협상에 사용되는 HTTP 헤더와 동작 방식을 공부합니다.
 
-## 3.1 Accpet와 Content-Type
+## 3.1 컨텐츠 타입
 
-- Accept와 Content-Type
+- Accept 요청 헤더, Content-Type 응답 헤더
 
 ```
 > Accpet: text/html
@@ -25,7 +32,7 @@ series: "HTTP"
 
 ## 3.2 압축
 
-- Accept-Encoding과 Content-Encoding
+- Accept-Encoding 요청 헤더, Content-Encoding 응답 헤더
 
 ```
 > Accept-Encoding: gzip
@@ -37,7 +44,7 @@ series: "HTTP"
 
 ## 3.3 언어
 
-- Accept-Language
+- Accept-Language 요청 헤더
 
 ```
 > Accept-Language: ko
@@ -46,67 +53,48 @@ series: "HTTP"
 - 사례) 유투브
 - 라이브러리) [express.js req.acceptLanuages()](https://expressjs.com/en/5x/api.html#req.acceptsLanguages), [accepts](https://github.com/jshttp/accepts/blob/master/index.js#L195), [negotiator](https://github.com/jshttp/negotiator/blob/master/index.js#L63)
 
-## 3.4 유저 에이전트
+## 3.4 사용자 에이전트
 
-- `> User-Agent: <제품명>/<버전> <설명>`
-- 사례: 브라우져 감지
-- 라이브러리: [express-useragent](https://github.com/biggora/express-useragent/blob/master/lib/express-useragent.js)
+- User-Agent 요청 헤더
 
-```js
-var UserAgent = function () {
- this._Versions = {
-    Edge: /(?:edge|edga|edgios|edg)\/([\d\w\.\-]+)/i,
-    Firefox: /(?:firefox|fxios)\/([\d\w\.\-]+)/i,
-    IE: /msie\s([\d\.]+[\d])|trident\/\d+\.\d+;.*[rv:]+(\d+\.\d)/i,
-    Chrome: /(?:chrome|crios)\/([\d\w\.\-]+)/i,
-    Safari: /(version|safari)\/([\d\w\.\-]+)/i,
+```
+> User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Safari/605.1.15
 ```
 
-## 3.5 Vary
-
-- `< Vary: Accept-Language`
-- 사례: 깃헙
-
-```shell
-curl https://github.com/jeonghwan-kim/jeonghwan-kim.github.com -I
-
-< vary: X-PJAX, X-PJAX-Container, Turbo-Visit, Turbo-Frame, Accept-Encoding, Accept, X-Requested-With
-```
+- 사례) 구형 브라우져 감지
+- 라이브러리) [express-useragent](https://github.com/biggora/express-useragent/blob/master/lib/express-useragent.js)
 
 ## 3.6 중간 정리
 
-- 서버는 최대한 클라이언트가 이해하는 방식으로 자원을 제공한다.
-- HTTP 헤더 기반으로 동작
-  - Accept / Content-Type: 문서 형식
-  - Accept-Encoding / Content-Encoding: 압축 방식
-  - Accept-Language / Content-Language: 선호하는 언어
-  - User-Agent: 클라이언트의 제조사, 브라우져 명, 버전
-  - Vary: 캐시키 안내
-- 사례
-  - 브라우져가 문서 렌더링을 못할 때. Content-Type
-  - 압축 확인. Content-Encoding
-  - 다국어. Content-Language
-  - IE 지원 종료. User-Agent
-- 참고
-  - [컨텐츠 협상 | 김정환블로그](/2024/05/04/content-negotiation)
-  - [사용자 에이전트를 사용한 브라우저 감지 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Browser_detection_using_the_user_agent#mobile_device_detection)
-  - [expressjs/express | 깃헙](https://github.com/expressjs/express)
-  - [expressjs/compression | 깃헙](https://github.com/expressjs/compression)
-  - [jshttp/accepts | 깃헙](https://github.com/jshttp/accepts/)
-  - [jshttp/negotiator | 깃헙](https://github.com/jshttp/negotiator)
-  - [biggora/express-useagent | 깃헙](https://github.com/biggora/express-useragent/blob/master/lib/express-useragent.js)
+- 컨텐츠 협상은 HTTP 헤더를 기반으로 동작
+- 경험했던 사례 소개
+
+### 참고
+
+- [컨텐츠 협상 | 김정환블로그](/2024/05/04/content-negotiation)
+- [사용자 에이전트를 사용한 브라우저 감지 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Browser_detection_using_the_user_agent#mobile_device_detection)
+- [expressjs/express | 깃헙](https://github.com/expressjs/express)
+- [expressjs/compression | 깃헙](https://github.com/expressjs/compression)
+- [jshttp/accepts | 깃헙](https://github.com/jshttp/accepts/)
+- [jshttp/negotiator | 깃헙](https://github.com/jshttp/negotiator)
+- [biggora/express-useagent | 깃헙](https://github.com/biggora/express-useragent/blob/master/lib/express-useragent.js)
 
 # 4장. 쿠키
 
-- 매직 쿠키. 쇼핑 카드 구현할 해법으로 제안. 쿠키 시초.
-- HTTP 관점으로 쿠키 저장소를 이해해야
+- 쿠키의 시초: 매직 쿠키. 쇼핑카트
+- HTTP 관점으로 보아야 쿠키를 제대로 이해할 수 있습니다.
 
 ## 4.1 헤더
 
-- HTTP는 상태가 없다(Stateless).
-- 어플리케이션은 상태가 필요하다.
-- `< Set-Cookie: sid=1 // 당신의 세션 아이디는 1입니다.`
-- `> Cookie: sid=1 // 저의 세션 아이디 입니다.`
+- 무상태 HTTP
+- Set-Cookie 응답 헤더와 Cookie 요청 헤더
+
+```
+< Set-Cookie: sid=1
+> Cookie: sid=1
+```
+
+- 클라이언트를 식별할 수 있는 서버 제작
 
 ## 4.2 범위
 
