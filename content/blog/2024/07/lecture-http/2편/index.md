@@ -98,22 +98,16 @@ series: "HTTP"
 
 ## 4.2 범위
 
-- 도메인 레코드 추가
-  - 127.0.0.1 foo.com
-  - 127.0.0.1 bar.com
-- **Domain**: 쿠키를 전송할 도메인을 지정하는 디렉티브
+- Domain 쿠키 디렉티브
 
-```shell
-< Set-Cookie: sid=1; Domain=foo.com  // foo.com 도메인(하위 도메인 포함)에만 쿠키를 전달하세요.
+```
+< Set-Cookie: sid=1; Domain=foo.com
 ```
 
-- 하위 경로로 사이트를 구분한 경우도 있다.
-  - foo.com/public: 인증 없이 접속
-  - foo.com/private: 인증하고 접속
-- **Path**: 쿠키를 전송할 경로 지정하는 디렉티브
+- Path 쿠키 디렉티브
 
-```shell
-< Set-Cookie: sid=1; Path=/private  // /private 경로(하위 경로 포함)에만 쿠키를 전달하세요.
+```
+< Set-Cookie: sid=1; Path=/private
 ```
 
 ## 4.3 생명주기
