@@ -190,11 +190,10 @@ series: "HTTP"
 
 ## 5.4 Form 요청
 
-- 사용자가 제출하는 시점에 데이터를 서버로 전송할 수 있다.
-- GET 메소드
-- POST 메소스. 요청 바디 지원.
-- 두 가지 요청 바디: x-www-form-urlencoded, form-data
-- 사례: 로그인, 파일 업로드
+- **form 태그**는 사용자가 원하는 시점에 HTTP 요청을 만든다.
+- GET 메소드 방식
+- POST 메소드 방식
+- application/x-www-form-urlencoded과 multipart/form-data
 
 ## 5.5 중간 정리
 
