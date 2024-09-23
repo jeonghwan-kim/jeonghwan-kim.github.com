@@ -197,9 +197,12 @@ series: "HTTP"
 
 ## 5.5 중간 정리
 
-- 주소창에 URL을 입력하거나 하이퍼링크를 클릭하면 브라우져는 HTTP 요청을 만든다.
-- HTML을 렌더링할 때 필요한 자원을 얻기 위해 HTTP 요청을 만든다.
-- 데이터를 서버에 전달하기 위해 Form 앨리먼트를 사용해 HTTP 요청을 만들 수 있다.
-- 참고
-  - [중요 렌더링 경로 | MDN](https://developer.mozilla.org/ko/docs/Web/Performance/Critical_rendering_path)
-  - [\<form\> | MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form)
+- 브라우져는 HTML을 얻기 위해 HTTP 요청을 만듭니다.
+- 브라우져는 HTML 렌더링 과정에 필요한 HTTP 요청을 만듭니다.
+- 브라우져는 img 태그를 만나면 HTTP 요청을 만듭니다.
+- 브라우져는 form 태그를 만나면 HTTP 요청을 만듭니다.
+
+### 참고
+
+- [중요 렌더링 경로 | MDN](https://developer.mozilla.org/ko/docs/Web/Performance/Critical_rendering_path)
+- [\<form\> | MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form)
