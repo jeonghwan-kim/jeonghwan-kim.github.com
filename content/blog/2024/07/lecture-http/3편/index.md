@@ -1,113 +1,32 @@
 ---
 slug: "/2024/07/09/lecture-http-part3"
 date: 2024-07-09 00:01:00
-title: "[HTTP] 3편. Fetch"
+title: "[HTTP] 3편. AJAX"
 layout: post
 series: "HTTP"
 ---
 
 # 6장. 업로드와 응답
 
+# 소개
+
+- 직접 만들 수 있는 HTTP 요청
+- **6장. AJAX 요청과 응답**: fetch 함수 사용법에 대해
+- **7장. AJAX 진행율과 취소**: AJAX 진행율을 계산하는 방법과 요청을 취소하는 방법에 대해
+- **8장. AJAX 라이브러리**: fetch와 XHR 객체 기반의 주요 AJAX 라이브러리
+
 ## 6.1 AJAX
 
-- 폼 요청의 한계
+- From 요청은 비교적 느림
 - AJAX, Asynchronous JavaScript and XML
-- **XHR(XMHHttpRequest) 객체**: 콜백 방식. 가장 오래된 API
-- **fetch 함수**: HTTP/2, 2015년부터 대부분 브라우져가 지원한다.
-- fetch API 기본 사용 방법을 이해한다.
+- XHR과 fetch
 
 ## 6.2 Fetch API
 
-- fetch 함수를 실행하면 브라우져는 http 요청을 만든다.
-
-```javascript
-/**
- * @param url 요청 주소
- * @param options 옵션 객체
- * @param options.method 요청 메서드
- * @param options.headers 요청 헤더
- * @param options.body 요청 바디
- */
-fetch(url, options)
-```
-
-- 폼 요청과 같은 HTTP 요청을 만들 수 있다.
-
-```html
-<form id="login-form">
-  <input id="email" name="email" placeholder="Email" />
-  <input name="password" placeholder="Password" />
-  <button type="submit">Login</button>
-</form>
-```
-
-```javascript
-document.addEventListener("DOMContentLoaded", () => {
-  const loginForm = document.querySelector("#login-form")
-
-  loginForm.addEventListener("submit", event => {
-    // 폼 기본 동작을 중단한다.
-    event.preventDefault()
-
-    const formData = new FormData(event.target)
-
-    // HTTP 요청을 만든다.
-    fetch("/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams(formData),
-    })
-  })
-})
-```
-
-- 본문은 JSON 형식을 사용한다.
-  - 구조화된 데이터를 표현하기 쉽다.
-  - 가독성이 뛰어나다.
-  - 각 플래폼의 표준으로 자리 잡았다. (활용 예시: REST API)
-
-```javascript
-fetch("/login", {
-  method: "POST",
-  headers: {
-    // 바디를 JSON 형식으로 사용한다.
-    "Content-Type": "application/json",
-  },
-  // JSON 값을 바디에 실는다.
-  body: JSON.stringify({
-    email: formData.get("email"),
-    password: formData.get("password"),
-  }),
-})
-```
-
-- 서버에서도 JSON 요청 바디를 처리한다.
-
-```js
-function postLoginController(req, res) {
-  let body = ""
-
-  req.on("data", chunk => {
-    body = body + chunk.toString()
-  })
-
-  req.on("end", () => {
-    // 요청 바디를 JSON 문자열에서 자바스크립트 객체로 변환한다.
-    const { email, password } = JSON.parse(body)
-
-    const authenticated = email === "myemail" && password === "mypassword"
-
-    // 응답 바디도 JSON 형식을 사용한다.
-    res.writeHead(authenticated ? 200 : 401, {
-      "Content-Type": "application/json",
-    })
-    // 응답 바디에서 JSON 형식의 문자열을 실는다.
-    res.end(JSON.stringify({ authenticated }))
-  })
-}
-```
+- fetch(url, [options]) 함수
+- Request 객체
+- 로그인 POST 요청 제작
+- JSON 형식
 
 ## 6.3 Response
 
