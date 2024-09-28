@@ -28,39 +28,11 @@ series: "HTTP"
 - 로그인 POST 요청 제작
 - JSON 형식
 
-## 6.3 Response
+## 6.3 Response 객체
 
-- 브라우져는 fetch() 함수의 결과로 응답을 이행하는 프라미스를 반환한다.
-- Response 객체
-  - status: 상태 코드
-  - ok: 상태 코드가 200 ~ 299 인지 여부
-  - headers: 응답 헤더
-
-```js
-try {
-  const response = await fetch(url, options)
-  if (!response.ok) {
-    // http 성공 처리
-  } else {
-    // http 실패 처리
-  }
-} catch (e) {
-  // http가 아닌 오류 처리
-}
-```
-
-- Response는 요청한 자원 형식에 따라 전용 메서드를 사용할 수 있다.
-  - text(): 요청 본문을 텍스트로 변환
-  - json(): 요청 본문을 JSON으로 변환
-  - blob(): 요청 본문을 이진 데이터로 변환
-
-```js
-// 요청 본문으로 JSON 으로 조회한다.
-const body = await response.json()
-
-// 본문 객체를 사용할 수 있다.
-alert(body.authenticated)
-```
+- fetch()는 응답 객체로 이행하는 프라미스를 반환
+- 응답 헤더
+- 응답 본문
 
 ## 6.4 중간정리
 
