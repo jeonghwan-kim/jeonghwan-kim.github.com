@@ -36,14 +36,16 @@ series: "HTTP"
 
 ## 6.4 중간정리
 
-- 웹 페이지 전체를 요청하지 않고 데이터만 서버에 전달하는 기법을 AJAX라고 한다.
-- 브라우져는 XHR 객체나 **fetch** 함수를 제공한다.
-- fetch 함수는 Request 객체로 요청을 만들 수 있다.
-- fetch 함수는 Response 객체로 이행하는 프라미스를 반환한다.
-- 참고
-  - [Fetch API | MDN](https://developer.mozilla.org/ko/docs/Web/API/Fetch_API)
-  - [HTTP 상태 코드 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Status)
-  - [Fetch | 모던 자바스크립트 튜토리얼](https://ko.javascript.info/fetch)
+- Form은 화면을 갱신하는 반면 AJAX는 화면을 유지한채 HTTP 요청을 만들수 있습니다.
+- fetch() 함수는 url과 옵션을 지정해 HTP 요청을 만듭니다.
+- fetch는 Response 객체로 이행하는 프라미스를 반환합니다.
+- Response 객체는 응답 본문을 조회하는 메소드를 제공합니다.
+
+### 참고
+
+- [Fetch API | MDN](https://developer.mozilla.org/ko/docs/Web/API/Fetch_API)
+- [HTTP 상태 코드 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Status)
+- [Fetch | 모던 자바스크립트 튜토리얼](https://ko.javascript.info/fetch)
 
 # 7장. 진행율과 취소
 
