@@ -51,35 +51,16 @@ _3편 소개_
 
 ## 7.1 다운로드 진행율
 
-- Response body
+- Response: body 속성
 - 서버 준비
 - 다운로드 진행율 계산
 
 ## 7.2 다운로드 취소
 
-- AbortController는 AbortSignal에게 "abort" 이벤트를 발행을 요청하는 역할.
-- AbortSignal은 "abort" 이벤트를 발행하는 역할
-- fetch 함수에 전달된 AbortContorller의 abort 메소드를 실행하면 AbortSignal이 "abort" 이벤트를 발행, fetch가 이를 감지해 http 요청을 취소한다.
-
-```js
-// AbortController 객체 생성
-const controller = new AbortController()
-
-// 버튼을 클릭하면 "abort" 이벤트를 발행한다.
-abortButton.addEventListener("click", async () => {
-  controller.abort()
-})
-
-// fetch는 signal에서 abort 이벤트를 감지하면 http 요청을 취소한다.
-fetch(url, {
-  signal: controller.signal,
-})
-
-// "abort" 이벤트 핸들러를 추가할 수있다.
-controller.signal.addEventListener("abort", () =>
-  console.log("abort 이벤트 수신함")
-)
-```
+- AbortController
+- AbortSignal
+- Request: signal 속성
+- 다운로드 취소 구현
 
 ## 7.3 업로드 진행율
 
