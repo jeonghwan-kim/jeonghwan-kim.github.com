@@ -9,7 +9,7 @@ series: "HTTP"
 _3편 소개_
 
 - 직접 만들 수 있는 HTTP 요청
-- **6장. AJAX 요청과 응답**: fetch 함수 사용법에 대해
+- **6장. AJAX 요청과 응답**: fetch 함수로 AJAX 요청과 응답을 다루는 법에 대해
 - **7장. AJAX 진행율과 취소**: AJAX 진행율을 계산하는 방법과 요청을 취소하는 방법에 대해
 - **8장. AJAX 라이브러리**: fetch와 XHR 객체 기반의 주요 AJAX 라이브러리
 
@@ -36,7 +36,7 @@ _3편 소개_
 
 ## 6.4 중간정리
 
-- Form은 화면을 갱신하는 반면 AJAX는 화면을 유지한채 HTTP 요청을 만들수 있습니다.
+- Form은 화면을 갱신하는 반면 AJAX는 화면을 유지한 채 HTTP 요청을 만들수 있습니다.
 - fetch() 함수는 url과 옵션을 지정해 HTP 요청을 만듭니다.
 - fetch는 Response 객체로 이행하는 프라미스를 반환합니다.
 - Response 객체는 응답 본문을 조회하는 메소드를 제공합니다.
@@ -49,89 +49,11 @@ _3편 소개_
 
 # 7장. 진행율과 취소
 
-- fetch 함수로 다운로드 진행율을 표시하는 방법
-- fetch 함수로 다운로드를 취소하는 방법
-- xhr 객체로 업로드 진행율을 표시하는 방법
-
 ## 7.1 다운로드 진행율
 
-- Response.body는 응단 본문을 읽을 수 있는 읽기 전용 스트림이다.
-- 응답 본문을 청크로 5번 실어 보내는 서버 코드
-
-```js
-// 5번 쪼게서 응답할 것이다.
-const iterateCount = 5
-
-// 헤더 응답.
-res.writeHead(200, {
-  "content-type": "text/plain",
-  // 응답 본문의 전체 길이다.
-  "content-length": iterateCount * 8,
-})
-
-// 1초씩 지연하면서 8바이트 청크를 5번 응답한다.
-for await (const i of Array(iterateCount).keys()) {
-  res.write(`chunk ${i}\n`)
-  await new Promise(res => setTimeout(res, 1000))
-}
-
-// 응답 종료.
-res.end()
-```
-
-- 클라이언트에서 수신한 응답 바디의 길이를 계산해 진행율을 표시한다.
-
-```js
-document.addEventListener("DOMContentLoaded", async () => {
-  // http 요청을 생성한다
-  const response = await fetch("/chunk")
-
-  // 본문의 전체 길이를 구한다.
-  const totalLength = Number(response.headers.get("content-length"))
-  // 응답 본문 청크를 저장할 것이다.
-  const chunks = []
-  // 응답 받을 때 다 본문의 누적 길이다.
-  let receivedLength = 0
-
-  // 본문 조회 전용 메서드 대신
-  // 읽기 전용 스트림을 얻는다.
-  const reader = response.body.getReader()
-
-  // 본문이 끝날 때까지 반복한다.
-  while (true) {
-    // 스트림에 도착한 데이터를 읽는다.
-    const { done, value } = await reader.read()
-
-    // 본문을 모두 다운로드하면 반복을 마친다.
-    if (done) {
-      const el = document.createElement("pre")
-      el.textContent = "Done."
-      document.body.appendChild(el)
-
-      const textDecoder = new TextDecoder("utf-8")
-      const textList = []
-      for (const chunk of chunks) {
-        // 스트림이 받은 Unit8Array을 문자열로 변환한다.
-        textList.push(textDecoder.decode(chunk))
-      }
-      const responseTextEl = document.createElement("div")
-      responseTextEl.textContent = textList.join("")
-      document.body.appendChild(responseTextEl)
-      break
-    }
-
-    // 청크를 저장한다.
-    chunks.push(value)
-    // 응답 본문의 누적 길이를 갱신한다.
-    receivedLength = receivedLength + value.length
-    // 다운받은 진행율을 표시한다.
-    const el = document.createElement("pre")
-    console.log(receivedLength, totalLength)
-    el.textContent = `${receivedLength}/${totalLength} byte downloaded.`
-    document.body.appendChild(el)
-  }
-})
-```
+- Response body
+- 서버 준비
+- 다운로드 진행율 계산
 
 ## 7.2 다운로드 취소
 
