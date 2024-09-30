@@ -64,40 +64,23 @@ _3편 소개_
 
 ## 7.3 업로드 진행율
 
-- 아직은 XHR 객체로 업로드 진행율을 표시한다.
-
-```js
-// xhr 객체를 준비한다.
-const xhr = new XMLHttpRequest()
-
-// 업로드 진행율
-let uploadProgress = 0
-
-// 업로드 진행 이벤트 처리기
-const handleProgress = event => {
-  if (event.lengthComputable) {
-    // 업로드 진행율을 갱신한다.
-    uploadProgress = (event.loaded / event.total) * 100
-    // 업로드 진행율을 표시한다.
-    console.log(`업로드 진행율: ${uploadProgress}%`)
-  }
-}
-// 업로드 이벤트(progress)를 처리한다.
-xhr.upload.addEventListener("progress", handleProgress)
-```
+- XHR 객체로 업로드 진행율 계산
+- progress 이벤트 활용
 
 ## 7.4 중간정리
 
-- 다운로드 진행율은 Reponse.body 스트림을 사용해 계산한다.
-- 다운로드 취소는 AbortController와 AbortSignal을 사용해 취소 가능한 HTTP 요청을 만든다.
-- 업로드 진행율은 fetch에서 지원하지 않는다. XHR 객체와 "progress" 이벤트를 사용한다.
-- 참고
-  - [Fetch Progress | JAVASCRIPT.INFO](https://ko.javascript.info/fetch-progress)
-  - [ReadableStream | MDN](https://developer.mozilla.org/ko/docs/Web/API/ReadableStream)
-  - [Fetch Abort | MDN](https://ko.javascript.info/fetch-abort)
-  - [AbortController | MDN](https://developer.mozilla.org/ko/docs/Web/API/AbortController)
-  - [AbortSignal | MDN](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)
-  - [XMLHttpRequst | JAVASCRIPT.INFO](https://ko.javascript.info/xmlhttprequest)
+- fetch로 응답 진행율을 계산할 수 있다.
+- fetch로 응답을 취소할 수 있다.
+- XHR 객체로 요청 진행율을 계산할 수 있다.
+
+### 참고
+
+- [Fetch Progress | JAVASCRIPT.INFO](https://ko.javascript.info/fetch-progress)
+- [ReadableStream | MDN](https://developer.mozilla.org/ko/docs/Web/API/ReadableStream)
+- [Fetch Abort | MDN](https://ko.javascript.info/fetch-abort)
+- [AbortController | MDN](https://developer.mozilla.org/ko/docs/Web/API/AbortController)
+- [AbortSignal | MDN](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)
+- [XMLHttpRequst | JAVASCRIPT.INFO](https://ko.javascript.info/xmlhttprequest)
 
 # 8장. 라이브러리
 
