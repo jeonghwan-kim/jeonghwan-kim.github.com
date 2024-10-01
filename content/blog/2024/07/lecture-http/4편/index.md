@@ -94,42 +94,19 @@ _4편 소개_
 
 ## 11.4 재연결
 
-- EventSource 객체는 서버와 연결이 끊기면 다시 연결한다.
-- 메세지에 retry로 재연결 시간을 지정할 수 있다.
-
-```js
-waitingClient.write(
-  [
-    // 오류시 10초 후에 재연결한다.
-    `retry: 10000\n`,
-    `data: ${message.toString()}\n\n`,
-  ].join("")
-)
-```
-
-- 이전에 받은 메세지에 id가 있다면 last-client-id 헤더에 값을 실어서 보낸다.
-- 서버는 이 아이디로 클라이언트가 마지막 수신한 메세지를 알 수 있다.
-
-```js
-function subscribe(req, res) {
-  const lastEventId = req.headers["last-event-id"]
-  if (lastEventId) {
-    // 클라이언트가 받지 못한 이벤트를 응답한다.
-  }
-}
-```
+- EventSource 객체는 서버와 연결이 끊기면 다시 연결. retry로 설정
+- 이전에 받은 메세지가 있다면 last-event-id 헤더에 값을 실어서 보낸다.
 
 ## 11.5 중간 정리
 
-- `content-type: text/event-stream` 헤더 응답
-- EventSource 브라우져 객체
-- HTTP 연결 유지, 실패시 재접속 등 간편하게 사용할 수 있다.
-- 한계
-  - 클라이언트가 많을 경우 서버 자원을 많이 사용한다.
-  - 단방향
-- 참고
-  - https://chatgpt.com/c/77761981-674b-44ff-81c7-03291e7bfcc8
-  - SSE 코드 및 설명
+- 클라이언트와 서버 연결 유지 및 실시간 메세지 전송 기법
+- EventSource
+- 특징: 실시간 알림을 위한 프로토콜
+- 주의사항: 단방향 메세지
+
+### 참고
+
+- [Server Sent Events | JAVASCRIPT.INFO](https://ko.javascript.info/server-sent-events)
 
 # 12장. 웹 소켓
 
