@@ -54,55 +54,9 @@ _4편 소개_
 
 ## 10.2 서버 구현
 
-```js
-/**
- * 응답 대기중인 클라이언트들
- */
-let waitingClients = []
-
-function longPoll(req, res) {
-  // 데이터가 없는 경우
-  if (!message) {
-    // 클라이언트 대기열에 추가한다.
-    waitingClients.push(res)
-
-    // 10초간 기다리고 408 Reuqest Timeout을 응답한다.
-    res.setTimeout(10000, () => {
-      res.writeHead(408)
-      res.end()
-    })
-
-    return
-  }
-
-  // 데이터가 있으면 응답하고 비운다.
-  res.writeHead(200, {
-    "content-type": "application/json",
-  })
-  res.end(`${message}`)
-  message = null
-}
-
-function update(req, res) {
-  req.on("end", () => {
-    // (...)
-
-    for (const waitingClient of waitingClient) {
-      waitingClient.writeHead(200, {
-        "content-type": "application/json",
-      })
-      waitingClient.end(`${message}`)
-    }
-
-    // 본 요청한 클라이언트에게 응답한다.
-    res.end(`${message}`)
-
-    // 메세지와 클라이언트 대기열을 비운다
-    message = null
-    waitingClients = []
-  })
-}
-```
+- 클라이언트 대기열 준비
+- 채팅 메세지 조회 기능
+- 채팅 메세지 추가 기능
 
 ## 10.3 클라이언트 구현
 
