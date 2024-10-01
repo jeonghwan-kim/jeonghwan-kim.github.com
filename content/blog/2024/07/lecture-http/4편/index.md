@@ -89,19 +89,8 @@ _4편 소개_
 
 ## 11.3 클라이언트 구현
 
-- 구독함수 정의
-
-```js
-function subscribe() {
-  // 이벤트 스트림을 구독한다.
-  eventSource = new EventSource("/subscribe")
-
-  // 메세지를 수신하면 화면에 출력한다.
-  eventSource.addEventListener("message", function (e) {
-    render(JSON.parse(e.data))
-  })
-}
-```
+- EventSource
+- 수신한 메세지를 출력
 
 ## 11.4 재연결
 
