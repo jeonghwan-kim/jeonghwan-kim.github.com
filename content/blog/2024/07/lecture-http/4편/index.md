@@ -60,27 +60,8 @@ _4편 소개_
 
 ## 10.3 클라이언트 구현
 
-```js
-/**
- * 지속적으로 서버 자원을 조회한다.
- */
-async function longPollServer() {
-  const response = await fetch("/poll")
-
-  // 타임아웃이 발생하면 다시 연결한다.
-  if (response.status === 408) {
-    longPollServer()
-    return
-  }
-
-  // 새로운 데이터 수신
-  const message = await response.json()
-  render(message)
-
-  // 즉시 다시 요청한다.
-  longPollServer()
-}
-```
+- 지속적으로 요청 생성
+- 수신한 메세지를 출력
 
 ## 10.4 중간 정리
 
