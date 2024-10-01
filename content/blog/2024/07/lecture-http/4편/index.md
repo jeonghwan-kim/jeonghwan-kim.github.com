@@ -83,69 +83,9 @@ _4편 소개_
 
 ## 11.2 서버 구현
 
-- GET /subscribe 컨트롤러
-
-```js
-/**
- * 이벤트 스트림을 구독한다.
- */
-function subscribe(req, res) {
-  // 이벤트 스트림 헤더를 실는다.
-  res.writeHead(200, {
-    "content-type": "text/event-stream",
-  })
-  // 헤더 끝을 표시한다.
-  res.write("\n")
-
-  // 클라이언트 대기열에 넣는다.
-  // 종료 응답을 하지않고 클라이언트와 연결을 유지한다.
-  waitingClients.push(res)
-
-  // 요청 취소 처리
-  req.on("close", () => {
-    waitingClients = waitingClients.filter(client => client !== res)
-  })
-}
-```
-
-- POST /update 컨트롤러
-
-```js
-function update(req, res) {
-  let body = ""
-
-  req.on("data", chunk => {
-    body = body + chunk.toString()
-  })
-
-  req.on("end", () => {
-    const { text } = JSON.parse(body)
-
-    if (!text) {
-      res.writeHead(400, {
-        "content-type": "application/json",
-      })
-      res.end(
-        JSON.stringify({
-          error: "text 필드를 채워주세요",
-        })
-      )
-      return
-    }
-
-    // 메세지를 생성한다.
-    const message = new Message(text)
-
-    // 대기열에 있는 클라이언트에게 메세지를 응답한다.
-    for (const waitingClient of waitingClients) {
-      waitingClient.write(`data: ${message}\n\n`)
-    }
-
-    // 본 요청한 클라이언트에게 응답한다.
-    res.end(`${message}`)
-  })
-}
-```
+- 클라이언트 대기열 준비
+- 알림 구독 기능
+- 채팅 메세지 추가 기능
 
 ## 11.3 클라이언트 구현
 
