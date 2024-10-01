@@ -65,14 +65,13 @@ _4편 소개_
 
 ## 10.4 중간 정리
 
-- 폴링의 단점을 개선한 것이 롱폴링. 실시간성을 높임
-- 알림이 있는 경우만 HTTP 메세지를 전달해서 네트우거 대역 최소화
-- 한계
-  - 요청을 오랜시간 유지해야한다.
-  - 클라이언트가 동시에 연결을 유지할 경우 서버 자원 사용이 증가할 수 있다.
-- 참고
-  - https://chatgpt.com/c/8d444d7c-b88f-4f64-8689-626adf84e66f
-  - https://ko.javascript.info/long-polling
+- HTTP 연결을 유지하기 위해 응답을 지연하는 기법
+- 특징: 실시간성
+- 주의할 점 : 서버 자원을 낭비할 수 있다.
+
+### 참고
+
+- [롱 폴링 | JAVASCRITP.INFO](https://ko.javascript.info/long-polling)
 
 # 11장. SSE
 
