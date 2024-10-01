@@ -118,31 +118,9 @@ _4편 소개_
 
 ## 12.2 서버 구현
 
-```js
-const { WebSocketServer } = require("ws")
-
-const wss = new WebSocketServer({ server })
-```
-
-```js
-/**
- * 웹 소켓 클라이언트 대기열
- * 웹 소켓 연결된 클라이언트들에게 메세지를 전달하기 위한 용도
- */
-let webSocketClients = []
-
-wss.on("connection", webScoket => {
-  // 클라이언트가 연결되면 대기열에 추가한다.
-  webSocketClients.push(webScoket)
-
-  webScoket.on("message", data => {
-    // 대기열에 있는 클라이언트에게 메세지를 전달한다.
-    for (const webSocketClient of webSocketClients) {
-      webSocketClient.send(`${message}`)
-    }
-  })
-})
-```
+- 웹소켓을 웹서버와 통합
+- 클라이언트 대기열 준비
+- 채팅 기능 구현
 
 ## 12.3 클라이언트 구현
 
