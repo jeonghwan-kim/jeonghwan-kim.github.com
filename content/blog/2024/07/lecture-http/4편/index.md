@@ -75,33 +75,11 @@ _4편 소개_
 
 # 11장. SSE
 
-- 폴링은 클라이언트가 지속적으로 서버에 여러번 접속하는 문제가 있다.
-- 서버에서 클라이언트로 메세지를 보내는 방법이 있으면 좋겠다.
-- Server Sent Event
-
 ## 11.1 구조
 
-- HTTP를 기반에 동작하는 HTML5 표준 기술
-- 통신 방식
-  - 클라이언트가 EventSource 객체로 서버에 접속한다.
-  - 서버는 content-type: text/event-stream 헤더를 응답하고 연결을 유지한다.
-  - 클라이언트는 언제라도 서버가 보낸 이벤트를 수신할 수 있다.
-- HTTP 메세지
-
-```
-< Content-Type: text/event-stream
-
-data: Hello
-
-data: Hello again
-This is a connected sentence.
-```
-
-- 응답 본문 형식
-  - data: 보낼 메세지
-  - id: 메세지 아이디
-  - event: 메세지의 이벤트 이름
-  - retry: 재연결 간격 (밀리초 단위)
+- 서버가 실시시간으로 메세지를 보낸다.
+- 리소스를 효율적으로 사용할 수 있다.
+- 비유: 새 소식이 오면 알려주세요.
 
 ## 11.2 서버 구현
 
