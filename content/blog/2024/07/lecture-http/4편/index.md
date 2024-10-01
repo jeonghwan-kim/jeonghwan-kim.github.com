@@ -124,33 +124,18 @@ _4편 소개_
 
 ## 12.3 클라이언트 구현
 
-```js
-/**
- * 서버와 연결된 웹소켓 인스턴스
- */
-let webSocket
-
-/**
- * 웹소켓 인스턴스를 초기화
- */
-function subscribe() {
-  // 서버와 웹소켓 핸드쉐이킹한다.
-  webSocket = new WebSocket("ws://" + location.host)
-
-  // 서버에서 메세지를 받은 경우
-  webSocket.addEventListener("message", event => {
-    // 받은 메세지를 화면에 출력한다.
-    render(JSON.parse(event.data))
-  })
-}
-```
+- 채팅 UI
+- 웹 소켓 연결
+- 수신한 메세지를 출력
+- 메세지 전송
 
 ## 12.4 중간 정리
 
-- 서버와 클라이언트의 양방향 프로토콜
-- TCP 연결을 유지하고 반복된 헤더를 보내지 않아 효율적으로 데이터 전송
-- 한계
-  - 연결 관리 직접 해야.
-  - 클라이언트가 많을 경우 서버 자원을 많이 사용한다.
-- 참고
-  - [웹 소켓 | JAVASCRIPT.INFO](https://ko.javascript.info/websocket)
+- 웹 소켓 프로토콜
+- WebSocket API
+- 특징: 실시간 양방향 통신
+- 주의사항: 연결 관리
+
+### 참고
+
+- [웹 소켓 | JAVASCRIPT.INFO](https://ko.javascript.info/websocket)
