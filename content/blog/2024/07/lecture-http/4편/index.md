@@ -19,54 +19,14 @@ _4편 소개_
 ## 9.1 구조
 
 - 지속적인 요청으로 서버와 연결을 유지한다.
-- 자원을 낭비할 수 있다
+- 자원을 낭비할 수 있다.
 - 비유: 새로운 소식이 있나요?
 
 ## 9.2 서버 구현
 
-```js
-// 채팅 메세지
-let message = null
-
-/**
- * 채팅 메세지를 조회한다
- */
-function poll(req, res) {
-  if (!message) {
-    // 메세지가 없으면 204 헤더만 응답한다.
-    res.writeHead(204)
-    res.end()
-    return
-  }
-
-  // 메세지가 있으면 본문에 실어 응답한다.
-  res.end(`${message}`)
-
-  // 메세지를 초기화한다.
-  message = null
-}
-
-/**
- * 채팅 메세지를 갱신한다.
- */
-function update(req, res) {
-  let body = "";
-
-  req.on("data", (chunk) => {
-    body = body + chunk.toString();
-  });
-
-  req.on("end", () => {
-    const { text } = JSON.parse(body);
-
-    // 메세지를 갱신한다.
-    message = new Message(text);
-
-    // 갱신한 메세지를 응답한다.
-    res.end(`${message}`);
-  });
-
-```
+- 채팅 어플리케이션 제작
+- 채팅 메세지 조회 기능
+- 채팅 메세지 전송 기능
 
 ## 9.3 클라이언트 구현
 
