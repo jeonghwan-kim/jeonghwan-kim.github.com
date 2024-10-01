@@ -125,8 +125,10 @@ _3편 소개_
   - Axios: xhr 기반. 프라이스 인터페이스 제공
   - Ky: fetch 기반. 프라미스 사용 간소화
   - Wretch: 오류 전용 캐처, 미들웨어, 애드온 등 편의 제공
-- 참고
-  - [SuperAgent | Github](https://github.com/ladjs/superagent)
-  - [Axios | Github](https://github.com/axios/axios)
-  - [Ky | Github](https://github.com/sindresorhus/ky)
-  - [Wretch | Github](https://github.com/elbywan/wretch)
+
+### 참고
+
+- [SuperAgent | Github](https://github.com/ladjs/superagent)
+- [Axios | Github](https://github.com/axios/axios)
+- [Ky | Github](https://github.com/sindresorhus/ky)
+- [Wretch | Github](https://github.com/elbywan/wretch)
