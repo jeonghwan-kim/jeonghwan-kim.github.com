@@ -112,36 +112,9 @@ _4편 소개_
 
 ## 12.1 구조
 
-- HTTP는 메세지 전달이 단방향이다.
-  - 폴링: 클라이언트 → 서버
-  - SSE: 클라이언트 → 서버
-- 웹 소켓은 양방향으로 전달한다.
-- HTTP 프로토콜이 아니다. 같은 계층의 다른 프로토콜이다. TPC 기반이다.
-  - ws, wss
-- WS 패킷1. 요청
-
-```
-nc localhost 3000
-
-GET /?encoding=text HTTP/1.1
-Connection: Upgrade
-Upgrade: websocket
-Sec-WebSocket-Key: P7Kp2hTLNRPFMGLxPV47eQ==
-Sec-WebSocket-Version: 13
-```
-
-- WS 패킷2. 응답
-
-```
-HTTP/1.1 101 Switching Protocols
-Upgrade: websocket
-Connection: Upgrade
-Sec-WebSocket-Accept: fX+lgbZ/+V4eiY0s9Muig1sv880=
-
-안녕
-```
-
-- 지속 연결. HTTP 처럼 끊기지 않는다.
+- HTTP 단방향성의 한계
+- 웹 소켓 프로토콜
+- WebSocket API
 
 ## 12.2 서버 구현
 
