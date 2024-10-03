@@ -41,28 +41,10 @@ _5편 소개_
 
 ## 13.4 컨텐츠 보안 정책
 
-Content-Security-Policy 응답 헤더
-
-- 다른 출처의 자원을 브라우져가 로딩하는 것을 제어할 수 있다.
-- 서버가 응답 헤더에 정책을 실어 보내면 브라우져는 이 정책에 따라 자원을 로딩한다.
-
-```shell
-< Content-Security-Policy: default-src 'self'
-```
-
-자원 종류별 정책을 설정
-
-- script-src: 자바스크립트 출처에 대한 정책
-- style-src: 스타일 시트 출처에 대한 정책
-- img-src: 이미지 출처에 대한 정책
-
-Content-Security-Policy-Report-Only 응답 헤더
-
-- 보안 진단만하고 로드를 차단하지는 않는다.
-- 진단 결과를 서버에 리포트한다.
-- 사례 탐구: 구글 사이트
-
-CSP 뿐만 아니라 쿠키, 새니타이즈, 에스케이프 따위의 **종합적**으로 사용해서 보안 사고를 예방할 수 있다.
+- Content-Security-Policy 응답 헤더
+- CSP의 일반적인 사용 사례
+- Content-Security-Policy-Report-Only 헤더(진단 보고서)
+- 사례 탐구: google.com
 
 ## 13.5 동일 출처 정책
 
