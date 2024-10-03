@@ -55,10 +55,15 @@ _5편 소개_
 
 ## 13.6 중간 정리
 
-- 공격 기법: 크로스 사이트 스크립팅(XSS)
-- 응용 공격 기법: 세션 하이재킹, 교차 사이트 요청 위조(CSRF)
-- 브라우져 보안 정책: CSP, SOP
-- 참고
+- 크로스 사이트 스크립팅 공격의 원리와 예방 방법
+- 다양한 공격들: 세션 하이재킹, CSRF
+- CSP와 SOP
+
+### 참고
+
+- [공격유형 | MDN](https://developer.mozilla.org/ko/docs/Web/Security/Types_of_attacks#cross-site_scripting_xss)
+- [컨텐츠 보안 정책 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/CSP)
+- [동일 출처 정책 | MDN](https://developer.mozilla.org/ko/docs/Web/Security/Same-origin_policy#교차_출처_네트워크_접근)
 
 # 14장. CORS
 
