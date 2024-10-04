@@ -86,14 +86,12 @@ _5편 소개_
 
 ## 14.4 CORS를 사용하는 요청
 
-## 14.7 중간 정리
+## 14.5 중간 정리
 
-- 용어: 출처, 교차 출처 요청, 교차 출처 자원 공유
-- 단순 요청: Origin, Access-Control-Allow-Origin
-- 안전하지 않은 헤더를 사용한 요청: Access-Control-Allow-Headers
-- 사전 요청: Access-Control-Request-Method, Access-Control-Allow-Methods
-- 사전 요청 캐시: Access-Control-Max-Age
-- 사례
+- CORS의 동작 원리
+- 단순 요청
+- 사전요청
+- CORS를 사용하는 요청
 
 # 15장. HTTPS
 
