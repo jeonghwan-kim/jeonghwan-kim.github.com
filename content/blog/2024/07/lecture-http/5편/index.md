@@ -67,82 +67,24 @@ _5편 소개_
 
 # 14장. CORS
 
-## 14.1 도입
+## 14.1 CORS의 동작 원리
 
-용어
-
-- **출처(Origin)**: URL의 프로토콜, 호스트, 포트
-- **교차 출처 요처(Cross Origin Request)**: 다른 출처의 자원을 사용하는 요청
-
-브라우져는 실행중이 어플리케이션의 출처와 다른 출처의 자원을 요청하면 이를 차단한다. 허용하기 위한 서버와의 약속이 바로 Cross Origin Resource Sharing, CORS.
-
-상황 재현하기
+- 용어 정리: 출처, 교차 출처 요청
+- 재현: 웹 서버 준비
+- 재현: 교차 출처 요청
+- 해결: 서버가 허용할 출처를 명시한다.
 
 ## 14.2 단순 요청
-
-단순요청(Simple Request)
 
 - GET, POST, HEAD 메소드를 사용한다.
 - 안전한 헤더를 사용한다.
 
-단순 요청에서는 헤더에 출처를 실어서 판단한다.
+## 14.3 사전 요청
 
-- **Origin** 요청 헤더에 출처를 실어서 서버로 보낸다.
-- **Access-Control-Allow-Origin** 응답 헤더에 허용할 출처를 실어서 브라우져로 보낸다.
+- PUT, PATCH, DELETE 메소드를 사용한다.
+- 사전 요청 캐시
 
-```
-> Origin: http://localhost:3000
-< Access-Control-Allow-Origin: http://localhost:3000
-```
-
-## 14.3 헤더
-
-안전한 헤더(CORS_safelisted request-header)
-
-- Accept
-- Accept-Language
-- Content-Language
-- Content-Type
-
-브라우져가 교차 출처 요청 시 이 외의 헤더를 사용하려면 서버에게 확인해야 한다.
-
-- **Access-Control-Allow-Headers** 요청, 응답 헤더로 허용할 헤더 목록을 확인한다.
-- 서버가 허용하지 않은 헤더를 사용하면 브라우져는 CORS 오류를 던진다.
-
-```
-> Access-Control-Allow-Headers: X-Foo
-< Access-Control-Allow-Headers: X-Foo
-```
-
-## 14.4 사전 요청
-
-교차 출처 요청에 PUT, PATCH, DELETE 메소드를 사용하면 브라우져는 사전요청(Preflighted Reuqst) 을 만든다.
-
-- 브라우져: OPTIONS 메소드를 사용해 **Access-Control-Request-Method** 헤더에 사용할 메서드를 실는다.
-- 서버: **Access-Control-Allow-Methods** 헤더에 허용할 메소드를 실는다.
-- 브라우저는 이 헤더를 확인하고 이어서 본 요청을 보낸다.
-
-```
-> Access-Control-Request-Method: PUT
-< Access-Control-Allow-Methods: PUT, PATCH, DELETE
-```
-
-## 14.5 캐시
-
-사전 요청을 캐시할 수 있다.
-
-- 서버: **Access-Control-Max-Age** 헤더에 캐시 기간(초)를 설정한다.
-- 브라우져: 캐시로 사전 요청을 생략하고 본 요청을 보낸다.
-
-## 14.6 사례
-
-CORS를 사용하는 요청
-
-- fetch(), XHR
-- 웹 폰트
-- (...)
-
-현업에서 겪은 사례 소개
+## 14.4 CORS를 사용하는 요청
 
 ## 14.7 중간 정리
 
