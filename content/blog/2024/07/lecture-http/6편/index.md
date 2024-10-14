@@ -62,9 +62,20 @@ _6편 소개_
 
 ## 16.8 중간 정리
 
-- async, defer로 비동기로 스크립트를 다운로드해 렌더링 시간 단축
-- preload, prefetch 로 웹 자원을 미리 다운로드해 필요한 시점에 즉시 사용
-- 이미지가 뷰포트에 들어오기 전까지 다운로드를 지연해 렌더링 성능 개선
+- 주요 렌더링 경로에서 추가적인 HTTP 요청은 성능에 영향을 준다.
+- Async 속성으로 자바스크립트를 비동기로 다운로드 할 수 있다.
+- Defer 속성으로 자바스크립트의 실행 순서를 보장할 수 있다.
+- Preload로 웹 페이지에 필요한 자원을 미리 다운로드 할 수 있다.
+- Prefetch로 다음 페이지에 필요한 자원을 미리 다운로드 할 수 있다.
+- img 태그로 로딩하는 이미지는 지연 로딩할 수 있다.
+
+### 참고
+
+- [주요 렌더링 경로 | MDN](https://developer.mozilla.org/ko/docs/Web/Performance/Critical_rendering_path)
+- [defer, async 스크립트 | JAVASCRITP.INFO](https://ko.javascript.info/script-async-defer)
+- [preload | MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Attributes/rel/preload)
+- [prefetch | MDN](https://developer.mozilla.org/ko/docs/Glossary/Prefetch)
+- [img | MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/img)
 
 # 17장. 캐시
 
