@@ -110,3 +110,17 @@ _6편 소개_
 - 파일별로 Cache-Control 캐시 정책을 전달해 브라우져가 네트웍 요청을 최소화 하도록 유도한다.
 
 ## 17.6 중간 정리
+
+- 브라우져와 서버 간의 캐싱 관련 HTTP 헤더
+- 브라우져와 서버간의 HTTP 캐싱 매커니즘 정리
+- 캐시를 설정할 때는 무척 신중해야 한다.
+
+### 출처
+
+- [HTTP 캐싱 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Caching)
+- [HTTP 캐싱 | 김정환블로그](/2024/02/08/http-caching)
+- HTTP 완벽가이드 > 7장 캐시
+- 리얼월드 HTTP > 2.8 캐시
+- [캐시로 불필요한 네트워크 요청 방지 | web.dev](https://web.dev/articles/http-cache?hl=ko#examples)
+- [HTTP 캐시로 불필요한 네트워크 요청 방지 | web.dev](https://web.dev/articles/http-cache?hl=ko)
+- [HTTP 캐싱 동작 구성 | web.dev](https://web.dev/articles/codelab-http-cache?hl=ko)
