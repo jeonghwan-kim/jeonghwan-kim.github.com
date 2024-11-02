@@ -27,8 +27,8 @@ _2편 소개_
 < Content-Type: text/html
 ```
 
-- 사례) 깃헙 사례
-- 라이브러리) [express.js의 res.format](https://github.com/expressjs/express/blob/master/lib/response.js#L562)
+- 사례: 깃헙
+- 라이브러리: [express.js의 res.format](https://github.com/expressjs/express/blob/master/lib/response.js#L562)
 
 ## 3.2 압축
 
@@ -39,8 +39,8 @@ _2편 소개_
 < Content-Encoding: gzip
 ```
 
-- 사례) 깃헙
-- 라이브러리) [compression](https://github.com/expressjs/compression#readme)
+- 사례: 깃헙
+- 라이브러리: [compression](https://github.com/expressjs/compression#readme)
 
 ## 3.3 언어
 
@@ -50,8 +50,8 @@ _2편 소개_
 > Accept-Language: ko
 ```
 
-- 사례) 유투브
-- 라이브러리) [express.js req.acceptLanuages()](https://expressjs.com/en/5x/api.html#req.acceptsLanguages), [accepts](https://github.com/jshttp/accepts/blob/master/index.js#L195), [negotiator](https://github.com/jshttp/negotiator/blob/master/index.js#L63)
+- 사례: 유투브
+- 라이브러리: [express.js req.acceptLanuages()](https://expressjs.com/en/5x/api.html#req.acceptsLanguages), [accepts](https://github.com/jshttp/accepts/blob/master/index.js#L195), [negotiator](https://github.com/jshttp/negotiator/blob/master/index.js#L63)
 
 ## 3.4 사용자 에이전트
 
@@ -61,8 +61,8 @@ _2편 소개_
 > User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.3.1 Safari/605.1.15
 ```
 
-- 사례) 구형 브라우져 감지
-- 라이브러리) [express-useragent](https://github.com/biggora/express-useragent/blob/master/lib/express-useragent.js)
+- 사례: 구형 브라우져 감지
+- 라이브러리: [express-useragent](https://github.com/biggora/express-useragent/blob/master/lib/express-useragent.js)
 
 ## 3.6 중간 정리
 
