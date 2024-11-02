@@ -84,7 +84,7 @@ _2편 소개_
 - 쿠키의 시초: 매직 쿠키. 쇼핑카트
 - HTTP 관점으로 보아야 쿠키를 제대로 이해할 수 있습니다.
 
-## 4.1 헤더
+## 4.1 쿠키 헤더
 
 - 무상태 HTTP
 - Set-Cookie 응답 헤더와 Cookie 요청 헤더
@@ -96,12 +96,12 @@ _2편 소개_
 
 - 클라이언트를 식별할 수 있는 서버 제작
 
-## 4.2 범위
+## 4.2 쿠키 유효 범위
 
 - Domain 쿠키 디렉티브
 
 ```
-< Set-Cookie: sid=1; Domain=foo.com
+< Set-Cookie: sid=1; Domain=mysite.com
 ```
 
 - Path 쿠키 디렉티브
@@ -110,7 +110,7 @@ _2편 소개_
 < Set-Cookie: sid=1; Path=/private
 ```
 
-## 4.3 생명주기
+## 4.3 쿠키 생명주기
 
 - 세션 쿠키(Session Cookie)
 - Max-Age와 Expries 쿠키 디렉티브
@@ -121,7 +121,7 @@ _2편 소개_
 
 - 영속적인 쿠키(Permanent Cookie)
 
-## 4.4 Secure
+## 4.4 쿠키 Secure
 
 - 쿠키는 평문이라 유출될 수 있다.
 - Secure 쿠키 디렉티브
@@ -130,7 +130,7 @@ _2편 소개_
 < Set-Cookie: sid=1; Secure
 ```
 
-## 4.5 HttpOnly
+## 4.5 쿠키 HttpOnly
 
 - 자바스크립트로 쿠키를 위조할 수 있다.
 - HttpOnly 쿠키 디렉티브
@@ -152,9 +152,9 @@ _2편 소개_
 ## 4.8 중간정리
 
 - 상태가 없는 HTTP에 상태를 추가할 목적으로 쿠키를 사용합니다.
-- 쿠키 유효범위를 지정하는 디렉티브: Domain, Path
-- 쿠키 생명 주기를 지정하는 디렉티브: Max-Age, Expires
-- 쿠키 생명 주기를 지정하는 디렉티브: Secure, HttpOnly
+- 쿠키 유효범위 디렉티브: Domain, Path
+- 쿠키 생명 주기 디렉티브: Max-Age, Expires
+- 쿠키 보안 디렉티브: Secure, HttpOnly
 - 쿠키 라이브러리
 
 ### 참고
