@@ -19,7 +19,7 @@ _3편 소개_
 
 - From 요청은 비교적 느림
 - AJAX, Asynchronous JavaScript and XML
-- XHR과 fetch
+- XMLHttpRequest(XHR), fetch
 
 ## 6.2 Fetch API
 
