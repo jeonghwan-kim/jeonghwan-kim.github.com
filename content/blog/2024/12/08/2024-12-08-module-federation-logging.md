@@ -78,7 +78,7 @@ class TypesPlugin {
 호스트에서 원격 모듈의 타입을 제공하려면 원격 서버에서 타입 파일을 미리 준비해야한다.
 TypesPlugin의 GenerateTypesPlugin이 타입을 만드는 역할을 한다.
 
-한편 **ConsumeTypesPlugin**은 원격에 만들어 둔 타입파일을 호스트에 다운로드한 뒤 개발 환경에 타입 힌트 기능을 지원하는 역할이다.
+한편 **ConsumeTypesPlugin**은 원격에 만들어 둔 타입파일을 호스트에 다운로드한 뒤 개발 환경에 타입 힌트 기능을 지원하는 역할이다.
 
 # 원격 타입 가져오기 과정
 
