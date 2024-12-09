@@ -166,5 +166,5 @@ class ModuleFederationConsoleLogPlugin {
 ## 참고
 
 - [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2024-12-08-module-federation-logging)
-- Module Federation
+- [Module Federation](https://module-federation.io)
 - [@module-federation/enhanced | NPM](https://www.npmjs.com/package/@module-federation/enhanced)
