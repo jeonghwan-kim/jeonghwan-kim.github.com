@@ -265,7 +265,7 @@ data-styled.g39[id="style__SiblingNavItem-sc-m5hfiz-21"]{content:"hqwhgU,"}/*!sc
 </ul>
 <p>호스트에서 원격 모듈의 타입을 제공하려면 원격 서버에서 타입 파일을 미리 준비해야한다.
 TypesPlugin의 GenerateTypesPlugin이 타입을 만드는 역할을 한다.</p>
-<p>한편 <strong>ConsumeTypesPlugin</strong>은 원격에 만들어 둔 타입파일을 호스트에 다운로드한 뒤 개발 환경에 타입 힌트 기능을 지원하는 역할이다.</p>
+<p>한편 <strong>ConsumeTypesPlugin</strong>은 원격에 만들어 둔 타입파일을 호스트에 다운로드한 뒤 개발 환경에 타입 힌트 기능을 지원하는 역할이다.</p>
 <h1 id="원격-타입-가져오기-과정" style="position:relative;"><a href="#%EC%9B%90%EA%B2%A9-%ED%83%80%EC%9E%85-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0-%EA%B3%BC%EC%A0%95" aria-label="원격 타입 가져오기 과정 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>원격 타입 가져오기 과정</h1>
 <p>웹팩 플러그인 조합은 ConsumeTypesPlugin에서 끝난다. 이 플러그인은 실제로 원격의 타입을 다운로드하는 역할을 하는 전용 클래스 <strong>DtsManger</strong>로 인스턴스를 만들고 타입을 가져온다.</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">class</span> <span class="token class-name">ConsumeTypesPlugin</span> <span class="token punctuation">{</span>
