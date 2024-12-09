@@ -71,3 +71,4 @@ yarn-error.log
 .idea/
 
 dist
+.obsidian
