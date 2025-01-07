@@ -51,8 +51,7 @@ const loaded = {}
 function myLazy(moduleLoader) {
   const id = moduleId++
 
-  return MyLazyComponent(props)
-  {
+  return MyLazyComponent(props) {
     const LoadedComponent = loaded[id]
 
     // 모듈이 로딩된 후
