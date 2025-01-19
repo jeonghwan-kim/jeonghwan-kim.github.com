@@ -218,21 +218,21 @@ data-styled.g39[id="style__SiblingNavItem-sc-m5hfiz-21"]{content:"hqwhgU,"}/*!sc
 <p>모듈 페더레이션으로 구성한 어플리케이션을 <strong>호스트(Host)</strong> 라고 부른다. 집에 손님을 초대해 파티를 주최하는 사람을 호스트라고 부르는 것과 비슷하다. 호스트는 <strong>원격 모듈(Remote Module)</strong> 이라는 외부 코드를 가져와 어플리케이션을 구성한다.</p>
 <p>이를 위해 원격 모듈의 <strong>메니페스트(Manifest)</strong> 파일을 HTTP 요청으로 가져온다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">getManifestJson</span><span class="token punctuation">(</span>manifestUrl<span class="token punctuation">,</span> moduleInfo<span class="token punctuation">,</span> extraOptions<span class="token punctuation">)</span></code></pre></div>
-<p>예를 들어 localhost:3000 에서 구동하는 호스트 어플리케이션은 다음 요청을 통해 원격 모듈의 메니페스트 파일을 가져 온다.</p>
+<p>예를 들어 3000번 포트에 구동하는 호스트 어플리케이션은 3001번 포트에 구동하는 원격 모듈을 가져오기 위해 원격 모듈의 메니페스트 파일을 먼저 가져 온다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">GET http://localhost:3001/dist/manifest.json</code></pre></div>
-<p>메니페스트는 다음 두 가지 정보를 제공한다.</p>
+<p>이 파일은 원격 모듈의 메타 정보를 갖고 있는데 그 중 아래 두 가지 정보의 역할은 이렇다.</p>
 <ol>
 <li><strong>remoteEntry</strong>: 원격 모듈의 진입점(Entry Point)</li>
 <li><strong>exposes</strong>: 노출된 모듈의 정보</li>
 </ol>
 <p>remoteEntry에 대해 더 알아보자.</p>
 <h1 id="원격-진입점-가져오기" style="position:relative;"><a href="#%EC%9B%90%EA%B2%A9-%EC%A7%84%EC%9E%85%EC%A0%90-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0" aria-label="원격 진입점 가져오기 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>원격 진입점 가져오기</h1>
-<p>원격 메니페스트를 가져온 호스트는 remoteEntry 필드에 있는 이름의 청크를가져온다. 이 파일은 호스트가 원격 모듈과 상호작용하기 위한 진입점이다.</p>
+<p>원격 메니페스트를 가져온 호스트는 remoteEntry 필드에 있는 이름의 청크를 가져온다. 이 파일은 호스트가 원격 모듈과 상호작용하기 위한 진입점이다.</p>
 <p>호스트가 getRemoteEntry 를 호출해 RemoteEntry 파일을 불러온다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">preloadAssets</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">getRemoteEntry</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// "http://localhost:3001/dist/myRemote.js"</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>브라우져는 아래와 같은 HTTP 요청을 통해 이 파일을 다운로드 한다.</p>
+<p>브라우져는 이 파일을 다운로드하기 위해 HTTP 요청을 만들 것이다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">GET http://localhost:3001/dist/myRemote.js</code></pre></div>
 <h1 id="원격-컨테이너-생성" style="position:relative;"><a href="#%EC%9B%90%EA%B2%A9-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-%EC%83%9D%EC%84%B1" aria-label="원격 컨테이너 생성 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>원격 컨테이너 생성</h1>
 <p>원격 모듈이 제공한 진입점은 모듈 로더를 제공한다.</p>
@@ -251,7 +251,7 @@ data-styled.g39[id="style__SiblingNavItem-sc-m5hfiz-21"]{content:"hqwhgU,"}/*!sc
   <span class="token keyword">return</span> moduleMap<span class="token punctuation">[</span>module<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>호스트가 get 함수에 모듈 이름을 전달하면 이 코드는 moduleMap에서 해당 청크를 찾는다.</p>
-<p>호스트에서 원격 모듈의 특정 모듈을 사용하면 브라우져는 HTTP 요청을 통해 이 청크를 다운로드할 것이다.</p>
+<p>호스트에서 원격의 특정 모듈(가령 math 모듈)을 사용하면 브라우져는 HTTP 요청을 통해 이 청크를 다운로드할 것이다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">GET http://localhost:3001/dist/__federation_expose_math.js</code></pre></div>
 <p>공유 스코프를 초기화하는 역할도 한다고 하는데 충분히 이해하지는 못했다.</p>
 <h1 id="원격-모듈을-사용하기" style="position:relative;"><a href="#%EC%9B%90%EA%B2%A9-%EB%AA%A8%EB%93%88%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0" aria-label="원격 모듈을 사용하기 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>원격 모듈을 사용하기</h1>
@@ -261,9 +261,9 @@ data-styled.g39[id="style__SiblingNavItem-sc-m5hfiz-21"]{content:"hqwhgU,"}/*!sc
   <span class="token keyword">const</span> math <span class="token operator">=</span> mathModule<span class="token punctuation">.</span>default
   math<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token comment">// 3</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
-<p>import 함수에 원격지 이름과 사용할 모듈 경로를 전달해 실행한다. 브라우져는 HTTP 요청을 만들고 코드 덩어리로 이행되는 프라미스를 반환한다.</p>
+<p>import 함수에 원격지 이름과 사용할 모듈 경로를 전달해 실행한다. 브라우져는 HTTP 요청을 만들고 응답을 받아 코드 덩어리로 이행되는 프라미스를 반환한다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">GET http://localhost:3001/dist/__federation_expose_math.js</code></pre></div>
-<p>이 값이 이행되면 모듈 코드를 실행할 수 있다. default 필드에 담겨진 모듈의 원격 모듈의 add() 함수를 호스트에서 실행할 수 있다.</p>
+<p>프라미스가 이행되면 모듈 코드를 실행할 수 있다. default 필드에 담겨진 모듈의 원격 모듈의 add() 함수를 호스트에서 실행할 수 있다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">3</code></pre></div>
 <p>--</p>
 <p>리액트 컴포넌트도 불러올 수 있다.</p>
@@ -299,16 +299,16 @@ data-styled.g39[id="style__SiblingNavItem-sc-m5hfiz-21"]{content:"hqwhgU,"}/*!sc
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> myModule <span class="token operator">=</span> React<span class="token punctuation">.</span><span class="token function">lazy</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span>
   <span class="token comment">/* WebpackChunkName: myModule */</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">"./myModule.js"</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span></code></pre></div>
-<p>웹팩은 이 주석을 보고 myModule.js 를 청크를 분리하고 WebpackChunkName에 해당하는 값으로 파일 이름을 만든다.</p>
-<p>한편 모듈 페데레이션은 별도 프로젝트에서 원격 모듈을 정의할 수 있다. 호스트와 원격 모듈은 각자의 번들러를 사용해 모듈 페데레이션 빌드도구를 이용해서 코드를 번들한다.</p>
+<p>웹팩은 이 주석을 보고 myModule.js 를 청크로 분리하고 WebpackChunkName 에 해당하는 값으로 파일 이름을 만든다.</p>
+<p>한편 모듈 페데레이션은 별도 프로젝트에서 원격 모듈을 정의할 수 있다. 호스트와 원격 모듈은 각자의 번들러를 사용해 모듈 페데레이션 빌드 도구를 이용해 코드를 번들한다.</p>
 <p><strong>2. 단독으로 배포</strong></p>
-<p>이러한 구조적 차이로 모듈 페더레이션을 사용하면 호스트와 원격이 서로 단독으로 배포할 수 있다. 모듈 간의 인터페이스만 맞다면 각 프로젝트가 독립적으로 업데이트해 배포할 수 있다.</p>
+<p>이러한 구조적 차이로 모듈 페더레이션을 사용하면 호스트와 원격이 각자 단독 배포할 수 있다. 모듈 간의 인터페이스만 맞다면 각 프로젝트가 독립적으로 업데이트해 배포할 수 있다.</p>
 <p><strong>3. 컴포넌트를 포함한 자바스크립트</strong></p>
-<p>리액트 lazy는 오직 리액트 컴포넌트만만 동적으로 로드하는 기능을 제공한다. 하지만 모듈 페더레이션은 이에 국한되지 않고, 자바스크립트로 작성한 모듈이라면 어떤 것이든 동적으로 로드할 수 있다.</p>
+<p>리액트 lazy 는 오직 리액트 컴포넌트만만 동적으로 로드하는 기능을 제공한다. 하지만 모듈 페더레이션은 이에 국한되지 않고, 자바스크립트로 작성한 모듈이라면 어떤 것이든 동적으로 로드할 수 있다.</p>
 <p>예를 들어 앞서 살펴본 math 모듈처럼 단순한 유틸리티 함수도 제공할 수 있다. 비지니스 로직, 데이터 모델 등 다양한 종류의 모듈을 동적으로 공유해 로드할 수 있을 것이다.</p>
 <h1 id="결론" style="position:relative;"><a href="#%EA%B2%B0%EB%A1%A0" aria-label="결론 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>결론</h1>
-<p>모듈 페더레이션은 import 함수를 이용해 원격 모듈과 호스트 모듈간에 코드 공유 기법이다. 원격 모듈이 모듈 시작점과 각 기능을 청크로 제공해서 누구든이 필요할 때 다운로드해 실행중인 어플리케이션과 동적으로 결합하는 방식이다.</p>
-<p>이러한 구조는 React.lazy() 함수와 달리 별도 프로젝트에서 개발할 수 있다. 개발 의존성을 격리할 수 있고 단독으로 배포할 수 있어 더 유연하다.</p>
+<p>모듈 페더레이션은 import 함수를 이용해 원격 모듈과 호스트 모듈 간에 코드를 공유하는 기법이다. 원격 모듈이 모듈 시작점과 각 기능을 청크로 제공해서 누구든이 필요할 때 다운로드해 실행 중인 어플리케이션과 동적으로 결합하는 방식이다.</p>
+<p>이러한 구조는 React.lazy 와 달리 별도 프로젝트에서 개발할 수 있다. 개발 의존성을 격리할 수 있고 단독으로 배포할 수 있어 더 유연하다.</p>
 <h1 id="참고" style="position:relative;"><a href="#%EC%B0%B8%EA%B3%A0" aria-label="참고 permalink" class="anchor before"><svg aria-hidden="true" height="20" version="1.1" viewBox="0 0 16 16" width="20"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>참고</h1>
 <ul>
 <li><a href="https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2025-01-02-module-federation">예제 코드</a></li>
