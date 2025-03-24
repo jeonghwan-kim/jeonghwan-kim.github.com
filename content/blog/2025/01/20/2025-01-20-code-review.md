@@ -5,6 +5,7 @@ title: "코드 리뷰: 협업으로 배우고 성장하기"
 layout: post
 tags:
   - 에세이
+featuredImage: "./cat.jpg"
 ---
 
 ![코드 리뷰](./cat.jpg)
