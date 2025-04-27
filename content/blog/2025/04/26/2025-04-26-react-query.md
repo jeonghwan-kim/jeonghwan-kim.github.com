@@ -4,6 +4,7 @@ date: 2025-04-26
 title: "리액트 쿼리(TanStack Query), 늦게 시작했지만 더 확실한 서버 상태 관리"
 layout: post
 tags:
+  - react
 ---
 
 마침내 리액트 쿼리(React Query)를 사용했다.
