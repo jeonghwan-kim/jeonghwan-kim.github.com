@@ -14,6 +14,7 @@ export const theme = css`
     --color-Background1: #fff;
     --color-Background2: #ddd;
     --color-Background3: #bbb;
+    --color-Background4: #aaa;
   }
   html[data-app-theme="dark"] {
     --color-Primary: #cd5554;

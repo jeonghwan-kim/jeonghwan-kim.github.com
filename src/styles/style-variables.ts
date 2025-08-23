@@ -13,6 +13,7 @@ export const Colors = {
   Background1: `var(--color-Background1)`,
   Background2: `var(--color-Background2)`,
   Background3: `var(--color-Background3)`,
+  Background4: `var(--color-Background4)`,
 }
 
 export const SpaceUnit = (size = 1) => `${size * 8}px`

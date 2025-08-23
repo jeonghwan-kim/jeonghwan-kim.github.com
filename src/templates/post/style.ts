@@ -2,7 +2,6 @@ import styled from "styled-components"
 import {
   Border,
   Colors,
-  Container,
   Fonts,
   SpaceUnit,
   Widths,
@@ -11,6 +10,7 @@ import Video2Img from "./images/icon-video-2.png"
 
 export const Main = styled.main`
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   margin-top: ${SpaceUnit(10)};
   @media (max-width: ${Widths.Tablet}) {
@@ -22,14 +22,14 @@ export const Main = styled.main`
 `
 
 export const Aside = styled.aside`
-  order: 1;
-  width: 250px;
-  position: sticky;
-  max-height: 100vh;
-  overflow-y: scroll;
-  top: ${SpaceUnit()};
-  margin-left: ${SpaceUnit(4)};
-  padding-bottom: ${SpaceUnit()};
+  //order: 1;
+  //width: 250px;
+  //position: sticky;
+  //max-height: 100vh;
+  //overflow-y: scroll;
+  //top: ${SpaceUnit()};
+  // margin-left: ${SpaceUnit(4)};
+  // padding-bottom: ${SpaceUnit()};
   @media (max-width: calc(${Widths.Desktop} - 1px)) {
     display: none;
   }
@@ -169,28 +169,30 @@ export const TagItem = styled.li`
   }
 `
 
-export const Toc = styled.div`
-  border-left: ${Border(2)};
+export const Toc = styled.nav<{ dangerouslySetInnerHTML: { __html: string } }>`
+  border: ${Border(1)};
+  padding: ${SpaceUnit(2)} ${SpaceUnit(3)};
+  width: 100%;
+
+  &:before {
+    content: "목차";
+  }
+
   ul {
-    padding-left: ${SpaceUnit(2)};
+    display: flex;
+    flex-direction: column;
+    gap: ${SpaceUnit(0.5)};
     list-style: none;
     margin: 0;
     li {
-      margin-bottom: 4px;
       p {
-        margin: 0;
+        margin: 0 0 4px 0;
       }
       a {
-        text-decoration: none;
-        color: ${Colors.Foreground3};
-        font-size: 14px;
+        color: ${Colors.Foreground1};
         &:hover,
         &:focus {
-          color: ${Colors.Foreground1};
-        }
-        &.active {
-          color: ${Colors.Foreground1};
-          font-weight: bold;
+          color: ${Colors.Primary};
         }
       }
     }

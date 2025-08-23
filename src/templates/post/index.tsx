@@ -56,30 +56,17 @@ export default function PostTemplate({ data, pageContext }: Props) {
         <div itemScope itemType="http://schema.org/BlogPosting">
           <Section>
             <Styled.Main>
-              {hasAside && (
-                <Styled.Aside>
-                  {tableOfContents && (
-                    <PostToc tableOfContents={tableOfContents} />
-                  )}
-                  {frontmatter?.series && (
-                    <SeriesNav
-                      lite
-                      series={frontmatter.series}
-                      nodeId={id}
-                      posts={data.allMarkdownRemark.nodes}
-                    />
-                  )}
-                  {video && <PostVideo video={video} />}
-                </Styled.Aside>
-              )}
-
               <Styled.Article>
                 <PostHeader
                   title={frontmatter?.title || ""}
                   datetime={dateFormat(frontmatter?.date)}
                 />
+
+                {tableOfContents && (
+                  <PostToc tableOfContents={tableOfContents} />
+                )}
+
                 <Styled.PostContent
-                  id="post-content"
                   itemProp="articleBody"
                   dangerouslySetInnerHTML={{
                     __html: html ?? "",
