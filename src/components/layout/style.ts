@@ -13,5 +13,3 @@ export const AsideLeft = styled.aside`
     display: none;
   }
 `
-
-export const Main = styled.main``

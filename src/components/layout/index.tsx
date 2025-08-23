@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren, ReactNode } from "react"
+import React, { PropsWithChildren, ReactNode } from "react"
 import { useTheme } from "../../helpers/theme"
 import GlobalStyle from "../../styles/GlobalStyle"
 import { Container } from "../../styles/style-variables"
@@ -8,7 +8,7 @@ import * as Styled from "./style"
 
 export interface LayoutProps extends HeaderProps, PropsWithChildren {}
 
-const Layout: FC<LayoutProps> = ({ noBorder, children }) => {
+function Layout({ noBorder, children }: LayoutProps) {
   useTheme()
 
   return (
@@ -20,12 +20,10 @@ const Layout: FC<LayoutProps> = ({ noBorder, children }) => {
   )
 }
 
-export default Layout
-
-export const PlainLayout: FC<LayoutProps> = ({ children }) => {
+export function PlainLayout({ children }: LayoutProps) {
   return (
     <Layout>
-      <Styled.Main>{children}</Styled.Main>
+      {children}
       <Footer bordered />
     </Layout>
   )
@@ -33,10 +31,10 @@ export const PlainLayout: FC<LayoutProps> = ({ children }) => {
 
 export interface HomeLayoutProps extends PropsWithChildren {}
 
-export const HomeLayout: FC<HomeLayoutProps> = ({ children }) => {
+export function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <Layout noBorder>
-      <Styled.Main>{children}</Styled.Main>
+      {children}
       <Footer bordered />
     </Layout>
   )
@@ -46,17 +44,14 @@ interface TwoColumnLayoutProps extends PropsWithChildren {
   aside: ReactNode
 }
 
-export const TwoColumnLayout: FC<TwoColumnLayoutProps> = ({
-  aside,
-  children,
-}) => {
+export function TwoColumnLayout({ aside, children }: TwoColumnLayoutProps) {
   return (
     <Layout>
       <Container>
         <div style={{ display: "flex" }}>
           <Styled.AsideLeft>{aside}</Styled.AsideLeft>
           <div style={{ flex: "1" }}>
-            <Styled.Main>{children}</Styled.Main>
+            {children}
             <Footer bordered />
           </div>
         </div>
