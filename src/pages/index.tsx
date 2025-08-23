@@ -22,7 +22,7 @@ export default function BlogIndex({ data }: PageProps<Query>) {
   )
 }
 
-export const pageQuery = graphql`
+export const query = graphql`
   query {
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
