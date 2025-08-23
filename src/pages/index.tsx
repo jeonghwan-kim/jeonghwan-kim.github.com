@@ -8,7 +8,7 @@ import Section from "../components/Section"
 import SEO from "../components/SEO"
 import { Container } from "../styles/style-variables"
 
-export default function BlogIndex({ data }: PageProps<Query>) {
+export default function HomePage({ data }: PageProps<Query>) {
   return (
     <PlainLayout data={data.allMarkdownRemark.nodes}>
       <SEO title="홈" />
