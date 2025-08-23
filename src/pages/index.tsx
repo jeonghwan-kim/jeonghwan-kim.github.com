@@ -7,12 +7,16 @@ import PostList from "../components/PostList"
 import Section from "../components/Section"
 import SEO from "../components/SEO"
 import { Container } from "../styles/style-variables"
+import Sidebar from "../components/Sidebar"
 
 export default function BlogIndex({ data }: PageProps<Query>) {
   return (
     <HomeLayout>
       <SEO title="홈" />
       <GoogleAdsense />
+
+      <Sidebar data={data} />
+
       <Container small>
         <Section>
           <PostList posts={data.allMarkdownRemark.nodes} />
@@ -30,6 +34,9 @@ export const pageQuery = graphql`
           slug
           date
           title
+          category
+          tags
+          series
         }
       }
     }
