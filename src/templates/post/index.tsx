@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
 import React from "react"
 import { MarkdownRemarkEdge, Query } from "../../../graphql-types"
-import { PlainLayout } from "../../components/layout"
+import { Layout } from "../../components/layout"
 import Section from "../../components/Section"
 import SEO from "../../components/SEO"
 import { dateFormat } from "../../helpers/date"
@@ -9,7 +9,6 @@ import { Container } from "../../styles/style-variables"
 import PostComment from "./PostComment"
 import PostTag from "./post-tag"
 import PostToc from "./post-toc"
-import PostVideo from "./post-video"
 import PostHeader from "./PostHeader"
 import SeriesNav from "./series-nav"
 import SiblingNav from "./sibling-nav"
@@ -27,20 +26,20 @@ export default function PostTemplate({ data, pageContext }: Props) {
 
   if (!markdownRemark) {
     return (
-      <PlainLayout data={data.allMarkdownRemark.nodes}>
+      <Layout data={data.allMarkdownRemark.nodes}>
         <Section>
           <Container>
             <p>포스트를 찾을 수 없습니다.</p>
           </Container>
         </Section>
-      </PlainLayout>
+      </Layout>
     )
   }
 
   const { frontmatter, tableOfContents, excerpt, id, html } = markdownRemark
 
   return (
-    <PlainLayout data={allPosts.nodes}>
+    <Layout data={allPosts.nodes}>
       <SEO
         title={frontmatter?.title || ""}
         description={excerpt || ""}
@@ -98,7 +97,7 @@ export default function PostTemplate({ data, pageContext }: Props) {
           </Section>
         </div>
       </Container>
-    </PlainLayout>
+    </Layout>
   )
 }
 

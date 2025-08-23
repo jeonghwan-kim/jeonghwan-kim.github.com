@@ -2,7 +2,7 @@ import { graphql, PageProps } from "gatsby"
 import React from "react"
 import { Query } from "../../graphql-types"
 import GoogleAdsense from "../components/GoogleAdsense"
-import { PlainLayout } from "../components/layout"
+import { Layout } from "../components/layout"
 import PostList from "../components/PostList"
 import Section from "../components/Section"
 import SEO from "../components/SEO"
@@ -10,15 +10,15 @@ import { Container } from "../styles/style-variables"
 
 export default function HomePage({ data }: PageProps<Query>) {
   return (
-    <PlainLayout data={data.allMarkdownRemark.nodes}>
+    <Layout data={data.allMarkdownRemark.nodes}>
       <SEO title="홈" />
       <GoogleAdsense />
-      <Container small>
+      <Container>
         <Section>
           <PostList posts={data.allMarkdownRemark.nodes} />
         </Section>
       </Container>
-    </PlainLayout>
+    </Layout>
   )
 }
 

@@ -3,7 +3,7 @@ import GoogleAdsense from "../../components/GoogleAdsense"
 import { Container } from "../../styles/style-variables"
 import Section from "../../components/Section"
 import PostList from "../../components/PostList"
-import { PlainLayout } from "../../components/layout"
+import { Layout } from "../../components/layout"
 import React from "react"
 import { graphql, PageProps } from "gatsby"
 import { Query } from "../../../graphql-types"
@@ -23,18 +23,18 @@ export default function TagTemplate({
   PageContext
 >) {
   return (
-    <PlainLayout data={allPosts.nodes}>
+    <Layout data={allPosts.nodes}>
       <SEO
         title={`#${tag}`}
         description={`${tag}와 관련된 ${tagPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}
       />
       <GoogleAdsense />
-      <Container small>
+      <Container>
         <Section title={`#${tag}`}>
           <PostList posts={tagPosts.nodes} />
         </Section>
       </Container>
-    </PlainLayout>
+    </Layout>
   )
 }
 
