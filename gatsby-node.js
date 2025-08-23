@@ -18,6 +18,7 @@ exports.createPages = async ({ graphql, actions }) => {
               category
               series
               videoId
+              tags
             }
           }
         }
@@ -31,7 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const nodes = allMarkdowns.data.allMarkdownRemark.edges.map(e => e.node)
 
-  // 마크다운으로 페이지 생성
+  // 포스트 페이지 생성
   nodes.forEach(({ frontmatter: { slug, date, series, videoId } }, index) => {
     createPage({
       path: slug,
@@ -47,7 +48,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // 포스트 연도 목록 추출
+  // 연도별 페이지 생성
   const years = Array.from(
     new Set(nodes.map(node => new Date(node.frontmatter.date).getFullYear()))
   )
@@ -59,6 +60,25 @@ exports.createPages = async ({ graphql, actions }) => {
         year,
         startDate: `${year}-01-01`,
         endDate: `${year + 1}-01-01`,
+      },
+    })
+  })
+
+  // 태그별 페이지 생성
+  const tags = Array.from(
+    nodes.reduce((acc, node) => {
+      if ((node.frontmatter.tags || []).length) {
+        acc.add(...node.frontmatter.tags)
+      }
+      return acc
+    }, new Set())
+  )
+  tags.forEach(tag => {
+    createPage({
+      path: `/tag/${tag}`,
+      component: path.resolve(__dirname, `./src/templates/tag/index.tsx`),
+      context: {
+        tag,
       },
     })
   })

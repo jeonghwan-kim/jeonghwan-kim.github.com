@@ -85,7 +85,7 @@ export const TagList: FC<TagListProps> = ({ posts, activeTag }) => {
       {postsSortByTagCount.map(({ tag, posts }) => (
         <Styled.TagListItem key={tag}>
           <Link
-            to={`${Path.Posts}?${Params.Tag}=${encodeURIComponent(tag)}`}
+            to={`/tag/${encodeURIComponent(tag)}`}
             className={tag === activeTag ? "active" : ""}
             title={getLinkHoverTitle(tag, posts.length)}
           >
