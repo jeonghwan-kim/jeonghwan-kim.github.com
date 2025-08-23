@@ -18,29 +18,6 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: ${Colors.Foreground1};
   }
-  .flex {
-    display: flex;
-    align-items: center;
-  }
-  .flex-1 {
-    flex: 1;
-    overflow: auto;
-  }
-  .flex-0 {
-    flex: 0;
-    overflow: auto;
-  }
-
-  .align-left {
-    text-align: left;
-  }
-  .align-right {
-    text-align: right;
-  }
-
-  .hidden {
-    display: none;
-  }
 
   ${codeHighlight}
   ${theme}

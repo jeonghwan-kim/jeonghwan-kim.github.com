@@ -25,7 +25,7 @@ const SiblingNavItem: React.FC<SiblingNavItemProps> = p => {
         {p.label}
       </div>
       <Link to={p.url}>
-        <div className="flex">
+        <div style={{ display: "flex", alignItems: "center" }}>
           {p.align === "left" && <i style={{ marginRight: 8 }}>{p.icon}</i>}
           <h3 style={{ textAlign: p.align }}>{p.text}</h3>
           {p.align === "right" && <i style={{ marginLeft: 8 }}>{p.icon}</i>}
