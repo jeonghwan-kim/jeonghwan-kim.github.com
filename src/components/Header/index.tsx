@@ -19,12 +19,7 @@ export default function Header({ onClickHamburgerButton }: HeaderProps) {
           <Link to={Path.Home}>김정환블로그</Link>
         </Styled.SiteLogo>
       </Styled.SiteTitle>
-      <Styled.NavList>
-        <Nav to={Path.Posts}>
-          <Icon type={IconType.Article} />
-          <span>POSTS</span>
-        </Nav>
-      </Styled.NavList>
+      <Styled.NavList></Styled.NavList>
       <Styled.Contacts>
         <Nav to="/feed.xml">
           <Icon type={IconType.RSS} style={{ filter: "invert(0.6)" }} />
