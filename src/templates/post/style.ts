@@ -21,20 +21,6 @@ export const Main = styled.main`
   }
 `
 
-export const Aside = styled.aside`
-  //order: 1;
-  //width: 250px;
-  //position: sticky;
-  //max-height: 100vh;
-  //overflow-y: scroll;
-  //top: ${SpaceUnit()};
-  // margin-left: ${SpaceUnit(4)};
-  // padding-bottom: ${SpaceUnit()};
-  @media (max-width: calc(${Widths.Desktop} - 1px)) {
-    display: none;
-  }
-`
-
 export const Article = styled.article`
   order: 0;
   flex: 1 0 0%;

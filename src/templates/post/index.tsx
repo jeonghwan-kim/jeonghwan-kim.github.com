@@ -38,7 +38,6 @@ export default function PostTemplate({ data, pageContext }: Props) {
   }
 
   const { frontmatter, tableOfContents, excerpt, id, html } = markdownRemark
-  const hasAside = tableOfContents || frontmatter?.series || video
 
   return (
     <PlainLayout data={allPosts.nodes}>
@@ -52,7 +51,7 @@ export default function PostTemplate({ data, pageContext }: Props) {
 
       <GoogleAdsense />
 
-      <Container small={!hasAside}>
+      <Container>
         <div itemScope itemType="http://schema.org/BlogPosting">
           <Section>
             <Styled.Main>

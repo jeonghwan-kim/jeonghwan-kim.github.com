@@ -29,26 +29,17 @@ export const Fonts = {
 }
 
 export const Widths = {
-  Site: "1024px",
   Mobile: "320px", // iphone5
   Tablet: "768px", // ipad
   Desktop: "1024px",
   Content: "800px",
 }
 
-export const container = css`
-  max-width: ${Widths.Site};
+export const Container = styled.div<PropsWithChildren>`
+  max-width: ${Widths.Content};
   margin-left: auto;
   margin-right: auto;
   height: 100%;
-`
-export const containerSm = css`
-  ${container};
-  max-width: ${Widths.Content};
-`
-
-export const Container = styled.div<PropsWithChildren<{ small?: boolean }>>`
-  ${props => (props.small ? containerSm : container)}
 `
 
 export const ZIndex = {
