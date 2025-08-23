@@ -33,5 +33,5 @@ export const PostTitle = styled.h2`
 `
 
 export const PostMeta = styled.div`
-  color: ${Colors.Foreground2};
+  color: ${Colors.Foreground3};
 `
