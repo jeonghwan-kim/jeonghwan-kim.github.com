@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Colors, SpaceUnit } from "../../styles/style-variables"
+import { Colors, SpaceUnit, ZIndex } from "../../styles/style-variables"
 import { PropsWithChildren } from "react"
 
 export const Sidebar = styled.aside`
@@ -14,6 +14,7 @@ export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
   gap: ${SpaceUnit()};
+  z-index: ${ZIndex.Sidebar};
 `
 
 export const CloseButton = styled.button<

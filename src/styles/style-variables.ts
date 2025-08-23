@@ -49,3 +49,7 @@ export const containerSm = css`
 export const Container = styled.div<PropsWithChildren<{ small?: boolean }>>`
   ${props => (props.small ? containerSm : container)}
 `
+
+export const ZIndex = {
+  Sidebar: 1,
+}
