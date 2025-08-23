@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { SpaceUnit } from "../../styles/style-variables"
+import { PropsWithChildren } from "react"
 
 export const Sidebar = styled.aside`
   position: fixed;
@@ -10,4 +11,33 @@ export const Sidebar = styled.aside`
   width: 300px;
   padding: ${SpaceUnit(8)} ${SpaceUnit()} ${SpaceUnit(4)} ${SpaceUnit(4)};
   overflow-y: auto;
+`
+
+export const CloseButton = styled.button<
+  PropsWithChildren<{ onClick: () => void }>
+>`
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+    transform-origin: center;
+    &:first-child {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &:last-child {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
 `

@@ -11,7 +11,7 @@ interface Props extends Pick<PageProps<Query>, "data"> {
 export default function Sidebar({ data, onClose }: Props) {
   return (
     <Styles.Sidebar>
-      <button onClick={onClose}>close</button>
+      <CloseButton onClick={onClose} />
       <ArchiveList posts={data.allMarkdownRemark.nodes} activeYear={"모든글"} />
       <TagList
         posts={data.allMarkdownRemark.nodes.filter(
@@ -21,5 +21,14 @@ export default function Sidebar({ data, onClose }: Props) {
       />
       <SeriesList posts={data.allMarkdownRemark.nodes} />
     </Styles.Sidebar>
+  )
+}
+
+function CloseButton({ onClick }: { onClick: () => void }) {
+  return (
+    <Styles.CloseButton onClick={onClick}>
+      <span />
+      <span />
+    </Styles.CloseButton>
   )
 }

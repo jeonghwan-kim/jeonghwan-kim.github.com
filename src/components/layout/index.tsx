@@ -16,6 +16,7 @@ export interface LayoutProps
 
 function Layout({ noBorder, children, data }: LayoutProps) {
   const [openSidebar, setOpenSidebar] = React.useState(false)
+
   useTheme()
 
   return (
