@@ -14,7 +14,7 @@ export interface LayoutProps
     PropsWithChildren,
     Pick<PageProps<Query>, "data"> {}
 
-function Layout({ noBorder, children, data }: LayoutProps) {
+function Layout({ children, data }: LayoutProps) {
   const [openSidebar, setOpenSidebar] = React.useState(false)
 
   useTheme()
@@ -22,10 +22,7 @@ function Layout({ noBorder, children, data }: LayoutProps) {
   return (
     <>
       <GlobalStyle />
-      <Header
-        noBorder={noBorder}
-        onClickHamburgerButton={() => setOpenSidebar(true)}
-      />
+      <Header onClickHamburgerButton={() => setOpenSidebar(true)} />
       {openSidebar && (
         <Sidebar data={data} onClose={() => setOpenSidebar(false)} />
       )}
@@ -49,7 +46,7 @@ export interface HomeLayoutProps
 
 export function HomeLayout({ children, data }: HomeLayoutProps) {
   return (
-    <Layout noBorder data={data}>
+    <Layout data={data}>
       {children}
       <Footer bordered />
     </Layout>

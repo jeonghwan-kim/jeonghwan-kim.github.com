@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { SpaceUnit } from "../../styles/style-variables"
+import { Colors, SpaceUnit } from "../../styles/style-variables"
 import { PropsWithChildren } from "react"
 
 export const Sidebar = styled.aside`
@@ -11,18 +11,32 @@ export const Sidebar = styled.aside`
   width: 300px;
   padding: ${SpaceUnit(8)} ${SpaceUnit()} ${SpaceUnit(4)} ${SpaceUnit(4)};
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: ${SpaceUnit()};
 `
 
 export const CloseButton = styled.button<
   PropsWithChildren<{ onClick: () => void }>
 >`
   position: relative;
-  width: 30px;
+  width: 40px;
   height: 30px;
   border: none;
   background: none;
   cursor: pointer;
-  padding: 0;
+  align-self: flex-end;
+  justify-self: end;
+  &:before {
+    content: "close";
+    visibility: hidden;
+  }
+  margin-bottom: ${SpaceUnit(2)};
+  &:hover {
+    background-color: ${Colors.Background2};
+  }
+  padding: ${SpaceUnit(2)} 0;
+  border-radius: 2px;
 
   span {
     position: absolute;
