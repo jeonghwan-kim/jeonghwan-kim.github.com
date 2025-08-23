@@ -6,17 +6,16 @@ import Icon from "../Icon"
 import { IconType } from "../Icon/style"
 import Nav from "./nav"
 import * as Styled from "./style"
-import HamburgerButton from "./HamburgerButton"
 
 export interface HeaderProps {
   noBorder?: boolean
   onClickHamburgerButton?: () => void
 }
 
-const Header: React.FC<HeaderProps> = ({
+export default function Header({
   noBorder,
   onClickHamburgerButton,
-}) => {
+}: HeaderProps) {
   return (
     <Styled.Header bordered={!noBorder}>
       <Container>
@@ -45,4 +44,12 @@ const Header: React.FC<HeaderProps> = ({
   )
 }
 
-export default Header
+function HamburgerButton({ onClick }: { onClick: () => void }) {
+  return (
+    <Styled.HamburgerButton onClick={onClick}>
+      <span />
+      <span />
+      <span />
+    </Styled.HamburgerButton>
+  )
+}
