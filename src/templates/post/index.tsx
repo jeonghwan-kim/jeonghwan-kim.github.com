@@ -17,12 +17,12 @@ import * as Styled from "./style"
 import GoogleAdsense from "../../components/GoogleAdsense"
 
 interface Props {
-  data: Query
+  data: Query & { allPosts: Query["allMarkdownRemark"] }
   pageContext: MarkdownRemarkEdge
 }
 
 export default function PostTemplate({ data, pageContext }: Props) {
-  const { site, markdownRemark, video } = data
+  const { site, markdownRemark, video, allPosts } = data
   const { previous, next } = pageContext
 
   if (!markdownRemark) {
@@ -41,7 +41,7 @@ export default function PostTemplate({ data, pageContext }: Props) {
   const hasAside = tableOfContents || frontmatter?.series || video
 
   return (
-    <PlainLayout data={data.allMarkdownRemark.nodes}>
+    <PlainLayout data={allPosts.nodes}>
       <SEO
         title={frontmatter?.title || ""}
         description={excerpt || ""}
@@ -161,6 +161,22 @@ export const query = graphql`
           slug
           date
           title
+          series
+        }
+      }
+    }
+
+    # 전체 포스트
+    allPosts: allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      nodes {
+        frontmatter {
+          slug
+          date
+          title
+          category
+          tags
           series
         }
       }
