@@ -95,7 +95,6 @@ const BlogIndex: FC<Props> = ({ data }: Props) => {
       <Container small>
         <Section>
           <PostList posts={data.allMarkdownRemark.nodes} />
-          <Link to={Path.Posts}>더보기</Link>
         </Section>
         <Section
           title={
@@ -105,7 +104,7 @@ const BlogIndex: FC<Props> = ({ data }: Props) => {
             </>
           }
         >
-          <PostList posts={videos} renderMeta={post => post.frontmatter.date} />
+          <PostList posts={videos} />
         </Section>
       </Container>
     </HomeLayout>
@@ -116,12 +115,8 @@ export default BlogIndex
 
 export const pageQuery = graphql`
   query {
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: 10
-    ) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
-        excerpt(pruneLength: 200, format: PLAIN, truncate: true)
         frontmatter {
           slug
           date

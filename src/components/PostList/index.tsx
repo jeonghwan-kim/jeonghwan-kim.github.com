@@ -1,22 +1,19 @@
 import { Link } from "gatsby"
-import React, { FC, ReactNode } from "react"
+import React, { FC } from "react"
 import { MarkdownRemark } from "../../../graphql-types"
-import { dateFormat } from "../../helpers/date"
 import * as Styled from "./style"
-
-type Post = Pick<MarkdownRemark, "frontmatter" | "excerpt">
+import dayjs from "dayjs"
 
 export interface PostListProps {
-  posts: Post[]
-  renderMeta?(post: Post): ReactNode
+  posts: Pick<MarkdownRemark, "frontmatter">[]
 }
 
-const PostList: FC<PostListProps> = ({ posts, renderMeta }) => {
+const PostList: FC<PostListProps> = ({ posts }) => {
   return (
     <Styled.PostList>
       {posts
         .map(post => {
-          const { frontmatter, excerpt } = post
+          const { frontmatter } = post
           if (!frontmatter) return
 
           const { slug, date, title } = frontmatter
@@ -25,25 +22,12 @@ const PostList: FC<PostListProps> = ({ posts, renderMeta }) => {
           return (
             <Styled.PostItem key={slug}>
               <Link to={slug}>
-                <Styled.PostTitle className="post-item-title">
-                  {title}
-                </Styled.PostTitle>
-                {date && (
-                  <Styled.PostMeta>
-                    {renderMeta ? (
-                      renderMeta(post)
-                    ) : (
-                      <time dateTime={date}>{dateFormat(date)}</time>
-                    )}
-                  </Styled.PostMeta>
-                )}
-                {excerpt && (
-                  <Styled.PostSummary
-                    dangerouslySetInnerHTML={{
-                      __html: excerpt,
-                    }}
-                  />
-                )}
+                <Styled.PostTitle>{title}</Styled.PostTitle>
+                <Styled.PostMeta>
+                  <time dateTime={date}>
+                    {dayjs(date).format("YYYY년 M월 D일")}
+                  </time>
+                </Styled.PostMeta>
               </Link>
             </Styled.PostItem>
           )

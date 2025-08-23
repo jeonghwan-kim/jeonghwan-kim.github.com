@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import { PropsWithChildren } from "react"
 
 export const Colors = {
   Primary: `var(--color-Primary)`,
@@ -45,6 +46,6 @@ export const containerSm = css`
   max-width: ${Widths.Content};
 `
 
-export const Container = styled.div<{ small?: boolean }>`
+export const Container = styled.div<PropsWithChildren<{ small?: boolean }>>`
   ${props => (props.small ? containerSm : container)}
 `

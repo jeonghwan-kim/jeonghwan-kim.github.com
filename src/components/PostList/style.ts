@@ -1,16 +1,17 @@
 import styled from "styled-components"
 import { Colors, SpaceUnit, Widths } from "../../styles/style-variables"
+import { PropsWithChildren } from "react"
 
 export const PostList = styled.ul`
   list-style: none;
   padding: 0;
 `
 
-export const PostItem = styled.li`
+export const PostItem = styled.li<PropsWithChildren>`
   a {
     text-decoration: none;
   }
-  margin: ${SpaceUnit(7)} 0;
+  margin: ${SpaceUnit(4)} 0;
   text-decoration: none;
   display: block;
 `
@@ -25,12 +26,4 @@ export const PostTitle = styled.h2`
 
 export const PostMeta = styled.div`
   color: ${Colors.Foreground2};
-`
-
-export const PostSummary = styled.p`
-  color: ${Colors.Foreground1};
-  line-height: 1.5em;
-  @media (max-width: calc(${Widths.Tablet} - 1px)) {
-    display: none;
-  }
 `
