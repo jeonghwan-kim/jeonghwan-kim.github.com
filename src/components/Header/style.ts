@@ -37,6 +37,8 @@ export const SiteLogo = styled.div`
     font-weight: bold;
     text-decoration: none;
   }
+  font-style: italic;
+  padding-right: 8px;
 `
 
 export const NavList = styled.nav`
