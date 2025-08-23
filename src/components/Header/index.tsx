@@ -25,10 +25,6 @@ const Header: React.FC<HeaderProps> = ({ noBorder }) => {
             <Icon type={IconType.Article} />
             <span>POSTS</span>
           </Nav>
-          <Nav to={`/#${Params.Video}`}>
-            <Icon type={IconType.Video} />
-            <span>VIDEOS</span>
-          </Nav>
         </Styled.NavList>
         <Styled.Contacts>
           <Nav to="/feed.xml">

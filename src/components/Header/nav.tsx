@@ -1,31 +1,35 @@
-import React from "react"
+import React, { EventHandler, PropsWithChildren } from "react"
 import { Link } from "gatsby"
 import * as Styled from "./style"
 
-interface P {
+interface Props {
   to?: string
   href?: string
   onClick?: () => void
 }
 
-const Nav: React.FC<P> = ({ to, href, onClick, children }) => {
-  const linkProps = {
-    style: { overflow: "hidden" },
-    onClick: e => {
-      if (!to && onClick) {
-        e.preventDefault()
-        onClick()
-      }
-    },
+const Nav: React.FC<PropsWithChildren<Props>> = ({
+  to,
+  href,
+  onClick,
+  children,
+}) => {
+  const style = { overflow: "hidden" }
+  const handleClick: EventHandler<any> = e => {
+    if (!to && onClick) {
+      e.preventDefault()
+      onClick()
+    }
   }
+
   return (
     <Styled.Nav>
       {href ? (
-        <a {...linkProps} href={href}>
+        <a style={style} href={href} onClick={handleClick}>
           {children}
         </a>
       ) : (
-        <Link {...linkProps} to={`${to || "#"}`}>
+        <Link style={style} to={`${to || "#"}`}>
           {children}
         </Link>
       )}

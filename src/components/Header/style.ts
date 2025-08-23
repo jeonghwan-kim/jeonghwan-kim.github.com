@@ -6,8 +6,9 @@ import {
   SpaceUnit,
   Widths,
 } from "../../styles/style-variables"
+import { PropsWithChildren } from "react"
 
-export const Header = styled.header<{ bordered: boolean }>`
+export const Header = styled.header<PropsWithChildren<{ bordered: boolean }>>`
   height: ${SpaceUnit(7)};
   border-bottom: ${props => (props.bordered ? Border() : `none`)};
   padding: 0 ${SpaceUnit()};
