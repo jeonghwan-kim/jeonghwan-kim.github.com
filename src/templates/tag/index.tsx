@@ -15,14 +15,20 @@ type PageContext = {
 export default function TagTemplate({
   data,
   pageContext,
-}: PageProps<Query, PageContext>) {
+}: PageProps<
+  {
+    allPosts: Query["allMarkdownRemark"]
+    tagPosts: Query["allMarkdownRemark"]
+  },
+  PageContext
+>) {
   return (
-    <HomeLayout data={{} as any}>
+    <HomeLayout data={data.allPosts.nodes}>
       <SEO title="홈" />
       <GoogleAdsense />
       <Container small>
         <Section title={`#${pageContext.tag}`}>
-          <PostList posts={data.allMarkdownRemark.nodes} />
+          <PostList posts={data.tagPosts.nodes} />
         </Section>
       </Container>
     </HomeLayout>
@@ -31,7 +37,24 @@ export default function TagTemplate({
 
 export const query = graphql`
   query($tag: String!) {
-    allMarkdownRemark(
+    # 전체 포스트
+    allPosts: allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      nodes {
+        frontmatter {
+          slug
+          date
+          title
+          category
+          tags
+          series
+        }
+      }
+    }
+
+    # 태그별 포스트
+    tagPosts: allMarkdownRemark(
       filter: { frontmatter: { tags: { in: [$tag] } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {

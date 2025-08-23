@@ -10,7 +10,7 @@ import { Container } from "../styles/style-variables"
 
 export default function BlogIndex({ data }: PageProps<Query>) {
   return (
-    <HomeLayout data={data}>
+    <HomeLayout data={data.allMarkdownRemark.nodes}>
       <SEO title="홈" />
       <GoogleAdsense />
       <Container small>

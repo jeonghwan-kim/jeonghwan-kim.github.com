@@ -15,14 +15,20 @@ type PageContext = {
 export default function SeriesTemplate({
   data,
   pageContext,
-}: PageProps<Query, PageContext>) {
+}: PageProps<
+  {
+    allPosts: Query["allMarkdownRemark"]
+    seriesPosts: Query["allMarkdownRemark"]
+  },
+  PageContext
+>) {
   return (
-    <HomeLayout data={{} as any}>
+    <HomeLayout data={data.allPosts.nodes}>
       <SEO title="홈" />
       <GoogleAdsense />
       <Container small>
         <Section title={`${pageContext.series}`}>
-          <PostList posts={data.allMarkdownRemark.nodes} />
+          <PostList posts={data.seriesPosts.nodes} />
         </Section>
       </Container>
     </HomeLayout>
@@ -31,7 +37,24 @@ export default function SeriesTemplate({
 
 export const query = graphql`
   query($series: String!) {
-    allMarkdownRemark(
+    # 전체 포스트
+    allPosts: allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      nodes {
+        frontmatter {
+          slug
+          date
+          title
+          category
+          tags
+          series
+        }
+      }
+    }
+
+    # 시리즈 필터링된 포스트
+    seriesPosts: allMarkdownRemark(
       filter: { frontmatter: { series: { eq: $series } } }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {

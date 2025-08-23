@@ -6,13 +6,11 @@ import Footer from "../Footer"
 import Header, { HeaderProps } from "../Header"
 import * as Styled from "./style"
 import Sidebar from "../Sidebar"
-import { PageProps } from "gatsby"
-import { Query } from "../../../graphql-types"
+import { MarkdownRemark } from "../../../graphql-types"
 
-export interface LayoutProps
-  extends HeaderProps,
-    PropsWithChildren,
-    Pick<PageProps<Query>, "data"> {}
+export interface LayoutProps extends HeaderProps, PropsWithChildren {
+  data: MarkdownRemark[]
+}
 
 function Layout({ children, data }: LayoutProps) {
   const [openSidebar, setOpenSidebar] = React.useState(false)
@@ -40,9 +38,9 @@ export function PlainLayout({ children, data }: LayoutProps) {
   )
 }
 
-export interface HomeLayoutProps
-  extends PropsWithChildren,
-    Pick<PageProps<Query>, "data"> {}
+export interface HomeLayoutProps extends PropsWithChildren {
+  data: MarkdownRemark[]
+}
 
 export function HomeLayout({ children, data }: HomeLayoutProps) {
   return (
@@ -53,9 +51,8 @@ export function HomeLayout({ children, data }: HomeLayoutProps) {
   )
 }
 
-interface TwoColumnLayoutProps
-  extends PropsWithChildren,
-    Pick<PageProps<Query>, "data"> {
+interface TwoColumnLayoutProps extends PropsWithChildren {
+  data: MarkdownRemark[]
   aside: ReactNode
 }
 

@@ -28,7 +28,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
 
   if (!markdownRemark) {
     return (
-      <PlainLayout>
+      <PlainLayout data={data.allMarkdownRemark.nodes}>
         <Section>
           <Container>
             <p>포스트를 찾을 수 없습니다.</p>
@@ -42,7 +42,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
   const hasAside = tableOfContents || frontmatter?.series || video
 
   return (
-    <PlainLayout>
+    <PlainLayout data={data.allMarkdownRemark.nodes}>
       <SEO
         title={frontmatter?.title || ""}
         description={excerpt || ""}
@@ -119,7 +119,7 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
 
 export default BlogPostTemplate
 
-export const pageQuery = graphql`
+export const query = graphql`
   query BlogPostBySlug($slug: String!, $series: String, $videoId: String) {
     site {
       siteMetadata {

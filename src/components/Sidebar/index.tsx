@@ -1,10 +1,10 @@
 import React from "react"
 import * as Styles from "./styles"
 import { ArchiveList, SeriesList, TagList } from "../PostsPage/aside"
-import { Query } from "../../../graphql-types"
-import { PageProps } from "gatsby"
+import { MarkdownRemark } from "../../../graphql-types"
 
-interface Props extends Pick<PageProps<Query>, "data"> {
+interface Props {
+  data: MarkdownRemark[]
   onClose: () => void
 }
 
@@ -12,14 +12,12 @@ export default function Sidebar({ data, onClose }: Props) {
   return (
     <Styles.Sidebar>
       <CloseButton onClick={onClose} />
-      <ArchiveList posts={data.allMarkdownRemark.nodes} activeYear={"모든글"} />
+      <ArchiveList posts={data} activeYear={"모든글"} />
       <TagList
-        posts={data.allMarkdownRemark.nodes.filter(
-          node => node.frontmatter?.tags?.length
-        )}
+        posts={data.filter(node => node.frontmatter?.tags?.length)}
         activeTag={""}
       />
-      <SeriesList posts={data.allMarkdownRemark.nodes} />
+      <SeriesList posts={data} />
     </Styles.Sidebar>
   )
 }
