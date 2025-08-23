@@ -1,7 +1,10 @@
-import React, { ReactNode } from "react"
+import React, { PropsWithChildren, ReactNode } from "react"
 import * as Styled from "./style"
 
-const Section: React.FC<{ title?: ReactNode }> = ({ title, children }) => {
+const Section: React.FC<{ title?: ReactNode } & PropsWithChildren> = ({
+  title,
+  children,
+}) => {
   return (
     <Styled.Section>
       {title && <Styled.SectionTitle>{title}</Styled.SectionTitle>}

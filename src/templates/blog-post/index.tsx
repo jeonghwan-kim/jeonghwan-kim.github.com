@@ -7,7 +7,6 @@ import SEO from "../../components/SEO"
 import { dateFormat } from "../../helpers/date"
 import { Container } from "../../styles/style-variables"
 import PostComment from "./PostComment"
-import PostShare from "./post-share"
 import PostTag from "./post-tag"
 import PostToc from "./post-toc"
 import PostVideo from "./post-video"
@@ -24,19 +23,22 @@ interface Props {
 
 const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
   const { site, markdownRemark, video } = data
-  const { series } = markdownRemark.frontmatter
   const { previous, next } = pageContext
-  const hasAside = markdownRemark.tableOfContents || series || video
+  const hasAside =
+    markdownRemark?.tableOfContents ||
+    markdownRemark?.frontmatter?.series ||
+    video
 
   return (
     <PlainLayout>
       <SEO
-        title={markdownRemark.frontmatter.title}
-        description={markdownRemark.excerpt}
-        date={markdownRemark.frontmatter.date}
-        url={site.siteMetadata.url + markdownRemark.frontmatter.slug}
+        title={markdownRemark?.frontmatter?.title || ""}
+        description={markdownRemark?.excerpt || ""}
+        date={markdownRemark?.frontmatter?.date}
+        url={`${site?.siteMetadata?.url}${markdownRemark?.frontmatter?.slug}`}
         image={
-          markdownRemark.frontmatter.featuredImage?.childImageSharp?.fixed?.src
+          markdownRemark?.frontmatter?.featuredImage?.childImageSharp?.fixed
+            ?.src
         }
       />
       <GoogleAdsense />
@@ -46,13 +48,13 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
             <Styled.Main>
               {hasAside && (
                 <Styled.Aside>
-                  {markdownRemark.tableOfContents && (
+                  {markdownRemark?.tableOfContents && (
                     <PostToc tableOfContents={markdownRemark.tableOfContents} />
                   )}
-                  {series && (
+                  {markdownRemark?.frontmatter?.series && (
                     <SeriesNav
                       lite
-                      series={series}
+                      series={markdownRemark.frontmatter.series}
                       nodeId={markdownRemark.id}
                       posts={data.allMarkdownRemark.nodes}
                     />
@@ -62,18 +64,23 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
               )}
               <Styled.Article>
                 <PostHeader
-                  title={markdownRemark.frontmatter.title}
-                  datetime={dateFormat(markdownRemark.frontmatter.date)}
+                  title={markdownRemark?.frontmatter?.title || ""}
+                  datetime={dateFormat(markdownRemark?.frontmatter?.date)}
                 />
                 <Styled.PostContent
                   id="post-content"
                   itemProp="articleBody"
-                  dangerouslySetInnerHTML={{ __html: markdownRemark.html }}
+                  dangerouslySetInnerHTML={{ __html: markdownRemark?.html }}
                 />
                 <Styled.PostMeta>
-                  {(markdownRemark.frontmatter.tags || []).length > 0 && (
-                    <PostTag tags={markdownRemark.frontmatter.tags} />
-                  )}
+                  {markdownRemark?.frontmatter?.tags &&
+                    markdownRemark?.frontmatter?.tags.length > 0 && (
+                      <PostTag
+                        tags={markdownRemark.frontmatter.tags
+                          .map(tag => tag || "")
+                          .filter(Boolean)}
+                      />
+                    )}
                 </Styled.PostMeta>
               </Styled.Article>
             </Styled.Main>
@@ -82,10 +89,10 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
             <Container small>
               <footer>
                 <SiblingNav previous={previous} next={next} />
-                {series && (
+                {markdownRemark?.frontmatter?.series && (
                   <SeriesNav
                     className="mb-4"
-                    series={series}
+                    series={markdownRemark.frontmatter.series}
                     nodeId={markdownRemark.id}
                     posts={data.allMarkdownRemark.nodes}
                   />

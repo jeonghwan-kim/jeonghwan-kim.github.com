@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React, { CSSProperties } from "react"
-import { MarkdownRemark } from "../../../graphql-types"
+import { MarkdownRemark, Maybe } from "../../../graphql-types"
 import * as Styled from "./style"
 
 interface SiblingNavItemProps {
@@ -36,29 +36,29 @@ const SiblingNavItem: React.FC<SiblingNavItemProps> = p => {
 }
 
 interface P {
-  previous?: MarkdownRemark
-  next?: MarkdownRemark
+  previous?: Maybe<MarkdownRemark>
+  next?: Maybe<MarkdownRemark>
 }
 
-const SiblingNav: React.FC<P> = p => {
+const SiblingNav: React.FC<P> = ({ previous, next }) => {
   return (
     <Styled.SiblingNav>
-      {p.previous && (
+      {previous?.frontmatter?.title && previous?.frontmatter?.slug && (
         <SiblingNavItem
           label="이전글"
           align="left"
           icon="«"
-          text={p.previous.frontmatter.title}
-          url={p.previous.frontmatter.slug}
+          text={previous.frontmatter.title}
+          url={previous.frontmatter.slug}
         />
       )}
-      {p.next && (
+      {next?.frontmatter?.title && next?.frontmatter?.slug && (
         <SiblingNavItem
           label="다음글"
           align="right"
           icon="»"
-          text={`${p.next.frontmatter.title}`}
-          url={p.next.frontmatter.slug}
+          text={next.frontmatter.title}
+          url={next.frontmatter.slug}
         />
       )}
     </Styled.SiblingNav>

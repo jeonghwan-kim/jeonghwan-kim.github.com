@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react"
+import React, { FC, PropsWithChildren, ReactNode } from "react"
 import { useTheme } from "../../helpers/theme"
 import GlobalStyle from "../../styles/GlobalStyle"
 import { Container } from "../../styles/style-variables"
@@ -6,7 +6,7 @@ import Footer from "../Footer"
 import Header, { HeaderProps } from "../Header"
 import * as Styled from "./style"
 
-export interface LayoutProps extends HeaderProps {}
+export interface LayoutProps extends HeaderProps, PropsWithChildren {}
 
 const Layout: FC<LayoutProps> = ({ noBorder, children }) => {
   useTheme()
@@ -31,7 +31,7 @@ export const PlainLayout: FC<LayoutProps> = ({ children }) => {
   )
 }
 
-export interface HomeLayoutProps {}
+export interface HomeLayoutProps extends PropsWithChildren {}
 
 export const HomeLayout: FC<HomeLayoutProps> = ({ children }) => {
   return (
@@ -42,7 +42,7 @@ export const HomeLayout: FC<HomeLayoutProps> = ({ children }) => {
   )
 }
 
-interface TwoColumnLayoutProps {
+interface TwoColumnLayoutProps extends PropsWithChildren {
   aside: ReactNode
 }
 

@@ -29,6 +29,10 @@ const SEO: React.FC<SEOProps> = ({ title, description, date, url, image }) => {
   const { site } = useStaticQuery<{ site: Site }>(query)
 
   const getImage = () => {
+    if (!site.siteMetadata?.url) {
+      return ""
+    }
+
     const DEFAULT_IMAGE = `${site.siteMetadata.url}/assets/imgs/me.jpg`
 
     if (image) {
@@ -41,9 +45,9 @@ const SEO: React.FC<SEOProps> = ({ title, description, date, url, image }) => {
   }
 
   const meta = createMeta({
-    siteTitle: site.siteMetadata.title,
-    siteDescription: description || site.siteMetadata.description,
-    url: url || site.siteMetadata.url,
+    siteTitle: site.siteMetadata?.title || "",
+    siteDescription: description || site.siteMetadata?.description || "",
+    url: url || site.siteMetadata?.url || "",
     image: getImage(),
     title,
   })
@@ -54,7 +58,7 @@ const SEO: React.FC<SEOProps> = ({ title, description, date, url, image }) => {
         lang: "ko",
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${site.siteMetadata?.title}`}
       meta={meta}
     >
       {date && (
