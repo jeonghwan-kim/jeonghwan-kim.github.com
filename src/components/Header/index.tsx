@@ -6,6 +6,7 @@ import Icon from "../Icon"
 import { IconType } from "../Icon/style"
 import Nav from "./nav"
 import * as Styled from "./style"
+import HamburgerButton from "./HamburgerButton"
 
 export interface HeaderProps {
   noBorder?: boolean
@@ -19,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <Styled.Header bordered={!noBorder}>
       <Container>
-        <button onClick={onClickHamburgerButton}>toggle</button>
+        <HamburgerButton onClick={() => onClickHamburgerButton?.()} />
         <Styled.SiteTitle>
           <Styled.SiteLogo>
             <Link to={Path.Home}>김정환블로그</Link>

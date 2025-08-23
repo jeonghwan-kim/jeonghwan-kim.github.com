@@ -89,3 +89,31 @@ export const Contacts = styled.div`
     display: none;
   }
 `
+
+export const HamburgerButton = styled.button<
+  PropsWithChildren<{ onClick: () => void }>
+>`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 60px;
+  height: 30px;
+  background: none;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  padding: 6px 18px;
+
+  span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: #333;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:hover {
+    background-color: ${Colors.Background2};
+  }
+`
