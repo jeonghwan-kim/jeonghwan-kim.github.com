@@ -128,7 +128,7 @@ export const SeriesList: FC<SeriesListProps> = ({ posts, activeSeries }) => {
       {postsSortByYear.map(({ series, posts }) => (
         <Styled.SeriesListItem key={series}>
           <Link
-            to={`${Path.Posts}?${Params.Series}=${encodeURIComponent(series)}`}
+            to={`/series/${encodeURIComponent(series)}`}
             className={series === activeSeries ? "active" : ""}
             title={getLinkHoverTitle(series, posts.length)}
           >

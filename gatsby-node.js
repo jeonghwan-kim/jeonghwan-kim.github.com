@@ -82,6 +82,20 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  // 시리즈별 페이지 생성
+  const seriesList = Array.from(
+    new Set(nodes.map(node => node.frontmatter.series))
+  )
+  seriesList.forEach(series => {
+    createPage({
+      path: `/series/${series}`,
+      component: path.resolve(__dirname, `./src/templates/series/index.tsx`),
+      context: {
+        series,
+      },
+    })
+  })
 }
 
 exports.sourceNodes = ({ actions, createContentDigest }) => {
