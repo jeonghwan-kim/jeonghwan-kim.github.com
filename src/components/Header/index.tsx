@@ -1,21 +1,16 @@
 import { Link } from "gatsby"
 import React from "react"
-import { Params, Path } from "../../helpers/constants"
-import { Container } from "../../styles/style-variables"
+import { Path } from "../../helpers/constants"
 import Icon from "../Icon"
 import { IconType } from "../Icon/style"
 import Nav from "./nav"
 import * as Styled from "./style"
 
 export interface HeaderProps {
-  noBorder?: boolean
   onClickHamburgerButton?: () => void
 }
 
-export default function Header({
-  noBorder,
-  onClickHamburgerButton,
-}: HeaderProps) {
+export default function Header({ onClickHamburgerButton }: HeaderProps) {
   return (
     <Styled.Header>
       <HamburgerButton onClick={() => onClickHamburgerButton?.()} />
