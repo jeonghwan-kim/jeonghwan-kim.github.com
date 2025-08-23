@@ -24,7 +24,12 @@ export default function TagTemplate({
 >) {
   return (
     <PlainLayout data={data.allPosts.nodes}>
-      <SEO title="홈" />
+      <SEO
+        title={`#${pageContext.tag}`}
+        description={`${
+          pageContext.tag
+        }와 관련된 ${data.tagPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}
+      />
       <GoogleAdsense />
       <Container small>
         <Section title={`#${pageContext.tag}`}>

@@ -1,5 +1,5 @@
 import { graphql } from "gatsby"
-import React, { FC } from "react"
+import React from "react"
 import { MarkdownRemarkEdge, Query } from "../../../graphql-types"
 import { PlainLayout } from "../../components/layout"
 import Section from "../../components/Section"
@@ -17,12 +17,11 @@ import * as Styled from "./style"
 import GoogleAdsense from "../../components/GoogleAdsense"
 
 interface Props {
-  // 쿼리 결과(pageQuery)가 데이터로 주입될 것이다.
   data: Query
   pageContext: MarkdownRemarkEdge
 }
 
-const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
+export default function PostTemplate({ data, pageContext }: Props) {
   const { site, markdownRemark, video } = data
   const { previous, next } = pageContext
 
@@ -116,8 +115,6 @@ const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
     </PlainLayout>
   )
 }
-
-export default BlogPostTemplate
 
 export const query = graphql`
   query BlogPostBySlug($slug: String!, $series: String, $videoId: String) {

@@ -7,7 +7,7 @@
 
 import React from "react"
 import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import { createMeta } from "./meta"
 import { Site } from "../../../graphql-types"
 
@@ -25,7 +25,13 @@ export interface MetaProps {
   content: string
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, date, url, image }) => {
+export default function SEO({
+  title,
+  description,
+  date,
+  url,
+  image,
+}: SEOProps) {
   const { site } = useStaticQuery<{ site: Site }>(query)
 
   const getImage = () => {
@@ -77,8 +83,6 @@ const SEO: React.FC<SEOProps> = ({ title, description, date, url, image }) => {
     </Helmet>
   )
 }
-
-export default SEO
 
 const query = graphql`
   query SEO {

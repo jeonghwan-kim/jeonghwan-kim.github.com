@@ -36,7 +36,7 @@ exports.createPages = async ({ graphql, actions }) => {
   nodes.forEach(({ frontmatter: { slug, date, series, videoId } }, index) => {
     createPage({
       path: slug,
-      component: path.resolve(__dirname, `./src/templates/blog-post/index.tsx`),
+      component: path.resolve(__dirname, `./src/templates/post/index.tsx`),
       context: {
         slug, // $slug에 주입
         date,

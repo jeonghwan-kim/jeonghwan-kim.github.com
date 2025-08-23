@@ -24,7 +24,12 @@ export default function SeriesTemplate({
 >) {
   return (
     <PlainLayout data={data.allPosts.nodes}>
-      <SEO title="홈" />
+      <SEO
+        title={`${pageContext.series}`}
+        description={`"${
+          pageContext.series
+        }" 연재물 ${data.seriesPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}
+      />
       <GoogleAdsense />
       <Container small>
         <Section title={`${pageContext.series}`}>

@@ -24,7 +24,12 @@ export default function YearTemplate({
 >) {
   return (
     <PlainLayout data={data.allPosts.nodes}>
-      <SEO title="홈" />
+      <SEO
+        title={`${pageContext.year}년`}
+        description={`${
+          pageContext.year
+        }년에 발행된 ${data.yearPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}
+      />
       <GoogleAdsense />
       <Container small>
         <Section title={`${pageContext.year}년`}>
