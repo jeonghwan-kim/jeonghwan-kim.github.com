@@ -38,19 +38,6 @@ export function PlainLayout({ children, data }: LayoutProps) {
   )
 }
 
-export interface HomeLayoutProps extends PropsWithChildren {
-  data: MarkdownRemark[]
-}
-
-export function HomeLayout({ children, data }: HomeLayoutProps) {
-  return (
-    <Layout data={data}>
-      {children}
-      <Footer bordered />
-    </Layout>
-  )
-}
-
 interface TwoColumnLayoutProps extends PropsWithChildren {
   data: MarkdownRemark[]
   aside: ReactNode

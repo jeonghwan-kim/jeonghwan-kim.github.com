@@ -3,7 +3,7 @@ import GoogleAdsense from "../../components/GoogleAdsense"
 import { Container } from "../../styles/style-variables"
 import Section from "../../components/Section"
 import PostList from "../../components/PostList"
-import { HomeLayout } from "../../components/layout"
+import { PlainLayout } from "../../components/layout"
 import React from "react"
 import { graphql, PageProps } from "gatsby"
 import { Query } from "../../../graphql-types"
@@ -23,7 +23,7 @@ export default function SeriesTemplate({
   PageContext
 >) {
   return (
-    <HomeLayout data={data.allPosts.nodes}>
+    <PlainLayout data={data.allPosts.nodes}>
       <SEO title="홈" />
       <GoogleAdsense />
       <Container small>
@@ -31,7 +31,7 @@ export default function SeriesTemplate({
           <PostList posts={data.seriesPosts.nodes} />
         </Section>
       </Container>
-    </HomeLayout>
+    </PlainLayout>
   )
 }
 
