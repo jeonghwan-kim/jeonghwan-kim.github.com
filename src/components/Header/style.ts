@@ -8,18 +8,16 @@ import {
 } from "../../styles/style-variables"
 import { PropsWithChildren } from "react"
 
-export const Header = styled.header<PropsWithChildren<{ bordered: boolean }>>`
+export const Header = styled.header<PropsWithChildren>`
   height: ${SpaceUnit(7)};
-  border-bottom: ${props => (props.bordered ? Border() : `none`)};
+  border-bottom: ${Border()};
   padding: 0 ${SpaceUnit()};
   a {
     color: ${Colors.Foreground1};
     text-decoration: none;
   }
-  ${Container} {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center;
 `
 
 export const SiteTitle = styled.h1`

@@ -17,29 +17,27 @@ export default function Header({
   onClickHamburgerButton,
 }: HeaderProps) {
   return (
-    <Styled.Header bordered={!noBorder}>
-      <Container>
-        <HamburgerButton onClick={() => onClickHamburgerButton?.()} />
-        <Styled.SiteTitle>
-          <Styled.SiteLogo>
-            <Link to={Path.Home}>김정환블로그</Link>
-          </Styled.SiteLogo>
-        </Styled.SiteTitle>
-        <Styled.NavList>
-          <Nav to={Path.Posts}>
-            <Icon type={IconType.Article} />
-            <span>POSTS</span>
-          </Nav>
-        </Styled.NavList>
-        <Styled.Contacts>
-          <Nav to="/feed.xml">
-            <Icon type={IconType.RSS} style={{ filter: "invert(0.6)" }} />
-          </Nav>
-          <Nav to={`https://github.com/jeonghwan-kim`}>
-            <Icon type={IconType.Github} style={{ filter: "invert(0.6)" }} />
-          </Nav>
-        </Styled.Contacts>
-      </Container>
+    <Styled.Header>
+      <HamburgerButton onClick={() => onClickHamburgerButton?.()} />
+      <Styled.SiteTitle>
+        <Styled.SiteLogo>
+          <Link to={Path.Home}>김정환블로그</Link>
+        </Styled.SiteLogo>
+      </Styled.SiteTitle>
+      <Styled.NavList>
+        <Nav to={Path.Posts}>
+          <Icon type={IconType.Article} />
+          <span>POSTS</span>
+        </Nav>
+      </Styled.NavList>
+      <Styled.Contacts>
+        <Nav to="/feed.xml">
+          <Icon type={IconType.RSS} style={{ filter: "invert(0.6)" }} />
+        </Nav>
+        <Nav to={`https://github.com/jeonghwan-kim`}>
+          <Icon type={IconType.Github} style={{ filter: "invert(0.6)" }} />
+        </Nav>
+      </Styled.Contacts>
     </Styled.Header>
   )
 }
