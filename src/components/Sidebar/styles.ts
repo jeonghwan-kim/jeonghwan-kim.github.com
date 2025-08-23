@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { SpaceUnit } from "../../styles/style-variables"
 
 export const Sidebar = styled.aside`
-  position: sticky;
+  position: fixed;
   left: 0;
   top: 0;
   height: 100vh;

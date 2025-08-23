@@ -9,12 +9,17 @@ import * as Styled from "./style"
 
 export interface HeaderProps {
   noBorder?: boolean
+  onClickHamburgerButton?: () => void
 }
 
-const Header: React.FC<HeaderProps> = ({ noBorder }) => {
+const Header: React.FC<HeaderProps> = ({
+  noBorder,
+  onClickHamburgerButton,
+}) => {
   return (
     <Styled.Header bordered={!noBorder}>
       <Container>
+        <button onClick={onClickHamburgerButton}>toggle</button>
         <Styled.SiteTitle>
           <Styled.SiteLogo>
             <Link to={Path.Home}>김정환블로그</Link>
