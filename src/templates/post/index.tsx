@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
 import React from "react"
 import { MarkdownRemarkEdge, Query } from "../../../graphql-types"
-import { Layout } from "../../components/layout"
+import { Layout } from "../../components/Layout"
 import Section from "../../components/Section"
 import SEO from "../../components/SEO"
 import { dateFormat } from "../../helpers/date"

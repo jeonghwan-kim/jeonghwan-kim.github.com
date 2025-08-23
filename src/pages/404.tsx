@@ -1,6 +1,6 @@
 import React from "react"
 import GoogleAdsense from "../components/GoogleAdsense"
-import { Layout } from "../components/layout"
+import { Layout } from "../components/Layout"
 import Section from "../components/Section"
 import SEO from "../components/SEO"
 import { Container } from "../styles/style-variables"
