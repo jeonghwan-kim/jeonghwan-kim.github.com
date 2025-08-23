@@ -54,10 +54,7 @@ exports.createPages = async ({ graphql, actions }) => {
   years.forEach(year => {
     createPage({
       path: `/year/${year}`,
-      component: path.resolve(
-        __dirname,
-        `./src/templates/year-template/index.tsx`
-      ),
+      component: path.resolve(__dirname, `./src/templates/year/index.tsx`),
       context: {
         year,
         startDate: `${year}-01-01`,
