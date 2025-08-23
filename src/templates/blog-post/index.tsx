@@ -17,6 +17,7 @@ import * as Styled from "./style"
 import GoogleAdsense from "../../components/GoogleAdsense"
 
 interface Props {
+  // 쿼리 결과(pageQuery)가 데이터로 주입될 것이다.
   data: Query
   pageContext: MarkdownRemarkEdge
 }
@@ -24,76 +25,85 @@ interface Props {
 const BlogPostTemplate: FC<Props> = ({ data, pageContext }) => {
   const { site, markdownRemark, video } = data
   const { previous, next } = pageContext
-  const hasAside =
-    markdownRemark?.tableOfContents ||
-    markdownRemark?.frontmatter?.series ||
-    video
+
+  if (!markdownRemark) {
+    return (
+      <PlainLayout>
+        <Section>
+          <Container>
+            <p>포스트를 찾을 수 없습니다.</p>
+          </Container>
+        </Section>
+      </PlainLayout>
+    )
+  }
+
+  const { frontmatter, tableOfContents, excerpt, id, html } = markdownRemark
+  const hasAside = tableOfContents || frontmatter?.series || video
 
   return (
     <PlainLayout>
       <SEO
-        title={markdownRemark?.frontmatter?.title || ""}
-        description={markdownRemark?.excerpt || ""}
-        date={markdownRemark?.frontmatter?.date}
-        url={`${site?.siteMetadata?.url}${markdownRemark?.frontmatter?.slug}`}
-        image={
-          markdownRemark?.frontmatter?.featuredImage?.childImageSharp?.fixed
-            ?.src
-        }
+        title={frontmatter?.title || ""}
+        description={excerpt || ""}
+        date={frontmatter?.date}
+        url={`${site?.siteMetadata?.url}${frontmatter?.slug}`}
+        image={frontmatter?.featuredImage?.childImageSharp?.fixed?.src}
       />
+
       <GoogleAdsense />
+
       <Container small={!hasAside}>
         <div itemScope itemType="http://schema.org/BlogPosting">
           <Section>
             <Styled.Main>
               {hasAside && (
                 <Styled.Aside>
-                  {markdownRemark?.tableOfContents && (
-                    <PostToc tableOfContents={markdownRemark.tableOfContents} />
+                  {tableOfContents && (
+                    <PostToc tableOfContents={tableOfContents} />
                   )}
-                  {markdownRemark?.frontmatter?.series && (
+                  {frontmatter?.series && (
                     <SeriesNav
                       lite
-                      series={markdownRemark.frontmatter.series}
-                      nodeId={markdownRemark.id}
+                      series={frontmatter.series}
+                      nodeId={id}
                       posts={data.allMarkdownRemark.nodes}
                     />
                   )}
                   {video && <PostVideo video={video} />}
                 </Styled.Aside>
               )}
+
               <Styled.Article>
                 <PostHeader
-                  title={markdownRemark?.frontmatter?.title || ""}
-                  datetime={dateFormat(markdownRemark?.frontmatter?.date)}
+                  title={frontmatter?.title || ""}
+                  datetime={dateFormat(frontmatter?.date)}
                 />
                 <Styled.PostContent
                   id="post-content"
                   itemProp="articleBody"
-                  dangerouslySetInnerHTML={{ __html: markdownRemark?.html }}
+                  dangerouslySetInnerHTML={{
+                    __html: html ?? "",
+                  }}
                 />
                 <Styled.PostMeta>
-                  {markdownRemark?.frontmatter?.tags &&
-                    markdownRemark?.frontmatter?.tags.length > 0 && (
-                      <PostTag
-                        tags={markdownRemark.frontmatter.tags
-                          .map(tag => tag || "")
-                          .filter(Boolean)}
-                      />
-                    )}
+                  {frontmatter?.tags?.length && (
+                    <PostTag tags={frontmatter.tags} />
+                  )}
                 </Styled.PostMeta>
               </Styled.Article>
             </Styled.Main>
           </Section>
+
           <Section>
             <Container small>
               <footer>
                 <SiblingNav previous={previous} next={next} />
-                {markdownRemark?.frontmatter?.series && (
+                {frontmatter?.series && (
                   <SeriesNav
                     className="mb-4"
-                    series={markdownRemark.frontmatter.series}
-                    nodeId={markdownRemark.id}
+                    series={frontmatter.series}
+                    nodeId={id}
                     posts={data.allMarkdownRemark.nodes}
                   />
                 )}

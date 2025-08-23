@@ -1,4 +1,4 @@
-import React from "react"
+import React, { PropsWithChildren } from "react"
 import { Link } from "gatsby"
 import * as Styled from "./style"
 
@@ -9,17 +9,18 @@ export interface ButtonProps {
   className?: string
   onClick?: () => void
 }
-const Button: React.FC<ButtonProps> = ({
+
+const Button: React.FC<ButtonProps & PropsWithChildren> = ({
   type,
   link,
   to,
   children,
   onClick,
 }) => {
-  if (link) {
+  if (link && to) {
     return (
       <Styled.ButtonLink type={type}>
-        <Link to={to} onClick={() => onClick}>
+        <Link to={to} onClick={onClick}>
           {children}
         </Link>
       </Styled.ButtonLink>
@@ -27,7 +28,7 @@ const Button: React.FC<ButtonProps> = ({
   }
 
   return (
-    <Styled.Button type={type} onClick={() => onClick()}>
+    <Styled.Button type={type} onClick={onClick}>
       {children}
     </Styled.Button>
   )
