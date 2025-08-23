@@ -5,12 +5,8 @@ const videos = require("./content/videos.json")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
-  const blogPostTemplate = path.resolve(
-    __dirname,
-    `./src/templates/blog-post/index.tsx`
-  )
-
-  const result = await graphql(`
+  // 모든 마크다운 데이터 가져오기
+  const allMarkdowns = await graphql(`
     {
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
@@ -29,21 +25,22 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  if (result.errors) {
-    throw result.errors
+  if (allMarkdowns.errors) {
+    throw allMarkdowns.errors
   }
 
-  const nodes = result.data.allMarkdownRemark.edges.map(e => e.node)
+  const nodes = allMarkdowns.data.allMarkdownRemark.edges.map(e => e.node)
 
+  // 마크다운으로 페이지 생성
   nodes.forEach(({ frontmatter: { slug, date, series, videoId } }, index) => {
     createPage({
       path: slug,
-      component: blogPostTemplate,
+      component: path.resolve(__dirname, `./src/templates/blog-post/index.tsx`),
       context: {
-        slug,
+        slug, // $slug에 주입
         date,
-        series,
-        videoId,
+        series, // $series에 주입
+        videoId, // $videoId에 주입
         previous: index === nodes.length - 1 ? null : nodes[index + 1],
         next: index === 0 ? null : nodes[index - 1],
       },
