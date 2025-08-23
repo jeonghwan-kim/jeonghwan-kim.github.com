@@ -16,8 +16,11 @@ export const PostItem = styled.li`
 `
 
 export const PostTitle = styled.h2`
-  color: ${Colors.Primary};
+  color: ${Colors.Foreground2};
   margin-bottom: ${SpaceUnit()};
+  &:hover {
+    color: ${Colors.Primary};
+  }
 `
 
 export const PostMeta = styled.div`
