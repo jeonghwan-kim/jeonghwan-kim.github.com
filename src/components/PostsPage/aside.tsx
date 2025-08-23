@@ -44,7 +44,7 @@ export const ArchiveList: FC<ArchiveListProps> = ({ posts, activeYear }) => {
       {postsSortByYear.map(({ year, posts }) => (
         <Styled.ArchiveListItem key={year}>
           <Link
-            to={`${Path.Posts}?${Params.Year}=${encodeURIComponent(year)}`}
+            to={`/year/${year}`}
             className={year === activeYear ? "active" : ""}
             title={getLinkHoverTitle(year, posts.length)}
           >

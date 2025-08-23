@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Colors, SpaceUnit } from "../../styles/style-variables"
+import { PropsWithChildren } from "react"
 
 export const Wrapper = styled.div`
   padding: ${SpaceUnit()};
@@ -11,7 +12,7 @@ export const ArchiveList = styled.ul`
   margin: 0;
 `
 
-export const ArchiveListItem = styled.li`
+export const ArchiveListItem = styled.li<PropsWithChildren>`
   a {
     padding: ${SpaceUnit()} ${SpaceUnit()};
     display: flex;

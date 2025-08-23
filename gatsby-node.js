@@ -46,6 +46,25 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  // 포스트 연도 목록 추출
+  const years = Array.from(
+    new Set(nodes.map(node => new Date(node.frontmatter.date).getFullYear()))
+  )
+  years.forEach(year => {
+    createPage({
+      path: `/year/${year}`,
+      component: path.resolve(
+        __dirname,
+        `./src/templates/year-template/index.tsx`
+      ),
+      context: {
+        year,
+        startDate: `${year}-01-01`,
+        endDate: `${year + 1}-01-01`,
+      },
+    })
+  })
 }
 
 exports.sourceNodes = ({ actions, createContentDigest }) => {
