@@ -9,7 +9,7 @@ export const Sidebar = styled.aside`
   height: 100vh;
   background-color: white;
   width: 300px;
-  padding: ${SpaceUnit(8)} ${SpaceUnit()} ${SpaceUnit(4)} ${SpaceUnit(4)};
+  padding: ${SpaceUnit()} ${SpaceUnit()} ${SpaceUnit(4)} ${SpaceUnit(4)};
   overflow-y: auto;
   display: flex;
   flex-direction: column;
