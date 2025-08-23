@@ -13,8 +13,8 @@ type PageContext = {
 }
 
 export default function TagTemplate({
-  data,
-  pageContext,
+  data: { allPosts, tagPosts },
+  pageContext: { tag },
 }: PageProps<
   {
     allPosts: Query["allMarkdownRemark"]
@@ -23,17 +23,15 @@ export default function TagTemplate({
   PageContext
 >) {
   return (
-    <PlainLayout data={data.allPosts.nodes}>
+    <PlainLayout data={allPosts.nodes}>
       <SEO
-        title={`#${pageContext.tag}`}
-        description={`${
-          pageContext.tag
-        }와 관련된 ${data.tagPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}
+        title={`#${tag}`}
+        description={`${tag}와 관련된 ${tagPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}
       />
       <GoogleAdsense />
       <Container small>
-        <Section title={`#${pageContext.tag}`}>
-          <PostList posts={data.tagPosts.nodes} />
+        <Section title={`#${tag}`}>
+          <PostList posts={tagPosts.nodes} />
         </Section>
       </Container>
     </PlainLayout>

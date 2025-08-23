@@ -13,8 +13,8 @@ type PageContext = {
 }
 
 export default function SeriesTemplate({
-  data,
-  pageContext,
+  data: { allPosts, seriesPosts },
+  pageContext: { series },
 }: PageProps<
   {
     allPosts: Query["allMarkdownRemark"]
@@ -23,17 +23,15 @@ export default function SeriesTemplate({
   PageContext
 >) {
   return (
-    <PlainLayout data={data.allPosts.nodes}>
+    <PlainLayout data={allPosts.nodes}>
       <SEO
-        title={`${pageContext.series}`}
-        description={`"${
-          pageContext.series
-        }" 연재물 ${data.seriesPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}
+        title={`${series}`}
+        description={`"${series}" 연재물 ${seriesPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}
       />
       <GoogleAdsense />
       <Container small>
-        <Section title={`${pageContext.series}`}>
-          <PostList posts={data.seriesPosts.nodes} />
+        <Section title={`${series}`}>
+          <PostList posts={seriesPosts.nodes} />
         </Section>
       </Container>
     </PlainLayout>

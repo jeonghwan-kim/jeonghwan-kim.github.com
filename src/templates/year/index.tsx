@@ -13,8 +13,8 @@ type PageContext = {
 }
 
 export default function YearTemplate({
-  data,
-  pageContext,
+  data: { allPosts, yearPosts },
+  pageContext: { year },
 }: PageProps<
   {
     allPosts: Query["allMarkdownRemark"]
@@ -23,17 +23,15 @@ export default function YearTemplate({
   PageContext
 >) {
   return (
-    <PlainLayout data={data.allPosts.nodes}>
+    <PlainLayout data={allPosts.nodes}>
       <SEO
-        title={`${pageContext.year}년`}
-        description={`${
-          pageContext.year
-        }년에 발행된 ${data.yearPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}
+        title={`${year}년`}
+        description={`${year}년에 발행된 ${yearPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}
       />
       <GoogleAdsense />
       <Container small>
-        <Section title={`${pageContext.year}년`}>
-          <PostList posts={data.yearPosts.nodes} />
+        <Section title={`${year}년`}>
+          <PostList posts={yearPosts.nodes} />
         </Section>
       </Container>
     </PlainLayout>
