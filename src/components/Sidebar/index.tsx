@@ -13,7 +13,7 @@ export default function Sidebar({ data, onClose }: Props) {
   return (
     <Styled.Sidebar>
       <CloseButton onClick={onClose} />
-      <ArchiveList posts={data} activeYear={"모든글"} />
+      <ArchiveList posts={data} activeYear={"ALL"} />
       <TagList
         posts={data.filter(node => node.frontmatter?.tags?.length)}
         activeTag={""}
@@ -37,18 +37,18 @@ function ArchiveList({
   activeYear,
 }: {
   posts: MarkdownRemark[]
-  activeYear?: string
+  activeYear?: number | "ALL"
 }) {
-  let postsGroubyYear: { [year: string]: MarkdownRemark[] } = {}
+  let postsGroupByYear: { [year: number]: MarkdownRemark[] } = {}
 
   posts.forEach(post => {
     const year = new Date(post.frontmatter?.date).getFullYear()
-    postsGroubyYear[year] = postsGroubyYear[year] || []
-    postsGroubyYear[year].push(post)
+    postsGroupByYear[year] = postsGroupByYear[year] || []
+    postsGroupByYear[year].push(post)
   })
 
   const postsSortByYear = _.orderBy(
-    Object.entries(postsGroubyYear).map(([year, posts]) => ({
+    Object.entries(postsGroupByYear).map(([year, posts]) => ({
       year,
       posts,
     })),
@@ -59,6 +59,16 @@ function ArchiveList({
   return (
     <Styled.ArchiveList>
       <Styled.ArchiveListTitle>아카이브</Styled.ArchiveListTitle>
+      <Styled.ArchiveListItem>
+        <Link
+          to={`/`}
+          className={"ALL" === activeYear ? "active" : ""}
+          title={getLinkHoverTitle("모든글", posts.length)}
+        >
+          <label>모든글</label>
+          <span>{posts.length.toLocaleString()}</span>
+        </Link>
+      </Styled.ArchiveListItem>
       {postsSortByYear.map(({ year, posts }) => (
         <Styled.ArchiveListItem key={year}>
           <Link
