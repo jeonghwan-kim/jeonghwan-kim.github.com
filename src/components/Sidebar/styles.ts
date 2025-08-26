@@ -13,7 +13,6 @@ export const Sidebar = styled.aside`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: ${SpaceUnit()};
   z-index: ${ZIndex.Sidebar};
 `
 
@@ -28,16 +27,16 @@ export const CloseButton = styled.button<
   cursor: pointer;
   align-self: flex-end;
   justify-self: end;
+  margin-bottom: ${SpaceUnit(2)};
+  padding: ${SpaceUnit(2)} 0;
+  border-radius: 2px;
   &:before {
     content: "close";
     visibility: hidden;
   }
-  margin-bottom: ${SpaceUnit(2)};
   &:hover {
     background-color: ${Colors.Background2};
   }
-  padding: ${SpaceUnit(2)} 0;
-  border-radius: 2px;
 
   span {
     position: absolute;
@@ -57,8 +56,10 @@ export const CloseButton = styled.button<
   }
 `
 
-export const Wrapper = styled.div`
-  padding: ${SpaceUnit()};
+export const SidebarSectionList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${SpaceUnit(3)};
 `
 
 export const ArchiveList = styled.ul`
@@ -99,9 +100,7 @@ export const ArchiveListTitle = styled(ArchiveListItem)`
   margin-bottom: ${SpaceUnit()};
 `
 
-export const TagList = styled(ArchiveList)`
-  margin-top: ${SpaceUnit(3)};
-`
+export const TagList = styled(ArchiveList)``
 export const TagListTitle = styled(ArchiveListTitle)``
 export const TagListItem = styled(ArchiveListItem)`
   display: inline-block;
@@ -113,8 +112,6 @@ export const TagListItem = styled(ArchiveListItem)`
   }
 `
 
-export const SeriesList = styled(ArchiveList)`
-  margin-top: ${SpaceUnit(3)};
-`
+export const SeriesList = styled(ArchiveList)``
 export const SeriesListTitle = styled(ArchiveListTitle)``
 export const SeriesListItem = styled(ArchiveListItem)``

@@ -19,25 +19,39 @@ export default function Sidebar({
   activeSeries,
   onClose,
 }: Props) {
-  console.log("sidebar", activeYear)
   return (
     <Styled.Sidebar>
       <CloseButton onClick={onClose} />
-      <ArchiveList
-        posts={data}
-        activeYear={
-          activeYear
-            ? activeYear
-            : !activeTag && !activeSeries
-            ? "ALL"
-            : undefined
-        }
-      />
-      <TagList
-        posts={data.filter(node => node.frontmatter?.tags?.length)}
-        activeTag={activeTag}
-      />
-      <SeriesList posts={data} activeSeries={activeSeries} />
+
+      <Styled.SidebarSectionList>
+        {/* 모든글 */}
+        <Styled.ArchiveList>
+          <Styled.ArchiveListItem>
+            <Link
+              to={`/`}
+              className={
+                !activeYear && !activeTag && !activeSeries ? "active" : ""
+              }
+              title={getLinkHoverTitle("모든글", data.length)}
+            >
+              <label>모든글</label>
+              <span>{data.length.toLocaleString()}</span>
+            </Link>
+          </Styled.ArchiveListItem>
+        </Styled.ArchiveList>
+
+        {/* 태그 */}
+        <TagList
+          posts={data.filter(node => node.frontmatter?.tags?.length)}
+          activeTag={activeTag}
+        />
+
+        {/* 시리즈 */}
+        <SeriesList posts={data} activeSeries={activeSeries} />
+
+        {/* 아카이브 */}
+        <ArchiveList posts={data} activeYear={activeYear} />
+      </Styled.SidebarSectionList>
     </Styled.Sidebar>
   )
 }
@@ -78,16 +92,6 @@ function ArchiveList({
   return (
     <Styled.ArchiveList>
       <Styled.ArchiveListTitle>아카이브</Styled.ArchiveListTitle>
-      <Styled.ArchiveListItem>
-        <Link
-          to={`/`}
-          className={"ALL" === activeYear ? "active" : ""}
-          title={getLinkHoverTitle("모든글", posts.length)}
-        >
-          <label>모든글</label>
-          <span>{posts.length.toLocaleString()}</span>
-        </Link>
-      </Styled.ArchiveListItem>
       {postsSortByYear.map(({ year, posts }) => (
         <Styled.ArchiveListItem key={year}>
           <Link
