@@ -35,7 +35,7 @@ export default function Sidebar({
       />
       <TagList
         posts={data.filter(node => node.frontmatter?.tags?.length)}
-        activeTag={activeTag || ""}
+        activeTag={activeTag}
       />
       <SeriesList posts={data} activeSeries={activeSeries} />
     </Styled.Sidebar>
@@ -109,7 +109,7 @@ function TagList({
   activeTag,
 }: {
   posts: MarkdownRemark[]
-  activeTag: string
+  activeTag?: string
 }) {
   let postsGroubyTag: { [tag: string]: MarkdownRemark[] } = {}
 
