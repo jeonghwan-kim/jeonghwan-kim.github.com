@@ -23,7 +23,7 @@ export default function YearTemplate({
   PageContext
 >) {
   return (
-    <Layout data={allPosts.nodes}>
+    <Layout data={allPosts.nodes} activeYear={year}>
       <SEO
         title={`${year}년`}
         description={`${year}년에 발행된 ${yearPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}

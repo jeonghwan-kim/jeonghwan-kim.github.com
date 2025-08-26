@@ -6,19 +6,38 @@ import _ from "lodash"
 
 interface Props {
   data: MarkdownRemark[]
+  activeYear?: number
+  activeTag?: string
+  activeSeries?: string
   onClose: () => void
 }
 
-export default function Sidebar({ data, onClose }: Props) {
+export default function Sidebar({
+  data,
+  activeYear,
+  activeTag,
+  activeSeries,
+  onClose,
+}: Props) {
+  console.log("sidebar", activeYear)
   return (
     <Styled.Sidebar>
       <CloseButton onClick={onClose} />
-      <ArchiveList posts={data} activeYear={"ALL"} />
+      <ArchiveList
+        posts={data}
+        activeYear={
+          activeYear
+            ? activeYear
+            : !activeTag && !activeSeries
+            ? "ALL"
+            : undefined
+        }
+      />
       <TagList
         posts={data.filter(node => node.frontmatter?.tags?.length)}
-        activeTag={""}
+        activeTag={activeTag || ""}
       />
-      <SeriesList posts={data} />
+      <SeriesList posts={data} activeSeries={activeSeries} />
     </Styled.Sidebar>
   )
 }
@@ -73,7 +92,7 @@ function ArchiveList({
         <Styled.ArchiveListItem key={year}>
           <Link
             to={`/year/${year}`}
-            className={year === activeYear ? "active" : ""}
+            className={year == activeYear ? "active" : ""}
             title={getLinkHoverTitle(year, posts.length)}
           >
             <label>{year}년</label>

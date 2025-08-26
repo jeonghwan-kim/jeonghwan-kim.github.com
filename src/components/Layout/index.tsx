@@ -6,11 +6,20 @@ import Header, { HeaderProps } from "../Header"
 import Sidebar from "../Sidebar"
 import { MarkdownRemark } from "../../../graphql-types"
 
-export interface LayoutProps extends HeaderProps, PropsWithChildren {
+export interface LayoutProps extends HeaderProps {
   data: MarkdownRemark[]
+  activeYear?: number
+  activeTag?: string
+  activeSeries?: string
 }
 
-export function Layout({ children, data }: LayoutProps) {
+export function Layout({
+  children,
+  data,
+  activeYear,
+  activeTag,
+  activeSeries,
+}: PropsWithChildren<LayoutProps>) {
   const [openSidebar, setOpenSidebar] = React.useState(false)
 
   useTheme()
@@ -20,7 +29,13 @@ export function Layout({ children, data }: LayoutProps) {
       <GlobalStyle />
       <Header onClickHamburgerButton={() => setOpenSidebar(true)} />
       {openSidebar && (
-        <Sidebar data={data} onClose={() => setOpenSidebar(false)} />
+        <Sidebar
+          data={data}
+          activeYear={activeYear}
+          activeTag={activeTag}
+          activeSeries={activeSeries}
+          onClose={() => setOpenSidebar(false)}
+        />
       )}
       {children}
       <Footer bordered />

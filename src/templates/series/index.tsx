@@ -23,7 +23,7 @@ export default function SeriesTemplate({
   PageContext
 >) {
   return (
-    <Layout data={allPosts.nodes}>
+    <Layout data={allPosts.nodes} activeSeries={series}>
       <SEO
         title={`${series}`}
         description={`"${series}" 연재물 ${seriesPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}

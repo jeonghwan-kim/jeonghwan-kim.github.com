@@ -23,7 +23,7 @@ export default function TagTemplate({
   PageContext
 >) {
   return (
-    <Layout data={allPosts.nodes}>
+    <Layout data={allPosts.nodes} activeTag={tag}>
       <SEO
         title={`#${tag}`}
         description={`${tag}와 관련된 ${tagPosts.nodes.length.toLocaleString()}개의 글을 읽어보세요.`}
