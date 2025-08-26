@@ -30,7 +30,7 @@ export default function YearTemplate({
       />
       <GoogleAdsense />
       <Container>
-        <Section title={`${year}년`}>
+        <Section title={<>아카이브: {year}년</>}>
           <PostList posts={yearPosts.nodes} />
         </Section>
       </Container>

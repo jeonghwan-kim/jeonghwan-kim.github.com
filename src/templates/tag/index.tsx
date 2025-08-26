@@ -30,7 +30,7 @@ export default function TagTemplate({
       />
       <GoogleAdsense />
       <Container>
-        <Section title={`#${tag}`}>
+        <Section title={<>태그: #{tag}</>}>
           <PostList posts={tagPosts.nodes} />
         </Section>
       </Container>

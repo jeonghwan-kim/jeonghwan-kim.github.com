@@ -30,7 +30,7 @@ export default function SeriesTemplate({
       />
       <GoogleAdsense />
       <Container>
-        <Section title={`${series}`}>
+        <Section title={<>연재물: {series}</>}>
           <PostList posts={seriesPosts.nodes} />
         </Section>
       </Container>
