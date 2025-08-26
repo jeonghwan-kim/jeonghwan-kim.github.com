@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Colors, SpaceUnit } from "../../styles/style-variables"
+import { PropsWithChildren } from "react"
 
 export enum ButtonType {
   Primary = "Primary",
@@ -11,7 +12,9 @@ const color: { [k in ButtonType]: string } = {
   [ButtonType.Secondary]: Colors.Secondary,
 }
 
-export const Button = styled.button<{ type: ButtonType }>`
+export const Button = styled.button<
+  PropsWithChildren<{ type: ButtonType; onClick?: () => void }>
+>`
   display: inline-block;
   padding: ${SpaceUnit()} ${SpaceUnit(2)};
   border-radius: 4px;

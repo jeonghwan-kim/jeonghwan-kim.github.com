@@ -20,7 +20,7 @@ const PostTag: React.FC<P> = ({ tags }) => {
             <Button
               link
               type={ButtonType.Secondary}
-              to={`${Path.Posts}?${Params.Tag}=${encodeURIComponent(tag)}`}
+              to={`/tag/${encodeURIComponent(tag)}`}
             >
               #{tag}
             </Button>

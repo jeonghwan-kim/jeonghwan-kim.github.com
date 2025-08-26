@@ -7,6 +7,7 @@ import {
   Widths,
 } from "../../styles/style-variables"
 import Video2Img from "./images/icon-video-2.png"
+import { PropsWithChildren } from "react"
 
 export const Main = styled.main`
   display: flex;
@@ -147,7 +148,7 @@ export const TagList = styled.ul`
   padding-left: 0;
 `
 
-export const TagItem = styled.li`
+export const TagItem = styled.li<PropsWithChildren>`
   display: inline-block;
   margin-right: ${SpaceUnit()};
   &:last-child {
