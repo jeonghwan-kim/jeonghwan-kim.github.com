@@ -5,6 +5,7 @@ import Footer from "../Footer"
 import Header, { HeaderProps } from "../Header"
 import Sidebar from "../Sidebar"
 import { MarkdownRemark } from "../../../graphql-types"
+import * as Styled from "./style"
 
 export interface LayoutProps extends HeaderProps {
   data: MarkdownRemark[]
@@ -28,15 +29,20 @@ export function Layout({
     <>
       <GlobalStyle />
       <Header onClickHamburgerButton={() => setOpenSidebar(true)} />
-      {openSidebar && (
+      <>
         <Sidebar
           data={data}
           activeYear={activeYear}
           activeTag={activeTag}
           activeSeries={activeSeries}
           onClose={() => setOpenSidebar(false)}
+          show={openSidebar}
         />
-      )}
+        <Styled.Backdrop
+          show={openSidebar}
+          onClick={() => setOpenSidebar(false)}
+        />
+      </>
       {children}
       <Footer bordered />
     </>

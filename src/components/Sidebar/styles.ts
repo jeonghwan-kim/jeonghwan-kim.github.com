@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { Colors, SpaceUnit, ZIndex } from "../../styles/style-variables"
 import { PropsWithChildren } from "react"
 
-export const Sidebar = styled.aside`
+export const Sidebar = styled.aside<PropsWithChildren<{ show: boolean }>>`
   position: fixed;
   left: 0;
   top: 0;
@@ -14,6 +14,10 @@ export const Sidebar = styled.aside`
   display: flex;
   flex-direction: column;
   z-index: ${ZIndex.Sidebar};
+  transform: translateX(${({ show }) => (show ? "0" : "-100%")});
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0, 1);
+  box-shadow: ${({ show }) =>
+    show ? "0 20px 60px rgba(0, 0, 0, 0.35)" : "none"};
 `
 
 export const CloseButton = styled.button<

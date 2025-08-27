@@ -10,6 +10,7 @@ interface Props {
   activeTag?: string
   activeSeries?: string
   onClose: () => void
+  show: boolean
 }
 
 export default function Sidebar({
@@ -18,9 +19,10 @@ export default function Sidebar({
   activeTag,
   activeSeries,
   onClose,
+  show,
 }: Props) {
   return (
-    <Styled.Sidebar>
+    <Styled.Sidebar show={show}>
       <CloseButton onClick={onClose} />
 
       <Styled.SidebarSectionList>

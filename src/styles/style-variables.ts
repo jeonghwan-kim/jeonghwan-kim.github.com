@@ -43,5 +43,6 @@ export const Container = styled.div<PropsWithChildren>`
 `
 
 export const ZIndex = {
-  Sidebar: 1,
+  Sidebar: 10,
+  Backdrop: 9,
 }
