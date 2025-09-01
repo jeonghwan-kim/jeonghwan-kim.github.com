@@ -5,7 +5,6 @@ title: "[리액트 1부] 만들면서 학습하는 리액트: 사용편1"
 layout: post
 category: 연재물
 series: "[리액트 1부] 만들면서 학습하는 리액트"
-videoId: video-2021-05-04-inflearn-react
 tags: [react]
 ---
 
@@ -1046,3 +1045,10 @@ search(searchKeyword) {
 이번 편에서는 리액트를 사용해 리액티브 프로그래밍과 가상돔을 이용한 성능 개선 방법에 대해 알아 보았다.
 
 이제 리액트의 강력한 추상화 개념인 **컴포넌트**가 남았다. 다음 편은 컴포넌트를 이용해서 결과물을 다시 만들어 보는 내용을 다루겠다.
+
+---
+
+<a href="https://www.inflearn.com/course/만들면서-학습하는-리액트?inst=b59d75f4" target="_blank">
+  "리액트 1부: 만들면서 학습하는 리액트" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/326905/cover/739f7b4b-1a9f-478f-a6a8-1a13bf58cae3/326905-eng.png" />
+</a>

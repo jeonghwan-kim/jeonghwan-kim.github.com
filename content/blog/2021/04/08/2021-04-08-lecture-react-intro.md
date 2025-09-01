@@ -5,7 +5,6 @@ title: "[리액트 1부] 만들면서 학습하는 리액트: 소개편"
 layout: post
 category: 연재물
 series: "[리액트 1부] 만들면서 학습하는 리액트"
-videoId: video-2021-05-04-inflearn-react
 tags: [react]
 ---
 
@@ -451,3 +450,10 @@ JSX의 모양은 HTML이지만 실제로는 자바스크립트이기 때문에 �
 그래도 헬로 월드 코드에서 시작해서 리액트로 코딩을 시작했다는 것에 의미를 두자. 간단한 헬로 월드 코드이지만 그 안에는 리액트 앨리먼트와 가상돔이 어떻게 화면에 표시되는지 흐름을 볼 수 있었다. 그리고 UI 코드를 읽기 쉽게 만들수 있는 JSX로 코드를 개선해 보기도 했다.
 
 다음 편부터는 진짜로 리액트를 사용할 것이다. 진짜다. 순수 자바스크립트로 구현했던 부분을 다시 한 번 리액트로 만들어 볼 것이다. 기대하고 다음 장으로 넘어가자.
+
+---
+
+<a href="https://www.inflearn.com/course/만들면서-학습하는-리액트?inst=b59d75f4" target="_blank">
+  "리액트 1부: 만들면서 학습하는 리액트" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/326905/cover/739f7b4b-1a9f-478f-a6a8-1a13bf58cae3/326905-eng.png" />
+</a>

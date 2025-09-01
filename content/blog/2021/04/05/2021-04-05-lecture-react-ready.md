@@ -5,7 +5,6 @@ title: "[리액트 1부] 만들면서 학습하는 리액트: 준비편"
 layout: post
 category: 연재물
 series: "[리액트 1부] 만들면서 학습하는 리액트"
-videoId: video-2021-05-04-inflearn-react
 tags: [react]
 ---
 
@@ -1162,3 +1161,10 @@ search() 메소드는 컨트롤러에 의해 호출되고 컨트롤러는 뷰를
 리액트를 접하기 앞서 순수 자바스크립트를 살짝 맛보았다. 그냥 구현하기 보다는 문제 해결을 위한 대표적인 패턴 중 하나인 MVC 패턴으로 결과물을 구현했다. 내용이 다소 길어지긴 했지만 UI 라이브러리의 필요성과 리액트의 장점을 강조하려는 의도다.
 
 이제 리액트를 학습할 준비을 마쳤다. 더 이상 가다가는 이게 리액트인지 순수 자바스크립트를 말하려는지 헷갈리겠다. 어서 리액트로 넘어가자.
+
+---
+
+<a href="https://www.inflearn.com/course/만들면서-학습하는-리액트?inst=b59d75f4" target="_blank">
+  "리액트 1부: 만들면서 학습하는 리액트" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/326905/cover/739f7b4b-1a9f-478f-a6a8-1a13bf58cae3/326905-eng.png" />
+</a>
