@@ -634,3 +634,10 @@ Vuex와 Vue-Router 그리고 Axios를 이용해서 SPA 인증을 구현해 봤�
 - [Persisting user authentication with Vuex in Vue
   ]()https://medium.com/front-end-hacking/persisting-user-authentication-with-vuex-in-vue-b1514d5d3278)
 - [Vuejs 2 Authentication Tutorial](https://auth0.com/blog/vuejs2-authentication-tutorial/)
+
+---
+
+<a href="https://www.inflearn.com/course/vuejs?inst=4b6acc34" target="_blank">
+  "트렐로 개발로 배우는 Vuejs, Vuex, Vue-Router 프론트엔드 실전 기술" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/wp-content/uploads/kjh_Vuejs-3.jpg" />
+</a>

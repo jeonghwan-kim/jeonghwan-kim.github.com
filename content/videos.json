@@ -1,11 +1,5 @@
 [
   {
-    "id": "video-inflean-vuejs-season2",
-    "url": "https://www.inflearn.com/course/vuejs?inst=4b6acc34",
-    "thumb": "https://cdn.inflearn.com/wp-content/uploads/kjh_Vuejs-3.jpg",
-    "title": "트렐로 개발로 배우는 Vuejs, Vuex, Vue-Router 프론트엔드 실전 기술"
-  },
-  {
     "id": "video-inflearn-vuejs",
     "url": "https://www.inflearn.com/course/순수js-vuejs-개발-강좌?inst=b936ef67",
     "thumb": "https://cdn.inflearn.com/wp-content/uploads/vuejsandpure.png",

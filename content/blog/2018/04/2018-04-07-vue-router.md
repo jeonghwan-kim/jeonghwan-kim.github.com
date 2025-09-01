@@ -586,3 +586,10 @@ redirect 문자열을 인자로 하여 `this.$router.replace()` 함수를 호출
 
 - 공식문서: [https://router.vuejs.org/kr](https://router.vuejs.org/kr)
 - 예제 코드: [https://github.com/vuejs/vue-router/blob/dev/examples/index.html](https://github.com/vuejs/vue-router/blob/dev/examples/index.html)
+
+---
+
+<a href="https://www.inflearn.com/course/vuejs?inst=4b6acc34" target="_blank">
+  "트렐로 개발로 배우는 Vuejs, Vuex, Vue-Router 프론트엔드 실전 기술" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/wp-content/uploads/kjh_Vuejs-3.jpg" />
+</a>
