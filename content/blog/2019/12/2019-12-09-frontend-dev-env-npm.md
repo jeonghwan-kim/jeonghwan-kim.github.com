@@ -6,7 +6,6 @@ layout: post
 category: 연재물
 tags: [nodejs]
 series: "프론트엔드 개발환경의 이해"
-videoId: "video-inflearn-frontend-dev-env"
 ---
 
 몇 년 전부터 프론트엔드 개발자 채용 공고에 Node.js 기술이 우대 사항 항목으로로 추가 되었다.
@@ -330,3 +329,10 @@ Node.js 기술을 기반으로 하는 프로트엔드 개발 환경 구축을 �
 NPM이 제공하는 기본 명령어와 커스텀 명령어 추가방법을 알아보았다.
 
 `npm install`로 외부 패키지를 다운로드 할 수 있고, 버전을 관리하는 방식에 대해 살펴 보았다.
+
+---
+
+<a href="https://www.inflearn.com/course/프론트엔드-개발환경?inst=245c31e1" target="_blank">
+  "프론트엔드 개발환경의 이해와 실습" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/324671/course_cover/638eee1a-6381-402d-a17b-3724751414f1/frontend-env-eng.png" />
+</a>

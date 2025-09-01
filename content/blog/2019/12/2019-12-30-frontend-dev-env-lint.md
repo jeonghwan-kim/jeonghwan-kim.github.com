@@ -5,7 +5,6 @@ title: "프론트엔드 개발환경의 이해: 린트"
 layout: post
 category: 연재물
 series: "프론트엔드 개발환경의 이해"
-videoId: "video-inflearn-frontend-dev-env"
 ---
 
 ## 1. 배경
@@ -547,3 +546,10 @@ vs-code의 eslint와 prettier 익스텐션이 그러한 기능을 제공한다.
 ESLint는 오류와 버그의 가능성을 찾아 코드 품질을 높이는 역할을 한다.
 프리티어는 코드를 일관적으로 포매팅하기 때문에 읽기 수월한 코드를 만들어 준다.
 이러한 도구를 개발 플로우의 적절한 시점에 통합하여 자동화하면 개발자는 좀 더 본질적인 코딩에 집중할 수 있을 것이다.
+
+---
+
+<a href="https://www.inflearn.com/course/프론트엔드-개발환경?inst=245c31e1" target="_blank">
+  "프론트엔드 개발환경의 이해와 실습" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/324671/course_cover/638eee1a-6381-402d-a17b-3724751414f1/frontend-env-eng.png" />
+</a>

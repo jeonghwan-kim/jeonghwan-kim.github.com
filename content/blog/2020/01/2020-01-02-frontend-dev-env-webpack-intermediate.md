@@ -6,7 +6,6 @@ layout: post
 category: 연재물
 tags: [webpack]
 series: "프론트엔드 개발환경의 이해"
-videoId: "video-inflearn-frontend-dev-env"
 ---
 
 이전글 [웹팩(기본편)](/series/2019/12/10/frontend-dev-env-webpack-basic.html)에서는 웹팩의 개념과 간단한 사용법에 대해 살펴보았다.
@@ -757,3 +756,10 @@ axios는 빌드하지 않고 복사만 한다. controller와 main이 분리되�
 mode 옵션을 production으로 설정하면 웹팩 내장 플러그인이 프로덕션 모드로 동작한다.
 번들링 결과물 크기가 커지면 브라우져에서 다운로딩하는 성능이 떨어질수 있는데 코드 스플리트 기법을 사용해서 해결할 수 있다.
 써드파티 라이브러리는 externals로 옮겨 빌드 과정에서 제외할수 있다.
+
+---
+
+<a href="https://www.inflearn.com/course/프론트엔드-개발환경?inst=245c31e1" target="_blank">
+  "프론트엔드 개발환경의 이해와 실습" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/324671/course_cover/638eee1a-6381-402d-a17b-3724751414f1/frontend-env-eng.png" />
+</a>

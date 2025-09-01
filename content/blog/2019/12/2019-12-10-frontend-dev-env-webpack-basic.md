@@ -6,7 +6,6 @@ layout: post
 category: 연재물
 tags: [webpack]
 series: "프론트엔드 개발환경의 이해"
-videoId: "video-inflearn-frontend-dev-env"
 ---
 
 # 1. 배경
@@ -960,3 +959,10 @@ ECMAScript2015 이전에는 모듈을 만들기 위해 즉시실행함수와 네
 자바스크립트 모듈 뿐만 아니라 스타일시트, 이미지 파일까지도 모듈로 제공해 주기 때문에 일관적으로 개발할 수 있다.
 
 웹팩의 로더와 플러그인의 원리에 대해 살펴보았고 자주 사용하는 것들의 기본적인 사용법에 대해 익혔다.
+
+---
+
+<a href="https://www.inflearn.com/course/프론트엔드-개발환경?inst=245c31e1" target="_blank">
+  "프론트엔드 개발환경의 이해와 실습" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/324671/course_cover/638eee1a-6381-402d-a17b-3724751414f1/frontend-env-eng.png" />
+</a>

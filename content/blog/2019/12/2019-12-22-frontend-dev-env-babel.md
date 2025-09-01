@@ -6,7 +6,6 @@ layout: post
 category: 연재물
 tags: [빌드도구]
 series: "프론트엔드 개발환경의 이해"
-videoId: "video-inflearn-frontend-dev-env"
 ---
 
 ## 1. 배경
@@ -556,3 +555,8 @@ new Promise();
 바벨이 변환하지 못하는 코드는 폴리필이라 부르는 코드조각을 불러와 결과물에 로딩해서 해결한다.
 
 babel-loader로 웹팩과 함께 사용하면 훨씬 단순하고 자동화된 프론트엔드 개발환경을 갖출 수 있다.
+
+<a href="https://www.inflearn.com/course/프론트엔드-개발환경?inst=245c31e1" target="_blank">
+  "프론트엔드 개발환경의 이해와 실습" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/324671/course_cover/638eee1a-6381-402d-a17b-3724751414f1/frontend-env-eng.png" />
+</a>

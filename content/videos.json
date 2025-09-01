@@ -1,11 +1,5 @@
 [
   {
-    "id": "video-inflearn-frontend-dev-env",
-    "url": "https://www.inflearn.com/course/프론트엔드-개발환경?inst=245c31e1",
-    "thumb": "https://cdn.inflearn.com/public/courses/324671/course_cover/638eee1a-6381-402d-a17b-3724751414f1/frontend-env-eng.png",
-    "title": "프론트엔드 개발환경의 이해와 실습"
-  },
-  {
     "id": "video-inflean-vuejs-season2",
     "url": "https://www.inflearn.com/course/vuejs?inst=4b6acc34",
     "thumb": "https://cdn.inflearn.com/wp-content/uploads/kjh_Vuejs-3.jpg",
