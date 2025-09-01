@@ -6,7 +6,6 @@ layout: post
 slug: /add-fk-on-sequelize-migration/
 tags:
   - sequelize
-videoId: "video-inflean-nodejs"
 ---
 
 데이터베이스 ORM인 Sequelize는 마이그레이션 기능을 제공한다. 모델링을 마친 데이터베이스에 대해 변경 작업이 필요한 경우, 코드로 변경내용을 기술한 뒤 커맨드라인 명령어를 통해 마이그레이션을 진행할 수 있다.
@@ -49,3 +48,10 @@ module.exports = {
 ```
 $ sequelize db:migrate
 ```
+
+---
+
+<a href="https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api?inst=8aa64815" target="_blank">
+  "테스트주도개발(TDD)로 만드는 NodeJS API 서버" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/wp-content/uploads/nodetdd.png" />
+</a>

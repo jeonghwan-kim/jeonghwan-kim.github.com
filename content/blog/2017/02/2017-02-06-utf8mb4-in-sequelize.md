@@ -5,7 +5,6 @@ category: 개발
 slug: /node/2017/02/06/utf8mb4-in-sequelize.html
 date: 2017-02-06
 tags: [sequelize]
-videoId: "video-inflean-nodejs"
 ---
 
 ## utf8과 utf8mb4
@@ -79,3 +78,8 @@ name 컬럼을 인덱스 키로 사용한다고 생각해 보자.
 ## 결론
 
 ORM을 사용하면 딱히 디비 스키마에 얽매이지 않고 NoSQL 디비처럼 사용하게 된다. 앞으로는 컬럼 최대 길이만이라도 정해논 상태에서 개발하는 것이 좋겠다.
+
+<a href="https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api?inst=8aa64815" target="_blank">
+  "테스트주도개발(TDD)로 만드는 NodeJS API 서버" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/wp-content/uploads/nodetdd.png" />
+</a>

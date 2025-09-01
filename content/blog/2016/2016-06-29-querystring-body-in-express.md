@@ -5,7 +5,6 @@ category: 개발
 tags: [expressjs]
 slug: /2016/06/29/querystring-body-in-express.html
 date: 2016-06-29
-videoId: "video-inflean-nodejs"
 ---
 
 디비가 없는 서버를 만들고 있다. 디비가 없다니 무슨말인가 싶을 것이다.
@@ -168,3 +167,8 @@ req.query = {
 ```
 
 **따라서 request 모듈을 사용해 http 리퀘스트 요청을 할때는 쿼리스트링에 대해 에스케이프 처리를 해줘야한다.**
+
+<a href="https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api?inst=8aa64815" target="_blank">
+  "테스트주도개발(TDD)로 만드는 NodeJS API 서버" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/wp-content/uploads/nodetdd.png" />
+</a>

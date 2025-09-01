@@ -5,7 +5,6 @@ category: 개발
 tags: [nodejs, test]
 slug: /2016/02/28/http-test-with-nock-mocha.html
 date: 2016-02-28
-videoId: "video-inflean-nodejs"
 ---
 
 API 서버를 개발할 때 유닛테스트를 꼼꼼히 작성하는 편이다. 반복적인 작업임은 물론이고 '이럴 경우도
@@ -114,3 +113,10 @@ it("should login by facebook", function (done) {
 ```javascript
 nock("https://facebook").post("/auth/api").replayWithError()
 ```
+
+---
+
+<a href="https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api?inst=8aa64815" target="_blank">
+  "테스트주도개발(TDD)로 만드는 NodeJS API 서버" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/wp-content/uploads/nodetdd.png" />
+</a>

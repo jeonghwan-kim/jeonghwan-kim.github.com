@@ -5,7 +5,6 @@ category: 개발
 slug: /node/2017/08/17/express-error-handling.html
 date: 2017-08-17
 tags: [expressjs, 번역]
-videoId: "video-inflean-nodejs"
 ---
 
 > 원문: http://thecodebarbarian.com/80-20-guide-to-express-error-handling.html
@@ -218,3 +217,10 @@ app.use(function handleDatabaseError(error, req, res, next) {
 익스프레스 오류 처리 미들웨어는 최대한 관심사를 분리(separation of concerns)하는 방법으로 오류를 다룰수 있도록 합니다. `try/catch`를 사용하지 않고 `async/awat`을 사용하면 비지니스 로직에서 오류를 처리하지 않아도 됩니다. 이런 오류는 오류 처리기로 버블링되어 요청에 어떤 응답을 줄지 결정할 수 있습니다. 다음 익스프레스 어플리케이션에서 이런 파워풀한 기능의 장점을 사용해 보세요.
 
 _만약에 노드 6을 사용하지만 async/awati을 사용해야 한다면 [co, The 80/20 Guide to ES2015 Generators](http://es2015generators.com/)를 읽어보세요 (유사글: [제너레이터와 프라미스를 이용한 비동기 처리](/2016/12/15/coroutine.html)) Co/yield는 노드 버전 4 이상에서 플래그 없이 async/await을 대체할 수 있습니다. async/await과 co/yield 두 패러다임은 일부 고급 사용법을 제외하고는 대체 가능합니다._
+
+---
+
+<a href="https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api?inst=8aa64815" target="_blank">
+  "테스트주도개발(TDD)로 만드는 NodeJS API 서버" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/wp-content/uploads/nodetdd.png" />
+</a>

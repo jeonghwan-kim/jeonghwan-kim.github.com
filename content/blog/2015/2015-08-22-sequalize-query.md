@@ -5,7 +5,6 @@ layout: post
 slug: /sequalize-쿼리/
 category: 개발
 tags: [sequelize]
-videoId: "video-inflean-nodejs"
 ---
 
 ORM을 써보기 시작했다. <a href="http://sequelize.readthedocs.org/en/latest/">Sequeilize</a>.
@@ -153,3 +152,10 @@ User.findAll({
   ],
 }) // SELECT `name` AS `username`, age + 1 AS `age` FROM `users` AS `user`
 ```
+
+---
+
+<a href="https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api?inst=8aa64815" target="_blank">
+  "테스트주도개발(TDD)로 만드는 NodeJS API 서버" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/wp-content/uploads/nodetdd.png" />
+</a>

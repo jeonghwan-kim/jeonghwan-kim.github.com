@@ -1,11 +1,5 @@
 [
   {
-    "id": "video-inflean-nodejs",
-    "url": "https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api?inst=8aa64815",
-    "thumb": "https://cdn.inflearn.com/wp-content/uploads/nodetdd.png",
-    "title": "테스트주도개발(TDD)로 만드는 NodeJS API 서버"
-  },
-  {
     "id": "video-inflearn-tdd",
     "url": "https://www.inflearn.com/course/tdd-견고한-소프트웨어-만들기?inst=35309715",
     "thumb": "https://cdn.inflearn.com/wp-content/uploads/software-1.jpg",
