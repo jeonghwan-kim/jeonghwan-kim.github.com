@@ -1,11 +1,5 @@
 [
   {
-    "id": "video-inflearn-vuejs",
-    "url": "https://www.inflearn.com/course/순수js-vuejs-개발-강좌?inst=b936ef67",
-    "thumb": "https://cdn.inflearn.com/wp-content/uploads/vuejsandpure.png",
-    "title": "실습 UI 개발로 배워보는 순수 javascript 와 VueJS 개발"
-  },
-  {
     "id": "video-inflean-nodejs",
     "url": "https://www.inflearn.com/course/테스트주도개발-tdd-nodejs-api?inst=8aa64815",
     "thumb": "https://cdn.inflearn.com/wp-content/uploads/nodetdd.png",

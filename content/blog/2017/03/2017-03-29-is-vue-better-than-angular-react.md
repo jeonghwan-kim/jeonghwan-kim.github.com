@@ -5,7 +5,6 @@ category: 개발
 slug: /vue/2017/03/29/is-vue-better-than-angular-react.html
 date: 2017-03-29
 tags: [vuejs, 번역]
-videoId: "video-inflearn-vuejs"
 ---
 
 > 이 문서는 [Vue.js Is Good, But Is It Better Than Angular Or React?](http://www.valuecoders.com/blog/technology-and-apps/vue-js-comparison-angular-react/) 를 번역한 내용입니다.
@@ -311,3 +310,10 @@ data: { array: [1,2,3,4] }
 현재 뷰는 페이스북의 리액트나 구글의 앵귤러2 만큼 인기 있는건 아닙니다. 하지만 많은 개발자들이 뷰로 옮기고 있죠. 라라벨(Laravel) 커뮤니티도 그 친구들이 선호하는 프론트엔드 프레임웍으로써 뷰를 고려하고 있다고 합니다.
 
 > 전반적으로 뷰는 리엑트와 앵귤러의 이슈들에대한 해답을 가지고 있다. 그리고 더 간단하고 쉬운 코드를 제공한다.
+
+---
+
+<a href="https://www.inflearn.com/course/순수js-vuejs-개발-강좌?inst=b936ef67" target="_blank">
+  "실습 UI 개발로 배워보는 순수 javascript 와 VueJS 개발" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/wp-content/uploads/vuejsandpure.png" />
+</a>
