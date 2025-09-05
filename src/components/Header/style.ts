@@ -110,8 +110,4 @@ export const HamburgerButton = styled.button<
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
   }
-
-  &:hover {
-    background-color: ${Colors.Background2};
-  }
 `

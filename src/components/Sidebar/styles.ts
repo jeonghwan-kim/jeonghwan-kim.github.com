@@ -38,9 +38,6 @@ export const CloseButton = styled.button<
     content: "close";
     visibility: hidden;
   }
-  &:hover {
-    background-color: ${Colors.Background2};
-  }
 
   span {
     position: absolute;
