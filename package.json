@@ -38,10 +38,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
-    "@storybook/addon-actions": "^6.0.26",
-    "@storybook/addon-essentials": "^6.0.26",
-    "@storybook/addon-links": "^6.0.26",
-    "@storybook/react": "^6.0.26",
     "babel-loader": "^8.1.0",
     "babel-preset-react-app": "^9.1.2",
     "prettier": "2.0.5",
@@ -61,8 +57,6 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "deploy": "gh-pages --dist public --branch gh-pages",
     "ci": "npm run clean && npm run build && npm run deploy",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
     "gen-post": "./templates/gen.js"
   },
   "repository": {
