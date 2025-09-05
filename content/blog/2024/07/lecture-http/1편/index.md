@@ -119,3 +119,10 @@ _1편 소개_
 
 - [HTTP 개요 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Overview)
 - [웹의 리소스 식별하기 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/Identifying_resources_on_the_Web)
+
+---
+
+<a href="https://inf.run/k9hBU" target="_blank">
+  "웹 개발의 핵심, HTTP 완벽 마스터하기!" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/files/courses/335426/cover/01jxvfgypbh8yb0yn77j9n7vbd?w=400" />
+</a>

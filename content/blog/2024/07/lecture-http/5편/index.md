@@ -157,3 +157,10 @@ _5편 소개_
 
 - HTTP 완벽 가이드 > 14장 보안 | 인사이트
 - 리얼월드 HTTP | 한빛미디어
+
+---
+
+<a href="https://inf.run/k9hBU" target="_blank">
+  "웹 개발의 핵심, HTTP 완벽 마스터하기!" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/files/courses/335426/cover/01jxvfgypbh8yb0yn77j9n7vbd?w=400" />
+</a>

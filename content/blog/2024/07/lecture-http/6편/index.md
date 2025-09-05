@@ -124,3 +124,10 @@ _6편 소개_
 - [캐시로 불필요한 네트워크 요청 방지 | web.dev](https://web.dev/articles/http-cache?hl=ko#examples)
 - [HTTP 캐시로 불필요한 네트워크 요청 방지 | web.dev](https://web.dev/articles/http-cache?hl=ko)
 - [HTTP 캐싱 동작 구성 | web.dev](https://web.dev/articles/codelab-http-cache?hl=ko)
+
+---
+
+<a href="https://inf.run/k9hBU" target="_blank">
+  "웹 개발의 핵심, HTTP 완벽 마스터하기!" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/files/courses/335426/cover/01jxvfgypbh8yb0yn77j9n7vbd?w=400" />
+</a>

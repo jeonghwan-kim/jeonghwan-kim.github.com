@@ -206,3 +206,10 @@ _2편 소개_
 
 - [중요 렌더링 경로 | MDN](https://developer.mozilla.org/ko/docs/Web/Performance/Critical_rendering_path)
 - [\<form\> | MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form)
+
+---
+
+<a href="https://inf.run/k9hBU" target="_blank">
+  "웹 개발의 핵심, HTTP 완벽 마스터하기!" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/files/courses/335426/cover/01jxvfgypbh8yb0yn77j9n7vbd?w=400" />
+</a>
