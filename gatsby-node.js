@@ -50,7 +50,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // 연도별 페이지 생성
   const years = Array.from(
-    new Set(nodes.map(node => new Date(node.frontmatter.date).getFullYear()))
+    new Set(
+      nodes
+        .map(node => node.frontmatter.date)
+        .filter(Boolean)
+        .map(date => new Date(date).getFullYear())
+    )
   )
   years.forEach(year => {
     createPage({
@@ -72,7 +77,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
       return acc
     }, new Set())
-  )
+  ).filter(Boolean)
   tags.forEach(tag => {
     createPage({
       path: `/tag/${tag}`,
@@ -86,7 +91,9 @@ exports.createPages = async ({ graphql, actions }) => {
   // 시리즈별 페이지 생성
   const seriesList = Array.from(
     new Set(nodes.map(node => node.frontmatter.series))
-  )
+  ).filter(Boolean)
+
+  console.log("seriesList", seriesList)
   seriesList.forEach(series => {
     createPage({
       path: `/series/${series}`,
