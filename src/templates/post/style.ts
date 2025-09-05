@@ -26,6 +26,7 @@ export const Article = styled.article`
   order: 0;
   flex: 1 0 0%;
   min-width: 0%;
+  width: 100%;
 `
 
 export const PostHeader = styled.header`
