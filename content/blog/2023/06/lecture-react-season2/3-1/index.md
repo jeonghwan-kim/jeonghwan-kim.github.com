@@ -297,3 +297,10 @@ this
 참고
 
 - [함수형 컴포넌트와 클래스, 어떤 차이가 존재할까? | Overreacted](https://overreacted.io/ko/how-are-function-components-different-from-classes/)
+
+---
+
+<a href="https://inf.run/SCwEj" target="_blank">
+  "[React 2부] 고급 주제와 훅" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/332123/cover/62407827-5375-47cf-91fa-4877bf72c139/332123-eng.png?w=400" />
+</a>

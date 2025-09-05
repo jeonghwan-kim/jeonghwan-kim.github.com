@@ -528,3 +528,10 @@ CartPage에게 라우터 기능을 주입했다. 주소를 통해 전달된 상�
 
 - [History API | MDN](https://developer.mozilla.org/ko/docs/Web/API/History_API)
 - [리액트 고차컴포넌트 | 김정환 블로그](/2022/05/28/react-high-order-component)
+
+---
+
+<a href="https://inf.run/SCwEj" target="_blank">
+  "[React 2부] 고급 주제와 훅" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/332123/cover/62407827-5375-47cf-91fa-4877bf72c139/332123-eng.png?w=400" />
+</a>

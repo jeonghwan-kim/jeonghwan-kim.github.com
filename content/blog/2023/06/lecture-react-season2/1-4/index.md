@@ -798,3 +798,10 @@ UI 계층 구조를 나눈뒤 역할에 맞는 기존 컴포넌트를 조합했�
 
 - [리액트로 사고하기](https://ko.reactjs.org/docs/thinking-in-react.html)
 - [리액트 Ref | 김정환블로그](/2022/05/31/react-ref)
+
+---
+
+<a href="https://inf.run/SCwEj" target="_blank">
+  "[React 2부] 고급 주제와 훅" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/332123/cover/62407827-5375-47cf-91fa-4877bf72c139/332123-eng.png?w=400" />
+</a>

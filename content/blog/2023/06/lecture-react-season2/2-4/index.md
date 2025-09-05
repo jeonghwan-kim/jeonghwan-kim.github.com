@@ -455,3 +455,10 @@ withLayout(OrderPage)
 - 다이얼로그를 조합하는 형태로 변경
 
 다음 장에서 나머지 다이얼로그 요구사항도 구현해 보자.
+
+---
+
+<a href="https://inf.run/SCwEj" target="_blank">
+  "[React 2부] 고급 주제와 훅" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/332123/cover/62407827-5375-47cf-91fa-4877bf72c139/332123-eng.png?w=400" />
+</a>

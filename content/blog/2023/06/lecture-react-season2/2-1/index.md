@@ -339,3 +339,10 @@ createContext
 
 - [리액트 컨텍스트 | 김정환 블로그](/dev/2021/05/05/react-context.html)
 - [React context 폴리필 | Github](https://github.com/jamiebuilds/create-react-context)
+
+---
+
+<a href="https://inf.run/SCwEj" target="_blank">
+  "[React 2부] 고급 주제와 훅" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/332123/cover/62407827-5375-47cf-91fa-4877bf72c139/332123-eng.png?w=400" />
+</a>

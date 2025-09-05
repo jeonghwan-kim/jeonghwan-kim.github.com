@@ -595,3 +595,10 @@ useReducer를 사용하면서 두 가지 좋은 점을 발견했다.
 
 - [리액트 useReducer는 어떤 모습일까?| 김정환블로그](/dev/2023/03/29/use-reducer.html)
 - [basicStateReducer](https://github.com/facebook/react/blob/05777ffb01515679d73541062a4ecc745af04a2f/packages/react-reconciler/src/ReactFiberHooks.js#L1038)
+
+---
+
+<a href="https://inf.run/SCwEj" target="_blank">
+  "[React 2부] 고급 주제와 훅" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/332123/cover/62407827-5375-47cf-91fa-4877bf72c139/332123-eng.png?w=400" />
+</a>

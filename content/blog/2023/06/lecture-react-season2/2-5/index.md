@@ -399,3 +399,10 @@ Dialog 개선
 - 돔 제어를 위해 레프 객체 사용
 
 두 장에 걸쳐서 다이얼로그 요구사항을 모두 해결했다.
+
+---
+
+<a href="https://inf.run/SCwEj" target="_blank">
+  "[React 2부] 고급 주제와 훅" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/332123/cover/62407827-5375-47cf-91fa-4877bf72c139/332123-eng.png?w=400" />
+</a>

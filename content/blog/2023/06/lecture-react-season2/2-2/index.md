@@ -439,3 +439,10 @@ Navbarfmf Link로 교체해서 메뉴목록, 주문내역 화면 링크를 클�
 
 - [리액트 라우터 만들기 | 김정환 블로그](/dev/2022/05/06/react-router.html)
 - [react-router | Github](https://github.com/remix-run/react-router)
+
+---
+
+<a href="https://inf.run/SCwEj" target="_blank">
+  "[React 2부] 고급 주제와 훅" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/332123/cover/62407827-5375-47cf-91fa-4877bf72c139/332123-eng.png?w=400" />
+</a>

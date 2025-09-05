@@ -520,3 +520,10 @@ handleToggle에서 상태 mounted를 바꾸면서 Counter를 제어하는데 UI 
 
 - [리액트 useEffect는 어떤 모습일까? | 김정환 블로그](/dev/2022/04/24/use-effect.html)
 - [useEffect 완벽 가이드 | Overreacted](https://overreacted.io/ko/a-complete-guide-to-useeffect/)
+
+---
+
+<a href="https://inf.run/SCwEj" target="_blank">
+  "[React 2부] 고급 주제와 훅" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/332123/cover/62407827-5375-47cf-91fa-4877bf72c139/332123-eng.png?w=400" />
+</a>

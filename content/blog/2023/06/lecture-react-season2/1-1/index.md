@@ -212,3 +212,10 @@ npm start --workspace 1-react # 혹은 npm run 1-react
 - [[리액트 1부] 만들면서 학습하는 리액트 | 김정환블로그](/posts?series=%5B%EB%A6%AC%EC%95%A1%ED%8A%B8%201%EB%B6%80%5D%20%EB%A7%8C%EB%93%A4%EB%A9%B4%EC%84%9C%20%ED%95%99%EC%8A%B5%ED%95%98%EB%8A%94%20%EB%A6%AC%EC%95%A1%ED%8A%B8)
 - [웹팩 빌드시 이전 결과물을 삭제하는 옵션 | 김정환블로그](/2022/08/21/webpack-output-clean)
 - [NPM 워크스페이스와 모노레포 | 김정환블로그](/2022/07/31/npm-workspace)
+
+---
+
+<a href="https://inf.run/SCwEj" target="_blank">
+  "[React 2부] 고급 주제와 훅" 수업 보러가기  
+  <img width="400px" src="https://cdn.inflearn.com/public/courses/332123/cover/62407827-5375-47cf-91fa-4877bf72c139/332123-eng.png?w=400" />
+</a>
