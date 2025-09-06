@@ -9,6 +9,7 @@ interface Props {
   activeYear?: number
   activeTag?: string
   activeSeries?: string
+  activeAllPosts?: boolean
   onClose: () => void
   show: boolean
 }
@@ -18,6 +19,7 @@ export default function Sidebar({
   activeYear,
   activeTag,
   activeSeries,
+  activeAllPosts,
   onClose,
   show,
 }: Props) {
@@ -31,9 +33,7 @@ export default function Sidebar({
           <Styled.ArchiveListItem>
             <Link
               to={`/`}
-              className={
-                !activeYear && !activeTag && !activeSeries ? "active" : ""
-              }
+              className={activeAllPosts ? "active" : ""}
               title={getLinkHoverTitle("모든글", data.length)}
             >
               <label>모든글</label>

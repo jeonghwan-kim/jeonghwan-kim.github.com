@@ -12,6 +12,7 @@ export interface LayoutProps extends HeaderProps {
   activeYear?: number
   activeTag?: string
   activeSeries?: string
+  activeAllPosts?: boolean
 }
 
 export function Layout({
@@ -20,6 +21,7 @@ export function Layout({
   activeYear,
   activeTag,
   activeSeries,
+  activeAllPosts,
 }: PropsWithChildren<LayoutProps>) {
   const [openSidebar, setOpenSidebar] = React.useState(false)
 
@@ -35,6 +37,7 @@ export function Layout({
           activeYear={activeYear}
           activeTag={activeTag}
           activeSeries={activeSeries}
+          activeAllPosts={activeAllPosts}
           onClose={() => setOpenSidebar(false)}
           show={openSidebar}
         />
