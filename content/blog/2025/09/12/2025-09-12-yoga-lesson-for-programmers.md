@@ -1,5 +1,5 @@
 ---
-slug: "/2025/09/12/보여주기식"
+slug: "/2025/09/12/yoga-lesson-for-programmers"
 date: 2025-09-12
 title: "보여주기식"
 layout: post
