@@ -93,7 +93,6 @@ exports.createPages = async ({ graphql, actions }) => {
     new Set(nodes.map(node => node.frontmatter.series))
   ).filter(Boolean)
 
-  console.log("seriesList", seriesList)
   seriesList.forEach(series => {
     createPage({
       path: `/series/${series}`,
