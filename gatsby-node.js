@@ -1,6 +1,5 @@
 const path = require("path")
 const CaseSensitivePathsPlugin = require("case-sensitive-paths-webpack-plugin")
-const videos = require("./content/videos.json")
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -17,7 +16,6 @@ exports.createPages = async ({ graphql, actions }) => {
               title
               category
               series
-              videoId
               tags
             }
           }
@@ -33,7 +31,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const nodes = allMarkdowns.data.allMarkdownRemark.edges.map(e => e.node)
 
   // 포스트 페이지 생성
-  nodes.forEach(({ frontmatter: { slug, date, series, videoId } }, index) => {
+  nodes.forEach(({ frontmatter: { slug, date, series } }, index) => {
     createPage({
       path: slug,
       component: path.resolve(__dirname, `./src/templates/post/index.tsx`),
@@ -41,7 +39,6 @@ exports.createPages = async ({ graphql, actions }) => {
         slug, // $slug에 주입
         date,
         series, // $series에 주입
-        videoId, // $videoId에 주입
         previous: index === nodes.length - 1 ? null : nodes[index + 1],
         next: index === 0 ? null : nodes[index - 1],
       },
@@ -99,21 +96,6 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(__dirname, `./src/templates/series/index.tsx`),
       context: {
         series,
-      },
-    })
-  })
-}
-
-exports.sourceNodes = ({ actions, createContentDigest }) => {
-  videos.forEach(v => {
-    actions.createNode({
-      id: v.id,
-      title: v.title,
-      thumb: v.thumb,
-      url: v.url,
-      internal: {
-        type: "video",
-        contentDigest: createContentDigest(v),
       },
     })
   })

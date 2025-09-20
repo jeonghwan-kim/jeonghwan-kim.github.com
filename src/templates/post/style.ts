@@ -6,7 +6,6 @@ import {
   SpaceUnit,
   Widths,
 } from "../../styles/style-variables"
-import Video2Img from "./images/icon-video-2.png"
 import { PropsWithChildren } from "react"
 
 export const Main = styled.main`
@@ -182,58 +181,6 @@ export const Toc = styled.nav<{ dangerouslySetInnerHTML: { __html: string } }>`
         &:focus {
           color: ${Colors.Primary};
         }
-      }
-    }
-  }
-`
-
-export const PostVideo = styled.div`
-  a {
-    display: block;
-    position: relative;
-    overflow: hidden;
-    img {
-      width: 100%;
-      transition: all 0.3s ease;
-    }
-    &:hover {
-      img {
-        transform: scale(1.2);
-      }
-    }
-    .post-video-overlay {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      display: flex;
-      flex-direction: column;
-      .video-icon-wrapper {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        .video-icon {
-          background: url(${Video2Img}) no-repeat;
-          background-position: center center;
-          background-size: 50px 50px;
-          opacity: 0.7;
-          width: 100px;
-          height: 100px;
-          border-radius: 50%;
-          background-color: rgba(0, 0, 0, 0.3);
-        }
-      }
-      .post-video-title {
-        background: rgba(0, 0, 0, 0.3);
-        color: white;
-        padding: 8px;
-        text-align: center;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        font-size: 14px;
       }
     }
   }

@@ -6,8 +6,6 @@ import IconArticle from "./images/icon-article.png"
 import IconEmail from "./images/icon-email.png"
 import IconGithub from "./images/icon-github.png"
 import IconTag from "./images/icon-tag.png"
-import IconVideo2 from "./images/icon-video-2.png"
-import IconVideo from "./images/icon-video.png"
 
 export enum IconType {
   RSS = "RSS",
@@ -15,8 +13,6 @@ export enum IconType {
   Email = "Email",
   Github = "Github",
   Tag = "Tag",
-  Video2 = "Video2",
-  Video = "Video",
 }
 
 const IconImages: { [k in IconType]: string } = {
@@ -25,8 +21,6 @@ const IconImages: { [k in IconType]: string } = {
   [IconType.Email]: IconEmail,
   [IconType.Github]: IconGithub,
   [IconType.Tag]: IconTag,
-  [IconType.Video2]: IconVideo2,
-  [IconType.Video]: IconVideo,
 }
 
 export interface IconProps {

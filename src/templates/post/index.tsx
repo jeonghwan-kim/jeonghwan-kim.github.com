@@ -21,7 +21,7 @@ interface Props {
 }
 
 export default function PostTemplate({ data, pageContext }: Props) {
-  const { site, markdownRemark, video, allPosts } = data
+  const { site, markdownRemark, allPosts } = data
   const { previous, next } = pageContext
 
   if (!markdownRemark) {
@@ -102,7 +102,7 @@ export default function PostTemplate({ data, pageContext }: Props) {
 }
 
 export const query = graphql`
-  query BlogPostBySlug($slug: String!, $series: String, $videoId: String) {
+  query BlogPostBySlug($slug: String!, $series: String) {
     site {
       siteMetadata {
         title
@@ -118,7 +118,6 @@ export const query = graphql`
         title
         tags
         series
-        videoId
         featuredImage {
           childImageSharp {
             fixed(width: 300) {
@@ -129,12 +128,6 @@ export const query = graphql`
       }
       tableOfContents(absolute: false, maxDepth: 6, heading: null)
       excerpt(pruneLength: 200)
-    }
-    video(id: { eq: $videoId }) {
-      id
-      title
-      thumb
-      url
     }
     allMarkdownRemark(
       filter: { frontmatter: { series: { eq: $series } } }
