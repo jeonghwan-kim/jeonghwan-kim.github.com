@@ -772,5 +772,5 @@ const LginForm = () => {
 
 ## 참고
 
-- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2022/react-form)
+- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2022-03-29-react-form)
 - [formik 공식문서](https://formik.org/)
