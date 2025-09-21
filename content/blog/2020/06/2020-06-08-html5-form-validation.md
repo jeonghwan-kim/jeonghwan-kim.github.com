@@ -322,6 +322,6 @@ input.addEventListener("invalid", e => {
 
 참고
 
-- [전체 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2020/form-validation)
+- [전체 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2020-06-08-form-validation)
 - [Client-side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
 - [Why you should be using HTML5 form validation: a tour](https://pageclip.co/blog/2018-02-20-you-should-use-html5-form-validation.html)
