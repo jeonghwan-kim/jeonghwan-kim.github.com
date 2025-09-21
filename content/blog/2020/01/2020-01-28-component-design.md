@@ -538,4 +538,4 @@ Modal 컴포넌트로 이미지나 동영상 엘레먼트를 감싸면 갤러리
 리액트 훅스와 나오고 Mobx가 나오면서 컴포넌트를 굳이 이렇게 나눌 필요가 없다는 말들도 한다.
 Mobx를 사용하다보면 정말 그런것 같기도 한데 아직 머릿 속에 정리된 수준은 아니다.
 
-[전체코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2020/component-design)
+[전체코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2020-01-28-component-design)
