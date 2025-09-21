@@ -39,7 +39,7 @@ export default function SEO({
       return ""
     }
 
-    const DEFAULT_IMAGE = `${site.siteMetadata.url}/assets/imgs/me.jpg`
+    const DEFAULT_IMAGE = `${site.siteMetadata.url}/assets/imgs/default-image-1024x911.png`
 
     if (image) {
       return image?.startsWith(site.siteMetadata.url)
