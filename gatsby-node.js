@@ -69,12 +69,11 @@ exports.createPages = async ({ graphql, actions }) => {
   // 태그별 페이지 생성
   const tags = Array.from(
     nodes.reduce((acc, node) => {
-      if ((node.frontmatter.tags || []).length) {
-        acc.add(...node.frontmatter.tags)
-      }
+      ;(node.frontmatter.tags || []).forEach(tag => acc.add(tag))
       return acc
     }, new Set())
   ).filter(Boolean)
+
   tags.forEach(tag => {
     createPage({
       path: `/tag/${tag}`,
