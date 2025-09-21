@@ -12,7 +12,7 @@ import { createMeta } from "./meta"
 import { Site } from "../../../graphql-types"
 
 interface SEOProps {
-  title: string
+  title?: string
   description?: string
   date?: string
   url?: string
@@ -64,7 +64,11 @@ export default function SEO({
         lang: "ko",
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata?.title}`}
+      titleTemplate={
+        title
+          ? `%s | ${site.siteMetadata?.title}`
+          : site.siteMetadata?.title || ""
+      }
       meta={meta}
     >
       {date && (

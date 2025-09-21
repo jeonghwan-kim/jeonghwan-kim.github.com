@@ -11,7 +11,7 @@ import { Container } from "../styles/style-variables"
 export default function HomePage({ data }: PageProps<Query>) {
   return (
     <Layout data={data.allMarkdownRemark.nodes} activeAllPosts>
-      <SEO title="홈" />
+      <SEO />
       <GoogleAdsense />
       <Container>
         <Section>
