@@ -439,7 +439,7 @@ function remove(name, attributes) {
 
 ## 참고
 
-- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2024/cookie)
+- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2024-03-04-cookie)
 - HTTP 완벽가이드 > 11.6 쿠키
 - 리얼월드 HTTP > 2.5 쿠키
 - [HTTP 쿠키 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Cookies)
