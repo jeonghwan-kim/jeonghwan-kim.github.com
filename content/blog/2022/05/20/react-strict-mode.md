@@ -129,4 +129,4 @@ Please update the following components: SideEffect(NullComponent)
 
 참고
 
-- [샘플코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2022/react-strict-mode)
+- [샘플코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2022-05-20-react-strict-mode)
