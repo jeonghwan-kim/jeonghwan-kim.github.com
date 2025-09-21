@@ -556,7 +556,7 @@ handleClick 함수에서 visible 상태를 변경해 컴포넌트의 사용하�
 
 ## 참고
 
-- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2022/react-hooks)
+- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2022-04-11-react-hooks)
 - [Effect hook 사용하기 (리액트 공식 문서)](https://ko.reactjs.org/docs/hooks-effect.html)
 - [useEffect 완벽가이드 (번역)](https://overreacted.io/ko/a-complete-guide-to-useeffect/)
 - [함수형 컴포넌트와 클래스, 어떤 차이가 존재할까?(번역)](https://overreacted.io/ko/how-are-function-components-different-from-classes/)
