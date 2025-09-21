@@ -123,7 +123,7 @@ interface JsonObject extends Record<string, Json> {}
 
 ## 참고
 
-- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2023/recursive-type)
+- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2023-04-07-recursive-type)
 - [Recursive type references #33050](https://github.com/microsoft/TypeScript/pull/33050)
 - [(More) Recursive Type Aliases](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#more-recursive-type-aliases)
 - [Merging Interfaces](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#merging-interfaces)
