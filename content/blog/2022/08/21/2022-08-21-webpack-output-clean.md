@@ -96,6 +96,6 @@ dry 옵션이 있는데 이것은 삭제할 파일을 표시만 한다. 테트�
 
 ## 참고
 
-- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2022/webpack-output-clean)
+- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2022-08-21-webpack-output-clean)
 - [Output | webpack](https://webpack.js.org/configuration/output/#outputclean)
 - [Deprecate plugin in favor output.clean · Issue #197 · johnagan/clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin/issues/197)
