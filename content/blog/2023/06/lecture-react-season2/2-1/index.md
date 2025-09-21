@@ -337,7 +337,7 @@ createContext
 
 참고
 
-- [리액트 컨텍스트 | 김정환 블로그](/dev/2021/05/05/react-context.html)
+- [리액트 컨텍스트 | 김정환블로그](/dev/2021/05/05/react-context.html)
 - [React context 폴리필 | Github](https://github.com/jamiebuilds/create-react-context)
 
 ---

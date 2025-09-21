@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `김정환 블로그`,
+    title: `김정환블로그`,
     description: `주로 웹 기술에 대해 이야기 합니다`,
     author: `김정환`,
     url: "https://jeonghwan-kim.github.io",
@@ -57,7 +57,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `김정환 블로그`,
+        name: `김정환블로그`,
         short_name: `김정환블로그`,
         start_url: `/`,
         background_color: `#cd5554`,
@@ -116,7 +116,7 @@ module.exports = {
               }
             }
           `,
-            title: "김정환 블로그 RSS Feed",
+            title: "김정환블로그 RSS Feed",
           },
         ],
       },

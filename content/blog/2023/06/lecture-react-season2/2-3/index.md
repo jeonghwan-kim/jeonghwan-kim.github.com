@@ -527,7 +527,7 @@ CartPage에게 라우터 기능을 주입했다. 주소를 통해 전달된 상�
 ## 참고
 
 - [History API | MDN](https://developer.mozilla.org/ko/docs/Web/API/History_API)
-- [리액트 고차컴포넌트 | 김정환 블로그](/2022/05/28/react-high-order-component)
+- [리액트 고차컴포넌트 | 김정환블로그](/2022/05/28/react-high-order-component)
 
 ---
 

@@ -518,7 +518,7 @@ handleToggle에서 상태 mounted를 바꾸면서 Counter를 제어하는데 UI 
 
 ## 참고
 
-- [리액트 useEffect는 어떤 모습일까? | 김정환 블로그](/dev/2022/04/24/use-effect.html)
+- [리액트 useEffect는 어떤 모습일까? | 김정환블로그](/dev/2022/04/24/use-effect.html)
 - [useEffect 완벽 가이드 | Overreacted](https://overreacted.io/ko/a-complete-guide-to-useeffect/)
 
 ---

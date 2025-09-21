@@ -437,7 +437,7 @@ Navbarfmf Link로 교체해서 메뉴목록, 주문내역 화면 링크를 클�
 
 참고
 
-- [리액트 라우터 만들기 | 김정환 블로그](/dev/2022/05/06/react-router.html)
+- [리액트 라우터 만들기 | 김정환블로그](/dev/2022/05/06/react-router.html)
 - [react-router | Github](https://github.com/remix-run/react-router)
 
 ---

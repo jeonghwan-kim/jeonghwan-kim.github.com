@@ -380,7 +380,7 @@ useState의 역할은 함수 컴포넌트 안에서 지속할 수 있는 값, **
 
 ## 참고
 
-- [리액트 useState는 어떤 모습일까? | 김정환 블로그](/dev/2022/04/11/use-state.html)
+- [리액트 useState는 어떤 모습일까? | 김정환블로그](/dev/2022/04/11/use-state.html)
 - [React hooks: not magic, just arrays | Rudi Yardley](https://medium.com/@ryardley/react-hooks-not-magic-just-arrays-cd4f1857236e)
 
 ---
