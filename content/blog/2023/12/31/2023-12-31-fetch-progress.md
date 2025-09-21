@@ -239,7 +239,7 @@ fetch에서 업로드 진행율은 표시할 수 없다. 기존의 xhr을 사용
 
 ## 참고
 
-- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2023/fetch-progress)
+- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2023-12-31-fetch-progress)
 - https://ko.javascript.info/fetch-progress
 - https://developer.mozilla.org/ko/docs/Web/API/ReadableStream
 - https://ko.javascript.info/fetch-abort
