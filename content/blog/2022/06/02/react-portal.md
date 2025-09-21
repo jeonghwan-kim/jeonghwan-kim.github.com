@@ -208,7 +208,7 @@ App은 이 이벤트를 잡아서 handleClick에서 처리할 것이다.
 
 ## 참고
 
-- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2022/react-portal)
+- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2022-06-02-react-portal)
 - [Portal | 리액트 고급안내서](https://ko.reactjs.org/docs/portals.html)
 - [Understanding React Portals and Its Use-Case](https://blog.bitsrc.io/understanding-react-portals-ab79827732c7)
 - [Portals in ReactJS - How's and Why's](https://medium.com/alienbrains/tutorial-react-portal-4e2eaca084b8)
