@@ -255,4 +255,4 @@ const UserManagePage = ({ role }) => {
 
 그리고 화면에서는 쓰기권한(WRITE)이기 때문에 요소의 disabled 속성이 해제되어 요소가 활성화 되었다.
 
-- [전체코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2020/react-route-sample)
+- [전체코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2020-03-20-react-route-sample)
