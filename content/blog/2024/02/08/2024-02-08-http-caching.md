@@ -421,7 +421,7 @@ HTTP 캐싱 매커니즘을 다시 정리해 보자.
 
 ## 참고
 
-- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2024/http-cache)
+- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2024-02-08-http-cache)
 - HTTP 완벽가이드 > 7장 캐시
 - 리얼월드 HTTP > 2.8 캐시
 - [HTTP 캐싱 | MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Caching#유효성freshness)
