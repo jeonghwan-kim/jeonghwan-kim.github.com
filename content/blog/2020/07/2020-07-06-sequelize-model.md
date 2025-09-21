@@ -202,4 +202,4 @@ class 문법이 단일 블록 스코프 안에서 관련된 로직을 모아 놓
 
 참고
 
-- 소스 코드: https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2020/sequelize-model
+- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2020-07-06-sequelize-model)
