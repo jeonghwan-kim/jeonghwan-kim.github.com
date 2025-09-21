@@ -163,6 +163,7 @@ export const Toc = styled.nav<{ dangerouslySetInnerHTML: { __html: string } }>`
 
   &:before {
     content: "목차";
+    color: ${Colors.Foreground3};
   }
 
   ul {
@@ -171,6 +172,13 @@ export const Toc = styled.nav<{ dangerouslySetInnerHTML: { __html: string } }>`
     gap: ${SpaceUnit(0.5)};
     list-style: none;
     margin: 0;
+
+    padding-left: ${SpaceUnit(2)};
+    &:first-child {
+      padding-left: 0;
+      margin-top: ${SpaceUnit(1)};
+    }
+
     li {
       p {
         margin: 0 0 4px 0;
