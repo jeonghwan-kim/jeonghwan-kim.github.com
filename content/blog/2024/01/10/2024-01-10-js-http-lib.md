@@ -395,7 +395,7 @@ xhr에 비해 fetch만의 기능은 다음과 같다. 캐시 제어, 리다이�
 
 ## 참고
 
-- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.com/tree/master/content/codes/2024/js-http-clients)
+- [예제 코드](https://github.com/jeonghwan-kim/jeonghwan-kim.github.io-examples/tree/main/2024-01-10-js-http-clients)
 - [superagent](https://github.com/ladjs/superagent)
 - [axios](https://github.com/axios/axios)
 - [ky](https://github.com/sindresorhus/ky)
